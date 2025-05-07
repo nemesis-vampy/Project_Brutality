@@ -7,8 +7,10 @@ class PB_WeaponBase : DoomWeapon
 	Vector3 invactorpos;
 	Statelabel UnloadedState;
 	property UnloadedState: UnloadedState;
-	string UnloaderToken;
-	property UnloaderToken: UnloaderToken;
+	string UnloadeRToken;//right unloaded
+	property UnloadeRToken: UnloadeRToken;
+	string UnloadeLToken;//left unloaded
+	property UnloadeLToken: UnloadeLToken;
 	int integer;
 	string MidWeaponPickupMessage;
 	property MidPickupMessage: MidWeaponPickupMessage;
@@ -230,7 +232,8 @@ class PB_WeaponBase : DoomWeapon
 		Weapon.BobRangeY 0.5;
 		Weapon.BobSpeed 2.4;
 		Weapon.BobStyle "InverseSmooth";
-		PB_WeaponBase.UnloaderToken "HasUnloaded";
+		PB_WeaponBase.UnloadeRToken "HasUnloaded";
+		PB_WeaponBase.UnloadeLToken "HasUnloaded";
 		PB_WeaponBase.UsesWheel false;
 		PB_WeaponBase.WheelInfo "";
 		PB_WeaponBase.TailSoundVolume 0.8;
