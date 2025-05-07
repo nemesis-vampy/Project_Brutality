@@ -13,7 +13,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		PB_WeaponBase.unloadertoken "PlasmaRifleHasUnloaded";
 		PB_WeaponBase.respectItem "RespectPlasmaGun";	
 		PB_WeaponBase.DualWieldToken "DualWieldingPlasma";	
-		inventory.pickupmessage "UAC-M1 Plasma Rifle (Slot 7)";
+		inventory.pickupmessage "UAC-M1 Plasma Rifle(Slot 7)";
 		Inventory.PickupSound "7LSPICK";
 		Inventory.AltHUDIcon "PLASA0";
 		Tag "UAC-M1 Plasma Rifle";
@@ -308,8 +308,8 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_FireProjectile("BlueFlareSpawn",0,0,0,0);
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
 				if(JustPressed(BT_RELOAD))
-					return resolvestate ("DeCharge");
-				return resolvestate (null);
+					return resolvestate("DeCharge");
+				return resolvestate(null);
 				}
 		AltHold:
 			TNT1 A 0 A_StartSound("PLSFULL",1,CHANF_LOOPING);
@@ -322,8 +322,8 @@ Class PB_M1Plasma : PB_WeaponBase
 				PB_FireOffset();
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-5,5), -15, 0, random(-2,2));
 				if(JustPressed(BT_RELOAD))
-					return resolvestate ("DeCharge");
-				return resolvestate (null);
+					return resolvestate("DeCharge");
+				return resolvestate(null);
 				}
 		AltBlast:
 			TNT1 A 0 A_ReFire();
@@ -335,7 +335,7 @@ Class PB_M1Plasma : PB_WeaponBase
 				EventHandler.SendInterfaceEvent(PlayerNumber(), "PB_HUDInterference", 20);
 				A_ZoomFactor(0.85);
 				A_FireProjectile("M1_HeatWave", 0, 0, 0, 0);
-				A_SpawnItemEx ("HeatBlastEffect3",0,0,16,0,0,0,0,SXF_NOCHECKPOSITION,0);
+				A_SpawnItemEx("HeatBlastEffect3",0,0,16,0,0,0,0,SXF_NOCHECKPOSITION,0);
 				
 				A_FireProjectile("GunFireSmokeBig", 0, 0, 0, 0, 0, 0);
 				A_FireProjectile("GunFireSmokeBig", 0, 0, 0, 0, 0, 0);
@@ -417,7 +417,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		
 		SwitchToDualWield:
 				TNT1 A 0 {
-						if (A_CheckAkimbo()) 
+						if(A_CheckAkimbo()) 
 						{
 							A_SetAkimbo(False);
 							A_SetInventory(invoker.DualWieldToken,0);
@@ -501,7 +501,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			
 		ReloadDualWield:
 			TNT1 A 0 {
-				if (CountInv("PlasmaAmmo") >= 60 && CountInv("LeftPlasmaAmmo") >= 60) 
+				if(CountInv("PlasmaAmmo") >= 60 && CountInv("LeftPlasmaAmmo") >= 60) 
 					return resolvestate("ReadyDualWield");
 				return resolvestate(null);
 			}
@@ -670,7 +670,7 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_SetInventory("Zoomed",0);
 			}
 			TNT1 A 0 {
-				if (CountInv("PlasmaAmmo") <= 0 && CountInv("LeftPlasmaAmmo") <= 0) 
+				if(CountInv("PlasmaAmmo") <= 0 && CountInv("LeftPlasmaAmmo") <= 0) 
 					return resolvestate("ReadyDualWield");
 				else if(CountInv("PlasmaAmmo") <= 0 && CountInv("LeftPlasmaAmmo") != 0)
 					return resolvestate("UnloadLeftOnly");
@@ -800,7 +800,7 @@ Class PB_M1Plasma : PB_WeaponBase
 							return resolvestate(null);
 						}
 				}
-				if(CountInv("DualFiring")==0 || (CountInv("DualFiring")==0 && CountInv("PlasmaAmmo")<=0) || firemodecvar == 1)
+				if(CountInv("DualFiring")==0 ||(CountInv("DualFiring")==0 && CountInv("PlasmaAmmo")<=0) || firemodecvar == 1)
 				{
 					if((PressingFire() || JustPressed(BT_ATTACK)) && firemodecvar < 2)
 					{
@@ -824,7 +824,7 @@ Class PB_M1Plasma : PB_WeaponBase
 				
 				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
 				
-				if(CountInv("DualFiring")==1 || (CountInv("DualFiring")==1 && CountInv("LeftPlasmaAmmo")<=0))
+				if(CountInv("DualFiring")==1 ||(CountInv("DualFiring")==1 && CountInv("LeftPlasmaAmmo")<=0))
 				{
 					if((PressingFire() || JustPressed(BT_ATTACK)) && firemodecvar==0)
 					{
@@ -875,7 +875,7 @@ Class PB_M1Plasma : PB_WeaponBase
 				}
 			DPR2 B 1 BRIGHT {
 					A_ZoomFactor(0.99);
-					if (CountInv("LeftPlasmaAmmo")<=0 || CountInv("PlasmaAmmo")>0 )
+					if(CountInv("LeftPlasmaAmmo")<=0 || CountInv("PlasmaAmmo")>0 )
 						A_GiveInventory("DualFiring",1);
 					PB_WeaponRecoil(-1.4,+0.8);
 				}
@@ -1161,7 +1161,7 @@ Class PlasmaGauntlet : Actor
 		Radius 40;
 		Speed 6;
 		DamageFunction random(1,2);
-		//Damage (random(1,2));
+		//Damage(random(1,2));
 		DamageType "Plasma";
 		+NOEXTREMEDEATH;
 		-EXTREMEDEATH;
@@ -1175,7 +1175,7 @@ Class PlasmaGauntlet : Actor
 	}
 }
 
-Class Plasma_Ball : FastProjectile Replaces PlasmaBall
+Class Plasma_Ball : PB_ProjectileAlt Replaces PlasmaBall
 {
 	default
 	{
@@ -1188,7 +1188,7 @@ Class Plasma_Ball : FastProjectile Replaces PlasmaBall
 		Projectile;
 		Gravity 0;
 		+RANDOMIZE;
-		
+		+NOGRAVITY
 		//+SHOOTABLE;
 		//-NOBLOCKMAP;
 		+NOBLOCKMAP;
@@ -1214,23 +1214,23 @@ Class Plasma_Ball : FastProjectile Replaces PlasmaBall
 			Loop;
 
 		Xdeath:
-			TNT1 A 0 A_SpawnItem ("Plasma_Puff", 0);
-			TNT1 A 0 A_SpawnProjectile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAAA 0 A_SpawnProjectile ("RailGunTrailSpark", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 A 0 A_SpawnItem("Plasma_Puff", 0);
+			TNT1 A 0 A_SpawnProjectile("BluePlasmaFire", 0, 0, random(0, 360), 2, random(0, 360));
+			TNT1 AAAA 0 A_SpawnProjectile("RailGunTrailSpark", 0, 0, random(0, 360), 2, random(0, 360));
 			TNT1 A 1 A_Explode(8,50,0);
 			TNT1 A 4;
-			TNT2 AAA 9 SpawnPlasmaSmoke();//A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, -random (0, 160));
+			TNT2 AAA 9 SpawnPlasmaSmoke();//A_SpawnProjectile("PlasmaSmoke", 1, 0, random(0, 360), 2, -random(0, 160));
 			Stop;
 
 		Death:
-			TNT1 A 0 A_SpawnItem ("Plasma_Puff", 0);
+			TNT1 A 0 A_SpawnItem("Plasma_Puff", 0);
 			TNT1 B 1; //A_Explode(6,50,1)
-			TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnProjectile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAA 0 A_SpawnProjectile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 A 0 A_SpawnItemEx("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 A_SpawnItemEx("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 A_SpawnProjectile("BluePlasmaFire", 0, 0, random(0, 360), 2, random(0, 360));
+			TNT1 AAA 0 A_SpawnProjectile("BluePlasmaParticle", 0, 0, random(0, 360), 2, random(0, 360));
 			TNT1 B 4;
-			TNT2 AAAAAA 9 SpawnPlasmaSmoke();//A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, -random (0, 160));
+			TNT2 AAAAAA 9 SpawnPlasmaSmoke();//A_SpawnProjectile("PlasmaSmoke", 1, 0, random(0, 360), 2, -random(0, 160));
 			Stop;
 	}
 	
@@ -1240,7 +1240,7 @@ Class Plasma_Ball : FastProjectile Replaces PlasmaBall
 		Plsmk.Texture = TexMan.CheckForTexture("X103"..String.Format("%c", 97 + random(0, 25)).."0");
 		Plsmk.Style = STYLE_TRANSLUCENT;
 		Plsmk.Color1 = "404040";
-		vector3 vls = (frandom(-0.3,0.3),frandom(-0.3,0.3),frandom(0.2,0.4));
+		vector3 vls =(frandom(-0.3,0.3),frandom(-0.3,0.3),frandom(0.2,0.4));
 		if(pos.z >= ceilingz - 2)
 			vls.z *= -1;
 		Plsmk.vel = vls;
@@ -1293,11 +1293,11 @@ Class M1_HeatWave : Actor
 				A_Explode(60,180,0,0,150);
 				A_SpawnItemEx("HeatBlastEffect2", 0, 0, 0, 0, 0, 0, 0, 128);
 				A_SpawnItemEx("HeatBlastEffect2", 0, 0, 0, 0, 0, 0, 0, 128);
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
 			}
 		Fly:
 			TNT1 A 1 BRIGHT Light("M1HeatWave") {
@@ -1307,8 +1307,8 @@ Class M1_HeatWave : Actor
 				A_Explode(60,180,0,0,150);
 				A_SpawnItemEx("HeatBlastEffect1", 0, 0, 0, 0, 0, 0, 0, 128);
 				A_SpawnItemEx("HeatBlastEffect2", 0, 0, 0, 0, 0, 0, 0, 128);
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
-				A_SpawnProjectile ("RailGunTrailSpark_Fast", 0, 0, random (0, 360), 2, random (0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
+				A_SpawnProjectile("RailGunTrailSpark_Fast", 0, 0, random(0, 360), 2, random(0, 360));
 			}
 			Loop;
 
@@ -1386,14 +1386,14 @@ Class UltPlasma_Ball : Plasma_Ball
 	states
 	{
 		Death:
-			TNT1 A 0 A_SpawnItem ("Plasma_Puff", 0);
+			TNT1 A 0 A_SpawnItem("Plasma_Puff", 0);
 			TNT1 B 1 A_Explode(4,50,0);
-			TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnProjectile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAA 0 A_SpawnProjectile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 A 0 A_SpawnItemEx("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 A_SpawnItemEx("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 A_SpawnProjectile("BluePlasmaFire", 0, 0, random(0, 360), 2, random(0, 360));
+			TNT1 AAA 0 A_SpawnProjectile("BluePlasmaParticle", 0, 0, random(0, 360), 2, random(0, 360));
 			TNT1 B 4;
-			TNT2 AAAAAA 9 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT2 AAAAAA 9 A_SpawnProjectile("PlasmaSmoke", 1, 0, random(0, 360), 2, random(0, 160));
 			Stop;
 	}
 }
@@ -1428,7 +1428,7 @@ Class EnemyPlasmaBall : PlasmaBall75
 	default
 	{
 		DamageFunction random(10,15);
-		//Damage (random(10,15));
+		//Damage(random(10,15));
 		DamageType "Plasma";
 		Speed 40;
 		//Species "NotMarines";
@@ -1453,7 +1453,7 @@ Class ZombiePlasma : EnemyPlasmaBall
 		Radius 8;
 		Height 2;
 		DamageFunction random(5,7);
-		//Damage (random(5,7));
+		//Damage(random(5,7));
 		Scale 0.18;
 	}
 }
@@ -1465,7 +1465,7 @@ Class PB_M1PlasmaPickup : PB_UpgradeItem
 	default
 	{
 		Inventory.PickupSound "";
-		Inventory.PickupMessage "UAC-M1 Plasma Rifle (Slot 7)";
+		Inventory.PickupMessage "UAC-M1 Plasma Rifle(Slot 7)";
 		Inventory.MaxAmount 3;
 		Tag "UAC-M1 Plasma Rifle";
 		Scale 0.51;
