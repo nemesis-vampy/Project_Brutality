@@ -2088,8 +2088,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelPunching")
 		TNT1 A 0 A_ClearOverlays(10,11)
 		TNT1 A 0 A_JumpIfInventory("QuadAkimboMode", 1, "Nothing")
-		QSKH FGHIJJJJJ 1
-		QSKH IHGFEDCBA 1
+		QSKH FGHIJIHGFEDCBA 1
 		Stop
 	Nothing:
 		TNT1 A 1
