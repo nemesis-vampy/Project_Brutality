@@ -1496,6 +1496,17 @@ ACTOR PB_SMG : PB_Weapon
 		A1F5 F 1
 		TNT1 A 0 A_StartSound("weapons/smg/lower")
 		A1F5 GHIJKL 1 A_SetRoll(roll-0.5, SPF_INTERPOLATE)
+		TNT1 A 0 { 
+			if(CountInv("SMGAmmo") >= 1)
+				{
+				PB_AmmoIntoMag("SMGAmmo", "PB_LowCalMag", 36, 1);
+				}
+			else
+				{
+				PB_AmmoIntoMag("SMGAmmo", "PB_LowCalMag", 35, 1);
+				}
+		}
+		Goto Ready3
 	InsertBullets2Loop:
 		TNT1 A 0 A_JumpIfInventory("SMGAmmo",36,"Ready3")
 		TNT1 A 0 A_JumpIfInventory("PB_LowCalMag",1,1)
@@ -1546,6 +1557,17 @@ ACTOR PB_SMG : PB_Weapon
 				A_SetWeaponSprite("HKSS");
 			}
 		}
+		TNT1 A 0 { 
+			if(CountInv("SMGAmmo") >= 1)
+				{
+				PB_AmmoIntoMag("SMGAmmo", "PB_LowCalMag", 36, 1);
+				}
+			else
+				{
+				PB_AmmoIntoMag("SMGAmmo", "PB_LowCalMag", 35, 1);
+				}
+		}
+		Goto Ready3
 		/*
 		A2F4 JK 1 A_SetRoll(roll+0.4, SPF_INTERPOLATE)
 		A2F4 L 1 {
@@ -1630,9 +1652,18 @@ ACTOR PB_SMG : PB_Weapon
 			}
 		}
 		A3F4 DCBA 1
-		TNT1 A 0 A_JumpIf(CountInv("LeftSMGAmmo") < 36,2)
-		TNT1 A 0 A_JumpIfInventory("UACSMGWasEmpty",1,"InsertBullets3")
-		Goto InsertBullets_Right
+		TNT1 A 0 { 
+			if(CountInv("SMGAmmo") >= 1)
+				{
+				PB_AmmoIntoMag("SMGAmmo", "PB_LowCalMag", 36, 1);
+				}
+			else
+				{
+				PB_AmmoIntoMag("SMGAmmo", "PB_LowCalMag", 35, 1);
+				}
+		}
+		TNT1 A 0 A_JumpIf(CountInv("LeftSMGAmmo") < 36,"ReloadLeftGun")
+		Goto FinishInsertBullets
 	ReloadLeftGun:
 		TNT1 A 3
 		TNT1 A 0 A_PlaySoundEx("weapons/smg_up", "Auto")
@@ -1679,6 +1710,17 @@ ACTOR PB_SMG : PB_Weapon
 			}
 		}	
 		A3F4 DCBA 1
+		TNT1 A 0 {
+			if(CountInv("LeftSMGAmmo") >= 1)
+				{
+				PB_AmmoIntoMag("LeftSMGAmmo", "PB_LowCalMag", 36, 1);
+				}
+			else
+				{
+				PB_AmmoIntoMag("LeftSMGAmmo", "PB_LowCalMag", 35, 1);
+				}
+		}
+		goto FinishInsertBullets
 	InsertBullets_Right:
 		TNT1 A 0 A_JumpIfInventory("SMGAmmo",36,"InsertBullets_Left")
 		TNT1 A 0 A_JumpIfInventory("PB_LowCalMag",2,1)
