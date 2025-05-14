@@ -11,6 +11,7 @@ Class PB_Shotgun : PB_WeaponBase
 		weapon.ammotype1 "PB_Shell";
 		weapon.ammogive1 4;		
 		weapon.ammotype2 "ShotgunAmmo";
+		weapon.slotpriority 0.5;
 		PB_WeaponBase.unloadertoken "PBPumpShotgunHasUnloaded";
 		PB_WeaponBase.respectItem "RespectShotgun";
 		inventory.pickupsound "SHOTPICK";
