@@ -209,6 +209,7 @@ ACTOR PB_LMG : PB_Weapon
 	Scale 0.45
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
+	weapon.slotpriority 1
 	+FLOORCLIP
 	+DONTGIB
 	+WEAPON.WIMPY_WEAPON
