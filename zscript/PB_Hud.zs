@@ -1423,6 +1423,14 @@ class PB_Hud_ZS : BaseStatusBar
 						break;
 				}
 
+			if (isInventoryBarVisible()) //Placeholder for now, at least it works(?)
+			{
+				Vector2 invBarPos = (0, 0);
+				SetSway(invBarPos.x, invBarPos.y, 0, 0.75, 0.25);
+				invBarPos = (invBarPos.X, min(invBarPos.Y, 0));
+				DrawInventoryBar(InvBar, invBarPos, 7, DI_SCREEN_CENTER_BOTTOM, HX_SHADOW);
+			}
+
                 if(helmetKernelPanic > 0)
                 {
                     int spacing;
@@ -1432,14 +1440,6 @@ class PB_Hud_ZS : BaseStatusBar
                         spacing -= 20;
                     }
                 }
-			}
-
-			if (isInventoryBarVisible()) //Placeholder for now, at least it works(?)
-			{
-				Vector2 invBarPos = (0, 0);
-				SetSway(invBarPos.x, invBarPos.y, 0, 0.75, 0.25);
-				invBarPos = (invBarPos.X, min(invBarPos.Y, 0));
-				DrawInventoryBar(InvBar, invBarPos, 7, DI_SCREEN_CENTER_BOTTOM, HX_SHADOW);
 			}
 		}
 	}
