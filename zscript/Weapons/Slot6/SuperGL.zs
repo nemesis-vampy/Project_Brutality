@@ -451,6 +451,7 @@ Class PB_SuperGL : PB_Weapon
 				A_SetInventory("GrenadeTypeIncendiary", 0);
 				A_SetInventory("GrenadeTypeCryo", 0);
 				A_SetInventory("GrenadeTypeAcid", 0);
+				A_SetInventory("SGLUnloaded", 0);
 				
 				if(invoker.ammo1.amount > 0 && invoker.ammo2.amount < 7)
 					PB_AmmoIntoMag("GrenadeRounds","PB_RocketAmmo",7,1);
