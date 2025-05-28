@@ -829,7 +829,7 @@ Actor NailgunMajorMessyCorpse1: DeadShotgunGuy1
 		CPS2 P 5
 		CPS2 ONMLKJIH 5
 		TNT1 A 0 A_SpawnItem ("PB_NailgunMajor", 3)
-		Goto SeeContinue
+		Stop
 		
 	Death.Fatality: Death.Melee: Death.Kick: Death.ExplosiveImpact:
 	Death.Saw:        Death.Cutless:	        Death:
@@ -1053,7 +1053,7 @@ Actor DeadNailgunMajor_NoArm: DeadShotgunGuy1
 		CPS2 P 5
 		CPS2 ONMLKJIH 5
 		TNT1 A 0 A_SpawnItem ("PB_NailgunMajor", 3)
-		Goto SeeContinue
+		Stop
 		
 	Death.Fatality: Death.Melee: Death.Kick: Death.ExplosiveImpact:
 	Death.CutLess: Death.Saw: Death:
