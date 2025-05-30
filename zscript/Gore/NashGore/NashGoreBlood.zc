@@ -94,9 +94,6 @@ class NashGoreBloodBase : Blood
 		Decal "BloodSplat";
 	}
 
-	const BLOOD_FLAGS = SXF_TRANSFERTRANSLATION | SXF_ABSOLUTEPOSITION | SXF_ABSOLUTEANGLE |
-		SXF_ABSOLUTEVELOCITY;
-
 	//===========================================================================
 	//
 	//
@@ -163,20 +160,6 @@ class NashGoreBloodBase : Blood
 	//
 	//
 	//===========================================================================
-
-	static void SprayBloodDecals(Actor self, int defaultAmount = 14)
-	{
-		if (defaultAmount <= 0)
-			defaultAmount = 1;
-		int amt = NashGoreStatics.GetAmountMult(nashgore_bloodmult);
-		for (int i = 0; i < defaultAmount; i++)
-		{
-			for (int j = 0; j < amt; j++)
-			{
-				self.TraceBleedAngle(random[rnd_SprayBloodDecals](10, 100), frandom[rnd_SprayBloodDecals](0.0, 360.0), frandom[rnd_SprayBloodDecals](-70.0, 0.0));
-			}
-		}
-	}
 	
 	//from nashgore next
 	static void SprayBloodDecals(Actor self, int defaultAmount = 14)
@@ -375,7 +358,6 @@ class PB_GibBloodCloud : PB_BloodCloud
 
 class NashGoreBlood : NashGoreBloodBase replaces Blood
 {
-	int chanceMod;
 
 	//===========================================================================
 	//
