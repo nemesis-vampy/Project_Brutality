@@ -9,6 +9,7 @@ Class PB_Revolver : PB_WeaponBase
 		weapon.ammotype1 "PB_LowCalMag";
 		weapon.ammogive1 6;	
 		weapon.ammotype2 "RevolverAmmo";
+		weapon.slotpriority 0.25;
 		PB_WeaponBase.ReserveToMagAmmoFactor 2;
 		PB_WeaponBase.AmmoTypeLeft "LeftRevolverAmmo";
 		inventory.pickupsound "REVOUP";

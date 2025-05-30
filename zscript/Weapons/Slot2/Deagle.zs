@@ -6,6 +6,7 @@ class PB_Deagle : PB_WeaponBase
 		weapon.ammotype1 "PB_LowCalMag";
 		weapon.ammogive1 8;	
 		weapon.ammotype2 "DeagleAmmo";
+		weapon.slotpriority 1;
 		PB_WeaponBase.ReserveToMagAmmoFactor 2;
 		PB_WeaponBase.AmmoTypeLeft "LeftDeagleAmmo";
 		Inventory.MaxAmount 2;

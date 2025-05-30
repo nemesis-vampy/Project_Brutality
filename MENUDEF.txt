@@ -415,7 +415,7 @@ OptionMenu "GameplaySettings"
 	//Option "Weapon Wheel Freezes Time",	"py_weaponwheel_freeze", "OnOff"
 	Option "Weapon ADS Controls","pb_toggle_aim_hold", "AimingStyle" //Looks like we are using this newer line.
 	StaticText " "
-	StaticText "--------Grenade Bounce/Explosion Behavior"
+	StaticText "-----------------Grenade Bounce/Explosion Behavior-----------------"
 	Option "Hand Grenades", "pb_grenadeimpact", "GrenadeBounceStyle"
 	Option "Grenade Launcher", "pb_sglgrenadeimpact", "GrenadeBounceStyle"
 	StaticText "Grenade Launcher 'Sticky Bombs' not affected.", orange
@@ -484,7 +484,7 @@ OptionMenu "GameplaySettings"
 	StaticText "$PB_RECOIL_EXTRA_DESC"
 	StaticText " "
 	StaticText " "	
-	
+	/*
 	StaticText "-----------------Weapon Progression-----------------"
 	
 	StaticText " "
@@ -507,7 +507,7 @@ OptionMenu "GameplaySettings"
 	Option "Nailgun upgrades Minigun",				"pb_UpgradeNailgun", "OnOff"
 	StaticText "No longer use the Minigun when you collect a Nailgun"
 	StaticText " "
-	
+	*/
 	StaticText "-----------------Weapon Misc-----------------"
 
 	Option "$PB_NO_M1PLASMACOOLDOWN", "pb_nocooldown", "YesNo"
