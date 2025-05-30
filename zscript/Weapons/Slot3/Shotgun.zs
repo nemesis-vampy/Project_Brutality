@@ -11,6 +11,7 @@ Class PB_Shotgun : PB_WeaponBase
 		weapon.ammotype1 "PB_Shell";
 		weapon.ammogive1 4;		
 		weapon.ammotype2 "ShotgunAmmo";
+		weapon.slotpriority 0.5;
 		PB_WeaponBase.unloadertoken "PBPumpShotgunHasUnloaded";
 		PB_WeaponBase.respectItem "RespectShotgun";
 		inventory.pickupsound "SHOTPICK";
@@ -143,6 +144,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 PB_WeaponRaise();
 			TNT1 A 0 PB_WeapTokenSwitch("ShotgunSelected");
 			TNT1 A 0 A_SetInventory( "RandomHeadExploder", 1);
+		Ready:
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectAnimation:
 			TNT1 A 0 A_StartSound("weapons/shotgun/equip", 10,CHANF_OVERLAP);
@@ -169,12 +171,13 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 A_lower(120);
 			wait;
 		
-		Ready:
+		
 		Ready3:
 			TNT1 A 0 {
 				A_SetRoll(0);
 				PB_HandleCrosshair(69);
 				A_SetInventory("PB_LockScreenTilt",0);
+				A_SetInventory("CantWeaponSpecial",0);
 				A_SetInventory("CantDoAction",0);
 				}
 			TNT1 A 0 
@@ -192,6 +195,7 @@ Class PB_Shotgun : PB_WeaponBase
 		ReadyToFire:
 			SHTG A 1
 			{
+				PB_CoolDownBarrel(0,0,-4);
 				PB_SetShellSprite("SHTG","SHTS","SHTD");
 				// This token is given upon picking up the magazine upgrade.
 				if (CountInv("PumpshotgunMagNotInserted") >= 1 ) 
@@ -232,6 +236,7 @@ Class PB_Shotgun : PB_WeaponBase
 			SH2F A 0;
 			SHTF A 1 BRIGHT 
 			{
+				PB_IncrementHeat(3);
 				PB_SetShellSprite("SHTF","SH1F","SH2F");
 				A_SetInventory("CantDoAction",1);
 				PB_LowAmmoSoundWarning("shotgun");
@@ -552,12 +557,15 @@ Class PB_Shotgun : PB_WeaponBase
 			SHTM I 1;
 			SHTM JKLMN 1;
 			TNT1 A 0 {
-				if(CountInv("ShotgunAmmo") == 0)
-				
+				if(CountInv("ShotgunAmmo") == 0){
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",10,1);
-				else
+					return ResolveState(null);
+				}
+				else{
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",11,1);
-				
+					return ResolveState("ReloadMagFinished");
+				}
+				return ResolveState(null);
 			}
 		LoadChamberMag:
 			SHMG J 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
@@ -586,6 +594,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_StartSound("weapons/sgpump", 10,CHANF_OVERLAP);
 			}	
 			SHMG J 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_JumpIf(PressingReload() && CountInv("PB_Shell"), "ActuallyBeginMagReload");
 		ReloadMagFinished:
 			SHTM OPQR 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			SHTG EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
@@ -636,7 +645,7 @@ Class PB_Shotgun : PB_WeaponBase
 		CancelWheel:
 			//TNT1 A 1;
 			TNT1 A 0 pb_postwheel();
-			goto ready;
+			goto ready3;
 		
 		Unload:
 			SHTG A 1 {
@@ -722,6 +731,7 @@ Class PB_Shotgun : PB_WeaponBase
 		ReadyToFire2:
 			SHT8 A 1
 			{		
+				PB_CoolDownBarrel(0,-2,6);
 				PB_SetShellSprite("SHT8","SHT6","SHT4");
 				if (CountInv("PumpshotgunMagNotInserted") >= 1 ) 
 					return resolvestate("InsertMagShotgunRespectAlreadyRespected"); 
@@ -756,6 +766,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
 			TNT1 A 0 
 			{
+				PB_IncrementHeat();
 				 A_AlertMonsters();
 				 A_Fireprojectile("YellowFlareSpawn", 0, 0, 0, 0);
 				 PB_LowAmmoSoundWarning("shotgun");
@@ -766,7 +777,7 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_Fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
 				 PB_GunSmoke(-1,0,0);
 				 PB_GunSmoke(1,0,0);
-				 PB_DynamicTail("shotgun", "shotgun");    
+				 PB_DynamicTail("shotgun", "shotgun");
 				 A_SetInventory("CantDoAction",1);
 				 
 				switch(getshellsmode())
@@ -1287,7 +1298,7 @@ Class PB_Shotgun : PB_WeaponBase
 }
 
 
-Class ShotgunAmmo : Ammo
+Class ShotgunAmmo : PB_WeaponAmmo
 {
 	default
 	{
@@ -1448,8 +1459,8 @@ Class PB_SGMagazine: PB_UpgradeItem
 		//SpawnID 9310
 		//Game "Doom";
 		Height 24;
-		+INVENTORY.ALWAYSPICKUP
-		+COUNTITEM
+		-INVENTORY.ALWAYSPICKUP
+		-COUNTITEM
 		Inventory.Pickupsound "SHOTPICK";
 		Inventory.PickupMessage "Pump Shotgun Upgrade! (Mag + Dragon's Breath shells)";
 		Tag "Pump Shotgun Magazine";
@@ -1466,8 +1477,8 @@ Class PB_SGMagazine: PB_UpgradeItem
 			LOOP;
 		
 		Pickup:
-			//TNT1 A 0 ACS_NamedExecuteAlways("PumpShotgunMag", 0);
-			TNT1 A 0;
+			TNT1 A 0 A_JumpIf(!FindInventory("DragonBreathUpgrade") || !FindInventory("PB_Shotgun") || CountInv("PB_Shell") < GetAmmoCapacity("PB_Shell"),1) ;
+			fail;
 			TNT1 A 0
 			{
 				A_GiveInventory("PB_Shotgun", 1);

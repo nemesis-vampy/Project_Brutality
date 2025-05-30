@@ -10,8 +10,7 @@ class PB_Footsteps : Actor
 	PlayerPawn toFollow;
 	PlayerInfo fplayer;
 	
-	protected int updateTics;
-	
+	protected int updateTics;	
 
 	//attach PlayerPawn, load the texture/sound associated tables.
 	void Init( PlayerPawn attached_player)
@@ -28,17 +27,18 @@ class PB_Footsteps : Actor
 		}
 		
 		updateTics--;
-		
+
 		//0) do nothing until updateTics is below 0
-		if (updateTics > 0)
+		//console.printf("%i", updateTics);
+		if (updateTics > 1)
 			return;
 		
 		//1) Update the Footstep actor to follow Player.
 		SetOrigin(toFollow.pos, false);
 		floorz = toFollow.floorz;
 		   
-		double playerVel2D = toFollow.Vel.Length();//sqrt(toFollow.vel.x * toFollow.vel.x + toFollow.vel.y * toFollow.vel.y);
-		
+		double playerVel2D = toFollow.Vel.Length();
+
 		double isCrouched = toFollow.GetCrouchFactor();
 		
 		//2) Only play footsteps when on ground, and if the player is moving fast enough.
@@ -53,15 +53,36 @@ class PB_Footsteps : Actor
 			else
 				stepsound = GetFlatSound(Texman.GetName(toFollow.floorpic));
 			//sound volume is amplified by speed.
-			double soundVolume = isCrouched * (playerVel2D * 0.05); //multiplied by 0.12 because raw value is too high to be used as volume
+			double soundVolume; //multiplied by 0.12 because raw value is too high to be used as volume
+
+			string speed;
+			if(1 - isCrouched)
+				speed = "creep";
+			else if(playerVel2D >= 10)
+				speed = "run";
+			else
+				speed = "walk";
 			
 			//play the sound if it's non-null
-			if (stepsound != "none")
-				toFollow.A_StartSound(stepsound, CHAN_AUTO, CHANF_LOCAL|CHANF_UI, volume:soundVolume);
-			
-			//delay CVAR value is inverted, where 1.0 is default, higher means more frequent, smaller means less frequent
-			double dmul = (2.1 - Clamp(1.8,0.1,2));
-			updateTics = (gameinfo.normforwardmove[0] - playerVel2D) * dmul;   
+			if(updateTics == 1)
+			{
+				soundVolume = playerVel2D * 0.05;
+				
+				toFollow.A_StartSound(speed.."/foley/pre", CHAN_AUTO, CHANF_LOCAL|CHANF_UI, volume:soundVolume);
+				//toFollow.A_StartSound("run/foley/gear", CHAN_AUTO, CHANF_LOCAL|CHANF_UI, volume:soundVolume);
+			}
+			else
+			{
+				soundVolume = isCrouched * (playerVel2D * 0.05);
+				if (stepsound != "none")
+					toFollow.A_StartSound(stepsound, CHAN_AUTO, CHANF_LOCAL|CHANF_UI, volume:soundVolume);
+
+				toFollow.A_StartSound(speed.."/foley/post", CHAN_AUTO, CHANF_LOCAL|CHANF_UI, volume:soundVolume);
+
+				//delay CVAR value is inverted, where 1.0 is default, higher means more frequent, smaller means less frequent
+				double dmul = (2.1 - Clamp(1.8,0.1,2));
+				updateTics = (gameinfo.normforwardmove[0] - playerVel2D) * dmul;   
+			}
 		} else {
 			// no need to poll for change too often
 			updateTics = 1;

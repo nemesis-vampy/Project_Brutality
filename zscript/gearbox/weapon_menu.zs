@@ -111,7 +111,7 @@ class gb_WeaponMenu
 
   string confirmSelection() const
   {
-    if (mSelectedIndex >= mWeapons.size()) return "";
+    if (mSelectedIndex >= uint(mWeapons.size())) return "";
 
     return getDefaultByType(mWeapons[mSelectedIndex]).getClassName();
   }
@@ -163,7 +163,7 @@ class gb_WeaponMenu
     mSelectedIndex = rotateSlotForIndex(mSelectedIndex);
   }
 
-  int rotateSlotForIndex(int oldIndex)
+  int rotateSlotForIndex(uint oldIndex)
   {
     uint nWeapons = mWeapons.size();
     if (nWeapons < 2) return oldIndex;

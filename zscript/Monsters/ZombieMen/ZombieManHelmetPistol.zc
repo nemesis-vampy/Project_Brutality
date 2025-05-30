@@ -7,7 +7,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 		//$Sprite 9OS2B1
 		damagefactor "Head", 0.60;
 		DropItem "PB_Pistol";
-		PB_Monster.MonDMGMult 0.90, 1.1, 0.70, 1.0, 0.95, 0.80;
+		PB_Monster.MonDMGMult 1.25, 1.25, 0.8, 1.0, 0.95, 0.7;
 
 		PB_Monster.TailPitch 0.8;
 	}
@@ -430,8 +430,9 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_JumpIfInventory("Enraged", 1, "Missile");
 			9OS2 B 1 {
 				A_Pain();
-				bMISSILEMORE = true;
-				bMISSILEEVENMORE = true;
+				//bMISSILEMORE = true;
+				//bMISSILEEVENMORE = true;
+				MissileChanceMult = 0.0625;
 				A_StartSound("grunt/sight");
 				A_FaceTarget();
 				A_GiveInventory("Enraged", 1);

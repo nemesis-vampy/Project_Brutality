@@ -69,6 +69,8 @@
 const SLAUGHTERMAP_DIST = 1000.0;
 const MAP_EPSILON = 1 / 65536.;
 const STAT_PB_SMOKE = Thinker.STAT_USER_MAX - 2;
+const SLAUGHTERMAP_DIST = 1000.0;
+const MAP_EPSILON = 1 / 65536.;
 
 class NashGoreStatics play
 {
@@ -338,7 +340,7 @@ class NashGoreStatics play
 				it.Reinit();
 				if (mo = Actor(it.Next()))
 				{		
-					bool valid = mo is "PB_CasingBase";
+					bool valid = mo is "PB_CasingBase" || mo is "EmptyMagBase";
 
 					if (valid) {
 						// console.printf("cleaned up casing %p", mo);
@@ -542,6 +544,71 @@ class NashGoreStatics play
 	}
 }
 
+struct NashGoreMath
+{
+	// Is number even?
+	static bool IsEven(int n)
+	{
+		return (n % 2 == 0);
+	}
+
+	// Is number odd?
+	static bool IsOdd(int n)
+	{
+		return !NashGoreMath.IsEven(n);
+	}
+
+	// Rotates a given vector in the direction of another one. Note that this assumes neither wish
+	// nor current have a length of 0.
+	// * current - The direction the vector is currently pointing. Automatically normalized.
+	// * wish - The direction it wants to rotate towards. Automatically normalized.
+	// * maxOfs - The maximum amount of degrees that current can rotates towards wish.
+	// Returns the rotated unit vector.
+	static Vector3 RotateVector(Vector3 current, Vector3 wish, double maxOfs)
+	{
+		current = current.Unit();
+		wish = wish.Unit();
+
+		double angle = acos(current dot wish);
+		if (angle > maxOfs)
+			angle = maxOfs;
+		else
+			return wish;
+
+		Vector3 rot = (current cross wish).Unit();
+		double c = cos(angle);
+		double s = sin(angle);
+
+		return (current * c + (rot cross current) * s + rot * (rot dot current) * (1.0 - c)).Unit();
+	}
+
+	// Returns yaw from an XY velocity vector.
+	// * vel - The source XY velocity.
+	static double AngleFromVel(Vector2 vel)
+	{
+		return atan2(vel.Y, vel.X);
+	}
+
+	// Returns the yaw and pitch of a vector.
+	// * dir - The vector to get the angles of.
+	static Vector2 GetAngles(Vector3 dir)
+	{
+		return (atan2(dir.Y, dir.X), -atan2(dir.Z, dir.XY.Length()));
+	}
+
+	// Returns the vector that makes up the given angles.
+	// * yaw - Angle about the z axis.
+	// * pitch - Angle about the y axis.
+	// * length - Scalar for the vector's final size.
+	static Vector3 AnglesToVector(double yaw, double pitch, double length = 1.0)
+	{
+		return (yaw.ToVector() * cos(pitch), -sin(pitch)) * length;
+	}
+}
+
+
+
+// NashGoreMath from nashgore next
 struct NashGoreMath
 {
 	// Is number even?

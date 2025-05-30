@@ -6,6 +6,7 @@ class PB_12GAPellet : PB_Projectile
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.OMNIDIRECTIONAL;
+		+PB_Projectile.SMALLIMPACT;
 		Damagetype "Shotgun";
 		Obituary "%o had %p intestines removed and thrown on the ground by %k.";
 	}
@@ -43,6 +44,7 @@ class PB_10GAPellet : PB_Projectile
 		PB_Projectile.RipperCount 3;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.OMNIDIRECTIONAL;
+		+PB_Projectile.SMALLIMPACT;
 		Damagetype "Shotgun";
 		Obituary "%o was turned inside out by %k.";
 	}
@@ -69,6 +71,7 @@ class PB_8GAPellet : PB_Projectile
 		PB_Projectile.RipperCount 4;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.OMNIDIRECTIONAL;
+		+PB_Projectile.SMALLIMPACT;
 		Damagetype "Shotgun";
 		Obituary "%o was turned into a fine red mist by %k.";
 	}

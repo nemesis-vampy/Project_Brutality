@@ -182,7 +182,7 @@ Actor PB_PyroSergeant: PB_HelmetSergeant //Replaces ShotgunGuy
 {
 	SpawnID 1250
 	Scale 1.04
-	DropItem "PB_Flamethrower"
+	DropItem "PB_PyroGuyDrop"
 // 	PainChance "Fire", 12
 // 	PainChance "Flames", 12
 // 	PainChance "Burn", 12

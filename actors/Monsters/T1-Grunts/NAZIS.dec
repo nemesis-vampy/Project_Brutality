@@ -38,7 +38,7 @@ ACTOR PB_Nazi : PB_Monster
 	MaxDropOffHeight 32
 	Species "Nazi"
 damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-	DropItem "PB_MP40"
+	DropItem "PB_WolfSSdrop"
 	States
 	{
 	
@@ -1442,7 +1442,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 // 	SAZI K 15
 // 	SAZI LM 7
 // 	TNT1 A 0 A_NoBlocking
-// 	TNT1 A 0 A_SpawnItem("PB_MP40")
+// 	TNT1 A 0 A_SpawnItem("PB_WolfSSdrop")
 // 	TNT1 A 0 A_SpawnItem("NaziSurrendered")
 // 	Stop
 // 	}

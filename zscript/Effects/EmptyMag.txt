@@ -13,7 +13,7 @@ Class EmptyMagBase : Actor
 	   Height 2;
 	   Radius 2;
 	   Speed 8;
-	   +DOOMBOUNCE;
+	   +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 	   -NOGRAVITY;
 	   +WINDTHRUST;
 	   //+CLIENTSIDEONLY; //[Pop] Does this even matter? investigate later [AD] No, it does not xdd
@@ -46,7 +46,7 @@ Class EmptyMagBase : Actor
 		spinSpeed = 1.0;
 	}
 
-	override int SpecialBounceHit(Actor bounceMobj, Line bounceLine, SecPlane bouncePlane)
+	override int SpecialBounceHit(Actor bounceMobj, Line bounceLine, readonly<SecPlane> bouncePlane)
 	{		
 		if(bouncePlane)
 		{
@@ -302,7 +302,7 @@ Class EmptyClipMP40 : Actor
    Radius 9;
    Speed 4;
    Scale 0.125;
-   +DOOMBOUNCE;
+   +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
    -NOGRAVITY;
    +WINDTHRUST;
    //+CLIENTSIDEONLY;
@@ -349,7 +349,7 @@ Class EmptyClip : Actor
    Radius 9;
    Speed 4;
    Scale 1.01;
-   +DOOMBOUNCE;
+   +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
    -NOGRAVITY;
    +WINDTHRUST;
    //+CLIENTSIDEONLY;
@@ -697,7 +697,7 @@ Class EmptyRocketChamber : Actor
    Radius 9;
    Speed 4;
    Scale 1.3;
-   +DOOMBOUNCE;
+   +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
    -NOGRAVITY;
    +WINDTHRUST;
    //+CLIENTSIDEONLY;
@@ -802,7 +802,7 @@ Class EmptyASGDrum : Actor
    Radius 9;
    Speed 4;
    Scale 0.57;
-   +DOOMBOUNCE;
+   +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
    -NOGRAVITY;
    +WINDTHRUST;
    //+CLIENTSIDEONLY;
@@ -849,7 +849,7 @@ Class EmptyHMGDrum : Actor
    Radius 9;
    Speed 4;
    Scale 0.65;
-   +DOOMBOUNCE;
+   +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
    -NOGRAVITY;
    +WINDTHRUST;
    //+CLIENTSIDEONLY;

@@ -5,7 +5,7 @@ Class PB_CarbineZombieman: PB_Zombieman //Replaces ZombieMan
 		//$Title Carbine Zombieman
 		//$Category Project Brutality - Monsters/Former Humans/Zombiemen
 		Health 90;
-		DropItem "DropedCarbine";
+		DropItem "PB_CarbineZombieDrop";
 		DropItem "PB_GrenadeAmmo", 15;
 	}
 	States
@@ -455,8 +455,9 @@ Class PB_CarbineZombieman: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_JumpIfInventory("Enraged", 1, "Missile");
 			RFTR B 1 {
 				A_Pain();
-				bMISSILEMORE = True;
-				bMISSILEEVENMORE = True;
+				//bMISSILEMORE = True;
+				//bMISSILEEVENMORE = True;
+                MissileChanceMult = 0.0625; // Same as the above flags.
 				A_StartSound("grunt/sight");
 				A_FaceTarget();
 				A_GiveInventory("Enraged", 1);

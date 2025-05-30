@@ -2,6 +2,15 @@
 //			Project Brutality Weapon Sounds		      //
 ////////////////////////////////////////////////////////
 
+$random lesserExplosion	{ lesserExplosion1 lesserExplosion2 lesserExplosion3 lesserExplosion4 lesserExplosion5 lesserExplosion6 }
+lesserExplosion1	"sounds/Sounds Effects/Barrel and Explosions/RocketExplo1.ogg"
+lesserExplosion2	"sounds/Sounds Effects/Barrel and Explosions/RocketExplo2.ogg"
+lesserExplosion3	"sounds/Sounds Effects/Barrel and Explosions/RocketExplo3.ogg"
+lesserExplosion4	"sounds/Sounds Effects/Barrel and Explosions/RocketExplo4.ogg"
+lesserExplosion5	"sounds/Sounds Effects/Barrel and Explosions/RocketExplo5.ogg"
+lesserExplosion6	"sounds/Sounds Effects/Barrel and Explosions/RocketExplo6.ogg"
+$rolloff lesserExplosion 1800 1200
+
 $random BFGEXPLO { bfgexplode1 bfgexplode2 bfgexplode3 }
 bfgexplode1 "sounds/combat/weapons/BFGs/BFG/Normal/bfg_ballexplode1.ogg"
 $rolloff bfgexplode1 3600 1800
@@ -256,10 +265,17 @@ $random misc/clip_pickup { clip1 clip2 }
 
 //DEAGLE
 weapons/deagle/equip DEAGEQ1
-weapons/deagle/click1 DEAGCL1
-weapons/deagle/click2 DEAGCL2
-weapons/deagle/magout DEAGOUT
-weapons/deagle/magin DEAGIN
+weapons/deagle/click1 "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleSlideBack.wav"
+weapons/deagle/click2 "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleSlideForward.wav"
+weapons/deagle/magout "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleOut.wav"
+weapons/deagle/magin "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleIn.wav"
+
+weapons/deagle/MagRelease "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleRelease.wav"
+weapons/deagle/RotateFol "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleRotateF.wav"
+weapons/deagle/SwapF "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleSwapF.wav"
+weapons/deagle/CatchF "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleCatchF.wav"
+weapons/deagle/MagToss "Sounds/Combat/Weapons/Pistol caliber weapons/Deagle/DeagleMagToss.wav"
+
 $random weapons/deagle/fire { DEAGF1 DEAGF2 DEAGF3 DEAGF4 }
 DEAGF1 DEAGF1
 DEAGF2 DEAGF2
@@ -533,7 +549,9 @@ CHAINSTO CHAINSTO
 //$volume CHAINSPI 0.65
 8HAINFIR 8HAINFIR
 DTHDLRST DTHDLRST
+$rolloff DTHDLRST 1000 1500
 DTHDLRSP DTHDLRSP
+$rolloff DTHDLRSP 1000 1500
 DTHDRSN DTHDRSN
 weapons/minigun/chaingunmode/spinup CG_WINDU
 weapons/minigun/chaingunmode/spindown CG_WINDD
@@ -1345,34 +1363,34 @@ $pitchset weapons/firegrenade 0.95 1.05
 $pitchset m2plasma 0.95 1.05
 $pitchset PLSM9 0.95 1.05
 
-$rolloff weapons/deagle/fire 100 3500
-$rolloff weapons/mp40_fire 100 3500
-$rolloff weapons/pistol 100 3500
-$rolloff weapons/suppressedpistol 100 3500
-$rolloff revolver/fire 100 3500
-$rolloff ZSpecOps/MGun 100 3500
-$rolloff weapons/silencedsmg 100 3500
-$rolloff weapons/smg/overlay 100 3500
-$rolloff Weapons/AutoShotgun 100 3500
-$rolloff QSGFIRE1 100 3500
-$rolloff SSHFIRE 100 3500
-$rolloff weapons/shh2 100 3500
-$rolloff weapons/sg 100 3500
-$rolloff DRBTFIRE 100 3500
-$rolloff SlugShot 100 3500
-$rolloff Weapons/Carbine/Fire 100 3500
-$rolloff Weapons/Carbine/Fire2 100 3500
-$rolloff LFIRE 100 3500
-$rolloff MG42FIR 100 3500
-$rolloff weapons/hdmr/fire 100 3500
-$rolloff weapons/rifle 100 3500
-$rolloff weapons/rifle/sniperfire 100 3500
-$rolloff 0SRFIRE 100 3500
-$rolloff weapons/firegrenade 100 3500
-$rolloff m2plasma 100 3500
-$rolloff PLSM9 100 3500
-$rolloff weapons/minigun/chaingunmode/fire 100 3500
-$rolloff weapons/minigunfire 100 3500
-$rolloff HRFire 100 3500
+$rolloff weapons/deagle/fire 400 2500
+$rolloff weapons/mp40_fire 400 2500
+$rolloff weapons/pistol 400 2500
+$rolloff weapons/suppressedpistol 400 2500
+$rolloff revolver/fire 400 2500
+$rolloff ZSpecOps/MGun 400 2500
+$rolloff weapons/silencedsmg 400 2500
+$rolloff weapons/smg/overlay 400 2500
+$rolloff Weapons/AutoShotgun 400 2500
+$rolloff QSGFIRE1 400 2500
+$rolloff SSHFIRE 400 2500
+$rolloff weapons/shh2 400 2500
+$rolloff weapons/sg 400 2500
+$rolloff DRBTFIRE 400 2500
+$rolloff SlugShot 400 2500
+$rolloff Weapons/Carbine/Fire 400 2500
+$rolloff Weapons/Carbine/Fire2 400 2500
+$rolloff LFIRE 400 2500
+$rolloff MG42FIR 400 2500
+$rolloff weapons/hdmr/fire 400 2500
+$rolloff weapons/rifle 400 2500
+$rolloff weapons/rifle/sniperfire 400 2500
+$rolloff 0SRFIRE 400 2500
+$rolloff weapons/firegrenade 400 2500
+$rolloff m2plasma 400 2500
+$rolloff PLSM9 400 2500
+$rolloff weapons/minigun/chaingunmode/fire 400 2500
+$rolloff weapons/minigunfire 400 2500
+$rolloff HRFire 400 2500
 
 weapons/enemycarbine/fire "SOUNDS/COMBAT/WEAPONS/enemycarbine.ogg"

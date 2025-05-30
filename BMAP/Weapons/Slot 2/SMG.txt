@@ -36,18 +36,18 @@ brightmap sprite A2FRD0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/A2FRD0.png"}
 	brightmap sprite A2F3H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/unloaded/A2F3H0.png"}
 	brightmap sprite A2F3I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/unloaded/A2F3I0.png"}
 	brightmap sprite A2F3J0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/unloaded/A2F3J0.png"}
-	brightmap sprite A2F4A0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4A0.png"}
-	brightmap sprite A2F4B0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4B0.png"}
-	brightmap sprite A2F4C0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4C0.png"}
-	brightmap sprite A2F4D0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4D0.png"}
-	brightmap sprite A2F4E0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4E0.png"}
-	brightmap sprite A2F4F0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4F0.png"}
-	brightmap sprite A2F4G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4G0.png"}
-	brightmap sprite A2F4H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4H0.png"}
-	brightmap sprite A2F4I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4I0.png"}
-	brightmap sprite A2F4J0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4J0.png"}
-	brightmap sprite A2F4K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4K0.png"}
-	brightmap sprite A2F4L0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4L0.png"}
+	//brightmap sprite A2F4A0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4A0.png"}
+	//brightmap sprite A2F4B0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4B0.png"}
+	//brightmap sprite A2F4C0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4C0.png"}
+	//brightmap sprite A2F4D0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4D0.png"}
+	//brightmap sprite A2F4E0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4E0.png"}
+	//brightmap sprite A2F4F0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/A2F4F0.png"}
+	//brightmap sprite A2F4G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4G0.png"}
+	//brightmap sprite A2F4H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4H0.png"}
+	//brightmap sprite A2F4I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4I0.png"}
+	//brightmap sprite A2F4J0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4J0.png"}
+	//brightmap sprite A2F4K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4K0.png"}
+	//brightmap sprite A2F4L0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Kick/left/right/unloaded/A2F4L0.png"}
 	//Dual Reload
 	brightmap sprite 09 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Reload/09.png"}
 	brightmap sprite 10 {map "Brightmaps/WEAPONS/Slot 2/SMG/Duals/Reload/10.png"}
@@ -231,11 +231,11 @@ brightmap sprite HKSQB0 {map "Brightmaps/WEAPONS/Slot 2/SMG/HK Slap/HKSQB0.png"}
 	brightmap sprite A4F1R0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/unloaded empty whatever/loaded to empty/A4F1R0.png"}
 	brightmap sprite A4F1S0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/unloaded empty whatever/loaded to empty/A4F1S0.png"}
 	brightmap sprite A4F1T0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/unloaded empty whatever/loaded to empty/A4F1T0.png"}
-brightmap sprite A1F4A0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4A0.png"}
+//brightmap sprite A1F4A0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4A0.png"}
 brightmap sprite A1F4B0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4B0.png"}
 brightmap sprite A1F4C0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4C0.png"}
 brightmap sprite A1F4D0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4D0.png"}
-brightmap sprite A1F4E0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4E0.png"}
+//brightmap sprite A1F4E0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4E0.png"}
 brightmap sprite A1F4F0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4F0.png"}
 brightmap sprite A1F4G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4G0.png"}
 brightmap sprite A1F4H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4H0.png"}
@@ -243,13 +243,13 @@ brightmap sprite A1F4I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4I0.png"}
 brightmap sprite A1F4J0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4J0.png"}
 brightmap sprite A1F4K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4K0.png"}
 brightmap sprite A1F4L0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4L0.png"}
-brightmap sprite A1F4M0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4M0.png"}
-brightmap sprite A1F4N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4N0.png"}
+//brightmap sprite A1F4M0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4M0.png"}
+//brightmap sprite A1F4N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4N0.png"}
 brightmap sprite A1F4O0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4O0.png"}
 brightmap sprite A1F4P0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4P0.png"}
 brightmap sprite A1F4Q0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4Q0.png"}
 brightmap sprite A1F4R0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4R0.png"}
-brightmap sprite A1F4S0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4S0.png"}
+//brightmap sprite A1F4S0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4S0.png"}
 brightmap sprite A1F4T0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4T0.png"}
 brightmap sprite A1F4U0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4U0.png"}
 brightmap sprite A1F4V0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Reload/A1F4V0.png"}
@@ -281,7 +281,7 @@ brightmap sprite A5F5G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5G0.png"}
 brightmap sprite A5F5H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5H0.png"}
 brightmap sprite A5F5I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5I0.png"}
 brightmap sprite A5F5J0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5J0.png"}
-brightmap sprite A5F5K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5K0.png"}
+//brightmap sprite A5F5K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5K0.png"}
 brightmap sprite A5F5L0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5L0.png"}
 brightmap sprite A5F5M0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5M0.png"}
 brightmap sprite A5F5N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F5N0.png"}
@@ -316,10 +316,10 @@ brightmap sprite A5F7G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7G0.png"}
 brightmap sprite A5F7H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7H0.png"}
 brightmap sprite A5F7I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7I0.png"}
 brightmap sprite A5F7J0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7J0.png"}
-brightmap sprite A5F7K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7K0.png"}
-brightmap sprite A5F7L0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7L0.png"}
-brightmap sprite A5F7M0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7M0.png"}
-brightmap sprite A5F7N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7N0.png"}
+//brightmap sprite A5F7K0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7K0.png"}
+//brightmap sprite A5F7L0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7L0.png"}
+//brightmap sprite A5F7M0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7M0.png"}
+//brightmap sprite A5F7N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7N0.png"}
 brightmap sprite A5F7O0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7O0.png"}
 brightmap sprite A5F7P0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7P0.png"}
 brightmap sprite A5F7Q0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Respect/A5F7Q0.png"}
@@ -349,7 +349,7 @@ brightmap sprite A0F3M0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3M0.png"
 brightmap sprite A0F3N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3N0.png"}
 brightmap sprite A0F3O0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3O0.png"}
 brightmap sprite A0F3P0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3P0.png"}
-brightmap sprite A0F3Q0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3Q0.png"}
+//brightmap sprite A0F3Q0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3Q0.png"}
 brightmap sprite A0F3R0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3R0.png"}
 brightmap sprite A0F3S0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3S0.png"}
 brightmap sprite A0F3T0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F3T0.png"}
@@ -381,7 +381,7 @@ brightmap sprite A0F4R0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/A0F4R0.png"
 	brightmap sprite A4F3S0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A4F3S0.png"}
 	brightmap sprite A4F3T0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A4F3T0.png"}
 	brightmap sprite A4F3U0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A4F3U0.png"}
-	brightmap sprite A1F4A0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A1F4A0.png"}
+	//brightmap sprite A1F4A0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A1F4A0.png"}
 	brightmap sprite A4F4N0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A4F4N0.png"}
 	brightmap sprite A4F4O0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A4F4O0.png"}
 	brightmap sprite A4F4P0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Silencer/empty/A4F4P0.png"}
@@ -396,7 +396,7 @@ brightmap sprite A1F3D0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/A1F3D0.png"}
 brightmap sprite A1F3E0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/A1F3E0.png"}
 brightmap sprite A1F3F0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/A1F3F0.png"}
 	//Fire
-	brightmap sprite A1F6G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/Fire/A1F6G0.png"}
+	//brightmap sprite A1F6G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/Fire/A1F6G0.png"}
 	brightmap sprite A1F6H0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/Fire/A1F6H0.png"}
 	brightmap sprite A1F6I0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/Fire/A1F6I0.png"}
 	brightmap sprite A1F3G0 {map "Brightmaps/WEAPONS/Slot 2/SMG/Zoom/Fire/A1F3G0.png"}

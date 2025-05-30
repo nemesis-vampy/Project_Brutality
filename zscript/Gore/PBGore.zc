@@ -396,7 +396,7 @@ class PB_XDeath4: PB_XDeath2
 		SeeSound "misc/xdeath4";
 		DeathSound "misc/xdeath3";
 		Scale 1.1;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		BounceFactor 0.3;
 	}
 	
@@ -637,7 +637,7 @@ class PB_XDeathBurnedMeat : Actor
 		Speed 5;
 		Mass 6;
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+NOBLOCKMAP;
 		+MISSILE;
 		+NOTELEPORT;
@@ -792,7 +792,7 @@ class PB_XDeathArm1 : FlyingGibBase
 		Decal "BloodSplat";
 		BounceFactor 0.4;
 		BounceCount 3;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MOVEWITHSECTOR;
 		//+CLIENTSIDEONLY;
 		+NOBLOCKMAP;
@@ -1663,7 +1663,7 @@ class PB_Brains2 : PB_TinyGIbBase
 		//+CLIENTSIDEONLY;
 		BounceFactor 0.4;
 		Scale 0.9;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -1701,7 +1701,7 @@ class PB_Brains3 : PB_TinyGibBase //Eyeballs
 		Decal "BloodSplat";
 		//+CLIENTSIDEONLY;
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -1745,7 +1745,7 @@ class PB_Brains4 : PB_TinyGibBase //White skinned piece 1
 		Decal "BloodSplat";
 		//+CLIENTSIDEONLY;
 		BounceFactor 0.2;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+NOBLOCKMAP;
 		+MISSILE;
 		+NOTELEPORT;
@@ -2012,7 +2012,7 @@ class PB_BrainsImpHeadPiece: PB_Brains4 //White skinned piece 1
 	Default
 	{
 		Speed 2;
-		-DOOMBOUNCE;
+		-BOUNCEONWALLS; -BOUNCEONFLOORS; -ALLOWBOUNCEONACTORS; -BOUNCEAUTOOFF;
 		Scale 1.0;
 	}
     States
@@ -2871,7 +2871,7 @@ class PB_Teeth : PB_TinyGibBase
 		Radius 2;
 		Speed 6;
 		Scale 0.15;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		-NOGRAVITY;
 		+WINDTHRUST;
 		//+CLIENTSIDEONLY;
@@ -2907,7 +2907,7 @@ class PB_TeethNoBounce: PB_Teeth
 {
 	Default
 	{
-		-DOOMBOUNCE;
+		-BOUNCEONWALLS; -BOUNCEONFLOORS; -ALLOWBOUNCEONACTORS; -BOUNCEAUTOOFF;
 	}
 }
 
@@ -3006,7 +3006,7 @@ class PB_XDeathHalfZombieman : PB_GibBase
 		Mass 4;
 		Decal "BloodSplat";
 		BounceFactor 0.2;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+MOVEWITHSECTOR;
 		//+CLIENTSIDEONLY;
@@ -3038,7 +3038,7 @@ class PB_XDeathHalfPlasmaZombie : PB_GibBase
 		Mass 4;
 		Decal "BloodSplat";
 		BounceFactor 0.2;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+MOVEWITHSECTOR;
 		//+CLIENTSIDEONLY;
@@ -3069,7 +3069,7 @@ class PB_XDeathHalfPlasmaZombie2 : PB_GibBase
 		Mass 4;
 		Decal "BloodSplat";
 		BounceFactor 0.2;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+MOVEWITHSECTOR;
 		//+CLIENTSIDEONLY;
@@ -3484,7 +3484,7 @@ Class PB_RipZombieMan : PB_GibBase
 		Mass 1;
 		Decal "BloodSmear";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -3516,7 +3516,7 @@ Class PB_RipSergeant1 : PB_GibBase
 		Mass 1;
 		Decal "BloodSmear";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -3548,7 +3548,7 @@ Class PB_RipARZombieMan : PB_GibBase
 		Mass 1;
 		Decal "BloodSmear";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -3581,7 +3581,7 @@ Class PB_RipPlasmaZombie : PB_GibBase
 		Mass 1;
 		Decal "BloodSmear";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -3613,7 +3613,7 @@ Class PB_RipPlasmaZombie2 : PB_GibBase
 		Mass 1;
 		Decal "BloodSmear";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -3792,6 +3792,7 @@ class PB_SmearingXDeath2 : PB_GibBase
 		Speed 10;
 		Mass 1;
 		Scale 1.0;
+		Gravity 0.25;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
 		+THRUGHOST;
@@ -3800,7 +3801,6 @@ class PB_SmearingXDeath2 : PB_GibBase
 		+MOVEWITHSECTOR;
 		-DONTSPLASH;
 		+FORCEXYBILLBOARD;
-		+QUARTERGRAVITY;
 	}
     States
     {
@@ -3850,7 +3850,7 @@ Class PB_XDeathHalfZombiemanNoArmNoHead : PB_GibBase
 		Mass 4;
 		Decal "BloodSplat";
 		BounceFactor 0.01;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+MOVEWITHSECTOR;
 		//+CLIENTSIDEONLY;
@@ -3926,8 +3926,7 @@ class PB_CeilXDeath2: PB_GibBase
 	{
 		+SPAWNCEILING;
 		+MOVEWITHSECTOR;
-		-DOOMBOUNCE;
-		+NOGRAVITY;
+		-BOUNCEONWALLS; -BOUNCEONFLOORS; -ALLOWBOUNCEONACTORS; -BOUNCEAUTOOFF;		+NOGRAVITY;
 		+DontSplash;
 		+MISSILE;
 		Scale 1.1;

@@ -275,3 +275,221 @@ $random step/lava {
 	step/lava3 
 	step/lava4 
 }
+
+walk/foley/pre_01 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_01.ogg"
+walk/foley/pre_02 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_02.ogg"
+walk/foley/pre_03 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_03.ogg"
+walk/foley/pre_04 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_04.ogg"
+walk/foley/pre_05 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_05.ogg"
+walk/foley/pre_06 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_06.ogg"
+walk/foley/pre_07 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_07.ogg"
+walk/foley/pre_08 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_08.ogg"
+walk/foley/pre_09 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_09.ogg"
+walk/foley/pre_10 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_10.ogg"
+walk/foley/pre_11 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_11.ogg"
+walk/foley/pre_12 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_12.ogg"
+walk/foley/pre_13 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_13.ogg"
+walk/foley/pre_14 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_14.ogg"
+
+$random walk/foley/pre { 
+	walk/foley/pre_01
+	walk/foley/pre_02
+	walk/foley/pre_03
+	walk/foley/pre_04
+	walk/foley/pre_05
+	walk/foley/pre_06
+	walk/foley/pre_07
+	walk/foley/pre_08
+	walk/foley/pre_09
+	walk/foley/pre_10
+	walk/foley/pre_11
+	walk/foley/pre_12
+	walk/foley/pre_13
+	walk/foley/pre_14
+}
+
+$pitchset walk/foley/pre 0.95 1.05
+$volume walk/foley/pre 0.6
+
+walk/foley/post_01 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_01.ogg"
+walk/foley/post_02 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_02.ogg"
+walk/foley/post_03 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_03.ogg"
+walk/foley/post_04 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_04.ogg"
+walk/foley/post_05 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_05.ogg"
+walk/foley/post_06 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_06.ogg"
+walk/foley/post_07 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_07.ogg"
+walk/foley/post_08 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_08.ogg"
+walk/foley/post_09 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_09.ogg"
+walk/foley/post_10 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_10.ogg"
+walk/foley/post_11 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_11.ogg"
+walk/foley/post_12 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_12.ogg"
+walk/foley/post_13 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_13.ogg"
+walk/foley/post_14 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_pre_14.ogg"
+
+$random walk/foley/post { 
+	walk/foley/post_01
+	walk/foley/post_02
+	walk/foley/post_03
+	walk/foley/post_04
+	walk/foley/post_05
+	walk/foley/post_06
+	walk/foley/post_07
+	walk/foley/post_08
+	walk/foley/post_09
+	walk/foley/post_10
+	walk/foley/post_11
+	walk/foley/post_12
+	walk/foley/post_13
+	walk/foley/post_14
+}
+
+$pitchset walk/foley/post 0.95 1.05
+$volume walk/foley/post 0.6
+
+run/foley/pre_01 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_01.ogg"
+run/foley/pre_02 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_02.ogg"
+run/foley/pre_03 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_03.ogg"
+run/foley/pre_04 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_04.ogg"
+run/foley/pre_05 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_05.ogg"
+run/foley/pre_06 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_06.ogg"
+run/foley/pre_07 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_07.ogg"
+run/foley/pre_08 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_08.ogg"
+run/foley/pre_09 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_09.ogg"
+run/foley/pre_10 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_10.ogg"
+run/foley/pre_11 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_11.ogg"
+run/foley/pre_12 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_12.ogg"
+run/foley/pre_13 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_13.ogg"
+run/foley/pre_14 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_post_14.ogg"
+
+$random run/foley/pre { 
+	run/foley/pre_01
+	run/foley/pre_02
+	run/foley/pre_03
+	run/foley/pre_04
+	run/foley/pre_05
+	run/foley/pre_06
+	run/foley/pre_07
+	run/foley/pre_08
+	run/foley/pre_09
+	run/foley/pre_10
+	run/foley/pre_11
+	run/foley/pre_12
+	run/foley/pre_13
+	run/foley/pre_14
+}
+
+$pitchset run/foley/pre 0.95 1.05
+$volume run/foley/pre 0.6
+
+run/foley/post_01 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_01.ogg"
+run/foley/post_02 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_02.ogg"
+run/foley/post_03 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_03.ogg"
+run/foley/post_04 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_04.ogg"
+run/foley/post_05 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_05.ogg"
+run/foley/post_06 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_06.ogg"
+run/foley/post_07 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_07.ogg"
+run/foley/post_08 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_08.ogg"
+run/foley/post_09 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_09.ogg"
+run/foley/post_10 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_10.ogg"
+run/foley/post_11 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_11.ogg"
+run/foley/post_12 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_12.ogg"
+run/foley/post_13 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_13.ogg"
+run/foley/post_14 "SOUNDS/footstep/run/mvmtstep_cloth_plr_run_pre_14.ogg"
+
+$random run/foley/post { 
+	run/foley/post_01
+	run/foley/post_02
+	run/foley/post_03
+	run/foley/post_04
+	run/foley/post_05
+	run/foley/post_06
+	run/foley/post_07
+	run/foley/post_08
+	run/foley/post_09
+	run/foley/post_10
+	run/foley/post_11
+	run/foley/post_12
+	run/foley/post_13
+	run/foley/post_14
+}
+
+$pitchset run/foley/post 0.95 1.05
+$volume run/foley/post 0.6
+
+creep/foley/pre_01 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_01.ogg"
+creep/foley/pre_02 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_02.ogg"
+creep/foley/pre_03 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_03.ogg"
+creep/foley/pre_04 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_04.ogg"
+creep/foley/pre_05 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_05.ogg"
+creep/foley/pre_06 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_06.ogg"
+creep/foley/pre_07 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_07.ogg"
+creep/foley/pre_08 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_08.ogg"
+creep/foley/pre_09 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_09.ogg"
+creep/foley/pre_10 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_10.ogg"
+creep/foley/pre_11 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_11.ogg"
+creep/foley/pre_12 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_post_12.ogg"
+
+$random creep/foley/pre { 
+	creep/foley/pre_01
+	creep/foley/pre_02
+	creep/foley/pre_03
+	creep/foley/pre_04
+	creep/foley/pre_05
+	creep/foley/pre_06
+	creep/foley/pre_07
+	creep/foley/pre_08
+	creep/foley/pre_09
+	creep/foley/pre_10
+	creep/foley/pre_11
+	creep/foley/pre_12
+}
+
+$pitchset creep/foley/pre 0.95 1.05
+$volume creep/foley/pre 0.6
+
+creep/foley/post_01 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_01.ogg"
+creep/foley/post_02 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_02.ogg"
+creep/foley/post_03 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_03.ogg"
+creep/foley/post_04 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_04.ogg"
+creep/foley/post_05 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_05.ogg"
+creep/foley/post_06 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_06.ogg"
+creep/foley/post_07 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_07.ogg"
+creep/foley/post_08 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_08.ogg"
+creep/foley/post_09 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_09.ogg"
+creep/foley/post_10 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_10.ogg"
+creep/foley/post_11 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_11.ogg"
+creep/foley/post_12 "SOUNDS/footstep/creep/mvmtstep_cloth_plr_creep_pre_12.ogg"
+
+$random creep/foley/post { 
+	creep/foley/post_01
+	creep/foley/post_02
+	creep/foley/post_03
+	creep/foley/post_04
+	creep/foley/post_05
+	creep/foley/post_06
+	creep/foley/post_07
+	creep/foley/post_08
+	creep/foley/post_09
+	creep/foley/post_10
+	creep/foley/post_11
+	creep/foley/post_12
+}
+
+$pitchset creep/foley/post 0.95 1.05
+$volume creep/foley/post 0.6
+
+walk/foley/gear_01 "SOUNDS/footstep/gear/gear_rattle_sprint_cloth_01.ogg"
+walk/foley/gear_02 "SOUNDS/footstep/gear/gear_rattle_sprint_cloth_02.ogg"
+walk/foley/gear_03 "SOUNDS/footstep/gear/gear_rattle_sprint_cloth_03.ogg"
+walk/foley/gear_04 "SOUNDS/footstep/gear/gear_rattle_sprint_cloth_04.ogg"
+walk/foley/gear_05 "SOUNDS/footstep/gear/gear_rattle_sprint_cloth_05.ogg"
+
+$random walk/foley/gear { 
+	walk/foley/gear_01
+	walk/foley/gear_02
+	walk/foley/gear_03
+	walk/foley/gear_04
+	walk/foley/gear_05
+}
+
+$volume walk/foley/gear 0.2

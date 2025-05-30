@@ -1,6 +1,12 @@
 extend class PB_Hud_ZS
 {
 	array<PB_BloodFXStorage> bloodDrops;
+
+    uint8 interference;
+    void RFInterference(int damage)
+    {
+        interference = damage;
+    }
 	
 	void CreateBloodDrop(int enemybloodcolor)
 	{		
@@ -54,7 +60,7 @@ extend class PB_Hud_ZS
 		if(!showGlassCracks)
 			return;
 		
-		if(glassCracks.Size() > 3)
+		if(glassCracks.Size() > 8)
 			glassCracks.Delete(0);
 
 		PB_CrackFXStorage crack = PB_CrackFXStorage.CreateCrackFX();
@@ -267,6 +273,8 @@ class PB_HUDFXHandler : EventHandler
 			sb.CreateBloodDrop(e.args[0]);
 		else if(e.name == "PB_HUDGlassBreak")
 			sb.CreateCrack();
+        else if(e.name == "PB_HUDInterference")
+			sb.RFInterference(e.args[0]);
 	}
 	
 	override void WorldThingDamaged(worldEvent e)
@@ -275,9 +283,17 @@ class PB_HUDFXHandler : EventHandler
 			return;
 		
 		PB_PlayerPawn pmo = PB_PlayerPawn(players[consoleplayer].mo);
-		if(e.Thing == pmo && e.DamageType == 'Head')
+		if(e.Thing == pmo)
 		{
-			EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDGlassBreak");
+			switch(e.DamageType)
+            {
+                Case 'Head':
+                    EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDGlassBreak");
+                    break;
+                Case 'Plasma':
+                    EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDInterference", e.Damage);
+                    break;
+            }
 		}
 	}
 }

@@ -1038,41 +1038,6 @@ ACTOR PlayerMuzzle2
 	}
 }
 
-ACTOR MarineMuzzle1
-{
-	Speed 0
-	PROJECTILE
-	+NOCLIP
-	+NOGRAVITY
-	Speed 5
-	States
-	{
-	Spawn:
-	    TNT1 A 4
-		TNT1 A 0 A_Stop
-		PLMZ A 2 BRIGHT
-		Stop
-	}
-}
-
-ACTOR MarineMuzzle2
-{
-	Speed 0
-	PROJECTILE
-	+NOCLIP
-	+NOGRAVITY
-	Speed 5
-	Scale 1.8
-	States
-	{
-	Spawn:
-	    TNT1 A 4
-		TNT1 A 0 A_Stop
-		PLMZ A 2 BRIGHT
-		Stop
-	}
-}
-
 ACTOR BlueFlareSpawn
 {
 	Speed 20

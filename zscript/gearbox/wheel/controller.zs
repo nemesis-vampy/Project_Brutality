@@ -72,8 +72,9 @@ class gb_WheelController
     vector2 center = mScreen.getWheelCenter();
     int centerX = int(center.x);
     int centerY = int(center.y);
-    mX = clamp(mX, -centerX, Screen.getWidth()  - centerX);
-    mY = clamp(mY, -centerY, Screen.getHeight() - centerY);
+	
+    mX = clamp(mX, -centerX * 0.5, Screen.getWidth()  - centerX * 1.1);
+    mY = clamp(mY, -centerY * 0.8, Screen.getHeight() - centerY * 1.1);
   }
 
 // private: ////////////////////////////////////////////////////////////////////////////////////////

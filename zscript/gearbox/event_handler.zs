@@ -505,7 +505,7 @@ class gb_EventHandler : EventHandler
     uint nQuantitiesMax2 = model.maxQuantity2.size();
 
     if (nTags > 0
-        && (model.selectedIndex >= nTags
+        && (uint(model.selectedIndex) >= nTags
             || nTags != nSlots
             || nTags != nIndices
             || nTags != nIcons

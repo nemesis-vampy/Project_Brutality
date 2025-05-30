@@ -27,8 +27,9 @@ class PB_CasingBase : Actor
 		+WINDTHRUST;
 		+MOVEWITHSECTOR;
 		+MISSILE;
-		// +NOBLOCKMAP;
+		+NOBLOCKMAP;
 		+NOTELEPORT;
+		+NOTIMEFREEZE;
 		+FORCEXYBILLBOARD;
 		// +BILLBOARDFACECAMERA;
 		+NOTDMATCH;
@@ -110,7 +111,7 @@ class PB_CasingBase : Actor
 		smoketime = random(10, 32);
 	}
 	
-	override int SpecialBounceHit(Actor bounceMobj, Line bounceLine, SecPlane bouncePlane)
+	override int SpecialBounceHit(Actor bounceMobj, Line bounceLine, readonly<SecPlane> bouncePlane)
 	{		
 		if(bouncePlane)
 		{
@@ -521,10 +522,7 @@ Class ShotgunCasingRedLive : ShotgunCasing
 	{
 		Death:
 			"####" A 0 A_SetRoll(0);
-			"####" A 0 {
-				frame = random(10, 19);
-				A_SpawnItemEx(String.Format("LiveShellRed_%c", frame + 97));
-			}
+			"####" A 0 A_SpawnItemEx("LiveShellRed");
 			Stop;
 	}
 }
@@ -540,10 +538,7 @@ Class ShotgunCasingGreenLive : ShotgunCasingRedLive
 	{
 		Death:
 			"####" A 0 A_SetRoll(0);
-			"####" A 0 {
-				frame = random(10, 19);
-				A_SpawnItemEx(String.Format("LiveShellGreen_%c", frame + 97));
-			}
+			"####" A 0 A_SpawnItemEx("LiveShellGreen");
 			Stop;
 	}
 }
@@ -559,10 +554,7 @@ Class ShotgunCasingOrangeLive : ShotgunCasingRedLive
 	{
 		Death:
 			"####" A 0 A_SetRoll(0);
-			"####" A 0 {
-				frame = random(10, 19);
-				A_SpawnItemEx(String.Format("LiveShellOrange_%c", frame + 97));
-			}
+			"####" A 0 A_SpawnItemEx("LiveShellOrange");
 			Stop;
 	}
 }
@@ -721,7 +713,7 @@ Class MP40DogTag: Actor
 		Radius 2;
 		Speed 32;
 		Scale 0.15;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		-NOGRAVITY;
 		+WINDTHRUST;
 		//+CLIENTSIDEONLY;
@@ -793,6 +785,7 @@ class NewCasingSmoke : Actor
 		+NOTELEPORT;
 		+NOGRAVITY;
 		+THRUACTORS;
+		+NOTIMEFREEZE;
 		// +FORCEXYBILLBOARD;
 		
 		-SOLID;

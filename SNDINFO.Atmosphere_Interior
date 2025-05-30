@@ -65,6 +65,8 @@ $random weapons/atmo/int/ar {
 	weapons/atmo/int/ar_4
 }
 
+$rolloff weapons/atmo/int/ar 200 1250
+
   //////////////////////////////////////////////////////////////////////////////////
  //  LMG                                                                         //
 //////////////////////////////////////////////////////////////////////////////////
@@ -131,6 +133,8 @@ $random weapons/atmo/int/lmg {
 	weapons/atmo/int/lmg_5
 	weapons/atmo/int/lmg_6
 }
+
+$rolloff weapons/atmo/int/lmg 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Pistol                                                                      //
@@ -203,6 +207,8 @@ $random weapons/atmo/int/pistol {
 	weapons/atmo/int/pistol_6
 }
 
+$rolloff weapons/atmo/int/pistol 200 1250
+
   //////////////////////////////////////////////////////////////////////////////////
  //  Shotgun                                                                     //
 //////////////////////////////////////////////////////////////////////////////////
@@ -264,6 +270,8 @@ $random weapons/atmo/int/shotgun {
 	weapons/atmo/int/shotgun_6
 }
 
+$rolloff weapons/atmo/int/shotgun 200 1250
+
   //////////////////////////////////////////////////////////////////////////////////
  //  Pistol (Suppressed)                                                         //
 //////////////////////////////////////////////////////////////////////////////////
@@ -282,6 +290,8 @@ $random weapons/atmo/int/pistol_sup {
 	weapons/atmo/int/pistol_sup_5
 	weapons/atmo/int/pistol_sup_6
 }
+
+$rolloff weapons/atmo/int/pistol_sup 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  SMG                                                                         //
@@ -354,6 +364,8 @@ $random weapons/atmo/int/smg {
 	weapons/atmo/int/smg_6
 }
 
+$rolloff weapons/atmo/int/smg 200 1250
+
   //////////////////////////////////////////////////////////////////////////////////
  //  Sniper                                                                      //
 //////////////////////////////////////////////////////////////////////////////////
@@ -416,6 +428,8 @@ $random weapons/atmo/int/sniper {
 	weapons/atmo/int/sniper_5
 	weapons/atmo/int/sniper_6
 }
+
+$rolloff weapons/atmo/int/sniper 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  RPG                                                                         //

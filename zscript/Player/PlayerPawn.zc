@@ -31,6 +31,18 @@ class PlayerPawnBase : PlayerPawn
 	array<int> oldPTics;
   	array<int> oldPUTics;
 	
+	SpriteID skinSprite;
+	int skinInd;
+	bool hasSkin;
+	void checkSkin(){
+		let plr = self.player;
+		if(plr){
+			skinInd = plr.GetSkin();
+			hasSkin = skinInd != 0;
+			skinSprite = sprite;
+		}
+	}
+	
 	///////////////////////////////////
 	//Common
 	
@@ -60,6 +72,7 @@ class PlayerPawnBase : PlayerPawn
 	float	FloorAngle;
 	int		JumpSoundCooler;
 	vector3	FloorNormal;
+    uint8 coyoteTime;
 	
 	//Double Jump
 	bool	BlockDoubleJump;
@@ -129,6 +142,7 @@ class PlayerPawnBase : PlayerPawn
 	double	YBob;
 	double	YBobOffset;
 	float	BobTime;
+	vector2 FinalBob;
 	
 	///////////////////////////////////
 	//Painkiller only
@@ -160,7 +174,16 @@ class PlayerPawnBase : PlayerPawn
 		Player.DisplayName "ZMovement Player";
         PainChance 255;
     }
-	
+
+	override int DamageMobj(Actor inflictor, Actor source, int damage, Name mod, int flags, double angle) 
+	{
+	int result = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
+	// Reset damagecount after damage processing to avoid the red flash.
+	if (player.damagecount > 10)
+	    player.damagecount = 10;
+	return result;
+	}
+
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	////																						////
@@ -207,6 +230,9 @@ class PlayerPawnBase : PlayerPawn
 
 		bool wasOnGround = player.onGround;
 		Player.OnGround = (Pos.Z <= FloorZ) || bONMOBJ || bMBFBOUNCER || (Player.Cheats & CF_NOCLIP2); // Moved after super call, otherwise it doesn't register.
+
+        if(Player.OnGround) coyoteTime = 3;
+        else if(coyoteTime > 0) coyoteTime--;
 
         // Stick player to ground when going down stairs
         if (wasOnGround && !player.onGround && pos.z - GetZAt() < maxDropOffHeight && vel.z <= 0)
@@ -757,8 +783,9 @@ class PlayerPawnBase : PlayerPawn
 				return;
 			}
 		
-			else if(Player.OnGround && !BlockJump)
+			else if(coyoteTime > 0 && !BlockJump)
 			{
+                coyoteTime = 0;
 				Float JumpVelZ = pb_jumpheight;
 				Float JumpFac = GetPowerJump();
 				if(JumpFac) { JumpVelZ *= JumpFac; }
@@ -2072,7 +2099,7 @@ class PlayerPawnBase : PlayerPawn
 			LedgeGrabbed = True;
 			return;
 		}
-		if((player.readyweapon is "Melee_Attacks") || (player.readyweapon is "PB_Chainsaw") || (player.readyweapon is "PB_Axe"))
+		if((player.readyweapon is "PB_Fists") || (player.readyweapon is "PB_Chainsaw") || (player.readyweapon is "PB_Axe"))
 		{
 			player.SetPSprite(PSP_WEAPON,player.ReadyWeapon.FindState("StainedLedgeClimb"));
 		}
@@ -2365,7 +2392,8 @@ class PlayerPawnBase : PlayerPawn
 			
 			if(i == 0) p1 = r; else p2 = r;
 		}
-		return (p1 * (1. - ticfrac) + p2 * ticfrac) * (CountInv("Zoomed") >= 1 ? 0.2 : 1.0);
+		FinalBob = (p1 * (1. - ticfrac) + p2 * ticfrac) * (CountInv("Zoomed") >= 1 ? 0.2 : 1.0);
+		return FinalBob;
 	}
 	
 	// The rest of Project Brutality player class
@@ -2430,7 +2458,7 @@ class PlayerPawnBase : PlayerPawn
 		 if(CountInv("PlayerHasCarbinePermanent")==1){A_GiveInventory("PB_Carbine",1);}
 		 if(CountInv("PlayerHasCarbinePermanent")>1){A_GiveInventory("PB_Carbine",2);}
 		 if(CountInv("PlayerHasNailGunPermanent")==1){A_GiveInventory("PB_Nailgun",1);}
-		 if(CountInv("PlayerHasHDMRPermanent")==1){A_GiveInventory("RifleUpgrade",1);}
+		 if(CountInv("PlayerHasHDMRPermanent")==1){A_GiveInventory("PB_HDMRUpgrade",1);}
 		 if(CountInv("PlayerHasSMGPermanent")==1){A_GiveInventory("PB_SMG",1);}
 		 if(CountInv("PlayerHasSMGPermanent")>1){A_GiveInventory("PB_SMG",2);}
 		 if(CountInv("PlayerHasMGUPermanent")==1){A_GiveInventory("PB_MinigunUpgrade",1);}
@@ -2478,7 +2506,9 @@ class PlayerPawnBase : PlayerPawn
 	}
 	override void Tick()
 	{
+		checkSkin();
 		Super.Tick();
+		if(health <= 0){ A_OverlayOffset(1, 0, 1000); }
 		
 		//Just to make sure NO TRACES of this softlocking motherfucker is left -generic name guy
 		if(player && self && CheckNotPredicting())
@@ -2745,7 +2775,7 @@ class DEDashJump : Inventory
 	bool dJump, waiting;
 	
 	const DASHMAXCHARGE = 35;
-
+	Default{+INVENTORY.UNCLEARABLE +INVENTORY.UNDROPPABLE} //This is an ESSENTIAL part of the PlayerPawn. it also turns out that some maps can force you to clear and drop this item. Declared New Apocalypse is where I found this issue. DO NOT REMOVE.
 	override void Tick()
 	{
 		Super.Tick();
@@ -2772,7 +2802,7 @@ class DEDashJump : Inventory
 			dashSpeed = 100;
 			dashTics = 10;
 			
-			EventHandler.SendNetworkEvent( "PB_DashWhatchamacallit" );
+			EventHandler.SendInterfaceEvent(owner.PlayerNumber(), "PB_DashWhatchamacallit");
 			owner.A_StartSound( "player/dash", 69, CHANF_OVERLAP );		
 			owner.A_GiveInventory("PlayerDashed",1);
 			owner.A_QuakeEx( 2, 2, 2, dashTics, 0, 1, "", QF_SCALEDOWN, rollintensity: 0.2 );	
@@ -2842,7 +2872,9 @@ class DEDashJump : Inventory
 			if( dashCharge == DASHMAXCHARGE )
 			{
 				waiting = false;
-				owner.A_StartSound( "player/dashready", 69, CHANF_OVERLAP );
+				if (gamestate != GS_TITLELEVEL) // Just don't play this on TitleMaps it's unnecessary.
+					owner.A_StartSound( "player/dashready", 69, CHANF_OVERLAP );
+					
 				TakeInventory( "EvadeCheck", 2 );
 				TakeInventory( "EvadeHold", 2 );
 			}

@@ -210,7 +210,7 @@ Class PB_DragonBreath : Actor
 				TNT1 A 0 A_Explode(10,66,0);
 				//TNT1 AAAA 0 A_SpawnItemEx ("DragonsBreathFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 				EXPL A 0 A_SpawnItemEx ("ExplosionParticleSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-				//EXPL AAAAAAAAAAA 0 A_CustomMissile ("ShotgunParticles", 6, 0, random (0, 360), 2, random (0, 90));//ShotgunParticles
+				//EXPL AAAAAAAAAAA 0 A_SpawnProjectile("ShotgunParticles", 6, 0, random (0, 360), 2, random (0, 90));//ShotgunParticles
 				TNT1 A 0 A_Jump(76, 2, 3,4);
 				TNT1 A 0 A_SpawnItemEx("DragonsBreathPiece1", random (-15, 15), random (-15, 15));
 				TNT1 A 0 A_Spawnprojectile ("FireworkSFXType2", 0, 0, random (0, 360), 2, random (-60, -30));
