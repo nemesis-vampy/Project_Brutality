@@ -1,6 +1,7 @@
 extend class PB_Hud_ZS
 {
 	array<PB_BloodFXStorage> bloodDrops;
+    array<PB_BloodSplatterFXStorage> bloodSplatters;
 
     uint8 interference;
     void RFInterference(int damage)
@@ -17,8 +18,21 @@ extend class PB_Hud_ZS
 			bloodDrops.Delete(0);
 		
 		PB_BloodFXStorage bdrp = PB_BloodFXStorage.CreateBloodFX(enemybloodcolor);
-		cplayer.mo.A_StartSound("visor/blooddrop", CHAN_AUTO, CHANF_OVERLAP | CHANF_LOCAL | CHANF_UI);
+		S_StartSound("visor/blooddrop", CHAN_AUTO);
 		bloodDrops.Push(bdrp);
+	}
+
+    void CreateBloodSplatter(int enemybloodcolor)
+	{		
+		if(!showBloodDrops)
+			return;
+
+		if(bloodSplatters.Size() > 10)
+            bloodSplatters.Delete(0);
+		
+        PB_BloodSplatterFXStorage bdrp = PB_BloodSplatterFXStorage.CreateBloodSplatterFX(enemybloodcolor);
+		S_StartSound("visor/blooddrop", CHAN_AUTO);
+		bloodSplatters.Push(bdrp);
 	}
 	
 	void DrawBloodDrops()
@@ -28,14 +42,32 @@ extend class PB_Hud_ZS
 			
 		for(int i = 0; i < bloodDrops.size(); i++)
 		{
-			PB_BloodFXStorage bld = bloodDrops[i];
+            PB_BloodFXStorage bld = bloodDrops[i];
+
 			vector2 posbuffer = bld.pos;
 			vector2 hudscale = GetHUDScale();
 			posbuffer.x /= hudscale.x;
 			posbuffer.y /= hudscale.y;
 			SetSway(posbuffer.x, posbuffer.y, 0, 0.6, 0.15, false, false);
+
+            vector2 bloodsize = (Screen.GetWidth() / 1920.f, Screen.GetHeight() / 1080.f);
+                
+            Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * bloodsize.x, DTA_ScaleY, bld.scale.y * bloodsize.y, DTA_Color, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Shaded, DTA_FlipX, bld.mirror);
+		}
+
+        for(int i = 0; i < bloodSplatters.size(); i++)
+		{
+            PB_BloodSplatterFXStorage bld = bloodSplatters[i];
+
+			vector2 posbuffer = bld.pos;
+			vector2 hudscale = GetHUDScale();
+			posbuffer.x /= hudscale.x;
+			posbuffer.y /= hudscale.y;
+			SetSway(posbuffer.x, posbuffer.y, 0, 0.6, 0.15, false, false);
+
+            vector2 bloodsize = (Screen.GetWidth() / 1920.f, Screen.GetHeight() / 1080.f);
 			
-			Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * hudscale.x, DTA_ScaleY, bld.scale.y * hudscale.y, DTA_Color, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Shaded, DTA_FlipX, bld.mirror);
+			Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * bloodsize.x, DTA_ScaleY, bld.scale.y * bloodsize.y, DTA_Translationindex, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Translucent, DTA_FlipX, bld.mirror);
 		}
 	}
 	
@@ -43,12 +75,25 @@ extend class PB_Hud_ZS
 	{
 		for(int i = 0; i < bloodDrops.size(); i++)
 		{
-			PB_BloodFXStorage bld = bloodDrops[i];
+            PB_BloodFXStorage bld = bloodDrops[i];
+
 			bld.TickBloodFX();
 			if(bld.alpha <= 0.05)
 			{
 				bld.Destroy();
 				bloodDrops.Delete(i);
+			}
+		}
+
+        for(int i = 0; i < bloodSplatters.size(); i++)
+		{
+            PB_BloodSplatterFXStorage bld = bloodSplatters[i];
+
+			bld.TickBloodFX();
+			if(bld.alpha <= 0.05)
+			{
+				bld.Destroy();
+				bloodSplatters.Delete(i);
 			}
 		}
 	}
@@ -64,7 +109,7 @@ extend class PB_Hud_ZS
 			glassCracks.Delete(0);
 
 		PB_CrackFXStorage crack = PB_CrackFXStorage.CreateCrackFX();
-		cplayer.mo.A_StartSound("visor/glasscrack", CHAN_AUTO, CHANF_OVERLAP | CHANF_LOCAL | CHANF_UI, 0.7, pitch: frandom(0.96, 1.04));
+		cplayer.mo.A_StartSound("visor/glasscrack", CHAN_AUTO, CHANF_OVERLAP | CHANF_LOCAL | CHANF_UI, 0.7, pitch: cfrandom(0.96, 1.04));
 		glassCracks.Push(crack);
 	}
 	
@@ -118,24 +163,24 @@ class PB_GenericHudEffect ui
 	static vector2 FX_PickPosition() {
 		vector2 res = (Screen.GetWidth(), Screen.GetHeight());
 		vector2 pos;
-		switch(random[hud](0, 3))
+		switch(crandom(0, 3))
 		{
 			default:
 			case 0: // top
-				pos.x = frandom[hud](0, res.x);
-				pos.y = frandom[hud](0, res.y * SP_Y);
+				pos.x = cfrandom(0, res.x);
+				pos.y = cfrandom(0, res.y * SP_Y);
 				break;
 			case 1: // left
-				pos.x = frandom[hud](0, res.x * SP_X);
-				pos.y = frandom[hud](0, res.y);
+				pos.x = cfrandom(0, res.x * SP_X);
+				pos.y = cfrandom(0, res.y);
 				break;
 			case 2: // bottom
-				pos.x = frandom[hud](0, res.x);
-				pos.y = random[hud](res.y * (1 - SP_Y), res.y);
+				pos.x = cfrandom(0, res.x);
+				pos.y = crandom(res.y * (1 - SP_Y), res.y);
 				break;
 			case 3: // right
-				pos.x = frandom[hud](res.x * (1 - SP_X), res.x);
-				pos.y = frandom[hud](0, res.y);
+				pos.x = cfrandom(res.x * (1 - SP_X), res.x);
+				pos.y = cfrandom(0, res.y);
 				break;
 		}
 		
@@ -155,13 +200,13 @@ class PB_CrackFXStorage : PB_GenericHudEffect
 		if(!cls)
 			return cls;
 			
-		cls.mirror = randompick[hud](0, 1);
+		cls.mirror = crandompick(0, 1);
 		
-		string gfxname = string.Format("%s%i", CRACK_GRAPHIC_PREFIX, random[hud](1, CRACKS_RANGE));
+		string gfxname = string.Format("%s%i", CRACK_GRAPHIC_PREFIX, crandom(1, CRACKS_RANGE));
 		
 		cls.graphic = TexMan.CheckForTexture(gfxname);
 		
-		float randscale = frandom[hud](0.5, 0.8);
+		float randscale = cfrandom(0.5, 0.8);
 		cls.scale.x = randscale;
 		cls.scale.y = randscale;
 		cls.scalenomod = cls.scale;
@@ -187,6 +232,68 @@ class PB_CrackFXStorage : PB_GenericHudEffect
 	}
 }
 
+class PB_BloodSplatterFXStorage : PB_BloodFXStorage 
+{	
+	const BLOOD_SPLATTER_RANGE = 27;
+	const BLOOD_GRAPHICS_PREFIX = "GRAPHICS/HUD/ScreenFX/BigSplatters/screenblood_";
+	
+	static PB_BloodSplatterFXStorage CreateBloodSplatterFX(int enemybloodcolor)
+	{
+		PB_BloodSplatterFXStorage cls = PB_BloodSplatterFXStorage(new("PB_BloodSplatterFXStorage"));
+		
+		if(!cls) 
+			return cls;
+		
+		cls.mirror = crandompick(0, 1);
+
+		string gfxname = string.Format("%s%i%s", BLOOD_GRAPHICS_PREFIX, crandom(1, BLOOD_SPLATTER_RANGE), ".png");
+		
+		cls.graphic = TexMan.CheckForTexture(gfxname);
+		
+		float randscale = cfrandom(0.3, 0.5);
+		cls.scale = (randscale, randscale);
+		cls.scalenomod = cls.scale;
+		
+        vector2 res = (Screen.GetWidth(), Screen.GetHeight());
+		switch(crandom(0, 3))
+		{
+			default:
+			case 0: // top
+                cls.pos.x = cfrandom(0, res.x);
+				break;
+			case 1: // left
+                cls.pos.y = cfrandom(0, res.y);
+				break;
+			case 2: // bottom
+                cls.pos.x = cfrandom(0, res.x);
+                cls.pos.y = res.y;
+				break;
+			case 3: // right
+                cls.pos.x = res.x;
+                cls.pos.y = cfrandom(0, res.y);
+				break;
+		}
+		
+		cls.alpha = clamp((1.0 / cls.scale.Length()) * cfrandom(1, 3), 0, 2.5);
+		
+		cls.bloodcolor = enemybloodcolor;
+		
+		return cls;
+	}
+	
+	void TickBloodFX()
+	{
+		lifetime++;
+		alpha -= 0.01;
+		
+		// splashing effect
+		if(lifetime < 3)
+			scale *= 1.05;
+		else if(lifetime < 7)
+			scale *= 0.95;
+	}
+}
+
 class PB_BloodFXStorage : PB_GenericHudEffect 
 {
 	int bloodcolor;
@@ -201,23 +308,23 @@ class PB_BloodFXStorage : PB_GenericHudEffect
 		if(!cls) 
 			return cls;
 		
-		cls.mirror = randompick[hud](0, 1);
+		cls.mirror = crandompick(0, 1);
 
-		string gfxname = string.Format("%s%i", BLOOD_GRAPHICS_PREFIX, random[hud](1, BLOOD_DROPS_RANGE));
+		string gfxname = string.Format("%s%i", BLOOD_GRAPHICS_PREFIX, crandom(1, BLOOD_DROPS_RANGE));
 		
 		cls.graphic = TexMan.CheckForTexture(gfxname);
 		
-		float randscale = frandom[hud](0.5, 1.5);
+		float randscale = cfrandom(0.5, 1.5);
 		cls.scale.x = randscale;
-		cls.scale.y = randscale + frandom[hud](0, 0.1 * cls.scale.x);
+		cls.scale.y = randscale + cfrandom(0, 0.1 * cls.scale.x);
 		cls.scalenomod = cls.scale;
 		
 		cls.pos = FX_PickPosition();
 		
-		cls.alpha = clamp((1.0 / cls.scale.Length()) * frandom[hud](1, 3), 0, 2.5);
+		cls.alpha = clamp((1.0 / cls.scale.Length()) * cfrandom(1, 3), 0, 2.5);
 		
 		if(enemybloodcolor == 0)
-			cls.bloodcolor = 0xfff60000;
+			cls.bloodcolor = 0xff680000;
 		else
 			cls.bloodcolor = enemybloodcolor;
 		
@@ -253,9 +360,12 @@ class PB_HUDFXHandler : EventHandler
 	        return;
 	        
 	    PB_PlayerPawn pmo = PB_PlayerPawn(players[consoleplayer].mo);
-	    if(pmo && e.thing && e.thing.target && e.thing.target.bISMONSTER && e.thing.Distance3D(pmo) <= 80 && randompick[hud](0, 0, 1))
+	    if(pmo && e.thing && e.thing.target && e.thing.target.bISMONSTER && e.thing.Distance3D(pmo) <= 80 && crandom(0, 100) > 75)
 	    {
-	        EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDBloodDroplet", e.thing.target.bloodcolor);
+	        if(e.Thing is 'PB_Bloodmist' || e.Thing is 'PB_GibBloodCloud' || e.Thing is 'NashGoreBloodParticle1')
+                EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDBloodSplatter", int(e.thing.target.bloodtranslation));
+            else
+                EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDBloodDroplet", int(e.thing.target.bloodcolor));
 	    }
 	}
 	
@@ -271,6 +381,8 @@ class PB_HUDFXHandler : EventHandler
 
 		if(e.name == "PB_HUDBloodDroplet")
 			sb.CreateBloodDrop(e.args[0]);
+        else if(e.name == "PB_HUDBloodSplatter")
+			sb.CreateBloodSplatter(e.args[0]);
 		else if(e.name == "PB_HUDGlassBreak")
 			sb.CreateCrack();
         else if(e.name == "PB_HUDInterference")

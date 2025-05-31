@@ -213,3 +213,5 @@ $random visor/interference {
     visor/interference_2 
     visor/interference_3
 }
+
+visor/helpnotification "SOUNDS/HUD Sounds/HelpNotification.ogg"

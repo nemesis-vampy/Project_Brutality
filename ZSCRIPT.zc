@@ -1,4 +1,4 @@
-version "4.14"
+version "4.14.1"
 
 const MAXITERATIONS = 32676;
 
@@ -15,6 +15,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/PB_Hud.zs"
 #include "zscript/PB_Hud_FX.zs"
 #include "zscript/PB_HudMessages.zs"
+#include "zscript/PB_HelpNotifications.zs"
 #include "zscript/PB_StatScreen.zs"
 #include "zscript/Player/PlayerPawn.zc"
 #include "zscript/Player/ZSPlayer.zsc"
@@ -162,6 +163,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Monsters/PBMonsterArmor.zsc"
 #include "zscript/Monsters/PBMonsterAmmo.zsc"
 #include "zscript/Monsters/PBMonsterDrops.zsc"
+#include "zscript/Monsters/PBMonsterIncludes.zsc"
 
 #include "zscript/Monsters/Special/BossBrain.zc"
 
@@ -689,4 +691,22 @@ class MBlurHandler : StaticEventHandler
 			}
 		}
 	}
+}
+
+class DecalDefGenerator : StaticEventHandler
+{
+    override void OnRegister()
+    {
+        for(int i = 0; i < 23; i++)
+        {
+            console.printf("Decal BloodSuper%i\n{\n	Pic \"GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_%i.png\"\n	OpaqueBlood\n	RandomFlipX\n	RandomFlipY\n	// Animator BloodSplatter\n}\n", i+1,i+1);
+        }
+
+		console.printf("decalgroup BloodSuper\n{\n");
+		for(int i = 0; i < 23; i++)
+        {
+            console.printf("	BloodSuper%i 1", i+1);
+        }
+		console.printf("}\n");
+    }
 }

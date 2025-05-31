@@ -177,11 +177,10 @@ class PlayerPawnBase : PlayerPawn
 
 	override int DamageMobj(Actor inflictor, Actor source, int damage, Name mod, int flags, double angle) 
 	{
-	int result = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
-	// Reset damagecount after damage processing to avoid the red flash.
-	if (player.damagecount > 10)
-	    player.damagecount = 10;
-	return result;
+		int result = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
+		// Reset damagecount after damage processing to avoid the red flash.
+		player.damagecount = clamp(player.damagecount, 0, 10);
+		return result;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2509,7 +2508,6 @@ class PlayerPawnBase : PlayerPawn
 		checkSkin();
 		Super.Tick();
 		if(health <= 0){ A_OverlayOffset(1, 0, 1000); }
-		
 		//Just to make sure NO TRACES of this softlocking motherfucker is left -generic name guy
 		if(player && self && CheckNotPredicting())
 		{
@@ -2804,6 +2802,16 @@ class DEDashJump : Inventory
 			
 			EventHandler.SendInterfaceEvent(owner.PlayerNumber(), "PB_DashWhatchamacallit");
 			owner.A_StartSound( "player/dash", 69, CHANF_OVERLAP );		
+
+            if(!PB_HelpNotificationsHandler.CheckTipEvent(1 << 1, CVar.GetCvar("pb_helpflags", owner.Player)))
+            {
+                Array<String> pbDashTips;
+                pbDashTips.Push("When dashing, you can kick to activate a dropkick.");
+                pbDashTips.Push("A dropkick will deal massive damage, and instantly kill lesser enemies.");
+                pbDashTips.Push("They are also very useful to kick away or stun bigger enemies.");
+                PB_HelpNotificationsHandler.PB_SendTipArray(pbDashTips, "pb_helpflags", 1 << 1);
+            }
+
 			owner.A_GiveInventory("PlayerDashed",1);
 			owner.A_QuakeEx( 2, 2, 2, dashTics, 0, 1, "", QF_SCALEDOWN, rollintensity: 0.2 );	
 			

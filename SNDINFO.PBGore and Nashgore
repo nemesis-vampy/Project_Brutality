@@ -165,6 +165,9 @@ bltf6 "SOUNDS/COMBAT/Impact/flesh/phys_bullet_impact_flesh_06.wav"
 bltf7 "SOUNDS/COMBAT/Impact/flesh/phys_bullet_impact_flesh_07.wav"
 bltf8 "SOUNDS/COMBAT/Impact/flesh/phys_bullet_impact_flesh_08.wav"
 bltf9 "SOUNDS/COMBAT/Impact/flesh/phys_bullet_impact_flesh_09.wav"
+
+$volume bulletfleshimpact 0.5;
+
 redburn	redburn
 world/drip			dsdrip2
 $random BLOOOD  { DSBLUD01 DSBLUD02 DSBLUD03 }

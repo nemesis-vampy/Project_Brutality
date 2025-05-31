@@ -63,6 +63,8 @@ server bool pb_cyberdemondeath = false;
 server int pb_grenadeimpact = 0;
 server int pb_sglgrenadeimpact = 0;
 
+server bool pb_performancegoremode = false;
+
 //DMR Reticle Related stuff.
 Server noarchive float TestX1 = 0.0;
 Server noarchive float TestY1 = 0.0;
@@ -549,6 +551,13 @@ user bool pb_showblooddrops = true;
 user float pb_blooddropsalpha = 0.8;
 user bool pb_showglasscracks = true;
 user float pb_glasscracksalpha = 0.2;
+
+user float pb_visorscale = 1.0;
+user float pb_visorofsx = 0;
+user float pb_visorofsy = 0;
+user bool pb_visormiddlepartbottom = false;
+
+user int pb_helpflags = 0;
 
 nosave server bool pbcv_inter = true;
 

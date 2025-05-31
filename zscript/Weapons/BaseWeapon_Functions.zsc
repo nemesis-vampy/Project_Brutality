@@ -2,6 +2,14 @@ extend class PB_WeaponBase
 {
 	uint8 barrelHeat, leftBarrelHeat;
 	
+	action double PB_GetFistDamageSpeedMul()
+	{
+        vector3 forwarddir = (cos(angle + 180), sin(angle + 180), 0);
+		double forwardspeed = vel dot forwarddir;
+        console.printf("%f", forwardspeed);
+		return 1 + forwardspeed;
+	}
+	
 	action void PB_IncrementHeat(int flAmount = 1, bool flLeft = false)
 	{
 		if(!flLeft)
@@ -340,8 +348,8 @@ extend class PB_WeaponBase
 	
 	Action void PB_TakeIfUpgrade(string oldweap = "")
 	{
-		//console.printf("cvar val: \ca"..Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool().."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..oldweap.."\c-");
-		if(!Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool() && invoker.WeaponUpgradeKeepCvar && Cvar.GetCVar(invoker.WeaponUpgradeKeepCvar, invoker.owner.player).GetBool() == false)
+		//console.printf("cvar val: \ca"..pb_keepweapons.."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..oldweap.."\c-");
+		if(!pb_keepweapons)
 		{
 			let pbw = PB_WeaponBase(findinventory(oldweap));
 			if(pbw && pbw.DualWieldToken)
@@ -357,9 +365,9 @@ extend class PB_WeaponBase
 	
 	Action void PB_SelectIfUpgrade(string upgrade = "")
 	{
-		//console.printf("cvar val: \ca"..Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool().."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..upgrade.."\c-");
+		//console.printf("cvar val: \ca"..pb_keepweapons.."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..upgrade.."\c-");
 		if(!CountInv(upgrade)) return;
-		if(!Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool() && invoker.WeaponUpgradeKeepCvar && Cvar.GetCVar(invoker.WeaponUpgradeKeepCvar, invoker.owner.player).GetBool() == false)
+		if(!pb_keepweapons)
 		{
 			//console.printf("switching to: \cg"..upgrade.."\c-");
 			A_SetAkimbo(false);
@@ -1058,6 +1066,17 @@ extend class PB_WeaponBase
 			{
 				plr.A_SetPitch(plr.Pitch + 0.2);
 			}
+            if(BraceTicker == 20)
+            {
+                if(!PB_HelpNotificationsHandler.CheckTipEvent(1 << 0, CVar.GetCvar("pb_helpflags", plr.Player)))
+                {
+                    Array<String> pbTipsBuf;
+                    pbTipsBuf.Push("In Project Brutality, you can stand still next to a wall or crouch to brace your weapon.");
+                    pbTipsBuf.Push("Bracing will reduce the recoil of your weapon by 67%. Crouching will also improve your weapon's accuracy by 50%.");
+                    pbTipsBuf.Push("You can know if you are braced by looking for the blue bracing indicator on the bottom right of your HUD.");
+                    PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "pb_helpflags", 1 << 0);
+                }
+            }
 		}
 		else
 		{
@@ -1452,9 +1471,6 @@ extend class PB_WeaponBase
 		int targetMaxHealth = monster.spawnHealth();
 		int targetCurrentHealth = monster.health;
 		
-		if(targetCurrentHealth < 1) {
-			return false;
-		} // In case the check desynced, found this during another gameplay
 		
 		if(CheckInventory("PB_PowerStrength",1) && (targetCurrentHealth <= targetMaxHealth*0.25 || targetCurrentHealth <= 150)) {
 			return true;
@@ -2226,9 +2242,11 @@ extend class PB_WeaponBase
 		A_Stop();
 		SetOrigin((Pos.X, Pos.Y, plr.LedgeHeightMax), True);
 	}
+	
 	Action Bool GetUserCvarBool(Name CvarName){
 		return Cvar.GetCvar(CvarName,player).GetBool();
 	}
+	
 	action state PB_RespectIfNeeded()
 	{
 		//A_Log("PB_RespectIfNeeded");
