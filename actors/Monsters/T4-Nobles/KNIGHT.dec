@@ -555,7 +555,7 @@ Death.Stomach:
 		HKDD B  10 A_Scream
 		HKDD C  10
 		HKDD D  10 A_NoBlocking
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadKnight")
 	    Stop
 		
@@ -568,7 +568,7 @@ Death.Stomach:
 		HKDD J  10 A_Scream
 		HKDD K  10
 		HKDD L  10 A_NoBlocking
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadKnightHKDDL")
 	    Stop
 		
@@ -588,7 +588,7 @@ Death.Stomach:
 		BTN7 D  6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BTN7 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnight3")
 	    Stop
 		
@@ -610,7 +610,7 @@ Death.Stomach:
 		KSA6 I  6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		KSA6 JJJJJJJJJJ 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnightKSA6J")
 	    Stop
 		
@@ -630,7 +630,7 @@ Death.Stomach:
 		KSA5 F  6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		KSA5 GGGGGGGGGGGG 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnightKSA5G")
 	    Stop
 	
@@ -650,7 +650,7 @@ Death.Stomach:
 		KSA6 I  6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		KSA6 JJJJJJJJJJ 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnightKSA6J")
 	    Stop
 		
@@ -662,7 +662,7 @@ Death.Stomach:
 		BTN6 CCC  2 A_SpawnProjectile("Green_LiquidBlood", 19, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		BTN6 D 6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnight2")
 	    Stop
 		
@@ -674,7 +674,7 @@ Death.Stomach:
 		HKDD GGG  2 A_SpawnProjectile("Green_LiquidBlood", 19, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		HKDD H 6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnightHKDDH")
 	    Stop
 		
@@ -688,7 +688,7 @@ Death.Stomach:
 		KSA2 E  2 A_SpawnProjectile("Green_LiquidBlood", 19, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		KSA2 F 6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnightKSA2G")
 	    Stop
 		
@@ -734,7 +734,7 @@ Death.Arm:
 		KSA6 D  6 A_NoBlocking
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		KSA6 EEEEEEEEE 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem("DeadHellKnightKSA6E")
 	    Stop
 		
@@ -751,7 +751,7 @@ Death.Arm:
         BBO1 AAAAAAAAAABBBBBCCCCC 2 A_SpawnProjectile("Green_LiquidBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BBO1 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1)
 		Stop
 		
@@ -765,7 +765,7 @@ Death.Arm:
 	   TNT1 A 0 A_SpawnProjectile("XDeathStomachGreen", 60, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("PB_Brains1", 60, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         B0S2 PQRSTU 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		B0S2 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_SpawnProjectile("Green_LiquidBlood", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_SpawnItem ("DeadHellKnightB0S2", 1)
@@ -784,7 +784,7 @@ Death.Arm:
         BBO1 AAAAAAAAAABBBBBCCCCC 2 A_SpawnProjectile("Green_LiquidBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BBO1 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1)
 		Stop
 
@@ -812,7 +812,7 @@ Death.Arm:
         BTN2 CCCCC 2 A_SpawnProjectile("Green_LiquidBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BTN2 DDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadKnightNoHead")
 	    Stop
 		
@@ -823,7 +823,7 @@ Death.Arm:
         BOH2 C 10
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BOH2 DDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadHellKnightBOH2")
 	    Stop
 		
@@ -834,7 +834,7 @@ Death.Arm:
         BOH2 G 10
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BOH2 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadHellKnightBOH2H")
 	    Stop
 		
@@ -847,7 +847,7 @@ Death.Arm:
         BTN2 CCCCC 2 A_SpawnProjectile("Green_LiquidBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
 		BTN2 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile("Green_LiquidBlood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadKnightNoHead")
 	    Stop
 		
@@ -863,7 +863,7 @@ Death.Arm:
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		BOSC DE 5 A_SpawnProjectile("PlasmaSmoke", 14, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
         BOSC FFFFFFFFFFFFFFFFFFFFFFFFF 6 A_SpawnProjectile("PlasmaSmoke", 24, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		BOSC F -1
@@ -1064,7 +1064,7 @@ Goto seecontinue
 		TNT1 AAAAAA 0 bright A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath2", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath3", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
 		TNT1 A 1 A_XScream
@@ -1682,7 +1682,7 @@ ACTOR BrutalizedHellKnight1
 		TNT1 A 0 A_Scream
 		KSA2 DEF 7
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		KSA2 G 1 A_SpawnItem ("DeadHellKnightKSA2G")
 		Stop
 		
@@ -1742,7 +1742,7 @@ ACTOR BrutalizedHellKnight2 : BrutalizedHellKnight1
 		TNT1 A 0 A_Scream
 		KSA3 DEF 7
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		KSA3 G 1 A_SpawnItem ("DeadHellKnightKSA3G")
 		Stop
 		
@@ -1803,7 +1803,7 @@ ACTOR BrutalizedHellKnight3 : BrutalizedHellKnight1
 		TNT1 A 0 A_NoBlocking
 		KSA4 DEF 7
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		KSA4 G 1 A_SpawnItem ("DeadHellKnightKSA4G")
 		Stop
 		
@@ -1820,7 +1820,7 @@ ACTOR BrutalizedHellKnight3 : BrutalizedHellKnight1
         TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		KSA6 AAAAA 2 A_SpawnProjectile("Green_LiquidBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		KSA6 BCDE 6 A_SpawnProjectile("Green_LiquidBlood", 25, -4, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		TNT1 A 0 A_SpawnItem ("DeadHellKnightKSA6E")
 		Stop

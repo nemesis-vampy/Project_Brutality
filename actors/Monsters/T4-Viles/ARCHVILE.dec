@@ -350,7 +350,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		VID2 E 6 A_SpawnProjectile("PB_BloodmistSmall", 36, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		VID2 F 6 A_SpawnProjectile("PB_BloodmistSmall", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_PlaySound("BODYF",6)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadArchvileVID2F")
 		Stop
 	
@@ -360,7 +360,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBlood", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 	Head2:
 		D1AX G 7
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("HeadlessArchvile")
 		Stop
 	
@@ -371,7 +371,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		TNT1 A 0 A_Scream 
 		TNT1 A 0 A_NoBlocking
 		DIAB RSTUVWX 5 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		TNT1 A 0 A_SpawnItem("DeadArchvile")
 		Stop
@@ -381,7 +381,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		TNT1 A 0 A_NoBlocking
 		D1AX ABCDE 6
 		TNT1 A 0 A_PlaySound("BODYF",6)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadArchvile_D1AXF")
 		Stop
 		
@@ -394,7 +394,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileArm", 45, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		D2AX IJKL 6
 		TNT1 A 0 A_PlaySound("BODYF",6)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadArchvile_D2AXM")
 		Stop
 	
@@ -419,7 +419,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_BloodmistBig", 44, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 		D2AX N 8 A_Stop
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		D2AX OOOOOOOO 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 38, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		D2AX PPP 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
 		TNT1 A 0 A_PlaySound("BODYF",6)
@@ -447,7 +447,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		D2AX FG 8
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		D2AX H 1
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadArchvile_D2AXH")
 		Stop
 	
@@ -466,7 +466,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 	D2AX FG 8
 	TNT1 A 0 A_PlaySound("BODYF",6)
 	D2AX H 1
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_SpawnItem("DeadArchvile_D2AXH")
 	Stop
 	
@@ -507,7 +507,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 	TNT1 AAAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 	TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120))
 	XVIL ABCDEFGHIJKLMNOPQ 2 
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_SpawnItem("DeadArchvileXVILQ")
 	Stop
 
@@ -534,7 +534,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 		VIGI D 3 
 		VIGI E 3 A_NoBlocking
 		VIGI FGHIJ 3
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadArchvileVIGIJ")
 		Stop
 		
@@ -1031,7 +1031,7 @@ ACTOR HeadlessArchvile
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileArm", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_Recoil(2)
 		D2AX N 6 A_Stop
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		D2AX OOOOOOOOO 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		D2AX PPP 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
 		D2AX QQ 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
@@ -1391,7 +1391,7 @@ ACTOR DyingArchvileNoArm: PB_Archvile
 		VID3 A 3
 		VID3 AAAAAAAAAAAAAAAAAAAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 46, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		VID3 BCDEFGHIJK 3
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadArchvileVID3L")
 		TNT1 A -1
 		Stop

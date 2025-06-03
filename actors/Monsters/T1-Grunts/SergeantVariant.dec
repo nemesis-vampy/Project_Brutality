@@ -779,7 +779,7 @@ Actor PB_PyroSergeant: PB_HelmetSergeant //Replaces ShotgunGuy
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (50, 130))
 		ID11 EF 2
 		TNT1 A 0 A_PlaySound("BODYF",7)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadShotgunguy1")
 		Stop
 	
@@ -787,7 +787,7 @@ Actor PB_PyroSergeant: PB_HelmetSergeant //Replaces ShotgunGuy
 		TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 //A_NoBLocking
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		Goto Death.ExplosiveImpact+1
 
 	Death.Freeze:
@@ -802,7 +802,7 @@ Actor PB_PyroSergeant: PB_HelmetSergeant //Replaces ShotgunGuy
 		
 		BMBE M 0 bright A_Explode (36, 128)
 		EXPL A 0 Radius_Quake (2, 40, 0, 8, 0)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		
 		TNT1 AA 0 A_SpawnProjectile("XDeathSargeLeg1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))

@@ -585,7 +585,7 @@ actor PB_DarkImpST : PB_Monster //Replaces DoomImp
 	TNT1 A 0 A_Scream
 	TNT1 A 0 A_NoBLocking
 	TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (50, 130))
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_SpawnItem ("DeadDarkImp1")
 	Stop
 
@@ -594,7 +594,7 @@ actor PB_DarkImpST : PB_Monster //Replaces DoomImp
 	TNT1 A 0
 	TNT1 A 0 A_XScream
 	TNT1 A 0 A_NoBLocking
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	Goto Death.ExplosiveImpact+1
 
 	Death.Plasma: Death.Plasma2:
@@ -674,7 +674,7 @@ actor PB_DarkImpST : PB_Monster //Replaces DoomImp
         DRKS J 6 A_Scream
         DRKS K 6 A_SpawnProjectile("PB_XDeath1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         DRKS L 6 A_Fall
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadDarkImpDRKSM")
 		Stop
 		
@@ -718,7 +718,7 @@ actor PB_DarkImpST : PB_Monster //Replaces DoomImp
 		TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
 		D1S8 ABCD 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItemEx ("DarkImpDyingOfBloodLoss", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 		
@@ -769,7 +769,7 @@ actor PB_DarkImpST : PB_Monster //Replaces DoomImp
 	   F1D1 LLLLJJJJLLLLJJJJ 2 A_SpawnProjectile("Brutal_LiquidBlood3", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
        
         TNT1 A 0 A_TakeInventory("Fatality_Marine",1)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_UnSetInvulnerable
 TNT1 A 0 A_SpawnItem ("MarineGotOwnedByImp", 1)
 Goto SeeContinue
@@ -795,7 +795,7 @@ Goto SeeContinue
 		D1S6 A 8 A_Scream
         D1S6 B 8 A_NoBlocking
         D1S6 C 8 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItemEx ("DyingDarkImp", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop	
 	
@@ -809,7 +809,7 @@ Goto SeeContinue
 		D1S7 A 2 A_SpawnProjectile("XDeathHalfDarkImp", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         D1S7 AAA 4 A_SpawnItem ("Big_Blood", 0, 30)
 	    D1S7 BCDE 8
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 1 A_SpawnItem ("DeadDarkImp_Half", 5)
 		Stop
 	
@@ -822,7 +822,7 @@ Goto SeeContinue
 		TNT1 A 0 A_Jump(32, "Deathchickenhead")
 		D1S9 C 8
 		D1S9 DE 8 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 1 A_SpawnItem ("DeadDarkImp_NoHead1", 5)
 		Stop
 	
@@ -846,7 +846,7 @@ Goto SeeContinue
 		TNT1 A 0 A_Jump(32, "Deathchickenhead")
 		D1S9 C 8
 		D1S9 DE 8 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 1 A_SpawnItem ("DeadDarkImp_NoHead1", 5)
 		Stop
 		
@@ -874,7 +874,7 @@ Goto SeeContinue
 		D1S9 K 9 A_NoBlocking
 		D1S9 M 8
 		D1S9 N 8 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadDarkImpD1S9O")
 		Stop
 		
@@ -883,7 +883,7 @@ Goto SeeContinue
 		D1S9 R 8
 		D1S9 SSS 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120))
 		D1S9 TTTSSS 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120)) 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		D1S9 U 6
         TNT1 A 0 A_SpawnItem ("DeadDarkImpD1S9V")
 		Stop
@@ -913,7 +913,7 @@ Goto SeeContinue
 
 
 		D1S9 DE 8 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 1 A_SpawnItem ("DeadDarkImp_NoHead1", 5)
 		Stop
 	
@@ -921,7 +921,7 @@ Goto SeeContinue
 		DRKD A 9 A_NoBlocking
 		DRKD C 8
 		DRKD DE 8 
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 1 A_SpawnItem ("DeadDarkImp_NoHead2", 5)
 		Stop
 		
@@ -987,7 +987,7 @@ Goto SeeContinue
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 		D3S3 A 6 A_Stop
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		D3S3 BBBBBBBBBB 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		D3S3 CCC 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
 		D3S3 DD 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
@@ -1019,7 +1019,7 @@ Goto SeeContinue
 		TNT1 A 0 A_NoBlocking
 		D2S2 EEFFGH 6
 		TNT1 A 0 A_SpawnItem ("DeadDarkImpD2S2H")
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         Stop
 		
 	Death.Shotgun:
@@ -1076,7 +1076,7 @@ Goto SeeContinue
 		 TNT1 A 0 A_JumpIf((MomY == 0), "TakeASit")
 		 DRKI M 4 A_SpawnProjectile("Brutal_LiquidBlood3", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		 TNT1 A 0 A_JumpIf((MomY == 0), "TakeASit")
-		 TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		 TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadDarkImp1")
          Stop
 	 Stop 
@@ -1112,7 +1112,7 @@ Goto SeeContinue
 		 TNT1 A 0 A_JumpIf((MomY == 0), "PinToWall")
 		 DRKI M 4 A_SpawnProjectile("Brutal_LiquidBlood3", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		 TNT1 A 0 A_JumpIf((MomY == 0), "PinToWall")
-		 TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		 TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		 TNT1 A 0 A_SpawnItem ("DeadDarkImp1")
          Stop
 	PinToWall:

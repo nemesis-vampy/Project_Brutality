@@ -121,15 +121,15 @@ class NashGoreBloodBase : Blood
 
 		if(target) {
             CopyBloodColor(target);
-            console.printf("copied from target");
+            //console.printf("copied from target");
         }
         else if(master) {
             CopyBloodColor(master);
-            console.printf("copied from master");
+            //console.printf("copied from master");
         }
         else if(tracer) {
             CopyBloodColor(tracer);
-            console.printf("copied from tracer");
+            //console.printf("copied from tracer");
         }
         self.Translation = bloodtranslation;
 

@@ -130,7 +130,7 @@ class PB_Demon : PB_Monster
             SARG M 4;
             TNT1 A 0 {
                 A_SpawnItemEx("PB_DeadDemon1");
-                A_SpawnItemEx("GrowingBloodPool");
+                A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
             }
             Stop;
 
@@ -176,7 +176,7 @@ class PB_Demon : PB_Monster
                 A_Scream();
             }
             SARH CCCCCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random(0, 360), CMF_ABSOLUTEPITCH | CMF_BADPITCH, random(30, 110));
-            TNT1 A 0 A_SpawnItemEx("GrowingBloodPool");
+            TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
             SARH DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, random(0, 360), CMF_ABSOLUTEPITCH | CMF_BADPITCH, random(30, 110));
             TNT1 A 0 A_SpawnItemEx("PB_DeadDemonNoHead");
             Stop;

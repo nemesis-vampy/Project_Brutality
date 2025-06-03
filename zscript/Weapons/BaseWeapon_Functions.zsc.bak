@@ -1,6 +1,14 @@
 extend class PB_WeaponBase
 {
 	uint8 barrelHeat, leftBarrelHeat;
+
+    action double PB_GetFistDamageSpeedMul()
+	{
+        vector3 forwarddir = (cos(angle + 180), sin(angle + 180), 0);
+		double forwardspeed = vel dot forwarddir;
+        console.printf("%f", forwardspeed);
+		return 1 + forwardspeed;
+	}
 	
 	action void PB_IncrementHeat(int flAmount = 1, bool flLeft = false)
 	{
@@ -216,7 +224,7 @@ extend class PB_WeaponBase
 	
 	action void PB_DynamicTail(string tailInside, string tailOutside)
 	{	
-        string tmpTailSound;
+        /*string tmpTailSound;
 		uint intSamples;
 		FLineTraceData ltrace;
 
@@ -271,7 +279,7 @@ extend class PB_WeaponBase
                 if(dist >= 200 && dist < 4500)
 			        A_StartSound("weapons/atmo/med/"..tmpTailSound, 22, pitch: sndPitch);
 			}
-		}
+		}*/
 	}
 	
 	action void PB_LowAmmoSoundWarning(string type = "default", string ammoItem = "SuperMario64ForTheXboxOne", int ammoUse = 1)
@@ -1066,17 +1074,6 @@ extend class PB_WeaponBase
 			{
 				plr.A_SetPitch(plr.Pitch + 0.2);
 			}
-            if(BraceTicker == 20)
-            {
-                if(!PB_HelpNotificationsHandler.CheckTipEvent(1 << 0, CVar.GetCvar("pb_helpflags", plr.Player)))
-                {
-                    Array<String> pbTipsBuf;
-                    pbTipsBuf.Push("In Project Brutality, you can stand still next to a wall or crouch to brace your weapon.");
-                    pbTipsBuf.Push("Bracing will reduce the recoil of your weapon by 67%. Crouching will also improve your weapon's accuracy by 50%.");
-                    pbTipsBuf.Push("You can know if you are braced by looking for the blue bracing indicator on the bottom right of your HUD.");
-                    PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "pb_helpflags", 1 << 0);
-                }
-            }
 		}
 		else
 		{

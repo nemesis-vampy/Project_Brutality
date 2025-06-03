@@ -125,7 +125,7 @@ ACTOR PB_EliteArachnotron: Arachnotron //replaces Arachnotron
 		ARAC K 6 A_NoBlocking
 		ARAC LMNO 8
 		ARAC P 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark", 1)
         Stop
 		
@@ -142,7 +142,7 @@ ACTOR PB_EliteArachnotron: Arachnotron //replaces Arachnotron
 		AR4C K 6 A_NoBlocking
 		AR4C LMNO 8
 		AR4C P 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark3", 1)
         Stop
 		
@@ -166,7 +166,7 @@ ACTOR PB_EliteArachnotron: Arachnotron //replaces Arachnotron
 		ARAC R 6 A_NoBlocking
 		ARAC STUV 6
 		ARAC W 2 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark2", 1)
         Goto XBurns
 		
@@ -189,7 +189,7 @@ ACTOR PB_EliteArachnotron: Arachnotron //replaces Arachnotron
 		AR4C R 6 A_NoBlocking
 		AR4C STUV 6
 		AR4C W 2 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadSpiderDark4", 1)
         Goto XBurns
 				
@@ -302,7 +302,7 @@ Death.SuperPlasma:
 		ARAC Q 6 A_NoBlocking
 		ARAC RSTUV 6
 		ARAC W 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("XDeadSpider2", 1)
         		Goto XBurns
 	XBurns:
@@ -341,7 +341,7 @@ Death.SuperPlasma:
 		 ARAC Q 6 A_NoBlocking
 		ARAC RSTUV 6
 		ARAC W 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("XDeadSpider2", 1)
        Goto XBurns
 

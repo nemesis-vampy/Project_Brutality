@@ -326,7 +326,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 		TNT1 A 0 A_Jump(44, "Suffer")
 		F5T2 DEF 6 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		F5T2 F 1 //A_BossDeath    
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		F5T2 F -1
         Stop
 		
@@ -343,7 +343,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 		F4T2 G 7 
 		F4T2 H 7 
 		F4T2 IJK 6 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		F4T2 LMNO 5
 		F4T2 O -1 
 		stop
@@ -354,7 +354,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 		F4T2 B 7 A_Scream
 		F4T2 C 7 A_NoBlocking
 		F4T2 DE 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		F4T2 E 1 //A_BossDeath
 		F4T2 E -1
 		Stop
@@ -415,7 +415,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 	  TNT1 AAAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))	
 	  F6T2 QRST 4 A_SpawnProjectile("PB_FlyingBlood", 75, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	  TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))	 
-	  TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	  TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
       F6T2 T -1
       Stop
     
@@ -443,7 +443,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 		F8T2 D 6 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		F8T2 E 6 //A_BossDeath
 		F8T2 EEEEEEEEE 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 8, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		F8T2 E -1
 		stop
 	
@@ -505,7 +505,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 //A_BossDeath
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		FA72 JJJJJJJJJJJJJJJJJJ 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 21, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		FA72 J -1
         Stop
@@ -532,7 +532,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 			TNT1 A 0 A_NoBlocking
 			TNT1 A 0 //A_BossDeath
 			TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			FA72 JJJJJJJJJJJJJJJJJJ 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 21, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			FA72 J -1
 			Stop
@@ -680,7 +680,7 @@ Spawn:
 	  TNT1 AAAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))	
 	  F6T2 QRST 4 A_SpawnProjectile("PB_FlyingBlood", 75, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	  TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))	 
-	  TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	  TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
       F6T2 T -1
       Stop
 }}
@@ -767,7 +767,7 @@ ACTOR DyingVolcabus
 		TNT1 A 0 A_ChangeFlag("Shootable", 0)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_PlaySound("Volcabus/death")
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		F5T2 F -1
 		Stop
 
@@ -781,7 +781,7 @@ ACTOR DyingVolcabus
 		TNT1 AAAA 0 A_SpawnProjectile("Brains7", 28, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 27, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		F5T2 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 2 A_SpawnProjectile("Brutal_LiquidBlood3", 10, 12, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		F5T2 H -1
 		Stop

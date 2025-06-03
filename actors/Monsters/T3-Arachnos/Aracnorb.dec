@@ -143,7 +143,7 @@ actor Aracnorb
     TNT1 A 0 A_SpawnProjectile("XDeathSpiderNew2", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 90))
 		ACNB E 6 A_NoBlocking
 		ACNB FG 8
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		ACNB H -1 		
     Stop
 
@@ -209,7 +209,7 @@ actor Aracnorb
 		ACNB JKLM 4 
 		TNT1 AAAAAAAAA 0 A_SpawnProjectile("PB_Brains1", 24, 15, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAAAAAA 0 A_SpawnProjectile("Instestin2", 24, 15, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		ACNB NNNNN 1	A_SpawnProjectile("PB_SquirtingBloodTrail", 28, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))	
 		ACNB OOOOO 1	A_SpawnProjectile("PB_SquirtingBloodTrail", 21, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))	
 		ACNB PPPPPPPP 1	A_SpawnProjectile("PB_SquirtingBloodTrail", 14, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))	
@@ -233,7 +233,7 @@ actor Aracnorb
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		POSS STUVW 3
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		POSS X -1
 		Stop  
 

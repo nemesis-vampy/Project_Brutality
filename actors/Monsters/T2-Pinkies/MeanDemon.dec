@@ -210,7 +210,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		SAR2 L 4 A_NoBlocking
 		TNT1 A 0 A_SpawnProjectile("PB_FlyingBlood", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		SAR2 M 4
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SAR2 N -1
 		Stop
 		
@@ -223,7 +223,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		S4AR B 8 A_Scream
 		S4AR C 8 A_NoBlocking
 		S4AR DEF 8
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadMeanDemonNoArm", 1)
 		Stop
 		
@@ -249,7 +249,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		P8N5 B 12 A_Scream
 		P8N5 C 12 A_NoBlocking
 		P8N5 D 12
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadMeanDemonNoHead", 1)
 		Stop
 		
@@ -356,7 +356,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		S4S2 BCDE 6
 		S4S2 FFFFFFFFFFFFFFFFFF 7 A_SpawnProjectile("Blood", 20, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		S4S2 F -1
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		stop
 		
 		AltGoreDeath2:
@@ -376,7 +376,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		SAS2 BCDE 6
 		SAS2 FFFFFFFFFFFFFFFFFF 7 A_SpawnProjectile("Blood", 20, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		SAS2 F -1
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		stop
 
 	Death.SuperPunch:
@@ -399,7 +399,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		S2RC ABCD 9
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadMeanDemonHalf23", 1)
 		Stop
 
@@ -425,7 +425,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		TNT1 AAAAAAAAA 0
 		TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBloodDemonArm1", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItemEx ("PoorMeanDemonLostHisArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
@@ -587,7 +587,7 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		TNT1 AAAAAA 0 bright A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath2", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath3", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
 		TNT1 A 1 A_XScream

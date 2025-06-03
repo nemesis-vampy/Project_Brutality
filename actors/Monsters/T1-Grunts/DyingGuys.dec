@@ -143,7 +143,7 @@ ACTOR DyingZombieman : SwitchableDecoration
 		TNT1 AAAAAA 0 bright A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath2", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath3", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
 		TNT1 A 1 A_XScream
@@ -486,7 +486,7 @@ ACTOR DyingSergeant : SwitchableDecoration
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 			SPO5 A 1 A_Chase
 			TNT1 A 0 A_FaceTarget
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			SPO5 AAAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 			TNT1 A 0 A_Jump(16, "Death")
 		Suffer:
@@ -591,7 +591,7 @@ ACTOR DyingSergeant : SwitchableDecoration
 			TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 			ZXZ6 A 6 A_Stop
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			ZXZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 			ZXZ6 CCC 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 26, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
 			TNT1 A 0 A_PlaySound("BODYF",6)
@@ -1098,7 +1098,7 @@ ACTOR DyingZombiemanNoArm: DyingSergeant
 	Spawn:
 	ZZD1 A 1 A_Chase
 	TNT1 A 0 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 	ZZD1 IIIAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 	ZZD1 A 1 A_Chase
@@ -1313,7 +1313,7 @@ Death.cut:
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		POSX AABCDE 9 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnItem ("DeadZombieman_Half")
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		POSX EEEEEEEEEEEEEEEEEEEEEE 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
 		TNT1 A 0 A_SpawnItem ("DeadZombiemanJustLegsAreLeft")
 		Stop
@@ -1338,7 +1338,7 @@ Death.cut:
 	Spawn:
 	ZZD5 E 1
 	TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	Goto Suffer
 	Suffer:
 		TNT1 A 0
@@ -1451,7 +1451,7 @@ ACTOR ZombiemanGotHisLegBlowed: DyingZombieman
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 		POS7 AAAAABBCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_Jump(16, "GotoDeath")
 			
 		Goto Suffer
@@ -1560,7 +1560,7 @@ ACTOR SergeantGotHisLegBlowed: DyingSergeantNoLeg
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 		SPO3 D 1
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_Jump(160, "GotoDeath")
 		Goto Suffer
 	Suffer:
@@ -1884,7 +1884,7 @@ hEALTH 100
 		TNT1 A 0 A_NoBlocking
 		CPHS JJJKKK 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120))
 		
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		CPHS LLLLLLLLLLLLLL 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
 		
 		TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_NoHeadExploded", 3)
@@ -1935,7 +1935,7 @@ hEALTH 100
 		TNT1 A 0 A_NoBlocking
 		CPHD DDDEEE 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120))
 		
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		CPHD FFFFFFFFFFFFFFF 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
 		
 		TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_NoHead", 3)
@@ -2069,7 +2069,7 @@ ACTOR PlayerChaingunguyVictim
 		XPL2 C 10 A_SpawnProjectile("Big_Blood", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AA 0 A_SpawnProjectile("Big_Blood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XPL2 DE 10 A_SpawnProjectile("Big_Blood", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		XPL2 E -1
 		Stop
 }}
@@ -2107,7 +2107,7 @@ ACTOR DyingZombiemanLostTeeth: PB_RifleZombieman
 		TNT1 A 0 A_Scream
 		ZZD5 D 6 A_NoBlocking
 		
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadZombieManFacingFront")
 		FPZ2 J 0
 		Stop
@@ -2161,7 +2161,7 @@ ACTOR DyingShotgunguyHitInEye: PB_ShotgunGuy
 		TNT1 A 0 A_NoBlocking
 		Death:
 		SPOS XY 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadShotgunguySPOSZ")
 		Stop
 	
@@ -2211,7 +2211,7 @@ ACTOR DyingShotgunguyHitInEye2: PB_ShotgunGuy
 		TNT1 A 0 A_NoBlocking
 		Death:
 		SP0S XY 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadShotgunguySP0SZ")
 		Stop
 	
@@ -2261,7 +2261,7 @@ ACTOR DyingHelmetShotgunguyHitInEye: PB_ShotgunGuyHelmet
 		TNT1 A 0 A_NoBlocking
 		Death:
 		14DG XY 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadHelmetShotgunguy14DGZ")
 		Stop
 	
@@ -2311,7 +2311,7 @@ ACTOR DyingHelmetShotgunguyHitInEye2: PB_ShotgunGuy
 		TNT1 A 0 A_NoBlocking
 		Death:
 		SP1S XY 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadShotgunguySP1SZ")
 		Stop
 	
@@ -2356,7 +2356,7 @@ Height 45
 	Spawn:
 	CP05 A 1 A_Chase
 	TNT1 A 0 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_PlaySound("BURNZOM")
 	CP05 BBBCCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 	CP05 D 1 A_Chase
@@ -2521,7 +2521,7 @@ Death.Plasma: Death.Plasma2:
 		
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		CP04 SSSSS 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 44, 0, random (0, 60), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		CP04 UV 9 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -2697,7 +2697,7 @@ ACTOR BrutalizedChaingunCommando3: BrutalizedChaingunCommando1
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 		CP06 AAAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 44, 0, random (0, 60), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		CP06 BC 7 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		CP06 DDDDDDDDDDDDDDDDDDDDDDDDD 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
 		TNT1 A 0 A_SpawnItem("DeadChaingunGuyCP06D")
@@ -2754,7 +2754,7 @@ Height 45
 	Spawn:
 	C405 A 1 A_Chase
 	TNT1 A 0 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_PlaySound("BURNZOM")
 	C405 BBBCCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 	C405 D 1 A_Chase
@@ -2922,7 +2922,7 @@ Death.Plasma: Death.Plasma2:
 		
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		CP04 SSSSS 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 44, 0, random (0, 60), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		CP04 UV 9 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -3493,7 +3493,7 @@ ACTOR DyingHelmetSergeantLegBlewedOff: DyingSergeantNoLeg
 		Goto XDeath
 
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 			U6M5 C 10
 			TNT1 A 0 A_Jump(160, "Death")
@@ -3654,7 +3654,7 @@ ACTOR DyingHelmetSergeant : SwitchableDecoration
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 			U6M6 A 1 A_Chase
 			TNT1 A 0 A_FaceTarget
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			U6M6 AAAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 			TNT1 A 0 A_Jump(16, "Death")
 		Suffer:
@@ -3755,7 +3755,7 @@ ACTOR DyingHelmetSergeant : SwitchableDecoration
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		SZD1 FFGH 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		TNT1 A 0 A_SpawnItem ("DeadShotgunguySZD1H")
 		Stop	
@@ -4157,7 +4157,7 @@ ACTOR ZombieScientistDyingGuts: DyingZombiemanNoArm
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 		Suffer:
 			TNT1 A 0
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 
 			TNT1 A 0 
 			TNT1 A 0 A_SpawnProjectile("PB_XDeath1", 24, 0, random (-80, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -4288,7 +4288,7 @@ ACTOR DyingHelmetZombiemanNoArm: DyingZombiemanNoArm
 
 	Spawn:
 		U4M6 A 1
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_Jump(96, "Death")
 		TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 		U4M6 A 9
@@ -4501,7 +4501,7 @@ ACTOR DyingZombieMarineNoArm: DyingSergeant
 	Spawn:
 	U5M6 B 1
 	TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_Jump(160, "Death")
 	U5M6 B 10
 	Goto Suffer
@@ -4672,7 +4672,7 @@ Death.Melee:
 		TNT1 A 0 A_PlaySound ("misc/xdeath")
 		TNT1 A 0 A_NoBlocking
 		SZD1 EFGH 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SZD1 H -1
 		Stop	
 
@@ -4809,7 +4809,7 @@ ACTOR DyingHelmetZombieman : DyingZombieman
 		TNT1 AAAAAA 0 bright A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath2", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath3", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
 		TNT1 A 1 A_XScream
@@ -4832,7 +4832,7 @@ ACTOR HelmetZombiemanGotHisLegBlowed: ZombiemanGotHisLegBlowed
 	Goto Suffer
 	Suffer:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 
 		TNT1 A 0 
 		U4M5 EEEEE 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 11, 2, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
@@ -5007,7 +5007,7 @@ ACTOR ZombieMarineGotHisLegBlowed: DyingZombiemanNoArm
 	Goto Suffer
 	Suffer:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 
 		TNT1 A 0 
 		U5M5 EEEEE 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 11, 2, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
@@ -5121,7 +5121,7 @@ ACTOR DyingARZombiemanLegBlewedOff: ZombiemanGotHisLegBlowed
 
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 		RFT8 CE 10
 		TNT1 A 0 A_Jump(160, "Death")
@@ -5351,7 +5351,7 @@ ACTOR DyingARZombiemanNoArm: DyingZombiemanNoArm
 
 	Spawn:
 	RFT6 B 1
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_Jump(96, "Death")
 	RFT6 B 10
 	TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
@@ -5753,7 +5753,7 @@ ACTOR DyingHFQSZ : SwitchableDecoration
 		
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BURNZOM")
 		QPO6 A 10
 	Suffer:
@@ -6073,7 +6073,7 @@ ACTOR DyingHFQSZLegBlewedOff: DyingHFQSZNoLeg
 		
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BURNZOM")
 		QPO3 C 10
 	
@@ -6478,7 +6478,7 @@ ACTOR HelmetZombieManDyingAfterFatality: DyingHelmetZombiemanNoArm
 		TNT1 A 0 A_SpawnProjectile("RipHelmetZombieMan", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		POSX BCDE 9 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		POSX EEEEEEEEEEEEEEEEEEEEEE 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
 		TNT1 A 0 A_SpawnItem ("DeadZombiemanJustLegsAreLeft")
 		Stop
@@ -6502,7 +6502,7 @@ ACTOR HelmetZombieManDyingAfterFatality: DyingHelmetZombiemanNoArm
 	Spawn:
 	5ZD5 E 1
 	TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	Goto Suffer
 	Suffer:
 		TNT1 A 0
@@ -6636,7 +6636,7 @@ ACTOR DyingHelmetZombiemanLostTeeth: PB_HelmetZombieMan
 		TNT1 A 0 A_Scream
 		5ZD5 D 6 A_NoBlocking
 		
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadZombieman_U4M7J")
 		Stop
 	
@@ -6688,7 +6688,7 @@ ACTOR DyingARZombieHeadshot: PB_CarbineZombieman
 		TNT1 A 0 A_Scream
 		RFT7 C 6 A_NoBlocking
 		RFT7 DE 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("Dead_AR_ZombieMan_NoBrain")
 		Stop
 	
@@ -6705,7 +6705,7 @@ ACTOR DyingARZombieHeadshot: PB_CarbineZombieman
 		}
 		RMAD CD 8 
 		RMAD E 1 A_PlaySound("BODYF",6)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("Dead_AR_ZombieMan_RMADE", 1)
 		Stop
 	
@@ -7279,7 +7279,7 @@ ACTOR DyingZombieScientistLostTeeth: PB_ZombieScientist
 			TNT1 A 0 A_Scream
 			FSD5 D 6 A_NoBlocking
 			TNT1 A 0 A_PlaySound("BODYF",6)
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_SpawnItem("DeadLabguySCZAL")
 			Stop
 		
@@ -7317,7 +7317,7 @@ ACTOR ZombieScientistChainsawDyingGuts: ZombieScientistDyingGuts
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 		Suffer:
 			TNT1 A 0
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 
 			TNT1 A 0 
 			TNT1 A 0 A_SpawnProjectile("PB_XDeath1", 24, 0, random (-80, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -7645,7 +7645,7 @@ ACTOR DyingChainsawZombieLostTeeth: PB_ZombieScientistChainsaw
 			TNT1 A 0 A_Scream
 			CSD5 D 6 A_NoBlocking
 			TNT1 A 0 A_PlaySound("BODYF",6)
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_SpawnItem("DeadLabguy5CZAN")
 			Stop
 		
@@ -7974,7 +7974,7 @@ ACTOR DyingPlasmaZombieNoArm: DyingSergeant
 		Spawn:
 			PZD1 A 1 A_Chase
 			TNT1 A 0 A_FaceTarget
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 			PZD1 IIIAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 			PZD1 A 1 A_Chase
@@ -8175,7 +8175,7 @@ ACTOR PlasmaZombiemanGotHisLegBlowed: DyingPlasmaZombieNoArm
 			TNT1 A 0
 			TNT1 A 0 A_PlaySound ("monsters/zombie/suffer", 1, 1, 1)
 			PZ10 AAAAABBCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_Jump(16, "GotoDeath")
 		Suffer:
 			TNT1 A 0 

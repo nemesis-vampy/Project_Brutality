@@ -126,7 +126,7 @@ ACTOR PB_InfernalArachnotron: Arachnotron //replaces Arachnotron
 		RSPI K 6 A_NoBlocking
 		RSPI LMNO 8
 		RSPI P 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadSpider", 1)
         Stop
 		
@@ -149,7 +149,7 @@ ACTOR PB_InfernalArachnotron: Arachnotron //replaces Arachnotron
 		RSPI Q 6 A_NoBlocking
 		RSPI SR 6
 		RSPI T 2 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("DeadSpider2", 1)
         Goto XBurns
 	Death.Cutless:
@@ -257,7 +257,7 @@ Stop
 		XBSP A 6 A_NoBlocking
 		XBSP BCD 6
 		XBSP D 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("XDeadSpider", 1)
         		Goto XBurns
 	XBurns:
@@ -296,7 +296,7 @@ Stop
 		 XBSP A 6 A_NoBlocking
 		XBSP BCD 6
 		XBSP D 1 A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         TNT1 A 0 A_SpawnItem ("XDeadSpider", 1)
        Goto XBurns
 

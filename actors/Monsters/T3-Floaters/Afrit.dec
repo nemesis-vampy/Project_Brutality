@@ -315,7 +315,7 @@ Actor PB_Afrit //replaces Cacodemon
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		FR1C DE 5 A_SpawnProjectile("PlasmaSmoke", 14, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_PlaySound("BIG_BODYF", 9)
         FR1C FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 6 A_SpawnProjectile("PlasmaSmoke", 24, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		FR1C F -1

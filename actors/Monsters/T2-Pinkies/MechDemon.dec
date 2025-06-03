@@ -230,7 +230,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		SRG3 C 4
 		SRG3 D 4 A_NoBlocking
 		SRG3 E 4
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG3 F -1
 		Stop
 		TNT1 AAAAAAAAA 0
@@ -248,7 +248,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		SRG8 C 4
 		SRG8 D 4 A_NoBlocking
 		SRG8 E 4
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG8 F -1
 		Stop
 		
@@ -260,7 +260,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		SRG3 C 4
 		SRG3 D 4 A_NoBlocking
 		SRG3 E 4
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG3 F -1
 		Stop
 		
@@ -297,7 +297,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Scream 
 		SRG5 CCCCCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG5 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		SRG5 D -1
 		Stop
@@ -314,7 +314,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		TNT1 AAAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 60, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		SRG7 ABCD 9
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG7 D -1
 		Stop
 		
@@ -326,7 +326,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		SRG4 BBBBBBBBB 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		SRG4 C 4 A_NoBlocking
 		SRG4 DEF 4
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG4 F -1
 		Stop
 		
@@ -353,7 +353,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		SRG9 AAAAABBBCCCCC 3 A_SpawnProjectile("PB_SquirtingBloodTrail", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		SRG9 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		SRG9 C -1
 		Stop
@@ -374,7 +374,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 		TNT1 AAAAAA 0 bright A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath2", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile("PB_XDeath3", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 180))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
 		TNT1 A 1 A_XScream

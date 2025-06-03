@@ -403,7 +403,7 @@ Actor PB_Daedabus //replaces Fatso
 		DA8D C 6 A_NoBlocking
 		DA8D DEF 5 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		DA8D F 1 //A_BossDeath    
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	    TNT1 A 0 A_SpawnItem ("DeadDaedabus1", 1)
         Stop
 		
@@ -415,7 +415,7 @@ Actor PB_Daedabus //replaces Fatso
 		DA4D NOP 5 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		DA4D Q 5
 		DA4D R 5 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadDaedabus2", 1)
 		stop
 		
@@ -459,7 +459,7 @@ Actor PB_Daedabus //replaces Fatso
 	    TNT1 A 0 //A_BossDeath
 		D4AT CDEF 5
 		D4AT GH 5
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	    TNT1 A 0 A_SpawnItem ("NoGutsDaedabus2", 1)
 		TNT1 AAAAAAAAAAAAAAAAAA 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 50))
 		TNT1 A -1
@@ -482,7 +482,7 @@ Actor PB_Daedabus //replaces Fatso
 		DA7D EEEEEEE 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 21, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		DA7D FFFFFFGGGGGGG 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 18, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		DA7D HHHHHHH 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		DA7D IIIIIIIIIIIIIIIIIIIIIIIIIIIIII 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		TNT1 A 0 A_SpawnItem ("DeadDaedabusSlump", 1)
 		Stop
@@ -499,7 +499,7 @@ Actor PB_Daedabus //replaces Fatso
 	    TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 //A_BossDeath
 	    DA3D NOPQRST 4 A_SpawnProjectile("PB_FlyingBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	    TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+	    TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	    DA3D T 0 A_SpawnItem("DeadDaedabusHead")
 	    Stop
 		
@@ -513,7 +513,7 @@ Actor PB_Daedabus //replaces Fatso
 		DAT5 DDEEFFGGHHII 2 A_SpawnProjectile("Brutal_LiquidBlood3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 50))
 		DAT5 JJJJJJJJJJJJJJJJJJJJJ 2 A_SpawnProjectile("Brutal_LiquidBlood3", 28, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 50))
 		TNT1 A 0 A_SpawnItem ("DeadDaedabusDAT5J", 1)
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         Stop
 		
 	Death.Shotgun:
@@ -539,7 +539,7 @@ Actor PB_Daedabus //replaces Fatso
 		DA9D D 6 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		DA9D E 6 //A_BossDeath
 		DA9D EEEEEEEEE 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 8, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadDaedabusDA9D", 1)
 		stop
 		
@@ -560,7 +560,7 @@ Actor PB_Daedabus //replaces Fatso
 		DAT2 AAAAAAAAAAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 50))
 		
 		DAT2 BC 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	    TNT1 A 0 A_SpawnItem ("DestroyedDaedabus1", 1)
 		TNT1 A -1
         Stop
@@ -587,7 +587,7 @@ Actor PB_Daedabus //replaces Fatso
         DA3D B 6 A_NoBlocking
         DA3D CDE 6 
         DA3D E 1 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	    TNT1 A 0 A_SpawnItem ("XDeadDaedabus", 1)
         Stop
 	  
@@ -1503,7 +1503,7 @@ ACTOR FatalizedOtherFatso2: DeadFat
         XDAT D 6 A_Scream
         XDAT E 6 A_NoBlocking
         XDAT F 6 //A_BossDeath
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	    TNT1 A 0 A_SpawnItem ("XDeadDaedabus", 1)
 		stop
 	}
