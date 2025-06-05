@@ -98,6 +98,12 @@ extend class PB_Hud_ZS
 			MainQueue.Delete(i); 
 			i--;
 		}
+		if((midstr != "")&&((midtic+int(GameTicRate*con_midtime)) < level.totaltime))
+		{
+			midstr = "";
+			midtic = 0;
+			if(midl) midl.Destroy();
+		}
 	}
 	
 	void PBHUD_DrawMessages()
