@@ -2,19 +2,21 @@ class PB_Deagle : PB_WeaponBase
 {
 	default
 	{
-		weapon.slotnumber 2;							
-		weapon.ammotype1 "PB_LowCalMag";								
-		weapon.ammogive1 8;		
+		weapon.slotnumber 2;
+		weapon.ammotype1 "PB_LowCalMag";
+		weapon.ammogive1 8;	
 		weapon.ammotype2 "DeagleAmmo";
+		weapon.slotpriority 1;
+		PB_WeaponBase.ReserveToMagAmmoFactor 2;
 		PB_WeaponBase.AmmoTypeLeft "LeftDeagleAmmo";
 		Inventory.MaxAmount 2;
-		PB_WeaponBase.unloadertoken "DeagleHasUnloaded";	
-		PB_WeaponBase.respectItem "RespectDeagle";		
+		PB_WeaponBase.unloadertoken "DeagleHasUnloaded";
+		PB_WeaponBase.respectItem "RespectDeagle";
 		PB_WeaponBase.DualWieldToken "DualWieldingDeagles";	
 		Inventory.PickupSound "weapons/deagle/equip";
 		inventory.pickupmessage "UAC-H54 Martian Raptor .50 (Slot 2, Upgrade)";
 		Obituary "%o was popped by %k's .50 Caliber Hand Cannon.";
-		Inventory.AltHUDIcon "D4E0Z0";					
+		Inventory.AltHUDIcon "D4E0Z0";
 		PB_WeaponBase.TailPitch 0.6;
 		+weapon.CHEATNOTWEAPON;
 		+weapon.noalert;
@@ -289,6 +291,7 @@ class PB_Deagle : PB_WeaponBase
 			D1E0 FGHIJKLM 1;
 			TNT1 A 0 A_Startsound("weapons/deagle/CatchF",19,CHANF_OVERLAP);
 			D1E0 NOPQ 1;
+			TNT1 A 0 A_JumpIfInventory("DeagleHasUnloaded",1,18);
 			TNT1 A 0 A_Startsound("weapons/deagle/MagRelease",0,CHANF_OVERLAP);
 			D1E0 R 1;
 			TNT1 A 0 A_Startsound("weapons/deagle/magout",13,CHANF_OVERLAP);

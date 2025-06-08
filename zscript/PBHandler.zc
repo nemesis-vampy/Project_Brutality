@@ -3,9 +3,8 @@ class PB_EventHandler : EventHandler
 	string NextMap;
 	PB_GlobalStats Stats;
 	
-	double dashAlpha;
+	ui double dashAlpha, dashScale;
 	int tick;
-	bool dasheffect;
 	
 	bool HatExists;
 	int HatMonth;
@@ -28,24 +27,13 @@ class PB_EventHandler : EventHandler
 		playerinfo plr = players[consoleplayer];
         if (!plr)
             return;
-		
-		if(tick % 35 == 0)
-			dashEffect = cvar.GetCvar("pb_dasheffect", plr).GetBool();
-		
-		if(dashAlpha > 0.0000000)
-			dashAlpha -= 0.2;
 			
 		if(taunttimer > 0)
 			taunttimer--;
 	}
 	
 	override void NetworkProcess(ConsoleEvent e)
-	{
-		if(e.name == "PB_DashWhatchamacallit")
-		{
-			dashAlpha = 1.0;
-		}
-		
+	{	
 		if (e.Name == "PB_MonthCheck")
 		{
 			HatMonth = e.Args[0];
@@ -147,6 +135,15 @@ class PB_EventHandler : EventHandler
 			//console.PrintfEx(PRINT_NONOTIFY , "PB_EventHandler: Player is NOT using GZDoom 4.13+.");
 		}*/
 	}
+
+    override void InterfaceProcess(ConsoleEvent e)
+    {
+        if(e.name == "PB_DashWhatchamacallit")
+		{
+			dashAlpha = 1.0;
+            dashScale = 1.0;
+		}
+    }
 	
 	override void RenderOverlay(RenderEvent e)
 	{
@@ -156,11 +153,16 @@ class PB_EventHandler : EventHandler
     	let pmo = players[consoleplayer].mo;
         if (!pmo)
             return;
-            
-        let texture = TexMan.CheckForTexture("Graphics/HUD/FULLSCRN/PB_DashOverlay.png");
         
-        if(dashAlpha > 0.00000 && dashEffect)
-        	screen.DrawTexture(texture, false, 0, 0, DTA_DestWidthF, Screen.GetWidth(), DTA_DestHeightF, Screen.GetHeight(), DTA_Alpha, dashAlpha);
+        if(dashAlpha > 0 && cvar.GetCvar("pb_dasheffect", players[consoleplayer]).GetBool()) {
+            Screen.DrawTexture(TexMan.CheckForTexture("Graphics/HUD/FULLSCRN/PB_DashOverlay.png"), false, 
+                Screen.GetWidth() / 2.f, Screen.GetHeight() / 2.f,
+                DTA_DestWidth, Screen.GetWidth(), DTA_DestHeight, Screen.GetHeight(), 
+                DTA_Alpha, dashAlpha,
+                DTA_CenterOffset, true, 
+                DTA_ScaleX, dashScale, DTA_ScaleY, dashScale
+            );
+        }
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -378,6 +380,12 @@ class PB_EventHandler : EventHandler
 			HatMonthInt = HatMonthString.ToInt(10);
 			EventHandler.SendNetworkEvent("PB_MonthCheck", HatMonthInt);
 		}
+
+        if(dashAlpha > 0)
+        {
+			dashAlpha -= 0.2;
+            dashScale += 0.05;
+        }
 	}
 	
 	

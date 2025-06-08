@@ -386,10 +386,10 @@ ACTOR PB_Axe : PB_Weapon
 	}
 }
 
-ACTOR AxeAttack: FastProjectile
+ACTOR AxeAttack: PB_ProjectileAlt
 {
 	Radius 8
-	Height 8
+	Height 1
 	DamageType Saw
 	+MISSILE
 	+FORCEXYBILLBOARD
@@ -397,7 +397,8 @@ ACTOR AxeAttack: FastProjectile
 	+NOGRAVITY
 	RenderStyle Add
 	Alpha 0.6
-    Damage (random(50,55))
+    PB_Projectile.BaseDamage 52
+    PB_Projectile.HeadSizeMultiplier 1.25
     Speed 30
 	SeeSound "none"
 	DeathSound "none"

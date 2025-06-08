@@ -13,6 +13,7 @@ class PB_RifleBullet : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 5;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
 		+PB_Projectile.WHIZCRACK;
 	}
 }
@@ -23,6 +24,7 @@ class PB_PistolBullet : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 3;
 		PB_Projectile.RipperCount 2;
+        +PB_Projectile.SMALLIMPACT;
 	}
 }
 
@@ -32,6 +34,8 @@ class PB_ShotPellet12 : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 2;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
+        +PB_Projectile.SMALLIMPACT;
 	}
 }
 
@@ -41,6 +45,8 @@ class PB_NaziBullet : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 2;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
+        +PB_Projectile.SMALLIMPACT;
 	}
 }
 
@@ -50,6 +56,8 @@ class PB_ShotPellet10 : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 3;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
+        +PB_Projectile.SMALLIMPACT;
 	}
 }
 
@@ -59,6 +67,8 @@ class PB_ShotPellet8 : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 4;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
+        +PB_Projectile.SMALLIMPACT;
 	}
 }
 
@@ -68,6 +78,7 @@ class PB_MonsterTracer : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 5;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
 		DamageType "Bullet";
 	}
 }
@@ -78,6 +89,7 @@ class PB_MonsterMinigunTracer : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 4;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
 		DamageType "Cutless";
 		+PB_Projectile.WHIZCRACK;
 	}
@@ -89,6 +101,7 @@ class PB_MasterMindTracer : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 11;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
 		DamageType "ExplosiveImpact";
 		+PB_Projectile.WHIZCRACK;
 		Scale 0.4;
@@ -148,5 +161,7 @@ class PB_ShotPelletQuad : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 2;
 		PB_Projectile.RipperCount 1;
+        -RIPPER;
+        +PB_Projectile.SMALLIMPACT;
 	}
 }

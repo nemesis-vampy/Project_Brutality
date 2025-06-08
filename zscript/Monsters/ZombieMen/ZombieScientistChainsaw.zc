@@ -265,8 +265,9 @@ Class PB_ZombieScientistChainsaw : PB_ZombieScientist
 			TNT1 A 0 A_JumpIfInventory("Enraged", 1, "Missile");
 			5CZA B 1 {
 				A_Pain();
-				bMISSILEMORE = true;
-				bMISSILEEVENMORE = true;
+				//bMISSILEMORE = true;
+				//bMISSILEEVENMORE = true;
+				MissileChanceMult = 0.0625;
 				A_StartSound("grunt/sight");
 				A_FaceTarget();
 				A_GiveInventory("Enraged", 1);

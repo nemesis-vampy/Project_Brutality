@@ -1,4 +1,7 @@
 Class PB_LSoul : PB_Monster{
+	Default{
+		-COUNTKILL;
+	}
 	float soulOrbitRadius;
 	bool isOrbiting(){
 		if(master && master.health > 0 && master is "PB_Elemental"){

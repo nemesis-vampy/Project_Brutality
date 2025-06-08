@@ -53,7 +53,7 @@ Mixin Class PB_NailgunGlue
 	}
 }
 
-class PB_MGNail : PB_Projectile
+class PB_MGNail : PB_ProjectileAlt
 {
 	INT LIFETIME;
 
@@ -183,7 +183,7 @@ class PB_MGNailHot : PB_MGNail
 	}
 }
 
-class PB_JavelinProjectile : PB_Projectile
+class PB_JavelinProjectile : PB_ProjectileAlt
 {
 	INT LIFETIME;
 	
@@ -262,7 +262,7 @@ class PB_JavelinProjectile : PB_Projectile
 	}
 }
 
-class PB_JavelinProjectile_Hot : PB_Projectile
+class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 {
 	INT LIFETIME;
 	
@@ -343,7 +343,7 @@ class PB_JavelinProjectile_Hot : PB_Projectile
 	}
 }
 
-class PB_MicroMissileProjectile : PB_Projectile
+class PB_MicroMissileProjectile : PB_ProjectileAlt
 {
 	Default
 	{

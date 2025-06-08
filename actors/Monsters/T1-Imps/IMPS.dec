@@ -2973,6 +2973,15 @@ Actor DeadImpID17G: DeadImp1
 	}
 }	
 		
+Actor DeadImpID17O: DeadImpID17G
+{
+	States
+	{
+	Spawn:
+		ID17 O -1
+		Stop
+	}
+}	
 		
 
 Actor DeadImpIZD3D: DeadImp1

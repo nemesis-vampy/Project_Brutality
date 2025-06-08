@@ -17,6 +17,7 @@ class PB_9x19mmSubsonic : PB_Projectile
 		PB_Projectile.BaseDamage 19;
 		PB_Projectile.RipperCount 1;
 		PB_Projectile.PenetrationCount 1;
+        +PB_Projectile.SMALLIMPACT;
 		Speed 290;
 		Obituary "%o was out-tacticaled by %k's SMG.";
 	}

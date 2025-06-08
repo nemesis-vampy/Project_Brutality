@@ -9,6 +9,8 @@ Class PB_Revolver : PB_WeaponBase
 		weapon.ammotype1 "PB_LowCalMag";
 		weapon.ammogive1 6;	
 		weapon.ammotype2 "RevolverAmmo";
+		weapon.slotpriority 0.25;
+		PB_WeaponBase.ReserveToMagAmmoFactor 2;
 		PB_WeaponBase.AmmoTypeLeft "LeftRevolverAmmo";
 		inventory.pickupsound "REVOUP";
 		Inventory.Pickupmessage "UAC-B750 \"Death Adder\" .500 Magnum (Slot 2)";
@@ -23,6 +25,8 @@ Class PB_Revolver : PB_WeaponBase
 		PB_WeaponBase.respectItem "RespectRevolver";
 		FloatBobStrength 0.5;
 		PB_WeaponBase.DualWieldToken "DualWieldingRevolver";
+		PB_WeaponBase.Upgrade "PB_Deagle";
+		PB_WeaponBase.UpgradeKeepCvar "PB_KeepRevolver";
 	}
 	
 	states

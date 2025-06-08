@@ -41,6 +41,8 @@ class PB_Hud_ZS : BaseStatusBar
 	//https://forum.zdoom.org/viewtopic.php?t=33409
 	HUDFont mLowResFont;
 
+    HUDFont mTerminalFont;
+
 	DynamicValueInterpolator mHealthInterpolator;
 	DynamicValueInterpolator mArmorInterpolator;
 	DynamicValueInterpolator mAmmo1Interpolator;
@@ -63,6 +65,7 @@ class PB_Hud_ZS : BaseStatusBar
 	bool hasPutOnHelmet, hasCompletedHelmetSequence;
 	bool deathFadeDone, playerWasDead;
     uint8 helmetKernelPanic;
+    bool muteinterference;
 	
 	vector2 poll1, poll2, resultSway;
 
@@ -92,6 +95,7 @@ class PB_Hud_ZS : BaseStatusBar
 		mDefaultFont = HUDFont.Create("PBFONT");
 		mBoldFont = HUDFont.Create("PBBOLD");
 		mLowResFont = HUDFont.Create("LOWQFONT");
+        mTerminalFont = HUDFont.Create("codepage");
 
 		//invbar = InventoryBarState.CreateNoBox(mBoldFont);
 		
@@ -216,7 +220,8 @@ class PB_Hud_ZS : BaseStatusBar
 
         if(interference > 0 && random() < 100)
         {
-            S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+            if(!muteinterference)
+               // S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
             interference--;
         }
 		
@@ -326,6 +331,7 @@ class PB_Hud_ZS : BaseStatusBar
 
     static const String KernelPanicMessages[] =
     {
+        "-----BEGIN KERNEL LOGFILE-----",
         "Inventory Management FAIL",
         "Low Blood Volume",
         "Administering Morphine",
@@ -341,14 +347,20 @@ class PB_Hud_ZS : BaseStatusBar
         "helm_mon(4): unexpected response from monitor GPIO pins",
         "Kernel panic - I/O failure: could not establish VITAL_LINK port (#338)",
         "UACnix kernel message: ERROR IN CPU: E10025U @ 20.50GHz - Small Advanced Devices, Inc.",
+        "\cfKERNEL DIES HERE -->\c- Kernel panic - not syncing: Unable to recover from unrecoverable error recovery.",
+        "-----END KERNEL LOGFILE-----",
+        "",
+        "-----BEGIN LOME LOGFILE-----",
         "LOME - UAC Microsystems, INC. Lights Out Management Engine v3.666",
         "LOME - System lost power at 00:00:00, Jan 1st, 1970",
         "LOME - Please replace CMOS battery!",
         "LOME - Automatic restart attempt...",
         "LOME - Automatic restart failed: could not establish uplink to MB_MAIN",
         "LOME - Initiating diagno$$##@@GaaE",
-        "[ \cjFAIL \c-] WATCHDOG VIOLATION",
-        "Total system failure: please contact UAC Microsystems for support."
+        "\cfMNGMT ENGINE DIES HERE -->\c- [ FAIL ] WATCHDOG VIOLATION",
+        "-----END LOME LOGFILE-----",
+        "",
+        "\cgTotal system failure: please contact UAC Microsystems for support.\c-"
     };
 	
 	void DeathSequence(bool Death) {
@@ -356,6 +368,7 @@ class PB_Hud_ZS : BaseStatusBar
 			if(HasPutOnHelmet)
 			{
                 SetMusicVolume(0);
+                muteinterference = true;
                 if(m0to1Float > 0.0 && !DeathFadeDone)
                 {
                     m0to1Float *= (randompick(50, 100, 150) * 0.01);
@@ -371,7 +384,7 @@ class PB_Hud_ZS : BaseStatusBar
                     if(random() < 25)
                     {
                         helmetKernelPanic++;
-						S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+			//S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
                     }
                 }
 			}
@@ -379,6 +392,7 @@ class PB_Hud_ZS : BaseStatusBar
 	  
 		if(!death) {
             SetMusicVolume(1);
+            muteinterference = false;
             helmetKernelPanic = 0;
 			m0to1Float = 1.0;
 			DeathFadeDone = False;
@@ -525,6 +539,24 @@ class PB_Hud_ZS : BaseStatusBar
 		}
 
 		SetSway(pos.x, pos.y, fakeflags, parallax, parallax2);
+
+        if(interference > 1)
+        {
+            string stringBuffer;
+            for (uint i = 0; i < string.Length();)
+            {
+                int chr, next;
+                [chr, next] = string.GetNextCodePoint(i);
+
+                if(interference > random[interference](0, 50))
+                    stringBuffer.AppendCharacter(random("!", "~"));
+                else
+                    stringBuffer.AppendCharacter(chr);
+
+                i = next;
+            }
+            string = stringBuffer;
+        }
 
 		DrawString(font, string, pos, flags, translation, fuckFading ? Alpha : (m0to1Float * Alpha), wrapwidth, linespacing, scale);
 	}
@@ -866,6 +898,24 @@ class PB_Hud_ZS : BaseStatusBar
 						flsectorlightcolor = Color(255, slcol.r, slcol.g, slcol.b);
 					else
 						flsectorlightcolor = 0xffffffff;
+
+                    vector2 posbuffer = (Screen.GetWidth() / 2.f, Screen.GetHeight() / 2.f);
+                    vector2 hudscale = GetHUDScale();
+                    posbuffer.x /= hudscale.x;
+                    posbuffer.y /= hudscale.y;
+                    SetSway(posbuffer.x, posbuffer.y, 0, 0.6, 0.15, false, false);
+                    posbuffer.x *= hudscale.x;
+                    posbuffer.y *= hudscale.y;
+
+                    // dirt and scratches
+                    Screen.DrawTexture(TexMan.CheckForTexture("GRAPHICS/LensDirt.png"), false, 
+                        posbuffer.x, posbuffer.y, 
+                        DTA_DestWidth, Screen.GetWidth(), DTA_DestHeight, Screen.GetHeight(), 
+                        DTA_Alpha, 0.5 + (sectorlightlevel * 0.5), 
+                        DTA_Color, flsectorlightcolor, 
+                        DTA_CenterOffset, true, 
+                        DTA_ScaleX, 1.25, DTA_ScaleY, 1.25
+                    );
 						
 					// darkness underlays
 				  	PBHud_DrawImageManualAlpha("HUDTDARK", (-35 - m32to0, -9 - m32to0) , DI_SCREEN_LEFT_TOP|DI_ITEM_LEFT_TOP, 1, scale: (0.7, 0.7), col: flsectorlightcolor);  
@@ -1376,13 +1426,22 @@ class PB_Hud_ZS : BaseStatusBar
                 if(helmetKernelPanic > 0)
                 {
                     int spacing;
-                    for(int i = 0; i < helmetKernelPanic; i++)
+                    for(int i = helmetKernelPanic; i > 0; i--)
                     {
-                        PBHud_DrawString(mDefaultFont, KernelPanicMessages[i], (10, 10 + spacing), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_TOP, FONT.CR_UNTRANSLATED, (i == KernelPanicMessages.Size() - 1) ? round(0.5*(1+sin(2 * M_PI * 1 * gameTic))) : 1.0, fuckFading: true);
-                        spacing += 20;
+                        PBHud_DrawString(mTerminalFont, KernelPanicMessages[i - 1], (16, -37 + spacing), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, (i - 1 == KernelPanicMessages.Size() - 1) ? round(0.5*(1+sin(2 * M_PI * 1 * gameTic))) : 1.0, fuckFading: true);
+                        spacing -= 20;
                     }
                 }
 			}
+
+			if (health > 0 && isInventoryBarVisible()) //Placeholder for now, at least it works(?)
+			{
+				Vector2 invBarPos = (0, 0);
+				SetSway(invBarPos.x, invBarPos.y, 0, 0.75, 0.25);
+				invBarPos = (invBarPos.X, min(invBarPos.Y, 0));
+				DrawInventoryBar(InvBar, invBarPos, 7, DI_SCREEN_CENTER_BOTTOM, HX_SHADOW);
+			}
+
 		}
 	}
 	bool WeaponUsesPBAmmoType(){return WeaponUsesPBAmmoType1() || WeaponUsesPBAmmoType2();}

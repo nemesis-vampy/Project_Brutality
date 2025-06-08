@@ -603,6 +603,29 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 		TNT1 AAAAAAAA 1 A_Raise
 		Wait
 		
+		FireRecoil:
+			TNT1 A 1 {
+				A_OverlayPivotAlign(PSP_WEAPON,PSPA_CENTER,PSPA_TOP);
+				A_OverlayScale(PSP_WEAPON,1.20,1.0,WOF_INTERPOLATE);
+				A_OverlayOffset(PSP_WEAPON,0,32);
+			}
+			TNT1 A 1 {
+				A_OverlayScale(PSP_WEAPON,1.15,1.0,WOF_INTERPOLATE);
+				A_OverlayOffset(PSP_WEAPON,0,32);
+			}
+			TNT1 A 1 {
+				A_OverlayScale(PSP_WEAPON,1.10,1.0,WOF_INTERPOLATE);
+				A_OverlayOffset(PSP_WEAPON,0,32);
+			}
+			TNT1 A 1 {
+				A_OverlayScale(PSP_WEAPON,1.05,1.0,WOF_INTERPOLATE);
+				A_OverlayOffset(PSP_WEAPON,0,32);
+			}
+			TNT1 A 0 {
+				A_OverlayScale(PSP_WEAPON,1.00,1.0,WOF_INTERPOLATE);
+				A_OverlayOffset(PSP_WEAPON,0,32);
+			}
+			stop
 	Fire:
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
@@ -623,7 +646,10 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 		TNT1 A 0 A_JumpIfInventory("LightningGunMode",1,"FireLightningGun1")
 		PR2F ABCDE 0
 		M211 A 1 BRIGHT {
-			if (CountInv("HasLightningGunUpgrade") >= 1 ) { A_SetWeaponSprite("PR2F");}
+			if (CountInv("HasLightningGunUpgrade") >= 1 ) {
+				A_SetWeaponSprite("PR2F");
+				A_Overlay(-5,"FireRecoil");
+			}
 			A_FireCustomMissile("HeavyPlasmaBall",0,1,0,-1);
 			A_PlaySoundEx("m2plasma", "Weapon");
 			
@@ -921,7 +947,8 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 		TNT1 A 0 A_PlaySoundEx("weapons/m2plasma/reload", "Auto")
 		M223 WXYZ 1
 		M224 ABCDEFGHI 1
-		Goto InsertBullets
+		TNT1 A 0 PB_AmmoIntoMag("M2PlasmaAmmo", "PB_Cell", 50, 1)
+		goto FinishReload
 		
 	Reload:
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
@@ -963,6 +990,9 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 		M220 ZZZ 1
 		M221 ABCD 1 A_Setroll(roll-1.0)
 		M221 EFGH 1 A_Setroll(roll+1.0)
+		
+		TNT1 A 0 PB_AmmoIntoMag("M2PlasmaAmmo", "PB_Cell", 50, 1)
+		goto FinishReload
 	InsertBullets:
 		TNT1 A 0 A_JumpIfInventory("M2PlasmaAmmo",50,"FinishReload")
 		TNT1 A 0 A_JumpIfInventory("PB_Cell",1,1)
@@ -1019,11 +1049,11 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 		M230 BA 1 A_Setroll(roll+1.0)
 		TNT1 A 1 A_Setroll(roll+1.0)
 		TNT1 A 9
-		TNT1 A 0 A_JumpIfInventory("M2PlasmaUnloaded",1,2)
-		TNT1 A 0 A_SetInventory("M2PlasmaUnloaded",0)
 		
+		TNT1 A 0 PB_AmmoIntoMag("M2PlasmaAmmo", "PB_Cell", 50, 1)
+		TNT1 A 0 A_SetInventory("M2PlasmaUnloaded",0)
 		TNT1 A 0 A_JumpIf(CountInv("LeftM2PlasmaAmmo") < 50,1)
-		Goto InsertBullets4
+		Goto Ready3
 	ReloadLeft:
 		TNT1 A 0 A_PlaySoundEx("weapons/m2plasma/reload", "Auto")
 		M222 AAABC 1
@@ -1039,7 +1069,13 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 		"####" A 0 PB_SpawnCasing("EmptyCell",38,-22,38,Frandom(2,5),Frandom(-15,-10),Frandom(5,8))
 		M222 GGGGHIJKLMMMMNOPQRSTUUVWXYZ 1
 		M231 DEFG 1
+		TNT1 A 0 PB_AmmoIntoMag("LeftM2PlasmaAmmo", "PB_Cell", 50, 1)
 		TNT1 A 0 A_SetInventory("M2PlasmaUnloaded",0)
+		Goto Ready3
+		TNT1 A 0 { 
+				PB_AmmoIntoMag("LeftM2PlasmaAmmo", "PB_Cell", 50, 1);
+				PB_AmmoIntoMag("M2PlasmaAmmo", "PB_Cell", 50, 1);
+		}
 	InsertBullets4:
 		TNT1 A 0 A_JumpIfInventory("M2PlasmaAmmo",50,"InsertBullets5")
 		TNT1 A 0 A_JumpIfInventory("PB_Cell",1,1)

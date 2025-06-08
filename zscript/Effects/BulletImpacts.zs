@@ -7,10 +7,9 @@ Class PB_BaseBulletImpact : BulletPuff abstract
 		+NOCLIP;
 		Decal "ConcreteWithGlow";
 		+DONTSPLASH;
-		+NOTIMEFREEZE;
+		//+NOTIMEFREEZE;
 		-EXPLODEONWATER;
 		Scale 1.0;
-        Gravity 0.3;
         Alpha 1.0;
 		Renderstyle "Translucent";
 		PB_BaseBulletImpact.NoDistantImpact false;
@@ -36,6 +35,8 @@ Class PB_BaseBulletImpact : BulletPuff abstract
 
 	const DISTANT_THRESHOLD = 1024 ** 2;
 
+    transient SecPlane refPlane;
+
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();
@@ -49,16 +50,16 @@ Class PB_BaseBulletImpact : BulletPuff abstract
 		if(!noDistant)
 			HitFeedback();
 
-		switch(hitWhat)
-		{
-			case 2:
-				setZ(floorZ);
-				vector3 pNorm = floorSector.floorplane.normal;
-				pitch = asin(-pNorm.Z);
-				angle = atan2(pNorm.y, pNorm.x);
-				break;
-			default:
-				break;
+        if(hitWhat > 1)
+        {
+            vector3 pNorm;
+            if(hitWhat == 2)
+                pNorm = floorSector.floorplane.normal;
+            else
+                pNorm = ceilingSector.ceilingplane.normal;
+                
+            pitch = asin(-pNorm.Z);
+            angle = atan2(pNorm.y, pNorm.x);
 		}
 	}
 	
@@ -135,6 +136,7 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 				A_Stop();
 				if(hitWhat == 1)
 					angle = wallNormal;
+
 				Pitch += 90;
 				
 				roll = random(0, 360);

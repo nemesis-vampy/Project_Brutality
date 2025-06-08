@@ -109,7 +109,7 @@ GameInfo
 	DimAmount = 0.70
 	NoRandomPlayerClass = True
 	AddEventHandlers = "PB_ExecutionHandler", "PB_HudFXHandler", "PB_EventHandler", "MBlurHandler", "NashGoreHandler", "TiltPlusPlusHandler", "DEDashJumpHandler", "SpeedoMeterHandler", "WallSlideHandler", //"PB_SpecialWheelHandler"
-	"gb_EventHandler", "gb_PreviousWeaponEventHandler", "gb_PreviousWeaponStorage", "gb_VmAbortHandler", "PB_Materialsys"
+	"gb_EventHandler", "gb_PreviousWeaponEventHandler", "gb_PreviousWeaponStorage", "gb_VmAbortHandler", "PB_Materialsys" ,"PB_ElectricChargeHandler", "PB_SlowEventHandler", "PB_FlameEventHandler"
 	
 	NormForwardMove = 0x32, 0x32		//Walk speed is modulated through
 	NormSideMove = 0x32, 0x32			//CVar in the menu options
@@ -207,7 +207,7 @@ DoomEdNums
 	23140 = PB_Pistol //Sure took a long time to add one of the mods' most basic weapons here. //TODO: ADD DIFFERENT EDITOR NUMBER !
 	
 	//Weapon upgrades
-	23134 = PB_HDMRUpgrade 
+//	23180 = PB_HDMRUpgrade 
 
 	//Monsters
 	23062 = PB_Zombieman

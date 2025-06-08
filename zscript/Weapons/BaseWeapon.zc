@@ -7,8 +7,10 @@ class PB_WeaponBase : DoomWeapon
 	Vector3 invactorpos;
 	Statelabel UnloadedState;
 	property UnloadedState: UnloadedState;
-	string UnloaderToken;
-	property UnloaderToken: UnloaderToken;
+	string UnloadeRToken;//right unloaded
+	property UnloadeRToken: UnloadeRToken;
+	string UnloadeLToken;//left unloaded
+	property UnloadeLToken: UnloadeLToken;
 	int integer;
 	string MidWeaponPickupMessage;
 	property MidPickupMessage: MidWeaponPickupMessage;
@@ -92,6 +94,79 @@ class PB_WeaponBase : DoomWeapon
 	string smokeColor;
 	property MuzzleSmokeColor : smokeColor;
 	
+	class<PB_WeaponBase> UpgradedWeapon;
+	Property Upgrade : UpgradedWeapon;
+	
+	class<PB_WeaponBase> DowngradeWeapon;
+	Property Downgrade : DowngradeWeapon;
+	Property UnUpgraded : DowngradeWeapon;
+	
+	int ReserveToMagAmmoFactor;
+	property ReserveToMagAmmoFactor:ReserveToMagAmmoFactor;
+	
+	Name WeaponUpgradeKeepCvar;
+	Property UpgradeKeepCvar : WeaponUpgradeKeepCvar;
+	override bool CheckAmmo(int fireMode, bool autoSwitch, bool requireAmmo, int ammocount){
+		if(!Cvar.GetCVar("pb_keepweapons", owner.player).GetBool()){
+			if(FindInventory(UpgradedWeapon)){
+				if(WeaponUpgradeKeepCvar && Cvar.GetCVar(WeaponUpgradeKeepCvar, owner.player).GetBool() == false){return false;}
+			}
+		}
+		return Super.CheckAmmo(fireMode, autoSwitch, requireAmmo, ammocount);
+	}
+	override bool HandlePickup(Inventory item){
+		let PBWeaponItem = PB_WeaponBase(item);
+		if(PBWeaponItem){
+			//self.ReserveToMagAmmoFactor = PB_WeaponBase(GetDefaultByType(self.GetClass())).ReserveToMagAmmoFactor;
+			if(UpgradedWeapon && UpgradedWeapon == item.GetClass() && !Cvar.GetCVar("pb_keepweapons", owner.player).GetBool()){
+				if(WeaponUpgradeKeepCvar && Cvar.GetCVar(WeaponUpgradeKeepCvar, owner.player).GetBool() == false){
+					while(owner.FindInventory(AmmoType2).amount > 0){
+						owner.FindInventory(AmmoType2).amount -= 1;
+						owner.FindInventory(AmmoType1).amount += self.ReserveToMagAmmoFactor;
+					}
+					while(owner.FindInventory(AmmoTypeLeft).amount > 0){
+						owner.FindInventory(AmmoTypeLeft).amount -= 1;
+						owner.FindInventory(AmmoType1).amount += self.ReserveToMagAmmoFactor;
+					}
+					if(!PBWeaponItem.bNO_AUTO_SWITCH){owner.A_SelectWeapon(PBWeaponItem.GetClass());}
+					While(owner && self.amount > 0){owner.DropInventory(self,1);}
+				}
+			}else if(
+				!Cvar.GetCVar("pb_keepweapons", owner.player).GetBool()
+				&&
+				PB_WeaponBase(item) && PB_WeaponBase(item).UpgradedWeapon && PB_WeaponBase(item).UpgradedWeapon == self.GetClass()
+				&&
+				(PB_WeaponBase(item).WeaponUpgradeKeepCvar && Cvar.GetCVar(PB_WeaponBase(item).WeaponUpgradeKeepCvar, owner.player).GetBool() == false)
+			){
+				let wp = weapon(item);
+				bool weapGone = false;
+				if(wp){
+					//if the weapon actually gives you ammo, give that ammo
+					//this checks both ammo1 and ammo2, just in case
+					if(wp.AmmoType1 != null && wp.AmmoGive1 > 0){
+						ammo amu1 = ammo(owner.findinventory(wp.ammotype1));
+						int left1 = owner.GetAmmoCapacity(amu1.GetClass()) - amu1.amount;
+						if(left1 > 0){
+							weapGone = true;
+							owner.giveinventory(wp.ammotype1,wp.AmmoGive1);
+						}
+					}
+					if(wp.AmmoType2 != null && wp.AmmoGive2 > 0){
+						ammo amu2 = ammo(owner.findinventory(wp.ammotype2));
+						int left2 = owner.GetAmmoCapacity(amu2.GetClass()) - amu2.amount;
+						if(left2 > 0){
+							weapGone = true;
+							owner.giveinventory(wp.ammotype2,wp.AmmoGive2);
+						}
+					}
+				}
+				item.bPickupgood = weapGone;	//if ammo was given, make the weapon dissapear
+				return true;
+			}
+		}
+		return Super.HandlePickup(item);
+	}
+	
 	//////////////////////////////////////////////
 	//////////////////////////////////////////////
 	int cap,ca,res; string p;
@@ -150,17 +225,20 @@ class PB_WeaponBase : DoomWeapon
 	
 	Const PSP_RevenantLauncherLayer = -85;
 
+
 	Default
 	{
 		Weapon.BobRangeX 0.3;
 		Weapon.BobRangeY 0.5;
 		Weapon.BobSpeed 2.4;
 		Weapon.BobStyle "InverseSmooth";
-		PB_WeaponBase.UnloaderToken "HasUnloaded";
+		PB_WeaponBase.UnloadeRToken "HasUnloaded";
+		PB_WeaponBase.UnloadeLToken "HasUnloaded";
 		PB_WeaponBase.UsesWheel false;
 		PB_WeaponBase.WheelInfo "";
 		PB_WeaponBase.TailSoundVolume 0.8;
 		PB_WeaponBase.MuzzleSmokeColor "FFFFFF";
+		PB_WeaponBase.ReserveToMagAmmoFactor 1;
 		//Weapon.WeaponScaleX 1.2;
 		+DONTGIB
 	}

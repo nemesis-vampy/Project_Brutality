@@ -340,8 +340,8 @@ extend class PB_WeaponBase
 	
 	Action void PB_TakeIfUpgrade(string oldweap = "")
 	{
-		//console.printf("cvar val: \ca"..pb_keepweapons.."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..oldweap.."\c-");
-		if(!pb_keepweapons)
+		//console.printf("cvar val: \ca"..Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool().."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..oldweap.."\c-");
+		if(!Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool() && invoker.WeaponUpgradeKeepCvar && Cvar.GetCVar(invoker.WeaponUpgradeKeepCvar, invoker.owner.player).GetBool() == false)
 		{
 			let pbw = PB_WeaponBase(findinventory(oldweap));
 			if(pbw && pbw.DualWieldToken)
@@ -357,9 +357,9 @@ extend class PB_WeaponBase
 	
 	Action void PB_SelectIfUpgrade(string upgrade = "")
 	{
-		//console.printf("cvar val: \ca"..pb_keepweapons.."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..upgrade.."\c-");
+		//console.printf("cvar val: \ca"..Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool().."\c-, weapon is: \cd"..invoker.getclassname().."\c-, oldweapon is: \ca"..upgrade.."\c-");
 		if(!CountInv(upgrade)) return;
-		if(!pb_keepweapons)
+		if(!Cvar.GetCVar("pb_keepweapons", invoker.owner.player).GetBool() && invoker.WeaponUpgradeKeepCvar && Cvar.GetCVar(invoker.WeaponUpgradeKeepCvar, invoker.owner.player).GetBool() == false)
 		{
 			//console.printf("switching to: \cg"..upgrade.."\c-");
 			A_SetAkimbo(false);
@@ -1452,6 +1452,9 @@ extend class PB_WeaponBase
 		int targetMaxHealth = monster.spawnHealth();
 		int targetCurrentHealth = monster.health;
 		
+		if(targetCurrentHealth < 1) {
+			return false;
+		} // In case the check desynced, found this during another gameplay
 		
 		if(CheckInventory("PB_PowerStrength",1) && (targetCurrentHealth <= targetMaxHealth*0.25 || targetCurrentHealth <= 150)) {
 			return true;
@@ -2223,7 +2226,9 @@ extend class PB_WeaponBase
 		A_Stop();
 		SetOrigin((Pos.X, Pos.Y, plr.LedgeHeightMax), True);
 	}
-	
+	Action Bool GetUserCvarBool(Name CvarName){
+		return Cvar.GetCvar(CvarName,player).GetBool();
+	}
 	action state PB_RespectIfNeeded()
 	{
 		//A_Log("PB_RespectIfNeeded");
