@@ -17,7 +17,7 @@ extend class PB_Hud_ZS
 		if(!showBloodDrops)
 			return;
 
-		if(bloodDrops.Size() > 60)
+		if(bloodDrops.Size() > 128)
 			bloodDrops.Delete(0);
 		
 		PB_BloodFXStorage bdrp = PB_BloodFXStorage.CreateBloodFX(enemybloodcolor, PB_Hud_ZS(statusbar));
@@ -32,7 +32,7 @@ extend class PB_Hud_ZS
 		if(!showBloodDrops)
 			return;
 
-		if(bloodSplatters.Size() > 10)
+		if(bloodSplatters.Size() > 32)
             bloodSplatters.Delete(0);
 		
         PB_BloodSplatterFXStorage bdrp = PB_BloodSplatterFXStorage.CreateBloodSplatterFX(enemybloodcolor, PB_Hud_ZS(statusbar));
