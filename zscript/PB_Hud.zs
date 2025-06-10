@@ -80,6 +80,11 @@ class PB_Hud_ZS : BaseStatusBar
 	double dashIndAlpha, flashlightBatteryAlpha;
 	int healthFontCol, keyamount, hudState, oldDashCharge, weaponBarAccent;
 	double dashScale1, dashScale2;
+    float magnificationIndScale;
+    float screenWiperPrg;
+    float wipePrgOldFrame, wiperWarningIndScale;
+    int16 dirtyScreenTimer; 
+    int16 screenFXCount;
 	DEDashJump Dasher;
 	
 	Weapon oldWeapon;
@@ -171,8 +176,22 @@ class PB_Hud_ZS : BaseStatusBar
 		
 		fractic = TicFrac;
 
-		DrawBloodDrops();
-		DrawGlassCracks();
+        float interpolatedWipe = wipePrgOldFrame * (1. - ticfrac) + screenWiperPrg * ticfrac;
+        float wiperScale = (1 - interpolatedWipe * 0.25) ** 5;
+
+        vector2 wiperTextureSize = TexMan.GetScaledSize(TexMan.CheckForTexture("GRAPHICS/HUD/ScreenFX/Screenwiper.png"));
+        wiperTextureSize.x *= wiperScale;
+
+        if(dirtyScreenTimer == -1) // engage the screen wiper
+            Screen.SetClipRect(0, 0, Screen.GetWidth() - (Screen.GetWidth() * interpolatedWipe) + (wiperTextureSize.x * (0.5 - interpolatedWipe)) + (wiperTextureSize.x * 0.5), Screen.GetHeight());
+
+        DrawBloodDrops();
+        DrawGlassCracks();
+        if(dirtyScreenTimer == -1)
+        {
+            Screen.ClearClipRect();
+            Screen.DrawTexture(TexMan.CheckForTexture("GRAPHICS/HUD/ScreenFX/Screenwiper.png"), false, (Screen.GetWidth() - (Screen.GetWidth() * interpolatedWipe)), 0, DTA_DestHeight, Screen.GetHeight(), DTA_LegacyRenderStyle, STYLE_Add, DTA_LeftOffsetF, (-300 * (0.5 - interpolatedWipe)), DTA_ScaleX, wiperScale);
+        }
 
         interpolatedOfs = ofsOldFrame * (1. - ticfrac) + ofsCurrentFrame * ticfrac;
         interpolatedSway = swayOldFrame * (1. - ticfrac) + swayCurrentFrame * ticfrac;
@@ -224,6 +243,65 @@ class PB_Hud_ZS : BaseStatusBar
             DeathSequence(false);
             PlayerWasDead = false;
         }
+
+        screenFXCount = bloodDrops.Size() + bloodSplatters.Size() * 2 + glassCracks.Size();
+
+        if(dirtyScreenTimer == -1)
+        {
+            if(screenWiperPrg ~== 1.0)
+            {
+                //StopSound(CHAN_6);
+                screenWiperPrg = 0;
+                wipePrgOldFrame = 0;
+                for(int i = 0; i < bloodDrops.size(); i++)
+                {
+                    PB_BloodFXStorage bld = bloodDrops[i];
+                    bld.Destroy();
+                } bloodDrops.Clear();
+
+                for(int i = 0; i < bloodSplatters.size(); i++)
+                {
+                    PB_BloodSplatterFXStorage bld = bloodSplatters[i];
+                    bld.Destroy();
+                } bloodSplatters.Clear();
+
+                for(int i = 0; i < glassCracks.size(); i++)
+                {
+                    PB_CrackFXStorage crck = glassCracks[i];
+                    crck.Destroy();
+                } glassCracks.Clear();
+
+                dirtyScreenTimer = 0;
+                return;
+            }
+            wipePrgOldFrame = screenWiperPrg;
+            screenWiperPrg += 0.025;
+
+        }
+        else if(dirtyScreenTimer < PB_SCREENWIPER_DELAY && screenFXCount >= PB_SCREENWIPER_THRESHOLD)
+            dirtyScreenTimer++;
+        else if(dirtyScreenTimer == PB_SCREENWIPER_DELAY)
+        {
+            dirtyScreenTimer = -1;
+            S_StartSound("visor/screenwipe", CHAN_6, CHANF_OVERLAP);
+        }
+
+        /*if((cplayer.DesiredFov / cplayer.fov) >= 1.2 && oldFOV >= cplayer.fov && magnificationIndScale < 1.0)
+            magnificationIndScale += 0.25;
+        else if((((cplayer.DesiredFov / cplayer.fov) < 1.2) || ((cplayer.fov - oldFOV) > 10)) && magnificationIndScale > 0)
+            magnificationIndScale -= 0.25;
+        if(cplayer.DesiredFov != cplayer.fov) 
+            oldFOV = cplayer.fov;*/
+
+        if(cplayer.DesiredFov > cplayer.fov && magnificationIndScale < 1.0)
+            magnificationIndScale += 0.25;
+        else if(cplayer.DesiredFov == cplayer.fov && magnificationIndScale > 0)
+            magnificationIndScale -= 0.25;
+
+        if(dirtyScreenTimer == -1 && wiperWarningIndScale < 1.0)
+            wiperWarningIndScale += 0.25;
+        else if(dirtyScreenTimer != -1 && wiperWarningIndScale > 0)
+            wiperWarningIndScale -= 0.25;
 
         if(interference > 0 && crandom() < 100)
         {
@@ -1023,6 +1101,12 @@ class PB_Hud_ZS : BaseStatusBar
                 return;
             
 			PBHUD_DrawMessages();
+
+            if(magnificationIndScale > 0)
+                PBHud_DrawString(mBoldFont, String.Format("%.2fx", cplayer.DesiredFov / cplayer.fov), (0, -32), DI_SCREEN_CENTER_BOTTOM | DI_TEXT_ALIGN_CENTER | DI_ITEM_CENTER, alpha: 0.5, scale: (1.25 + (1 - magnificationIndScale), clamp(magnificationIndScale, 0, 1)));
+
+            if(wiperWarningIndScale > 0) 
+                PBHud_DrawString(mBoldFont, String.Format("AUTOMATIC WIPER ENGAGED", screenWiperPrg * 100), (0, -64), DI_SCREEN_CENTER_BOTTOM | DI_TEXT_ALIGN_CENTER | DI_ITEM_CENTER, alpha: 1.0, scale: ((1.25 + (1 - wiperWarningIndScale)) * 0.75, clamp(wiperWarningIndScale, 0, 1) * 0.75));
 
 			//Healthbar
 			if(GetAirTime() < 700)

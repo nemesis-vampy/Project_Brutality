@@ -641,8 +641,8 @@ Fader NoBlood
 
 Decal NoBlood
 {
-    Pic TNT1A0
-    Animator NoBlood
+	Pic TNT1A0
+	Animator NoBlood
 }
 
 Decal BloodMedium1

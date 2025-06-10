@@ -106,27 +106,18 @@ class NashGoreBloodPlane : PB_LightActor
             }
         }
 
-        /*if(target) {
-            CopyBloodColor(target);
-            console.printf("copied from target %s", target.GetClassName());
-        }
-        else if(master) {
-            CopyBloodColor(master);
-            console.printf("copied from master %s", master.GetClassName());
-        }
-        else if(tracer) {
-            CopyBloodColor(tracer);
-            console.printf("copied from tracer %s", tracer.GetClassName());
-        }
-        
-        if(bloodcolor == 0 && int(bloodtranslation) == 0)
-        {
-            console.printf("actor spawned red...");
-            console.printf("%s: bloodcolor: %i, bloodtranslation: %i", self.GetClassName(), bloodcolor, bloodtranslation);
-        }*/
-
         if(master && master is 'NashGoreBloodBase')
             self.Translation = master.Translation;
+        else if(int(self.Translation) == 0)
+        {
+            if(target) CopyBloodColor(target);
+            else if(master) CopyBloodColor(master);
+            else if(tracer) CopyBloodColor(tracer);
+
+            // this means you found a new translation so set it
+            if(int(bloodtranslation) != 0) 
+                self.Translation = bloodtranslation;
+        }
 
         // align to slope
 		NashGoreStatics.AlignToPlane(self, ceiling: bOnCeiling);

@@ -5,6 +5,37 @@ class PB_BloodSpot : NashGoreBloodSpot replaces Brutal_BloodSpot//This uses GZDo
 }
 */
 
+class PB_FlyingBloodTrail : NashGoreBloodBase 
+{
+    Default 
+    {
+        scale 0.70;
+        mass 1;
+        alpha 0.7;
+        Decal "BloodSplat";
+        +LOWGRAVITY;
+        +NOTELEPORT;
+        +NOBLOCKMAP;
+        +NOCLIP;
+        +FORCEXYBILLBOARD;
+        //+CLIENTSIDEONLY;
+        +DontSplash;
+        +MISSILE;
+        -NOGRAVITY;
+        Speed 2;
+    }
+
+    States
+    {
+        Spawn:
+            NBL1 F 1 A_FadeOut(0.01);
+            Loop;
+        Death:
+            TNT1 A 0;
+            Stop;
+    }
+}
+
 class PB_SquirtingBloodSpawner : NashGoreClassicBloodTrailSpawner {
 	
 	Default

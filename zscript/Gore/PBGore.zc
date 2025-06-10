@@ -53,6 +53,14 @@ class PB_GibBase : Actor
 	{
 		if (random() < (255 - nashgore_gibamount)) { Destroy(); return; }
 		Super.PostBeginPlay();
+
+        /*if(target) CopyBloodColor(target);
+        else if(master) CopyBloodColor(master);
+        else if(tracer) CopyBloodColor(tracer);
+
+        // this means you found a new translation so set it
+        if(int(self.Translation) == 0 && int(bloodtranslation) != 0) 
+            self.Translation = bloodtranslation;*/
 	}
 
 	override void Tick(void)

@@ -222,6 +222,8 @@ bltf1 BLT_FLS1
 bltf2 BLT_FLS2
 bltf3 BLT_FLS3
 
+$volume bulletfleshimpact 0.5;
+
 //SSG
 $random weapons/shh2 { SSGAlt1 SSGAlt2 SSGAlt3 }
 SSGAlt1 shfire1

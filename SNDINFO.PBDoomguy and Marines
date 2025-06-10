@@ -215,3 +215,4 @@ $random visor/interference {
 }
 
 visor/helpnotification "SOUNDS/HUD Sounds/HelpNotification.ogg"
+visor/screenwipe "SOUNDS/HUD Sounds/ScreenWiper.ogg"

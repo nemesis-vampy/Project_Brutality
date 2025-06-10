@@ -70,22 +70,18 @@ class NashGoreGibs : Actor
 	{
 		if (random() < (255 - nashgore_gibamount)) { Destroy(); return; }
 
-        if(target) {
-            CopyBloodColor(target);
-            //console.printf("copied from target");
-        }
-        else if(master) {
-            CopyBloodColor(master);
-            //console.printf("copied from master");
-        }
-        else if(tracer) {
-            CopyBloodColor(tracer);
-            //console.printf("copied from tracer");
-        }
-        //self.Translation = bloodtranslation;
-        //console.printf("%s: bloodcolor: %i, bloodtranslation: %i", self.GetClassName(), bloodcolor, bloodtranslation);
+        if(int(self.Translation) == 0)
+        {
+            if(target) CopyBloodColor(target);
+            else if(master) CopyBloodColor(master);
+            else if(tracer) CopyBloodColor(tracer);
 
-		Super.PostBeginPlay();
+            // this means you found a new translation so set it
+            if(int(bloodtranslation) != 0) 
+                self.Translation = bloodtranslation;
+        }
+
+        Super.PostBeginPlay();
 	}
 
 	override void Tick(void)

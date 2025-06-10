@@ -1,3 +1,6 @@
+const PB_SCREENWIPER_THRESHOLD = 50;
+const PB_SCREENWIPER_DELAY = 5 * Thinker.TICRATE;
+
 extend class PB_Hud_ZS
 {
 	array<PB_BloodFXStorage> bloodDrops;
@@ -17,9 +20,11 @@ extend class PB_Hud_ZS
 		if(bloodDrops.Size() > 60)
 			bloodDrops.Delete(0);
 		
-		PB_BloodFXStorage bdrp = PB_BloodFXStorage.CreateBloodFX(enemybloodcolor);
+		PB_BloodFXStorage bdrp = PB_BloodFXStorage.CreateBloodFX(enemybloodcolor, PB_Hud_ZS(statusbar));
 		S_StartSound("visor/blooddrop", CHAN_AUTO);
 		bloodDrops.Push(bdrp);
+
+        if(dirtyScreenTimer != -1) dirtyScreenTimer = 0;
 	}
 
     void CreateBloodSplatter(int enemybloodcolor)
@@ -30,9 +35,10 @@ extend class PB_Hud_ZS
 		if(bloodSplatters.Size() > 10)
             bloodSplatters.Delete(0);
 		
-        PB_BloodSplatterFXStorage bdrp = PB_BloodSplatterFXStorage.CreateBloodSplatterFX(enemybloodcolor);
-		S_StartSound("visor/blooddrop", CHAN_AUTO);
+        PB_BloodSplatterFXStorage bdrp = PB_BloodSplatterFXStorage.CreateBloodSplatterFX(enemybloodcolor, PB_Hud_ZS(statusbar));
 		bloodSplatters.Push(bdrp);
+
+        if(dirtyScreenTimer != -1) dirtyScreenTimer = 0;
 	}
 	
 	void DrawBloodDrops()
@@ -108,9 +114,11 @@ extend class PB_Hud_ZS
 		if(glassCracks.Size() > 8)
 			glassCracks.Delete(0);
 
-		PB_CrackFXStorage crack = PB_CrackFXStorage.CreateCrackFX();
+		PB_CrackFXStorage crack = PB_CrackFXStorage.CreateCrackFX(PB_Hud_ZS(statusbar));
 		cplayer.mo.A_StartSound("visor/glasscrack", CHAN_AUTO, CHANF_OVERLAP | CHANF_LOCAL | CHANF_UI, 0.7, pitch: cfrandom(0.96, 1.04));
 		glassCracks.Push(crack);
+
+        if(dirtyScreenTimer != -1) dirtyScreenTimer = 0;
 	}
 	
 	void DrawGlassCracks()
@@ -155,6 +163,7 @@ class PB_GenericHudEffect ui
 	float alpha;
 	int lifetime;
 	bool mirror;
+    PB_Hud_ZS sbRef;
 	
 	// screen percentages 
 	const SP_X = 0.25;
@@ -193,7 +202,7 @@ class PB_CrackFXStorage : PB_GenericHudEffect
 	const CRACKS_RANGE = 2;
 	const CRACK_GRAPHIC_PREFIX = "HUGLBRK";
 	
-	static PB_CrackFXStorage CreateCrackFX()
+	static PB_CrackFXStorage CreateCrackFX(PB_Hud_ZS sbRef)
 	{
 		PB_CrackFXStorage cls = PB_CrackFXStorage(new("PB_CrackFXStorage"));
 		
@@ -214,6 +223,8 @@ class PB_CrackFXStorage : PB_GenericHudEffect
 		cls.pos = FX_PickPosition();
 		
 		cls.alpha = 1.0;
+
+        cls.sbRef = sbRef;
 		
 		return cls;
 	}
@@ -227,7 +238,7 @@ class PB_CrackFXStorage : PB_GenericHudEffect
 		else if(lifetime < 6)
 			scale *= 1.05;
 		
-		if(lifetime > 35 * 10)
+		if(lifetime > 35 * 10 && sbRef && sbRef.screenFXCount < PB_SCREENWIPER_THRESHOLD)
 			alpha -= 0.02;
 	}
 }
@@ -237,7 +248,7 @@ class PB_BloodSplatterFXStorage : PB_BloodFXStorage
 	const BLOOD_SPLATTER_RANGE = 27;
 	const BLOOD_GRAPHICS_PREFIX = "GRAPHICS/HUD/ScreenFX/BigSplatters/screenblood_";
 	
-	static PB_BloodSplatterFXStorage CreateBloodSplatterFX(int enemybloodcolor)
+	static PB_BloodSplatterFXStorage CreateBloodSplatterFX(int enemybloodcolor, PB_Hud_ZS sbRef)
 	{
 		PB_BloodSplatterFXStorage cls = PB_BloodSplatterFXStorage(new("PB_BloodSplatterFXStorage"));
 		
@@ -277,6 +288,8 @@ class PB_BloodSplatterFXStorage : PB_BloodFXStorage
 		cls.alpha = clamp((1.0 / cls.scale.Length()) * cfrandom(1, 3), 0, 2.5);
 		
 		cls.bloodcolor = enemybloodcolor;
+
+        cls.sbRef = sbRef;
 		
 		return cls;
 	}
@@ -284,7 +297,7 @@ class PB_BloodSplatterFXStorage : PB_BloodFXStorage
 	void TickBloodFX()
 	{
 		lifetime++;
-		alpha -= 0.01;
+		if(sbRef && sbRef.screenFXCount < PB_SCREENWIPER_THRESHOLD) alpha -= 0.01;
 		
 		// splashing effect
 		if(lifetime < 3)
@@ -301,7 +314,7 @@ class PB_BloodFXStorage : PB_GenericHudEffect
 	const BLOOD_DROPS_RANGE = 5;
 	const BLOOD_GRAPHICS_PREFIX = "HUBLDRP";
 	
-	static PB_BloodFXStorage CreateBloodFX(int enemybloodcolor)
+	static PB_BloodFXStorage CreateBloodFX(int enemybloodcolor, PB_Hud_ZS sbRef)
 	{
 		PB_BloodFXStorage cls = PB_BloodFXStorage(new("PB_BloodFXStorage"));
 		
@@ -328,6 +341,7 @@ class PB_BloodFXStorage : PB_GenericHudEffect
 		else
 			cls.bloodcolor = enemybloodcolor;
 		
+        cls.sbRef = sbRef;
 		
 		return cls;
 	}
@@ -335,13 +349,17 @@ class PB_BloodFXStorage : PB_GenericHudEffect
 	void TickBloodFX()
 	{
 		lifetime++;
-		alpha -= 0.01;
+		if(sbRef && sbRef.screenFXCount < PB_SCREENWIPER_THRESHOLD) alpha -= 0.01;
 		
 		if(lifetime > 3)
 		{
 			pos.y += 0.1;
-			scale.y += 0.002 * scalenomod.y;
-			scale *= 0.996;
+
+            if(lifetime < 35)
+            {
+                scale.y += 0.002 * scalenomod.y;
+                scale *= 0.996;
+            }
 		}
 		
 		// splashing effect
