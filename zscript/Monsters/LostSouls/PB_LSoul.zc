@@ -21,6 +21,9 @@ Class PB_LSoul : PB_Monster{
 		if(!bSOLID && !bSHOOTABLE && health < 1){
 			A_Die();
 		}
+		if(health > 0 && !InStateSequence(self.curstate, ResolveState("Pain"))){
+			A_SetRoll(0, SPF_INTERPOLATE);
+		}
 		Super.Tick();
 	}
 	Override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath){
