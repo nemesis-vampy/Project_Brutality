@@ -47,7 +47,7 @@ class PB_Projectile : FastProjectile abstract
 		if (!bNOCRITICALS && Pos.Z > victim.Pos.Z + victim.Height * ((ptrPBMon) ? ptrPBMon.posTorsoHB : 0.65))
 		{
 			//Console.Printf("Critical");
-			scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgTorsoMult : 1.25);
+			scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgTorsoMult : 1.5);
 			dmgtype = damagetype;
 			if (Pos.Z > victim.Pos.Z + victim.Height * ((ptrPBMon) ? ptrPBMon.posHeadHB : 0.80) / headSizeMul)
 			{
@@ -56,7 +56,7 @@ class PB_Projectile : FastProjectile abstract
 				{
 					dmgtype = "Head";
 					//A_StartSound("headshotmarker", CHAN_AUTO, CHAN_UI);
-					scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgHeadMult : 1.25);
+					scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgHeadMult : 2.0);
 				}
 			}
 // 			else
@@ -71,7 +71,7 @@ class PB_Projectile : FastProjectile abstract
 				//Console.Printf("Dick Shot");
 				//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
 				dmgtype = "Dick";
-				scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgDickMult : 0.95);
+				scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgDickMult : 1.25);
 			}
 			else
 			{

@@ -58,6 +58,7 @@ Class PB_MinigunGuy : PB_Monster
 		+NOINFIGHTSPECIES;
 		Species "Former_Human";
 		
+		PB_Monster.MonDMGMult 1.25, 1.5, 0.70, 1.0, 1.25, 0.80;
 		PB_Monster.PBMonSpeed 3, 2.5, 1, 2;
 		PB_Monster.CanIRoll false;
 		PB_Monster.CanIFallback false;
