@@ -32,7 +32,10 @@ Actor PB_SSGFireAnimation2: Inventory
 
 ACTOR LeftSSGAmmo : PB_WeaponAmmo 
 {
-	Inventory.MaxAmount 2
+	Inventory.Amount 0
+	Inventory.MaxAmount 2 
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 2
 	+INVENTORY.IGNORESKILL
 	Inventory.Icon "SGN2A0"
 }
@@ -40,7 +43,10 @@ ACTOR LeftSSGAmmo : PB_WeaponAmmo
 
 ACTOR SSGAmmoCounter: PB_WeaponAmmo
 {
+	Inventory.Amount 0
 	Inventory.MaxAmount 2
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 2
 	+INVENTORY.IGNORESKILL
 	Inventory.Icon "SGN2A0"
 }
@@ -68,7 +74,6 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 	weapon.slotnumber 3
 	Weapon.AmmoType "PB_Shell"
 	Weapon.AmmoType2 "SSGAmmoCounter"
-	weapon.slotpriority 0.25
 	PB_WeaponBase.AmmoTypeLeft "LeftSSGAmmo"
 	+FLOORCLIP
 	+DONTGIB
@@ -84,8 +89,6 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 	PB_WeaponBase.respectItem "RespectSSG"
 	FloatBobStrength 0.5
 	PB_WeaponBase.DualWieldToken "DualWieldingSSG"
-	PB_WeaponBase.Upgrade "PB_QuadSG"
-	PB_WeaponBase.UpgradeKeepCvar "PB_KeepSSG"
 	States
 	{
 		
@@ -366,8 +369,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		  PB_DynamicTail("shotgun", "shotgun");
 				//A_FireCustomMissile("GunFireSmokE", 0, 0, -3, 0, 0, 0);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, -5, 0, 0, 0);
-				PB_GunSmoke(3,0,0);
-				PB_GunSmoke(5,0,0);
+				PB_GunSmoke(3,0,0); PB_MuzzleFlashEffects(3,0,0);
+				PB_GunSmoke(5,0,0); PB_MuzzleFlashEffects(5,0,0);
 				A_ZoomFactor(0.95);
 				A_SetInventory("PB_SSGFireAnimation2",1); 
 				A_SetInventory("PB_SSGFireAnimation1",0); 
@@ -381,8 +384,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 				PB_FireBullets("PB_10GAPellet",20,8,0,0,6);
 				//A_FireCustomMissile("GunFireSmokE", 0, 0, 3, 0, 0, 0);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, 5, 0, 0, 0);
-				PB_GunSmoke(3,0,0);
-				PB_GunSmoke(5,0,0);
+				PB_GunSmoke(3,0,0); PB_MuzzleFlashEffects(3,0,0);
+				PB_GunSmoke(5,0,0); PB_MuzzleFlashEffects(5,0,0);
 				A_StartSound("SSHFIRE", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		  PB_DynamicTail("shotgun", "shotgun");
 				A_ZoomFactor(0.95);
@@ -396,8 +399,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		P6W2 B 1 BRIGHT {
 			//A_FireCustomMissile("GunFireSmokE", 0, 0, 3, 0, 0, 0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, 5, 0, 0, 0);
-			PB_GunSmoke(-3,0,0);
-			PB_GunSmoke(-5,0,0);
+			PB_GunSmoke(-3,0,0); PB_MuzzleFlashEffects(-3,0,0);
+			PB_GunSmoke(-5,0,0); PB_MuzzleFlashEffects(-5,0,0);
 			}
 		P6W2 C 1 {
 			A_ZoomFactor(0.975);
@@ -437,8 +440,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		  PB_DynamicTail("shotgun", "shotgun");
 				//A_FireCustomMissile("GunFireSmokE", 0, 0, -3, 0, 0, 0);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, -5, 0, 0, 0);
-				PB_GunSmoke(-3,0,0);
-				PB_GunSmoke(-5,0,0);
+				PB_GunSmoke(-3,0,0); PB_MuzzleFlashEffects(-3,0,0);
+				PB_GunSmoke(-5,0,0); PB_MuzzleFlashEffects(-5,0,0);
 				A_ZoomFactor(0.95);
 				A_SetInventory("PB_SSGFireAnimation1",1);
 				A_TakeInventory("SSGAmmoCounter", 1);
@@ -451,8 +454,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 				PB_FireBullets("PB_10GAPellet",20,8,0,0,6);
 				//A_FireCustomMissile("GunFireSmokE", 0, 0, -3, 0, 0, 0);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, -5, 0, 0, 0);
-				PB_GunSmoke(-3,0,0);
-				PB_GunSmoke(-5,0,0);
+				PB_GunSmoke(-3,0,0); PB_MuzzleFlashEffects(-3,0,0);
+				PB_GunSmoke(-5,0,0); PB_MuzzleFlashEffects(-5,0,0);
 				A_StartSound("SSHFIRE", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		  PB_DynamicTail("shotgun", "shotgun");
 				A_ZoomFactor(0.95);
@@ -465,8 +468,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		P6W1 B 1 BRIGHT {
 			//A_FireCustomMissile("GunFireSmokE", 0, 0, -3, 0, 0, 0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -5, 0, 0, 0);
-			PB_GunSmoke(-3,0,0);
-			PB_GunSmoke(-5,0,0);
+			PB_GunSmoke(-3,0,0); PB_MuzzleFlashEffects(-3,0,0);
+			PB_GunSmoke(-5,0,0); PB_MuzzleFlashEffects(-5,0,0);
 			}
 		P6W1 C 1 {
 			A_ZoomFactor(0.975);
@@ -559,8 +562,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 			PB_FireBullets("PB_10GAPellet",20,8,0,0,6);
 			//A_FireCustomMissile("GunFireSmokE", 0, 0, 2, 0, 0, 0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0);
-			PB_GunSmoke(-2,0,0);
-			PB_GunSmoke(2,0,0);
+			PB_GunSmoke(-2,0,0); PB_MuzzleFlashEffects(-2,0,0);
+			PB_GunSmoke(2,0,0); PB_MuzzleFlashEffects(2,0,0);
 			A_StartSound("SSHFIRE", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		  PB_DynamicTail("shotgun", "dbshotgun");
 			A_ZoomFactor(0.95);
@@ -571,8 +574,8 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		SHO9 B 1 BRIGHT {
 			//A_FireCustomMissile("GunFireSmokE", 0, 0, 2, 0, 0, 0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0);
-			PB_GunSmoke(2,0,0);
-			PB_GunSmoke(-2,0,0);
+			PB_GunSmoke(2,0,0); PB_MuzzleFlashEffects(2,0,0);
+			PB_GunSmoke(-2,0,0); PB_MuzzleFlashEffects(-2,0,0);
 			A_FireProjectile("ShotgunWad",random(-2,2),0,3,-4,FPF_NOAUTOAIM,random(-2,2));
 			A_FireProjectile("ShotgunWad",random(-2,2),0,-3,-4,FPF_NOAUTOAIM,random(-2,2));
 			}
@@ -607,7 +610,7 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 			//A_FireBullets(9, 6, 10, 7, "ShotgunPuff");
 			PB_FireBullets("PB_10GAPellet",10,7,0,0,6);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0);
-			PB_GunSmoke(-2,0,0);
+			PB_GunSmoke(-2,0,0); PB_MuzzleFlashEffects(-2,0,0);
 			A_StartSound("weapons/shh2", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		  PB_DynamicTail("shotgun", "shotgun");
 			A_TakeInventory("SSGAmmoCounter", 1);
@@ -616,14 +619,14 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		SHTA B 1 BRIGHT {
 			A_ZoomFactor(0.99);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0);
-			PB_GunSmoke(-2,0,0);
+			PB_GunSmoke(-2,0,0); PB_MuzzleFlashEffects(-2,0,0);
 			A_FireProjectile("ShotgunWad",random(-2,2),0,3,-4,FPF_NOAUTOAIM,random(-2,2));
 			PB_WeaponRecoil(-1.50,+1.0);
 		}
 		SHO8 C 1 {
 			A_ZoomFactor(1.0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0);
-			PB_GunSmoke(-2,0,0);
+			PB_GunSmoke(-2,0,0); PB_MuzzleFlashEffects(-2,0,0);
 			PB_WeaponRecoil(-1.50,+1.0);
 		}
 		SHO8 LCM 1
@@ -641,7 +644,7 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 			//A_FireBullets(9, 6, 10, 7, "ShotgunPuff");
 			PB_FireBullets("PB_10GAPellet",10,7,0,0,6);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0);
-			PB_GunSmoke(2,0,0);
+			PB_GunSmoke(2,0,0); PB_MuzzleFlashEffects(2,0,0);
 			A_StartSound("weapons/shh2", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		  PB_DynamicTail("shotgun", "shotgun");
 			A_TakeInventory("SSGAmmoCounter", 1);
@@ -650,14 +653,14 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 		SHTA D 1 BRIGHT {
 			A_ZoomFactor(0.99);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0);
-			PB_GunSmoke(2,0,0);
+			PB_GunSmoke(2,0,0); PB_MuzzleFlashEffects(2,0,0);
 			A_FireProjectile("ShotgunWad",random(-2,2),0,-4,-4,FPF_NOAUTOAIM,random(-2,2));
 			PB_WeaponRecoil(-1.50,-1.0);
 		}
 		SHO8 C 1 {
 			A_ZoomFactor(1.0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0);
-			PB_GunSmoke(2,0,0);
+			PB_GunSmoke(2,0,0); PB_MuzzleFlashEffects(2,0,0);
 			PB_WeaponRecoil(-1.50,-1.0);
 		}
 		SHO8 LCM 1

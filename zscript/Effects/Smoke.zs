@@ -88,7 +88,6 @@ class PB_GunFireSmoke: PB_LightActor
 
 	override void Tick()
 	{
-		SetOrigin(Vec3Offset(vel.x, vel.y, vel.z), true);
 		Super.Tick();
 		SmokeTick();
 	}

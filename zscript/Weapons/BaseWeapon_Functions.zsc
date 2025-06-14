@@ -216,7 +216,7 @@ extend class PB_WeaponBase
 	
 	action void PB_DynamicTail(string tailInside, string tailOutside)
 	{	
-        string tmpTailSound;
+		string tmpTailSound;
 		uint intSamples;
 		FLineTraceData ltrace;
 
@@ -254,22 +254,14 @@ extend class PB_WeaponBase
 				vol = invoker.tailVolume * intSndVolume;
 			}
 
-			A_StartSound("weapons/atmo/"..tmpTailSound, CHAN_AUTO, volume: vol * 0.6, pitch: sndPitch);
+			A_StartSound("weapons/atmo/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
 
 			// multiplayer thing
 			if(multiplayer && player != players[consoleplayer])
 			{
-                if(!players[consoleplayer].mo)
-                    return;
-
-                double dist = Distance3D(players[consoleplayer].mo);
-
-                if(dist >= 4500)
-                    A_StartSound("weapons/atmo/dist/"..tmpTailSound, 20, volume: vol * 0.6, pitch: sndPitch);
-                if(dist >= 1250 && dist < 7500)
-                    A_StartSound("weapons/atmo/far/"..tmpTailSound, 21, pitch: sndPitch);
-                if(dist >= 200 && dist < 4500)
-			        A_StartSound("weapons/atmo/med/"..tmpTailSound, 22, pitch: sndPitch);
+				A_StartSound("weapons/atmo/dist/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
+				A_StartSound("weapons/atmo/far/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
+				A_StartSound("weapons/atmo/med/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
 			}
 		}
 	}
@@ -507,6 +499,37 @@ extend class PB_WeaponBase
 		console.printf('' .. direction);
 		return direction;
 	}
+
+    action void _SpawnMuzzleSparks(vector3 ofs, color col)
+	{
+        vector3 spos, svel;
+        int sparkcount = randompick(0, random(5, 7));
+        for(int i = 0; i < sparkcount; i++)
+        {
+            double fovOfs = (120 - self.player.desiredfov) / 3.f;
+            Vector3 spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle, self.pitch, self.roll), (self.radius + ofs.y - (5.0 * abs(sin(self.pitch))) + fovOfs, -ofs.x, ofs.z), true);
+		    Vector3 svel = PB_Math.RelativeToGlobalCoords((0, 0, 0), (self.angle, self.pitch, self.roll), (frandom(4, 12), frandom(-5, 5), frandom(-5, 4)));
+
+            let act = Spawn('PB_MuzzleSpark', spos);
+            act.vel = svel;
+            act.SetShade(col);
+        }
+	}
+
+    action void PB_MuzzleFlashEffects(double d1 = 0, double d2 = 0 , double d3 = 0, color col = 0xFF9D2E, int rad = 100, int tics = 2)
+    {
+        PlayerPawnBase plr = PlayerPawnBase(self);
+        vector3 ofs = (d1, d2, d3);
+
+        if(!plr) return;
+
+        ofs.z -= 10.5;
+		ofs.y += 15;
+
+        _SpawnMuzzleSparks(ofs, col);
+        plr.A_AttachLight('MuzzleFlashLight', DynamicLight.PointLight, col, rad, 0, DynamicLight.LF_DONTLIGHTSELF | DynamicLight.LF_ATTENUATE, (0, 0, self.player.viewz), 0);
+        plr.m_MuzzleFlashTimer = tics;
+    }
 	
 	//- L, 0 C, + R
 	// [gng] credits to Agent_Ash for the position calculation, modified by me to fix the pitch bug

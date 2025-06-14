@@ -363,7 +363,7 @@ damagetype Blood
 	{
 	Spawn:
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-		SPIP ABCDEFGH 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		SPIP ABCDEFGH 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)

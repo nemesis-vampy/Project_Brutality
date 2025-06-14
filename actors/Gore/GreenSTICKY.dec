@@ -174,7 +174,7 @@ ACTOR XDeath2GreenNoStick: XDeath1Green
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CheckFloor("Death")
-        XME1 H 3 //A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME1 H 3 //A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         TNT1 AAAAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -367,7 +367,7 @@ ACTOR XDeath3GreenNoStick: XDeath1Green
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CheckFloor("Death")
-        XME2 H 3 //A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME2 H 3 //A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         TNT1 AAAAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -504,7 +504,7 @@ ACTOR XDeath4GreenNoStick: XDeath1Green
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME3 ABCD 3 //A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME3 ABCD 3 //A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         TNT1 AAAAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))

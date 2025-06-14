@@ -325,7 +325,7 @@ actor WatcherGib1: TinyGib
     States
     {
 Spawn:
-TNT1 AA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+TNT1 AA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 XWAT ABCDEFG 2
        Loop
     Death:
@@ -340,7 +340,7 @@ actor WatcherGib2: TinyGib
     States
     {
 Spawn:
-TNT1 AA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+TNT1 AA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 XWBT ABCD 2
        Loop
     Death:

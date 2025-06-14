@@ -155,9 +155,9 @@ damagetype Blood
      Underwater:
 	 Splash:
 	    BLUD C 0 ThrustThingZ (0,35,1,0)
-        XDT1 AB 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XDT1 AB 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		BLUD C 0 ThrustThingZ (0,35,1,0)
-		XDT1 CD 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		XDT1 CD 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
 		
 	
@@ -177,7 +177,7 @@ ACTOR XDeath2: XDeath1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME1 ABCD 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME1 ABCD 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         TNT1 AAAAAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -212,7 +212,7 @@ ACTOR XDeath3: XDeath2
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME2 ABCD 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME2 ABCD 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         TNT1 AAAAAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -256,7 +256,7 @@ ACTOR XDeath4: XDeath2
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME3 ABCDEFGH 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME3 ABCDEFGH 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
 	TNT1 A 0
@@ -303,7 +303,7 @@ ACTOR XDeath4b: XDeath2
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        GIB4 AAAAAA 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        GIB4 AAAAAA 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
 		GIB4 B 1
@@ -332,7 +332,7 @@ ACTOR XDeath5: XDeath2
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME5 ABCD 3 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        XME5 ABCD 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         TNT1 AAAAAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -362,7 +362,7 @@ ACTOR XDeathOrgan1: XDeath2
     States
     {
     Spawn:
-	    XME8 A 4 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+	    XME8 A 4 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         XME8 A 1
@@ -383,7 +383,7 @@ ACTOR XDeathOrgan2: XDeathOrgan1
 States
 {
     Spawn:
-	    XME8 B 4 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+	    XME8 B 4 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
         XME8 B 1
@@ -566,7 +566,7 @@ ACTOR XDeathArm1 : FlyingGibBase
     Spawn:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		XARM AEBCFDG 5 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		XARM AEBCFDG 5 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 	    XDT5 I 1
@@ -609,7 +609,7 @@ actor Gib_Arm: LimbBase
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 270)     
 		Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -656,7 +656,7 @@ actor Gib_LabguyArm: LimbBase
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 270)     
 		Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -698,7 +698,7 @@ ACTOR XDeathArm1Kicked: XDeathArm1
 		TNT1 A 0
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		XARM ABCD 6 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		XARM ABCD 6 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Goto Spawn+3
 	}
 }
@@ -963,7 +963,7 @@ actor Gib_ArchvileLegPiece: LimbBase
 		D4AX E -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile ("Gib_ArchvileLegPieceHalf", 0, 0, random (0, 180), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 180))
@@ -1039,14 +1039,14 @@ actor Gib_ArchvileLeg: LimbBase
 		Stop
     Death:
 	//	TNT1 A 0 A_Jump(128, "Death2")
-	//	TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+	//	TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 	//	TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	//	TNT1 A 0 A_SpawnProjectile("XDeathArchvileLegPiece", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	//	TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	//	Stop
 	Death2:
 		TNT1 A 0
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileLegPiece2", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileFoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -1119,7 +1119,7 @@ actor Gib_ArchvileTorso: LimbBase
 		D3AX E -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AAA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -1192,7 +1192,7 @@ actor Gib_ArchvileArmPiece: LimbBase
 		D7AX E -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Stop
@@ -1266,7 +1266,7 @@ actor Gib_ArchvileArmPiece2: Gib_ArchvileArmPiece
 		D7AX G -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Stop
@@ -1353,7 +1353,7 @@ actor Gib_ArchvileLegPiece2: Gib_ArchvileArmPiece2
 		D1AG B -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Stop
@@ -1434,7 +1434,7 @@ actor Gib_ArchvileHand: Gib_ArchvileArmPiece2
 		D1AG A -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Stop
@@ -1538,7 +1538,7 @@ actor Gib_ArchvileFoot: Gib_ArchvileArmPiece2
 		D1AG C -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Stop
@@ -1616,7 +1616,7 @@ actor Gib_ArchvileArm: LimbBase
 		Stop
     Death:
 		TNT1 A 0 A_Jump(128, "Death2")
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileArmPiece", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileArmPiece2", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -1624,7 +1624,7 @@ actor Gib_ArchvileArm: LimbBase
 		Stop
 	
 	Death2:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile("XDeathArchvileArmPiece2", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -1698,7 +1698,7 @@ actor Gib_DemonArm: LimbBase
 		HND8 I -1
         Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibDemonHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibDemonArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -1770,7 +1770,7 @@ actor Gib_BloodDemonArm: LimbBase
 		M3G8 I -1
         Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibMeanDemonHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibMeanDemonArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -1840,7 +1840,7 @@ actor Gib_MechDemonArm: LimbBase
 		H4D8 B -1
         Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibMechDemonHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibMechDemonArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -1910,7 +1910,7 @@ actor Gib_VoidSpectreArm: LimbBase
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -1931,7 +1931,7 @@ actor Gib_VoidSpectreArm: LimbBase
 	
 	Death.Disintegrate:
 	TNT1 A 0
-	TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 0, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 90))
+	TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 0, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 90))
 	Stop
 	
 	Death.Kick:
@@ -1947,7 +1947,7 @@ actor Gib_VoidSpectreArm: LimbBase
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -2177,7 +2177,7 @@ actor Gib_ImpArm: LimbBase
         Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedImpArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibImpHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibImpArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2219,7 +2219,7 @@ actor Gib_SavageImpArm: Gib_ImpArm
         Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedImpArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibSavageImpHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibSavageImpArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2541,7 +2541,7 @@ actor Gib_ZombieLeg1: LimbBase
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibZombieLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibZombieBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2603,7 +2603,7 @@ actor Gib_PlasmaZombieLeg: LimbBase
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibZombieLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibZombieBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2723,7 +2723,7 @@ actor Gib_ZombieLeg2: LimbBase
 		Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibZombieLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibZombieBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2809,7 +2809,7 @@ actor Gib_ImpLeg: LimbBase
         Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedImpLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibImpLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibImpPaw", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2851,7 +2851,7 @@ actor Gib_SavageImpLeg: LimbBase
         Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedImpLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibSavageImpLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibSavageImpPaw", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -2979,7 +2979,7 @@ Goto Spawn1
 	   
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedDemonLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibDemonLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibDemonPaw", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -3052,7 +3052,7 @@ actor Gib_BloodDemonLeg: LimbBase
 	   
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedDemonLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibMeanDemonLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibMeanDemonPaw", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -3171,7 +3171,7 @@ ACTOR XDeathVoidSpectreLeg: XDeathMechDemonArm1
 	BounceFactor 0.4
 	Decal GreenBloodSplat
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -3192,7 +3192,7 @@ actor Gib_VoidSpectreLeg: Gib_MechDemonArm
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	Decal GreenBloodSplat
     States
     {
@@ -3211,7 +3211,7 @@ actor Gib_VoidSpectreLeg: Gib_MechDemonArm
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -3236,7 +3236,7 @@ Stop
 	Goto Spawn1
 	
 	Death.Disintegrate:
-			TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 0, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 90))
+			TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 0, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 90))
 			TNT1 AA 0 A_SpawnProjectile ("PB_BloodmistBig", 7, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (30, 60))
 			Stop
 	
@@ -3374,7 +3374,7 @@ actor Gib_SargeLeg: LimbBase
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibSargeLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibSargeBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -3463,7 +3463,7 @@ actor Gib_SargeLeg2: Gib_SargeLeg
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibSargeLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibSargeBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -3513,7 +3513,7 @@ actor Gib_NaziLeg2: Gib_SargeLeg
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("PB_GibNaziLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("PB_GibNaziBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -3569,7 +3569,7 @@ actor Gib_ChainLeg: LimbBase
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 	TNT1 A 0 A_SpawnProjectile("GibChainLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	TNT1 A 0 A_SpawnProjectile("GibChainBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -3649,7 +3649,7 @@ actor Gib_ChainARm: LimbBase
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 	TNT1 A 0 A_SpawnProjectile ("GibCommandoHand", 0, 0, random (0, 180), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 180))
 	TNT1 A 0 A_SpawnProjectile ("GibCommandoArmPart", 0, 0, random (0, 180), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 180))
 Stop
@@ -3691,12 +3691,12 @@ ACTOR XDeathStomachGreen: PB_XDeath1
     States
     {
     Spawn:
-		XSTO A 24 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		XSTO A 24 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
     Death:
 		TNT1 A 0
 		TNT1 A 0 A_Stop
-        XSTO EEEEEEEEE 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+        XSTO EEEEEEEEE 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
         XSTO E -1
         Stop
     }
@@ -3917,7 +3917,7 @@ ACTOR XDeathVoidSpectreHead
 	BounceFactor 0.4
 	BounceCount 5
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	 seesound "bloood"
     deathsound "bloood"
 	+DOOMBOUNCE
@@ -3941,7 +3941,7 @@ actor Gib_VoidSpectreHead: LimbBase
 {
 Scale 0.9
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -3970,7 +3970,7 @@ Scale 0.9
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -4003,7 +4003,7 @@ ACTOR XDeathHalfMarine
     Spawn:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        HPLA A 12 A_CustomMissile("Brutal_FlyingBloodTrail",0,0,180,2)
+        HPLA A 12 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
@@ -5029,7 +5029,7 @@ actor Gib_HellionLeg: LimbBase
         Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedImpLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	Stop
 	Death.Kick:
@@ -5090,7 +5090,7 @@ actor Gib_HellionArm: LimbBase
         Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedImpArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	Stop
 	Death.Kick:
@@ -5159,7 +5159,7 @@ actor Gib_HellionTorso: LimbBase
 		04AG E -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AAA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -5232,7 +5232,7 @@ actor Gib_HellionPelvis: LimbBase
 		05AG Q -1
 		Stop
     Death:    
-		TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AAA 0 A_SpawnProjectile("PB_BloodMistBig", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -5360,7 +5360,7 @@ ACTOR RipUndeadMarine
     Spawn:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        UDM3 E 4 A_CustomMissile("Brutal_FlyingBloodTrail",0,0,180,2)
+        UDM3 E 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
 		TNT1 A 0
@@ -5391,7 +5391,7 @@ ACTOR XDeathHalfSkeleton
     Spawn:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        SKEX F 12 A_CustomMissile("Brutal_FlyingBloodTrail",0,0,180,2)
+        SKEX F 12 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
@@ -5420,7 +5420,7 @@ ACTOR XDeathHalfDraugr
     Spawn:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        BNP4 E 12 A_CustomMissile("Brutal_FlyingBloodTrail",0,0,180,2)
+        BNP4 E 12 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
@@ -6131,7 +6131,7 @@ ACTOR XDeathHellKnightArm: XDeathArm1
 	BounceCount 3
 	Decal GreenBloodSplat
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -6153,7 +6153,7 @@ ACTOR XDeathBaronOfHellArm: XDeathArm1
 	BounceCount 3
 	Decal GreenBloodSplat
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -6196,7 +6196,7 @@ ACTOR XDeathCyberBaronArm: XDeathArm1
 	BounceCount 3
 	Decal GreenBloodSplat
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	+ROLLSPRITE
 	+ROLLCENTER
     States
@@ -6223,7 +6223,7 @@ ACTOR XDeathCyberKnightArm2: XDeathCyberBaronArm
 	BounceFactor 0.4
 	BounceCount 3
 	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "Red"
+	//BloodColor "Red"
     States
     {
     Spawn:
@@ -6245,7 +6245,7 @@ actor Gib_HellKnightArm: LimbBase
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -6258,7 +6258,7 @@ actor Gib_HellKnightArm: LimbBase
 	   
 	  Death:   
 	  TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_SpawnProjectile("Green_BLood", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AA 0 A_SpawnProjectile("NashGoreBlood", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 AA 0 A_SpawnProjectile("GenericHKGib4", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		Stop
@@ -6287,7 +6287,7 @@ actor Gib_HellKnightArm: LimbBase
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -6297,7 +6297,7 @@ actor Gib_BaronOfHellArm: LimbBase
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -6309,8 +6309,8 @@ actor Gib_BaronOfHellArm: LimbBase
 		Stop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
-    TNT1 AAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 	TNT1 A 0 A_SpawnProjectile("Gib_BaronHand", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 16))
 	TNT1 A 0 A_SpawnProjectile("Gib_BaronArmGibbed", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 16))
@@ -6321,7 +6321,7 @@ Stop
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -6360,7 +6360,7 @@ actor Gib_CyberBaronArm: LimbBase
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	Health 9999999999
 	+ROLLSPRITE
 	+ROLLCENTER
@@ -6426,7 +6426,7 @@ actor Gib_CyberKnightArm: LimbBase
         Loop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 AAAAAAA 0 A_SpawnProjectile("BloodTr", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 Stop}}
@@ -6449,7 +6449,7 @@ actor Gib_CyberKnightArm2: LimbBase
         Loop
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 AAAAAAA 0 A_SpawnProjectile("BloodTr", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 	TNT1 A 0 A_SpawnProjectile("GibCyberKnightHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -6463,12 +6463,12 @@ ACTOR XDeathHellKnightLeg: XDeathArm1
 	BounceFactor 0.4
 	Decal GreenBloodSplat
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		GHKL ABCDEFGH 4 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		GHKL ABCDEFGH 4 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 	    GHKL A 1
@@ -6537,7 +6537,7 @@ actor Gib_HellKnightLeg: LimbBase
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
 		Spawn:
@@ -6550,7 +6550,7 @@ actor Gib_HellKnightLeg: LimbBase
 	   
 	  Death:   
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_SpawnProjectile("Green_BLood", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AA 0 A_SpawnProjectile("NashGoreBlood", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_SpawnProjectile("GenericHKGib1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_SpawnProjectile("GenericHKGib2", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
@@ -6580,7 +6580,7 @@ actor Gib_HellKnightLeg: LimbBase
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -6593,12 +6593,12 @@ ACTOR XDeathHellKnightTorso: XDeathArm1
 	BounceFactor 0.4
 	Decal GreenBloodSplat
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		GHKT ABCDEFGH 4 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		GHKT ABCDEFGH 4 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 	    GHKT I 1
@@ -6611,7 +6611,7 @@ actor Gib_HellKnightTorso: LimbBase
 {
     Scale 1.1
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -6625,8 +6625,8 @@ actor Gib_HellKnightTorso: LimbBase
 		TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 AA 0 A_SpawnProjectile("XDeath2bGreen", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 AA 0 A_SpawnProjectile("XDeath3bGreen", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2b", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3b", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         TNT1 A 0 A_SpawnProjectile("XDeathOrgan1Green", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 80))
 		TNT1 A 0 A_SpawnProjectile("XDeathOrgan2Green", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 80))
 		TNT1 A 0 A_SpawnProjectile("GenericHKGib3", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 80))
@@ -6638,7 +6638,7 @@ Stop
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -6651,12 +6651,12 @@ ACTOR XDeathBaronofHellTorso: XDeathArm1
 	BounceFactor 0.4
 	Decal GreenBloodSplat
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		GORD ABCD 4 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		GORD ABCD 4 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 	    GORD E 1
@@ -6689,7 +6689,7 @@ actor Gib_BaronofHellTorso: LimbBase
 {
     Scale 1.3
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -6701,8 +6701,8 @@ Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 AA 0 A_SpawnProjectile("XDeath2bGreen", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 AA 0 A_SpawnProjectile("XDeath3bGreen", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2b", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3b", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         TNT1 A 0 A_SpawnProjectile("XDeathOrgan1Green", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 80))
 		TNT1 A 0 A_SpawnProjectile("XDeathOrgan2Green", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 80))
 		TNT1 AA 0 A_SpawnProjectile("GenericBaronGib1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 80))
@@ -6714,7 +6714,7 @@ Death:
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -6731,7 +6731,7 @@ actor Gib_CyberKnightTorso: LimbBase
         sTOP
 Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 AAAAAAA 0 A_SpawnProjectile("BloodTr", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 AAAAA 0 A_SpawnProjectile("PB_XDeath1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("PB_MuchBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -8042,7 +8042,7 @@ ACTOR XDeathHellKnightHead: XDeathBullArm1
 {
     Scale 1.0
 	BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	Decal GreenBloodSplat
     States
     {
@@ -8230,7 +8230,7 @@ damagefactor "SuperPunch", 9.0
 +SOLID
 +THRUACTORS
     BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 damagefactor "Crush", 50.0
     Radius 10
 	Mass 12
@@ -8263,10 +8263,10 @@ damagefactor "Crush", 50.0
 	
 	 Death.Trample:
 	Crush:
-        TNT1 AAAAAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
+        TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-		TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+		TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 		TNT1 A 1
 		TNT1 A -1
         Stop
@@ -8298,7 +8298,7 @@ BounceFactor 0.4
 ACTOR XDeathBaronHead5: XDeathBullArm1
 {
     BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	Decal GreenBloodSplat
     Scale 1.2
     States
@@ -8318,7 +8318,7 @@ ACTOR XDeathBaronHead5: XDeathBullArm1
 actor BaronHead: LimbBase
 {
     BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 damagefactor "Kick", 9.0
 damagefactor "Melee", 9.0
 damagefactor "SuperPunch", 9.0
@@ -8338,16 +8338,16 @@ Decal GreenBloodSplat
         Stop
 
     Death:
-        TNT1 AAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
+        TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 A 0 A_SpawnProjectile("BaronOfHellHeadExplode", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         Stop
     Death.Trample:
 	Crush:
-        TNT1 AAAAAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
+        TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-		TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+		TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 		TNT1 A 1
 		TNT1 A -1
         Stop
@@ -8390,14 +8390,14 @@ ACTOR XDeathBaronHeadKicked: XDeathBaronHead5
 Damage 4
 Speed 13
 BounceFactor 0.4
-BloodColor "DarkGreen"
+//BloodColor "DarkGreen"
 }
 
 //Cyber Baron
 ACTOR XDeathCyberBaronHead5: XDeathBullArm1
 {
     BloodType "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     Scale 1
 	+ROLLSPRITE
 	+ROLLCENTER
@@ -8424,7 +8424,7 @@ actor CyberBaronHead: BaronHead
 	+ROLLSPRITE
 	+ROLLCENTER
 	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
 	Scale 1
     States
     {
@@ -8436,16 +8436,16 @@ actor CyberBaronHead: BaronHead
         Stop
 
     Death:
-        TNT1 AAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
+        TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 A 0 A_SpawnProjectile("BaronOfHellHeadExplode", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         Stop
      Death.Trample:
 	Crush:
-        TNT1 AAAAAAAA 0 A_SpawnProjectile("Green_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
+        TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 140))
         TNT1 A 0 A_PlaySound("misc/xdeath4")
 		TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-		TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+		TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 		TNT1 A 1
 		TNT1 A -1
         Stop
@@ -8487,7 +8487,7 @@ ACTOR XDeathCyberBaronHead: XDeathCyberBaronHead5
 Damage 4
 Speed 13
 BounceFactor 0.4
-BloodColor "DarkGreen"
+//BloodColor "DarkGreen"
 }
 
 
@@ -9121,7 +9121,7 @@ ACTOR XDeathHalfVoidSpectre
     +NOBLOCKMAP
     +NOTELEPORT
 	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -9139,7 +9139,7 @@ ACTOR XDeathHalfVoidSpectre
 actor Gib_HalfVoidSpectre: BigGibBase
 {
 	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
-	BloodColor "DarkGreen"
+	//BloodColor "DarkGreen"
     States
     {
     Spawn:
@@ -9166,7 +9166,7 @@ actor Gib_HalfVoidSpectre: BigGibBase
 		Death.SuperPunch:
 		Death.ExtremePunches:
 			 TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
-			 TNT1 AAAA 0 A_SpawnProjectile ("Green_Blood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
+			 TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBlood", 5, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 30))
 			 TNT1 A 1
 			 TNT1 A -1
 			 Stop
@@ -9185,7 +9185,7 @@ ACTOR XDeathPainElementalNew1: XDeath1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CAGI ABCDEFGH 2 A_SpawnProjectile("Brutal_FlyingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        CAGI ABCDEFGH 2 A_SpawnProjectile("PB_FlyingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
 	    
@@ -9217,7 +9217,7 @@ ACTOR XDeathPainElementalNew2: XDeathPainElementalNew1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CAGI IJKLMNOP 2 A_SpawnProjectile("Brutal_FlyingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        CAGI IJKLMNOP 2 A_SpawnProjectile("PB_FlyingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
 	    
@@ -9252,12 +9252,12 @@ ACTOR XDeathPainElementalGreen1: XDeath1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CAGI ABCDEFGH 2 A_SpawnProjectile("GreenBloodTrails", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        CAGI ABCDEFGH 2 A_SpawnProjectile("PB_FlyingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
 	    
 		TNT1 A 0
-        TNT1 AAA 0 A_SpawnItem("GreenBloodTrails", 0, 5)
+        TNT1 AAA 0 A_SpawnItem("PB_FlyingBloodTrail", 0, 5)
 	    TNT1 A 0 A_CheckFloor("SpawnFloor")
 		//TNT1 A 0 A_SpawnItemEx ("DetectCeilBloodSimpler",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("PB_DetectCeilXDeath2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -9284,12 +9284,12 @@ ACTOR XDeathPainElementalGreen2: XDeathPainElementalGreen1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CAGI IJKLMNOP 2 A_SpawnProjectile("GreenBloodTrails", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+        CAGI IJKLMNOP 2 A_SpawnProjectile("PB_FlyingBloodTrail", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
 	    
 		TNT1 A 0
-        TNT1 AAA 0 A_SpawnItem("GreenBloodTrails", 0, 5)
+        TNT1 AAA 0 A_SpawnItem("PB_FlyingBloodTrail", 0, 5)
 	    TNT1 A 0 A_CheckFloor("SpawnFloor")
 		//TNT1 A 0 A_SpawnItemEx ("DetectCeilBloodSimpler",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("PB_DetectCeilXDeath2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -9344,7 +9344,7 @@ ACTOR XDeathHFQSZArm1
     Spawn:
         TNT1 A 0 A_SpawnItem("brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		QARM ABCDEFGH 5 A_SpawnProjectile("brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		QARM ABCDEFGH 5 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 	    QARM X 1
@@ -9367,7 +9367,7 @@ actor Gib_HFQSZ_Arm: LimbBase
         Stop
     Death.plasma: Death.Burn: Death.Flames:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibHFQSZHand", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibHFQSZArmPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -9409,7 +9409,7 @@ ACTOR XDeathHFQSZArm1Kicked: XDeathArm1
 		TNT1 A 0
         TNT1 A 0 A_SpawnItem("brutal_BloodSpot",0,0,0,1)
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		QARM ABCDEFGH 3 A_SpawnProjectile("brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		QARM ABCDEFGH 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Goto Spawn+3
 	}
 }
@@ -9486,7 +9486,7 @@ actor Gib_HFQSZLeg: LimbBase
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibHFQSZLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibHFQSZBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop
@@ -9578,7 +9578,7 @@ actor Gib_HFQSZLeg2: Gib_HFQSZLeg
         Stop
     Death.plasma:	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))        Stop
     Death:    
-    TNT1 AAAA 0 A_SpawnProjectile("brutal_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
     TNT1 A 0 A_SpawnProjectile("GibHFQSZLegPart", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
     TNT1 A 0 A_SpawnProjectile("GibHFQSZBoot", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 Stop

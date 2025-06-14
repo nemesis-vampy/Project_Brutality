@@ -168,6 +168,9 @@ class PlayerPawnBase : PlayerPawn
 	
 	//Jumping
 	int		BuildJumpDelay;
+
+    //Muzzle Flash
+    int8 m_MuzzleFlashTimer;
 	
 	Default
     {
@@ -2516,6 +2519,16 @@ class PlayerPawnBase : PlayerPawn
 			// CheckTargetHitRegistration();
 		}
 		//CatchUpOnTiers();
+
+        if(m_MuzzleFlashTimer > 0)
+        {        
+            m_MuzzleFlashTimer--;
+        }
+        else if (m_MuzzleFlashTimer == 0)
+        {
+            A_RemoveLight('MuzzleFlashLight');
+            m_MuzzleFlashTimer = -1;
+        }
 		
 
 		//Screen Overlay Handlers

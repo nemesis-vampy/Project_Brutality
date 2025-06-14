@@ -140,6 +140,7 @@ Class PB_Revolver : PB_WeaponBase
 					A_FireProjectile("PB_500SW", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 					A_AlertMonsters();
 					PB_GunSmoke(0,0,0);
+                    PB_MuzzleFlashEffects(0, 0, 0);
 					A_Fireprojectile("YellowFlareSpawn",0,0,0,0);
 					PB_LowAmmoSoundWarning("revolver");
 					A_Takeinventory("RevolverAmmo",1);
@@ -185,6 +186,7 @@ Class PB_Revolver : PB_WeaponBase
 					A_FireProjectile("PB_500SW", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 					A_AlertMonsters();
 					PB_GunSmoke(0,0,0);
+                    PB_MuzzleFlashEffects(0, 0, 0);
 					A_FireProjectile("YellowFlareSpawn",0,0,0,0);
 					PB_LowAmmoSoundWarning("revolver");
 					A_Takeinventory("RevolverAmmo",1);
@@ -215,6 +217,7 @@ Class PB_Revolver : PB_WeaponBase
 					A_FireProjectile("PB_500SW", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 					A_AlertMonsters();
 					PB_GunSmoke(0,0,0);
+                    PB_MuzzleFlashEffects(0, 0, 0);
 					A_FireProjectile("YellowFlareSpawn",0,0,0,0);
 					PB_LowAmmoSoundWarning("revolver");
 					A_Takeinventory("RevolverAmmo",1);
@@ -432,6 +435,7 @@ Class PB_Revolver : PB_WeaponBase
 					A_FireProjectile("PB_500SW", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 					A_AlertMonsters();
 					PB_GunSmoke(0,0,0);
+                    PB_MuzzleFlashEffects(0, 0, 0);
 					A_Fireprojectile("YellowFlareSpawn",0,0,0,0);
 					PB_LowAmmoSoundWarning("revolver");
 					A_Takeinventory("RevolverAmmo",1);
@@ -597,6 +601,7 @@ Class PB_Revolver : PB_WeaponBase
 			41V1 A 1 BRIGHT {	
 				A_FireProjectile("PB_500SW", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 				PB_GunSmoke(5,0,0);
+                PB_MuzzleFlashEffects(5, 0, 0);
 				PB_LowAmmoSoundWarning("revolver", "LeftRevolverAmmo");
 				A_Takeinventory("LeftRevolverAmmo",1);
 				A_ZoomFactor(0.99);
@@ -607,7 +612,6 @@ Class PB_Revolver : PB_WeaponBase
 				//A_GunFlash();
                 PB_WeaponRecoil(-1.9,+1.8);
 			}
-			
 			41V1 B 1 BRIGHT {
 				A_ZoomFactor(1.0);
                 PB_WeaponRecoil(-1.9,+1.8);
@@ -655,6 +659,7 @@ Class PB_Revolver : PB_WeaponBase
 			41V1 I 1 BRIGHT {	
 				A_FireProjectile("PB_500SW", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 				PB_GunSmoke(-5,0,0);
+                PB_MuzzleFlashEffects(-5, 0, 0);
 				PB_LowAmmoSoundWarning("revolver");
 				A_Takeinventory("RevolverAmmo",1);
 				A_ZoomFactor(0.99);

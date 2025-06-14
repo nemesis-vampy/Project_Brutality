@@ -328,7 +328,9 @@ class PB_BloodCloud2 : PB_BloodCloud
         Spawn:
             BLER A 1 NoDelay {
                 if(GetAge() < 3) 
-                    scale *= 1.7;
+                {
+                    scale *= 1.8;
+                }
                 else
                 {
                     scale *= 1.02;
@@ -362,6 +364,29 @@ class PB_GibBloodCloud : PB_BloodCloud2
 		alpha = frandom(2.0, 3.0);
         scale *= 0.2;
 	}
+
+    States 
+    {
+        Spawn:
+            BLER A 1 NoDelay {
+                if(GetAge() < 3) 
+                    scale *= 1.7;
+                else
+                {
+                    A_Fadeout(0.03, FTF_CLAMP|FTF_REMOVE);
+                }
+                                            
+                roll += dissipateRotation;
+                dissipateRotation *= 0.96;
+                
+                if(CeilingPic == SkyFlatNum) {
+                    vel.y += 0.02; // wind
+                    vel.z += 0.01;
+                    vel.x -= 0.01;
+                }
+            }
+            Loop;
+    }
 }
 
 //===========================================================================

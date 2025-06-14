@@ -11,7 +11,7 @@ ACTOR BrutalizedCacodemon1
 	damagefactor "KillMe", 0.0
 	damagefactor "Cutless", 0.6
 	bloodtype "NashGoreBlood"
-    bloodcolor darkblue
+    //BloodColor darkblue
 	Mass 999999
 	-SOLID
 	//+NOBLOODDECALS
@@ -23,7 +23,7 @@ ACTOR BrutalizedCacodemon1
 	States
 	{
 	Spawn:
-	CCD1 AEAEA 20 A_SpawnProjectile("BlueBloodTrails", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	CCD1 AEAEA 20 A_SpawnProjectile("PB_FlyingBloodTrail", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_Fall
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
@@ -55,7 +55,7 @@ ACTOR BrutalizedCacodemon2
 	damagefactor "KillMe", 0.0
 	damagefactor "Cutless", 0.6
 	bloodtype "NashGoreBlood"
-    bloodcolor darkblue
+    //BloodColor darkblue
 	Mass 999999
 	-SOLID
 	//+NOBLOODDECALS
@@ -67,7 +67,7 @@ ACTOR BrutalizedCacodemon2
 	States
 	{
 	Spawn:
-	CCD2 AEAEAEAEAEAEAEAE 5 A_SpawnProjectile("BlueBloodTrails", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	CCD2 AEAEAEAEAEAEAEAE 5 A_SpawnProjectile("PB_FlyingBloodTrail", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_Fall
 	CCD2 B 6

@@ -15,6 +15,8 @@ Class PB_LightActor : Actor
 		
 		if(alpha < 0)
 			destroy();
+
+        SetOrigin(Vec3Offset(vel.x, vel.y, vel.z), true);
 			
 		// Advance the state
 		if (tics != -1)

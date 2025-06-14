@@ -1820,7 +1820,7 @@ ACTOR BurningCacodemon
 	damagefactor "Flame", 0.5
 	damagefactor "ExplosiveImpact", 10.0
 	BloodType "NashGoreBlood"
-  bloodcolor DarkBlue
+  //BloodColor DarkBlue
 	-COUNTKILL
 	+FLOAT
 	+NOGRAVITY

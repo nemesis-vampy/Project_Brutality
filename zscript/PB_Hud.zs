@@ -91,7 +91,7 @@ class PB_Hud_ZS : BaseStatusBar
 
 	//CVars
 	int16 hudXMargin, hudYMargin, playerMsgPrint;
-	bool hudDynamicsCvar, showVisor, showVisorGlass, showLevelStats, lowresfont, curmaxammolist, hideunusedtypes, showList, customPBMugshot, showBloodDrops, showGlassCracks, bottomMiddlePart;
+	bool hudDynamicsCvar, showVisor, showVisorGlass, showLevelStats, lowresfont, curmaxammolist, hideunusedtypes, showList, customPBMugshot, showBloodDrops, showGlassCracks, bottomMiddlePart, showtutorials;
 	float playerAlpha, playerBoxAlpha, messageSize, bloodDropsAlpha, glassCracksAlpha, visorScale, visorOffsets;
 
 	bool centerNotify;
@@ -163,6 +163,8 @@ class PB_Hud_ZS : BaseStatusBar
         visorOffsets = CVar.GetCVar("pb_visorofsx", CPlayer).GetFloat();
 
         bottomMiddlePart = CVar.GetCVar("pb_visormiddlepartbottom", CPlayer).GetFloat();
+
+        showtutorials = CVar.GetCVar("pb_showtutorials", CPlayer).GetBool();
 	}
 
 	override void Draw(int state, double TicFrac)
@@ -179,7 +181,8 @@ class PB_Hud_ZS : BaseStatusBar
         float interpolatedWipe = wipePrgOldFrame * (1. - ticfrac) + screenWiperPrg * ticfrac;
         float wiperScale = (1 - interpolatedWipe * 0.25) ** 5;
 
-        vector2 wiperTextureSize = TexMan.GetScaledSize(TexMan.CheckForTexture("GRAPHICS/HUD/ScreenFX/Screenwiper.png"));
+        TextureID wiperTexture = TexMan.CheckForTexture("GRAPHICS/HUD/ScreenFX/Screenwiper.png");
+        vector2 wiperTextureSize = TexMan.GetScaledSize(wiperTexture);
         wiperTextureSize.x *= wiperScale;
 
         if(dirtyScreenTimer == -1) // engage the screen wiper
@@ -187,10 +190,11 @@ class PB_Hud_ZS : BaseStatusBar
 
         DrawBloodDrops();
         DrawGlassCracks();
+        
         if(dirtyScreenTimer == -1)
         {
             Screen.ClearClipRect();
-            Screen.DrawTexture(TexMan.CheckForTexture("GRAPHICS/HUD/ScreenFX/Screenwiper.png"), false, (Screen.GetWidth() - (Screen.GetWidth() * interpolatedWipe)), 0, DTA_DestHeight, Screen.GetHeight(), DTA_LegacyRenderStyle, STYLE_Add, DTA_LeftOffsetF, (-300 * (0.5 - interpolatedWipe)), DTA_ScaleX, wiperScale);
+            Screen.DrawTexture(wiperTexture, false, (Screen.GetWidth() - (Screen.GetWidth() * interpolatedWipe)), 0, DTA_DestHeight, Screen.GetHeight(), DTA_LegacyRenderStyle, STYLE_Add, DTA_LeftOffsetF, (-300 * (0.5 - interpolatedWipe)), DTA_ScaleX, wiperScale);
         }
 
         interpolatedOfs = ofsOldFrame * (1. - ticfrac) + ofsCurrentFrame * ticfrac;
@@ -200,7 +204,7 @@ class PB_Hud_ZS : BaseStatusBar
 		{
 			BeginHUD();
 			DrawFullScreenStuff();
-            DrawTooltip();
+            if(showtutorials) DrawTooltip();
 		}
 	}
 
@@ -250,7 +254,6 @@ class PB_Hud_ZS : BaseStatusBar
         {
             if(screenWiperPrg ~== 1.0)
             {
-                //StopSound(CHAN_6);
                 screenWiperPrg = 0;
                 wipePrgOldFrame = 0;
                 for(int i = 0; i < bloodDrops.size(); i++)
@@ -1106,7 +1109,7 @@ class PB_Hud_ZS : BaseStatusBar
                 PBHud_DrawString(mBoldFont, String.Format("%.2fx", cplayer.DesiredFov / cplayer.fov), (0, -32), DI_SCREEN_CENTER_BOTTOM | DI_TEXT_ALIGN_CENTER | DI_ITEM_CENTER, alpha: 0.5, scale: (1.25 + (1 - magnificationIndScale), clamp(magnificationIndScale, 0, 1)));
 
             if(wiperWarningIndScale > 0) 
-                PBHud_DrawString(mBoldFont, String.Format("AUTOMATIC WIPER ENGAGED", screenWiperPrg * 100), (0, -64), DI_SCREEN_CENTER_BOTTOM | DI_TEXT_ALIGN_CENTER | DI_ITEM_CENTER, alpha: 1.0, scale: ((1.25 + (1 - wiperWarningIndScale)) * 0.75, clamp(wiperWarningIndScale, 0, 1) * 0.75));
+                PBHud_DrawString(mBoldFont, String.Format("AUTOMATIC WIPER ENGAGED", screenWiperPrg * 100), (0, -64), DI_SCREEN_CENTER_BOTTOM | DI_TEXT_ALIGN_CENTER | DI_ITEM_CENTER, alpha: 0.5, scale: ((1.25 + (1 - wiperWarningIndScale)) * 0.75, clamp(wiperWarningIndScale, 0, 1) * 0.75));
 
 			//Healthbar
 			if(GetAirTime() < 700)

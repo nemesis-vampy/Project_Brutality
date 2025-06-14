@@ -383,8 +383,10 @@ class PB_EventHandler : EventHandler
 		
 		if(e.Thing.bROLLSPRITE)
 			e.Thing.bSTRETCHPIXELS = true;
-			
-		 /*switch(e.Thing.bloodcolor)
+	}
+	
+	 /* [Pop] Keeping this here so its backed up, in may become useful
+	 switch(e.Thing.bloodcolor)
         {
             case Color("Blue"): // this is blue blood
                 console.printf("set blue blood enemy translation");
@@ -397,8 +399,8 @@ class PB_EventHandler : EventHandler
                 
             default:
                 break;
-        }*/
-	}
+        }
+	*/
 	
 	//////////////////////
 	

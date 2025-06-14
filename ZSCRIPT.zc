@@ -1,4 +1,4 @@
-version "4.14.1"
+version "4.14"
 
 const MAXITERATIONS = 32676;
 
@@ -15,7 +15,6 @@ const MAXITERATIONS = 32676;
 #include "zscript/PB_Hud.zs"
 #include "zscript/PB_Hud_FX.zs"
 #include "zscript/PB_HudMessages.zs"
-#include "zscript/PB_HelpNotifications.zs"
 #include "zscript/PB_StatScreen.zs"
 #include "zscript/Player/PlayerPawn.zc"
 #include "zscript/Player/ZSPlayer.zsc"
@@ -164,7 +163,6 @@ const MAXITERATIONS = 32676;
 #include "zscript/Monsters/PBMonsterAmmo.zsc"
 #include "zscript/Monsters/PBMonsterDrops.zsc"
 #include "zscript/Monsters/PBMonsterIncludes.zsc"
-
 #include "zscript/Monsters/Special/BossBrain.zc"
 
 #include "zscript/Monsters/ZombieMen/ZombieMan.zc"
@@ -201,6 +199,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Effects/FxBase.zs"
 #include "zscript/Effects/MonsterBeam.zs"
 #include "zscript/Effects/Fireworks.zs"
+#include "zscript/Effects/MuzzleSparks.zs"
 
 //Weapons
 #include "zscript/Weapons/BaseWeapon.zc"

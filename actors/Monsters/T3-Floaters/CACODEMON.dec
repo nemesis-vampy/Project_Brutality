@@ -9,7 +9,7 @@ ACTOR PB_LegacyCacodemon : Cacodemon //replaces Cacodemon
 	//$Category Project Brutality - Monsters/Flyers
 	//$Sprite HEADA1
 	Game Doom
-	BloodColor "Blue"
+	//BloodColor "Blue"
 	bloodtype "NashGoreBlood"
   //+NOBLOODDECALS
 	SpawnID 19
@@ -304,7 +304,7 @@ Pain:
 		HEAD H 3 A_NoBlocking
         TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         HEAD IJK 4
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		HEAD L -1
         TNT1 A 0 A_SpawnItem ("DeadCacoDemon1", 1)
         Stop
@@ -315,7 +315,7 @@ Pain:
 		H3DC E 3 A_NoBlocking
         TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         H3DC FGHIJKL 3
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		H3DC L -1
         Stop
 	
@@ -325,7 +325,7 @@ Pain:
 		H3D2 CD 6
         TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         H3D2 E 6
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		H3D2 F -1
         TNT1 A 0 A_SpawnItem ("DeadCacoDemon1", 1)
         Stop
@@ -351,15 +351,15 @@ Pain:
         TNT1 A 0 A_SetFloorClip
 		TNT1 O 0 A_NoBlocking
 		TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath1Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath3Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath4Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath4", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath3", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath4", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath6", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("CacoXDeath7", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		H3DC AB 9
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
         TNT1 A 0 A_SpawnItem ("SawedCacodemon", 1)
         Stop		
 		
@@ -372,7 +372,7 @@ Pain:
 		TNT1 A 0 A_SpawnProjectile("RipCaco", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_BloodMistBig", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
         CACL A 1
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
         TNT1 A 0 A_SpawnItem ("DeadHalfCacoDemon", 1)
         Stop
 		
@@ -380,14 +380,14 @@ Pain:
         TNT1 A 0 A_SetFloorClip
         TNT1 A 0 A_SetFloorClip
 		TNT1 O 0 A_NoBlocking
-		TNT1 AA 0 A_SpawnProjectile("XDeath2Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath3Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath4Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath4", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		TNT1 AAA 0 A_SpawnProjectile("PB_BloodMistBig", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
         H3DC MNOP 3 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
         H3DC QR 3 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		H3DC R -1
         Stop
 	
@@ -399,7 +399,7 @@ Pain:
 		TNT1 O 0 A_NoBlocking
 		TNT1 A 0 A_SpawnProjectile("RipCaco", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         CACL A 1
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
         TNT1 A 0 A_SpawnItem ("DeadHalfCacoDemon", 1)
         Stop
 		
@@ -409,9 +409,9 @@ Pain:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		C4CX ab 2
-		TNT1 AA 0 A_SpawnProjectile("XDeath2Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath3Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath4Blue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath4", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		TNT1 AA 0 A_SpawnProjectile("CacoXDeath2", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath1", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
 		TNT1 AA 0 A_SpawnProjectile("CacoXDeath3", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
@@ -427,7 +427,7 @@ Pain:
 		C4CX h 2 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		C4CX ijklmnopqr 2
 		C4CX sssssssssssssssssssssssssssssssssssssssssssssssssssssss 5 A_SpawnProjectile("PlasmaSmoke", 24, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		C4CX s -1
 		stop
 	
@@ -439,16 +439,16 @@ Pain:
 		//BlueBloodmistBig
 		TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		TNT1 AAAAA 0 A_SpawnProjectile("PB_BloodMistBig", 44, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 A 0 A_SpawnProjectile("XDeath2bBlue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-	TNT1 A 0 A_SpawnProjectile("XDeath3bBlue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-	TNT1 A 0 A_SpawnProjectile("XDeath2Blue", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-	TNT1 A 0 A_SpawnProjectile("XDeath3Blue", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2b", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+	TNT1 A 0 A_SpawnProjectile("PB_XDeath3b", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+	TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+	TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 	TNT1 A 0 A_SpawnProjectile("CacoXDeath3", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath4", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath6", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("CacoXDeath7", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		CCD1 A 10
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		TNT1 A 0 A_SpawnItem("BrutalizedCacodemon1")
 		Stop
 		
@@ -461,15 +461,15 @@ Pain:
 		TNT1 O 0 A_NoBlocking
 		TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBlood", 47, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 		TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_BloodMistBig", 44, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 A 0 A_SpawnProjectile("XDeath2bBlue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath3bBlue", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
-		TNT1 AA 0 A_SpawnProjectile("XDeath2Blue", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-		TNT1 A 0 A_SpawnProjectile("XDeath3Blue", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2b", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3b", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 25, 0, random (160, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath3", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AA 0 A_SpawnProjectile("CacoXDeath4", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("CacoXDeath6", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile("CacoXDeath7", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 		TNT1 A 0 A_SpawnItem("BrutalizedCacodemon2")
 		Stop
 		
@@ -539,7 +539,7 @@ Pain:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnProjectile("CacoXDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
         Stop
 		
 	Death.SSG:
@@ -550,9 +550,9 @@ Pain:
 	TNT1 A 0 A_FaceTarget
 	TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_BloodMistBig", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 150))
 	TNT1 AAAAAAAAAAAAA 0 A_SpawnProjectile("PB_FlyingBlood", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 50))
-	TNT1 AA 0 A_SpawnProjectile("XDeath2Blue", 25, 0, random (140, 230), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-	TNT1 AA 0 A_SpawnProjectile("XDeath3Blue", 25, 0, random (140, 230), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
-	TNT1 AA 0 A_SpawnProjectile("XDeath4Blue", 25, 0, random (140, 230), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+	TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 25, 0, random (140, 230), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+	TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 25, 0, random (140, 230), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
+	TNT1 AA 0 A_SpawnProjectile("PB_XDeath4", 25, 0, random (140, 230), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 	TNT1 A 0 A_SpawnProjectile("CacoXDeath2", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
 	TNT1 A 0 A_SpawnProjectile("CacoXDeath1", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
 	TNT1 A 0 A_SpawnProjectile("CacoXDeath3", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
@@ -561,7 +561,7 @@ Pain:
 	TNT1 AAAA 0 A_SpawnProjectile("CacoXDeath6", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
 	TNT1 AAAAAA 0 A_SpawnProjectile("CacoXDeath7", 50, 0, random (160, 200), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 40))
 	CCD3 A 6 A_NoBlocking
-	TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+	TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
 	CCD3 B -1
 	Stop	
 	Raise:
@@ -571,7 +571,7 @@ Pain:
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
         CRS2 B 5
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1)
+		TNT1 A 0 A_SpawnItem ("GrowingBloodPool", 1)
         CRS2 B -1
         Stop
 
@@ -748,14 +748,14 @@ damagetype Blood
     SeeSound "misc/xdeath4"
     DeathSound "misc/xdeath1"
 	Decal BlueBloodSplat
-	BloodColor "Blue"
+	//BloodColor "Blue"
     States
     {
     Spawn:
 		
         TNT1 AAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP1 A 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP1 A 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -784,7 +784,7 @@ ACTOR CacoXdeath2: CacoXDeath1
 		
         TNT1 AAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP1 A 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP1 A 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
 		
     Death:
@@ -812,7 +812,7 @@ ACTOR CacoXdeath3: CacoXDeath1
 		
         TNT1 AAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP2 A 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP2 A 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -838,7 +838,7 @@ ACTOR CacoXdeath4: CacoXDeath1
 		
         TNT1 AAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP2 A 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP2 A 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -863,7 +863,7 @@ ACTOR CacoXdeath5: CacoXDeath1
 		
         TNT1 AAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP3 A 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP3 A 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -888,7 +888,7 @@ Gravity 0.6
 		
         TNT1 AAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP4 ABCDEFG 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP4 ABCDEFG 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
     Death:
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_SquirtingBloodTrail", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
@@ -916,11 +916,11 @@ Speed 16
 		
 		TNT1 A 0 A_Jump(128, "Spawn2")
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP5 C 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP5 C 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop
 	Spawn2:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        CCP5 D 4 A_CustomMissile("BlueBloodTrails",0,0,180,2)
+        CCP5 D 4 A_CustomMissile("PB_FlyingBloodTrail",0,0,180,2)
         Loop	
     Death:
 	TNT1 A 0
@@ -960,7 +960,7 @@ ACTOR HalfCacodemon
 	Decal BlueBloodSplat
 	BounceFactor 0.5
 	Scale 0.9
-	BloodColor "Blue"
+	//BloodColor "Blue"
     States
     {
     Spawn:
@@ -983,7 +983,7 @@ Actor DeadCacoDemon1: CurbstompedMarine
     +MOVEWITHSECTOR
     +CORPSE
   BloodType "NashGoreBlood"
-  BloodColor "Blue"
+  //BloodColor "Blue"
     Mass 1000
     Health 200
     damagefactor "Blood", 0.0

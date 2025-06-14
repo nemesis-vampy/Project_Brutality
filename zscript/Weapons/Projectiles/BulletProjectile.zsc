@@ -13,7 +13,7 @@ class PB_Projectile : FastProjectile abstract
 		startPos = pos;
 		oldpos = pos;
 	}
-	
+
 	array<PlayerPawnBase> alreadyWhizzedBy;
     array<Actor> ignoreList;
 	double distanceTraveled;
@@ -712,7 +712,7 @@ class PB_Projectile : FastProjectile abstract
 	{
 		Spawn:
 			TNT1 A 1;
-			TRAC A -1 BRIGHT;
+			TRAC A -1 BRIGHT {if(Cvar.GetCvar("pb_tracerlight", players[consoleplayer]).GetBool()) A_AttachLight('ProjectileLight', DynamicLight.PointLight, 0xFF9D2E, 50, 0, DynamicLight.LF_ATTENUATE, (0, 0, 0), 0);}
 			Stop;
 		Death: // [Ace] Wall.
 			TNT1 A 0

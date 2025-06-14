@@ -144,6 +144,8 @@ extend class PB_Hud_ZS
 
     void UpdateTooltip(string tipText)
     {
+        if(!showtutorials) return;
+        
         brokenTooltip = mBoldFont.mFont.BreakLines(tipText, 400);
         tooltipUntilTic = gametic + PB_HELPNOTIF_DURATION;
 

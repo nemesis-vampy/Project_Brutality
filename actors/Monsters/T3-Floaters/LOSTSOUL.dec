@@ -51,7 +51,7 @@ ACTOR PB_LostSoul: PB_LSoul//LostSoul //replaces LostSoul
 	DamageFactor "CauseObjectsToSplash", 0.0
 	damagefactor "killme", 0.0
 	RenderStyle Normal
-	bloodcolor ""
+	//BloodColor ""
 	+FLOAT +NOGRAVITY +MISSILEMORE +DONTFALL +NOICEDEATH +ZDOOMTRANS +RETARGETAFTERSLAM +SOLID
 	AttackSound "skull/melee"
 	PainSound "skull/pain"

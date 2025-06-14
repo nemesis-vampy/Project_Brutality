@@ -249,6 +249,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
 				PB_GunSmoke(-1,0,-4);
 				PB_GunSmoke(1,0,-4);
+                PB_MuzzleFlashEffects(0,0,-4);
 				A_Overlay(-6, "ShotFlash",true);
 				//A_GunFlash();
 				PB_DynamicTail("shotgun", "shotgun");
@@ -557,15 +558,12 @@ Class PB_Shotgun : PB_WeaponBase
 			SHTM I 1;
 			SHTM JKLMN 1;
 			TNT1 A 0 {
-				if(CountInv("ShotgunAmmo") == 0){
+				if(CountInv("ShotgunAmmo") == 0)
+				
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",10,1);
-					return ResolveState(null);
-				}
-				else{
+				else
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",11,1);
-					return ResolveState("ReloadMagFinished");
-				}
-				return ResolveState(null);
+				
 			}
 		LoadChamberMag:
 			SHMG J 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
@@ -777,6 +775,7 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_Fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
 				 PB_GunSmoke(-1,0,0);
 				 PB_GunSmoke(1,0,0);
+                 PB_MuzzleFlashEffects(0,0,0);
 				 PB_DynamicTail("shotgun", "shotgun");
 				 A_SetInventory("CantDoAction",1);
 				 

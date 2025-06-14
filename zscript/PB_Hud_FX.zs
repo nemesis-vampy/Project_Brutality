@@ -1,5 +1,5 @@
 const PB_SCREENWIPER_THRESHOLD = 50;
-const PB_SCREENWIPER_DELAY = 5 * Thinker.TICRATE;
+const PB_SCREENWIPER_DELAY = 2 * Thinker.TICRATE;
 
 extend class PB_Hud_ZS
 {
@@ -261,7 +261,7 @@ class PB_BloodSplatterFXStorage : PB_BloodFXStorage
 		
 		cls.graphic = TexMan.CheckForTexture(gfxname);
 		
-		float randscale = cfrandom(0.3, 0.5);
+		float randscale = cfrandom(0.5, 0.8);
 		cls.scale = (randscale, randscale);
 		cls.scalenomod = cls.scale;
 		
@@ -378,7 +378,7 @@ class PB_HUDFXHandler : EventHandler
 	        return;
 	        
 	    PB_PlayerPawn pmo = PB_PlayerPawn(players[consoleplayer].mo);
-	    if(pmo && e.thing && e.thing.target && e.thing.target.bISMONSTER && e.thing.Distance3D(pmo) <= 80 && crandom(0, 100) > 75)
+	    if(pmo && e.thing && e.thing.target && e.thing.target.bISMONSTER && e.thing.Distance3D(pmo) <= 80 + pmo.Radius && crandom(0, 100) > 75)
 	    {
 	        if(e.Thing is 'PB_Bloodmist' || e.Thing is 'PB_GibBloodCloud' || e.Thing is 'NashGoreBloodParticle1')
                 EventHandler.SendInterfaceEvent(pmo.PlayerNumber(), "PB_HUDBloodSplatter", int(e.thing.target.bloodtranslation));
