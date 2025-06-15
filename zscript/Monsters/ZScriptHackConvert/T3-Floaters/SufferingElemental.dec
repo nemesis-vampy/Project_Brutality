@@ -25,7 +25,7 @@ ACTOR PB_SufferingElemental : PB_Elemental //Replaces PainElemental
 	ActiveSound "pain/active"
 	bloodtype "GreenBloodTrails"
 	PB_Elemental.LSType "PB_Phantasm"
-	BloodColor "Green"
+	//BloodColor "Green"
 	damagefactor "TeleportRemover", 0.0
 	DamageFactor "CauseObjectsToSplash", 0.0
 	PainChance "Kick", 255
@@ -34,7 +34,7 @@ ACTOR PB_SufferingElemental : PB_Elemental //Replaces PainElemental
 	damagefactor "killme", 0.0
 	damagetype Flames
 	Obituary "%o was killed by a Suffering Elemental."
-	bloodtype "NashGoreBlood_Green"
+	bloodtype "NashGoreBlood"
 	DropItem "Demonpickup" 168
 	
 	Species "FlyingBalls"
@@ -185,7 +185,7 @@ ACTOR PB_SufferingElemental : PB_Elemental //Replaces PainElemental
 		TNT1 AA 0 {
 			A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128);
 			A_SpawnItem("ExplosionParticleSpawner");
-			A_CustomMissile("XDeath1Green", 32, 0, random (0, 360), 2, random (0, 160));
+			A_CustomMissile("PB_XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
 		}
 		TNT1 A 0 A_SpawnItemEx("ExplosionFlareSpawner",0,0,32,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		EXPL AAAAA 0 A_CustomMissile("SmallGreenFlameTrails", 32, 0, random (0, 360), 2, random (0, 360))
@@ -203,14 +203,14 @@ ACTOR PB_SufferingElemental : PB_Elemental //Replaces PainElemental
 		TNT1 A 0 A_CustomMissile("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile("XDeathOrgan1Green", 24, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile("XDeathOrgan2Green", 24, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile("XDeath2Green", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile("XDeath3Green", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile("XDeath4Green", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile("PB_XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile("PB_XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile("PB_XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 {
 			A_CustomMissile("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360));
 			A_SpawnItem("GreenFlare",0,0);
-			A_CustomMissile("XDeath2bGreen", 15, 0, random (0, 360), 2, random (0, 160));
-			A_CustomMissile("XDeath3bGreen", 15, 0, random (0, 360), 2, random (0, 160));
+			A_CustomMissile("PB_XDeath2b", 15, 0, random (0, 360), 2, random (0, 160));
+			A_CustomMissile("PB_XDeath3b", 15, 0, random (0, 360), 2, random (0, 160));
 			A_CustomMissile("GreenBloodTrails", 32, 0, random (170, 190), 2, random (0, 40));
 			A_CustomMissile("XDeathPainElementalGreen2", 32, 0, random (0, 360), 2, random (0, 160));
 		}
