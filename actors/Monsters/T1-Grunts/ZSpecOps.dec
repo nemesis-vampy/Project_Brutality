@@ -29,7 +29,7 @@ Actor PB_ZSpecOps : PB_Monster //Replaces ChaingunGuy
 	damagefactor "SSG", 50.0
 	damagefactor "killme", 0.0
 	SeeSound "ZSpecOps/Sight"
-	ActiveSound "ZSpecOps/Sight"
+	ActiveSound "ZSpecOps/Active"
 	PainSound "ZSpecOps/Pain"
 	DeathSound "ZSpecOps/Death"
 	DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
