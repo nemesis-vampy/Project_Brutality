@@ -49,7 +49,7 @@ Class PB_Arachspawner_T1 : PB_MonsterSpawner
 {
 	default
 	{
-		dropitem "PB_Arachnotron",255,1;
+		dropitem "PB_Arachnotron1",255,1;
 	}
 	override void HandleSpawnExeptions(in out name toSpawn)
 	{
@@ -73,7 +73,7 @@ Class PB_Arachspawner_T2 : PB_MonsterSpawner
 				return;
 		}
 		if(pb_NoInfernoArachnotron && toSpawn == "PB_InfernalArachnotron")
-			toSpawn = "PB_Arachnotron";
+			toSpawn = "PB_Arachnotron1";
 	}
 }
 
@@ -93,7 +93,7 @@ Class PB_Arachspawner_T3 : PB_MonsterSpawner
 			toSpawn = "PB_InfernalArachnotron";
 			
 		if(pb_NoInfernoArachnotron && toSpawn == "PB_InfernalArachnotron")
-			toSpawn = "PB_Arachnotron";
+			toSpawn = "PB_Arachnotron1";
 	}
 }
 
@@ -116,6 +116,6 @@ Class PB_Arachspawner_T4 : PB_MonsterSpawner
 			toSpawn = "PB_InfernalArachnotron";
 			
 		if(pb_NoInfernoArachnotron && toSpawn == "PB_InfernalArachnotron")
-			toSpawn = "PB_Arachnotron";
+			toSpawn = "PB_Arachnotron1";
 	}
 }

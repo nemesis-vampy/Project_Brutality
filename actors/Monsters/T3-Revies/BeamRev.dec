@@ -5,6 +5,7 @@ ACTOR PB_BeamRev : PB_Revenant //Replaces Revenant
 	//$Sprite RASKD1
 	Radius 20
 	Height 56
+	ProjectilePassHeight 75
 	Scale 0.75
 	SpawnID 2110
 	HitObituary "%o was punched by a Beam Revenant."

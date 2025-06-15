@@ -492,7 +492,7 @@ class PB_Hud_ZS : BaseStatusBar
                     if(crandom() < 50)
                     {
                         helmetKernelPanic++;
-						S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+			//S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
                     }
                 }
 			}
@@ -1589,6 +1589,15 @@ class PB_Hud_ZS : BaseStatusBar
 						break;
 				}
 			}
+
+			if (health > 0 && isInventoryBarVisible()) //Placeholder for now, at least it works(?)
+			{
+				Vector2 invBarPos = (0, 0);
+				SetSway(invBarPos.x, invBarPos.y, 0, 0.75, 0.25);
+				invBarPos = (invBarPos.X, min(invBarPos.Y, 0));
+				DrawInventoryBar(InvBar, invBarPos, 7, DI_SCREEN_CENTER_BOTTOM, HX_SHADOW);
+			}
+
 		}
 	}
 	bool WeaponUsesPBAmmoType(){return WeaponUsesPBAmmoType1() || WeaponUsesPBAmmoType2();}

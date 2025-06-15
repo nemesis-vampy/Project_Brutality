@@ -3,6 +3,23 @@
 #include "MODELS/nashgore/BloodSpot/_models.txt"
 //#include "MODELS/nashgore/BloodTrail/_models.lmp"
 
+Model Line3d
+{
+	Model 0 "unitcube.obj"
+	Scale 1.0 1.0 1.2 // for Doom ratio
+	UseActorPitch
+	Skin 0 "PIXLM0"
+	FrameIndex PIXL M 0 0
+}
+Model LaserBlast
+{
+	Model 0 "unitcube.obj"
+	Scale 1.0 1.0 1.2 // for Doom ratio
+	UseActorPitch
+	Skin 0 "PIXLM0"
+	FrameIndex PIXL M 0 0
+}
+
 #include "MODELS/Definitions/Acid.txt"
 #include "MODELS/Definitions/GrowingBloodPoolsRed.txt"
 #include "MODELS/Definitions/GrowingBloodPoolsBlue.txt"
@@ -23,3 +40,4 @@
 #include "MODELS/Definitions/MODELDEF.Slot1.txt"
 #include "MODELS/Definitions/MODELDEF.Keys.txt"
 #include "MODELS/Definitions/Shrapnel.txt"
+#include "MODELS/Definitions/Slash.txt"

@@ -268,10 +268,10 @@ ACTOR PB_RocketZombie: PB_Sergeant //Replaces ShotgunGuy
 		TNT1 A 0 A_UnSetInvulnerable
 		Goto See
 		
-		Pain.MinorHead:
-		Pain.Head:
-		Pain:
-        TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 6)
+	Pain.MinorHead:
+	Pain.Head:
+	Pain:
+        TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "FallingAfterImpact")
 		
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
 		TNT1 A 0 
@@ -279,34 +279,26 @@ ACTOR PB_RocketZombie: PB_Sergeant //Replaces ShotgunGuy
 		TNT1 A 0 
 		MP0S G 3 A_Pain
 		
-		Goto See
-        TNT1 AAAAA 0
-        TNT1 A 0 A_Pain
-        ID11 H 8
-		ID11 S 35
-        TNT1 A 0 A_TakeInventory("IsDown", 1)
-		ID11 T 10
-        Goto See
-		
+	Pain.ExtremePunches:
 	Pain.Explosive:
 	Pain.ExplosiveImpact:
 	Pain.Kick:
-         TNT1 A 0
-		 TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		 TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "FallingAfterImpact")
-         ID11 G 1 A_Pain
-		 TNT1 A 0 A_GiveInventory("IsDown", 1)
-		 TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-        TNT1 A 0 ThrustThingZ(0,30,0,1)
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "FallingAfterImpact")
+		ID11 G 1 A_Pain
+		TNT1 A 0 A_GiveInventory("IsDown", 1)
+		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
+		TNT1 A 0 ThrustThingZ(0,30,0,1)
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
 		//ID11 E 1 A_Chase ("","")
 		SPO4 U 1 A_facetarget
-        SPO4 U 3 ThrustThing(angle*256/360+128, 10, 0, 0)
-        SPO4 UVWXY 3
+		SPO4 U 3 ThrustThing(angle*256/360+128, 10, 0, 0)
+		SPO4 UVWXY 3
 		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
 		Goto FallingAfterImpact
-		
-		FallingAfterImpact:
+
+	FallingAfterImpact:
 		ID11 H 1 A_GiveInventory ("FallingHeight", 1)
 		ID11 H 1 A_CheckFloor ("GetUp")
 		NULL A 0 A_JumpIf (momz == 0, "GetUp")

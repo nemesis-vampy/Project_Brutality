@@ -558,12 +558,15 @@ Class PB_Shotgun : PB_WeaponBase
 			SHTM I 1;
 			SHTM JKLMN 1;
 			TNT1 A 0 {
-				if(CountInv("ShotgunAmmo") == 0)
-				
+				if(CountInv("ShotgunAmmo") == 0){
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",10,1);
-				else
+					return ResolveState(null);
+				}
+				else{
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",11,1);
-				
+					return ResolveState("ReloadMagFinished");
+				}
+				return ResolveState(null);
 			}
 		LoadChamberMag:
 			SHMG J 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);

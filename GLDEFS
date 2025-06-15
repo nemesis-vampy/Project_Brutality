@@ -28,6 +28,40 @@ pointlight PB_CACOBALL
 	size 80
 }
 
+pointlight PB_Lightning_Bolt
+{
+	color 0.15 0.0 1.0
+	size 180
+}
+
+/* object PB_LightningBolt
+{
+	frame LTNAA { light PB_Lightning_Bolt	}
+	frame LTNAB { light PB_Lightning_Bolt	}
+	frame LTNAC { light PB_Lightning_Bolt	}
+	frame LTNAD { light PB_Lightning_Bolt	}
+	frame LTNAE { light PB_Lightning_Bolt	}
+	frame LTNAF { light PB_Lightning_Bolt	}
+	frame LTNAG { light PB_Lightning_Bolt	}
+	frame LTNAH { light PB_Lightning_Bolt	}
+	frame LTNAI { light PB_Lightning_Bolt	}
+	frame LTNAJ { light PB_Lightning_Bolt	}
+	frame LTNAK { light PB_Lightning_Bolt	}
+	frame LTNAL { light PB_Lightning_Bolt	}
+	frame LTNAM { light PB_Lightning_Bolt	}
+	frame LTNAN { light PB_Lightning_Bolt	}
+	frame LTNAO { light PB_Lightning_Bolt	}
+	frame LTNAP { light PB_Lightning_Bolt	}
+	frame LTNAQ { light PB_Lightning_Bolt	}
+	frame LTNAR { light PB_Lightning_Bolt	}
+	frame LTNAS { light PB_Lightning_Bolt	}
+	frame LTNAT { light PB_Lightning_Bolt	}
+	frame LTNAU { light PB_Lightning_Bolt	}
+	frame LTNAV { light PB_Lightning_Bolt	}
+	frame LTNAW { light PB_Lightning_Bolt	}
+	frame LTNAX { light PB_Lightning_Bolt	}
+} */
+
 object PB_CacodemonBall
 {
 	frame 0CB0A { light PB_CACOBALL	}
@@ -37,6 +71,30 @@ object PB_CacodemonBall
 	frame 0CB0E { light PB_CACOBALL	}
 	frame 0CB0F { light PB_CACOBALL	}
 
+}
+
+object PB_CacodemonBall2
+{
+    frame 0DB0A { light PB_CACOBALL    }
+    frame 0DB0B { light PB_CACOBALL    }
+    frame 0DB0C { light PB_CACOBALL    }
+    frame 0DB0D { light PB_CACOBALL    }
+    frame 0DB0E { light PB_CACOBALL    }
+    frame 0DB0F { light PB_CACOBALL    }
+
+}
+
+object LightningBolt
+{
+    frame LTNGB { light Lightning_Bolt_Light    }
+
+
+}
+
+pointlight Lightning_Bolt_Light
+{
+    color 0.15 0.0 1.0
+    size 180
 }
 
 HardwareShader postprocess scene

@@ -51,6 +51,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	MaxDropOffHeight 32
 	Radius 20
 	Height 56
+	ProjectilePassHeight 75
 	Scale 0.8
 	
 	Species "Bonehead"
