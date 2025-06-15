@@ -172,6 +172,7 @@ OptionMenu "PB_HUDOptions"
 	StaticText " "
 	StaticText "Execution", gold
 	Option "Show Execution Box", "pb_execution_box", "YesNo"
+	option "Execution Target Type",pb_execution_indicatorType,IndicatorTypes
 	StaticText  ""
 	StaticText "Effects", gold
 	Option "Show Blood Droplets", "pb_showblooddrops", "YesNo"
@@ -243,6 +244,19 @@ OptionValue "AimingStyle"
 {
 	0, "Toggle"
 	1, "Hold"
+}
+
+OptionValue IndicatorTypes
+{
+	-2,"minimal (text)"
+	-1,"minimal"
+	0,"magic 1"
+	1,"magic 2"
+	2,"shiny"
+	3,"star"
+	4,"default"
+	5,"swirl"
+	6,"stakes"
 }
 
 OptionMenu "GlobalSettings"

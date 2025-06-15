@@ -103,6 +103,7 @@ extend class PB_WeaponBase
 		
 		A_setroll(0);
 		A_zoomfactor(1.0);
+		invoker.curBlood = (0,0,0);
 		
 		//this was in the SelectFirstPersonLegs state
 		A_StopSound(1);

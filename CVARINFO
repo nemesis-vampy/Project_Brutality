@@ -46,6 +46,7 @@ server int pb_nobulletpenetration = 1;// CVar Info
 server int pb_knuckleanimationinstart = 0;
 
 user int pb_execution_box = 1;
+user int	pb_execution_indicatorType	= 	4;
 
 server int pb_disabledecorations = 1;
 
