@@ -1,624 +1,1290 @@
-server string pb_zombieman_override="Disabled";
-server string pb_sergeant_override="Disabled";
-server string pb_imp_override="Disabled";
-server string pb_chaingunner_override="Disabled";
-server string pb_pinky_override="Disabled";
-server string pb_spectre_override="Disabled";
-server string pb_cacodemon_override="Disabled";
-server string pb_painelemental_override="Disabled";
-server string pb_lostsoul_override="Disabled";
-server string pb_revenant_override="Disabled";
-server string pb_arachnotron_override="Disabled";
-server string pb_hellknight_override="Disabled";
-server string pb_baronofhell_override="Disabled";
-server string pb_mancubus_override="Disabled";
-server string pb_archvile_override="Disabled";
-server string pb_mastermind_override="Disabled";
-server string pb_cyberdemon_override="Disabled";
-server string pb_nazi_override="Disabled";
-server string pb_dog_override="Disabled";
-
-server bool pb_experimental = false;
-user bool py_weaponwheel_freeze = true;
-user int py_weaponwheel_invert = 0;
-user bool py_weaponwheel_musicfade = false;
-user bool pb_toggle_aim_hold = false;
-
-server bool pb_performance_fire = false;
-user bool pb_exaggeratedrecoil = true;
-user float pb_exaggeratedrecoilmul = 0.5;
-user int pb_floorwallblooddrawdist = 800;
-server bool pb_keepweapons = false;
-server int PB_WeaponDrops = 1;
-//Weapon Keep CVars
-user bool PB_KeepPistol = true;
-user bool PB_KeepRevolver = true;
-user bool PB_KeepSSG = true;
-user bool PB_KeepCarbine = true;
-
-user int sd_lasers_densityoffset = 1;
-
-user int pb_bloodamount	= 2;
-user int PB_tracerlight	= 0;
-user int PB_alttracer = 0;
-user int pb_lowgraphicsmode = 0;
-server int pb_classicmonsters = 0;
-server int zdoombrutalblood	= 2;
-server int zdoombrutaljanitor = 0; //For gibs
-server int zdoombrutaljanitorcasings = 0; //For casings & clips
-server int isrunningzandronum = 1;
-server int pb_nobulletpenetration = 1;// CVar Info
-server int pb_knuckleanimationinstart = 0;
-
-user int pb_execution_box = 1;
-
-server int pb_disabledecorations = 1;
-
-server int pb_disablemapenhancements = 1;
-
-server int pb_disablenewguns = 0;
-
-server int pb_disablenewenemies = 0;
-server bool pb_cyberdemondeath = false;
-server int pb_grenadeimpact = 0;
-server int pb_sglgrenadeimpact = 0;
-
-//DMR Reticle Related stuff.
-Server noarchive float TestX1 = 0.0;
-Server noarchive float TestY1 = 0.0;
-//User Int ReticleStyle = 0; //For ACS reticle in ADS
-
-// Mode (0 = Crop, 1 = Scale)
-server noarchive int widemode         = 1;
-
-// Title Page
-server noarchive string titlemusic    = "TM_MUS";
-server noarchive string titlepage     = "TM_BACK";
-server noarchive int titlepage_w      = 3840;
-server noarchive int titlepage_h      = 2160;
-server noarchive float titlepage_time = 11;
-
-// Number of credit pages
-server noarchive int creditpages = 0;
-
-// Credit page
-server noarchive string creditpage1     = "CREDIT";
-server noarchive int creditpage1_w      = 320;
-server noarchive int creditpage1_h      = 200;
-server noarchive float creditpage1_time = 5;
-
-//Screen Tilting
-user int disable_screentilt = 0;
-user float qtilt_strength = 1.0;
-user bool cl_MoveTilt = true;
-
-// CVar Info
-server float fs_volume_mul = 1.0;
-server float fs_delay_mul = 1.0;
-
-//Footsteps
-user float cl_step_volmul = 7.0;
-user float cl_step_delaymul = 1.0;
-
-//Gameplay Option
-user int SingleDualFire = 0;
-
-server int nodoomguytalk = 0;
-server bool pb_disable_sergeant_prone = false; //disable "prone" attacks from zombie sergeants
-server bool pb_disabledynamicavoid = false; //disables the more dynamic avoids on monsters
-
-server bool pb_grenadeshrapnel = false;
-server bool pb_mineshrapnel = false;
-server bool pb_rocketshrapnel = false;
-server bool pb_wallpenetration = false;
-
-//Weapon Recoil
-server float pb_weapon_recoil_mod_vertical = 1.0;
-server float pb_weapon_recoil_mod_horizontal = 1.0;
-server bool pb_weapon_recoil_extra_weapons = false; //some people don't like recoil on the rocket launcher, BFG etc, as they consider it not lore friendly or antithetical to the weapons design. This cvar enables recoil for them
-
-//Accessability Options
-server bool pb_camerarolltoggle = true; //Invert
-
-//Rendering
-server int noscreensplash = 0;
-server int nopaineffect = 0;
-server int bloodsplash = 0;
-user bool pb_lowflashesmode = false;
-
-user int PB_HatExtravaganza = 0;
-
-//Global Spawn balance. Do NOT touch.
-server int SpawnBalance=671;
-
-
-
-////////////////////Monster Spawning Toggles//////////////////////////
-
-//Zombieman
-server int pb_NoPistolZman = 0;
-server int pb_NoHelmetZman = 0;
-server int pb_NoZombieScientist = 0;
-server int pb_NoCarbineZombie = 0;
-
-//Sergeant
-server int pb_NoHelmetSergeant = 0;
-server int pb_NoAutoshotgunSergeant = 0;
-server int pb_NoZSpecOps = 0;
-server int pb_NoQuadSergeant = 0;
-server int pb_NoRocketSergeant = 0;
-server int pb_NoPyroSergeant = 0;
-server int pb_NoDemonTechSoldier = 0;
-server int pb_NoRiotShieldGuy = 0;
-
-//Commando
-server int pb_NoNailgunMajor = 0;
-server int pb_NoPlasmaZombie = 0;
-server int pb_NoClassicCommando = 0;
-
-//Imp Variants
-server int pb_NoBrownImps = 0;
-server int pb_NoDarkImps = 0;
-server int pb_NoSavageImps = 0;
-
-//Pinky Demon Variants
-server int pb_NoBloodDemon = 0;
-server int pb_NoMechDemon = 0;
-
-//Spectre Variants
-server int pb_VoidSpectre = 0;
-
-//Cacodemon Variants
-server int pb_NoMagCaco = 0;
-server int pb_NoAfrit = 0;
-
-//Pain Elemental Variants
-server int pb_NoSufferElemental = 0;
-server int pb_NoOverlord = 0;
-
-//Lost Soul Variants
-server int pb_NoPhantasm = 0;
-
-//Revenant Variants
-server int pb_NoBeamRevenant = 0;
-server int pb_NoDraugr = 0;
-
-//Arachnotron Variants
-server int pb_NoInfernoArachnotron = 0;
-server int pb_NoArachnotron2 = 0;
-server int pb_NoArachnophyte = 0;
-
-//Hell Knight Variants
-server int pb_NoCyberKnight = 0;
-server int pb_NoCyberPaladin = 0;
-
-//Baron Variants
-server int pb_NoCyberBaron = 0;
-server int pb_NoBelphegor = 0;
-server int pb_NoInfernus = 0;
-
-//Fatso Variants
-server int pb_NoDaedabus = 0;
-server int pb_NoVolcabus = 0;
-
-//Archvile Variants
-server int pb_NoIceVile = 0;
-server int pb_NoFleshwizard = 0;
-server int pb_NoHellion = 0;
-
-//Mastermind Variants
-server int pb_NoDemolisher = 0;
-server int pb_NoJuggernaut = 0;
-
-//Cyber Demon Variants
-server int pb_NoAnnihilator = 0;
-
-server bool PB_NaziExclusiveSpawning = true;
-
-// Should Collected Weapons Stay?
-User bool PlayerCatchup = false;
-
-////////////////////Weapon Spawning Toggles//////////////////////////
-server bool DynamicWeaponSpawn = true;
-
-//Tier 2 weapons
-server bool DisablePB_Revolver = false;
-server bool DisablePB_Autoshotgun = false;
-//Tier 2 weapons
-server bool DisablePB_Carbine = false;
-server bool DisablePB_SuperGL = false;
-server bool DisablePB_M2Plasma = false;
-//Tier 3 weapons
-server bool DisablePB_SMG = false;
-server bool DisablePB_HDMRUpgrade = false;
-server bool DisablePB_Nailgun = false;
-server bool DisablePB_SGMagazine = false;
-server bool DisablePB_QuadSG = false;
-server bool DisablePulseCannonUpgrade = false;
-server bool DisablePB_Railgun = false;
-server bool DisablePB_CryoRifle = false;
-//Tier 4 weapons
-server bool DisablePB_AutoshotgunUpgrade = false;
-server bool DisablePB_Deagle = false;
-server bool DisablePB_LMG = false;
-server bool DisablePB_MinigunUpgrade = false;
-server bool DisablePB_M2Upgrade = false;
-server bool DisablePB_Unmaker = false; //Why would you want this disabled???
-server bool DisablePB_FlamerUpgrade = false;	//not actually sure wich tier is this
-server bool DisablePB_Flamer = false;
-server int  DisablePB_MG42 = 0;	//0 can replace bfg, 1 only on wolfenstein maps, 2 or anything else is disabled
-server int pb_NoUpgrades = 0;
-server int pb_NoPulseCannonUpgrade = 0;
-
-
-server bool pb_nocooldown = false;
-server int pb_fastcryowarmup = 0;
-user bool pb_qsgquadload = false;
-//user int pb_UpgradeRevolver = 0;
-//user int pb_UpgradeCarbine = 0;
-//user int pb_UpgradeShotgun = 0;
-//user int pb_UpgradeNailgun = 0;
-//user int pb_UpgradePlasma = 0;
-//user int pb_UpgradeGL = 0;
-//user int pb_UpgradeLMG = 1; // ¯\_(ツ)_/¯
-
-user int pb_SGAltAmmoSwap = 0;
-user int pb_SGPumpFromHip = 0;
-user int pb_RLOverloadCell = 0;
-
-
-server int pb_NoCSSGWeapon = 1;
-server int pb_NoHeavyGLWeapon = 0;
-server int pb_NoBlackholeWeapon = 0;
-server bool pb_SSGRandomSpawn = false;
-
-server int pb_NoHelmetAnimation = 0;
-
-//Motion Blur by Pixel Eater
-user bool mblur = false ; //Disabled in response to fan feedback and to prevent possible startup errors on mobile devices or low end PCs.
-user int mblur_samples = 5 ;
-user float mblur_strength = 64 ;
-user float mblur_recovery = 64 ;
-user int mblur_blendmode = 1 ;
-user bool mblur_autostop = true ;
-user float mblur_threshold = 30 ;
-user float mblur_recovery2 = 90 ;
-
-// Tilt++ CVars
-
-// Strafe tilting
-server bool sv_strafetilt = true;
-server bool sv_strafetiltinvert = false;
-server float sv_strafetiltspeed = 1.0;
-server float sv_strafetiltangle = 0.5;
-
-// Movement tilting
-server bool sv_movetilt = false;
-server float sv_movetiltspeed = 15.000;
-server float sv_movetiltangle = 0.015;
-server float sv_movetiltscalar = 0.2;
-
-// Turn tilting
-server bool sv_turntilt = true;
-server float sv_turntiltscalar = 1.5;
-server bool sv_turntiltinvert = false;
-
-// Underwater tilting
-server bool sv_underwatertilt = true;
-server float sv_underwatertiltspeed = 0.5;
-server float sv_underwatertiltangle = 0.05;
-server float sv_underwatertiltscalar = 1.0;
-
-// Death tilting
-server bool sv_deathtilt = true;
-
-
-//New Head Hitbox System
-server float hs_factor = 2.0;
-server bool	 hs_hitbox 	= true; 
-
-// Max Casings
-server int nashgore_maxcasings = 50;
-// NashGore CVARs
-server int nashgore_maxgore = 1024;
-server int nashgore_bloodtype = 0;
-server float nashgore_bloodmult = 1.0;
-server int nashgore_bloodamount = 255;
-server bool nashgore_spriteblood = false;
-server bool nashgore_bloodspurt = true;
-server int nashgore_gibtype = 0;
-server int nashgore_gibamount = 255;
-server bool nashgore_corpseblood = true;
-server bool nashgore_footprints = true;
-server bool nashgore_deathflip = true;
-server bool nashgore_squish = true;
-server bool nashgore_icedeath = true;
-server bool nashgore_splat = true;
-
-
-/////////////////////////////////
-//Hard-Coded Movement for Project Brutality
-server 	bool 	pb_hazardmovement 		= true;
-server	int		pb_movetype				= 0;
-server	float	pb_friction				= 1.6;
-server 	float	pb_maxgroundspeed		= 15.1;
-server 	float	pb_maxhopspeed			= 28;
-server	float	pb_walkspeed			= 0.5;
-server	float	pb_crouchspeed			= 0.5;
-server 	float	pb_strafemodifier		= 1.33;
-server	bool	pb_dropprevention		= false;
-
-server 	float 	pb_jumpheight			= 8.0;
-server	float	pb_setgravity			= 1.0;
-server 	bool 	pb_autojump 			= true;
-
-
-server 	int 	pb_doublejump 			= 2;
-server 	float 	pb_doublejumpheight 	= 1.0;
-server 	bool 	pb_wjdoublejumprenew	= false;
-
-
-server  bool 	pb_landing				= true;
-server	float	pb_landingsens			= 6.0;
-server	float	pb_landingspeed			= 0.25;
-server	float	pb_minlanding			= 0.5;
-
-server	bool	pb_dash					= true;
-user	bool	pb_dasheffect			= true;
-user	bool	pb_doubletap			= false;		
-user	int		pb_maxtaptime			= 10;
-server	float	pb_dashboost			= 15.0;
-server	float	pb_dashheight			= 0.6;
-
-server	bool	pb_airdash				= false;
-server	float	pb_adashboost			= 10;
-server	float	pb_adashfriction		= 1;
-
-server	bool	pb_wjump				= false;
-server	float	pb_wjumpboost			= 1.5;
-server	float	pb_multipledashes		= 0.0;
-server	float	pb_wjumpheight			= 0.75;
-
-server	bool	pb_wslide				= false;
-server	float	pb_wslidevelz			= 0.9;
-
-
-server	bool	pb_crouchslide			= true;
-server 	int 	pb_cslidetype			= 0;
-server 	float 	pb_cslidestrength		= 1.5;
-server 	int 	pb_cslideduration		= 10;
-server 	float 	pb_qslideaccel			= 6.0;
-server 	int 	pb_qslideduration		= 8;
-
-//Ledge Grabbing
-server	bool	pb_ledgegrab			= true;
-
-/////////////////////////////////
-//General
-
-server	int		zm_movetype				= 0;
-server	float	zm_friction				= 8.0;
-server 	float	zm_maxgroundspeed		= 12;
-server 	float	zm_maxhopspeed			= 28;
-server	float	zm_walkspeed			= 0.7;
-server	float	zm_crouchspeed			= 0.7;
-server 	float	zm_strafemodifier		= 1.0;
-server	bool	zm_dropprevention		= false;
-
-////////////////
-//Jumping
-server 	float 	zm_jumpheight			= 5.5;
-server	float	zm_setgravity			= 0.56;
-server 	float 	pk_bhopjumpheight		= 0.85;
-server 	bool 	zm_autojump 			= true;
-
-//Double Jump
-server 	int 	zm_doublejump 			= 0;
-server 	float 	zm_doublejumpheight 	= 1.2;
-server 	bool 	zm_wjdoublejumprenew	= false;
-
-//Ramp Jump
-server 	bool 	zm_rampjump				= false;
-server 	float 	zm_rjumpmulti			= 1.0;
-
-
-
-//Jump Landing
-server  bool 	zm_landing				= false;
-server	float	zm_landingsens			= 6.0;
-server	float	zm_landingspeed			= 0.25;
-server	float	zm_minlanding			= 0.5;
-
-////////////////
-
-//Dashing - WallJumping - WallSliding
-server	bool	zm_dash					= false;
-user	bool	zm_doubletap			= true;		
-user	int		zm_maxtaptime			= 10;
-server	float	zm_dashboost			= 1.5;
-server	float	zm_dashheight			= 0.75;
-
-server	bool	zm_airdash				= false;
-server	float	zm_adashboost			= 10;
-server	float	zm_adashfriction		= 1;
-
-server	bool	zm_wjump				= false;
-server	float	zm_wjumpboost			= 1.5;
-server	float	zm_multipledashes		= 0.0;
-server	float	zm_wjumpheight			= 0.75;
-
-server	bool	zm_wslide				= false;
-server	float	zm_wslidevelz			= 0.9;
-
-//CrouchSliding
-server	bool	zm_crouchslide			= false;
-server 	int 	zm_cslidetype			= 0;
-server 	float 	zm_cslidestrength		= 1.5;
-server 	int 	zm_cslideduration		= 13;
-server 	float 	zm_qslideaccel			= 6.0;
-server 	int 	zm_qslideduration		= 8;
-
-//Ledge Grabbing
-server	bool	zm_ledgegrab			= false;
-
-
-////////////////
-//Bobbing
-
-user	bool	zm_stillbob				= false;
-user	int		zm_fullbobspeed			= 8;
-
-//Sway
-user	bool	zm_yawsway				= true;
-user 	float	zm_yawswayspeed			= 2;
-user 	float	zm_yawswayrange			= 2;
-user 	float	zm_yawswayfriction		= 10;
-user	bool	zm_yawswaydirection		= false;
-
-user	float	zm_pitchswaytype		= 0;
-
-
-//Y Offset
-user 	int		zm_offsetspeed			= 75;
-user 	int		zm_offsetmaxrange		= 30;
-user 	bool	zm_offsetdirection		= false;
-
-////////////////
-//Other
-server	int		zm_speedometer			= 0;
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////**Spawner CVARS**///////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
-
-// General Spawn CVars
-server	bool	pb_spawner_tiered	= false;
-
-//Shotgun Spawn
-server	int		pb_spawner_autoshotgun			= 0;
-server	int		pb_spawner_shotgunupgrade			= 0;
-server	int		pb_spawner_drum		= 0;
-
-
-/////////////////////////////////
-//PBVP Model Toggle
-
-Server	Bool	V5_MODELS			= false;
-Server	Bool	V5_Cull				= false;
-Server	Int		V5_MDist			= 900;
-Server	Bool	V5_Quake3			= false;
-server 	float	V5_Q3Spin			= 5.0;
-server 	float	V5_Q3Zoff			= 16.0;
-server 	float	V5_Q3Bob			= 0.5;
-server	noarchive	bool	V5_Mlock	= False;
-
-////////////////////////////////
-
-user bool pb_weapon_crosshairs = false;
-server bool pb_ScaleXWeapons = false;
-
-////////////////////////////////////
-// Generic's HUD
-
-user bool pb_huddynamics = true;
-user int pb_hudxmargin = 0;
-user int pb_hudymargin = 0;
-user bool pb_showhudvisor = true;
-user bool pb_showhudvisorglass = true;
-user bool pb_showlevelstats = false;
-user bool pb_uselowreshudfont = false;
-user bool pb_curmaxammolist = true;
-user bool pb_hideunusedtypes = true;
-user float pb_hudalpha = 1.0;
-user float pb_hudboxalpha = 1.0;
-user bool pb_showammolist = true;
-user float pb_messagesize = 1.0;
-nosave user bool pb_newmugshot = true;
-user bool pb_showblooddrops = true;
-user float pb_blooddropsalpha = 0.8;
-user bool pb_showglasscracks = true;
-user float pb_glasscracksalpha = 0.2;
-
-nosave server bool pbcv_inter = true;
-
-// Spawner Stuff
-// MapsBeatenCounter
-server noarchive bool CanGive = false;
-// Start at 1 because we don't increment from the titlemap.
-//SequentialMapOrder
-// once for the menu, once in game.
-server noarchive int SMO = 0;
-server int DynamicSpawnMonsters = 1;
-server int levelsToPlay = 32;
-
-//gearbox cvars
-// When adding new options, don't forget to add them to:
-// - zscript/zabor/event_handler.zs:printGearboxCvars().
-// - keyconf.txt:Alias gb_reset.
-
-// Options /////////////////////////////////////////////////////////////////////////////////////////
-
-user int   gb_scale     = 1;
-user color gb_color     = "22 22 CC";
-user color gb_dim_color = "00 00 00";
-user bool  gb_show_tags = true;
-
-// 0 - blocky view
-// 1 - wheel view
-user int gb_view_type = 0;
-
-user bool  gb_enable_dim       = true;
-user bool  gb_enable_blur      = true;
-user float gb_wheel_position   = 1.0;
-user float gb_wheel_scale      = 1.0;
-user bool  gb_wheel_tint       = true;
-user int   gb_multiwheel_limit = 12;
-
-user float gb_blocks_position_x = 0.0;
-user float gb_blocks_position_y = 0.0;
-
-user int   gb_text_scale      = 1;
-user float gb_text_position_x = 0.0;
-user float gb_text_position_y = 0.0;
-user float gb_text_position_y_max = 1.0;
-user int   gb_text_usual_color    = 21; // cyan
-user int   gb_text_selected_color =  9; // white
-
-user string gb_font = "PBBOLD";
-
-user bool gb_open_on_scroll   = false;
-
-user bool gb_open_on_slot     = false;
-user bool gb_reverse_slot_cycle_order  = false;
-user bool gb_select_first_slot_weapon  = false;
-
-user bool gb_mouse_in_wheel   = true;
-user bool gb_select_on_key_up = true;
-user bool gb_no_menu_if_one   = false;
-user bool gb_on_automap       = false;
-user bool gb_lock_positions   = false;
-user bool gb_enable_sounds    = true;
-user bool gb_frozen_can_open  = false;
-
-user int  gb_time_freeze      = 1;
-
-user float gb_mouse_sensitivity_x = 1.0;
-user float gb_mouse_sensitivity_y = 1.0;
-
-user bool gb_zabor_enabled = true;
-
-user bool gb_colored_ui   	= true;
-
-// Custom weapon order storage /////////////////////////////////////////////////////////////////////
-
-nosave string gb_custom_weapon_order = "";
-
-user bool pb_usenewwhizby = false;
-user float pb_tailvolume = 1.0;
-server bool pb_cheapcasings = true;
-
-user int pb_gunsmoketype = 0;
-
-server bool PB_MP_MovementTesting = false;
+AddOptionMenu "OptionsMenu"
+{
+	Submenu "Project Brutality Settings", "PBSettings"
+}
+AddOptionMenu "OptionsMenuSimple"
+{
+	Submenu "Project Brutality Settings", "PBSettings"
+}
+
+
+//Key : Value
+//PB_<monster code name>, monster name
+OptionString "PB_MonsterOverride" 
+{
+	"Disabled", "Disabled"
+	
+	//Zombie men
+	"PB_Zombieman", "Rifle Zombieman"
+	"PB_HelmetZombieman", "Helmeted Rifle Zombieman"
+	"PB_PistolZombieman", "Pistol Zombieman"
+	"PB_HelmetPistolZombieman", "Helmeted Pistol Zombieman"
+	"PB_ZombieScientist", "Axe Zombie Scientist"
+	"PB_ZombieScientistChainsaw", "Chainsaw Zombie Scientist"
+	"PB_CarbineZombieman", "Carbine Zombiemen"
+	"PB_PlasmaZombie", "Plasma Rifle Zombieman"
+	
+	//Sergeants
+	"PB_ShotgunGuy", "Shotgun Sergeant"
+	"PB_ShotgunGuyHelmet", "Helmet Shotgun Sergeant"
+	"ASGGuy", "Automatic Shotgun Sergeant"
+	"PB_ZSpecOps", "Submachinegun Sergeant"
+	"PB_RiotShieldGuy", "Riot Shield Sergeant"
+	"PB_RocketZombie", "Rocket Launcher Sergeant"
+	"PB_QSGZombie", "Quad Shotgun Sergeant"
+	"PB_DemonTechZombie", "Demon Tech Rifle Sergeant"
+	"PB_SuicideBomber", "Suicide Bomber Sergeant"
+	
+	//Chaingunners
+	"PB_RifleCommando", "Rifle Commando"
+	"PB_Commando", "Minigun Commando"
+	"PB_HelmetCommando", "Helmeted Minigun Commando"
+	"PB_NailgunMajor", "Nailgun Commando"
+	
+	//Imps
+	"PB_Imp", "Basic Imp"
+	"DNImpVariant1", "Horned Imp"
+	"DNImpVariant2", "Hornless Imp"
+	"DNImpVariant3", "Half-Horned Imp"
+	"PB_InfectedImp", "Savage Imp"
+	"PB_DarkImpNami", "Nami Dark Imp"
+	"PB_DarkImpNether", "Nether Dark Imp"
+	"PB_DarkImpST", "Hornless Dark Imp"
+	"PB_DarkImpVoid", "Void Dark Imp"
+	
+	//Pinky
+	"PB_Demon", "Pinky"
+	"PB_MeanDemon", "Mean Pinky"
+	"PB_Spectre", "Spectre Pinky"
+	"PB_VoidSpectre", "Void Spectre Pinky"
+	
+	//Arachnotrons
+	"PB_Arachnotron", "Arachnotron"
+	"PB_Arachnophyte", "Arachnophyte"
+	"PB_EliteArachnotron", "Elite Arachnotron"
+	"PB_InfernalArachnotron", "Infernal Arachnotron"
+	
+	//Mancubus
+	"PB_Mancubus", "Mancubus"
+	"PB_Daedabus", "Daedabus"
+	"PB_Volcabus", "Volcabus"
+	
+	//Cacodemon
+	"PB_Cacodemon", "Cacodemon"
+	"PB_Afrit", "Afrit"
+	"PB_InfernalCaco", "Infernal Cacodemon"
+	"PB_Watcher", "Watcher"
+	
+	//Pain Elementals
+	"PB_PainElemental", "Pain Elemental"
+	"PB_SufferingElemental", "Suffering Elemental"
+	
+	//Lost Souls
+	"PB_LostSoul", "Lost Soul"
+	"PB_Phantasm", "Phantasm"
+	
+	//Revenants
+	"PB_Revenant", "Revenant"
+	"PB_BeamRev", "Beam Revenant"
+	"PB_Draugr", "Draugr Revenant"
+	
+	//Hell Knights
+	"PB_Knight", "Hell Knight"
+	"PB_CyberKnight", "Cyber Knight"
+	"PB_CyberPaladin", "Cyber Paladin"
+	
+	//Barons
+	"PB_Baron", "Baron of Hell"
+	"PB_Belphegor", "Belphegor"
+	"PB_CyberBaron", "Cyber Baron"
+	"PB_Infernus", "Infernus"
+	
+	//Archviles
+	"PB_Archvile", "Archvile"
+	"PB_Hellion", "Hellion"
+	
+	//Bosses
+	"PB_Mastermind", "Spider Mastermind"
+	"PB_Juggernaut", "Juggernaut Mancubus"
+	"PB_Demolisher", "Demolisher Mastermind"
+	"PB_Cyberdemon", "Cyberdemon"
+	"PB_Annihilator", "Annihilator"
+	
+	//Special
+	"PB_Nazi", "Nazi"
+	
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+OptionMenu "PBSettings"
+{
+	Title "Project Brutality Settings"
+	StaticText " "
+	StaticText " "
+	Submenu "Spawn Settings",		"GlobalSettings"
+	StaticText " "
+	Submenu "Gameplay Settings",		"GameplaySettings"
+	StaticText " "
+	Submenu "Visual Settings",		"RenderingSettings"
+	StaticText " "
+	Submenu "HUD Settings",			"PB_HUDOptions"
+	statictext ""
+	Submenu "$GB_OPTIONS","gb_Options"
+	StaticText " "
+	StaticText " "
+	StaticText " "
+	Command "Go to Test Map", "map PBTEST"
+	StaticText " "
+	StaticText "$PB_VERSION_INFO"
+}
+//////////////////////////////////////////////////////////////////////////////////////
+
+OptionMenu "PB_HUDOptions"
+{
+	Title "Project Brutality HUD Options"
+	
+	StaticText "Options", gold
+	Option "HUD Sways when moving", "PB_HudDynamics", "YesNo"
+	Option "Helmet Corners", "pb_showhudvisor", "YesNo"
+	Option "Visor Glass", "pb_showhudvisorglass", "YesNo"
+	Option "Level Stats", "pb_showlevelstats", "YesNo"
+	Option "Low Resolution Font", "pb_uselowreshudfont", "YesNo"
+	StaticText "Better on low resolution displays", darkgray
+	Option "Show Ammo List", "pb_showammolist", "YesNo"
+	Option "Ammo List Displays current/max", "pb_curmaxammolist", "YesNo", "pb_showammolist"
+	Option "Hide Unused Ammo Types on Ammo List", "pb_hideunusedtypes", "YesNo", "pb_showammolist"
+	Option "Custom Mugshot","pb_newmugshot","YesNo"
+	StaticText " "
+	Slider "Horizontal Deadzone", "pb_hudxmargin", -9, 50, 1, 0
+	Slider "Vertical Deadzone", "pb_hudymargin", -9, 50, 1, 0
+	Slider "Visor Glass Transparency", "pb_hudalpha", 0, 1, 0.02, 2
+	Slider "Bar Background Transparency", "pb_hudboxalpha", 0, 1, 0.02, 2
+	Slider "Message Size", "pb_messagesize", 0, 1, 0.02, 2
+	StaticText " "
+	StaticText "GZDoom HUD scaling", gold
+	StaticText "Disable if your HUD is too big or too small. Also allows finer scaling.", brick
+	Option "Old HUD Scaling", "hud_oldscale", "YesNo"
+	Slider "Scale Factor", "hud_scalefactor", 0.36, 1.0, 0.02, 2
+	StaticText " "
+	StaticText "Presets", gold
+	Command "Full Style (Recommended)", "pb_full_hud_style"
+	Command "Minimal Style", "pb_minimal_hud_style"
+	StaticText " "
+	StaticText "Execution", gold
+	Option "Show Execution Box", "pb_execution_box", "YesNo"
+	StaticText  ""
+	StaticText "Effects", gold
+	Option "Show Blood Droplets", "pb_showblooddrops", "YesNo"
+	Slider "Blood Droplets Transparency", "pb_blooddropsalpha", 0, 1, 0.02, 2
+	Option "Show Visor Cracks", "pb_showglasscracks", "YesNo"
+	Slider "Visor Cracks Transparency", "pb_glasscracksalpha", 0, 1, 0.02, 2
+}
+
+OptionMenu "TiltPlusPlusMenu"
+{
+	Class "TiltPlusPlusMenu"
+	Title "$TILTPLUSPLUSMNU_TITLE"
+	Position -32
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_STRAFETILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT",				"sv_strafetilt", "YesNo"
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_INVERT",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_INVERT",		"sv_strafetiltinvert", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_SPEED",		"sv_strafetiltspeed", 0.1, 2.0, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_ANGLE",		"sv_strafetiltangle", 0.1, 1.0, 0.01, 2
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_MOVETILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT",				"sv_movetilt", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SPEED",			"sv_movetiltspeed", 0.1, 20.0, 0.1, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_ANGLE",			"sv_movetiltangle", 0.01, 0.10, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SCALAR",		"sv_movetiltscalar", 0.0, 1.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_TURNTILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT",				"sv_turntilt", "YesNo"
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_INVERT",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_INVERT",		"sv_turntiltinvert", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_SCALAR",		"sv_turntiltscalar", 0.0, 20.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_UNDERWATERTILT_TITLE", 1
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT",			"sv_underwatertilt", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SPEED",	"sv_underwatertiltspeed", 0.1, 5.0, 0.1, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_ANGLE",	"sv_underwatertiltangle", 0.01, 0.1, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SCALAR",	"sv_underwatertiltscalar", 0.0, 1.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_DEATHTILT_TITLE", 1
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_DEATHTILT",				"sv_deathtilt", "YesNo"
+}
+
+OptionValue "YesOrNo"
+{
+	0, "No"
+	1, "Yes"
+}
+
+OptionValue "YesOrNoFalse"
+{
+	1, "No"
+	0, "Yes"
+}
+
+OptionValue "BloodSplashOption"
+{
+	0, "Alternative"
+	1, "Regular"
+}
+
+OptionValue "AimingStyle" 
+{
+	0, "Toggle"
+	1, "Hold"
+}
+
+OptionMenu "GlobalSettings"
+{
+	Title "--------- Spawn Settings ---------"
+	StaticText " "
+	StaticText "--------- Determine what type of weapons and enemies you'll encounter. ---------"
+	StaticText " "
+	Submenu "Global Spawn Rules",		"SpawnPresets"
+	StaticText " "
+	Submenu "Customize Monster Spawns",		"MonsterSpawns"
+	StaticText " "
+	Submenu "Customize Weapon Spawns",		"WeaponSpawns"
+	StaticText " "
+	
+	//StaticText "Spawn Weapons At Map Start Instead of Dynamically", gold
+	//Option "--------- Dynamically Spawn Weapons ---------",   "DynamicWeaponSpawn","SpawnChoiceSpawner"
+	//StaticText "Dynamic spawns weapons as you approach them while fixed spawns weapons at the start"
+	//StaticText "of the map. Fixed will spawn the weapons within your tier randomly instead of dynamic"
+	//StaticText "which will give you the next one you don't have."
+	//StaticText " "
+	Option "$PB_SSG_RNDSPWN",				"pb_SSGRandomSpawn", "OnOff"
+	
+	StaticText ""
+	
+	Option "Weapons persist through death exits",				"PlayerCatchup", "YesNo"
+}
+
+OptionValue "SpawnChoiceSpawner"
+{
+1, "Dynamic"
+0, "Fixed"
+}
+
+OptionMenu "SpawnPresets"
+{
+	Title "--------- Global Spawn Rules ---------"
+	//StaticText " "
+	//StaticText "Spawn Monsters as you approach them rather than on map start", gold
+	//Option "--------- Dynamically Spawn Monsters ---------",   "DynamicSpawnMonsters","YesNo"
+	StaticText " "
+	
+	Slider "Levels In Mapset", "levelsToPlay", 4, 512, 4
+	StaticText "How long the mapset you're playing is, so that PB can scale spawning across it."
+	Option "SPAWN RULE: ", "SpawnBalance","PBSpawnChoices"
+	StaticText " "
+	StaticText "--------- Dynamic Progression ---------", gold
+	StaticText "Subtle curving of tiers, with overlaps between the previous/new tier."
+	StaticText "When a tier begins, spawns from the previous tier and new tier have 50/50 spawn priority." 
+	StaticText "As maps in a tier (i.e maps 9-16) progress, these ratios gradually change, until the new tier is 100% of the spawn pool"
+	StaticText "This is the intended 'vanilla' setting for Project Brutality, when playing through standard IWADS or full megawads.", green
+	StaticText "This is sequential, if you do dynamic progression make sure you start a new game for the proper experience", green
+	StaticText " "
+	StaticText "--------- Tiered Progression ---------", gold
+	StaticText "Hard skip from tier to tier. When a tier begins, there is no subtle curving - all spawns adhere to the active tier."
+	StaticText " "
+	StaticText "--------- Tier 1 ---------", gold
+	StaticText "Play with just weapons and monsters from Tier 1"
+	StaticText " "
+	StaticText "--------- Tier 2 ---------", gold
+	StaticText "Play with just weapons and monsters from Tier 2"
+	StaticText " "
+	StaticText "--------- Tier 3 ---------", gold
+	StaticText "Play with just weapons and monsters from Tier 3"
+	StaticText " "
+	StaticText "--------- Tier 4 ---------",gold
+	StaticText "Play with just weapons and monsters from Tier 4"
+	StaticText " "
+	StaticText "--------- Chaotic Random ---------", gold
+	StaticText "All monsters and weapons have equal weight. You may encounter anything at any time."
+	StaticText "This is the reccomended setting for single-map mods.", green
+	StaticText " "
+	StaticText "--------- Death Wish ---------", gold
+	StaticText "The Development Team's personal choice of what we consider the toughest monsters and weakest weapons. You've been warned."
+	StaticText " "
+	StaticText " "
+	StaticText "TIERING IS WRITTEN UNDER THE ASSUMPTION YOU ARE PLAYING A 32 MAP MEGAWAD. NEW TIERS BEGIN AT MAPS 9, 17, AND 25.", orange
+}
+OptionMenu "WeaponSpawns"
+{
+	Title	"--------- Weapon Spawns ---------"
+	StaticText "--------Tier 2 Weapons--------", gold
+	Option "Revolver", "DisablePB_Revolver", "OffOn"
+	Option "Auto-Shotgun", "DisablePB_Autoshotgun", "OffOn"
+	Option "Carbine", "DisablePB_Carbine", "OffOn"
+	Option "Grenade Launcher", "DisablePB_SuperGL", "OffOn"
+	Option "M2 Plasma Rifle", "DisablePB_M2Plasma", "OffOn"
+	Option "Flamethrower","DisablePB_Flamer","OffOn"
+	StaticText " "
+	StaticText "--------Tier 3 Weapons-------", gold
+	Option "Sub Machine Gun", "DisablePB_SMG", "OffOn"
+	Option "Pump Shotgun Magazine /w Dragon's Breath Shells",				"DisablePB_SGMagazine", "OffOn"
+	Option "Quad-Barreled Shotgun",				"DisablePB_QuadSG", "OffOn"
+	Option "Heavy DMR",				"DisablePB_HDMRUpgrade", "OffOn"
+	Option "Nailgun", "DisablePB_Nailgun", "OffOn"
+	Option "MG42","DisablePB_MG42","MG42Spawns"
+	Option "Anti-Matter Pulse Cannon",				"DisablePulseCannonUpgrade", "OffOn"
+	Option "Cryo Rifle", "DisablePB_CryoRifle", "OffOn"
+	Option "Rail Gun", "DisablePB_Railgun", "OffOn"
+	option "Flamethrower Upgrade","DisablePB_FlamerUpgrade","OffOn"
+	StaticText " "
+	StaticText "--------Tier 4 Weapons--------", gold
+	Option "'Martian Raptor' Automag pistol",				"DisablePB_Deagle", "OffOn"
+	Option "Auto-Shotgun Drum Magazine",				"DisablePB_AutoshotgunUpgrade", "OffOn"
+	Option "LMG",				"DisablePB_LMG", "OffOn"
+	Option "Triple-Barreled Minigun Modification",				"DisablePB_MinigunUpgrade", "OffOn"
+	Option "M2 Lightning Gun Module",				"DisablePB_M2Upgrade", "OffOn"
+	Option "The Unmaker",				"DisablePB_Unmaker", "OffOn"
+	StaticText " "
+	StaticText "--------Important Notes--------", orange
+	StaticText "Disabling the base Autoshotgun also disables its drum magazine."
+	StaticText " "
+}
+
+OptionValue "ReticleCode"
+{
+	0, "DECORATE"
+	1, "ACS with floating"
+}
+
+optionvalue "MG42Spawns"
+{
+	0,"On"
+	1,"On (only in Wolfenstein maps)"
+	2,"Off"
+}
+
+optionvalue "MonsterDrops"
+{
+	0,"Just ammo"
+	1,"Default"
+	//2,"weapons+"
+}
+
+OptionMenu "GameplaySettings"
+{
+	Title "---------Game Settings---------"
+	
+	StaticText " "
+	Option "Unique Weapon Crosshairs",	"pb_weapon_crosshairs", "OnOff"
+	StaticText "Cross is unique for each weapon (overrides custom crosshair setting)"
+	StaticText " "
+	StaticText " "
+	option "Keep unupgraded weapons ","pb_keepweapons","EnabledOption"//,false,0
+	StaticText "Only effective if keep weapons is disabled"
+	option "Keep Pistol","PB_KeepPistol","EnabledOption"//, "pb_keepweapons"
+	option "Keep Revolver","PB_KeepRevolver","EnabledOption"//, "pb_keepweapons"
+	option "Keep SSG","PB_KeepSSG","EnabledOption"//, "pb_keepweapons"
+	option "Keep Carbine","PB_KeepCarbine","EnabledOption"//, "pb_keepweapons"
+	StaticText "Supported weapons:  revolver/deagle, SSG/QSG, Carbine/LMG",green
+	StaticText " "
+	StaticText " "
+	option "Wall Penetration ","pb_wallpenetration","EnabledOption"
+	option "Demon Tech fire ","pb_dtechfire","EnabledOption"
+	StaticText "Allow DTech projectiles to spawn hurting fire"
+	option "Unmaker fire ","pb_unmakerfire","EnabledOption"
+	StaticText "Allow Unmaker lasers to spawn hurting fire"
+	StaticText " "
+	StaticText " "
+	option "Monster weapon drops ","PB_WeaponDrops","MonsterDrops"
+	StaticText " "
+	StaticText " "
+	
+  StaticText " "
+	Option "$PB_DUALSTYLE",	"SingleDualFire", "DualWieldOption"
+	StaticText "$PB_DUALSTYLE_SIN", green
+//	StaticText "$PB_DUALSTYLE_SINEXTRA", green
+	StaticText "$PB_DUALSTYLE_DEF"
+	StaticText "$PB_DUALSTYLE_INV", darkgray
+	//StaticText "NOTICE: Inverted doesn't work at the moment."
+	StaticText " "
+	StaticText " "	
+	
+	//Option "Weapon Wheel Freezes Time",	"py_weaponwheel_freeze", "OnOff"
+	Option "Weapon ADS Controls","pb_toggle_aim_hold", "AimingStyle" //Looks like we are using this newer line.
+	StaticText " "
+	StaticText "-----------------Grenade Bounce/Explosion Behavior-----------------"
+	Option "Hand Grenades", "pb_grenadeimpact", "GrenadeBounceStyle"
+	Option "Grenade Launcher", "pb_sglgrenadeimpact", "GrenadeBounceStyle"
+	StaticText "Grenade Launcher 'Sticky Bombs' not affected.", orange
+	StaticText " "
+	
+	StaticText "Explosion Shrapnel"
+	Option "Grenade Shrapnel", "pb_grenadeshrapnel", "OnOff"
+	Option "Rocket Shrapnel", "pb_rocketshrapnel", "OnOff"
+	Option "Mine Shrapnel", "pb_mineshrapnel", "OnOff"
+	StaticText " "
+	
+	//Option "DMR / HDMR Reticle Code Source?",	 "ReticleStyle", "ReticleCode" //For ACS style reticle
+	//StaticText " "
+	//StaticText " "
+
+			
+  StaticText "Pump Shot Gun Settings"
+	StaticText " "
+	Option "Alternate Ammo Swap Animation",	"pb_SGAltAmmoSwap", "OnOff"
+	StaticText "Ammo Swap is slower and more realistic"
+	Option "Alternate Pump Animation",	"pb_SGPumpFromHip", "OnOff"
+	StaticText "Pump shotgun from hip when you have berserk or a box magazine upgrade is in inventory"
+	
+ StaticText " "
+	
+ StaticText "Rail Gun Settings"
+	StaticText " "
+	Option "Overloaded Cell",	"pb_RLOverloadCell", "OnOff"
+	StaticText "A 50% Chance when firing a 60 cell laser blast you will overload the cell"
+	StaticText " "
+	StaticText " "
+	
+	Option "Advanced movement on hazard floors","pb_hazardmovement", "OnOff"
+	StaticText "Toggles hazard floors to inhibit or allow advanced movement, such as jumping and dashing"
+	StaticText "Turn this off for maps where advanced movement is not intended!!!"
+	StaticText " "
+	StaticText " "
+
+		
+	Option "Disable Helmet Animation",				"pb_NoHelmetAnimation", "OnOff"
+	StaticText "Disable the animation of putting on your helmet at the start of the game"
+	StaticText " "
+	StaticText " "
+		
+	Option "Disable Auto-Doomguy Talk",				"nodoomguytalk", "OnOff"
+	StaticText "Disables the chance for automatic taunts to play."
+	StaticText " "
+	StaticText " "
+	
+	Option "$PB_DISABLE_PRONE", "pb_disable_sergeant_prone", "YesNo"
+	StaticText "$PB_DISABLE_PRONE_DESC"
+	StaticText " "
+	StaticText " "
+	
+	Option "Standard Cyberdemon Death animation", "pb_cyberdemondeath", "YesNo"
+	StaticText "Plays standard cyberdemon death animation instead"
+	StaticText "of the slower, Hideous Destructor inspired death animation"
+	StaticText " "
+	StaticText " "
+	
+	
+	Slider "$PB_RECOIL_VERTICAL", "pb_weapon_recoil_mod_vertical", 0.0, 2.0, 0.1, 2
+	Slider "$PB_RECOIL_HORIZONTAL", "pb_weapon_recoil_mod_horizontal", 0.0, 2.0, 0.1, 2
+	StaticText "$PB_RECOIL_DESC"
+	Option "$PB_RECOIL_EXTRA", "pb_weapon_recoil_extra_weapons", YesNo
+	StaticText "$PB_RECOIL_EXTRA_DESC"
+	StaticText " "
+	StaticText " "	
+	/*
+	StaticText "-----------------Weapon Progression-----------------"
+	
+	StaticText " "
+	Option "Revolver upgrades Pistol",				"pb_UpgradeRevolver", "OnOff"
+	StaticText "No longer use the Pistol once you collect a revolver"
+	StaticText " "
+	
+	Option "LMG upgrades Carbine",				"pb_UpgradeLMG", "OnOff"
+	StaticText "No longer use the Carbine once you collect an LMG"
+	StaticText " "
+	
+	Option "Carbine upgrades DMR",				"pb_UpgradeCarbine", "OnOff"
+	StaticText "No longer use the DMR once you collect a Carbine"
+	StaticText " "
+	
+	Option "Autoshotgun upgrades Pump Shotgun",				"pb_UpgradeShotgun", "OnOff"
+	StaticText "No longer use the Pump Shotgun once you collect a Autoshotgun"
+	StaticText " "
+	
+	Option "Nailgun upgrades Minigun",				"pb_UpgradeNailgun", "OnOff"
+	StaticText "No longer use the Minigun when you collect a Nailgun"
+	StaticText " "
+	*/
+	StaticText "-----------------Weapon Misc-----------------"
+
+	Option "$PB_NO_M1PLASMACOOLDOWN", "pb_nocooldown", "YesNo"
+	StaticText "$PB_NO_M1PLASMACOOLDOWN_DESC"
+	StaticText "$PB_NO_M1PLASMACOOLDOWN_NOTICE", "darkgray"
+//	StaticText "$PB_NO_M1PLASMACOOLDOWN_EXTRA", "purple"
+	StaticText " "
+
+	Option "$PB_CRYOWARMUP", "pb_fastcryowarmup", "CryoWarmupOption"
+	StaticText "$PB_CRYOWARMUP_DESC"
+	StaticText "$PB_CRYOWARMUP_DESC2"
+	StaticText "$PB_CRYOWARMUP_DESC3"
+	StaticText "$PB_CRYOWARMUP_NO"
+	StaticText " "
+	StaticText "(Experimental Tweaks)"
+	Option "Quad Shotgun Quad-Load", "pb_qsgquadload", "OnOff"
+	StaticText "Allows Quad-Shotgun to reload all four shells at once. Only happens if the option to keep the SSG is off, or if keeping weapons is disabled."
+	StaticText " "
+}
+
+OptionMenu "RenderingSettings"
+{
+	Title "---------Rendering Settings---------"
+	StaticText " "
+	Submenu "Gore/Debris Settings", "GoreDebrisMenu"
+	StaticText " "
+	
+	Submenu "Motion Blur Settings", "MBlurOpts"
+	StaticText " "
+	
+	Submenu "Screen Tilt Settings", "TiltPlusPlusMenu"
+	StaticText " "
+	
+	Submenu "Weapon Visual Settings", "WeaponVisuals"
+	StaticText " "
+	
+	Submenu "Project Brutality Voxel Project settings", "PBVPOptions"
+	StaticText " "
+	
+	Slider "Maximum Wall Decals", "cl_maxdecals", 0, 10000, 100
+	StaticText " "
+
+    Option "Performance Fire", "pb_performance_fire", "OnOff"
+    StaticText "Use less effects for Flamethrower fire"
+	StaticText " "
+
+	Option "Exaggerated Weapon Recoil", "PB_ExaggeratedRecoil", "YesNo"
+	Slider "Exaggeration Multiplier", "PB_ExaggeratedRecoilMul", 0.1, 2.0, 0.1, 1, "PB_ExaggeratedRecoil"
+	StaticText "Exaggerated recoil for fully automatic weapons, they will sway around and tilt while firing."
+	StaticText " "
+	
+	Option "Show dash screen effect","pb_dasheffect", "OnOff"
+	StaticText "Toggles the screen effect when performing a dash"
+	StaticText " "
+	
+    Option "Low Flashes Mode", "pb_lowflashesmode", "OnOff"
+    StaticText "Significantly lower flashing effects when a powerup is running out"
+	StaticText " "
+	
+	Option "Blood Splash Effects Mode",				"bloodsplash", "BloodSplashOption"
+	StaticText "Switch between the Regular PB Blood Splash and the Alternative Blood Splash"
+	StaticText " "
+	
+	Option "Disable Screen Splash Effects",				"noscreensplash", "OnOff"
+	StaticText "Disables the splashing of liquids on the screen"
+	StaticText " "
+	
+	Option "Disable Screen Pain Effects",				"nopaineffect", "OnOff"
+	StaticText "Disables the screen scratches, bullet holes, and cracks"
+	StaticText " "
+	
+	Option "Enable Light From Tracers",				"PB_tracerlight", "OnOff"
+	StaticText "Enables GL light emitted from tracers"
+	StaticText " "
+	Option "Alternate Tracers","PB_alttracer", "OnOff"
+	StaticText "Enables longer/more realistic tracer (Rifle/Minigun only currently)"
+	StaticText " "
+	
+	
+}
+
+OptionMenu "PBVPOptions" // Project Brutality Voxel Project settings
+{
+	Title "--------- Project Brutality Voxel Project settings ---------"
+	StaticText " "
+
+	Option "Enable Project Brutality Voxel Models (WIP)","V5_MODELS","OnOff"
+	Control "Toggle PBVP Models On/Off" , "togglepbvp"
+	StaticText " "
+	StaticText "Replaces Pickups/Casings/Decor with Voxel-Style PolyMesh Models"
+	StaticText "Models may cause performance issues", "darkgray"
+	StaticText "You can switch this feature On or Off at any time."
+	StaticText " "
+	Option "Enable Culling",			"V5_Cull",	"OnOff",	"V5_MODELS"
+	NumberField_PBVP "Culling Distance (120 - 1020)", "V5_MDist" , 120, 1020 , 60 , "V5_Cull", "V5_Models"
+	StaticText " "
+	StaticText "Models will only render in when inside the set culling distance"
+	StaticText " "
+	Option "[QSA]Quake 3 Style Animations(WIP)",			"V5_Quake3",	"OnOff",	"V5_Models"
+	StaticText " "
+	StaticText "Makes Weapons, Keys, and small pickups float and spin a la Quake 3"
+	StaticText " "
+	StaticText "----------QSA Settings---------"
+	StaticText " "
+	Option_PBVP "Spin", "V5_Q3Spin" , "Q3SpinSpeed" ,"V5_Quake3", "V5_models"
+	StaticText " "
+	Option_PBVP "Floating", "V5_Q3Zoff" ,"Q3floating","V5_Quake3", "V5_models"
+	StaticText " "
+	Option_PBVP "Bobbing", "V5_Q3Bob" , "Q3Bobbing","V5_Q3Zoff", "V5_Quake3", "V5_models"
+	StaticText " "
+}
+OptionValue "Q3SpinSpeed"
+{
+	-5,"Reverse"
+	0,	"No spin"
+	5, "Normal"
+}
+
+OptionValue "GrenadeBounceStyle"
+{
+	0, "Default"
+	1, "Explode on impact"
+	2, "Don't bounce"
+}
+
+OptionValue "Q3Bobbing"
+{
+	0,	"Off"
+	0.5, "Quake (Half)"
+	1, "Full Bob"
+}
+
+OptionValue "Q3Floating"
+{
+	0,	"Off"
+	16, "On"
+}
+
+//Motion Blur Options by Pixel Eater
+OptionValue "MBlurBlendModes"
+{
+	0, "Normal"
+	1, "Lighten"
+}
+OptionMenu "MBlurAdvOpts"
+{
+	//Position -15
+	Title "Advanced Settings"
+	Option "Auto Stop", "mblur_autostop", OnOff
+	Slider "Stop Recovery", "mblur_recovery2", 0, 100, 5, 2
+	Slider "Stop Threshold", "mblur_threshold", 0, 100, 10, 2
+}
+
+OptionMenu "MBlurOpts"
+{
+	//Position -15
+	Title "Motion Blur"
+	Option "Enabled", "mblur", YesNo
+	Option "Blend Mode", "mblur_blendmode", "MBlurBlendModes"
+	statictext ""
+	Slider "Samples", "mblur_samples", 1, 100, 1, 0
+	Slider "Strength", "mblur_strength", 1, 500, 8, 2
+	Slider "Recovery", "mblur_recovery", 4, 100, 4, 1
+	Submenu "Advanced", "MBlurAdvOpts"	
+}
+///////////////////////////////////////////////////////////////////////////////////////	
+OptionMenu "MonsterSpawns"
+{
+	Title	"---------Monster Spawns---------"
+	StaticText "---------------Zombiemen Variants---------------", gold
+	
+	Option "Disable Nazi random replacements", "PB_NaziExclusiveSpawning", "EnabledOption"
+	StaticText "Disable the random chance for Nazis to be replaced by Grunts", red
+	StaticText " "
+	Option "Zombieman Override", "pb_zombieman_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "Pistol Zombiemen", "pb_NoPistolZman", "OffOn"
+	Option "Helmet Zombiemen", "pb_NoHelmetZman", "OffOn"
+	Option "Zombie Scientist", "pb_NoZombieScientist", "OffOn"
+	Option "Carbine Zombie", "pb_NoCarbineZombie", "OffOn"
+	Option "Plasma Zombie", "pb_NoPlasmaZombie", "OffOn"
+	StaticText " "
+	StaticText "---------------Sergeant Variants---------------", gold
+	StaticText " "
+	Option "Sergeant Override", "pb_sergeant_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "Helmet Sergeant", "pb_NoHelmetSergeant", "OffOn"
+	Option "Pyro Sergeant", "pb_NoPyroSergeant", "OffOn"
+	Option "Autoshotgun Sergeant", "pb_NoAutoshotgunSergeant", "OffOn"
+	Option "Quad-Shotgun Sergeant", "pb_NoQuadSergeant", "OffOn"
+	Option "Riot Shield Sergeant", "pb_NoRiotShieldGuy", "OffOn"
+	Option "Rocket Launcher Sergeant", "pb_NoRocketSergeant", "OffOn"
+	StaticText " "
+	StaticText "---------------Commando Variants---------------", gold
+	StaticText " "
+	Option "Commando Override", "pb_chaingunner_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "Nailgun Major", "pb_NoNailgunMajor", "OffOn"
+	Option "Demon Tech Soldier", "pb_NoDemonTechSoldier", "OffOn"
+	Option "Classic Chaingun Commando", "pb_NoClassicCommando", "OffOn"
+	Option "Z-SpecOps", "pb_NoZSpecOps", "OffOn"
+	StaticText " "
+	StaticText "---------------Imp Variants---------------", gold
+	StaticText " "
+	Option "Imp Override", "pb_imp_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T1 - Imp", "pb_NoBrownImps", "OffOn"
+	Option "T2 - Savage", "pb_NoSavageImps", "OffOn"
+	Option "T3 - Dark", "pb_NoDarkImps", "OffOn"
+	StaticText " "
+	StaticText "---------------Pinky Demon Variants---------------", gold
+	StaticText " "
+	Option "Pinky Override", "pb_pinky_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Blood Demons", "pb_NoBloodDemon", "OffOn"
+	Option "T3 - Mech Demons", "pb_NoMechDemon", "OffOn"
+	StaticText " "
+	StaticText "---------------Spectre Variants---------------", gold
+	StaticText " "
+	Option "Spectre Override", "pb_spectre_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Void Spectre", "pb_VoidSpectre", "OffOn"
+	StaticText " "
+	StaticText "---------------Cacodemon Variants---------------", gold
+	StaticText " "
+	Option "Cacodemon Override", "pb_cacodemon_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Inferno Caco", "pb_NoMagCaco", "OffOn"
+	Option "T3 - Afrit", "pb_NoAfrit", "OffOn"
+	StaticText " "
+	StaticText "---------------Pain Elemental Variants---------------", gold
+	StaticText " "
+	Option "Pain Elemental Override", "pb_painelemental_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Suffering Elemental", "pb_NoSufferElemental", "OffOn"
+	StaticText " "
+	StaticText "---------------Lost Soul Variants---------------", gold
+	StaticText " "
+	Option "Lost Soul Override", "pb_lostsoul_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Phantasm", "pb_NoPhantasm", "OffOn"
+	StaticText " "
+	StaticText "---------------Revenant Variants---------------", gold
+	StaticText " "
+	Option "Revenant Override", "pb_revenant_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Beam Revenant", "pb_NoBeamRevenant", "OffOn"
+	Option "T3 - Draugr", "pb_NoDraugr", "OffOn"
+	StaticText " "
+	StaticText "---------------Arachnotron Variants---------------", gold
+	StaticText " "
+	Option "Arachnotron Override", "pb_arachnotron_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Inferno Arachnotron", "pb_NoInfernoArachnotron", "OffOn"
+	Option "T3 - Arachnophyte", "pb_NoArachnophyte", "OffOn"
+	Option "T4 - Elite Arachnotron", "pb_NoArachnotron2", "OffOn"
+	StaticText " "
+	StaticText "---------------Hell Knight Variants---------------", gold
+	StaticText " "
+	Option "Hell Knight Override", "pb_hellknight_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Cyber Hell Knight", "pb_NoCyberKnight", "OffOn"
+	Option "T3 - Cyber Hell Paladin", "pb_NoCyberPaladin", "OffOn"
+	StaticText " "
+	StaticText "---------------Baron of Hell Variants---------------", gold
+	StaticText " "
+	Option "Baron of Hell Override", "pb_baronofhell_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Cyber Baron", "pb_NoCyberBaron", "OffOn"
+	Option "T3 - Belphegor", "pb_NoBelphegor", "OffOn"
+	Option "T4 - Infernus", "pb_NoInfernus", "OffOn"
+	StaticText " "
+	StaticText "---------------Mancubus Variants---------------", gold
+	StaticText " "
+	Option "Mancubus Override", "pb_mancubus_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Daedabus", "pb_NoDaedabus", "OffOn"
+	Option "T3 - Volcabus", "pb_NoVolcabus", "OffOn"
+	StaticText " "
+	StaticText "---------------Archvile Variants---------------", gold
+	StaticText " "
+	Option "Archvile Override", "pb_archvile_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Hellion", "pb_NoHellion", "OffOn"
+	StaticText " "
+	StaticText "---------------Spider Mastermind Variants---------------", gold
+	StaticText " "
+	Option "Spider Mastermind Override", "pb_mastermind_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Demolisher", "pb_NoDemolisher", "OffOn"
+	Option "T3 - Juggernaut", "pb_NoJuggernaut", "OffOn"
+	StaticText " "
+	StaticText "---------------Cyber Demon Variants---------------", gold
+	StaticText " "
+	Option "Cyber Demon Override", "pb_cyberdemon_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "T2 - Annihilator", "pb_NoAnnihilator", "OffOn"
+	StaticText " "
+	StaticText " "
+	StaticText "---------------Special Monster Overrides---------------", gold
+	StaticText " "
+	Option "Nazi Override", "pb_nazi_override", "PB_MonsterOverride"
+	StaticText " "
+	Option "Dog Override", "pb_dog_override", "PB_MonsterOverride"
+	StaticText " "
+}
+
+OptionMenu "SpawnSettings"
+{
+	Title "Project Brutality Settings"
+	StaticText "---Weapon Spawns---"
+	StaticText "Melee"
+	StaticText "Small Caliber Firearms"
+	StaticText "Shotguns"
+	StaticText "Large Caliber Firearms"
+	StaticText "Launchers"
+	StaticText "Plasma Weapons"
+	StaticText "Special Energy Weapons"
+	StaticText "Big Guns"
+	StaticText "Demonic Weapons"
+	StaticText "Secret Weapons"
+}
+
+OptionValue "PBSpawnChoices"
+{
+666, "Dynamic Progression"
+667, "Tier 1"
+668, "Tier 2"
+669, "Tier 3"
+670, "Tier 4"
+671, "Tiered Progression"
+672, "DeathWish" //YE
+663, "Chaotic Random"
+//674, "Pistol Starts"
+}
+
+OptionValue "HealthPackColor"
+{
+0, "Green"
+1, "White"
+}
+
+ListMenu "MainMenu"
+{
+	IfGame(Doom, Chex)
+	{
+		StaticPatch 80, -10, "M_DOOMPB"
+		Position 85, 66
+	}
+	IfGame(Doom, Strife, Chex)
+	{
+		TextItem "New Game", "n", "PlayerclassMenu"
+		Selector "M_SKULL1", -30, -8
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "PB Options", "p", "PBSettings"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "Project Brutality", "p", "PBSettings"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"
+		TextItem "Project Brutality Settings", "p", "PBSettings"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+	Size Clean
+}
+
+ListMenu "PlayerclassMenu"
+{
+	StaticTextCentered 160, 15, "Select Game Mode"
+	Position 71, 50
+	Selector "M_SKULL1", -30, -8
+	Size Clean
+}
+
+ListMenu "EpisodeMenu"
+{
+	StaticTextCentered 160, 15, "Select Episode"
+	Position 21, 50
+	Selector "M_SKULL1", -30, -8
+	Size Clean
+}
+
+ListMenu "SkillMenu"
+{
+	StaticTextCentered 160, 15, "Select Difficulty"
+	Position 21, 50
+	Selector "M_SKULL1", -30, -8
+	Size Clean
+}
+
+OptionValue "EnabledOption"
+{
+	0, "Disabled"
+	1, "Enabled"
+}
+
+OptionValue "DisabledOption"
+{
+	0, "Enabled"
+	1, "Disabled"
+}
+
+OptionValue "DualWieldOption"
+{
+	0, "$PB_DUALOPT_SN"
+	1, "$PB_DUALOPT_DEF"
+	2, "$PB_DUALOPT_INV"
+}
+
+OptionValue "DoubleJumpOption"
+{
+	0, "Disabled"
+	2, "Enabled"
+}
+
+OptionValue "CryoWarmupOption"
+{
+	0, "$PB_CRYO_DEF"
+	1, "$PB_CRYO_FST"
+	2, "$PB_CRYO_CLS"
+}
+
+OptionValue "maxgibs"
+{
+	1, "0"
+	64, "64"
+	100, "100"
+	500, "500"
+	1000, "1000"
+	2000, "2000"
+	5000, "5000"
+	10000, "10000"
+	25000, "25000"
+	50000, "50000"
+}
+
+
+OptionMenu "WeaponVisuals"
+{
+	Class "ZMoveMenu"
+	Title "Weapon Visual Options"
+	Position -32
+	
+	StaticText	"Bobbing", 1
+	ZMoveSlider	"Walk/Run View Bobbing",				"Adjust view bobbing's intensity when moving",											"movebob",					0.0,	1.0,	0.1
+	ZMoveSlider	"Still View Bobbing",					"Adjust view bobbing's intensity when not moving",										"stillbob",					0.0,	1.0,	0.1
+	ZMoveSlider	"Walk/Run Weapon Bobbing",				"Adjust weapon bobbing's intensity when moving",										"wbobspeed",				0.0,	2.0,	0.1
+	ZMoveOption	"Still Weapon Bobbing",					"Turn on/off the weapon bobbing when standing still",									"zm_stillbob",				"OnOff"
+	ZMoveSlider	"Sprite speed to full bob",				"How fast weapon sprites transition to their maximum bobbing range",					"zm_fullbobspeed",			1,		15,		1,		0
+	StaticText 	""
+	StaticText	"Weapon Sway", Orange
+	ZMoveOption "Yaw Weapon Sway", 						"Allow weapons to sway according to your mouse yaw",									"zm_yawsway",				"OnOff"
+	ZMoveSlider "Yaw Sway Speed", 						"How fast weapons sway",																"zm_yawswayspeed",			0,		4,		0.5
+	ZMoveSlider "Yaw Sway Range", 						"Maximum Distance weapons can sway",													"zm_yawswayrange",			0,		8,		0.1
+	ZMoveSlider "Yaw Sway Friction", 					"How fast sprites will tend to realign to the center",									"zm_yawswayfriction",		5,		14,		0.5
+	ZMoveOption "Yaw Sway Direction", 					"Set wherever weapons sway in the direction you turn or the opposite",					"zm_yawswaydirection",		"SwayDirection"
+	ZMoveOption "Vertical Sway Type",					"How should vertical sway look",														"zm_pitchswaytype",			"VSwayType"
+	StaticText 	""
+	StaticText	"Vertical Offset", Orange
+	ZMoveSlider "Offset Speed", 						"How fast weapons raise and fall depending on your vertical velocity",					"zm_offsetspeed",			50,		100,	1,		0
+	ZMoveSlider "Offset Range", 						"Maximum Height weapons can fall",														"zm_offsetmaxrange",		10,		50,		1,		0
+	ZMoveOption "Offset Direction", 					"Set Wherever the sprites are offset according to your vertical direction",				"zm_offsetdirection",		"OffsetDirection"
+	StaticText 	""
+	
+	StaticText	"Others", 1
+	ZMoveOption "Speedometer", 							"Enable SpeedOMeter",																	"zm_speedometer",			"Speedometer"
+	Control		"Reset to default values",				"zmove_reset"
+}
+
+
+OptionValue "BobType"
+{
+	0, "Doom"
+	1, "Build Engine"
+	2, "Dusk"
+	3, "Painkiller"
+	4, "Unreal Tournament"
+}
+
+OptionValue "SwayDirection"
+{
+	0, "Opposite Direction"
+	1, "Same Direction"
+}
+
+OptionValue "VSwayType"
+{
+	0, "Both Ways"
+	1, "One Way"
+}
+
+OptionValue "OffsetDirection"
+{
+	0, "Opposite Direction"
+	1, "Same Direction"
+}
+
+OptionValue "Speedometer"
+{
+	0, "Off"
+	1, "Doom Units"
+	2, "Quake Units"
+}
+
+OptionMenu "GoreDebrisMenu"
+{
+	Class "NashGoreMenu"
+	Title "Gore/Debris Visual Options"
+	Position -32
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_BLOOD_TITLE", 1
+	NashGoreSlider "Gore Draw Distance", "This has a big performance impact, don't get greedy!", "pb_floorwallblooddrawdist", 400, 3000, 5, 0
+	NashGoreOption "$NASHGOREMNU_BLOOD_TYPE",		"$NASHGOREMNU_HELPTEXT_BLOOD_TYPE",			"nashgore_bloodtype",	"NashGoreBloodTypes"
+	NashGoreSlider "$NASHGOREMNU_BLOOD_AMOUNT",		"$NASHGOREMNU_HELPTEXT_BLOOD_AMOUNT",		"nashgore_bloodmult",	0.0, 10.0, 0.1, 1
+	NashGoreOption "$NASHGOREMNU_BLOOD_SPRITES",	"$NASHGOREMNU_HELPTEXT_BLOOD_SPRITES",		"nashgore_spriteblood",	"NashGoreBloodSpriteValues"
+	NashGoreOption "$NASHGOREMNU_BLOOD_SPURTS",		"$NASHGOREMNU_HELPTEXT_BLOOD_SPURTS",		"nashgore_bloodspurt",	"OnOff"
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_GIB_TITLE", 1
+	NashGoreOption "$NASHGOREMNU_GIB_TYPE",			"$NASHGOREMNU_HELPTEXT_GIB_TYPE",			"nashgore_gibtype",		"NashGoreGibTypes"
+	NashGoreSlider "$NASHGOREMNU_GIB_AMOUNT",		"$NASHGOREMNU_HELPTEXT_GIB_AMOUNT",			"nashgore_gibamount",	0, 255, 1, 0
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_MISC_TITLE", 1
+	SafeCommand "$NASHGOREMNU_MISC_CLEARGORENOW",			"netevent EV_ClearGore"
+	NashGoreSlider "$NASHGOREMNU_MISC_MAXGORE",				"$NASHGOREMNU_HELPTEXT_MISC_MAXGORE",		"nashgore_maxgore",		0, 2000, 1, 0
+	NashGoreSlider "$NASHGOREMNU_MISC_MAXCASINGS",			"$NASHGOREMNU_HELPTEXT_MISC_MAXCASINGS",	"nashgore_maxcasings",	0, 2000, 1, 0
+	NashGoreOption "Cheap Casings",				"To improve performance, casings will not react to the player and it's surroundings.",			"pb_cheapcasings",		"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_CORPSEBLOOD",			"$NASHGOREMNU_HELPTEXT_MISC_CORPSEBLOOD",	"nashgore_corpseblood",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_FOOTPRINTS",			"$NASHGOREMNU_HELPTEXT_MISC_FOOTPRINTS",	"nashgore_footprints",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_DEATHFLIP",			"$NASHGOREMNU_HELPTEXT_MISC_DEATHFLIP",		"nashgore_deathflip",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_SQUISH",				"$NASHGOREMNU_HELPTEXT_MISC_SQUISH",		"nashgore_squish",		"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_ICEDEATH",			"$NASHGOREMNU_HELPTEXT_MISC_ICEDEATH",		"nashgore_icedeath",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_SPLAT",				"$NASHGOREMNU_HELPTEXT_MISC_SPLAT",			"nashgore_splat",		"OnOff"
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_CONTROLS_TITLE", 1
+	NashGoreControl "$NASHGOREMNU_CONTROLS_CLEARGORE", "$NASHGOREMNU_HELPTEXT_CONTROLS_CLEARGORE", "netevent EV_ClearGore"
+}
+
+OptionValue "NashGoreBloodTypes"
+{
+	0, "$NASHGOREMNU_DEFAULT"
+	1, "$NASHGOREMNU_BLOOD_TYPE_CLASSIC"
+	2, "$NASHGOREMNU_VANILLA"
+}
+
+OptionValue "NashGoreBloodSpriteValues"
+{
+	0, "$NASHGOREMNU_BLOOD_SPRITE_DECALS"
+	1, "$NASHGOREMNU_BLOOD_SPRITE_SPRITES"
+}
+
+OptionValue "NashGoreGibTypes"
+{
+	0, "$NASHGOREMNU_DEFAULT"
+	1, "$NASHGOREMNU_GIB_TYPE_NOSTICKYGIBS"
+	2, "$NASHGOREMNU_VANILLA"
+}
+
+//
+//	Gearbox
+//
+
+// Menus ///////////////////////////////////////////////////////////////////////////////////////////
+
+OptionMenu gb_Options
+{
+
+  Title "$GB_OPTIONS"
+
+  StaticText  ""
+  Option      "$GB_VIEW_TYPE", gb_view_type, gb_ViewTypeValues
+
+  StaticText  ""
+  StaticText  "$GB_KEYSECTION", 1
+  Control     "$GB_TOGGLE_WEAPON_MENU"    , "+gb_toggle_weapon_menu"
+  Control     "$GB_TOGGLE_INVENTORY_MENU" , "+gb_toggle_inventory_menu"
+  Control     "$GB_PREV_WEAPON"           , "gb_prev_weapon"
+  Control     "$GB_ROTATE_WEAPON_PRIORITY", "gb_rotate_weapon_priority"
+  Control     "$GB_ROTATE_WEAPON_SLOT"    , "gb_rotate_weapon_slot"
+
+  StaticText  ""
+  Submenu     "$GB_BEHAVIOR_OPTIONS" , gb_BehaviorOptions
+  Submenu     "$GB_UI_OPTIONS"       , gb_UiOptions
+  Submenu     "$GB_WHEEL_OPTIONS"    , gb_WheelOptions
+  Submenu     "$GB_BLOCKS_OPTIONS"   , gb_BlocksOptions
+  Submenu     "$GB_TEXT_OPTIONS"     , gb_TextOptions
+  Submenu     "$GB_ADVANCED_OPTIONS" , gb_AdvancedOptions
+  Submenu     "$GB_GZDOOM_OPTIONS"   , gb_GZDoomOptions
+
+  StaticText  ""
+  SafeCommand "$GB_RESET"              , gb_reset              , "$GB_RESET_PROMPT"
+  SafeCommand "$GB_RESET_CUSTOM_ORDER" , gb_reset_custom_order , "$GB_RESET_CUSTOM_ORDER_PROMPT"
+  StaticText  "$GB_RESET_CUSTOM_ORDER_NOTE", black
+
+}
+
+OptionMenu gb_BehaviorOptions
+{
+
+  Title "$GB_BEHAVIOR_OPTIONS_TITLE"
+
+  Option      "$GB_OPEN_ON_PREV_NEXT"        , gb_open_on_scroll           , OnOff
+
+  StaticText  ""
+  Option      "$GB_OPEN_ON_SLOT"             , gb_open_on_slot             , OnOff
+  Option      "$GB_REVERSE_SLOT_CYCLE_ORDER" , gb_reverse_slot_cycle_order , OnOff
+  Option      "$GB_SELECT_FIRST_SLOT_WEAPON" , gb_select_first_slot_weapon , OnOff
+  Option      "$GB_NO_MENU_IF_ONE"           , gb_no_menu_if_one           , OnOff
+
+  StaticText  ""
+  Option      "$GB_SELECT_ON_KEY_UP"         , gb_select_on_key_up         , OnOff
+  Option      "$GB_FREEZE_TIME"              , gb_time_freeze              , gb_FreezeValues
+  Option      "$GB_ENABLE_ON_AUTOMAP"        , gb_on_automap               , OnOff
+  Option      "$GB_LOCK_POSITION"            , gb_lock_positions           , OnOff
+  Option      "$GB_FROZEN_CAN_OPEN"          , gb_frozen_can_open          , OnOff
+
+}
+
+OptionMenu gb_GZDoomOptions
+{
+
+  Title "$GB_GZDOOM_OPTIONS_TITLE"
+
+  StaticText ""
+  Option     "$SCALEMNU_HUDASPECT", hud_AspectScale, OnOff
+  StaticText "$GB_ASPECT_SCALE_NOTE", black
+
+}
+
+OptionMenu gb_UiOptions
+{
+
+  Title "$GB_UI_OPTIONS_TITLE"
+
+  StaticText  ""
+  ColorPicker "$GB_COLOR"     , gb_color
+  Command     "$GB_PLAYER_COLOR", gb_copy_player_color
+
+  StaticText  ""
+  Option      "$GB_SHOW_TAGS" , gb_show_tags      , OnOff
+
+  StaticText  ""
+  Option      "$GB_DIM"       , gb_enable_dim     , OnOff
+  ColorPicker "$GB_DIM_COLOR" , gb_dim_color
+  Option      "$GB_BLUR"      , gb_enable_blur    , OnOff
+  
+  statictext  ""
+  Option	  "$GB_UI_COLORED",	gb_colored_ui	  ,	OnOff
+
+  StaticText  ""
+  Option      "$GB_SOUND"     , gb_enable_sounds  , OnOff
+
+  StaticText  ""
+  Option      "$GB_FONT"        , gb_font , gb_FontValues
+  TextField   "$GB_FONT_CUSTOM" , gb_font
+}
+
+OptionMenu gb_WheelOptions
+{
+
+  Title "$GB_WHEEL_OPTIONS_TITLE"
+
+  StaticText  ""
+  Slider      "$GB_WHEEL_X"     , gb_wheel_position , -1.5, 1.5, 0.1, 1
+  Slider      "$GB_WHEEL_SCALE" , gb_wheel_scale    , 0.1, 2, 0.1, 1
+  //Option      "$GB_WHEEL_TINT"  , gb_wheel_tint     , OnOff
+
+  StaticText  ""
+  Option      "$GB_MOUSE_IN_WHEEL"    , gb_mouse_in_wheel   , OnOff
+  Slider      "$GB_MULTIWHEEL_LIMIT"  , gb_multiwheel_limit , 3, 100, 1, 0
+
+  StaticText  ""
+  StaticText  "$GB_MOUSE_SENSITIVITY", 1
+  Slider      "$GB_X", gb_mouse_sensitivity_x, 0.1, 5, 0.1, 1
+  Slider      "$GB_Y", gb_mouse_sensitivity_y, 0.1, 5, 0.1, 1
+
+}
+
+OptionMenu gb_BlocksOptions
+{
+
+  Title "$GB_BLOCKS_OPTIONS_TITLE"
+
+  StaticText ""
+  Slider     "$GB_SCALE"    , gb_scale, 1, 8, 1, 0
+
+  StaticText ""
+  StaticText "$GB_POSITION", 1
+  Slider     "$GB_X" , gb_blocks_position_x, 0.0, 1.0, 0.01, 2
+  Slider     "$GB_Y" , gb_blocks_position_y, 0.0, 1.0, 0.01, 2
+
+}
+
+OptionMenu gb_TextOptions
+{
+
+  Title "$GB_TEXT_OPTIONS_TITLE"
+
+  StaticText ""
+  Slider     "$GB_SCALE" , gb_text_scale, 1, 8, 1, 0
+
+  StaticText ""
+  StaticText "$GB_POSITION", 1
+  Slider     "$GB_X"          , gb_text_position_x     , 0.0, 1.0, 0.01, 2
+  Slider     "$GB_Y"          , gb_text_position_y     , 0.0, 1.0, 0.01, 2
+  Slider     "$GB_Y_BOUNDARY" , gb_text_position_y_max , 0.0, 1.0, 0.01, 2
+
+  StaticText ""
+  Option "$GB_TEXT_USUAL_COLOR"    , gb_text_usual_color    , TextColors
+  Option "$GB_TEXT_SELECTED_COLOR" , gb_text_selected_color , TextColors
+
+}
+
+OptionMenu gb_AdvancedOptions
+{
+
+  Title "$GB_ADVANCED_OPTIONS_TITLE"
+
+  StaticText ""
+  Option     "$GB_VM_ABORT_INFO_ENABLED", gb_zabor_enabled, OnOff
+
+}
+
+// Option Values ///////////////////////////////////////////////////////////////////////////////////
+
+OptionValue gb_ViewTypeValues
+{
+  0, "$GB_BLOCKY_VIEW"
+  1, "$GB_WHEEL_VIEW"
+  2, "$GB_TEXT_VIEW"
+}
+
+OptionValue gb_FreezeValues
+{
+  0, "$OPTVAL_OFF"
+  1, "$GB_LEVEL_AND_PLAYER"
+  2, "$GB_PLAYER"
+}
+
+OptionString gb_FontValues
+{
+  "NewSmallFont" , "$GB_NEW_SMALL_FONT"
+  "SmallFont"    , "$GB_OLD_SMALL_FONT"
+  "ConsoleFont"  , "$GB_CONSOLE_FONT"
+  "BigFont"      , "$GB_BIG_FONT"
+  "PBFONT"		 , "$PB_FONT"
+  "PBBOLD"		 , "$PB_BOLDFONT"
+  "LOWQFONT"	 , "$PB_LOWQFONT"
+}
