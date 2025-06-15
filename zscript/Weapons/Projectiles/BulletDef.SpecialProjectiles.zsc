@@ -99,7 +99,7 @@ class PB_MGNail : PB_ProjectileAlt
 			NLPJ A 20;
 			TNT1 A 0 {
 				LIFETIME--;
-				A_JumpIf(LIFETIME <= 0, "Fade");
+				if(LIFETIME <= 0) { return ResolveState("Fade"); }
 				return A_CheckBlock("Hanging", 0, 0, (RADIUS / 2) + 1);
 			}
 		Drop:
@@ -161,7 +161,7 @@ class PB_MGNailHot : PB_MGNail
 			NLPJ A 20;
 			TNT1 A 0 {
 				LIFETIME--;
-				A_JumpIf(LIFETIME <= 0, "Fade");
+				if(LIFETIME <= 0) { return ResolveState("Fade"); }
 				return A_CheckBlock("Hanging", 0, 0, (RADIUS / 2) + 1);
 			}
 		Drop:
@@ -242,7 +242,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 			NAIL B 20;
 			TNT1 A 0 {
 				LIFETIME--;
-				A_JumpIf(LIFETIME <= 0, "Fade");
+				if(LIFETIME <= 0) { return ResolveState("Fade"); }
 				return A_CheckBlock("Hanging", 0, 0, (RADIUS / 2) + 1);
 			}
 		Drop:
@@ -323,7 +323,7 @@ class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 			NAIL B 20;
 			TNT1 A 0 {
 				LIFETIME--;
-				A_JumpIf(LIFETIME <= 0, "Fade");
+				if(LIFETIME <= 0) { return ResolveState("Fade"); }
 				return A_CheckBlock("Hanging", 0, 0, (RADIUS / 2) + 1);
 			}
 		Drop:
