@@ -48,7 +48,7 @@ class pb_ExecutionHandler : EventHandler
 	for(int i = 0; i < maxTexTypes; i++)
 	{
 		//ExInd0-5 credits: Kenney Vleugels 
-		string tx = "graphics/ExInd"..i..".png";
+		string tx = "graphics/execution_frame/ExInd"..i..".png";
 		IndicatorTex[i] = texman.checkfortexture(tx);
 	}
   }
