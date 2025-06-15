@@ -1046,11 +1046,9 @@ Actor UnmakerLaser: FastProjectile
 	TNT1 A 0 {
 	//A_SpawnItem("UnmakerPuff")
 	A_SpawnItem("RedLightningTrial",0);
-	if(GetCVar("pb_unmakerfire")){
-		A_SpawnItemEx("DTechBurningPiece", random (-15, 15), random (-15, 15),0, 0, 0, 0, 0, 128, 150);
-		A_SpawnItemEx("DTechBurningPiece2", random (-35, 35), random (-35, 35),0, 0, 0, 0, 0, 128, 150);
-		A_SpawnItemEx("DTechBurningPiece3", random (-45, 45), random (-45, 35), 0, 0, 0, 0, 0, 128, 150);
-	}
+	A_SpawnItemEx("DTechBurningPiece", random (-15, 15), random (-15, 15),0, 0, 0, 0, 0, 128, 150);
+	A_SpawnItemEx("DTechBurningPiece2", random (-35, 35), random (-35, 35),0, 0, 0, 0, 0, 128, 150);
+	A_SpawnItemEx("DTechBurningPiece3", random (-45, 45), random (-45, 35), 0, 0, 0, 0, 0, 128, 150);
 	A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,180);
 	A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,180);
 	A_explode(20, 100);
