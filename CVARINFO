@@ -30,6 +30,8 @@ user float pb_exaggeratedrecoilmul = 0.5;
 user int pb_floorwallblooddrawdist = 800;
 server bool pb_keepweapons = false;
 server int PB_WeaponDrops = 1;
+server bool pb_dtechfire = true;
+server int pb_naillifetime = 5;
 //Weapon Keep CVars
 user bool PB_KeepPistol = true;
 user bool PB_KeepRevolver = true;
