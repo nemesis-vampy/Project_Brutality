@@ -98,13 +98,19 @@ extend class PB_Hud_ZS
 			MainQueue.Delete(i); 
 			i--;
 		}
+		if((midstr != "")&&((midtic+int(GameTicRate*con_midtime)) < level.totaltime))
+		{
+			midstr = "";
+			midtic = 0;
+			if(midl) midl.Destroy();
+		}
 	}
 	
 	void PBHUD_DrawMessages()
 	{
 		if(midstr!="")
 		{
-			int midy = 0;
+			int midy = -50;
 			int col = (midtype&2)?msgmidcolor2:msgmidcolor;
 			double curtime = (midtic+int(GameTicRate*con_midtime))-(level.totaltime+fractic);
 			double alph = clamp(curtime/20.,0.,1.);
