@@ -2520,16 +2520,18 @@ class PlayerPawnBase : PlayerPawn
 		}
 		//CatchUpOnTiers();
 
-        if(m_MuzzleFlashTimer > 0)
-        {        
-            m_MuzzleFlashTimer--;
-        }
-        else if (m_MuzzleFlashTimer == 0)
+        if(CheckNotPredicting())
         {
-            A_RemoveLight('MuzzleFlashLight');
-            m_MuzzleFlashTimer = -1;
+            if(m_MuzzleFlashTimer > 0)
+            {        
+                m_MuzzleFlashTimer--;
+            }
+            else if (m_MuzzleFlashTimer == 0)
+            {
+                A_RemoveLight('MuzzleFlashLight');
+                m_MuzzleFlashTimer = -1;
+            }
         }
-		
 
 		//Screen Overlay Handlers
 		//Disabled until we can convert the screen splatters to ZScript

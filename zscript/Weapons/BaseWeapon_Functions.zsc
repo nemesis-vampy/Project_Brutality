@@ -500,34 +500,37 @@ extend class PB_WeaponBase
 		return direction;
 	}
 
-    action void _SpawnMuzzleSparks(vector3 ofs, color col)
+    action void _SpawnMuzzleSparks(double d1, double d2, double d3, double angleOfs = 0, double size = 1.0, color col = 0xFF9D2E)
 	{
-        vector3 spos, svel;
+        vector3 spos, svel, randvel;
         int sparkcount = randompick(0, random(5, 7));
         for(int i = 0; i < sparkcount; i++)
         {
+            randvel = (frandom(0, 12), frandom(-5, 5), frandom(-5, 5));
             double fovOfs = (120 - self.player.desiredfov) / 3.f;
-            Vector3 spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle, self.pitch, self.roll), (self.radius + ofs.y - (5.0 * abs(sin(self.pitch))) + fovOfs, -ofs.x, ofs.z), true);
-		    Vector3 svel = PB_Math.RelativeToGlobalCoords((0, 0, 0), (self.angle, self.pitch, self.roll), (frandom(4, 12), frandom(-5, 5), frandom(-5, 4)));
+            spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle + angleOfs, self.pitch, self.roll), (self.radius + d2 - (5.0 * abs(sin(self.pitch))) + fovOfs, -d1, d3) + randvel, true);
+		    svel = PB_Math.RelativeToGlobalCoords((0, 0, 0), (self.angle + angleOfs, self.pitch, self.roll), randvel + (7, 0, 0));
 
             let act = Spawn('PB_MuzzleSpark', spos);
             act.vel = svel;
             act.SetShade(col);
+            act.scale *= size;
         }
 	}
 
-    action void PB_MuzzleFlashEffects(double d1 = 0, double d2 = 0 , double d3 = 0, color col = 0xFF9D2E, int rad = 100, int tics = 2)
+    action void PB_MuzzleFlashEffects(double d1 = 0, double d2 = 0 , double d3 = 0, color col = 0xFF9D2E, bool sparks = false, bool light = true, int rad = 100, int tics = 2)
     {
         PlayerPawnBase plr = PlayerPawnBase(self);
-        vector3 ofs = (d1, d2, d3);
 
         if(!plr) return;
 
-        ofs.z -= 10.5;
-		ofs.y += 15;
+        d3 -= 10.5;
+		d2 += 15;
 
-        _SpawnMuzzleSparks(ofs, col);
-        plr.A_AttachLight('MuzzleFlashLight', DynamicLight.PointLight, col, rad, 0, DynamicLight.LF_DONTLIGHTSELF | DynamicLight.LF_ATTENUATE, (0, 0, self.player.viewz), 0);
+        _SpawnMuzzleSparks(d1, d2, d3, 0, 1.0, col);
+
+        if(!light) return;
+        plr.A_AttachLight('MuzzleFlashLight', DynamicLight.PointLight, col, rad, 0, DynamicLight.LF_DONTLIGHTSELF | DynamicLight.LF_ATTENUATE, (0, 0, self.player.viewz - floorz), 0);
         plr.m_MuzzleFlashTimer = tics;
     }
 	
@@ -1537,7 +1540,7 @@ extend class PB_WeaponBase
 			PB_WeaponRecoilBasic(pitchDelta, angleDelta);
 	}
 	
-	action void PB_SpawnCasing(class<Actor> casing, double xOfs = 0, double horOfs = 0, double vertOfs = 0, double xSpeed = 0, double horSpeed = 0, double vertSpeed = 0, bool ejectionSmoke = true)
+	action void PB_SpawnCasing(class<Actor> casing, double xOfs = 0, double horOfs = 0, double vertOfs = 0, double xSpeed = 0, double horSpeed = 0, double vertSpeed = 0, bool ejectionSmoke = true, bool sparks = false)
 	{
 		vertOfs -= (self.player.viewz - self.pos.z) / self.player.CrouchFactor;
 		double fovOfs = (120 - self.player.desiredfov) / 3.f; // good enough
@@ -1562,20 +1565,41 @@ extend class PB_WeaponBase
 
 			let pPBCase = PB_CasingBase(pCase);
 
-			if(!pPBCase || pPBCase.bNEVERSMOKE || !ejectionSmoke) return;
+            if(!pPBCase)
+                return;
 
-			let pSmoke = PB_GunFireSmoke(Spawn('PB_CasingEjectionSmoke', spos));
+            if(sparks)
+            {
+                vector3 spos, svel, randvel;
+                int sparkcount = randompick(0, random(2, 4));
+                for(int i = 0; i < sparkcount; i++)
+                {
+                    randvel = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1));
+                    spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle, self.pitch, self.roll), (xOfs - (5.0 * abs(sin(self.pitch))) + fovOfs, horOfs, vertOfs) + randvel, true);
+                    svel = PB_Math.RelativeToGlobalCoords((self.vel.xy, 0), (self.angle, self.pitch, self.roll), (xSpeed, horSpeed, vertSpeed) + randvel);
 
-			if(pSmoke) {
-				vector3 unitVel = (xSpeed, horSpeed, vertSpeed).Unit();
-				pSmoke.master = self;
-				// svel = PB_Math.RelativeToGlobalCoords((self.vel.xy, 0), (self.angle, self.pitch, self.roll), (xSpeed * 0.2, horSpeed * 0.2, vertSpeed * 0.2));
-				pSmoke.vel = (self.vel.xy, 0);
-				pSmoke.pitch = -(90 - asin(unitVel.z)) * (unitVel.y);
-				pSmoke.alpha = 0.3;
-				pSmoke.blowSpeed = 1.1;
-				pSmoke.fadeSpeed = 0.5;
-			}
+                    let act = Spawn('PB_MuzzleSpark', spos);
+                    act.vel = svel;
+                    act.scale *= 0.25;
+                    act.SetShade("FF9D2E");
+                }
+            }
+
+			if(!pPBCase.bNEVERSMOKE && ejectionSmoke) 
+            {
+                let pSmoke = PB_GunFireSmoke(Spawn('PB_CasingEjectionSmoke', spos));
+
+                if(pSmoke) {
+                    vector3 unitVel = (xSpeed, horSpeed, vertSpeed).Unit();
+                    pSmoke.master = self;
+                    // svel = PB_Math.RelativeToGlobalCoords((self.vel.xy, 0), (self.angle, self.pitch, self.roll), (xSpeed * 0.2, horSpeed * 0.2, vertSpeed * 0.2));
+                    pSmoke.vel = (self.vel.xy, 0);
+                    pSmoke.pitch = -(90 - asin(unitVel.z)) * (unitVel.y);
+                    pSmoke.alpha = 0.3;
+                    pSmoke.blowSpeed = 1.1;
+                    pSmoke.fadeSpeed = 0.5;
+                }
+            }
 		}
 	}
 	

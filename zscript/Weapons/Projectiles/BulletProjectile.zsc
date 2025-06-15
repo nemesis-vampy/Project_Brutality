@@ -711,8 +711,8 @@ class PB_Projectile : FastProjectile abstract
 	States
 	{
 		Spawn:
-			TNT1 A 1;
-			TRAC A -1 BRIGHT {if(Cvar.GetCvar("pb_tracerlight", players[consoleplayer]).GetBool()) A_AttachLight('ProjectileLight', DynamicLight.PointLight, 0xFF9D2E, 50, 0, DynamicLight.LF_ATTENUATE, (0, 0, 0), 0);}
+			TNT1 A 1 NoDelay {if(Cvar.GetCvar("pb_tracerlight", players[consoleplayer]).GetBool()) A_AttachLight('ProjectileLight', DynamicLight.PointLight, 0xFF9D2E, 50, 0, DynamicLight.LF_ATTENUATE, (0, 0, 0), 0);}
+			TRAC A -1 BRIGHT;
 			Stop;
 		Death: // [Ace] Wall.
 			TNT1 A 0
