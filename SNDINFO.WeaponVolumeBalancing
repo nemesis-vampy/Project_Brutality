@@ -19,7 +19,7 @@ $volume Weapons/Carbine/Fire2 0.6
 $volume LFIRE 0.5
 $volume MG42FIR 0.6
 $volume weapons/hdmr/fire 0.5
-$volume weapons/rifle 0.5
+$volume weapons/rifle 0.6
 $volume weapons/rifle/sniperfire 0.5
 $volume 0SRFIRE 0.5
 $volume weapons/firegrenade 0.8
