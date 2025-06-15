@@ -31,7 +31,7 @@ user int pb_floorwallblooddrawdist = 800;
 server bool pb_keepweapons = false;
 server int PB_WeaponDrops = 1;
 server bool pb_dtechfire = true;
-server bool pb_unmakerfire = true;
+server int pb_naillifetime = 5;
 //Weapon Keep CVars
 user bool PB_KeepPistol = true;
 user bool PB_KeepRevolver = true;
