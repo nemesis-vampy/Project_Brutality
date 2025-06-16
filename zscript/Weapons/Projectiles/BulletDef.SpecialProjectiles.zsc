@@ -121,7 +121,7 @@ class PB_MGNail : PB_ProjectileAlt
 		XDeathloop:
 			NLPJ A 35 A_JumpIf(LIFETIME <= 0, "Fade");
 			TNT1 A 0 { LIFETIME--; }
-			Wait;
+			Loop;
 			//NLPJ A 70;
 			//NLPJ A 4200;
 			//NLPJ A 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
