@@ -443,7 +443,7 @@ class PB_Monster : Actor abstract
 
 				if (!lastSeenCorpse)
 				{
-					lastSeenCorpse = Spawn("DeadArchvileVID3Q", (delayedPosition.x, delayedPosition.y, delayedPosition.z + 8), ALLOW_REPLACE);
+					lastSeenCorpse = Spawn("EmptyTarget", (delayedPosition.x, delayedPosition.y, delayedPosition.z + 8), ALLOW_REPLACE);
 				}
 
 				if (corpseDistance < 300)
@@ -528,7 +528,7 @@ class PB_Monster : Actor abstract
 				vector3 projected = ComputeProjectedPoint();
 				if (lastSeenCorpse)
 					lastSeenCorpse.Destroy();
-				lastSeenCorpse = Spawn("DeadArchvileVID3Q", (projected.x, projected.y, projected.z + 8), ALLOW_REPLACE);
+				lastSeenCorpse = Spawn("EmptyTarget", (projected.x, projected.y, projected.z + 8), ALLOW_REPLACE);
 			//	SetStateLabel("See");  // Switch back to normal behavior.
 			}
 		}
@@ -1940,4 +1940,38 @@ class ShieldIgnoringTracer : LineTracer
     }
 }
 
+class EmptyTarget: Actor
+{   
+
+	Default{
+	Radius 10;
+    Height 6;
+    +NOTELEPORT;
+    +MOVEWITHSECTOR;
+	+FLOORCLIP;
+	+NOBLOCKMONST;
+	//+CANPASS;
+	-THRUACTORS;
+	+FORCEXYBILLBOARD;
+	+SHOOTABLE;
+	//+CLIENTSIDEONLY;
+	+CORPSE;
+	+NEVERTARGET;
+	damagefactor "Crush", 9999.00;
+	damagefactor "Crusher", 9999.00;
+	damagefactor "CrushedBodies", 9999.00;
+    Mass 5000;
+    Health 300;
+	PainChance 255;
+
+	}
+	
+	States
+	{
+		Spawn:
+			TNT1 A -1;
+			Stop;
+	}
+
+}
 
