@@ -81,7 +81,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
  +DONTHURTSPECIES
  +DONTHARMSPECIES
 	Species "MasterMind"
-	
+	var int user_timesFired;
 	States
 	{
 	Death.KillMe:
@@ -102,6 +102,8 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
 		Goto Spawn+2
 	See:
+		SPID A 0 A_StopSound(CHAN_6)
+		SPID A 0 A_SetUserVar("user_timesFired", 0)
 		SPID A 2 A_StartSound("master/walk", CHAN_AUTO)
 		SPID ABBCCD 2 A_Chase
 		SPID D 2 A_StartSound("master/walk", CHAN_AUTO)
@@ -123,6 +125,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		SPID GTGTGTGT 2 LIGHT("DemonTechImpact") A_FaceTarget 
 	Firing:
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 500, "StopFiring")
+		TNT1 A 0 A_SetUserVar("user_timesFired", user_timesFired + 1)
 		SPID G 1 A_FaceTarget
 		SPID H 1 BRIGHT Light("PB_IMPBALL"){
 			A_SpawnProjectile("PB_MasterMindTracer", 42, 0, random(-2, 2), 1, random(-2, 2));
@@ -132,9 +135,12 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 			A_GiveInventory("BrutalCounter", 5);
 			A_FaceTarget;
 		}
-		SPID T 1 A_MonsterRefire(11, "StopFiring")
+		SPID T 1 A_JumpIf(user_timesFired < 6, 2)
+		SPID T 0 A_MonsterRefire(11, "StopFiring")
+		SPID T 0
 		Loop
 	StopFiring:
+		TNT1 A 0 A_SetUserVar("user_timesFired", 0)
 		SPID G 0 {
 			A_StartSound("DTHDLRSP",CHAN_6);
 		}
@@ -168,12 +174,20 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		 Goto Missile
 		
 	Pain:
-		TNT1 A 0 A_StopSound(CHAN_5)
-		TNT1 A 0 
+		TNT1 A 0 {
+			A_StopSound(CHAN_5);
+			A_StopSound(CHAN_6);
+			A_SetUserVar("user_timesFired", 0);
+		}
 		SPID I 4 A_Pain
 		Goto See
 	
 	Pain.Siphon:
+		TNT1 A 0 {
+			A_StopSound(CHAN_5);
+			A_StopSound(CHAN_6);
+			A_SetUserVar("user_timesFired", 0);
+		}
 		TNT1 AAA 0 A_SpawnItemEx ("RedLightning_Small", random (-12, 12), random (-12, 12), random (16, 52), 0, 0)
 		SPID I 1 
 		{
@@ -186,7 +200,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 	
 	Death.Execution:
 		TNT1 A 0 {
-			A_StopSound;
+			A_StopAllSounds;
 			A_FaceTarget;
 			A_NoBlocking(false);
 		}
@@ -204,7 +218,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 				return A_Jump(255, "DeathRare", "NormalDeath");
 			}
 	NormalDeath:
-		TNT1 A 0 A_StopSound(CHAN_5)
+		TNT1 A 0 A_StopAllSounds
 		SPID J 20 A_Scream
 		TNT1 AAAA 0 A_SpawnProjectile("ExplosionSpawner", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 A 0
@@ -274,7 +288,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 	Stop
 	
 	DeathRare:
-		TNT1 A 0
+		TNT1 A 0 A_StopAllSounds
 		
 		
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)		
@@ -288,6 +302,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		Stop
 	
 	Death.Telefrag:
+		TNT1 A 0 A_StopAllSounds
 		SPID J 20 A_Scream
 		tnt1 a 0 A_FaceTarget
 		EXPL A 0 Radius_Quake (8, 100, 0, 22, 0)
