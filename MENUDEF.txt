@@ -146,6 +146,7 @@ OptionMenu "PB_HUDOptions"
 	StaticText "Options", gold
 	Option "HUD Sways when moving", "PB_HudDynamics", "YesNo"
 	Option "Helmet Corners", "pb_showhudvisor", "YesNo"
+    Option "Helmet Middle > Bottom", "pb_visormiddlepartbottom", "YesNo"
 	Option "Visor Glass", "pb_showhudvisorglass", "YesNo"
 	Option "Level Stats", "pb_showlevelstats", "YesNo"
 	Option "Low Resolution Font", "pb_uselowreshudfont", "YesNo"
@@ -163,6 +164,7 @@ OptionMenu "PB_HUDOptions"
 	StaticText " "
 	StaticText "GZDoom HUD scaling", gold
 	StaticText "Disable if your HUD is too big or too small. Also allows finer scaling.", brick
+    StaticText "Set to 0.98 for smoother swaying.", brick
 	Option "Old HUD Scaling", "hud_oldscale", "YesNo"
 	Slider "Scale Factor", "hud_scalefactor", 0.36, 1.0, 0.02, 2
 	StaticText " "

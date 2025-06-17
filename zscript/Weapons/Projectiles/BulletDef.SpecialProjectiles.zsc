@@ -111,7 +111,7 @@ class PB_MGNail : PB_ProjectileAlt
 			}
 		Fade:
 			NLPJ A 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
-			Wait;
+			Loop;
 		XDeath:
 			TNT1 A 0 { 
 				LIFETIME = CVar.GetCVar("pb_naillifetime").GetInt(); 
@@ -181,7 +181,7 @@ class PB_MGNailHot : PB_MGNail
 			}
 		Fade:
 			NLPJ B 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
-			Wait;
+			Loop;
 		XDeath:
 			TNT1 A 0 { 
 				LIFETIME = CVar.GetCVar("pb_naillifetime").GetInt(); 
@@ -268,7 +268,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 			}
 		Fade:
 			NAIL B 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
-			Wait;
+			Loop;
 		XDeath:
 			TNT1 A 0 { 
 				LIFETIME = CVar.GetCVar("pb_naillifetime").GetInt();
@@ -355,7 +355,7 @@ class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 			}
 		Fade:
 			NAIL B 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
-			Wait;
+			Loop;
 		XDeath:
 			TNT1 A 0 {
 				LIFETIME = CVar.GetCVar("pb_naillifetime").GetInt();

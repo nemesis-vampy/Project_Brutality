@@ -158,10 +158,10 @@ class PB_Baron1 : PB_Monster
 			BOSS P 6;
 			
 			BOSS Q 3 BRIGHT { self.suppressiveOffZ = 36; self.suppressiveOffXY = 15; self.suppressiveMissile = "Baron_Slash";  A_SuppressiveFire();}
-			BOSS P 3 {if (CheckSight(target)) SetStateLabel("See2");}
+			BOSS P 3 {if (target && CheckSight(target)) SetStateLabel("See2");}
 			
 			BOSS Q 3 BRIGHT { self.suppressiveOffZ = 36; self.suppressiveOffXY = 15; self.suppressiveMissile = "Baron_Slash";  A_SuppressiveFire();}
-			BOSS P 0 {if (CheckSight(target)) SetStateLabel("See2");}
+			BOSS P 0 {if (target && CheckSight(target)) SetStateLabel("See2");}
 			
 
 			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
@@ -172,7 +172,7 @@ class PB_Baron1 : PB_Monster
 			BOSS P 16;
 			
 			BOSS Q 3 BRIGHT { self.suppressiveOffZ = 78; self.suppressiveOffXY = 0; self.suppressiveMissile = "BaronMeteor";  A_SuppressiveFire(highRiders : true);}
-			BOSS P 0 {if (CheckSight(target)) SetStateLabel("See2");}
+			BOSS P 0 {if (target && CheckSight(target)) SetStateLabel("See2");}
 			
 
 			TNT1 A 0 { self.inSuppressiveFire = false;  suppressCount += 1;  }
