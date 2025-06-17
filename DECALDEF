@@ -648,7 +648,7 @@ Decal NoBlood
 Decal BloodMedium1
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_1.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -657,7 +657,7 @@ Decal BloodMedium1
 Decal BloodMedium2
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_2.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -666,7 +666,7 @@ Decal BloodMedium2
 Decal BloodMedium3
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_3.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -675,7 +675,7 @@ Decal BloodMedium3
 Decal BloodMedium4
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_4.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -684,7 +684,7 @@ Decal BloodMedium4
 Decal BloodMedium5
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_5.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -693,7 +693,7 @@ Decal BloodMedium5
 Decal BloodMedium6
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_6.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -702,7 +702,7 @@ Decal BloodMedium6
 Decal BloodMedium7
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_7.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -711,7 +711,7 @@ Decal BloodMedium7
 Decal BloodMedium8
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_8.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -720,7 +720,7 @@ Decal BloodMedium8
 Decal BloodMedium9
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_9.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -729,7 +729,7 @@ Decal BloodMedium9
 Decal BloodMedium10
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_10.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -738,7 +738,7 @@ Decal BloodMedium10
 Decal BloodMedium11
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_11.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -747,7 +747,7 @@ Decal BloodMedium11
 Decal BloodMedium12
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_12.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -756,7 +756,7 @@ Decal BloodMedium12
 Decal BloodMedium13
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_13.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -765,7 +765,7 @@ Decal BloodMedium13
 Decal BloodMedium14
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_14.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -774,7 +774,7 @@ Decal BloodMedium14
 Decal BloodMedium15
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_15.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -783,7 +783,7 @@ Decal BloodMedium15
 Decal BloodMedium16
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_16.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -792,7 +792,7 @@ Decal BloodMedium16
 Decal BloodMedium17
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_17.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -801,7 +801,7 @@ Decal BloodMedium17
 Decal BloodMedium18
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_18.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -810,7 +810,7 @@ Decal BloodMedium18
 Decal BloodMedium19
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_19.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -819,7 +819,7 @@ Decal BloodMedium19
 Decal BloodMedium20
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_20.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -828,7 +828,7 @@ Decal BloodMedium20
 Decal BloodMedium21
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_21.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -837,7 +837,7 @@ Decal BloodMedium21
 Decal BloodMedium22
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_22.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -846,7 +846,7 @@ Decal BloodMedium22
 Decal BloodMedium23
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_23.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -855,7 +855,7 @@ Decal BloodMedium23
 Decal BloodMedium24
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_24.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -864,7 +864,7 @@ Decal BloodMedium24
 Decal BloodMedium25
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_25.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -873,7 +873,7 @@ Decal BloodMedium25
 Decal BloodMedium26
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_26.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -882,7 +882,7 @@ Decal BloodMedium26
 Decal BloodMedium27
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_27.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -891,7 +891,7 @@ Decal BloodMedium27
 Decal BloodMedium28
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_28.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -900,7 +900,7 @@ Decal BloodMedium28
 Decal BloodMedium29
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_29.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -909,7 +909,7 @@ Decal BloodMedium29
 Decal BloodMedium30
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_30.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -918,7 +918,7 @@ Decal BloodMedium30
 Decal BloodMedium31
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_31.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -927,7 +927,7 @@ Decal BloodMedium31
 Decal BloodMedium32
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_32.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -936,7 +936,7 @@ Decal BloodMedium32
 Decal BloodMedium33
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_33.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -945,7 +945,7 @@ Decal BloodMedium33
 Decal BloodMedium34
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_34.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -954,7 +954,7 @@ Decal BloodMedium34
 Decal BloodMedium35
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_35.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -963,7 +963,7 @@ Decal BloodMedium35
 Decal BloodMedium36
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_36.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -972,7 +972,7 @@ Decal BloodMedium36
 Decal BloodMedium37
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_37.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -981,7 +981,7 @@ Decal BloodMedium37
 Decal BloodMedium38
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_38.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -990,7 +990,7 @@ Decal BloodMedium38
 Decal BloodMedium39
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_39.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -999,7 +999,7 @@ Decal BloodMedium39
 Decal BloodMedium40
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_40.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1008,7 +1008,7 @@ Decal BloodMedium40
 Decal BloodMedium41
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_41.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1017,7 +1017,7 @@ Decal BloodMedium41
 Decal BloodMedium42
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_42.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1026,7 +1026,7 @@ Decal BloodMedium42
 Decal BloodMedium43
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_43.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1035,7 +1035,7 @@ Decal BloodMedium43
 Decal BloodMedium44
 {
 	Pic "GRAPHICS/decals/BloodDecals/med/BSPL_Med_44.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1093,7 +1093,7 @@ decalgroup BloodMedium
 Decal BloodSplat1
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_1.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1102,7 +1102,7 @@ Decal BloodSplat1
 Decal BloodSplat2
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_2.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1111,7 +1111,7 @@ Decal BloodSplat2
 Decal BloodSplat3
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_3.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1120,7 +1120,7 @@ Decal BloodSplat3
 Decal BloodSplat4
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_4.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1129,7 +1129,7 @@ Decal BloodSplat4
 Decal BloodSplat5
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_5.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1138,7 +1138,7 @@ Decal BloodSplat5
 Decal BloodSplat6
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_6.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1147,7 +1147,7 @@ Decal BloodSplat6
 Decal BloodSplat7
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_7.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1156,7 +1156,7 @@ Decal BloodSplat7
 Decal BloodSplat8
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_8.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1165,7 +1165,7 @@ Decal BloodSplat8
 Decal BloodSplat9
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_9.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1174,7 +1174,7 @@ Decal BloodSplat9
 Decal BloodSplat10
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_10.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1183,7 +1183,7 @@ Decal BloodSplat10
 Decal BloodSplat11
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_11.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1192,7 +1192,7 @@ Decal BloodSplat11
 Decal BloodSplat12
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_12.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1201,7 +1201,7 @@ Decal BloodSplat12
 Decal BloodSplat13
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_13.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1210,7 +1210,7 @@ Decal BloodSplat13
 Decal BloodSplat14
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_14.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1219,7 +1219,7 @@ Decal BloodSplat14
 Decal BloodSplat15
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_15.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1228,7 +1228,7 @@ Decal BloodSplat15
 Decal BloodSplat16
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_16.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1237,7 +1237,7 @@ Decal BloodSplat16
 Decal BloodSplat17
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_17.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1246,7 +1246,7 @@ Decal BloodSplat17
 Decal BloodSplat18
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_18.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1255,7 +1255,7 @@ Decal BloodSplat18
 Decal BloodSplat19
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_19.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1264,7 +1264,7 @@ Decal BloodSplat19
 Decal BloodSplat20
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_20.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1273,7 +1273,7 @@ Decal BloodSplat20
 Decal BloodSplat21
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_21.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1282,7 +1282,7 @@ Decal BloodSplat21
 Decal BloodSplat22
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_22.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1291,7 +1291,7 @@ Decal BloodSplat22
 Decal BloodSplat23
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_23.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1300,7 +1300,7 @@ Decal BloodSplat23
 Decal BloodSplat24
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_24.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1309,7 +1309,7 @@ Decal BloodSplat24
 Decal BloodSplat25
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_25.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1318,7 +1318,7 @@ Decal BloodSplat25
 Decal BloodSplat26
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_26.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1327,7 +1327,7 @@ Decal BloodSplat26
 Decal BloodSplat27
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_27.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1336,7 +1336,7 @@ Decal BloodSplat27
 Decal BloodSplat28
 {
 	Pic "GRAPHICS/decals/BloodDecals/small/BSPL_Sml_28.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1379,7 +1379,7 @@ decalgroup BloodSplat
 Decal BloodSmear1
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_1.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1388,7 +1388,7 @@ Decal BloodSmear1
 Decal BloodSmear2
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_2.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1397,7 +1397,7 @@ Decal BloodSmear2
 Decal BloodSmear3
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_3.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1406,7 +1406,7 @@ Decal BloodSmear3
 Decal BloodSmear4
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_4.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1415,7 +1415,7 @@ Decal BloodSmear4
 Decal BloodSmear5
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_5.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1424,7 +1424,7 @@ Decal BloodSmear5
 Decal BloodSmear6
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_6.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1433,7 +1433,7 @@ Decal BloodSmear6
 Decal BloodSmear7
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_7.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1442,7 +1442,7 @@ Decal BloodSmear7
 Decal BloodSmear8
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_8.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1451,7 +1451,7 @@ Decal BloodSmear8
 Decal BloodSmear9
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_9.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1460,7 +1460,7 @@ Decal BloodSmear9
 Decal BloodSmear10
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_10.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1469,7 +1469,7 @@ Decal BloodSmear10
 Decal BloodSmear11
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_11.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1478,7 +1478,7 @@ Decal BloodSmear11
 Decal BloodSmear12
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_12.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1487,7 +1487,7 @@ Decal BloodSmear12
 Decal BloodSmear13
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_13.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1496,7 +1496,7 @@ Decal BloodSmear13
 Decal BloodSmear14
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_14.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1505,7 +1505,7 @@ Decal BloodSmear14
 Decal BloodSmear15
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_15.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1514,7 +1514,7 @@ Decal BloodSmear15
 Decal BloodSmear16
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_16.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1523,7 +1523,7 @@ Decal BloodSmear16
 Decal BloodSmear17
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_17.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1532,7 +1532,7 @@ Decal BloodSmear17
 Decal BloodSmear18
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_18.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1541,7 +1541,7 @@ Decal BloodSmear18
 Decal BloodSmear19
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_19.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1550,7 +1550,7 @@ Decal BloodSmear19
 Decal BloodSmear20
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_20.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1559,7 +1559,7 @@ Decal BloodSmear20
 Decal BloodSmear21
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_21.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1568,7 +1568,7 @@ Decal BloodSmear21
 Decal BloodSmear22
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_22.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1577,7 +1577,7 @@ Decal BloodSmear22
 Decal BloodSmear23
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_23.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1586,7 +1586,7 @@ Decal BloodSmear23
 Decal BloodSmear24
 {
 	Pic "GRAPHICS/decals/BloodDecals/big/BSPL_Big_24.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1625,7 +1625,7 @@ decalgroup BloodSmear
 Decal BloodSuper1
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_1.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1634,7 +1634,7 @@ Decal BloodSuper1
 Decal BloodSuper2
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_2.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1643,7 +1643,7 @@ Decal BloodSuper2
 Decal BloodSuper3
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_3.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1652,7 +1652,7 @@ Decal BloodSuper3
 Decal BloodSuper4
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_4.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1661,7 +1661,7 @@ Decal BloodSuper4
 Decal BloodSuper5
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_5.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1670,7 +1670,7 @@ Decal BloodSuper5
 Decal BloodSuper6
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_6.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1679,7 +1679,7 @@ Decal BloodSuper6
 Decal BloodSuper7
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_7.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1688,7 +1688,7 @@ Decal BloodSuper7
 Decal BloodSuper8
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_8.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1697,7 +1697,7 @@ Decal BloodSuper8
 Decal BloodSuper9
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_9.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1706,7 +1706,7 @@ Decal BloodSuper9
 Decal BloodSuper10
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_10.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1715,7 +1715,7 @@ Decal BloodSuper10
 Decal BloodSuper11
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_11.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1724,7 +1724,7 @@ Decal BloodSuper11
 Decal BloodSuper12
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_12.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1733,7 +1733,7 @@ Decal BloodSuper12
 Decal BloodSuper13
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_13.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1742,7 +1742,7 @@ Decal BloodSuper13
 Decal BloodSuper14
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_14.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1751,7 +1751,7 @@ Decal BloodSuper14
 Decal BloodSuper15
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_15.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1760,7 +1760,7 @@ Decal BloodSuper15
 Decal BloodSuper16
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_16.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1769,7 +1769,7 @@ Decal BloodSuper16
 Decal BloodSuper17
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_17.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1778,7 +1778,7 @@ Decal BloodSuper17
 Decal BloodSuper18
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_18.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1787,7 +1787,7 @@ Decal BloodSuper18
 Decal BloodSuper19
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_19.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1796,7 +1796,7 @@ Decal BloodSuper19
 Decal BloodSuper20
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_20.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1805,7 +1805,7 @@ Decal BloodSuper20
 Decal BloodSuper21
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_21.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1814,7 +1814,7 @@ Decal BloodSuper21
 Decal BloodSuper22
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_22.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
@@ -1823,7 +1823,7 @@ Decal BloodSuper22
 Decal BloodSuper23
 {
 	Pic "GRAPHICS/decals/BloodDecals/huge/BSPL_Spr_23.png"
-	Translatable
+	OpaqueBlood
 	RandomFlipX
 	RandomFlipY
 	// Animator BloodSplatter
