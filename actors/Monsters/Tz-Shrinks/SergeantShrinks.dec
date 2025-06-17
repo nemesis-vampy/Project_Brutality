@@ -991,15 +991,15 @@ ACTOR LilRocketZombie
 	States
 	{
 		Spawn:
-			HTWA A 1 A_Look
+			MP0S A 1 A_Look
 		See:
 			
-			HTWA A 2 A_Wander
-			HTWA A 2 A_Wander
-			HTWA B 2 A_Wander
-			HTWA B 2 A_Wander
-			HTWA D 2 A_Wander
-			HTWA D 2 A_Wander
+			MP0S A 2 A_Wander
+			MP0S A 2 A_Wander
+			MP0S B 2 A_Wander
+			MP0S B 2 A_Wander
+			MP0S D 2 A_Wander
+			MP0S D 2 A_Wander
 			Loop
 			
 		Death:
