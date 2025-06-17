@@ -131,6 +131,9 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetInventory("PumpshotgunMagNotInserted",0);
 				A_GiveInventory("ShotgunAmmo",11);
 				A_SetInventory("PumpShotgunMagazine",1);
+				A_ZoomFactor(1.0);
+				A_SetInventory("Zoomed",0);
+				A_SetInventory("ADSmode",0);
 			}
 			SHTG BCDEFGH 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SHTM A 1 A_DoPBWeaponAction(WRF_NOBOB);
