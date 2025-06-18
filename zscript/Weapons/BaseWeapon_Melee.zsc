@@ -131,31 +131,31 @@ extend class PB_WeaponBase
 			Goto Ready3;
 		BloodyKnife:
 		BloodyKnife_Red:
-			TRED ABCDEFGHIJK 1;
+			KFBR ABCDEFGHIJK 1;
 			stop;
 		BloodyKnife_Blue:
-			TBLU ABCDEFGHIJK 1;
+			KFBB ABCDEFGHIJK 1;
 			stop;
 		BloodyKnife_Green:
-			TGRE ABCDEFGHIJK 1;
+			KFBG ABCDEFGHIJK 1;
 			stop;
 		BloodyKnife_Black:
-			TBLK ABCDEFGHIJK 1;
+			KFBK ABCDEFGHIJK 1;
 			stop;
 		BloodyKnife_unused:
-			TBLU A 0;
-			TGRE A 0;
-			TRED A 0;
+			KFBB A 0;
+			KFBG A 0;
+			KFBR A 0;
 			"####" ABCDEFGHIJK 1 {
 				let psp = player.findpsprite(overlayid());
 				if(psp)
 				{
 					if(findinventory("PowerBloodOnVisor"))
-						psp.sprite = getspriteindex("TRED");
+						psp.sprite = getspriteindex("KFBR");
 					else if(findinventory("PowerBlueBloodOnVisor"))
-						psp.sprite = getspriteindex("TBLU");
+						psp.sprite = getspriteindex("KFBB");
 					else if(findinventory("PowerGreenBloodOnVisor"))
-						psp.sprite = getspriteindex("TGRE");
+						psp.sprite = getspriteindex("KFBG");
 					else
 						psp.destroy();
 				}
