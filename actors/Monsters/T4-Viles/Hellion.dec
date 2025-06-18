@@ -339,9 +339,13 @@ GoApeShit:
 	Goto ApeShitSee
 
   Pain:
-  Pain.Kick: Pain.ExtremePunches:
     HELN M 2
     HELN M 2 A_Pain
+    Goto See
+
+  Pain.Kick: Pain.ExtremePunches:
+    HELN M 2
+    HELN M 13 A_Pain
     Goto See
 	
 	 Possession:
