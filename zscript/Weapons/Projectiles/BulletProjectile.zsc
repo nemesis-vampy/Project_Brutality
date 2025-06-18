@@ -841,7 +841,9 @@ class INTERNAL_SpecLineTracer : LineTracer
     {
         if(Results.HitType == TRACE_HitActor)
         {
-            if(Results.HitActor == target && !src.bHitOwner)
+            if(!Results.HitActor) return TRACE_Skip;
+            
+            if(target && src && Results.HitActor == target && !src.bHitOwner)
                 return TRACE_Skip;
             else if(Results.HitActor.bSHOOTABLE) 
             {
