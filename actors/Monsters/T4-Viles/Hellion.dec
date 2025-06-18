@@ -523,7 +523,7 @@ GoApeShit:
 		TNT1 A 0 A_SpawnItem("BlackHoledArchvile")
 		Stop
 		
-		
+	Death.Shotgun:
 	Death.SSG:
 	Death.Railgun:
 	Death.Blast:
