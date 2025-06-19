@@ -210,7 +210,6 @@ class PlayerPawnBase : PlayerPawn
 	Override void PlayerThink()
 	{
 		let player = self.player;
-		if(!player) return;
 		UserCmd cmd = player.cmd;
 		
 		//Set some basic parameters
