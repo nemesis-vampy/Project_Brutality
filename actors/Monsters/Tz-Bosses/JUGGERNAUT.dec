@@ -360,8 +360,8 @@ actor JuggernautBase : CurbstompedMarine
 	States
 	{
 	Spawn:
-	BS1B A 5
-	Loop
+	BS1B A -1
+	Stop
 	
 	Death:
 	TNT1 A 0
@@ -383,6 +383,7 @@ Actor JuggernautBody
 	+THRUACTORS
 	+NOGRAVITY
 	+NOCLIP
+	+NOBLOCKMAP
 	+NOINTERACTION
 	+INVULNERABLE
 	+NOTARGET
@@ -403,19 +404,23 @@ Actor JuggernautBody
 		TNT1 A 0 A_JumpIf(!AAPTR_Master, "Death")
 		TNT1 A 0 A_JumpIfHealthLower(1, "Death", AAPTR_Master)
 		
-		TNT1 A 0 A_JumpIf(CountInv("JuggernautBodySpriteMode", AAPTR_Master) == 0, 3)
-		BS1T A 0 A_JumpIf(CountInv("JuggernautBodySpriteMode", AAPTR_Master) == 1, 2)
-		BS1T B 0
-		"####" "#" 1 {
+		TNT1 A 0 {
 			A_WARP(AAPTR_Master, 0, 0, 0, 0, WARPF_NOCHECKPOSITION);
 			A_TransferPointer(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET, AAPTR_TARGET);
 			A_FaceTarget;
 		}
+		
+		TNT1 A 0 A_JumpIf(CountInv("JuggernautBodySpriteMode", AAPTR_Master) == 0, "Invis")
+		TNT1 A 0 A_JumpIf(CountInv("JuggernautBodySpriteMode", AAPTR_Master) == 1, "Firing")
+		BS1T B 1
 		Loop
+	Firing:
+		BS1T A 1 BRIGHT 
+		Goto Spawn
+	Invis:
+		TNT1 A 1
+		Goto Spawn
 	Death:
-		TNT1 A 0
-		Stop
-	XDeath:
 		TNT1 A 0
 		Stop
 	}
