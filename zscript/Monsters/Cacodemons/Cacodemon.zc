@@ -150,7 +150,7 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 			HEAD EAB 2 A_FaceTarget();
 			HEAD C 5 BRIGHT A_FaceTarget();
 			HEAD D 7 BRIGHT { self.suppressiveOffZ = int(self.height / 2); self.suppressiveOffXY = 0; self.suppressiveMissile = "PB_Cacodemonball2";  A_SuppressiveFire();}
-			HEAD C 2 {if (CheckSight(target)) SetStateLabel("See");}
+			HEAD C 2 {if (target && CheckSight(target)) SetStateLabel("See");}
 			
 			HEAD CCBBAE 1;
 			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
