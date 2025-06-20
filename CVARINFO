@@ -18,6 +18,8 @@ server string pb_cyberdemon_override="Disabled";
 server string pb_nazi_override="Disabled";
 server string pb_dog_override="Disabled";
 
+server bool pb_vanillamonster_override = false;
+
 server bool pb_experimental = false;
 user bool py_weaponwheel_freeze = true;
 user int py_weaponwheel_invert = 0;

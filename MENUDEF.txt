@@ -696,6 +696,11 @@ OptionMenu "MBlurOpts"
 OptionMenu "MonsterSpawns"
 {
 	Title	"---------Monster Spawns---------"
+	
+	Option "Disable PB Monsters", "pb_vanillamonster_override", "YesOrNo"
+	StaticText "Disable PB's Monsters, for those that are running custom enemy packs specifically"
+	StaticText " "
+	
 	StaticText "---------------Zombiemen Variants---------------", gold
 	
 	Option "Disable Nazi random replacements", "PB_NaziExclusiveSpawning", "EnabledOption"

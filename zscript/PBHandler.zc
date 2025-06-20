@@ -479,24 +479,24 @@ class PB_EventHandler : EventHandler
 			//
 			//	Monsters
 			//
-			case 'ZombieMan':				e.replacement = 'PBZombieManSpawner';			break;
-			case 'ShotgunGuy':				e.replacement = 'PBShotgunGuySpawner';			break;
-			case 'DoomImp':					e.replacement = 'PBImpSpawner';					break;
-			case 'Demon':					e.replacement = 'PBPinkySpawner';				break;
-			case 'Spectre':					e.replacement = 'PBSpectreSpawner';				break;
-			case 'ChaingunGuy':				e.replacement = 'PBChainGunGuySpawner';			break;
-			case 'Cacodemon':				e.replacement = 'PBCacoDemonSpawner';			break;
-			case 'HellKnight':				e.replacement = 'PBHKSpawner';					break;
-			case 'Arachnotron':				e.replacement = 'PBArachnotronSpawner';			break;
-			case 'BaronOfHell':				e.replacement = 'PBBOHSpawner';					break;
-			case 'Revenant':				e.replacement = 'PBRevSpawner';					break;
-			case 'LostSoul':				e.replacement = 'PBLSSpawner';					break;
-			case 'PainElemental':			e.replacement = 'PBPESpawner';					break;
-			case 'ArchVile':				e.replacement = 'PBArchVileSpawner';			break;
-			case 'Fatso':					e.replacement = 'PBMancubusSpawner';			break;
-			case 'Cyberdemon':				e.replacement = 'PBCyberDemonSpawner';			break;
-			case 'SpiderMastermind':		e.replacement = 'PBSpiderMasterMindSpawner';	break;
-			case 'WolfensteinSS':			e.replacement = 'EvilNaziSpawner';	WSuSinMap = true;	break;
+			case 'ZombieMan':				e.replacement = pb_vanillamonster_override ? 'Zombieman' : 'PBZombieManSpawner';						break;
+			case 'ShotgunGuy':				e.replacement = pb_vanillamonster_override ? 'ShotgunGuy' : 'PBShotgunGuySpawner';						break;
+			case 'DoomImp':					e.replacement = pb_vanillamonster_override ? 'DoomImp' : 'PBImpSpawner';								break;
+			case 'Demon':					e.replacement = pb_vanillamonster_override ? 'Demon' : 'PBPinkySpawner';								break;
+			case 'Spectre':					e.replacement = pb_vanillamonster_override ? 'Spectre' : 'PBSpectreSpawner';							break;
+			case 'ChaingunGuy':				e.replacement = pb_vanillamonster_override ? 'ChaingunGuy' : 'PBChainGunGuySpawner';					break;
+			case 'Cacodemon':				e.replacement = pb_vanillamonster_override ? 'Cacodemon' : 'PBCacoDemonSpawner';						break;
+			case 'HellKnight':				e.replacement = pb_vanillamonster_override ? 'HellKnight' : 'PBHKSpawner';								break;
+			case 'Arachnotron':				e.replacement = pb_vanillamonster_override ? 'Arachnotron' : 'PBArachnotronSpawner';					break;
+			case 'BaronOfHell':				e.replacement = pb_vanillamonster_override ? 'BaronOfHell' : 'PBBOHSpawner';							break;
+			case 'Revenant':				e.replacement = pb_vanillamonster_override ? 'Revenant' : 'PBRevSpawner';								break;
+			case 'LostSoul':				e.replacement = pb_vanillamonster_override ? 'LostSoul' : 'PBLSSpawner';								break;
+			case 'PainElemental':			e.replacement = pb_vanillamonster_override ? 'PainElemental' : 'PBPESpawner';							break;
+			case 'ArchVile':				e.replacement = pb_vanillamonster_override ? 'ArchVile' : 'PBArchVileSpawner';							break;
+			case 'Fatso':					e.replacement = pb_vanillamonster_override ? 'Fatso' : 'PBMancubusSpawner';								break;
+			case 'Cyberdemon':				e.replacement = pb_vanillamonster_override ? 'Cyberdemon' : 'PBCyberDemonSpawner';						break;
+			case 'SpiderMastermind':		e.replacement = pb_vanillamonster_override ? 'SpiderMastermind' : 'PBSpiderMasterMindSpawner';			break;
+			case 'WolfensteinSS':			e.replacement = pb_vanillamonster_override ? 'WolfensteinSS' : 'EvilNaziSpawner';	WSuSinMap = true;	break;
 
 			//
 			//	Stealth Monsters
