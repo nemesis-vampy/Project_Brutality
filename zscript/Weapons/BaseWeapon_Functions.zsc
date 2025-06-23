@@ -2097,6 +2097,33 @@ extend class PB_WeaponBase
 		return false;
 	}
 	
+action int getReadyFlags(int weapflags, bool noReload)
+	{
+		static const int PBWeapReadyFlags[] = 
+		{
+			WRF_NOSWITCH, WRF_NOBOB, WRF_NOFIRE, WRF_NOPRIMARY, WRF_NOSECONDARY, 
+			WRF_ALLOWUSER1, WRF_ALLOWUSER2, WRF_ALLOWUSER3, WRF_ALLOWUSER4,
+			WRF_DISABLESWITCH, WRF_ALLOWZOOM, WRF_ALLOWRELOAD
+		};
+		int ammo1Left = -1;
+		int ammo2Left = -1;
+		if (invoker.ammotype1) ammo1Left = CountInv(invoker.ammotype1); 
+		if (invoker.ammotype2) ammo2Left = CountInv(invoker.ammotype2); 
+		bool isAmmoEmpty = ammo1Left == 0 && ammo2Left == 0;
+		
+		int newflags = 0;
+		for ( int i = 0; i < PBWeapReadyFlags.size(); i++ )
+		{
+			int flag = PBWeapReadyFlags[i];
+			if((noReload || isAmmoEmpty) && flag == WRF_ALLOWRELOAD) continue;
+			if(weapflags & flag) { newflags |= flag; }
+		}
+		if (isAmmoEmpty) newflags |= WRF_NOPRIMARY;
+		if (PB_usingKick()) { newflags |= WRF_NOFIRE | WRF_NOSWITCH; }
+		
+		return newflags;
+	}
+
 	action state A_DoPBWeaponAction(int weapflags = WRF_ALLOWRELOAD, int pbFlags = 0, string unloadtoken = "HasUnloaded", bool noReload = false)
 	{
 		bool initialWRF_ALLOWRELOAD = false;
