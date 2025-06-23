@@ -527,31 +527,25 @@ class PB_EventHandler : EventHandler
 		switch(e.replacement.getclassname())
 		{
 			//cyberdemon
-			case 'PB_Annihilator': e.replacee = 'Cyberdemon'; Break;
-			case 'PB_Cyberdemon': e.replacee = 'Cyberdemon'; Break;
+			case 'PB_Annihilator': case 'PB_Cyberdemon1':
+				e.replacee = 'Cyberdemon'; Break;
 			
 			//mastermind
-			case 'PB_Demolisher': e.replacee = 'SpiderMastermind'; Break;
-			case 'PB_Juggernaut': e.replacee = 'SpiderMastermind'; Break;
-			case 'PB_Mastermind': e.replacee = 'SpiderMastermind'; Break;
+			case 'PB_Demolisher': case 'PB_Juggernaut': case 'PB_Mastermind':
+				e.replacee = 'SpiderMastermind'; Break;
 			
 			//barons
-			case 'PB_Infernus': e.replacee = 'BaronOfHell'; Break;
-			case 'PB_CyberBaron': e.replacee = 'BaronofHell'; Break;
-			case 'PB_Belphegor': e.replacee = 'BaronofHell'; Break;
-			case 'PB_Baron': e.replacee = 'BaronofHell'; Break;
+			case 'PB_Infernus': case 'PB_CyberBaron':
+			case 'PB_Belphegor': case 'PB_Baron1': e.replacee = 'BaronofHell'; Break;
 			
 			//spiders
-			case 'PB_Arachnophyte': e.replacee = 'Arachnotron'; Break;
-			case 'PB_Arachnotron': e.replacee = 'Arachnotron'; Break;
-			case 'Aracnorb': e.replacee = 'Arachnotron'; Break;
-			case 'PB_EliteArachnotron': e.replacee = 'Arachnotron'; Break;
-			case 'PB_InfernalArachnotron': e.replacee = 'Arachnotron'; Break;
+			case 'PB_Arachnophyte': case 'Aracnorb': case 'PB_EliteArachnotron':
+			case 'PB_InfernalArachnotron': case 'PB_Arachnotron1':
+				e.replacee = 'Arachnotron'; Break;
 			
 			//mancubi
-			case 'PB_Daedabus': e.replacee = 'Fatso'; Break;
-			case 'PB_Mancubus': e.replacee = 'Fatso'; Break;
-			case 'PB_Volcabus': e.replacee = 'Fatso'; Break;
+			case 'PB_Daedabus': case 'PB_Volcabus': case 'PB_Mancubus1':
+				e.replacee = 'Fatso'; Break;
 		}
 	}
 	
