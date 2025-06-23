@@ -1,5 +1,21 @@
 class PB_Math abstract
 {
+    clearscope static int PB_GetRandomNumber(uint seed)
+    {
+        uint state = seed * 1664525u + 1013904223u;
+        return state;
+    }
+
+    clearscope static int PB_RandInt(int min, int max, uint seed)
+    {
+        return min + (abs(PB_GetRandomNumber(seed)) / 2147483648.f) * (max - min);
+    }
+
+    /*clearscope static int PB_RandInt(int min, int max, uint seed)
+    {
+        return min + (int(PB_GetRandomNumber(seed) - 2147483648) / 2147483648.f) * (max - min);
+    }*/
+
 	// [gng] thank you agent ash as usual for the math functions
 	clearscope static vector2 GetLineNormal(int iSide, Line vLine)
 	{

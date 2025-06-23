@@ -474,7 +474,7 @@ class PB_Projectile : FastProjectile abstract
 				if(bWHIZCRACK) 
 					A_StartSound("bulletcrack/"..playerDist, CHAN_AUTO);
 				else
-					A_StartSound(whizsound, CHAN_AUTO, pitch: frandom(0.9, 1.1));
+					A_StartSound(whizsound, CHAN_AUTO, pitch: cfrandom(0.9, 1.1));
 
 				alreadyWhizzedBy.Push(plr);
 			}

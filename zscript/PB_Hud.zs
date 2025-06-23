@@ -89,6 +89,8 @@ class PB_Hud_ZS : BaseStatusBar
 	
 	Weapon oldWeapon;
 
+    int tickRandSeed;
+
 	//CVars
 	int16 hudXMargin, hudYMargin, playerMsgPrint;
 	bool hudDynamicsCvar, showVisor, showVisorGlass, showLevelStats, lowresfont, curmaxammolist, hideunusedtypes, showList, customPBMugshot, showBloodDrops, showGlassCracks, bottomMiddlePart, showtutorials;
@@ -235,6 +237,8 @@ class PB_Hud_ZS : BaseStatusBar
 	override void Tick()
 	{
 		Super.Tick();
+
+        if(interference > 0 && gametic % 2) tickRandSeed = crandom(0, 2147483648);
 
         if(CPlayer.Health <= 0) 
         {
@@ -492,7 +496,7 @@ class PB_Hud_ZS : BaseStatusBar
                     if(crandom() < 50)
                     {
                         helmetKernelPanic++;
-			//S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+						S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
                     }
                 }
 			}
@@ -657,8 +661,8 @@ class PB_Hud_ZS : BaseStatusBar
                 int chr, next;
                 [chr, next] = string.GetNextCodePoint(i);
 
-                if(interference > crandom(0, 50))
-                    stringBuffer.AppendCharacter(crandom("!", "~"));
+                if(interference > PB_Math.PB_RandInt(0, 50, tickRandSeed * (chr * (1 + i))))
+                    stringBuffer.AppendCharacter(PB_Math.PB_RandInt("!", "~", tickRandSeed * (chr * (1 + i))));
                 else
                     stringBuffer.AppendCharacter(chr);
 

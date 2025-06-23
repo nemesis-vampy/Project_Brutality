@@ -77,7 +77,7 @@ class PB_GunFireSmoke: PB_LightActor
                 vel.x -= 0.025;
             }
             
-            vel.z += 0.04;
+            vel.z += 0.07;
 
             /*if (alpha < 0.1)
                	A_FadeOut(alpha * (0.05 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
@@ -283,18 +283,18 @@ class MarineMuzzle1 : PB_LightActor
         {
             FSpawnParticleParams PUFSPRK;
             PUFSPRK.Texture = TexMan.CheckForTexture("SPKOA0");
-            PUFSPRK.Color1 = "FFFFFF";
-            PUFSPRK.Style = STYLE_Add;
+            PUFSPRK.Color1 = 0xFF9D2E;
+            PUFSPRK.Style = STYLE_AddShaded;
             PUFSPRK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
-            PUFSPRK.Vel = (RotateVector((frandom(4, 12), frandom(-1, 1)), angle), frandom(-1, 1));
+            PUFSPRK.Vel = (RotateVector((frandom(7, 19), frandom(-5, 5)), angle), frandom(-5, 5));
             PUFSPRK.accel = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1));
             PUFSPRK.Startroll = random[jtbs](0,359);
             PUFSPRK.RollVel = 0;
             PUFSPRK.StartAlpha = 1.0;
-            PUFSPRK.FadeStep = 0.075;
+            PUFSPRK.FadeStep = 0.1;
             PUFSPRK.Size = random[jtbs](6,8);
             PUFSPRK.SizeStep = -0.5;
-            PUFSPRK.Lifetime = random[jtbs](12,18); 
+            PUFSPRK.Lifetime = 3; 
             PUFSPRK.Pos = pos;
             Level.SpawnParticle(PUFSPRK);
         }

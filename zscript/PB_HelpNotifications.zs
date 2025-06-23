@@ -119,7 +119,7 @@ class PB_HelpNotificationsHandler : EventHandler
         }
     }
 
-    override void PlayerEntered(PlayerEvent e)
+    override void PlayerSpawned(PlayerEvent e)
     {
         array<string> pbTipsBuf;
         pbTipsBuf.Push("Welcome to Project Brutality!");

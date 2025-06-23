@@ -255,12 +255,12 @@ extend class PB_WeaponBase
 				vol = invoker.tailVolume * intSndVolume;
 			}
 
-			A_StartSound("weapons/atmo/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
+			A_StartSound("weapons/atmo/"..tmpTailSound, CHAN_AUTO, volume: vol * 0.5, pitch: sndPitch);
 
 			// multiplayer thing
 			if(multiplayer && player != players[consoleplayer])
 			{
-				A_StartSound("weapons/atmo/dist/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
+				A_StartSound("weapons/atmo/dist/"..tmpTailSound, CHAN_AUTO, volume: vol * 0.6, pitch: sndPitch);
 				A_StartSound("weapons/atmo/far/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
 				A_StartSound("weapons/atmo/med/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
 			}
@@ -2097,33 +2097,6 @@ extend class PB_WeaponBase
 		return false;
 	}
 	
-	action int getReadyFlags(int weapflags, bool noReload)
-	{
-		static const int PBWeapReadyFlags[] = 
-		{
-			WRF_NOSWITCH, WRF_NOBOB, WRF_NOFIRE, WRF_NOPRIMARY, WRF_NOSECONDARY, 
-			WRF_ALLOWUSER1, WRF_ALLOWUSER2, WRF_ALLOWUSER3, WRF_ALLOWUSER4,
-			WRF_DISABLESWITCH, WRF_ALLOWZOOM, WRF_ALLOWRELOAD
-		};
-		int ammo1Left = -1;
-		int ammo2Left = -1;
-		if (invoker.ammotype1) ammo1Left = CountInv(invoker.ammotype1); 
-		if (invoker.ammotype2) ammo2Left = CountInv(invoker.ammotype2); 
-		bool isAmmoEmpty = ammo1Left == 0 && ammo2Left == 0;
-		
-		int newflags = 0;
-		for ( int i = 0; i < PBWeapReadyFlags.size(); i++ )
-		{
-			int flag = PBWeapReadyFlags[i];
-			if((noReload || isAmmoEmpty) && flag == WRF_ALLOWRELOAD) continue;
-			if(weapflags & flag) { newflags |= flag; }
-		}
-		if (isAmmoEmpty) newflags |= WRF_NOPRIMARY;
-		if (PB_usingKick()) { newflags |= WRF_NOFIRE | WRF_NOSWITCH; }
-		
-		return newflags;
-	}
-	
 	action state A_DoPBWeaponAction(int weapflags = WRF_ALLOWRELOAD, int pbFlags = 0, string unloadtoken = "HasUnloaded", bool noReload = false)
 	{
 		bool initialWRF_ALLOWRELOAD = false;
@@ -2212,9 +2185,36 @@ extend class PB_WeaponBase
 			}
 		}
 		
-		noReload = noReload || ((PressingFire() || JustPressed(BT_ATTACK)) || (ResolveState("AltFire") && (PressingAltFire() || JustPressed(BT_ALTATTACK))));
+		if (!noReload) {
+			noReload = ((PressingFire() || JustPressed(BT_ATTACK)) || (ResolveState("AltFire") && (PressingAltFire() || JustPressed(BT_ALTATTACK))));
+		}
 		
-		A_WeaponReady(getReadyFlags(weapflags, noReload));
+		if (noReload) {
+			int newflags = WRF_NOSWITCH;
+			if (weapflags & WRF_NOBOB) { newflags = newflags | WRF_NOBOB; }
+			if (weapflags & WRF_NOFIRE) { newflags = newflags | WRF_NOFIRE; }
+			if (weapflags & WRF_NOPRIMARY) { newflags = newflags | WRF_NOPRIMARY; }
+			if (weapflags & WRF_NOSECONDARY) { newflags = newflags | WRF_NOSECONDARY; }
+			if (weapflags & WRF_ALLOWUSER1) { newflags = newflags | WRF_ALLOWUSER1; }
+			if (weapflags & WRF_ALLOWUSER2) { newflags = newflags | WRF_ALLOWUSER2; }
+			if (weapflags & WRF_ALLOWUSER3) { newflags = newflags | WRF_ALLOWUSER3; }
+			if (weapflags & WRF_ALLOWUSER4) { newflags = newflags | WRF_ALLOWUSER4; }
+			if (weapflags & WRF_DISABLESWITCH) { newflags = newflags | WRF_DISABLESWITCH; }
+			if (weapflags & WRF_ALLOWZOOM) { newflags = newflags | WRF_ALLOWZOOM; }
+			if (PB_usingKick()) { newflags = newflags | WRF_NOFIRE; }
+			A_WeaponReady(newflags);
+		}
+		else {
+			if (PB_usingKick()) {
+				if (CountInv("IsSlideKicking") >= 1) {
+					A_WeaponReady(weapflags | WRF_NOFIRE | WRF_NOSWITCH);
+				} else {
+					A_WeaponReady(weapflags | WRF_NOSWITCH);
+				}
+			} else {
+				A_WeaponReady(weapflags);
+			}
+		}
 		return null;
 	}
 	

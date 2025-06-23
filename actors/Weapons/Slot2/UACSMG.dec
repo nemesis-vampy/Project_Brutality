@@ -471,7 +471,7 @@ ACTOR PB_SMG : PB_Weapon
 		
 	FireLeft_Overlay:
 		A2S1 DEF 0
-		A2F1 D 1 BRIGHT {
+		A2F1 D 1 {
 			if(CountInv("SilencedSMG") >= 1) 
 			{
 				PB_DynamicTail("pistol_sup", "pistol_sup");
@@ -530,7 +530,7 @@ ACTOR PB_SMG : PB_Weapon
 		
 	FireRight_Overlay:
 		A2S1 ABC 0
-		A2F1 A 1 BRIGHT {
+		A2F1 A 1 {
 			if(CountInv("SilencedSMG") >= 1) 
 			{
 				PB_DynamicTail("pistol_sup", "pistol_sup");
@@ -1083,7 +1083,7 @@ ACTOR PB_SMG : PB_Weapon
 			A_GunFlash;
 			PB_WeaponRecoil(-0.24,+0.22);
 		}
-		A1F1 G 1 BRIGHT {
+		A1F1 G 1 {
 			A_ZoomFactor(0.99);
 			PB_WeaponRecoil(-0.24,+0.22);
 
@@ -1165,7 +1165,7 @@ ACTOR PB_SMG : PB_Weapon
 		}
 		TNT1 A 0 A_JumpIfInventory("SMGAmmo",1,1)
 		Goto Reload
-		A1F3 G 1 BRIGHT {
+		A1F3 G 1 {
 			if(CountInv("SilencedSMG") >= 1) 
 			{
 				PB_DynamicTail("pistol_sup", "pistol_sup");

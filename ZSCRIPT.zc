@@ -117,6 +117,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/TiltPlus/TiltPlusPlusMenu.zc"
 #include "zscript/Footsteps.zs"
 #include "zscript/DeathFader.zc"
+#include "zscript/ASD/AntiSwitchDecals.zs"
 #include "zscript/Gore/NashGore/NashGoreCommon.zc"
 #include "zscript/Gore/NashGore/NashGoreStatics.zc"
 #include "zscript/Gore/NashGore/NashGoreHandler.zc"

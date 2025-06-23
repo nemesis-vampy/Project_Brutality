@@ -413,7 +413,7 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 	States
 	{
 	Spawn:
-		TNT1 A 0 { chanceMod = 0;		return ResolveState("Spawn2"); }
+        TNT1 A 0 { chanceMod = 0;		return ResolveState("Spawn2"); }
 		TNT1 A 0 { chanceMod = 100;		return ResolveState("Spawn2"); }
 		TNT1 A 0 { chanceMod = 220;		return ResolveState("Spawn2"); }
 		
@@ -422,11 +422,11 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 		{
 			if(target && !target.player)
             {
-                A_SpawnItemEx(randompick(0, 1) ? "PB_BloodCloud" : "PB_BloodCloud2", frandom(-10, 10), frandom(-10, 10), frandom(-10, 10), flags: BLOOD_FLAGS | SXF_TRANSFERPOINTERS);
-                if(random() <= 100) SpawnBigCloud();
+                A_SpawnItemEx(randompick[rnd_SpawnBloodCloud](0, 1) ? "PB_BloodCloud" : "PB_BloodCloud2", frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), flags: BLOOD_FLAGS | SXF_TRANSFERPOINTERS);
+                if(random[rnd_SpawnBloodBigCloud]() <= 100) SpawnBigCloud();
             }
 			
-			if(random() >= 100)    
+			if(random[rnd_SpawnBloodImpact]() >= 100)    
                 A_SpawnItemEx("NashGoreBloodImpact", flags: BLOOD_FLAGS);
 			
 			let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
@@ -443,9 +443,9 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 			for (int i = 0; i < max(int(amt/2),1); i++)
 			{
 				A_SpawnItemEx("NashGoreBloodParticle2",
-					frandom(-8, 8), frandom(-8, 8), frandom(-8, 8),
-					frandom(-5.5, 5.5), frandom(-5.5, 5.5), frandom(1.0, 3.0),
-					frandom(0, 360), BLOOD_FLAGS, chanceMod);
+					frandom[rnd_SpawnBloodParticle2](-8, 8), frandom[rnd_SpawnBloodParticle2](-8, 8), frandom[rnd_SpawnBloodParticle2](-8, 8),
+					frandom[rnd_SpawnBloodParticle2](-5.5, 5.5), frandom[rnd_SpawnBloodParticle2](-5.5, 5.5), frandom[rnd_SpawnBloodParticle2](1.0, 3.0),
+					frandom[rnd_SpawnBloodParticle2](0, 360), BLOOD_FLAGS, chanceMod);
 				
 				//A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 				//	0, 0, 0,
@@ -484,7 +484,7 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 		PUFSPRK.Lifetime = random[jtbs](250, 450); 
 		PUFSPRK.RollAcc = -PUFSPRK.RollVel / double(PUFSPRK.Lifetime);
 
-		vector3 vls = (frandom(-30, 30), frandom(-30, 30), frandom(-30, 30));
+		vector3 vls = (frandom[jtbs](-30, 30), frandom[jtbs](-30, 30), frandom[jtbs](-30, 30));
 		
 		PUFSPRK.Vel = vls.Unit() * 0.2;
 		
