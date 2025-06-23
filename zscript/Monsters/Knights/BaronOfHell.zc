@@ -1919,19 +1919,31 @@ class BrutalizedBaron1 : Actor
     States
     {
         Spawn:
-            BSA0 ABCB 6 {
-                A_SpawnItem("PB_SquirtingBloodTrail", 0, 30);
-                A_StartSound("PSXDPN");
-            }
-            Loop;
+			BSA0 ABCBABCB 8 {
+				A_SpawnItem("PB_SquirtingBloodTrail", 0, 30);
+				A_StartSound("PSXDPN");
+			}
+			TNT1 A 0 A_Die("Collapse");
+            Stop;
+			
+		Death.Collapse:
+			TNT1 A 0 {A_NoBlocking(false);}
+			BSA0 DEFG 5;
+			BSA0 H -1;
+			Stop;
 
         Death:
-            TNT1 A 0 {A_NoBlocking(); A_Fall();}
-            TNT1 AAAAAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 A 0 {A_NoBlocking();}
+			TNT1 AAAAAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random(0, 360), 2, random(0, 160));
             TNT1 AAAAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random(0, 360), 2, random(0, 160));
+            TNT1 A 0 A_Jump(128, "DeathAlt");
             TNT1 A 0 A_SpawnProjectile("XDeathBaronOfHellArm", 32, 0, random(0, 360), 2, random(0, 160));
             TNT1 A 0 A_SpawnProjectile("XDeathBaronHead5", 57, 0, random(0, 360), 2, random(50, 130));
-            BSA0 N 1 A_SpawnItem("BrutalizedBaron2");
+            BSA0 N 0 A_SpawnItem("BrutalizedBaron2");
+            Stop;
+		DeathAlt:
+			TNT1 A 0 A_SpawnProjectile("XDeathBaronHead5", 57, 0, random(0, 360), 2, random(50, 130));
+            BSA0 N 0 A_SpawnItem("BrutalizedBaron2alt");
             Stop;
     }
 }
@@ -1941,16 +1953,50 @@ class BrutalizedBaron2 : BrutalizedBaron1
     States
     {
         Spawn:
-            BSA0 NONP 5 A_SpawnItem("PB_SquirtingBloodTrail", 0, 30);
-            Loop;
+            BSA0 NONPNOPN 8 A_SpawnItem("PB_SquirtingBloodTrail", 0, 30);
+   			TNT1 A 0 A_Die("Collapse");
+            Stop;
+			
+		Death.Collapse:
+			TNT1 A 0 {A_NoBlocking(false);}
+			BSA0 QRS 6;
+			BSA0 T -1;
+			Stop;
 
         Death:
-            TNT1 A 0 {A_NoBlocking(); A_Fall();}
+            TNT1 A 0 {A_NoBlocking();}
             TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random(0, 360), 2, random(0, 160));
             TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 40, 0, random(0, 360), 2, random(0, 160));
             TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 40, 0, random(0, 360), 2, random(0, 160));
             TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random(0, 360), 2, random(0, 160));
-            BSA0 N 1 A_SpawnItem("BrutalizedBaron3");
+            TNT1 A 0 A_SpawnProjectile("XDeathBaronOfHellArm", 32, 0, random(0, 360), 2, random(0, 160));
+            BSA0 U 0 A_SpawnItem("BrutalizedBaron3");
+            Stop;
+    }
+}
+
+class BrutalizedBaron2alt : BrutalizedBaron1
+{
+    States
+    {
+        Spawn:
+            BSA0 IIIIIIII 8 A_SpawnItem("PB_SquirtingBloodTrail", 0, 30);
+   			TNT1 A 0 A_Die("Collapse");
+            Stop;
+			
+		Death.Collapse:
+			TNT1 A 0 {A_NoBlocking(false);}
+			BSA0 JKL 6;
+			BSA0 M -1;
+			Stop;
+
+        Death:
+            TNT1 A 0 {A_NoBlocking();}
+            TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random(0, 360), 2, random(0, 160));
+            BSA0 U 0 A_SpawnItem("BrutalizedBaron3");
             Stop;
     }
 }
@@ -1960,7 +2006,26 @@ class BrutalizedBaron3 : BrutalizedBaron2
     States
     {
         Spawn:
-            BSA0 UUUUUUUU 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 15, 0, random(0, 360), 2, random(0, 160));
-            Loop;
+            BSA0 UUUUUUUU 8 A_SpawnProjectile("PB_SquirtingBloodTrail", 15, 0, random(0, 360), 2, random(0, 160));
+			TNT1 A 0 A_Die("Collapse");
+            Stop;
+			
+		Death.Collapse:
+			TNT1 A 0 {A_NoBlocking(false);}
+			BSA0 VWX 6;
+			BSA0 Y -1;
+			Stop;
+			
+		Death:
+            TNT1 A 0 {A_NoBlocking();}
+            TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 40, 0, random(0, 360), 2, random(0, 160));
+            TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 15, 0, random(0, 360), 2, random(0, 160));
+            TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random(0, 360), 2, random(0, 160));
+			BSA1 QQQQ 5 A_SpawnProjectile("PB_SquirtingBloodTrail", 15, 0, random(0, 360), 2, random(0, 160));
+			BSA1 RST 6;
+			BSA1 U -1;
+            Stop;
     }
 }
