@@ -97,7 +97,7 @@ class gb_Options
   
   bool isColoredEnabled()			 const { return mColoredUi             .getBool();    }
 
-  int  getTimeFreezeMode()           const { return mTimeFreeze            .getInt();     }
+  int  getTimeFreezeMode()           const { return multiplayer ? 2 : mTimeFreeze            .getInt();     }
 
   vector2 getMouseSensitivity() const
   {
