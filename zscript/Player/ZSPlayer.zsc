@@ -134,6 +134,8 @@ class PB_PlayerPawn : PlayerPawnBase
 
 	override int DamageMobj(actor inflictor,actor source,int damage,name mod,int flags,double angle)
 	{
+		if(!inflictor&&!source&&(FloorSector.flags&Sector.SECF_ENDLEVEL))
+		{ level.ExitLevel(0,false); return 0; }
 		switch(mod)
 		{ case 'Blast': case 'ExplosiveImpact': case 'Explosive': ThrustThingZ(0,20,1,0); break; }
 		if(source&&source.FindInventory("EnemyIsArchvile"))
