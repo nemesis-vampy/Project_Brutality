@@ -1,6 +1,10 @@
 extend class PB_WeaponBase
 {
-	uint8 barrelHeat, leftBarrelHeat;
+	action bool PB_GetAimMode() {
+        return CVar.GetCVar("pb_toggle_aim_hold", Player).GetBool();
+    }
+    
+    uint8 barrelHeat, leftBarrelHeat;
 	
 	action void PB_IncrementHeat(int flAmount = 1, bool flLeft = false)
 	{
@@ -1052,7 +1056,7 @@ extend class PB_WeaponBase
 		Super.Tick();
 		
 		let plr = PlayerPawnBase(Owner);
-		if (!plr)
+		if (!plr || !plr.Player)
 		{
 			GunBraced = false;
 			return;
@@ -1584,7 +1588,7 @@ extend class PB_WeaponBase
 
                     let act = Spawn('PB_MuzzleSpark', spos);
                     act.vel = svel;
-                    act.scale *= 0.25;
+                    act.scale *= 0.35;
                     act.SetShade("FF9D2E");
                 }
             }

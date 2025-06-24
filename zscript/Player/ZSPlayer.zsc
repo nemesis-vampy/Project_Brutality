@@ -113,6 +113,7 @@ class PB_PlayerPawn : PlayerPawnBase
 		Player.StartItem "PB_GrenadeAmmo",3;
 		Player.StartItem "PB_QuickLauncherAmmo",4;
 		Player.StartItem "FlamerAmmo",90;
+        Player.StartItem "CryoRifleAmmo",60;
 
 		+ROLLSPRITE
 		+THRUSPECIES

@@ -1,0 +1,3 @@
+gameinfo {
+    AddEventHandlers = "PB_MPNameHandler"
+}

@@ -121,23 +121,33 @@ OptionMenu "PBSettings"
 	Title "Project Brutality Settings"
 	StaticText " "
 	StaticText " "
-	Submenu "Spawn Settings",		"GlobalSettings"
+	Submenu "$PB_SPAWN_OPTIONS",		"GlobalSettings"
 	StaticText " "
-	Submenu "Gameplay Settings",		"GameplaySettings"
+	Submenu "$PB_GAMEPLAY_OPTIONS",		"GameplaySettings"
 	StaticText " "
-	Submenu "Visual Settings",		"RenderingSettings"
+	Submenu "$PB_VISUAL_OPTIONS",		"RenderingSettings"
 	StaticText " "
-	Submenu "HUD Settings",			"PB_HUDOptions"
+	Submenu "$PB_HUD_OPTIONS",			"PB_HUDOptions"
+    statictext ""
+	Submenu "$PB_MP_OPTIONS","PB_MultiplayerOptions"
 	statictext ""
 	Submenu "$GB_OPTIONS","gb_Options"
 	StaticText " "
 	StaticText " "
 	StaticText " "
-	Command "Go to Test Map", "map PBTEST"
+	Command "$PB_GO_TESTMAP", "map PBTEST"
 	StaticText " "
 	StaticText "$PB_VERSION_INFO"
 }
 //////////////////////////////////////////////////////////////////////////////////////
+
+OptionMenu "PB_MultiplayerOptions"
+{
+    Title "Project Brutality MP Options"
+
+    StaticText "Options", gold
+    Option "Force Singleplayer Movement", "pb_forcespmovement", "YesNo"
+}
 
 OptionMenu "PB_HUDOptions"
 {
@@ -1065,7 +1075,6 @@ OptionMenu "GoreDebrisMenu"
 	StaticText ""
 
 	StaticText "$NASHGOREMNU_BLOOD_TITLE", 1
-	NashGoreSlider "Gore Draw Distance", "This has a big performance impact, don't get greedy!", "pb_floorwallblooddrawdist", 400, 3000, 5, 0
 	NashGoreOption "$NASHGOREMNU_BLOOD_TYPE",		"$NASHGOREMNU_HELPTEXT_BLOOD_TYPE",			"nashgore_bloodtype",	"NashGoreBloodTypes"
 	NashGoreSlider "$NASHGOREMNU_BLOOD_AMOUNT",		"$NASHGOREMNU_HELPTEXT_BLOOD_AMOUNT",		"nashgore_bloodmult",	0.0, 10.0, 0.1, 1
 	NashGoreOption "$NASHGOREMNU_BLOOD_SPRITES",	"$NASHGOREMNU_HELPTEXT_BLOOD_SPRITES",		"nashgore_spriteblood",	"NashGoreBloodSpriteValues"
@@ -1084,12 +1093,6 @@ OptionMenu "GoreDebrisMenu"
 	NashGoreSlider "$NASHGOREMNU_MISC_MAXGORE",				"$NASHGOREMNU_HELPTEXT_MISC_MAXGORE",		"nashgore_maxgore",		0, 2000, 1, 0
 	NashGoreSlider "$NASHGOREMNU_MISC_MAXCASINGS",			"$NASHGOREMNU_HELPTEXT_MISC_MAXCASINGS",	"nashgore_maxcasings",	0, 2000, 1, 0
 	NashGoreOption "Cheap Casings",				"To improve performance, casings will not react to the player and it's surroundings.",			"pb_cheapcasings",		"OnOff"
-	NashGoreOption "$NASHGOREMNU_MISC_CORPSEBLOOD",			"$NASHGOREMNU_HELPTEXT_MISC_CORPSEBLOOD",	"nashgore_corpseblood",	"OnOff"
-	NashGoreOption "$NASHGOREMNU_MISC_FOOTPRINTS",			"$NASHGOREMNU_HELPTEXT_MISC_FOOTPRINTS",	"nashgore_footprints",	"OnOff"
-	NashGoreOption "$NASHGOREMNU_MISC_DEATHFLIP",			"$NASHGOREMNU_HELPTEXT_MISC_DEATHFLIP",		"nashgore_deathflip",	"OnOff"
-	NashGoreOption "$NASHGOREMNU_MISC_SQUISH",				"$NASHGOREMNU_HELPTEXT_MISC_SQUISH",		"nashgore_squish",		"OnOff"
-	NashGoreOption "$NASHGOREMNU_MISC_ICEDEATH",			"$NASHGOREMNU_HELPTEXT_MISC_ICEDEATH",		"nashgore_icedeath",	"OnOff"
-	NashGoreOption "$NASHGOREMNU_MISC_SPLAT",				"$NASHGOREMNU_HELPTEXT_MISC_SPLAT",			"nashgore_splat",		"OnOff"
 
 	StaticText ""
 

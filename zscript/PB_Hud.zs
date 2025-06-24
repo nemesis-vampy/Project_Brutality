@@ -1189,9 +1189,33 @@ class PB_Hud_ZS : BaseStatusBar
 			}
 			
 			//Mugshot
-			PBHud_DrawImage("EQUPBO", (16, -17), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, playerBoxAlpha);
+            if(!multiplayer)
+			    PBHud_DrawImage("EQUPBO", (16, -17), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, playerBoxAlpha);
+            else
+            {
+                Color colbuf = CPlayer.GetDisplayColor();
+                colbuf = Color(255, colbuf.r, colbuf.g, colbuf.b);
+                PBHud_DrawImage("EQUPBOMP", (16, -17), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, playerBoxAlpha, col: colbuf);
+            }
 			
 			PBHud_DrawSpecialMugshot();
+
+            if(multiplayer) {
+                int plrNum = PlayerPawn(CPlayer.mo).PlayerNumber();
+                PBHud_DrawString(mBoldFont, String.Format("Player %i %s", plrnum + 1, (net_arbitrator == plrnum) ? "(Arbitrator)" : "(Client)"), (16, -13), DI_SCREEN_LEFT_BOTTOM, Font.CR_UNTRANSLATED, alpha: 0.5);
+
+                int ofs;
+                for(int i = 0; i < players.Size(); i++)
+                {
+                    if(i == plrnum) continue;
+
+                    PlayerInfo buddy = players[i];
+                    if(!buddy || !buddy.mo) continue;
+
+                    PBHud_DrawString(mBoldFont, String.Format("(%i) %s\c- - \cv%iHP\c- / \cd%iAP\c-", i + 1, buddy.GetUserName(), buddy.mo.Health, buddy.mo.CountInv("BasicArmor")), (-15, 50 + ofs), DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_RIGHT, Font.CR_UNTRANSLATED);
+                    ofs += 14;
+                }
+            }
 			
 			//Powerups
 			PB_DrawPowerups((16, -76));

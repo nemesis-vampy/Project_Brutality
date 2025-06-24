@@ -21,6 +21,8 @@ class PB_GunFireSmoke: PB_LightActor
         +ROLLCENTER;
         +NOCLIP;
         +NOTIMEFREEZE;
+        FloatBobPhase 0;
+        -RANDOMIZE;
     }
 
     double dissipateRotation;
@@ -41,9 +43,9 @@ class PB_GunFireSmoke: PB_LightActor
 
     override void PostBeginPlay()
     {
-        dissipateRotation = frandom(0.7, 1.4) * randompick(-1, 1);
-        bXFLIP = randompick(0, 1);
-        bYFLIP = randompick(0, 1);
+        dissipateRotation = frandom[muzzlesmoke](0.7, 1.4) * randompick[muzzlesmoke](-1, 1);
+        bXFLIP = randompick[muzzlesmoke](0, 1);
+        bYFLIP = randompick[muzzlesmoke](0, 1);
 		scale *= 0.25;
 
 		fadeSpeed *= 0.66;
@@ -96,7 +98,7 @@ class PB_GunFireSmoke: PB_LightActor
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random(0, 5));
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 5));
             XS18 JKLMNOPQRSTUVWXYZ 2;
 			XS28 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
 			XS38 ABCD 2;
@@ -110,7 +112,7 @@ class PB_GunFireSmoke_Var1 : PB_GunFireSmoke
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random(0, 7));
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 7));
             XS13 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
 			XS23 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
             Stop;
@@ -123,7 +125,7 @@ class PB_GunFireSmoke_Var2 : PB_GunFireSmoke
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random(0, 3));
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 3));
             XS16 CDEFGHIJKLMNO 2;
             Stop;
     }
@@ -137,8 +139,8 @@ class PB_GunFireSmoke_FastCloud : PB_GunFireSmoke
 
 	override void PostBeginPlay()
     {
-        dissipateRotation = frandom(0.7, 1.4) * randompick(-1, 1);
-        bXFLIP = randompick(0, 1);
+        dissipateRotation = frandom[muzzlesmoke](0.7, 1.4) * randompick[muzzlesmoke](-1, 1);
+        bXFLIP = randompick[muzzlesmoke](0, 1);
 		scale *= 0.25;
     }
 	
@@ -146,7 +148,7 @@ class PB_GunFireSmoke_FastCloud : PB_GunFireSmoke
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random(0, 3));
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 3));
             XS15 ABCDEFGH 1;
             Stop;
     }
@@ -168,7 +170,7 @@ class PB_CasingEjectionSmoke : PB_GunFireSmoke
 			Destroy();
 
         //roll = pitch * ceil(deltaangle(angle, master.angle) / 180);
-		bXFLIP = randompick(0, 1);
+		bXFLIP = randompick[muzzlesmoke](0, 1);
 		roll = pitch;
 
 		// vel *= 0.3;
@@ -194,7 +196,7 @@ class PB_CasingEjectionSmoke : PB_GunFireSmoke
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random(0, 5));
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 5));
             XS16 ABCDEFGHIJKLNO 1;
             Stop;
     }
@@ -268,7 +270,7 @@ class MarineMuzzle1 : PB_LightActor
 		{
 			Smoke.master = target;
 			Smoke.Vel = vofs;
-			Smoke.A_SetRoll(random(0, 359));
+			Smoke.A_SetRoll(random[muzzlesmoke](0, 359));
 			Smoke.scale *= scalemul;
 			Smoke.alpha *= alphamul;
 			Smoke.blowSpeed = blowspeed;
@@ -278,7 +280,7 @@ class MarineMuzzle1 : PB_LightActor
 
 	void SpawnPuffSpark()
 	{
-        int sparkcount = random[jtbs](3,5);
+        int sparkcount = random[muzzlesmoke](3,5);
         for(int i = 0; i < sparkcount; i++)
         {
             FSpawnParticleParams PUFSPRK;
@@ -286,13 +288,13 @@ class MarineMuzzle1 : PB_LightActor
             PUFSPRK.Color1 = 0xFF9D2E;
             PUFSPRK.Style = STYLE_AddShaded;
             PUFSPRK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
-            PUFSPRK.Vel = (RotateVector((frandom(7, 19), frandom(-5, 5)), angle), frandom(-5, 5));
-            PUFSPRK.accel = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1));
-            PUFSPRK.Startroll = random[jtbs](0,359);
+            PUFSPRK.Vel = (RotateVector((frandom[muzzlesmoke](7, 19), frandom[muzzlesmoke](-5, 5)), angle), frandom[muzzlesmoke](-5, 5));
+            PUFSPRK.accel = (frandom[muzzlesmoke](-1, 1), frandom[muzzlesmoke](-1, 1), frandom[muzzlesmoke](-1, 1));
+            PUFSPRK.Startroll = random[muzzlesmoke](0,359);
             PUFSPRK.RollVel = 0;
             PUFSPRK.StartAlpha = 1.0;
             PUFSPRK.FadeStep = 0.1;
-            PUFSPRK.Size = random[jtbs](6,8);
+            PUFSPRK.Size = random[muzzlesmoke](6,8);
             PUFSPRK.SizeStep = -0.5;
             PUFSPRK.Lifetime = 3; 
             PUFSPRK.Pos = pos;
@@ -305,7 +307,7 @@ class MarineMuzzle1 : PB_LightActor
 		Super.PostBeginPlay();
 
 		if(target) Angle = target.Angle;
-		Scale *= frandompick(0.5, 1.0);
+		Scale *= frandompick[muzzlesmoke](0.5, 1.0);
 	}
 
 	States

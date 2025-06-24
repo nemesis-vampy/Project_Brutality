@@ -1,8 +1,14 @@
 [enu default]
 
-PB_VERSION_INFO = "PB Version: 0.3.0-alpha";
-SECRETMESSAGE = "\cvSecret Found!";
+PB_VERSION_INFO = "PB Version: 0.3.2-alpha";
+SECRETMESSAGE = "Secret Found!";
 
+PB_MP_OPTIONS = "\cd☍\c- Multiplayer Settings";
+PB_HUD_OPTIONS = "\cy☰\c- HUD Settings";
+PB_VISUAL_OPTIONS = "\cx☼\c- Visual Settings";
+PB_GAMEPLAY_OPTIONS = "\cw⚛\c- Gameplay Settings";
+PB_SPAWN_OPTIONS = "\cg⛧\c- Spawn Settings";
+PB_GO_TESTMAP = "↳ Go to Test Map";
 
 GOTCLIP = "Picked up a Magazine.";
 GOTHTHNEED = "Picked up a health bonus. It's not enough health to manage, but you needed it anyway." ;

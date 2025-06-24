@@ -4,12 +4,11 @@ class PB_EventHandler : EventHandler
 	PB_GlobalStats Stats;
 	
 	ui double dashAlpha, dashScale;
-	int tick;
-	
+
 	bool HatExists;
 	int HatMonth;
 	
-	int taunttimer;
+	int taunttimer[MAXPLAYERS];
 	const tauntcooldown = 40;
 	
 	bool WSuSinMap;	//check for WolfensteinSS	
@@ -22,14 +21,11 @@ class PB_EventHandler : EventHandler
 	
 	override void WorldTick()
 	{
-		tick++;
-		
-		playerinfo plr = players[consoleplayer];
-        if (!plr)
-            return;
-			
-		if(taunttimer > 0)
-			taunttimer--;
+        for(int i = 0; i < taunttimer.Size(); i++)
+        {
+            if(taunttimer[i] > 0)
+                taunttimer[i]--;
+        }
 	}
 	
 	override void NetworkProcess(ConsoleEvent e)
@@ -46,7 +42,7 @@ class PB_EventHandler : EventHandler
 		
 		if (e.Name ~== "RequestTaunt")
 		{	
-			if(taunttimer == 0)
+			if(taunttimer[e.Player] == 0)
 			{
 				let pbweap = PB_WeaponBase(pm.player.readyweapon);
 				/*if(pbweap)
@@ -56,7 +52,7 @@ class PB_EventHandler : EventHandler
 				if((players[e.Player].weaponstate & WF_WEAPONREADY) || (pbweap && pbweap.PB_WeaponIsInReadyState() ))
 				{
 					//set the cooldown
-					taunttimer = tauntcooldown;
+					taunttimer[e.Player] = tauntcooldown;
 					
 					//give the taunt weapon and cast it to pass the actual weapon
 					//so it can return to it later
@@ -549,4 +545,64 @@ class PB_EventHandler : EventHandler
 		}
 	}
 	
+}
+
+class PB_MPNameHandler : EventHandler
+{
+    Font mNameFont;
+    pb_ProjScreen _projection;
+
+    override void OnRegister()
+    {
+        mNameFont = Font.FindFont("PBBOLD");
+        _projection = new("pb_ProjScreen");
+    }
+    
+    override void RenderUnderlay(RenderEvent e)
+    {
+        vector2 namePos;
+        vector2 drawOffsets;
+
+        vector2 boxStart;
+        vector2 boxEnd;
+        for(int i = 0; i < players.Size(); i++)
+        {
+            if(i == consoleplayer) continue;
+
+            PlayerInfo buddy = players[i];
+            if(!buddy || !buddy.mo) continue;
+
+            double buddyDist = buddy.mo.Distance3D(e.camera);
+            double clampedScalar = 1.0 - clamp(buddyDist / 1000.f, 0, 0.5);
+
+            double relAng = Actor.DeltaAngle(e.Camera.angle, e.Camera.AngleTo(buddy.mo));
+            if(relAng > 90 || relAng < -90) continue;
+
+            namePos = MakeDrawPos(e, buddy.mo.pos, buddy.mo.Height + 2);
+
+            Color colbuf = buddy.GetDisplayColor();
+            colbuf = Color(255, colbuf.r, colbuf.g, colbuf.b);
+            drawOffsets = (mNameFont.StringWidth(buddy.GetUserName()) / 2, mNameFont.GetHeight()) * clampedScalar;
+            Screen.DrawText(mNameFont, Font.CR_UNTRANSLATED, namePos.x - drawOffsets.x, namePos.y - drawOffsets.y, buddy.GetUserName(), DTA_Alpha, clampedScalar, DTA_ScaleX, clampedScalar, DTA_ScaleY, clampedScalar);
+        }
+    }
+    
+    ui vector2 MakeDrawPos(RenderEvent event, vector3 pos, double offset)
+    {
+        PlayerInfo player = players[consolePlayer];
+
+        _projection.cacheResolution();
+        _projection.cacheFov(player.fov);
+        _projection.orientForRenderOverlay(event);
+        _projection.beginProjection();
+
+        _projection.projectWorldPos(pos + (0, 0, offset));
+
+        pb_Viewport viewport;
+        viewport.fromHud();
+
+        Vector2 drawPos = viewport.sceneToWindow(_projection.projectToNormal());
+
+        return drawPos;
+    }
 }
