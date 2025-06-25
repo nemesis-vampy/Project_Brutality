@@ -114,18 +114,24 @@ class PB_Monster : Actor abstract
 	{
 		A_StartSound("weapons/atmo/ext/"..tmpTailSound, 19, volume: 0.5, pitch: sndPitch);
 		
-        A_StartSound("weapons/atmo/dist/ext/"..tmpTailSound, 20, pitch: sndPitch);
-        A_StartSound("weapons/atmo/far/ext/"..tmpTailSound, 21, pitch: sndPitch);
-        A_StartSound("weapons/atmo/med/ext/"..tmpTailSound, 22, pitch: sndPitch);
+		if(dist >= 4500)
+			A_StartSound("weapons/atmo/dist/ext/"..tmpTailSound, 20, volume: 0.6, pitch: sndPitch);
+		if(dist >= 1250 && dist < 7500)
+			A_StartSound("weapons/atmo/far/ext/"..tmpTailSound, 21, pitch: sndPitch);
+		if(dist >= 200 && dist < 4500)
+			A_StartSound("weapons/atmo/med/ext/"..tmpTailSound, 22, pitch: sndPitch);
 	}
 
 	action void PB_PlayTailInt(string tmpTailSound, double sndPitch, double dist)
 	{
 		A_StartSound("weapons/atmo/int/"..tmpTailSound, 19, volume: 0.5, pitch: sndPitch);
 		
-        A_StartSound("weapons/atmo/dist/int/"..tmpTailSound, 20, pitch: sndPitch);
-        A_StartSound("weapons/atmo/far/int/"..tmpTailSound, 21, pitch: sndPitch);
-        A_StartSound("weapons/atmo/med/int/"..tmpTailSound, 22, pitch: sndPitch);
+		if(dist >= 2500)
+			A_StartSound("weapons/atmo/dist/int/"..tmpTailSound, 20, volume: 0.6, pitch: sndPitch);
+		if(dist >= 1250 && dist < 3500)
+			A_StartSound("weapons/atmo/far/int/"..tmpTailSound, 21, pitch: sndPitch);
+		if(dist >= 200 && dist < 2500)
+			A_StartSound("weapons/atmo/med/int/"..tmpTailSound, 22, pitch: sndPitch);
 	}
 
 	// seeAllAround - Set whether a monster can look all around. Might be needed in some cases.

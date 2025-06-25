@@ -147,6 +147,8 @@ OptionMenu "PB_MultiplayerOptions"
 
     StaticText "Options", gold
     Option "Force Singleplayer Movement", "pb_forcespmovement", "YesNo"
+    TextField "Callsign", "pb_mpcallsign"
+    StaticText "Callsigns are three letter, uppercase names that appear instead of your full nickname."
 }
 
 OptionMenu "PB_HUDOptions"

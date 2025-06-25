@@ -547,24 +547,40 @@ class PB_EventHandler : EventHandler
 	
 }
 
+class PB_CallSignHandler : CustomStringCVar {
+	override String ModifyValue(Name CVarName, String val) {
+		String newval = val.Left(3);
+        newval = newval.MakeUpper();
+        return newval;
+	}
+}
+
 class PB_MPNameHandler : EventHandler
 {
     Font mNameFont;
     pb_ProjScreen _projection;
+    FLineTraceData camTrace;
 
     override void OnRegister()
     {
         mNameFont = Font.FindFont("PBBOLD");
         _projection = new("pb_ProjScreen");
     }
+
+    override void WorldTick()
+    {
+        PlayerInfo plr = players[consoleplayer];
+        if(!plr) return;
+        Actor act = plr.Camera;
+        if(!act) return;        
+        act.LineTrace(act.angle, 2048, act.pitch, offsetz: plr.viewz - act.pos.z, data: camTrace);
+    }
     
     override void RenderUnderlay(RenderEvent e)
     {
-        vector2 namePos;
-        vector2 drawOffsets;
+        vector2 namePos, drawOffsets;
+        bool lookingAtBuddy;
 
-        vector2 boxStart;
-        vector2 boxEnd;
         for(int i = 0; i < players.Size(); i++)
         {
             if(i == consoleplayer) continue;
@@ -574,16 +590,28 @@ class PB_MPNameHandler : EventHandler
 
             double buddyDist = buddy.mo.Distance3D(e.camera);
             double clampedScalar = 1.0 - clamp(buddyDist / 1000.f, 0, 0.5);
+            double clampedAlph = clampedScalar;
 
             double relAng = Actor.DeltaAngle(e.Camera.angle, e.Camera.AngleTo(buddy.mo));
             if(relAng > 90 || relAng < -90) continue;
+            
+            lookingAtBuddy = (camTrace.HitActor == buddy.mo);
+            string nickname = lookingAtBuddy ? buddy.GetUserName() : CVar.GetCVar("pb_mpcallsign", buddy).GetString();
+            if(!lookingAtBuddy)
+            {
+                nickname = nickname.Left(3);
+                nickname = nickname.MakeUpper();
+            }
+
+            nickname = String.Format("%i: %s", i + 1, nickname);
 
             namePos = MakeDrawPos(e, buddy.mo.pos, buddy.mo.Height + 2);
 
-            Color colbuf = buddy.GetDisplayColor();
-            colbuf = Color(255, colbuf.r, colbuf.g, colbuf.b);
-            drawOffsets = (mNameFont.StringWidth(buddy.GetUserName()) / 2, mNameFont.GetHeight()) * clampedScalar;
-            Screen.DrawText(mNameFont, Font.CR_UNTRANSLATED, namePos.x - drawOffsets.x, namePos.y - drawOffsets.y, buddy.GetUserName(), DTA_Alpha, clampedScalar, DTA_ScaleX, clampedScalar, DTA_ScaleY, clampedScalar);
+            double resScaled = 1.35 * (Screen.GetHeight() / 1080.f);
+            clampedScalar *= resScaled;
+            drawOffsets = (mNameFont.StringWidth(nickname) / 2.f, mNameFont.GetHeight()) * (lookingAtBuddy ? resScaled : clampedScalar);
+
+            Screen.DrawText(mNameFont, Font.CR_UNTRANSLATED, namePos.x - drawOffsets.x, namePos.y - drawOffsets.y, nickname, DTA_Alpha, lookingAtBuddy ? 1.0 : clampedAlph + 0.25, DTA_ScaleX, lookingAtBuddy ? resScaled : clampedScalar, DTA_ScaleY, lookingAtBuddy ? resScaled : clampedScalar);
         }
     }
     
