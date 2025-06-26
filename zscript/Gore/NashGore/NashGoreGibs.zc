@@ -37,7 +37,7 @@ class NashGoreGibs : Actor
 		Height 4;
 		Gravity 0.875;
 		BounceType 'Doom';
-		BounceFactor 0.5;
+		BounceFactor 0.2;
 		BounceSound "nashgore/gibbounce";
         Decal "BloodSplat";
 		+MISSILE
@@ -249,22 +249,22 @@ class NashGoreGibs : Actor
 		GIB0 A 0;
 		Goto SpawnLoop;
 	SpawnLoop:
-		"####" ABCD 3;
+		"####" A 1;
 		Loop;
 	Death:
-		"####" E 0 {
+		"####" B 0 {
 			class<Actor> cls;
 			if (nashgore_bloodtype == 0)		cls = "PB_BloodSpot";
 			else if (nashgore_bloodtype == 1)	cls = "NashGoreBloodSpotClassic";
 			A_SpawnItemEx(cls, flags: (NashGoreBloodBase.BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, 150);
 		}
-		"####" EEEEEEEEEE 1 {
+		"####" B 1 {
 			A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 				0, 0, 0,
 				frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
 				frandom(0, 360), NashGoreBlood.BLOOD_FLAGS, 175);
 		}
-		"####" E -1;
+		"####" B -1;
 		Stop;
 	}
 }

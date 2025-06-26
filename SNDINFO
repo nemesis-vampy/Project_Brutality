@@ -661,3 +661,5 @@ breakfrozenguy/medium1 "sounds/Sounds Effects/breakfrozenguy_medium1.ogg"
 breakfrozenguy/medium2 "sounds/Sounds Effects/breakfrozenguy_medium2.ogg"
 
 breakfrozenguy/large "sounds/Sounds Effects/breakfrozenguy_large.ogg"
+visor/dyingvisor "SOUNDS/HUD Sounds/DyingVisor.wav"
+visor/visorgarbled "SOUNDS/HUD Sounds/VisorGarbled.wav"

@@ -40,7 +40,7 @@ ACTOR PB_Mancubus: Fatso //replaces Fatso
     GibHealth 30
     Health 900
 	Mass 2500
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	Obituary "%o was incinerated by a Mancubus."
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
     +DONTHURTSPECIES

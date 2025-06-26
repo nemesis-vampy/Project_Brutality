@@ -65,6 +65,7 @@ actor Aracnorb
   HitObituary "%o had %p skull chewed by an aracnorb."
   damagefactor "TeleportRemover", 0.0
   Scale 0.85
+  BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
   States
   {
   Death.Execution:

@@ -28,6 +28,7 @@ ActiveSound "monster/watact"
 AttackSound "caco/melee"
 Obituary "%o was fried by a watcher."
 HitObituary "Looks like a watcher thought %o was tasty."
+BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 
 DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
 +NOGRAVITY 

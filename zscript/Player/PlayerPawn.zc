@@ -226,9 +226,6 @@ class PlayerPawnBase : PlayerPawn
 		
 		//Execute Player tic cycle
 		Super.PlayerThink();
-		
-		if(!CheckNotPredicting())
-			return;
 
 		bool wasOnGround = player.onGround;
 		Player.OnGround = (Pos.Z <= FloorZ) || bONMOBJ || bMBFBOUNCER || (Player.Cheats & CF_NOCLIP2); // Moved after super call, otherwise it doesn't register.
@@ -838,10 +835,10 @@ class PlayerPawnBase : PlayerPawn
 	
 	float ZMScale()
 	{
-		Let Player = self.Player;
+        // Let Player = self.Player;
 		UserCmd cmd = player.cmd;
 		
-		Bool 	IsWalking = (CVar.GetCVar("cl_run", Player).GetBool() && (cmd.buttons & BT_SPEED)) || (!CVar.GetCVar("cl_run", Player).GetBool() && !(cmd.buttons & BT_SPEED));
+		Bool 	IsWalking = !CheckRunning();
 		Float 	MoveMulti;
 		
 		if(cmd.sidemove || cmd.forwardmove)
@@ -872,7 +869,7 @@ class PlayerPawnBase : PlayerPawn
 		UserCmd cmd = Player.cmd;
 		
 		Bool GuardRail = ((!cmd.sidemove && !cmd.forwardmove && Vel.XY.Length()) ||
-						 (CVar.GetCVar("cl_run", Player).GetBool() && (cmd.buttons & BT_SPEED)) || (!CVar.GetCVar("cl_run", Player).GetBool() && !(cmd.buttons & BT_SPEED))) 
+						 !CheckRunning())
 						 && Player.OnGround && !Pain;
 		
 		if(GuardRail)
@@ -884,6 +881,10 @@ class PlayerPawnBase : PlayerPawn
 			if(FallDanger) { Vel.XY *= 0.5f; }
 		}
 	}
+
+    bool CheckRunning() {
+        return (player.cmd.buttons & BT_RUN);
+    }
 	
 	void GroundSpriteAnimation()
 	{

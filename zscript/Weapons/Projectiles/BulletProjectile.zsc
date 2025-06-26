@@ -99,11 +99,12 @@ class PB_Projectile : FastProjectile abstract
 		
 		if(victim.bsolid || victim.bshootable)	//dont spawn puffs on casings,ammo,etc
 		{
-			if(victim.bNOBLOOD || victim.bINVULNERABLE || victim.bDORMANT || victim.bREFLECTIVE || (victim.bsolid && ! victim.bShootable))
+            if(victim.bNOBLOOD || victim.bINVULNERABLE || victim.bDORMANT || victim.bREFLECTIVE || (victim.bsolid && ! victim.bShootable))
 				SpawnPuff("PB_NoBloodPuff", pos, angle, 0, 0, PF_HITTHING);
 			else
             {
-				victim.SpawnBlood( pos, angle, ceil(scaled_damage) );
+				let blood = victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
+                if(blood) blood.angle = angle;
                 victim.TraceBleed( ceil(scaled_damage), self );
             }	
 		}

@@ -20,6 +20,7 @@ ACTOR ASGGuy : PB_Sergeant //Replaces ShotgunGuy
 	damagefactor "TeleportRemover", 0.0
 	DropItem "PB_ASGGuyDrop"
 	DropItem "PB_GrenadeAmmo" 5
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	PB_Monster.TailPitch 0.75
     States
     {

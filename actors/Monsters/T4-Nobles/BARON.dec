@@ -32,7 +32,7 @@ ACTOR PB_Baron : BaronofHell //Replaces BaronofHell
 	PainSound "PSXDPN"
     Health 1100
 damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-    BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	//BloodColor "DarkGreen"
     damagefactor "Shrapnel", 0.4
 	Obituary "%o was brutalized by a Baron of Hell."

@@ -21,7 +21,7 @@ class PB_Demon : PB_Monster
 		Tag "$FN_DEMON";
         MaxStepHeight 32;
 	    MaxDropOffHeight 32;
-        Bloodtype "NashGoreBlood";
+        //BLoodType "NashGoreBlood";
         Species "Demon";
         PB_Monster.PBMonSpeed 10, 10, 4, 2;
 		PB_Monster.MonPosHB 0.85, 0.3, 0.18, 0.20;

@@ -1879,7 +1879,7 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 		//-MISSILEMORE;
 		//-MISSILEEVENMORE;
 		MissileChanceMult 1.0;
-		BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood";
+		BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood";
 		PB_Monster.CanIRoll true;
 		PB_Monster.CanIFallback true;
 		PB_Monster.CanIReload true;

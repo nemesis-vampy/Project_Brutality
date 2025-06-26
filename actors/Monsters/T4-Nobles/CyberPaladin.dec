@@ -36,7 +36,7 @@ ACTOR PB_CyberPaladin //Replaces HellKnight
 	damagefactor "killme", 0.0
 	damagefactor "TeleportRemover", 0.0
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-    BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	
 	Obituary "%o played dodgeball with a paladin and lost."
 	HitObituary "A Paladin blew %o away."

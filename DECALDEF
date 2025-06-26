@@ -1087,7 +1087,7 @@ decalgroup BloodMedium
 	BloodMedium42 1
 	BloodMedium43 1
 	BloodMedium44 1
-    NoBlood 19
+    NoBlood 25
 }
 
 Decal BloodSplat1
@@ -1855,7 +1855,7 @@ decalgroup BloodSuper
 	BloodSuper21 1
 	BloodSuper22 1
 	BloodSuper23 1
-    NoBlood 6
+    NoBlood 20
 }
 
 //===========================================================================

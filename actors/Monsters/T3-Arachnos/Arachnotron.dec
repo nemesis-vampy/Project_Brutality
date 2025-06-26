@@ -29,7 +29,7 @@ ACTOR PB_Arachnotron: Arachnotron //replaces Arachnotron
 	DamageFactor "CauseObjectsToSplash", 0.0
 	Obituary "$OB_BABY"
 	MaxStepHeight 24
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	MaxDropOffHeight 24
 	PainChance "Kick", 255
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0

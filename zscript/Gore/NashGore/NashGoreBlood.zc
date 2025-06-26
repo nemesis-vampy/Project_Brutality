@@ -247,15 +247,12 @@ class PB_BloodCloud : NashGoreBloodBase
 		}
 		
 		CopyBloodColor(target);
+
+        Color bcbuffer;
+        if(bloodcolor == 0) bcbuffer = 0xff680000;
+        else bcbuffer = bloodcolor;
 		
-		if(bloodcolor == 0)
-			SetShade(0xff680000);
-		else
-		{
-			Color bcbuffer;
-			bcbuffer = Color(255, int(bloodcolor.r * 0.75), int(bloodcolor.g * 0.75), int(bloodcolor.b * 0.75));
-			SetShade(bcbuffer);
-		}
+        SetShade(PB_Math.PB_DesaturateColor(bcbuffer, 0.8, 1.5));
 		
 		dissipateRotation = frandom(0.7, 1.4) * randompick(-1, 1);
         bXFLIP = randompick(0, 1);
@@ -419,11 +416,98 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 		
 	Spawn2:
 		TNT1 A 0
+		{	
+            if(target && !target.player)
+                A_SpawnItemEx(randompick[rnd_SpawnBloodCloud](0, 1) ? "PB_BloodCloud" : "PB_BloodCloud2", frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), flags: BLOOD_FLAGS | SXF_TRANSFERPOINTERS, chanceMod);
+
+			if(random[rnd_SpawnBloodImpact](0, 255) >= chanceMod)    
+                A_SpawnItemEx("NashGoreBloodImpact", flags: BLOOD_FLAGS);
+			
+			let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
+			for (int i = 0; i < amt; i++)
+			{
+				A_SpawnItemEx("NashGoreBloodParticle1",
+					frandom[rnd_SpawnBloodParticle1](-8.0, 8.0), frandom[rnd_SpawnBloodParticle1](-8.0, 8.0), frandom[rnd_SpawnBloodParticle1](-8.0, 8.0),
+					frandom[rnd_SpawnBloodParticle1](-3.0, 3.0), frandom[rnd_SpawnBloodParticle1](-3.0, 3.0), frandom[rnd_SpawnBloodParticle1](-2.0, 7.0),
+					frandom[rnd_SpawnBloodParticle1](0.0, 360.0), BLOOD_FLAGS);
+			}
+		}
+		TNT1 A 0 {
+			let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
+			for (int i = 0; i < amt; i++)
+			{
+				A_SpawnItemEx("NashGoreBloodParticle2",
+					frandom[rnd_SpawnBloodParticle2](-8, 8), frandom[rnd_SpawnBloodParticle2](-8, 8), frandom[rnd_SpawnBloodParticle2](-8, 8),
+					frandom[rnd_SpawnBloodParticle2](-5.5, 5.5), frandom[rnd_SpawnBloodParticle2](-5.5, 5.5), frandom[rnd_SpawnBloodParticle2](1.0, 3.0),
+					frandom[rnd_SpawnBloodParticle2](0, 360), BLOOD_FLAGS, chanceMod);
+			}
+		}
+		Stop;
+	}
+}
+
+class PB_SawBlood : NashGoreBlood replaces AxeBlood
+{
+	Default
+	{
+		+NOGRAVITY
+	}
+
+	//===========================================================================
+	//
+	//
+	//
+	//===========================================================================
+
+	States
+	{
+	Spawn:
+        TNT1 A 0 { chanceMod = 0;		return ResolveState("Spawn2"); }
+		TNT1 A 0 { chanceMod = 100;		return ResolveState("Spawn2"); }
+		TNT1 A 0 { chanceMod = 220;		return ResolveState("Spawn2"); }
+		
+	Spawn2:
+		TNT1 A 0 {
+			let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
+			for (int i = 0; i < amt; i++)
+			{
+				A_SpawnItemEx("PB_BloodMist",
+					0, 0, 4,
+					frandom[rnd_SpawnBloodParticle2](-5.5, 5.5), frandom[rnd_SpawnBloodParticle2](-5.5, 5.5), frandom[rnd_SpawnBloodParticle2](0, 10),
+					frandom[rnd_SpawnBloodParticle2](0, 360), BLOOD_FLAGS);
+			}
+		}
+        Stop;
+	}
+}
+
+class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
+{
+	Default
+	{
+		+NOGRAVITY
+	}
+
+	//===========================================================================
+	//
+	//
+	//
+	//===========================================================================
+
+	States
+	{
+	Spawn:
+        TNT1 A 0 { chanceMod = 0;		return ResolveState("Spawn2"); }
+		TNT1 A 0 { chanceMod = 100;		return ResolveState("Spawn2"); }
+		TNT1 A 0 { chanceMod = 220;		return ResolveState("Spawn2"); }
+		
+	Spawn2:
+		TNT1 A 0
 		{
 			if(target && !target.player)
             {
-                A_SpawnItemEx(randompick[rnd_SpawnBloodCloud](0, 1) ? "PB_BloodCloud" : "PB_BloodCloud2", frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), flags: BLOOD_FLAGS | SXF_TRANSFERPOINTERS);
-                if(random[rnd_SpawnBloodBigCloud]() <= 100) SpawnBigCloud();
+                A_SpawnItemEx(randompick[rnd_SpawnBloodCloud](0, 1) ? "PB_BloodCloud" : "PB_BloodCloud2", frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), frandom[rnd_SpawnBloodCloud](-10, 10), flags: BLOOD_FLAGS | SXF_TRANSFERPOINTERS, chanceMod);
+                if(random[rnd_SpawnBloodBigCloud](0, 255) >= chanceMod) SpawnBigCloud();
             }
 			
 			if(random[rnd_SpawnBloodImpact]() >= 100)    
@@ -438,9 +522,9 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 					frandom[rnd_SpawnBloodParticle1](0.0, 360.0), BLOOD_FLAGS);
 			}
 		}
-		TNT1 AA 0 {
+		TNT1 A 0 {
 			let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
-			for (int i = 0; i < max(int(amt/2),1); i++)
+			for (int i = 0; i < amt; i++)
 			{
 				A_SpawnItemEx("NashGoreBloodParticle2",
 					frandom[rnd_SpawnBloodParticle2](-8, 8), frandom[rnd_SpawnBloodParticle2](-8, 8), frandom[rnd_SpawnBloodParticle2](-8, 8),
@@ -452,8 +536,17 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 				//	frandom(-5.0, 5.0), frandom(-5.0, 5.0), frandom(1.0, 5.0),
 				//	frandom(0, 360), BLOOD_FLAGS, chanceMod);
 			}
-			
 		}
+        TNT1 AAAAA 2 {
+            let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
+			for (int i = 0; i < amt; i++)
+			{
+				A_SpawnItemEx("NashGoreBloodSpurt",
+					0, 0, 0,
+					frandom[rnd_SpawnBloodTrails](0, 3), frandom[rnd_SpawnBloodTrails](-2, 2), frandom[rnd_SpawnBloodTrails](0, 2),
+					-180 + frandom[rnd_SpawnBloodParticle2](-45, 45), BLOOD_FLAGS & ~(SXF_ABSOLUTEVELOCITY | SXF_ABSOLUTEANGLE), chanceMod);
+			}
+        }
 		Stop;
 	}
 
@@ -463,14 +556,13 @@ class NashGoreBlood : NashGoreBloodBase replaces Blood
 
 		if(target)
 			CopyBloodColor(target);
-		if(bloodcolor == 0)
-			PUFSPRK.Color1 = "680000";
-		else
-		{
-			Color bcbuffer;
-			bcbuffer = Color(bloodcolor.r / 2, bloodcolor.g / 2, bloodcolor.b / 2);
-			PUFSPRK.Color1 = bcbuffer;
-		}
+
+        Color bcbuffer;
+        if(bloodcolor == 0) bcbuffer = 0xff680000;
+        else bcbuffer = bloodcolor;
+		
+        PUFSPRK.Color1 = PB_Math.PB_DesaturateColor(bcbuffer, 0.8, 1.5);
+
 		PUFSPRK.Texture = TexMan.CheckForTexture("X103"..String.Format("%c", 97 + random[jtbs](0, 25)).."0");
 		
 		PUFSPRK.Style = STYLE_TRANSLUCENT;
@@ -620,7 +712,7 @@ class NashGoreBloodParticle2 : NashGoreBloodBase
 		Radius 1;
 		Height 2;
 		Gravity 0.4;
-		Scale 0.4;
+		Scale 0.6;
 		+NOCLIP
 		+NOBLOCKMAP
 		+CORPSE
@@ -657,7 +749,7 @@ class NashGoreBloodParticle2 : NashGoreBloodBase
 	Crash:
 		TNT1 A 1 {
             A_StartSound("blooddrop2");
-            A_SpawnItemEx("PB_BloodSpot", flags: (BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, failchance: 128);
+            A_SpawnItemEx("PB_BloodSpot", flags: (BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, failchance: 220);
         }
 		Stop;
 	}
@@ -959,6 +1051,7 @@ class NashGoreBloodSpurt : NashGoreBloodBase
 	Default
 	{
 		Gravity 0.4326;
+        Scale 0.6;
 		+CORPSE
 	}
 
@@ -1002,7 +1095,7 @@ class NashGoreBloodSpurt : NashGoreBloodBase
 	Crash:
 		TNT1 A 1
 		{
-			A_SpawnItemEx("PB_BloodSpot", flags: (BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, failchance: 245);
+			A_SpawnItemEx("PB_BloodSpotTiny", frandom(-4, 4), frandom(-4, 4), flags: (BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION);
 			A_SpawnItemEx("NashGoreBloodFloorSplash",
 				frandom(-32, 32), frandom(-32, 32),
 				flags: SXF_TRANSFERTRANSLATION | SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION);

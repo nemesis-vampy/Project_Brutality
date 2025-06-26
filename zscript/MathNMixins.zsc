@@ -1,5 +1,17 @@
 class PB_Math abstract
 {
+    clearscope static Color PB_DesaturateColor(Color baseColor, double desaturate = 0.0, double brightness = 1.0)
+    {
+        baseColor = Color(255, int(baseColor.r * brightness), int(baseColor.g * brightness), int(baseColor.b * brightness));
+        
+        double grayscale = 0.3*baseColor.r + 0.6*baseColor.g + 0.1*baseColor.b;
+        int desat_r = baseColor.r + 0.2 * (grayscale - baseColor.r);
+        int desat_g = baseColor.g + 0.2 * (grayscale - baseColor.g);
+        int desat_b = baseColor.b + 0.2 * (grayscale - baseColor.b);
+        
+        return Color(255, desat_r, desat_g, desat_b);
+    }
+    
     clearscope static int PB_GetRandomNumber(uint seed)
     {
         uint state = seed * 1664525u + 1013904223u;

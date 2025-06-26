@@ -68,7 +68,7 @@ class PB_Hud_ZS : BaseStatusBar
 	int m32to0, m64to0;
 	double m0to1Float;
 	bool hasPutOnHelmet, hasCompletedHelmetSequence;
-	bool deathFadeDone, playerWasDead;
+	bool deathFadeDone, playerWasDead, visorOff;
     uint8 helmetKernelPanic;
     bool muteinterference;
 	
@@ -474,29 +474,38 @@ class PB_Hud_ZS : BaseStatusBar
 			{
                 SetMusicVolume(0);
                 if(diedTic == 0)
-                    diedTic = gameTic;
+                    diedTic = level.MapTime;
+
                 muteinterference = true;
                 if(m0to1Float > 0.0 && !DeathFadeDone && helmetKernelPanic >= KernelPanicMessages.Size() - 7)
                 {
                     m0to1Float *= (crandompick(50, 100, 150) * 0.01);
                     m0to1Float = clamp(m0to1Float, 0, 1);
                     
-                    if(m0to1Float ~== 0.0) 
+                    if(m0to1Float ~== 0.0)
+                        DeathFadeDone = true;
+                }
+
+                if(!visorOff && helmetKernelPanic >= (KernelPanicMessages.Size()) && (level.MapTime >= (diedTic + (7.5 * TICRATE))))
+                {
+                    if(level.MapTime < (diedTic + (8 * TICRATE)))
                     {
-                        DeathFadeDone = True;
+                        interference += 2;
+                        S_StartSound("visor/visorgarbled", CHAN_AUTO, CHANF_OVERLAP, 0.75);
                     }
-                    else if(m0to1Float < 0.5 && crandom(0, 50) < helmetKernelPanic)
+                    else
                     {
-                        S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, m0to1Float);
+                        S_StartSound("visor/dyingvisor", CHAN_AUTO, CHANF_OVERLAP);
+                        visorOff = true;
                     }
                 }
 
-                if(!DeathFadeDone && helmetKernelPanic < KernelPanicMessages.Size() && (gametic >= diedTic + 35))
+                if(helmetKernelPanic < KernelPanicMessages.Size() && (level.MapTime >= diedTic + 35))
                 {
                     if(crandom() < 50)
                     {
                         helmetKernelPanic++;
-						S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+						S_StartSound("visor/interference", CHAN_AUTO, CHANF_OVERLAP, 0.25);
                     }
                 }
 			}
@@ -507,8 +516,8 @@ class PB_Hud_ZS : BaseStatusBar
             muteinterference = false;
             helmetKernelPanic = 0;
 			m0to1Float = 1.0;
-			DeathFadeDone = False;
-            diedTic = 0;
+			visorOff = DeathFadeDone = False;
+            interference = diedTic = 0;
 		}
 	}
 	
@@ -1085,19 +1094,22 @@ class PB_Hud_ZS : BaseStatusBar
                 }
 			}
 
-            if(diedTic > 0 && gametic >= diedTic + 17)
+            if(diedTic > 0 && level.MapTime >= diedTic + 17)
             {
-                int onDeathTic = gametic - (diedTic + 18);
-                PBHud_DrawImage("GRAPHICS/HUD/FULLSCRN/UAC-BIOSLogo.png", (16, -448), DI_ITEM_LEFT_BOTTOM | DI_SCREEN_LEFT_BOTTOM);
-                if(onDeathTic >= 1) PBHud_DrawString(mTerminalFont, "OpenBIOS (C) 1989-2054 UAC Microsystems, INC.", (277, -528), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED);
-                if(onDeathTic >= 3) PBHud_DrawString(mTerminalFont, "UAC Defense Embedded B1050E-A1 Revision 0", (277, -486), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED);
-                if(onDeathTic >= 4) PBHud_DrawString(mTerminalFont, "SAD(r) Praetorian(tm) E10025U @ 20.50GHz", (277, -464), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED);
+                if(visorOff) 
+                    return;
+
+                int onDeathTic = level.MapTime - (diedTic + 18);
+                PBHud_DrawImageManualAlpha("GRAPHICS/HUD/FULLSCRN/UAC-BIOSLogo.png", (16, -448), DI_ITEM_LEFT_BOTTOM | DI_SCREEN_LEFT_BOTTOM);
+                if(onDeathTic >= 1) PBHud_DrawString(mTerminalFont, "OpenBIOS (C) 1989-2054 UAC Microsystems, INC.", (277, -528), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, fuckFading: true);
+                if(onDeathTic >= 3) PBHud_DrawString(mTerminalFont, "UAC Defense Embedded B1050E-A1 Revision 0", (277, -486), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, fuckFading: true);
+                if(onDeathTic >= 4) PBHud_DrawString(mTerminalFont, "SAD(r) Praetorian(tm) E10025U @ 20.50GHz", (277, -464), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, fuckFading: true);
                 SetClipRect(0, -432, Screen.GetWidth(), 432, DI_SCREEN_LEFT_BOTTOM);
                 if(helmetKernelPanic > 0) {
                     int spacing;
                     for(int i = helmetKernelPanic; i > 0; i--)
                     {
-                        PBHud_DrawString(mTerminalFont, KernelPanicMessages[i - 1], (16, -37 + spacing), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, (i - 1 == KernelPanicMessages.Size() - 1) ? round(0.5*(1+sin(2 * M_PI * 1 * gameTic))) : 1.0);
+                        PBHud_DrawString(mTerminalFont, KernelPanicMessages[i - 1], (16, -37 + spacing), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, (i - 1 == KernelPanicMessages.Size() - 1) ? round(0.5*(1+sin(2 * M_PI * 1 * gameTic))) : 1.0, fuckFading: true);
                         spacing -= 16;
                     }
                 }

@@ -39,7 +39,7 @@ ACTOR PB_LegacyCacodemon : Cacodemon //replaces Cacodemon
 	DamageFactor "CauseObjectsToSplash", 0.0
 	Obituary "$OB_CACO"
 	HitObituary "$OB_CACOHIT"
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	
 	DropItem "Demonpickup2" 25

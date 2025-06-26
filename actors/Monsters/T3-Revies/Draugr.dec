@@ -16,6 +16,7 @@ ACTOR PB_Draugr : PB_Revenant //Replaces Revenant
 	ProjectilePassHeight 75
 	Radius 20
 	Height 56
+    
 		Species "Bonehead"
 	+DONTHARMSPECIES
 

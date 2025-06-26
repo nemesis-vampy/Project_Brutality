@@ -53,7 +53,7 @@ ACTOR PB_Commando: PB_Monster //Replaces ChaingunGuy
 	DropItem "None" 3
 	Obituary "%o has been mowed down by a Zombie Commando."
 	DamageFactor "CauseObjectsToSplash", 0.0
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	
 	States
 	{

@@ -48,6 +48,7 @@ actor PB_Arachnophyte //replaces Arachnotron
 	PainChance "Stun", 255
 	PainChance "Siphon", 255
 	WoundHealth 70
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	
     States
     {

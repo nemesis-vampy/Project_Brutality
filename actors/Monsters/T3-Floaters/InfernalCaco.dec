@@ -34,7 +34,7 @@ ACTOR PB_InfernalCaco : PainElemental //replaces Cacodemon
 	DeathSound "monster/infact"
 	ActiveSound ""
 	Obituary "%o was deep fried by an Infernal Cacodemon."
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	
 	DropItem "PB_Haste" 4
 	DropItem "PB_DoomSphere" 2

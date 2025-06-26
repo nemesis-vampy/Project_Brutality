@@ -33,7 +33,7 @@ DamageFactor "Fatality", 5.0
 	ActiveSound "demon/active"
 	Obituary "%o was smoked by a Phantasm."
 	DropItem "Demonpickup" 15
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	States
 	{
 	Death.Execution:

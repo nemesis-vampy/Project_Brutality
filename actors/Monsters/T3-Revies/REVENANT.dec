@@ -53,7 +53,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Height 56
 	ProjectilePassHeight 75
 	Scale 0.8
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	Species "Bonehead"
 	+DONTHARMSPECIES
 	DropItem "Demonpickup2" 50

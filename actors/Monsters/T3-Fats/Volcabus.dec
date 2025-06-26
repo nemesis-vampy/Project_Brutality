@@ -30,7 +30,7 @@ Actor PB_Volcabus : Fatso //replaces Fatso
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
     damagefactor "HEAD", 0.65
 	damagefactor "TeleportRemover", 0.0
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	DropItem "PB_Haste" 4
 	DropItem "PB_DoomSphere" 4
 	Species "BigFatAss"

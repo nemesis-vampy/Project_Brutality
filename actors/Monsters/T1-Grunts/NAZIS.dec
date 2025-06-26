@@ -39,6 +39,7 @@ ACTOR PB_Nazi : PB_Monster
 	Species "Nazi"
 damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	DropItem "PB_WolfSSdrop"
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	States
 	{
 	

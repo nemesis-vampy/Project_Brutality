@@ -64,7 +64,7 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
  DropItem "Demonpickup2" 255
  DropItem "Demonpickup2" 255
 
-
+BloodType "CyberDemon_Blood", "PB_SawBlood", "PB_SawBlood"
 	Species "CyberDemon"
 	+DONTHURTSPECIES
 	+DONTHARMSPECIES

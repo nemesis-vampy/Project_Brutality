@@ -60,7 +60,7 @@ class PB_Cyberdemon1 : PB_Monster
 		PainChance "Fire", 50;
 		PainChance "Burn", 50;
 		PainChance "Incinerate", 50;
-		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";
+		BloodType "CyberDemon_Blood", "PB_SawBlood", "PB_SawBlood";
 		DamageFactor "Blood", 0.0;
 		DamageFactor "BlueBlood", 0.0;
 		DamageFactor "GreenBlood", 0.0;

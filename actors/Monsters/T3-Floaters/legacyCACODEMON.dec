@@ -10,7 +10,7 @@ ACTOR PB_LegacyCacodemon : Cacodemon //replaces Cacodemon
 	//$Sprite HEADA1
 	Game Doom
 	//BloodColor "Blue"
-	bloodtype "NashGoreBlood"
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
   //+NOBLOODDECALS
 	SpawnID 19
     GibHealth 25

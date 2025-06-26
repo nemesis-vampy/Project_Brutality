@@ -46,6 +46,7 @@ ACTOR PB_ClassicCommando: PB_Commando //Replaces ChaingunGuy
 	DeathSound "commando/death"
 	ActiveSound "commando/active"
 	Obituary "%o has been chopped down by a Commando"
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	States
 	{
 	

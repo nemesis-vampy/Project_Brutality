@@ -45,7 +45,6 @@ ACTOR PB_HelmetCommando: PB_Commando //Replaces ChaingunGuy
 	Obituary "%o has been mowed down by a Zombie Commando."
 	DamageFactor "CauseObjectsToSplash", 0.0
 	
-	
 	States
 	{
 	Death.Execution:

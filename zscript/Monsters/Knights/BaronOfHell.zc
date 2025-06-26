@@ -34,7 +34,7 @@ class PB_Baron1 : PB_Monster
         DamageFactor "BlueBlood", 0.0;
         DamageFactor "GreenBlood", 0.0;
 
-        BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood";
+        //BLoodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood";
         //BloodColor "Green";
 
         Obituary "%o was brutalized by a Baron of Hell.";

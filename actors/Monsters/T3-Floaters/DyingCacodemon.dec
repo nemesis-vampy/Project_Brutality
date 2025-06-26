@@ -20,6 +20,7 @@ ACTOR BrutalizedCacodemon1
 	+DONTSPLASH
 	+NOPAIN
 	Scale 1.0
+    
 	States
 	{
 	Spawn:

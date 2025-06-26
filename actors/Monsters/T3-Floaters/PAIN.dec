@@ -36,6 +36,7 @@ ACTOR PB_PainElemental : PB_Elemental{//Replaces PainElemental
 	DropItem "Demonpickup" 128
 	Species "FlyingBalls"
 	+DONTHARMSPECIES
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	States{
 	Death.Execution:
 		TNT1 A 0 {

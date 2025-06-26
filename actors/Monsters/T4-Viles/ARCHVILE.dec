@@ -53,7 +53,7 @@ ACTOR PB_Archvile: Archvile //Replaces Archvile
 	Obituary "%o was exploded by an Arch-Vile."
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	
-	
+	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	DropItem "PB_DoomSphere" 5
 	DropItem "PB_Haste" 2
 	
