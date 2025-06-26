@@ -103,9 +103,10 @@ class PB_Projectile : FastProjectile abstract
 				SpawnPuff("PB_NoBloodPuff", pos, angle, 0, 0, PF_HITTHING);
 			else
             {
-				let blood = victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
-                if(blood) blood.angle = angle;
-                victim.TraceBleed( ceil(scaled_damage), self );
+				//let blood = victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
+                //if(blood) blood.angle = angle;
+                victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
+				victim.TraceBleed( ceil(scaled_damage), self );
             }	
 		}
 		
