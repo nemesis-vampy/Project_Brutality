@@ -1,0 +1,28 @@
+class PB_MenuDelegate : DoomMenuDelegate
+{
+	override int DrawCaption(string title,font fnt,int y,bool drawit)
+	{
+		fnt = Font.GetFont("PBBIG");
+		return Super.DrawCaption(title,fnt,y,drawit);
+	}
+}
+
+class PB_MessageBox : MessageBoxMenu
+{
+	override void Init(menu parent,string message,int messagemode,bool playsound,name cmd,voidptr native_handler)
+	{
+		Super.Init(parent,message,messagemode,playsound,cmd,native_handler);
+		if(generic_ui)
+		{
+			destWidth = CleanWidth_1;
+			destHeight = CleanHeight_1;
+			textfont = newsmallfont;
+		}
+		else
+		{
+			destWidth = CleanWidth;
+			destHeight = CleanHeight;
+			textfont = Font.GetFont('PBSMALL');
+		}
+	}
+}

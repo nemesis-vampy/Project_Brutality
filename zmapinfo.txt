@@ -108,6 +108,8 @@ GameInfo
 	DimColor = "Black"
 	DimAmount = 0.70
 	NoRandomPlayerClass = True
+	MessageBoxClass = "PB_MessageBox"
+	MenuDelegateClass = "PB_MenuDelegate"
 	AddEventHandlers = "PB_ExecutionHandler",
 	"PB_HudFXHandler",
 	"PB_EventHandler",
@@ -128,11 +130,12 @@ GameInfo
 	"PB_SlowEventHandler",
 	"PB_FlameEventHandler",
 	"AntiSwitchDecals_Handler",
-	"PB_MPNameHandler"
+	"PB_MPNameHandler",
+	"UnmakerStuff"
 	
 	NormForwardMove = 0x32, 0x32		//Walk speed is modulated through
 	NormSideMove = 0x32, 0x32			//CVar in the menu options
-	AddEventHandlers = "UnmakerStuff"
+	
 	
 	/*Intro
 	{
