@@ -888,7 +888,7 @@ OptionValue "HealthPackColor"
 
 ListMenu "MainMenu"
 {
-	Font "PBBIG","cyan","white"
+	Font "PBBIG","red","white"
 	IfGame(Doom, Chex)
 	{
 		StaticPatch 80, -10, "M_DOOMPB"
@@ -933,7 +933,7 @@ ListMenu "MainMenu"
 
 ListMenu "PlayerclassMenu"
 {
-	Font "PBBIG","cyan","white"
+	Font "PBBIG","red","white"
 	StaticTextCentered 160, 15, "Select Game Mode"
 	Position 71, 50
 	Selector "M_SKULL1", -30, -8
@@ -942,7 +942,7 @@ ListMenu "PlayerclassMenu"
 
 ListMenu "EpisodeMenu"
 {
-	Font "PBBIG","cyan","white"
+	Font "PBBIG","red","white"
 	StaticTextCentered 160, 15, "Select Episode"
 	Position 21, 50
 	Selector "M_SKULL1", -30, -8
@@ -951,7 +951,7 @@ ListMenu "EpisodeMenu"
 
 ListMenu "SkillMenu"
 {
-	Font "PBBIG","cyan","white"
+	Font "PBBIG","red","white"
 	StaticTextCentered 160, 15, "Select Difficulty"
 	Position 21, 50
 	Selector "M_SKULL1", -30, -8
