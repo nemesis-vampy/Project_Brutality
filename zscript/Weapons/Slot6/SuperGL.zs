@@ -56,6 +56,7 @@ Class PB_SuperGL : PB_Weapon
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/sgl/inspect1", CHAN_AUTO);
 				A_SetCurrentGrenadeType("Impact");
+                A_SetCrosshair(-1);
 			}
 			SL00 ABCDEFGHIJKLMNOP 1 { 
 				A_SetRoll(roll+0.8,SPF_INTERPOLATE);
@@ -234,7 +235,7 @@ Class PB_SuperGL : PB_Weapon
 			TNT1 A 0 PB_checkReload(null,"Ready","NoAmmo",8,1);
 			TNT1 A 0 {
 				A_ZoomFactor(1.0);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 			}
 			TNT1 A 0 A_JumpIfInventory("SGLUnloaded",1,"ReloadUnloaded");
@@ -328,7 +329,7 @@ Class PB_SuperGL : PB_Weapon
 		UnloadNormal:
 			TNT1 A 0 {
 				A_ZoomFactor(1.0);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 			}
 			TNT1 A 0 A_StartSound("Weapons/GrenadeLoad", 9);
@@ -348,7 +349,7 @@ Class PB_SuperGL : PB_Weapon
 		UnloadChamber:
 			TNT1 A 0 {
 				A_ZoomFactor(1.0);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 			}
 			TNT1 A 0 A_StartSound("Weapons/GrenadeLoad", 9);

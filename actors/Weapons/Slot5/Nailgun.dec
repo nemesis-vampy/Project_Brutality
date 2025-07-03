@@ -92,7 +92,7 @@ ACTOR PB_Nailgun : PB_Weapon
 		
 		SwitchToJavelin:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/up", CHAN_AUTO);
 			}
@@ -127,7 +127,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			
 		SwitchToNailgun:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/up", CHAN_AUTO);
 			}
@@ -162,7 +162,7 @@ ACTOR PB_Nailgun : PB_Weapon
 		WeaponRespect:
 			TNT1 A 0
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/up", CHAN_AUTO);
 				A_SetInventory("RespectNailgun", 1);
@@ -833,7 +833,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			}
 		ReloadNailgun:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("8HAINAMO", CHAN_AUTO);
 			}
@@ -865,7 +865,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			Goto InsertBullets
 		ReloadNailgunEmpty:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("8HAINAMO", CHAN_AUTO);
 			}
@@ -899,7 +899,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			Goto InsertBullets
 		ReloadNailgunUnloaded:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/inspect1", CHAN_AUTO);
 			}
@@ -943,7 +943,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			Goto NoAmmo
 		ReloadJavelinContinued:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/inspect1", CHAN_AUTO);
 			}
@@ -962,7 +962,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			Goto InsertBullets
 		ReloadJavelinContinuedFromEmpty:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/inspect1", CHAN_AUTO);
 			}
@@ -986,7 +986,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			Goto InsertBullets
 		ReloadJavelinContinuedFromUnloaded:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/inspect1", CHAN_AUTO);
 			}

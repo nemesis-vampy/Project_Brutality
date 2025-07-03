@@ -38,7 +38,7 @@ class PB_Deagle : PB_WeaponBase
 		WeaponRespect:
 			TNT1 A 0 {
 				A_SetInventory("PB_LockScreenTilt",1);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				}
 			D4E1 ABCDEEE 1 A_DoPBWeaponAction();
 			D4E1 FGHIJK 1 A_DoPBWeaponAction();
@@ -245,7 +245,7 @@ class PB_Deagle : PB_WeaponBase
 				A_SetInventory("Zoomed",0);
 				A_ZoomFactor(1.0);
 				A_WeaponOffset(0,32);
-				PB_HandleCrosshair(5);
+				A_SetCrosshair(-1);
 			}
 			TNT1 A 0 PB_jumpIfHasBarrel("IdleBarrel","IdleFlameBarrel","IdleIceBarrel");
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield");
@@ -253,7 +253,7 @@ class PB_Deagle : PB_WeaponBase
 			TNT1 A 0 {
 				A_setinventory(invoker.UnloaderToken,0);
 				A_ZoomFactor(1.0);
-				PB_HandleCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("ADSmode",0);
 				A_SetInventory("Zoomed",0);
 				A_SetInventory("PB_LockScreenTilt",1);
@@ -635,7 +635,7 @@ class PB_Deagle : PB_WeaponBase
 				 A_StartSound("IronSights", 13,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
 				 A_ZoomFactor(1.3);
-				 PB_HandleCrosshair(5);
+				 A_SetCrosshair(-1);
 			}
 			D3E1 ABCDE 1;
 			Goto Ready2;

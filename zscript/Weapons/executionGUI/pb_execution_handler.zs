@@ -82,7 +82,7 @@ class pb_ExecutionHandler : EventHandler
 		Actor target = getTarget();
 		if(target && target.bCountKill) 
 		{
-			if(actorCanBeExecuted(target) && getTargetDistance() < 250)
+			if(actorCanBeExecuted(target) && getTargetDistance() < 200)
 			{
                 if(!PB_HelpNotificationsHandler.CheckTipEvent(1 << 3, CVar.GetCvar("pb_helpflags", players[consoleplayer])))
                 {

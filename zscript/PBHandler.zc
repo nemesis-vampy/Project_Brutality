@@ -560,11 +560,14 @@ class PB_MPNameHandler : EventHandler
     Font mNameFont;
     pb_ProjScreen _projection;
     FLineTraceData camTrace;
+    TextureID dotTexture, nameArrowTexture;
 
     override void OnRegister()
     {
         mNameFont = Font.FindFont("PBBOLD");
         _projection = new("pb_ProjScreen");
+        dotTexture = TexMan.CheckForTexture("GRAPHICS/MPColorDot.png");
+        nameArrowTexture = TexMan.CheckForTexture("GRAPHICS/MPNameArrow.png");
     }
 
     override void WorldTick()
@@ -599,19 +602,41 @@ class PB_MPNameHandler : EventHandler
             string nickname = lookingAtBuddy ? buddy.GetUserName() : CVar.GetCVar("pb_mpcallsign", buddy).GetString();
             if(!lookingAtBuddy)
             {
+                if(deathmatch || (teamplay && buddy.GetTeam() != players[consolePlayer].GetTeam()))
+                    continue;
+
                 nickname = nickname.Left(3);
                 nickname = nickname.MakeUpper();
             }
 
-            nickname = String.Format("%i: %s", i + 1, nickname);
+            nickname = String.Format("%s", nickname);
 
-            namePos = MakeDrawPos(e, buddy.mo.pos, buddy.mo.Height + 2);
+            namePos = MakeDrawPos(e, buddy.mo.pos, buddy.mo.Height + 3);
+
+            color buddyCol = PB_Math.PB_DesaturateColor(buddy.GetDisplayColor(), 0, 1.0);
 
             double resScaled = 1.35 * (Screen.GetHeight() / 1080.f);
             clampedScalar *= resScaled;
             drawOffsets = (mNameFont.StringWidth(nickname) / 2.f, mNameFont.GetHeight()) * (lookingAtBuddy ? resScaled : clampedScalar);
 
-            Screen.DrawText(mNameFont, Font.CR_UNTRANSLATED, namePos.x - drawOffsets.x, namePos.y - drawOffsets.y, nickname, DTA_Alpha, lookingAtBuddy ? 1.0 : clampedAlph + 0.25, DTA_ScaleX, lookingAtBuddy ? resScaled : clampedScalar, DTA_ScaleY, lookingAtBuddy ? resScaled : clampedScalar);
+            Screen.DrawTexture(nameArrowTexture, false, namePos.x, namePos.y, DTA_ScaleX, (lookingAtBuddy ? resScaled : clampedScalar) * 0.35, DTA_ScaleY, (lookingAtBuddy ? resScaled : clampedScalar) * 0.35, DTA_CenterBottomOffset, true, DTA_Alpha, lookingAtBuddy ? 1.0 : clampedAlph + 0.25);
+
+            drawOffsets.y += 5 * (lookingAtBuddy ? resScaled : clampedScalar);
+
+            Screen.DrawText(mNameFont, teamplay ? Teams[buddy.GetTeam()].GetTextColor() : Font.CR_UNTRANSLATED, namePos.x - drawOffsets.x, namePos.y - drawOffsets.y, nickname, DTA_Alpha, lookingAtBuddy ? 1.0 : clampedAlph + 0.25, DTA_ScaleX, lookingAtBuddy ? resScaled : clampedScalar, DTA_ScaleY, lookingAtBuddy ? resScaled : clampedScalar);
+
+            vector2 dotPos;
+            if(lookingAtBuddy)
+            {
+                dotPos = (namePos.x - drawOffsets.x - 5 * resScaled, namePos.y - drawOffsets.y / 1.5);
+            }
+            else
+            {
+                clampedScalar *= 1.4;
+                dotPos = (namePos.x, namePos.y - drawOffsets.y - 3 * clampedScalar);
+            }
+
+            Screen.DrawTexture(dotTexture, false, dotPos.x, dotPos.y, DTA_Color, buddyCol, DTA_ScaleX, (lookingAtBuddy ? resScaled : clampedScalar) * 0.12, DTA_ScaleY, (lookingAtBuddy ? resScaled : clampedScalar) * 0.12, DTA_CenterOffset, true);
         }
     }
     

@@ -1100,11 +1100,12 @@ class PB_Hud_ZS : BaseStatusBar
                     return;
 
                 int onDeathTic = level.MapTime - (diedTic + 18);
-                PBHud_DrawImageManualAlpha("GRAPHICS/HUD/FULLSCRN/UAC-BIOSLogo.png", (16, -448), DI_ITEM_LEFT_BOTTOM | DI_SCREEN_LEFT_BOTTOM);
-                if(onDeathTic >= 1) PBHud_DrawString(mTerminalFont, "OpenBIOS (C) 1989-2054 UAC Microsystems, INC.", (277, -528), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, fuckFading: true);
-                if(onDeathTic >= 3) PBHud_DrawString(mTerminalFont, "UAC Defense Embedded B1050E-A1 Revision 0", (277, -486), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, fuckFading: true);
-                if(onDeathTic >= 4) PBHud_DrawString(mTerminalFont, "SAD(r) Praetorian(tm) E10025U @ 20.50GHz", (277, -464), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_BOTTOM, FONT.CR_UNTRANSLATED, fuckFading: true);
-                SetClipRect(0, -432, Screen.GetWidth(), 432, DI_SCREEN_LEFT_BOTTOM);
+                Vector2 hudscale = GetHUDScale();
+                PBHud_DrawImageManualAlpha("GRAPHICS/HUD/FULLSCRN/UAC-BIOSLogo.png", (16, 37), DI_ITEM_LEFT_TOP | DI_SCREEN_LEFT_TOP);
+                if(onDeathTic >= 1) PBHud_DrawString(mTerminalFont, "OpenBIOS (C) 1989-2054 UAC Microsystems, INC.", (277, 81), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_TOP, FONT.CR_UNTRANSLATED, fuckFading: true);
+                if(onDeathTic >= 3) PBHud_DrawString(mTerminalFont, "UAC Defense Embedded B1050E-A1 Revision 0", (277, 59), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_TOP, FONT.CR_UNTRANSLATED, fuckFading: true);
+                if(onDeathTic >= 4) PBHud_DrawString(mTerminalFont, "SAD(r) Praetorian(tm) E10025U @ 20.50GHz", (277, 37), DI_TEXT_ALIGN_LEFT | DI_SCREEN_LEFT_TOP, FONT.CR_UNTRANSLATED, fuckFading: true);
+                SetClipRect(0, 130, Screen.GetWidth() / hudscale.x, Screen.GetHeight() / hudscale.y, DI_SCREEN_LEFT_TOP);
                 if(helmetKernelPanic > 0) {
                     int spacing;
                     for(int i = helmetKernelPanic; i > 0; i--)
@@ -1205,16 +1206,15 @@ class PB_Hud_ZS : BaseStatusBar
 			    PBHud_DrawImage("EQUPBO", (16, -17), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, playerBoxAlpha);
             else
             {
-                Color colbuf = CPlayer.GetDisplayColor();
-                colbuf = Color(255, colbuf.r, colbuf.g, colbuf.b);
-                PBHud_DrawImage("EQUPBOMP", (16, -17), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, playerBoxAlpha, col: colbuf);
+                Color pcol = PB_Math.PB_DesaturateColor(CPlayer.GetDisplayColor());
+                PBHud_DrawImage("EQUPBOMP", (16, -17), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT_BOTTOM, playerBoxAlpha, col: pcol);
             }
 			
 			PBHud_DrawSpecialMugshot();
-
+            
             if(multiplayer) {
                 int plrNum = PlayerPawn(CPlayer.mo).PlayerNumber();
-                PBHud_DrawString(mBoldFont, String.Format("Player %i %s", plrnum + 1, (net_arbitrator == plrnum) ? "(Arbitrator)" : "(Client)"), (16, -13), DI_SCREEN_LEFT_BOTTOM, Font.CR_UNTRANSLATED, alpha: 0.5);
+                PBHud_DrawString(mBoldFont, String.Format("P%i %s %s", plrnum + 1, CPlayer.GetUserName(), (net_arbitrator == plrnum) ? "(Arbitrator)" : "(Client)"), (16, -13), DI_SCREEN_LEFT_BOTTOM, Font.CR_UNTRANSLATED, alpha: 0.25);
 
                 int ofs;
                 for(int i = 0; i < players.Size(); i++)
@@ -1224,7 +1224,15 @@ class PB_Hud_ZS : BaseStatusBar
                     PlayerInfo buddy = players[i];
                     if(!buddy || !buddy.mo) continue;
 
-                    PBHud_DrawString(mBoldFont, String.Format("(%i) %s\c- - \cv%iHP\c- / \cd%iAP\c-", i + 1, buddy.GetUserName(), buddy.mo.Health, buddy.mo.CountInv("BasicArmor")), (-15, 50 + ofs), DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_RIGHT, Font.CR_UNTRANSLATED);
+                    if(deathmatch || (teamplay && buddy.GetTeam() != players[consolePlayer].GetTeam()))
+                        continue;
+
+                    Color bcol = PB_Math.PB_DesaturateColor(buddy.GetDisplayColor());
+                    string nameString = String.Format("%s\c- - \c%s%iHP\c- / \cd%iAP\c-", buddy.GetUserName(), (buddy.mo.Health < 25) ? "g" : "v", buddy.mo.Health, buddy.mo.CountInv("BasicArmor"));
+                    double nameStringLength = mBoldFont.mFont.StringWidth(nameString);
+                    PBHud_DrawString(mBoldFont, nameString, (-15, 50 + ofs), DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_RIGHT, Font.CR_UNTRANSLATED);
+                    PBHud_DrawImage("GRAPHICS/MPColorDot.png", (-17 - namestringlength, 54 + ofs + (mBoldFont.mFont.GetHeight() / 2.f)), DI_SCREEN_RIGHT_TOP | DI_ITEM_RIGHT, scale: (0.15, 0.15), col: bcol);
+                    // PBHud_DrawString(mBoldFont, FormatNumber(i + 1), (-24.8 - namestringlength, 51.5 + ofs), DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_CENTER, Font.CR_UNTRANSLATED, scale: (0.8, 0.8));
                     ofs += 14;
                 }
             }

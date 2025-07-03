@@ -114,12 +114,12 @@ class NashGoreGibs : Actor
 		Actor obj;
 		float truescale = mo.Default.Radius / 10.0;
 		
-		[result, obj] =
+		/*[result, obj] =
 		mo.A_SpawnItemEx("PB_GibBloodCloud", zofs: spawnHeight, flags: SXF_USEBLOODCOLOR | SXF_NOCHECKPOSITION);
 		if (obj) { 
 			obj.target = mo;
-			obj.scale = (truescale, truescale);
-		}
+			obj.scale *= truescale;
+		}*/
 
         for(int i = 0; i < (size / 5); i++)
         {

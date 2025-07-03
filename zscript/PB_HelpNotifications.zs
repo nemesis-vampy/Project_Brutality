@@ -119,7 +119,7 @@ class PB_HelpNotificationsHandler : EventHandler
         }
     }
 
-    override void PlayerSpawned(PlayerEvent e)
+    /*override void PlayerSpawned(PlayerEvent e)
     {
         array<string> pbTipsBuf;
         pbTipsBuf.Push("Welcome to Project Brutality!");
@@ -131,7 +131,7 @@ class PB_HelpNotificationsHandler : EventHandler
         pbTipsBuf.Push("Remember to check the settings menu to tweak the game to your liking.");
         pbTipsBuf.Push("That is all. Happy hunting!");
         PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "pb_helpflags", 1 << 30);
-    }
+    }*/
 }
 
 const PB_HELPNOTIF_DURATION = (4 * thinker.TICRATE);

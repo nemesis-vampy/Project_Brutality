@@ -5,7 +5,7 @@
 class PB_GunFireSmoke: PB_LightActor
 {
     Default {
-        Alpha 0.198;
+        Alpha 0.17;
         YScale 0.22;
         XScale 0.264;
         +NOBLOCKMAP;
@@ -35,8 +35,8 @@ class PB_GunFireSmoke: PB_LightActor
         ChangeStatNum(STAT_PB_SMOKE);
         Super.BeginPlay();
 
-        blowSpeed = 1.02;
-        fadeSpeed = 1.0;
+        //blowSpeed = 1.02;
+        //fadeSpeed = 1.0;
 	    /*alpha *= CVar.GetCVar("pb_smokeopacity", players[consoleplayer]).GetFloat();
         alpha = clamp(alpha, 0, 1);*/
     }

@@ -182,7 +182,7 @@ class PlayerPawnBase : PlayerPawn
 	{
 		int result = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 		// Reset damagecount after damage processing to avoid the red flash.
-		player.damagecount = clamp(player.damagecount, 0, 10);
+		if(player) player.damagecount = clamp(player.damagecount, 0, 10);
 		return result;
 	}
 

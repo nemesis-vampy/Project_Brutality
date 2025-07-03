@@ -395,6 +395,9 @@ ACTOR AxeAttack: PB_ProjectileAlt
 	+FORCEXYBILLBOARD
 	+BLOODSPLATTER
 	+NOGRAVITY
+    -NOEXTREMEDEATH
+    -NODAMAGETHRUST
+    -RIPPER
 	RenderStyle Add
 	Alpha 0.6
     PB_Projectile.BaseDamage 52

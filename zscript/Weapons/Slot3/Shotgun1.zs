@@ -54,7 +54,7 @@ Class PB_Shotgun : PB_WeaponBase
 		
 		WeaponRespect:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/shotgun/equip", 10,CHANF_OVERLAP);
 			}
@@ -445,7 +445,7 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_StartSound("IronSights", 10,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
 				 A_ZoomFactor(1.2);
-				 A_SetCrosshair(5);
+				 A_SetCrosshair(-1);
 			}
 			SHT8 EEDK 1 PB_SetShellSprite("SHT8","SHT6","SHT4");
 			Goto Ready2;
@@ -729,7 +729,7 @@ Class PB_Shotgun : PB_WeaponBase
 		Ready2:
 			TNT1 A 0 {
 				A_SetRoll(0);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
 		ReadyToFire2:
@@ -764,7 +764,7 @@ Class PB_Shotgun : PB_WeaponBase
 		Fire2:
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				}
 			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
 			TNT1 A 0 

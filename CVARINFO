@@ -629,6 +629,7 @@ user bool gb_colored_ui   	= true;
 nosave string gb_custom_weapon_order = "";
 
 user bool pb_usenewwhizby = false;
+user bool pb_altwhiz = true;
 user float pb_tailvolume = 1.0;
 server bool pb_cheapcasings = true;
 

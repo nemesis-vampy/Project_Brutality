@@ -160,11 +160,11 @@ Class PB_Arachnotron1 : PB_Monster
 		GoTo See;
 
 	Missile:
-		TNT1 A 0 A_JumpIf(random(0, 99) < 99 && FirstTime, "Shield");
+		TNT1 A 0 A_JumpIf(random(0, 100) < 35 && FirstTime, "Shield");
 //		TNT1 A 0 {{SetState(FindState("Arty"));}}   /// Setting direct state is for debugging a state/projectile
 		BSPI A 2 BRIGHT A_FaceTarget;
 		TNT1 A 0 A_JumpIf(random(0, 99) < 40 , "RailGun");
-		TNT1 A 0 {SetState(FindState("PlasmaBallAttack"));}
+		TNT1 A 0 A_Jump(256, "PlasmaBallAttack");
 
 /* 		BSPI H 2 BRIGHT {					/// Will keep just in case
 			int allowedChance = 0 ;
@@ -1344,7 +1344,7 @@ Class ArachnoPlasma_Ball : PB_Monster_Projectile
 		Radius 10;
 		//Height 2;
 		Height 10;
-		Speed 60;
+		Speed 30;
 		DamageFunction random(12,16);
 		DamageType "Plasma";
 		Decal "SmallerScorch";

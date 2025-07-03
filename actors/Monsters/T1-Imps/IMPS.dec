@@ -3780,8 +3780,8 @@ Actor PB_DoomImpBall Replaces DoomImpBall
 	DamageType "Burn"
 	Radius 8
 	Height 4
-	Speed 25
-	FastSpeed 30
+	Speed 15
+	FastSpeed 25
 	Damage (random(10,15))
 	PROJECTILE
 	RenderStyle Add
@@ -3827,7 +3827,8 @@ Actor PB_DoomImpBall Replaces DoomImpBall
 
 Actor PB_DoomImpBallGravity : PB_DoomImpBall
 {
-	Speed 44
+	Speed 20
+    FastSpeed 27
 	Gravity .5
 	Scale 0.22
 	-SOLID

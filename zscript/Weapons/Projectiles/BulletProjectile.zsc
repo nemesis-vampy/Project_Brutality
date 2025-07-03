@@ -475,8 +475,10 @@ class PB_Projectile : FastProjectile abstract
 
 				if(bWHIZCRACK) 
 					A_StartSound("bulletcrack/"..playerDist, CHAN_AUTO);
-				else
-					A_StartSound(whizsound, CHAN_AUTO, pitch: cfrandom(0.9, 1.1));
+				else {
+					if(CVar.GetCVar("pb_altwhiz", plr.Player).GetBool()) A_StartSound("whiz/alt/in", CHAN_AUTO, pitch: cfrandom(0.9, 1.1));
+                    else A_StartSound(whizsound, CHAN_AUTO, pitch: cfrandom(0.9, 1.1));
+                }
 
 				alreadyWhizzedBy.Push(plr);
 			}
@@ -691,7 +693,6 @@ class PB_Projectile : FastProjectile abstract
 		+NODAMAGETHRUST
 		+NOEXTREMEDEATH
 		+FORCERADIUSDMG
-		+NODAMAGETHRUST
 		+HITTRACER
 		+NOBOSSRIP
 		+RIPPER

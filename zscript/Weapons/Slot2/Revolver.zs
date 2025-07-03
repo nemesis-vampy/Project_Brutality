@@ -42,7 +42,7 @@ Class PB_Revolver : PB_WeaponBase
 				A_SetInventory("RespectRevolver",1);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("REVOUP",10,CHANF_OVERLAP);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				}
 			R2V1 ABCDEFGHIJ 1{
 				A_DoPBWeaponAction();
@@ -252,7 +252,7 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield");
 			TNT1 A 0 PB_checkReload(null,"Ready3","NoAmmo",6,2);
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("Ironsights");
 			}
@@ -290,7 +290,7 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 A_JumpIF(A_CheckAkimbo(), "DualUnload");
 			TNT1 A 0 A_Jumpif(countinv(invoker.UnloaderToken) > 0 || countinv(invoker.ammotype2) < 1,"Ready3");
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("Ironsights");
 				A_ClearOverlays(10,11);
@@ -369,7 +369,7 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"zoomout");
@@ -378,7 +378,7 @@ Class PB_Revolver : PB_WeaponBase
 				 A_StartSound("IronSights", 10,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
 				 A_ZoomFactor(1.3);
-				 A_SetCrosshair(5);
+				 A_SetCrosshair(-1);
 			}
 			R4V2 ABCDE 1;
 			Goto Ready2;
@@ -394,7 +394,7 @@ Class PB_Revolver : PB_WeaponBase
 		Ready2:
 			TNT1 A 0 {
 				A_SetRoll(0);
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
 		ReadyToFire2:
@@ -424,7 +424,7 @@ Class PB_Revolver : PB_WeaponBase
 		Fire2:
 			TNT1 A 0 {
 					A_WeaponOffset(0,32);
-					A_SetCrosshair(5);
+					A_SetCrosshair(-1);
 				}
 			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
 		ActualFire2:
@@ -727,7 +727,7 @@ Class PB_Revolver : PB_WeaponBase
 			}
 			TNT1 A 0 A_jumpif(countinv("PB_LowCalMag") < 2,"NoAmmoDualWield");
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_Startsound("Ironsights");
 				A_ClearOverlays(10,11);
@@ -790,7 +790,7 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 A_JumpIfInventory("RevolverHasUnloaded", 1, "AlreadyUnloaded");
 			TNT1 A 0 A_JumpIf((CountInv("RevolverAmmo") < 1 && CountInv("LeftRevolverAmmo") < 1),"AlreadyUnloaded");
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_ClearOverlays(10,11);
 			}

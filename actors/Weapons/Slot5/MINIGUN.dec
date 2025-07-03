@@ -141,7 +141,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			CHEG ABCD 0
 		WeaponRespect:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("RespectMiniGun",1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("Ironsights", CHAN_AUTO);

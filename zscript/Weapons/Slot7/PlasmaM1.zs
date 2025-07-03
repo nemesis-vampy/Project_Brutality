@@ -34,7 +34,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		
 		WeaponRespect:
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("RespectPlasmaGun",1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("Ironsights", 22,CHANF_OVERLAP);
@@ -456,7 +456,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "ReloadDualWield");
 			TNT1 A 0 PB_checkReload(null,"Ready","Ready3",60,1);
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("RespectPlasmaGun",1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
@@ -508,7 +508,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			}
 			TNT1 A 0 A_jumpif(countinv("PB_Cell") < 1,"ReadyDualWield");
 			TNT1 A 0 {
-				A_SetCrosshair(5);
+				A_SetCrosshair(-1);
 				A_SetInventory("RespectPlasmaGun",1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
