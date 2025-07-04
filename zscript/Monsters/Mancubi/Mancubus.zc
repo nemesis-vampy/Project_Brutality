@@ -1029,7 +1029,7 @@ class BigFireBallGravity: PB_Monster_Projectile
 //		SpawnID 153;
 		Radius 6;
 		Height 8;
-		Speed 20;
+		Speed 30;
 		Fastspeed 30;
 		DamageFunction random(20, 34);
 		Projectile;
@@ -1113,7 +1113,7 @@ class BigFireBall : Actor
 //		SpawnID 153;
 		Radius 6;
 		Height 8;
-		Speed 22;
+		Speed 34;
 		Fastspeed 34;
 		DamageFunction random(20, 34);
 		Projectile;
