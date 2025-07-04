@@ -374,8 +374,8 @@ class PB_Baron1 : PB_Monster
             BOSS F 3 A_FaceTarget;
     //        BOSS G 8 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 0, 0, 1);
 			BOSS G 6 {
-                if(random(0, 100) < 30)
-                A_DropAdjust2("Baron_Slash","PB_GreenPlasmaBall", 0, 0, 36, speedmult: 1.0, minRange: 0, maxRange: 1000, shootDownward: false);
+                if(random(0, 100) < 70)
+                A_DropAdjust2("PB_GreenPlasmaBall","Baron_Slash", 0, 0, 36, speedmult: 1.0, minRange: 0, maxRange: 1000, shootDownward: false);
                 else
                 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 0, 0, 1);
             }
@@ -1003,7 +1003,7 @@ class PB_GreenPlasmaBall : PB_Monster_Projectile
         +RANDOMIZE;
         +FORCEXYBILLBOARD;
         +THRUGHOST;
-        DamageFunction (random(23,29));
+        DamageFunction (random(28,34));
         RenderStyle "Add";
         Scale 0.29;
         SeeSound "BaronFire";
