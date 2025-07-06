@@ -57,7 +57,7 @@ class NashGoreBloodPlane : PB_LightActor
 	{
 		ChangeStatNum(STAT_NashGore_Gore);
 		NashGoreStatics.QueueGore();
-		rndzoffset = frandom(0.0001, 0.0500);;
+		rndzoffset = frandom(0.0001, 0.0500);
 		Super.BeginPlay();
 
 		if (!level.IsPointInLevel(Pos))
