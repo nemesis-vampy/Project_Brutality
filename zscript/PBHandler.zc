@@ -351,6 +351,18 @@ class PB_EventHandler : EventHandler
             }
         }
     }
+
+    override void PlayerDied(PlayerEvent e)
+    {
+        PlayerInfo plr = players[e.PlayerNumber];
+        if(plr)
+        {
+            PlayerPawn p = plr.mo;
+            PB_FPP_Holder holder = PB_FPP_Holder(p.FindInventory("PB_FPP_Holder"));
+            if(holder && holder.on)
+                holder.Disable();
+        }
+    }
 	
 	//Festive Hats handling
 	
@@ -583,7 +595,7 @@ class PB_MPNameHandler : EventHandler
     {
         vector2 namePos, drawOffsets;
         bool lookingAtBuddy;
-
+		
         for(int i = 0; i < players.Size(); i++)
         {
             if(i == consoleplayer) continue;

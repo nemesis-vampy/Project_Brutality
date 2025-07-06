@@ -1238,7 +1238,7 @@ ACTOR PB_Carbine : PB_Weapon
 								Else
 									{Return State("ReadyToFire2");}
 							}
-				if(CountInv("CarbineFullAuto") >= 1) {Return State("Fire2");}
+				if(CountInv("CarbineFullAuto") >= 1 && PressingFire()) {Return State("Fire2");}
 					
 			Return State ("");
 			}

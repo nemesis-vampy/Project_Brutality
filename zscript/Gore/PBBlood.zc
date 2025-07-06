@@ -412,11 +412,18 @@ class PB_BloodSpotTiny : PB_BloodSpot {
         RenderRadius 4;
     }
 
-    override void Tick()
+    /*override void Tick()
     {
         Super.Tick();
         if(GetAge() > 175) A_FadeOut(0.025, FTF_REMOVE);
-    }
+    }*/
+
+    override void BeginPlay(void)
+	{
+		ChangeStatNum(STAT_PB_DROPLETS);
+		NashGoreStatics.QueueDroplet();
+        // Super.BeginPlay();
+	}
 
     states
     {

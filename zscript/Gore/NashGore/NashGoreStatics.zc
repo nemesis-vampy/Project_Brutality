@@ -31,6 +31,7 @@
 //===========================================================================
 
 const STAT_PB_SMOKE = Thinker.STAT_USER_MAX - 2;
+const STAT_PB_DROPLETS = Thinker.STAT_USER_MAX - 3;
 const SLAUGHTERMAP_DIST = 1000.0;
 const MAP_EPSILON = 1 / 65536.;
 
@@ -173,6 +174,37 @@ class NashGoreStatics play
 						mo.Destroy();
 						//Console.Printf("Cleaning Gibs");
 					//}
+					count--;
+				}
+			}
+		}
+	}
+
+    static void QueueDroplet(void)
+	{
+		let eh = NashGoreHandler(NashGoreHandler.Find("NashGoreHandler"));
+		if (eh)
+		{
+			// get max gore count
+			int countmax = ceil(eh.maxgore * 0.1);
+
+			// count current amount of gore objects
+			ThinkerIterator it = ThinkerIterator.Create("PB_BloodSpotTiny", STAT_PB_DROPLETS);
+			Actor mo;
+			int count;
+			while (mo = Actor(it.Next()))
+			{
+				count++;
+			}
+
+			// clean up excessive gore
+			while (count > countmax)
+			{
+				// destroy the first one it can find
+				it.Reinit();
+				if (mo = Actor(it.Next()))
+				{		
+                    mo.Destroy();
 					count--;
 				}
 			}

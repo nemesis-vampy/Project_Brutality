@@ -971,7 +971,7 @@ class NashGoreClassicBloodTrail : NashGoreBloodBase
 		Loop;
 	Crash:
 		TNT1 AAAAA 1 A_SpawnItemEx("NashGoreBloodFloorSplash", frandom(-32, 32), frandom(-32, 32), flags: SXF_TRANSFERTRANSLATION | SXF_ABSOLUTEPOSITION | SXF_NOCHECKPOSITION, 220);
-        TNT1 A 0 A_SpawnItemEx("PB_BloodSpotTiny", frandom(-4, 4), frandom(-4, 4), flags: (BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION);
+        TNT1 A 0 A_SpawnItemEx("PB_BloodSpotTiny", frandom(-4, 4), frandom(-4, 4), flags: (BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, 220);
 		Stop;
 	}
 }
