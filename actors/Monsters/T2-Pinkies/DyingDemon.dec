@@ -175,11 +175,11 @@ ACTOR PoorMeanDemonLostHisArm: PoorPinkyLostHisArm
 	Spawn:
 		S4AR J 1
 		TNT1 A 0 A_Pain
-		S4AR JJJJJJJJ 4 A_SpawnProjectile("NashgoreBlood", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		S4AR JJJJJJJJ 4 A_SpawnProjectile("NashGoreBloodParticle1", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		TNT1 A 0 A_Pain
-		S4AR JJJJJJJJ 4 A_SpawnProjectile("NashgoreBlood", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		S4AR JJJJJJJJ 4 A_SpawnProjectile("NashGoreBloodParticle1", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		TNT1 A 0 A_Pain
-		S4AR JJJ 4 A_SpawnProjectile("NashgoreBlood", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		S4AR JJJ 4 A_SpawnProjectile("NashGoreBloodParticle1", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		Goto Collapse
 		
 	XDeath:
@@ -274,7 +274,7 @@ ACTOR PoorMeanDemonLostHisArm: PoorPinkyLostHisArm
 		S4AR GGGGGGG 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_ScreamAndUnblock
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
-		S4AR HHHHHHHHH 2 A_SpawnProjectile("NashgoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
+		S4AR HHHHHHHHH 2 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		S4AR IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		S4AR I -1
@@ -576,7 +576,7 @@ ACTOR VoidSpectreLostHisArm: PoorPinkyLostHisArm
 	Height 52
 	Radius 22
 	Mass 400
-	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	//BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 	//BloodColor "Green"
 	damagefactor "SSG", 9.0
 	States

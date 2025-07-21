@@ -14,7 +14,7 @@ Class HeadlessZombieMan : Actor
 		Radius 16;
 		Height 50;
 		Health 60;
-		BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood";
+		//BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood";
 		DamageFactor "Kick", 10.0;
 		DamageFactor "ExtremePunches", 10.0;
 		PainSound "";

@@ -475,7 +475,7 @@ ACTOR XDeathInfernusLeg
     +NOBLOCKMAP
     +NOTELEPORT
 	Scale 1.1
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
     States
     {
     Spawn:
@@ -490,7 +490,7 @@ ACTOR XDeathInfernusLeg
 
 actor Gib_InfernusLeg: BigGibBase
 {
-BloodType "NashGoreBlood"
+//BloodType "NashGoreBlood"
 //BloodColor "DarkGreen"
 Scale 1.0
     States
@@ -583,7 +583,7 @@ ACTOR XDeathInfernusArm
     //+CLIENTSIDEONLY
     +NOBLOCKMAP
     +NOTELEPORT
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	Scale 1.1
     States
     {
@@ -599,7 +599,7 @@ ACTOR XDeathInfernusArm
 
 actor Gib_InfernusArm: BigGibBase
 {
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
 Scale 1.0
     States
@@ -693,7 +693,7 @@ ACTOR XDeathInfernusTorso
     +NOBLOCKMAP
     +NOTELEPORT
 	Scale 1.1
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
     States
     {
     Spawn:
@@ -708,7 +708,7 @@ ACTOR XDeathInfernusTorso
 
 actor Gib_InfernusTorso: BigGibBase
 {
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
 Scale 1.0
     States
@@ -775,7 +775,7 @@ ACTOR XDeathInfernusHead
     +NOBLOCKMAP
     +NOTELEPORT
 	Scale 1.1
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
     States
     {
     Spawn:
@@ -790,7 +790,7 @@ ACTOR XDeathInfernusHead
 
 actor Gib_InfernusHead: BigGibBase
 {
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
 	Decal GreenBloodSplat
 Scale 1.08
@@ -843,7 +843,7 @@ ACTOR XDeathInfernusUpperTorso
     +NOBLOCKMAP
     +NOTELEPORT
 	Scale 1.1
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
     States
     {
@@ -862,7 +862,7 @@ ACTOR XDeathInfernusUpperTorso
 actor Gib_InfernusUpperTorso: BigGibBase
 {
 	Decal GreenBloodSplat
-    BloodType "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 Scale 1.08
     States
     {
@@ -992,7 +992,7 @@ ACTOR XDeathBelphegorHead: XDeathHellKnightHead
 {
 +RollSprite
 +RollCenter
- BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+ //BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 //BloodColor "DarkGreen"
     States
     {
@@ -1068,13 +1068,13 @@ ACTOR XDeathBelphegorHeadKicked: XDeathBelphegorHead
 Damage 4
 Speed 13
 BounceFactor 0.4
- BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+ //BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 //BloodColor "DarkGreen"
 }
 
 ACTOR XDeathBelphegorLeg: XDeathBelphegorHead
 {
-	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	 //BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 	//BloodColor "DarkGreen"
     States
     {
@@ -1096,7 +1096,7 @@ actor Gib_BelphegorLeg: Gib_HellKnightLeg
 {
 +RollSprite
 +RollCenter
- BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+ //BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 //BloodColor "DarkGreen"
     States
     {
@@ -1110,7 +1110,7 @@ actor Gib_BelphegorLeg: Gib_HellKnightLeg
 	   
 	  Death:   
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_SpawnProjectile("NashGoreBlood", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AA 0 A_SpawnProjectile("NashGoreBloodParticle1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_SpawnProjectile("BelphegorLegGibBlown", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_SpawnProjectile("BelphegorFootGib", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
@@ -1189,7 +1189,7 @@ Actor Gib_BelphegorLeg_Mirrored : Gib_BelphegorLeg
 	{
 	Death:   
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_SpawnProjectile("NashGoreBlood", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AA 0 A_SpawnProjectile("NashGoreBloodParticle1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_SpawnProjectile("BelphegorLegGibBlown2", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_SpawnProjectile("BelphegorFootGib_Mirrored", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
@@ -1227,7 +1227,7 @@ Actor BelphegorLegGibBlown2 : BelphegorLegGibBlown
 
 ACTOR XDeathBelphegorBottomTorso: XDeathBelphegorHead
 {
-	 BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	 //BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 	 //BloodColor "DarkGreen"
     States
     {
@@ -1248,7 +1248,7 @@ ACTOR XDeathBelphegorBottomTorso: XDeathBelphegorHead
 actor Gib_BelphegorBottomTorso: LimbBase
 {
     Scale 1.1
-	BloodType "NashGoreBlood"
+	//BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
     States
     {

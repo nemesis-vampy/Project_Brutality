@@ -522,7 +522,7 @@ server	noarchive	bool	V5_Mlock	= False;
 ////////////////////////////////
 
 user bool pb_weapon_crosshairs = false;
-server bool pb_ScaleXWeapons = false;
+server bool pb_ScaleXWeapons = true;
 
 ////////////////////////////////////
 // Generic's HUD
@@ -632,7 +632,8 @@ user bool pb_usenewwhizby = false;
 user bool pb_altwhiz = true;
 user float pb_tailvolume = 1.0;
 server bool pb_cheapcasings = true;
-
+server bool pb_usemodernblood = true;
+user bool pb_hidebloodmist = false;
 user int pb_gunsmoketype = 0;
 
 server bool PB_MP_MovementTesting = false;

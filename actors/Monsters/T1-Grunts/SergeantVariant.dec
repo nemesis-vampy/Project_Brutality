@@ -167,13 +167,15 @@ ACTOR NewFuelTankPhysics: HeadshotTargetBase
 
 Actor EnemyFlamethrowerMissileNew: FlamethrowerMissileNew
 {
+    Damage 1
+
 	States
 	{
 	Death:
-		TNT1 A 0 A_Explode(5, 150, 0)
+		TNT1 A 0 A_Explode(2, 150, 0)
 		Goto Super::Death+1
 	XDeath:
-		TNT1 A 0 A_Explode(5, 150, 0)
+		TNT1 A 0 A_Explode(2, 150, 0)
 		Goto Super::XDeath+1
 	}
 }

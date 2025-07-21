@@ -6,8 +6,8 @@ class PB_GunFireSmoke: PB_LightActor
 {
     Default {
         Alpha 0.17;
-        YScale 0.22;
-        XScale 0.264;
+        Scale 0.22;
+        +SQUAREPIXELS;
         +NOBLOCKMAP;
         +NOTELEPORT;
         +DONTSPLASH;
@@ -18,25 +18,29 @@ class PB_GunFireSmoke: PB_LightActor
         +NOGRAVITY;
         +THRUACTORS;
         +ROLLSPRITE;
-        +ROLLCENTER;
+        // +ROLLCENTER;
         +NOCLIP;
         +NOTIMEFREEZE;
         FloatBobPhase 0;
         -RANDOMIZE;
+
+        RenderStyle "Shaded";
+        StencilColor "d1d6eb";
     }
 
     double dissipateRotation;
     vector3 posOfs;
 
-    double blowSpeed, fadeSpeed;
+    double blowSpeed, fadeSpeed, slowBlowSpeed;
 
     override void BeginPlay()
     {
         ChangeStatNum(STAT_PB_SMOKE);
         Super.BeginPlay();
 
-        //blowSpeed = 1.02;
-        //fadeSpeed = 1.0;
+        blowSpeed = 1.02;
+        fadeSpeed = 1.0;
+        slowBlowSpeed = 1.0;
 	    /*alpha *= CVar.GetCVar("pb_smokeopacity", players[consoleplayer]).GetFloat();
         alpha = clamp(alpha, 0, 1);*/
     }
@@ -44,8 +48,8 @@ class PB_GunFireSmoke: PB_LightActor
     override void PostBeginPlay()
     {
         dissipateRotation = frandom[muzzlesmoke](0.7, 1.4) * randompick[muzzlesmoke](-1, 1);
-        bXFLIP = randompick[muzzlesmoke](0, 1);
-        bYFLIP = randompick[muzzlesmoke](0, 1);
+        //bXFLIP = randompick[muzzlesmoke](0, 1);
+        //bYFLIP = randompick[muzzlesmoke](0, 1);
 		scale *= 0.25;
 
 		fadeSpeed *= 0.66;
@@ -54,10 +58,11 @@ class PB_GunFireSmoke: PB_LightActor
     virtual void SmokeTick()
     {    	
         int age = GetAge();
-        if(age < 5 && age > 1) 
+        if(age < 5 && age > 0) 
         {
-            A_Fadeout(0.05 * fadeSpeed, FTF_CLAMP|FTF_REMOVE);
+            A_Fadeout(0.02 * fadeSpeed, FTF_CLAMP|FTF_REMOVE);
             scale *= blowSpeed;
+            blowSpeed = max(blowspeed * slowBlowSpeed, 1.0);
             vel *= 0.85;
             roll += dissipateRotation;
             dissipateRotation *= 0.96;
@@ -75,16 +80,16 @@ class PB_GunFireSmoke: PB_LightActor
             dissipateRotation *= 0.95;
             
             if(CeilingPic == SkyFlatNum) {
-                vel.y += 0.04;
-                vel.x -= 0.025;
+                vel.y += 0.01;
+                vel.x -= 0.005;
             }
             
-            vel.z += 0.07;
+            vel.z += 0.007;
 
             /*if (alpha < 0.1)
                	A_FadeOut(alpha * (0.05 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
             else*/
-                A_Fadeout(alpha * (0.1 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
+                A_Fadeout(default.alpha * (0.01 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
         }
     }
 
@@ -98,49 +103,184 @@ class PB_GunFireSmoke: PB_LightActor
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 5));
-            XS18 JKLMNOPQRSTUVWXYZ 2;
-			XS28 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
-			XS38 ABCD 2;
-            Stop;
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 12));
+            XS13 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
+            XS23 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
+            //XS18 JKLMNOPQRSTUVWXYZ 2;
+			//XS28 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
+			//XS38 ABCD 2;
+            Wait;
     }
 }
 
 class PB_GunFireSmoke_Var1 : PB_GunFireSmoke
 {
+    Default {
+        XScale 0.25;
+    }
+    override void SmokeTick()
+    {    	
+        int age = GetAge();
+        vel.z -= 0.01;
+        roll += 1 * (bXFLIP ? -1 : 1);
+        A_Fadeout(default.alpha * (0.01 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
+        
+        if(age < 5 && age > 0) 
+        {
+            scale *= blowSpeed;
+            blowSpeed = max(blowspeed * slowBlowSpeed, 1.0);
+            
+            if(CeilingPic == SkyFlatNum) {
+                vel.y += 0.03; // wind
+                vel.x -= 0.02;
+            }
+
+            vel *= 0.8;
+        }
+        else
+        {
+            scale *= 1.03;
+            
+            if(CeilingPic == SkyFlatNum) {
+                vel.y += 0.01;
+                vel.x -= 0.005;
+            }
+
+            vel *= 0.95;
+        }
+    }
+
 	States 
     {
         Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 7));
-            XS13 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
-			XS23 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
+            TNT1 A 0 A_Jump(256, "Normal", "Reverse");
+        Normal:
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 30));
+            //XS18 EFGHIJKLMNOPQRSTUVWXYZ 1;
+			//XS28 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
+            XS18 ABCDJKLMNOPQRSTUVWXYZ 1;
+			XS28 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
+			XS38 ABCD 1;
+            Stop;
+        Reverse:
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 30));
+            XS28 XWVUTSRQPONMLKJIHGFEDCBA 1;
+            XS18 ZYXWVUTSRQPONMLKJIHGFEDCBA 1;
+            Stop;
+        Frameskip:
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 30));
+            //XS18 EFGHIJKLMNOPQRSTUVWXYZ 1;
+			//XS28 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
+            XS18 ADLORUX 1;
+			XS28 CFILORUX 1;
+			XS38 AD 1;
             Stop;
     }
 }
 
 class PB_GunFireSmoke_Var2 : PB_GunFireSmoke
 {
+    Default 
+    {
+        Scale 0.66;
+    }
+
+    override void SmokeTick()
+    {    	
+        int age = GetAge();
+        if(age < 5 && age > 0) 
+        {
+            A_Fadeout(0.02 * fadeSpeed, FTF_CLAMP|FTF_REMOVE);
+            scale *= blowSpeed;
+            blowSpeed = max(blowspeed * slowBlowSpeed, 1.0);
+            //vel *= 0.85;
+            
+            if(CeilingPic == SkyFlatNum) {
+                vel.y += 0.03; // wind
+                vel.x -= 0.02;
+            }
+        }
+        else
+        {
+            scale *= 1.01;
+            //vel *= 0.7;
+            
+            if(CeilingPic == SkyFlatNum) {
+                vel.y += 0.01;
+                vel.x -= 0.005;
+            }
+            
+            /*if (alpha < 0.1)
+               	A_FadeOut(alpha * (0.05 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
+            else*/
+                A_Fadeout(default.alpha * (0.01 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
+        }
+    }
+
 	States 
     {
         Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 3));
-            XS16 CDEFGHIJKLMNO 2;
+            XS16 CDEFGHIJKLMNO 1;
             Stop;
     }
 }
 
-class PB_GunFireSmoke_FastCloud : PB_GunFireSmoke 
+class PB_GunFireSmoke_Var3 : PB_GunFireSmoke
+{
+	States 
+    {
+        Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 5));
+            XS19 ABCDEFGHIJKLMNOP 1;
+            Stop;
+    }
+}
+
+class PB_GunFireSmoke_Var4 : PB_GunFireSmoke
+{
+    Default {
+        XScale 0.28;
+    }
+	States 
+    {
+        Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 5));
+            XS11 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
+            XS21 ABCDEF 1;
+            Stop;
+    }
+}
+
+class PB_GunFireSmoke_Var5 : PB_GunFireSmoke_Var1
+{
+    override void SmokeTick()
+    {    	
+        int age = GetAge();
+        if(age < 5 && age > 0) 
+        {
+            A_Fadeout(default.alpha * (0.04 * fadeSpeed), FTF_CLAMP|FTF_REMOVE);
+            scale *= blowSpeed;
+            blowSpeed = max(blowspeed * slowBlowSpeed, 1.0);
+
+            vel *= 0.9;
+        }
+    }
+}
+
+class PB_GunFireSmoke_FastCloud : PB_GunFireSmoke_Var2 
 {
 	Default {
-		Alpha 0.6;
+        Scale 0.22;
 	}
 
 	override void PostBeginPlay()
     {
         dissipateRotation = frandom[muzzlesmoke](0.7, 1.4) * randompick[muzzlesmoke](-1, 1);
-        bXFLIP = randompick[muzzlesmoke](0, 1);
 		scale *= 0.25;
     }
 	
@@ -158,8 +298,9 @@ class PB_CasingEjectionSmoke : PB_GunFireSmoke
 {    
     Default
     {
-        XScale 0.10;
-        YScale 0.10;
+        XScale 0.05;
+        YScale 0.09;
+        Alpha 0.5;
 
         -ROLLCENTER;
     }
@@ -197,7 +338,7 @@ class PB_CasingEjectionSmoke : PB_GunFireSmoke
         Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(256, random[muzzlesmoke](0, 5));
-            XS16 ABCDEFGHIJKLNO 1;
+            XS15 ABCDEFGH 1;
             Stop;
     }
 }
@@ -231,7 +372,7 @@ class PB_BarrelHeatSmoke: PB_GunFireSmoke
         }
         else
         {
-            scale *= 1.01;
+            scale *= 1.02;
             roll += dissipateRotation;
             
             if(CeilingPic == SkyFlatNum) {
@@ -244,7 +385,9 @@ class PB_BarrelHeatSmoke: PB_GunFireSmoke
 	States 
     {
         Spawn:
-            XS23 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
+            TNT1 A 0;
+            TNT1 A 0 A_Jump(256, random(0, 10));
+            XS14 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1;
 			XS24 ABCDEF 1;
             Loop;
     }
@@ -319,10 +462,10 @@ class MarineMuzzle1 : PB_LightActor
 				SpawnSmokeActor(
 					(0, 0, 0), // offsets
 					(0, 0, 0), 	  // velocites
-					"PB_GunFireSmoke_Var1",		// actor
-					2.2,		  // scale multiplier
-					0.6,		  // alpha multiplier
-					1.03		  // blow speed
+					"PB_GunFireSmoke_Var3",		// actor
+					5.2,		  // scale multiplier
+					2,		  // alpha multiplier
+					1.02		  // blow speed
 				);
 		
 				SpawnSmokeActor(
@@ -332,7 +475,7 @@ class MarineMuzzle1 : PB_LightActor
 					0.7,
 					1.0,
 					1.02,
-					1.2
+					0.9
 				);
 		
 				SpawnSmokeActor(
@@ -342,7 +485,7 @@ class MarineMuzzle1 : PB_LightActor
 					1.7,
 					1.0,
 					1.02,
-					1.2
+					0.9
 				);
 		
 				SpawnSmokeActor(
@@ -352,7 +495,7 @@ class MarineMuzzle1 : PB_LightActor
 					2.7,
 					1.0,
 					1.02,
-					1.2
+					0.9
 				);
 				NashGoreStatics.QueueSmoke();
 			}

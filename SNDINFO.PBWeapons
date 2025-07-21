@@ -1308,7 +1308,7 @@ $random bulletimpact/water {
 }
 
 $limit bulletimpact 1
-$volume bulletimpact 1.0
+$volume bulletimpact 0.8
 $rolloff bulletimpact 200 700
 
 $limit bulletimpact/wood 1
@@ -1324,11 +1324,11 @@ $volume bulletimpact/gravel 0.8
 $rolloff bulletimpact/gravel 200 700
 
 $limit bulletimpact/metal/a 1
-$volume bulletimpact/metal/a 0.8
+$volume bulletimpact/metal/a 0.35
 $rolloff bulletimpact/metal/a 200 700
 
 $limit bulletimpact/metal/b 1
-$volume bulletimpact/metal/b 0.8
+$volume bulletimpact/metal/b 0.35
 $rolloff bulletimpact/metal/b 200 700
 
 //weird ass sound
@@ -1394,3 +1394,5 @@ $rolloff weapons/minigunfire 400 2500
 $rolloff HRFire 400 2500
 
 weapons/enemycarbine/fire "SOUNDS/COMBAT/WEAPONS/enemycarbine.ogg"
+
+misc/givecurrentammo "SOUNDS/gunpickup2.wav"

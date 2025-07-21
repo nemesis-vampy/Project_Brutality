@@ -151,8 +151,31 @@ class PB_PlayerPawn : PlayerPawnBase
 	{
 		if(name ~== "PB_ALL" || name ~== "PB_Upgrades")
 		{
+            console.printf("Gave all upgrades");
 			for(int i = 0; i <= self.PB_ActUpgrades.size() -1; i++)
 				giveinventory(self.PB_ActUpgrades[i],2);
+			return;
+		}
+        else if(name ~== "currentammo")
+		{
+            Weapon gun = player.readyweapon;
+            if(gun)
+            {
+                console.printf("Gave ammo for current weapon");
+			    if(gun.ammo1) 
+                {
+                    gun.ammo1.Amount = player.readyweapon.ammo1.maxamount;
+                    // S_StartSound(gun.ammo1.PickupSound, 0);
+                }
+                if(gun.ammo2) 
+                {
+                    gun.ammo2.Amount = player.readyweapon.ammo2.maxamount;
+                    // S_StartSound(gun.ammo1.PickupSound, 0);
+                }
+
+                S_StartSound("misc/givecurrentammo", 0);
+            }
+
 			return;
 		}
 		super.cheatgive(name,amount);

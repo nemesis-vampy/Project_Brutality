@@ -19,6 +19,7 @@ class PB_Projectile : FastProjectile abstract
 	double distanceTraveled;
 	vector3 oldPos;
 	sound whizSound;
+    bool isBloodExplosionGenerator;
 	
 	// whiz radii
 	const WHIZ_DIST_STEP = 1500;
@@ -103,10 +104,17 @@ class PB_Projectile : FastProjectile abstract
 				SpawnPuff("PB_NoBloodPuff", pos, angle, 0, 0, PF_HITTHING);
 			else
             {
-				//let blood = victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
-                //if(blood) blood.angle = angle;
-                victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
-				victim.TraceBleed( ceil(scaled_damage), self );
+                Actor tmpBlood = victim.SpawnBlood( pos, angle, ceil(scaled_damage * 0.47) );
+                PB_GunshotBlood pbBlood = PB_GunshotBlood(tmpBlood);
+                if(pbBlood) {
+                    pbBlood.sourceIsProjectile = true;
+                    pbBlood.smallCal = bSMALLIMPACT;
+                    pbBlood.isBloodExplosionGenerator = isBloodExplosionGenerator;
+                    pbBlood.projectileDamage = truedamage;
+                    // console.printf("ste: %p %s %i %i", pbBlood, pbBlood.GetClassName(), pbBlood.sourceIsProjectile, pbBlood.projectileDamage);
+                }
+
+				victim.TraceBleed( ceil(scaled_damage * 0.47), self );
             }	
 		}
 		
@@ -433,7 +441,11 @@ class PB_Projectile : FastProjectile abstract
 	// crytek plz dont sue
 	void PB_HandleWhizby()
 	{
-		PB_PlayerPawn plr = PB_PlayerPawn(players[consoleplayer].mo);
+		PB_PlayerPawn plr = PB_PlayerPawn(players[consoleplayer].camera);
+        
+        if(!plr) 
+            return;
+
 		if(!target || plr == target)
 			return;
 		

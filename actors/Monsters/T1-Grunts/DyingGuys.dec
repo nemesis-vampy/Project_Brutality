@@ -158,7 +158,7 @@ ACTOR BrutalizedZombieMan1 : SwitchableDecoration
 	Radius 16
 	Height 45
 	Health 20
-	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	//BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 		PainSound "grunt/pain"
 		PainChance 255
 		Mass 999999
@@ -277,7 +277,7 @@ ACTOR BrutalizedZombieMan2: BrutalizedZombieMan1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -286,7 +286,7 @@ ACTOR BrutalizedZombieMan2: BrutalizedZombieMan1
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -353,7 +353,7 @@ ACTOR BrutalizedZombieMan3: BrutalizedZombieMan1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -361,7 +361,7 @@ ACTOR BrutalizedZombieMan3: BrutalizedZombieMan1
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -557,7 +557,7 @@ ACTOR DyingSergeant : SwitchableDecoration
 			TNT1 A 0 A_XScream
 			TNT1 A 0 A_NoBlocking
 			XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -567,7 +567,7 @@ ACTOR DyingSergeant : SwitchableDecoration
 			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 			XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 			TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 			TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -585,7 +585,7 @@ ACTOR DyingSergeant : SwitchableDecoration
 			TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 16, 0, random (130, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-			TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -685,7 +685,7 @@ ACTOR DyingSergeantNoLeg : SwitchableDecoration
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -695,7 +695,7 @@ ACTOR DyingSergeantNoLeg : SwitchableDecoration
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -830,7 +830,7 @@ ACTOR BrutalizedSergeant1 : SwitchableDecoration
 			TNT1 A 0 A_XScream
 			TNT1 A 0 A_NoBlocking
 			XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -840,7 +840,7 @@ ACTOR BrutalizedSergeant1 : SwitchableDecoration
 			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 			XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 			TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 			TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -902,7 +902,7 @@ ACTOR BrutalizedSergeant2: BrutalizedSergeant1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -911,7 +911,7 @@ ACTOR BrutalizedSergeant2: BrutalizedSergeant1
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -977,7 +977,7 @@ ACTOR BrutalizedSergeant3: BrutalizedSergeant1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -985,7 +985,7 @@ ACTOR BrutalizedSergeant3: BrutalizedSergeant1
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -1220,7 +1220,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -1230,7 +1230,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -1655,7 +1655,7 @@ ACTOR SergeantGotHisLegBlowed: DyingSergeantNoLeg
 		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath4", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -1894,7 +1894,7 @@ hEALTH 100
 		DieNow:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
-		TNT1 AAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -2020,7 +2020,7 @@ ACTOR PlayerChaingunguyVictim
 	Radius 16
 	Height 45
 	Health 70
-	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	//BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 		PainSound "grunt/pain"
 		PainChance 255
 		Mass 999999
@@ -2480,7 +2480,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -2489,7 +2489,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -2509,7 +2509,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath4", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -2539,7 +2539,7 @@ ACTOR BrutalizedChaingunCommando1 : SwitchableDecoration
 	Radius 18
 	Height 56
 	Health 30
-	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	//BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 		PainSound "grunt/pain"
 		PainChance 255
 		Mass 999999
@@ -2687,7 +2687,7 @@ ACTOR BrutalizedChaingunCommando3: BrutalizedChaingunCommando1
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath4", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -2881,7 +2881,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -2890,7 +2890,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -2910,7 +2910,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath4", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -2940,7 +2940,7 @@ ACTOR BrutalizedHelmetChaingunCommando1 : BrutalizedChaingunCommando1
 	Radius 18
 	Height 56
 	Health 30
-	BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
+	//BloodType "NashGoreBlood", "NashGoreBlood", "NashGoreBlood"
 		PainSound "grunt/pain"
 		PainChance 255
 		Mass 999999
@@ -3452,7 +3452,7 @@ ACTOR BrutalizedHelmetSergeant1 : BrutalizedSergeant1
 			TNT1 A 0 A_XScream
 			TNT1 A 0 A_NoBlocking
 			XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -3461,7 +3461,7 @@ ACTOR BrutalizedHelmetSergeant1 : BrutalizedSergeant1
 			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 			XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 			TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 			TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -3560,7 +3560,7 @@ ACTOR DyingHelmetSergeantLegBlewedOff: DyingSergeantNoLeg
 			TNT1 A 0 A_XScream
 			TNT1 A 0 A_NoBlocking
 			XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -3570,7 +3570,7 @@ ACTOR DyingHelmetSergeantLegBlewedOff: DyingSergeantNoLeg
 			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 			XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 			TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 			TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -3586,7 +3586,7 @@ ACTOR DyingHelmetSergeantLegBlewedOff: DyingSergeantNoLeg
 			TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-			TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -3715,7 +3715,7 @@ ACTOR DyingHelmetSergeant : SwitchableDecoration
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -3725,7 +3725,7 @@ ACTOR DyingHelmetSergeant : SwitchableDecoration
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -3744,7 +3744,7 @@ ACTOR DyingHelmetSergeant : SwitchableDecoration
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -3952,7 +3952,7 @@ States
 			TNT1 A 0 A_XScream
 			TNT1 A 0 A_NoBlocking
 			XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -3962,7 +3962,7 @@ States
 			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 			XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 			TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 			TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -3976,7 +3976,7 @@ States
 			TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-			TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -4402,7 +4402,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -4412,7 +4412,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -4614,7 +4614,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -4624,7 +4624,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -4662,7 +4662,7 @@ Death.Melee:
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5204,7 +5204,7 @@ ACTOR DyingARZombiemanLegBlewedOff: ZombiemanGotHisLegBlowed
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -5214,7 +5214,7 @@ ACTOR DyingARZombiemanLegBlewedOff: ZombiemanGotHisLegBlowed
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -5230,7 +5230,7 @@ ACTOR DyingARZombiemanLegBlewedOff: ZombiemanGotHisLegBlowed
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5468,7 +5468,7 @@ ACTOR DyingARZombiemanNoArm: DyingZombiemanNoArm
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -5477,7 +5477,7 @@ ACTOR DyingARZombiemanNoArm: DyingZombiemanNoArm
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -5508,7 +5508,7 @@ ACTOR DyingARZombiemanNoArm: DyingZombiemanNoArm
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5596,7 +5596,7 @@ ACTOR BrutalizedARZombieMan1 : SwitchableDecoration
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5650,7 +5650,7 @@ ACTOR BrutalizedARZombieMan2: BrutalizedZombieMan2
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5699,7 +5699,7 @@ ACTOR BrutalizedARZombieMan3: BrutalizedZombieMan3
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5818,7 +5818,7 @@ ACTOR DyingHFQSZ : SwitchableDecoration
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -5828,7 +5828,7 @@ ACTOR DyingHFQSZ : SwitchableDecoration
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -5844,7 +5844,7 @@ ACTOR DyingHFQSZ : SwitchableDecoration
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -5981,7 +5981,7 @@ ACTOR DyingHFQSZNoLeg : DyingHFQSZ
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -5991,7 +5991,7 @@ ACTOR DyingHFQSZNoLeg : DyingHFQSZ
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -6024,7 +6024,7 @@ ACTOR DyingHFQSZNoLeg : DyingHFQSZ
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -6112,7 +6112,7 @@ ACTOR DyingHFQSZLegBlewedOff: DyingHFQSZNoLeg
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -6122,7 +6122,7 @@ ACTOR DyingHFQSZLegBlewedOff: DyingHFQSZNoLeg
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -6139,7 +6139,7 @@ ACTOR DyingHFQSZLegBlewedOff: DyingHFQSZNoLeg
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -6221,7 +6221,7 @@ ACTOR BrutalizedHFQSZ1 : SwitchableDecoration
 		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		TNT1 AAAA 0 A_SpawnProjectile("NashgoreBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
@@ -6239,7 +6239,7 @@ ACTOR BrutalizedHFQSZ1 : SwitchableDecoration
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -6249,7 +6249,7 @@ ACTOR BrutalizedHFQSZ1 : SwitchableDecoration
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -6308,7 +6308,7 @@ ACTOR BrutalizedHFQSZ2: BrutalizedHFQSZ1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -6317,7 +6317,7 @@ ACTOR BrutalizedHFQSZ2: BrutalizedHFQSZ1
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -6376,14 +6376,14 @@ ACTOR BrutalizedHFQSZ3: BrutalizedHFQSZ1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -7095,7 +7095,7 @@ ACTOR BrutalizedFormerScientist2: BrutalizedFormerScientist1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -7104,7 +7104,7 @@ ACTOR BrutalizedFormerScientist2: BrutalizedFormerScientist1
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -7167,14 +7167,14 @@ ACTOR BrutalizedFormerScientist3: BrutalizedFormerScientist1
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -8099,7 +8099,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -8109,7 +8109,7 @@ Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))

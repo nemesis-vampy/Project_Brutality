@@ -389,7 +389,7 @@ class PB_EventHandler : EventHandler
 			HatExists = true;
 		}
 		
-		if(e.Thing.bROLLSPRITE)
+		if(e.Thing.bROLLSPRITE && !e.thing.bSQUAREPIXELS)
 			e.Thing.bSTRETCHPIXELS = true;
 	}
 	
@@ -593,6 +593,9 @@ class PB_MPNameHandler : EventHandler
     
     override void RenderUnderlay(RenderEvent e)
     {
+        if(automapactive)
+            return;
+            
         vector2 namePos, drawOffsets;
         bool lookingAtBuddy;
 		

@@ -220,7 +220,7 @@ class NashGoreStatics play
 			int countmax = eh.maxcasings;
 
 			// count current amount of casings objects
-			ThinkerIterator it = ThinkerIterator.Create("Actor", STAT_PB_BULLETS);
+			ThinkerIterator it = ThinkerIterator.Create("PB_CasingBase", STAT_PB_BULLETS);
 			Actor mo;
 			int count;
 			while (mo = Actor(it.Next()))
@@ -234,14 +234,10 @@ class NashGoreStatics play
 				// destroy the first one it can find
 				it.Reinit();
 				if (mo = Actor(it.Next()))
-				{		
-					bool valid = mo is "PB_CasingBase" || mo is "EmptyMagBase";
-
-					if (valid) {
-						// console.printf("cleaned up casing %p", mo);
+				{
+					//if (valid) {
 						mo.Destroy();
-						//Console.Printf("Cleaning Gibs");
-					}
+					//}
 					count--;
 				}
 			}
@@ -260,7 +256,7 @@ class NashGoreStatics play
 		}
 
 		// clean up excessive smoke
-		while (count > 24)
+		while (count > 50)
 		{
 			// destroy the first one it can find
 			it.Reinit();
@@ -284,7 +280,7 @@ class NashGoreStatics play
 	{
 		ThinkerIterator it = ThinkerIterator.Create("Actor", STAT_NashGore_Gore);
 		ThinkerIterator pb = ThinkerIterator.Create("Actor", STAT_PB_BULLETS);
-		ThinkerIterator sm = ThinkerIterator.Create("Actor", STAT_PB_SMOKE);
+		ThinkerIterator sm = ThinkerIterator.Create("Actor", STAT_PB_DROPLETS);
 		Actor mo;
 		while (mo = Actor(it.Next()))
 		{

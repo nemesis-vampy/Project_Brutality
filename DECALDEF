@@ -1372,7 +1372,6 @@ decalgroup BloodSplat
 	BloodSplat26 1
 	BloodSplat27 1
 	BloodSplat28 1
-    BloodMedium 8
     NoBlood 14
 }
 

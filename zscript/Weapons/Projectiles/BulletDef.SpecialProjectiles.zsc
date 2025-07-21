@@ -63,6 +63,7 @@ class PB_MGNail : PB_ProjectileAlt
 		PB_Projectile.RipperCount 5;
 		PB_Projectile.PenetrationCount 1;
 		+PB_Projectile.NOWHIZBY;
+        +PB_Projectile.SMALLIMPACT;
 		Damagetype "Nail";
 		DeathSound "Weapons/NailHit";
 		Scale 0.5;

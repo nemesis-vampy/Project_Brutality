@@ -25,7 +25,7 @@ Class PB_Shotgun : PB_WeaponBase
 		+WEAPON.NOAUTOFIRE
 		PB_WeaponBase.UsesWheel true;					
 		PB_WeaponBase.WheelInfo "PB_PumpShotgunWheel";
-		
+		PB_WeaponBase.TailPitch 1.5;
 	}
 	
 	int ShellsMode;
@@ -247,12 +247,11 @@ Class PB_Shotgun : PB_WeaponBase
 				A_AlertMonsters();
 				A_fireprojectile("YellowFlareSpawn", 0, 0, 0, 0);
 				A_fireprojectile("ShakeYourAssDouble", 0, 0, 0, 0);
-				A_fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				A_fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				A_fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				PB_GunSmoke(-1,0,-4);
-				PB_GunSmoke(1,0,-4);
+				_SpawnMuzzleSparksSG(0,0,-4);
+				PB_GunSmoke_Sniper(1,0,-4);
                 PB_MuzzleFlashEffects(0,0,-4);
+                A_QuakeEx(-3, 0, 0, 15, 0, 2, "", QF_RELATIVE | QF_WAVE | QF_SCALEDOWN | QF_SCALEUP | QF_FULLINTENSITY, 2, 0, 0, 0, 2, frandom(-0.5, 0.5), 2);
+                //A_QuakeEx(2, 2, 2, 10, 0, 2, "", QF_RELATIVE | QF_SCALEDOWN);
 				A_Overlay(-6, "ShotFlash",true);
 				//A_GunFlash();
 				PB_DynamicTail("shotgun", "shotgun");
@@ -277,8 +276,8 @@ Class PB_Shotgun : PB_WeaponBase
 				A_FireProjectile("ShotgunWad",random(-2,2),0,random(-2,2),-4,FPF_NOAUTOAIM,random(-2,2));
 				PB_WeaponRecoil(-1.24,+0.44);
 			}
-			SHTF D 1 PB_WeaponRecoil(-1.24,+0.44);
-			SHTF EFG 1;
+			SHTF G 1 PB_WeaponRecoil(-1.24,+0.44);
+			SHTF FED 1;
 			
 		Pump:
 		Pump1:
@@ -320,7 +319,9 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch-0.1,SPF_INTERPOLATE);
 			}
-			TNT1 A 0 A_StartSound("weapons/sgpump",11,CHANF_OVERLAP); 
+			TNT1 A 0 {
+                A_StartSound("weapons/sgpump",11,CHANF_OVERLAP); 
+            }
 			TNT1 A 0 A_JumpIfInventory("PB_Shell", 1,"noChamberEmpty"); //Skip this frame if the chamber isn't empty
 			SSHR H 1 
 			{
@@ -775,13 +776,12 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_Fireprojectile("YellowFlareSpawn", 0, 0, 0, 0);
 				 PB_LowAmmoSoundWarning("shotgun");
 				 A_TakeInventory("ShotgunAmmo", 1);
-				 A_Fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				 A_Fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				 A_Fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				 A_Fireprojectile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
-				 PB_GunSmoke(-1,0,0);
-				 PB_GunSmoke(1,0,0);
+				 _SpawnMuzzleSparksSG(0,0,-4);
+				 _SpawnMuzzleSparksSG(0,0,-4);
+				 PB_GunSmoke_Sniper(1,0,0);
                  PB_MuzzleFlashEffects(0,0,0);
+                 A_QuakeEx(-3, 0, 0, 15, 0, 2, "", QF_RELATIVE | QF_WAVE | QF_SCALEDOWN | QF_SCALEUP | QF_FULLINTENSITY, 2, 0, 0, 0, 2, frandom(-0.5, 0.5), 2);
+                //A_QuakeEx(2, 2, 2, 10, 0, 2, "", QF_RELATIVE | QF_SCALEDOWN);
 				 PB_DynamicTail("shotgun", "shotgun");
 				 A_SetInventory("CantDoAction",1);
 				 

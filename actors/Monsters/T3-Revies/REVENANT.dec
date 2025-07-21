@@ -2014,7 +2014,7 @@ ACTOR DyingRevenantNoArm
 	Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_PlaySound("skeleton/death")
-		SKL9 FG 7 A_SpawnProjectile("NashGoreBlood", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SKL9 FG 7 A_SpawnProjectile("NashGoreBloodParticle1", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		SKL9 H 1 A_SpawnItem ("DeadSkeletonSKL9H")
 		Stop
 
@@ -2045,7 +2045,7 @@ ACTOR DyingRevenantNoArm
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -2054,7 +2054,7 @@ ACTOR DyingRevenantNoArm
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -2130,7 +2130,7 @@ ACTOR DyingRevenantNoChest
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
 		XBRN AA 0 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -2138,7 +2138,7 @@ ACTOR DyingRevenantNoChest
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
-		TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		RVDP GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 10 A_SpawnProjectile("SmallSmoke", 1, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))

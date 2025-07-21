@@ -241,6 +241,8 @@ extend class PB_WeaponBase
 		double intSndVolume = intSamples / float(TAIL_EXT_CHECK_SAMPLES);
 		double extSndVolume = 1.0 - intSndVolume;
 		double vol;
+
+        double dist = Distance3D(players[consoleplayer].mo);
 		
 		for(int i = 0; i < 2; i++)
 		{
@@ -259,14 +261,16 @@ extend class PB_WeaponBase
 				vol = invoker.tailVolume * intSndVolume;
 			}
 
-			A_StartSound("weapons/atmo/"..tmpTailSound, CHAN_AUTO, volume: vol * 0.5, pitch: sndPitch);
+            bool notPlayer = multiplayer && player != players[consoleplayer];
+
+			A_StartSound("weapons/atmo/"..tmpTailSound, notPlayer ? 19 + (i * 4) : CHAN_AUTO, volume: vol * 0.5, pitch: sndPitch);
 
 			// multiplayer thing
-			if(multiplayer && player != players[consoleplayer])
+			if(notPlayer)
 			{
-				A_StartSound("weapons/atmo/dist/"..tmpTailSound, CHAN_AUTO, volume: vol * 0.6, pitch: sndPitch);
-				A_StartSound("weapons/atmo/far/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
-				A_StartSound("weapons/atmo/med/"..tmpTailSound, CHAN_AUTO, volume: vol, pitch: sndPitch);
+                A_StartSound("weapons/atmo/dist/"..tmpTailSound, 20 + (i * 4), volume: vol, pitch: sndPitch);
+                A_StartSound("weapons/atmo/far/"..tmpTailSound, 21 + (i * 4), volume: vol, pitch: sndPitch);
+                A_StartSound("weapons/atmo/med/"..tmpTailSound, 22 + (i * 4), volume: vol, pitch: sndPitch);
 			}
 		}
 	}

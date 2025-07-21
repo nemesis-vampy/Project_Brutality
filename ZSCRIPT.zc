@@ -133,6 +133,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Gore/NashGore/NashGoreActor.zc"
 #include "zscript/Gore/NashGore/NashGoreMenu.zc"
 #include "zscript/Gore/PBBlood.zc"
+#include "zscript/Gore/PBBloodImpacts.zs"
 #include "zscript/Gore/PBGore.zc"
 #include "zscript/Gore/PBGoreEffects.zc"
 
@@ -1506,4 +1507,25 @@ Class ShoulderFire : inventory
 		}
 		return false;
 	}
+}
+
+class PB_BloodTester : Actor
+{
+    Default {
+        BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood";
+        +SHOOTABLE;
+        -NOBLOOD;
+        +BUDDHA;
+        // bloodcolor "purple";
+        Height 56;
+        Radius 16;
+        Health 1000;
+        +NOBLOODDECALS;
+    }
+
+    States {
+        Spawn:
+            PLAY A -1;
+            Loop;
+    }
 }

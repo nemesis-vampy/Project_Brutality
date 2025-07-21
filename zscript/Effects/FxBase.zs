@@ -33,3 +33,58 @@ Class PB_LightActor : Actor
 	}
 	
 }
+
+class PB_AnimatedSmokeThinker : VisualThinker abstract
+{
+    Array<string> sprName;
+    Array<int> frameStep, startFrame, endFrame;
+    int animFrame;
+    int sprNameIndex;
+    
+    override void PostBeginPlay()
+    {
+        SetupSprites();
+        animFrame = startFrame[0];
+        flags |= SPF_ROLL;
+        Super.PostBeginPlay();
+    }
+
+    virtual void SetupSprites() { }
+
+    override void Tick() 
+    {
+        //PB_AnimateSelf();
+        PB_AnimateSprite();
+
+        Super.Tick();
+    }
+
+    virtual void PB_AnimateSprite()
+    {
+        if(animFrame < endFrame[sprNameIndex])
+            animFrame += frameStep[sprNameIndex];
+        else if(sprName.Size() - 1 > sprNameIndex)
+        {
+            sprNameIndex += 1;
+            animFrame = 0;
+        }
+
+        Texture = TexMan.CheckForTexture(String.Format("%s%c%s", sprName[sprNameIndex], 97 + animFrame, "0"));
+    }
+
+    virtual void PB_AnimateSelf() { }
+}
+
+class PB_DustImpact : PB_AnimatedSmokeThinker 
+{
+    override void SetupSprites() 
+    {
+        sprName.Push("XS16");
+        frameStep.Push(1);
+        startFrame.Push(0);
+        endFrame.Push(15);
+
+        SetRenderStyle(STYLE_Shaded);
+        scale = (0.2, 0.5);
+    }
+}

@@ -5,7 +5,7 @@ ACTOR DyingHellKnight1
 	Height 50
 	Health 100
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-    bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
     damagefactor "Avoid", 0.0
 	damagefactor "killme", 0.0
 	damagefactor "Shrapnel", 0.0
@@ -162,29 +162,29 @@ ACTOR DyingHellKnight2
 	TNT1 A 0 A_PlaySound("misc/xdeath2c",2)
 	TNT1 A 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	KSA7 DEFED 6 
 	TNT1 A 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_PlaySound ("PSXDPN",3)
 	TNT1 A 0 A_PlaySound("misc/xdeath2c",4)
 	KSA7 EDEFE 6 
 		TNT1 A 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_PlaySound ("PSXDPN",5)
 	TNT1 A 0 A_PlaySound("misc/xdeath2c",6)
 	KSA7 EDEFE 6 
 		TNT1 A 0 A_SpawnProjectile("XDeathOrgan1Green", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_PlaySound ("PSXDPN",1)
 	TNT1 A 0 A_PlaySound("misc/xdeath2c",2)
 	KSA7 DEFED 6 
 		TNT1 A 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_PlaySound ("PSXDPN",3)
 	TNT1 A 0 A_PlaySound("misc/xdeath2c",4)
 	Goto Death
@@ -196,7 +196,7 @@ ACTOR DyingHellKnight2
 	TNT1 A 0 A_PlaySound("knight/death")
 	TNT1 AAAAAAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 AAAA 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	KAD1 ABCDEF 5 A_SpawnProjectile("PB_SquirtingBloodTrail", 62, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_SpawnItem ("DeadHellKnightFatality4")
@@ -258,7 +258,7 @@ ACTOR DyingHellKnightHeadShot
 	damagefactor "Shrapnel", 0.0
 	damagefactor "KillMe", 0.0
 	damagefactor "Cutless", 0.6
-	 bloodtype "NashGoreBlood"
+	 //BloodType "NashGoreBlood"
 	 //BloodColor "DarkGreen"
 	Mass 999999
 	-SOLID
@@ -347,7 +347,7 @@ MONSTER
 +MISSILEMORE
 +MISSILEEVENMORE
 +LOOKALLAROUND
-    bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
 States
 	{

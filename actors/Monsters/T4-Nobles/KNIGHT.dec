@@ -543,7 +543,7 @@ Death.Stomach:
 	TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 AAAAAAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 AAAAA 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-	TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnItem ("DyingHellKnight2")
 	Stop
 
@@ -579,7 +579,7 @@ Death.Stomach:
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 31, 0, random (130, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("PB_MuchBlood", 55, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 AAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         TNT1 A 0 A_SpawnProjectile("PB_FlyingBlood", 28, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		BTN7 AAAA  2 A_SpawnProjectile("PB_SquirtingBloodTrail", 37, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
@@ -873,7 +873,7 @@ Death.Arm:
         TNT1 A 0
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 
 
@@ -1177,7 +1177,7 @@ Actor DeadKnight: CurbstompedMarine
     Health 200
     damagefactor "Blood", 0.0
     damagefactor "Trample", 0.0
-    bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
 States
     {
@@ -1462,7 +1462,7 @@ ACTOR DyingHellKnight
 	-SOLID
 	+THRUACTORS
 //+NOBLOODDECALS
-    bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
     States
     {
@@ -1582,7 +1582,7 @@ ACTOR PinnedHellKnightTorso
     SeeSound "misc/xdeath4"
     DeathSound "misc/xdeath1"
 	Decal GreenBloodSplat
-    bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
     States
     {
@@ -1648,7 +1648,7 @@ ACTOR BrutalizedHellKnight1
 	-SOLID
 	+THRUACTORS
 //+NOBLOODDECALS
-    bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
 	//BloodColor "DarkGreen"
     States
     {

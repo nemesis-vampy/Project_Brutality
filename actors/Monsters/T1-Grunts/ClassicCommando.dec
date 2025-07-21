@@ -737,7 +737,7 @@ TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 50, 0, random (0, 360), CMF_B
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -747,7 +747,7 @@ TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 50, 0, random (0, 360), CMF_B
 	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-        TNT1 A 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
 		//TNT1 A 0 A_SpawnItem ("NewChain_Gun", 1)
 		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
@@ -758,7 +758,7 @@ TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 50, 0, random (0, 360), CMF_B
         TNT1 A 0
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))

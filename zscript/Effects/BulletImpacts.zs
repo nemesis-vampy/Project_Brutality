@@ -29,6 +29,7 @@ Class PB_BaseBulletImpact : BulletPuff abstract
 	uint8 hitWhat;
 	float wallNormal, reflectAngle;
 	float distfromplayer;
+    vector2 hitAngles;
 
 	bool noDistant, smallCal;
 	property NoDistantImpact: noDistant;
@@ -43,12 +44,14 @@ Class PB_BaseBulletImpact : BulletPuff abstract
 
 		// ricochet detection formula: AbsAngle(angle, wallnormal)
 
-		distfromplayer = Distance2DSquared(players[consoleplayer].mo);
+		distfromplayer = Distance2DSquared(players[consoleplayer].camera);
 		
 		reflectAngle = (wallNormal * 2) - angle;
 
 		if(!noDistant)
 			HitFeedback();
+
+        hitangles = (angle, pitch);
 
         if(hitWhat > 1)
         {
@@ -74,13 +77,36 @@ Class PB_BaseBulletImpact : BulletPuff abstract
 		MAINPUF.StartRoll = random[impacts](0,360);
 		MAINPUF.StartAlpha = 1.0;
 		MAINPUF.FadeStep = 0;
-		MAINPUF.Size = random[impacts](10,32) * (Distance3D(players[consoleplayer].mo) / 500.f);
+		MAINPUF.Size = random[impacts](10,32) * (Distance3D(players[consoleplayer].camera) / 500.f);
 		MAINPUF.SizeStep = random[impacts](2,4);
 		MAINPUF.Lifetime = 4; 
 		MAINPUF.Pos = pos;
 		Level.SpawnParticle(MAINPUF);
 	}
+
+    VisualThinker PB_SummonSmokeThinker(class<PB_AnimatedSmokeThinker> smk, double smkRoll = 0, double smkAlpha = 1.0, vector2 smkScale = (1, 1), vector3 smkVel = (0, 0, 0))
+    {
+        // the PB_AnimatedSmokeThinker in question:
+        PB_AnimatedSmokeThinker vt = PB_AnimatedSmokeThinker(level.SpawnVisualThinker(smk));
+
+        if(vt)
+        {
+            vt.roll = smkRoll;
+            vt.pos = pos + (RotateVector((1, 0), angle), 0);
+            vt.alpha = smkAlpha;
+            // 97 is the character index for UPPERCASE A
+            /*vt.startFrame = startFrame - 97;
+            vt.endFrame = endFrame - 97;
+            vt.frameStep = frameStep;
+            vt.sprName = sprName;*/
+            vt.vel = smkVel;
+        }
+
+        return vt;
+    }
 }
+
+
 
 Class PB_BulletImpact : PB_BaseBulletImpact
 {
@@ -92,9 +118,10 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 	{
 		PB_BulletImpact.PuffColors "FFFFFF", "FFFFFF", "C9C9C9";
 		+FLATSPRITE;
-		Scale 0.4;
-		Alpha 0.5;
-		RenderStyle "Stencil";
+        +SQUAREPIXELS;
+		Scale 0.6;
+		Alpha 1.0;
+		RenderStyle "Shaded";
 	}
 	
 	states
@@ -110,7 +137,10 @@ Class PB_BulletImpact : PB_BaseBulletImpact
                     {
 						SpawnMainPuff2();
 						// SpawnPuffSmoke();
-                    	//LinetracerSmoke(hitWhat);
+                        int spallCount = randompick(0, 0, 0, random(0, 4));
+
+                        for(int i = 0; i < spallCount; i++)
+                    	    BulletSpall(hitWhat);
                     }
 
                     SpawnDust();
@@ -142,7 +172,13 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 				roll = random[impacts](0, 360);
 			}
         FlatPuff:
-			XS19 ABCDEFGHIJKLMNOP 1;
+            TNT1 A 0 A_Jump(256, random(0, 5));
+			XS19 ABCDEFGHIJKLMNOP 1 {
+                if(GetAge() < 5)
+                    alpha -= 0.1;
+
+                A_FadeOut(0.05);
+            }
         	Stop;
 		Melee:
 			TNT1 AAA 0 SpawnPuffSmoke();//A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 0, 0, random[impacts] (0, 360), 2, random[impacts] (0, 360));
@@ -336,7 +372,7 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 			vls = (mag * (i * 0.5), vvels);
 			
 			int ofsimpact = !smallCal ? 10 : 2;
-			PUFSMK.Size = 10 * (1+((count - i) * 0.3));
+			PUFSMK.Size = 15 * (1+((count - i) * 0.3));
 			if(hitWhat == 1)
 			{
 				vls = (RotateVector(vls.xy, wallNormal), vls.z);
@@ -380,14 +416,13 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 		}
 	}
 
-	// "rubble"
-	void LinetracerSmoke(int dq = 1)
+	void BulletSpall(int dq = 1)
 	{
 		FLineTraceData lt;
-		vector2 ofs = RotateVector((2, 0), wallNormal);
+		vector2 ofs = RotateVector((5, 0), wallNormal);
 		
 		if(dq == 1)
-			LineTrace(wallNormal + 87, 60, random[impacts](0, 360), TRF_ABSOFFSET, offsetforward: ofs.x, ofs.y, lt);
+			LineTrace(wallNormal + 90, 60, random[impacts](0, 360), TRF_ABSOFFSET, offsetforward: ofs.x, ofs.y, lt);
 		else if(dq == 2)
 			LineTrace(random[impacts](0, 360), 60, -3, TRF_ABSOFFSET, offsetforward: ofs.x, ofs.y, lt);
 		else if(dq == 2)
@@ -397,21 +432,21 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 			return;
 		
 		FSpawnParticleParams PUFSMK;
-		PUFSMK.Texture = TexMan.CheckForTexture("X103"..String.Format("%c", 97 + random[impacts](0, 25)).."0");//("SMK2A0"); //SMk3G0
+		PUFSMK.Texture = TexMan.CheckForTexture(String.Format("X103%c0", 97 + random[impacts](0, 25)));//("SMK2A0"); //SMk3G0
 		PUFSMK.Style = STYLE_TRANSLUCENT;
-		PUFSMK.Color1 = "c9c9c9";
+		PUFSMK.Color1 = color1;
 		PUFSMK.Flags = SPF_ROLL;
-		PUFSMK.Vel = (frandom[impacts](-1, 1), frandom[impacts](-1, 1), frandom[impacts](-1, 1));
-		PUFSMK.accel = (0, 0, 0);
+		PUFSMK.Vel = (0, 0, frandom[impacts](-1, 1));
+		PUFSMK.accel = (0, 0, -0.1);
 		if(CeilingPic == SkyFlatNum)
 			PUFSMK.accel += (-0.05, 0.1, 0.05);
 		PUFSMK.Startroll = random[impacts](0, 359);
 		PUFSMK.RollVel = frandom[impacts](1, 2);
-		PUFSMK.StartAlpha = 0.6;
+		PUFSMK.StartAlpha = frandom[impacts](0.4, 0.6);
 		PUFSMK.FadeStep = -1;
-		PUFSMK.Size = random[impacts](60,80);
+		PUFSMK.Size = random[impacts](20,50);
 		PUFSMK.SizeStep = 4;
-		PUFSMK.Lifetime = random[impacts](6,15); 
+		PUFSMK.Lifetime = random[impacts](2,5) * 35; 
 		PUFSMK.Pos = lt.HitLocation;
 		Level.SpawnParticle(PUFSMK);
 	}
@@ -753,7 +788,11 @@ Class PB_BulletImpactSheetMetal : PB_BulletImpactMetal
 {
 	states
 	{
+        // for barrel blood
         Spawn:
+            TNT1 A 0;
+            TNT1 A 0;
+            TNT1 A 0;
 		Puff:
 			TNT1 A 0 NoDelay {
                 A_StartSound("bulletimpact/metal/b", pitch: frandom[impacts](0.9, 1.1));

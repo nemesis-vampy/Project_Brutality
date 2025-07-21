@@ -13,7 +13,24 @@ class PB_Math abstract
         // return le color
         return Color(255, int(desat_r * brightness), int(desat_g * brightness), int(desat_b * brightness));
     }
-    
+
+    clearscope static Color PB_MixWhiteWithColor(Color baseColor, double percent = 0.0, double brightness = 1.0)
+    {
+        // now interpolate between baseColor and white
+        int desat_r = baseColor.r + (percent * (255));
+        int desat_g = baseColor.g + (percent * (255));
+        int desat_b = baseColor.b + (percent * (255));
+        
+        // return le color
+        return Color(255, int(desat_r * brightness), int(desat_g * brightness), int(desat_b * brightness));
+    }
+
+    static double Lerp(double a, double b, double lerpFactor)
+	{
+		double result = ((1.f - lerpFactor) * a) + (lerpFactor * b);
+		return result;
+	}
+
     clearscope static int PB_GetRandomNumber(uint seed)
     {
         uint state = seed * 1664525u + 1013904223u;

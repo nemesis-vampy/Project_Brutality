@@ -527,6 +527,37 @@ extend class PB_WeaponBase
         }
 	}
 
+    action void _SpawnMuzzleSparksSG(double d1, double d2, double d3, double angleOfs = 0, double size = 1.0, color col = 0xFF9D2E)
+	{
+        vector3 spos, svel, randvel;
+        int sparkcount = random(5, 7) * 3;
+        FSpawnParticleParams PUFSPRK;
+        PUFSPRK.Texture = TexMan.CheckForTexture("SPRKS0");
+        PUFSPRK.Style = STYLE_Add;
+        PUFSPRK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
+        PUFSPRK.FadeStep = -1;
+        PUFSPRK.Color1 = "FFFFFF";
+        for(int i = 0; i < sparkcount; i++)
+        {
+            randvel = (frandom(2, 10), frandom(-3, 3), frandom(-1, 1));
+            double fovOfs = (120 - self.player.desiredfov) / 3.f;
+            spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle + angleOfs, self.pitch, self.roll), (self.radius + d2 - (5.0 * abs(sin(self.pitch))) + fovOfs, -d1, d3) + (5, randvel.y, randvel.z), true);
+		    svel = PB_Math.RelativeToGlobalCoords((0, 0, 0), (self.angle + angleOfs, self.pitch, self.roll), randvel);
+            
+            PUFSPRK.Vel = svel;
+            PUFSPRK.Lifetime = random(3, 15);
+            PUFSPRK.accel = (-PUFSPRK.vel / double(PUFSPRK.Lifetime)) + (0, 0, frandom(-0.1,-0.01));
+            PUFSPRK.Startroll = random(0,359);
+            PUFSPRK.RollVel = 0;
+            PUFSPRK.StartAlpha = 1.0;
+            
+            PUFSPRK.Size = frandom(1, 2);
+            //PUFSPRK.SizeStep = (-PUFSPRK.Size / double(PUFSPRK.Lifetime)) * 0.5;
+            PUFSPRK.Pos = spos;
+            Level.SpawnParticle(PUFSPRK);
+        }
+	}
+
     action void PB_MuzzleFlashEffects(double d1 = 0, double d2 = 0 , double d3 = 0, color col = 0xFF9D2E, bool sparks = false, bool light = true, int rad = 100, int tics = 2)
     {
         PlayerPawnBase plr = PlayerPawnBase(self);
@@ -545,7 +576,7 @@ extend class PB_WeaponBase
 	
 	//- L, 0 C, + R
 	// [gng] credits to Agent_Ash for the position calculation, modified by me to fix the pitch bug
-	Action PB_GunFireSmoke PB_GunSmokeSpawn(vector3 ofs, vector3 vofs, string SActor = "PB_GunFireSmoke", double scalemul = 1.0, double alphamul = 1.0, double blowspeed = 1.02, double fadeSpeed = 1.0, bool rollSprite = true)
+	Action PB_GunFireSmoke PB_GunSmokeSpawn(vector3 ofs, vector3 vofs, string SActor = "PB_GunFireSmoke", double scalemul = 1.0, double alphamul = 1.0, double blowspeed = 1.02, double fadeSpeed = 1.0, bool rollSprite = true, double slowBlowSpeed = 1.0)
 	{
 		ofs.z -= 10.5;
 		ofs.y += 15;
@@ -568,11 +599,19 @@ extend class PB_WeaponBase
 		{
 			Smoke.master = invoker.owner;
 			Smoke.vel += svel;
-			if(rollSprite) Smoke.A_SetRoll(random(0, 359));
+			if(rollSprite) 
+            {
+                Smoke.A_SetRoll(random(0, 359));
+                Smoke.bXFLIP = randompick(0, 1);
+                Smoke.bYFLIP = randompick(0, 1);
+            }
 			Smoke.scale *= scalemul;
 			Smoke.alpha *= alphamul;
 			Smoke.blowSpeed = blowspeed;
 			Smoke.fadeSpeed = fadeSpeed;
+            Smoke.angle = angle;
+            Smoke.pitch = pitch;
+            Smoke.slowBlowSpeed = slowBlowSpeed;
 			
 			if(invoker.smokeColor != "FFFFFF")
 			{
@@ -588,12 +627,19 @@ extend class PB_WeaponBase
 	// [gng] alias for old PB_GunSmoke format function arguments
 	Action void PB_GunSmoke_Basic(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
-		PB_GunSmokeSpawn((d1, d2, d3), (0, 0, 0), SActor, 0.5, 1.5, 1.2, 2); 
+		PB_GunSmokeSpawn(
+			(d1, d2, d3),
+			(0, 0, 0),
+			SActor,
+			0.7,
+			1.0,
+			1.2,
+			1.2
+		);
 		NashGoreStatics.QueueSmoke();
 	}
 
-	// 5 actors
-	Action void PB_GunSmoke(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
+    Action void PB_GunSmoke(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
 		if(!invoker.smoketype)
 		{
@@ -625,9 +671,10 @@ extend class PB_WeaponBase
 			(d1, d2, d3), // offsets
 			(0, 0, 0), 	  // velocites
 			"PB_GunFireSmoke_Var1",		// actor
-			2.2,		  // scale multiplier
+			1.2,		  // scale multiplier
 			1.0,		  // alpha multiplier
-			1.03		  // blow speed
+			1.03,		  // blow speed
+            3
 		);
 
 		/*PB_GunSmokeSpawn(
@@ -654,7 +701,7 @@ extend class PB_WeaponBase
 			(0, 0, 0),
 			SActor,
 			1.7,
-			1.0,
+			0.7,
 			1.02,
 			1.2
 		);
@@ -664,7 +711,7 @@ extend class PB_WeaponBase
 			(0, 0, 0),
 			SActor,
 			2.7,
-			1.0,
+			0.6,
 			1.02,
 			1.2
 		);
@@ -697,7 +744,7 @@ extend class PB_WeaponBase
 		smkPOfs = (frandom(6, 10), frandom(-2, 2));
 		PB_GunSmokeSpawn(
 			(d1 - smkPOfs.x, d2 + 5, d3 + smkPOfs.y),
-			(0, smkPOfs.x * 0.5, -smkPOfs.y * 0.5),
+			(0, smkPOfs.x * 0.25, -smkPOfs.y * 0.25),
 			SActor,
 			1.4,
 			0.6,
@@ -707,7 +754,7 @@ extend class PB_WeaponBase
 	
 		PB_GunSmokeSpawn(
 			(d1 + smkPOfs.x, d2 + 5, d3 - smkPOfs.y),
-			(0, -smkPOfs.x * 0.5, smkPOfs.y * 0.5),
+			(0, -smkPOfs.x * 0.25, smkPOfs.y * 0.25),
 			SActor,
 			1.4,
 			0.6,
@@ -749,6 +796,46 @@ extend class PB_WeaponBase
 		PB_GunSmoke(d1, d2, d3, SActor);
 	}
 
+    Action void PB_GunSmoke_Sniper(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
+    {
+        if(!invoker.smoketype)
+		{
+			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
+			else return;
+		}
+		
+		int tmpSmkTp = invoker.smoketype.GetInt();
+		if(tmpSmkTp != 0)
+		{
+			if(tmpSmkTp == 1)
+				PB_GunSmoke_Basic(d1, d2, d3, SActor);
+
+			return;
+		}
+
+		PB_GunSmokeSpawn(
+			(d1, d2, d3), // offsets
+			(0, 0, 0), 	  // velocites
+			"PB_GunFireSmoke_Var3",		// actor
+			7,		  // scale multiplier
+			2,		  // alpha multiplier
+			1.03	// blow speed	  
+		);
+
+        PB_GunSmokeSpawn(
+			(d1, d2, d3), // offsets
+			(0, 0, 0), 	  // velocites
+			"PB_GunFireSmoke_Var4",		// actor
+			3,		  // scale multiplier
+			1.0,		  // alpha multiplier
+			1.1,	// blow speed
+            fadeSpeed: 1.25,
+            rollSprite: false
+		);
+
+        PB_GunSmoke(d1, d2, d3, SActor);
+    }
+
 	// 4 actors
 	Action void PB_GunSmoke_FlashHider(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
@@ -762,8 +849,9 @@ extend class PB_WeaponBase
 		if(tmpSmkTp != 0)
 			return;
 		
-		double spd = frandom(5, 8);
-		PB_GunSmokeSpawn(
+		double spd = frandom(2, 7);
+        actor tmpsmk;
+		/*PB_GunSmokeSpawn(
 			(d1 + 12, d2, d3),
 			(0, -spd, -1),
 			SActor,
@@ -780,7 +868,45 @@ extend class PB_WeaponBase
 			0.6,
 			1.2,
 			1.2
+		);*/
+
+        // initial puff of muzzle gas
+
+        double randScale, randBlowSpeed, randFadeSpeed;
+        randScale = frandom(0.6, 1.0);
+        randBlowSpeed = frandom(1.1, 1.3);
+        randFadeSpeed = frandom(2, 3);
+
+		tmpsmk = PB_GunSmokeSpawn(
+			(d1 + 4, d2, d3), 
+			(0, -spd*0.2, 0), 
+			"PB_GunFireSmoke_FastCloud", 
+			randScale, 
+			1, 
+			randBlowSpeed,
+			randFadeSpeed, 
+			false
 		);
+		if(tmpsmk) {
+            tmpsmk.roll = 90;
+            tmpsmk.scale.y *= 1.3 / randScale;
+        }
+
+		// initial puff of muzzle gas
+		tmpsmk = PB_GunSmokeSpawn(
+			(d1 - 4, d2, d3), 
+			(0, spd*0.2, 0), 
+			"PB_GunFireSmoke_FastCloud", 
+			randScale, 
+			1, 
+			randBlowSpeed,
+			randFadeSpeed, 
+			false
+		); 
+		if(tmpsmk) {
+            tmpsmk.roll = -90;
+            tmpsmk.scale.y *= 1.3 / randScale;
+        }
 
 		NashGoreStatics.QueueSmoke();
 	}
@@ -817,72 +943,99 @@ extend class PB_WeaponBase
 			(0, 0, 0), 
 			"PB_GunFireSmoke_Var1", 
 			1.5, 
-			0.7, 
-			1.2
+			0.5, 
+			1.1,
+            2
 		);	
 
-		double spd = frandom(5, 8);
-		PB_GunSmokeSpawn(
+		double spd = frandom(2, 7);
+        actor tmpsmk;
+		tmpsmk = PB_GunSmokeSpawn(
 			(d1 + 12, d2, d3),
 			(0, -spd, -1),
-			SActor,
-			2.5,
-			0.5,
-			1.3,
-			1.2
+			"PB_GunFireSmoke_Var1",
+			frandom(1, 1.4),
+			frandom(0.2, 0.8),
+			1.5,
+			6,
+            rollsprite: false,
+            slowBlowSpeed: 0.8
 		);
-		PB_GunSmokeSpawn(
+        if(tmpsmk) {
+            tmpsmk.roll = -90 + frandom(0, 10);
+            tmpsmk.bXFLIP = false;
+            tmpsmk.bYFLIP = randompick(0, 1);
+        }
+
+		tmpsmk = PB_GunSmokeSpawn(
 			(d1 - 12, d2, d3),
 			(0, spd, -1),
-			SActor,
-			2.5,
-			0.5,
-			1.3,
-			1.2
+			"PB_GunFireSmoke_Var1",
+			frandom(1, 1.4),
+			frandom(0.2, 0.8),
+			1.5,
+			6,
+            rollsprite: false,
+            slowBlowSpeed: 0.8
 		);
+        if(tmpsmk) {
+            tmpsmk.roll = 90 + frandom(0, -10);
+            tmpsmk.bXFLIP = true;
+            tmpsmk.bYFLIP = randompick(0, 1);
+        }
 		
-		actor tmpsmk;
-		// initial puff of muzzle gas
+		double randScale, randBlowSpeed, randFadeSpeed;
+        randScale = frandom(0.6, 1.0);
+        randBlowSpeed = frandom(1.1, 1.3);
+        randFadeSpeed = frandom(2, 3);
+
 		tmpsmk = PB_GunSmokeSpawn(
 			(d1 + 4, d2, d3), 
-			(0, -spd*0.7, 0.2), 
-			SActor, 
-			0.6, 
-			0.7, 
-			1.2,
-			1.1,
+			(0, -spd*0.2, 0), 
+			"PB_GunFireSmoke_FastCloud", 
+			randScale, 
+			1, 
+			randBlowSpeed,
+			randFadeSpeed, 
 			false
 		);
-		if(tmpsmk) tmpsmk.scale.x *= 1.4;
+		if(tmpsmk) {
+            tmpsmk.roll = 90;
+            tmpsmk.scale.y *= 1.3 / randScale;
+        }
 
 		// initial puff of muzzle gas
 		tmpsmk = PB_GunSmokeSpawn(
 			(d1 - 4, d2, d3), 
-			(0, spd*0.7, 0.2), 
-			SActor, 
-			0.6, 
-			0.7, 
-			1.2,
-			1.1,
+			(0, spd*0.2, 0), 
+			"PB_GunFireSmoke_FastCloud", 
+			randScale, 
+			1, 
+			randBlowSpeed,
+			randFadeSpeed, 
 			false
 		); 
-		if(tmpsmk) tmpsmk.scale.x *= 1.4;
+		if(tmpsmk) {
+            tmpsmk.roll = -90;
+            tmpsmk.scale.y *= 1.3 / randScale;
+        }
 
 		PB_GunSmokeSpawn(
 			(d1, d2 + 9.1, d3),
 			(1.12, 0, 0),
-			SActor,
+            SActor,
 			1.6,
 			0.8,
 			1.012,
 			1.02
 		);
+
 		PB_GunSmokeSpawn(
 			(d1, d2 + 27.6, d3),
 			(1.44, 0, -0.5),
 			SActor,
 			3.2,
-			1.0,
+			0.6,
 			1.05,
 			1.2
 		);
@@ -911,7 +1064,7 @@ extend class PB_WeaponBase
 		PB_GunSmokeSpawn(
 			(d1, d2 + 6, d3), // offsets
 			(1, 0, 0), 	  // velocites
-			"PB_GunFireSmoke_Var1",		// actor
+			SActor,		// actor
 			2.3,		  // scale multiplier
 			0.9,		  // alpha multiplier
 			1.03		  // blow speed
@@ -928,59 +1081,61 @@ extend class PB_WeaponBase
 
 		PB_GunFireSmoke smkact;
 		// initial puff of muzzle gas
+
+        // TR
 		smkact = PB_GunSmokeSpawn(
 			(d1 + 2, d2, d3 + 2), 
-			(0, -2.3, 2.3), 
-			SActor, 
-			1,  
-			1.0, 
+			(0, 0, 0),
+			"PB_GunFireSmoke_Var2", 
+			0.8, 
+			2.0, 
 			1.015,
 			1.2,
 			rollsprite: false
 		);
 		smkact.roll = -45;
-		smkact.scale.x = 0.3;
+        smkact.scale.y *= 1.6;
 
 		smkact = PB_GunSmokeSpawn(
 			(d1 - 2, d2, d3 - 2), 
-			(0, 2.3, -2.3), 
-			SActor, 
-			1, 
-			1.0, 
+			(0, 0, 0), 
+			"PB_GunFireSmoke_Var2", 
+			0.8, 
+			2.0, 
 			1.015,
 			1.2,
 			rollsprite: false
 		);   
-		smkact.roll = -45;
-		smkact.scale.x = 0.3;
+		smkact.roll = 135;
+        smkact.scale.y *= 1.6;
 
 		// initial puff of muzzle gas
 		smkact = PB_GunSmokeSpawn(
 			(d1 - 2, d2, d3 + 2), 
-			(0, 2.3, 2.3), 
-			SActor, 
-			1,  
-			1.0, 
+			(0, 0, 0),
+			"PB_GunFireSmoke_Var2", 
+			0.8,  
+			2.0, 
 			1.015,
 			1.2,
 			rollsprite: false
 		);
-		smkact.roll = 45;
-		smkact.scale.x = 0.3;
+		smkact.roll = -135;
+        smkact.scale.y *= 1.6;
 
 		// initial puff of muzzle gas
 		smkact = PB_GunSmokeSpawn(
 			(d1 + 2, d2, d3 - 2), 
-			(0, -2.3, -2.3),
-			SActor,
-			1,  
-			1.0, 
+			(0, 0, 0),
+			"PB_GunFireSmoke_Var2",
+			0.8,   
+			2.0, 
 			1.015,
 			1.2,
 			rollsprite: false
 		); 
 		smkact.roll = 45;
-		smkact.scale.x = 0.3;
+        smkact.scale.y *= 1.6;
 		
 
 		// initial puff of muzzle gas
@@ -1667,7 +1822,7 @@ extend class PB_WeaponBase
 			spread.x = frandom(-angle, angle);
 			spread.y = frandom(-pitch, pitch);
 
-			if(i <= 1) 
+			if(i == amount) 
 			{
 				spread.x *= PB_Math.LinearMap(pb_weapon_recoil_mod_horizontal, 0.0, 1.0, 1.0, 0.2);
 				spread.y *= PB_Math.LinearMap(pb_weapon_recoil_mod_vertical, 0.0, 1.0, 1.0, 0.2);
@@ -1675,7 +1830,13 @@ extend class PB_WeaponBase
 				spread *= GetCrouchFactor();
 			}
 
-			A_FireProjectile(type, spread.x, 0, offs, height, FPF_NOAUTOAIM, spread.y);
+			Actor p1, p2 = A_FireProjectile(type, spread.x, 0, offs, height, FPF_NOAUTOAIM, spread.y);
+
+            if(p2)
+            {
+                PB_Projectile pbProj = PB_Projectile(p2);
+                pbProj.isBloodExplosionGenerator = amount > 4 && i == amount;
+            }
 		}
 	}
 	

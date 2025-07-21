@@ -62,7 +62,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	MaxStepHeight 32
 	MaxDropOffHeight 32
 
-    Bloodtype "NashGoreBlood"
+    //BloodType "NashGoreBlood"
     Species "Demon"
     PB_Monster.PBMonSpeed 10, 10, 4, 2
     PB_Monster.MonPosHB 0.85, 0.3, 0.18, 0.20
@@ -505,7 +505,7 @@ TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat")
 		TNT1 A 0
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBlood", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 
 		TNT1 A 0 A_SpawnProjectile("XDeathBurnedDemonArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))

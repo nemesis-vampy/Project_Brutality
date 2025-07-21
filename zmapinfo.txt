@@ -136,6 +136,8 @@ GameInfo
 	NormForwardMove = 0x32, 0x32		//Walk speed is modulated through
 	NormSideMove = 0x32, 0x32			//CVar in the menu options
 	
+	DefaultBloodColor = "640000"
+    DefaultBloodParticleColor = "640000"
 	
 	/*Intro
 	{

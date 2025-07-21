@@ -10,7 +10,7 @@ ACTOR BrutalizedCacodemon1
 	damagefactor "Shrapnel", 0.0
 	damagefactor "KillMe", 0.0
 	damagefactor "Cutless", 0.6
-	bloodtype "NashGoreBlood"
+	//BloodType "NashGoreBlood"
     //BloodColor darkblue
 	Mass 999999
 	-SOLID
@@ -55,7 +55,7 @@ ACTOR BrutalizedCacodemon2
 	damagefactor "Shrapnel", 0.0
 	damagefactor "KillMe", 0.0
 	damagefactor "Cutless", 0.6
-	bloodtype "NashGoreBlood"
+	//BloodType "NashGoreBlood"
     //BloodColor darkblue
 	Mass 999999
 	-SOLID

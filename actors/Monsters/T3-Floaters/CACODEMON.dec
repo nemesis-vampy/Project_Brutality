@@ -10,7 +10,7 @@ ACTOR PB_LegacyCacodemon : Cacodemon //replaces Cacodemon
 	//$Sprite HEADA1
 	Game Doom
 	//BloodColor "Blue"
-	bloodtype "NashGoreBlood"
+	//BloodType "NashGoreBlood"
   //+NOBLOODDECALS
 	SpawnID 19
     GibHealth 25
@@ -982,7 +982,7 @@ Actor DeadCacoDemon1: CurbstompedMarine
     +NOTELEPORT
     +MOVEWITHSECTOR
     +CORPSE
-  BloodType "NashGoreBlood"
+  //BloodType "NashGoreBlood"
   //BloodColor "Blue"
     Mass 1000
     Health 200

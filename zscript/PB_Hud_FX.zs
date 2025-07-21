@@ -56,9 +56,9 @@ extend class PB_Hud_ZS
 			posbuffer.y /= hudscale.y;
 			SetSway(posbuffer.x, posbuffer.y, 0, 0.6, 0.15, false, false);
 
-            vector2 bloodsize = (Screen.GetWidth() / 1920.f, Screen.GetHeight() / 1080.f);
+            float bloodsize = Screen.GetHeight() / 1080.f;
                 
-            Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * bloodsize.x, DTA_ScaleY, bld.scale.y * bloodsize.y, DTA_Color, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Shaded, DTA_FlipX, bld.mirror);
+            Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * bloodsize, DTA_ScaleY, bld.scale.y * bloodsize, DTA_Color, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Shaded, DTA_FlipX, bld.mirror);
 		}
 
         for(int i = 0; i < bloodSplatters.size(); i++)
@@ -71,9 +71,9 @@ extend class PB_Hud_ZS
 			posbuffer.y /= hudscale.y;
 			SetSway(posbuffer.x, posbuffer.y, 0, 0.6, 0.15, false, false);
 
-            vector2 bloodsize = (Screen.GetWidth() / 1920.f, Screen.GetHeight() / 1080.f);
+            float bloodsize = Screen.GetHeight() / 1080.f;
 			
-			Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * bloodsize.x, DTA_ScaleY, bld.scale.y * bloodsize.y, DTA_Translationindex, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Translucent, DTA_FlipX, bld.mirror);
+			Screen.DrawTexture(bld.graphic, false, posbuffer.x * hudscale.x, posbuffer.y * hudscale.y, DTA_Alpha, clamp(0.4 * bld.alpha, 0, 1.0) * bloodDropsAlpha, DTA_CenterOffset, true, DTA_ScaleX, bld.scale.x * bloodsize, DTA_ScaleY, bld.scale.y * bloodsize, DTA_Translationindex, bld.bloodcolor, DTA_LegacyRenderStyle, STYLE_Translucent, DTA_FlipX, bld.mirror);
 		}
 	}
 	
@@ -261,7 +261,7 @@ class PB_BloodSplatterFXStorage : PB_BloodFXStorage
 		
 		cls.graphic = TexMan.CheckForTexture(gfxname);
 		
-		float randscale = cfrandom(0.5, 0.8);
+		float randscale = cfrandom(2, 3.2);
 		cls.scale = (randscale, randscale);
 		cls.scalenomod = cls.scale;
 		
@@ -285,7 +285,7 @@ class PB_BloodSplatterFXStorage : PB_BloodFXStorage
 				break;
 		}
 		
-		cls.alpha = clamp((1.0 / cls.scale.Length()) * cfrandom(1, 3), 0, 2.5);
+		cls.alpha = clamp((1.0 / (cls.scale.Length() * 0.25)) * cfrandom(1, 3), 0, 2.5);
 		
 		cls.bloodcolor = enemybloodcolor;
 
