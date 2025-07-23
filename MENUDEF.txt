@@ -1034,7 +1034,7 @@ OptionMenu "WeaponVisuals"
 	
 	StaticText	"Others", 1
 	ZMoveOption "Speedometer", 							"Enable SpeedOMeter",																	"zm_speedometer",			"Speedometer"
-	ZMoveOption "Horizontal Weapon Stretch",""Turn on/off the 20% horizontal weapon stretch","pb_scalexweapons","OnOff"
+	ZMoveOption "Horizontal Weapon Stretch","Turn on/off the 20% horizontal weapon stretch","pb_scalexweapons","OnOff"
 	Control		"Reset to default values",				"zmove_reset"
 }
 
