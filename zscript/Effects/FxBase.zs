@@ -40,20 +40,22 @@ class PB_AnimatedSmokeThinker : VisualThinker abstract
     Array<int> frameStep, startFrame, endFrame;
     int animFrame;
     int sprNameIndex;
+
+    float rollVel;
     
     override void PostBeginPlay()
     {
-        SetupSprites();
+        PB_SetupSprites();
         animFrame = startFrame[0];
         flags |= SPF_ROLL;
         Super.PostBeginPlay();
     }
 
-    virtual void SetupSprites() { }
+    virtual void PB_SetupSprites() { }
 
     override void Tick() 
     {
-        //PB_AnimateSelf();
+        PB_AnimateSelf();
         PB_AnimateSprite();
 
         Super.Tick();
@@ -61,12 +63,17 @@ class PB_AnimatedSmokeThinker : VisualThinker abstract
 
     virtual void PB_AnimateSprite()
     {
-        if(animFrame < endFrame[sprNameIndex])
+        if(animFrame < endFrame[sprNameIndex] - (frameStep[sprNameIndex] - 1))
             animFrame += frameStep[sprNameIndex];
         else if(sprName.Size() - 1 > sprNameIndex)
         {
             sprNameIndex += 1;
-            animFrame = 0;
+            animFrame = startFrame[sprNameIndex];
+        }
+        else
+        {
+            Destroy();
+            return;
         }
 
         Texture = TexMan.CheckForTexture(String.Format("%s%c%s", sprName[sprNameIndex], 97 + animFrame, "0"));
@@ -77,7 +84,7 @@ class PB_AnimatedSmokeThinker : VisualThinker abstract
 
 class PB_DustImpact : PB_AnimatedSmokeThinker 
 {
-    override void SetupSprites() 
+    override void PB_SetupSprites() 
     {
         sprName.Push("XS16");
         frameStep.Push(1);

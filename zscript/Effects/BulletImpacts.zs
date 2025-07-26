@@ -64,6 +64,10 @@ Class PB_BaseBulletImpact : BulletPuff abstract
             pitch = asin(-pNorm.Z);
             angle = atan2(pNorm.y, pNorm.x);
 		}
+        else
+        {
+            angle = wallNormal;
+        }
 	}
 	
 	void HitFeedback()
@@ -106,7 +110,41 @@ Class PB_BaseBulletImpact : BulletPuff abstract
     }
 }
 
+class PB_WallDebris : PB_AnimatedSmokeThinker
+{
+	override void PB_SetupSprites() 
+    {
+        SetRenderStyle(STYLE_Shaded);
+        scale *= 0.25;
+        alpha = cfrandom(0.5, 0.75);
+        roll = cfrandom(0, 359);
+        rollVel = cfrandom(-3, 3);
+        
+        sprName.Push("XS12");
+        frameStep.Push(2);
+        startFrame.Push(crandom(0, 12));
+        endFrame.Push(25);
 
+        sprName.Push("XS22");
+        frameStep.Push(2);
+        startFrame.Push(0);
+        endFrame.Push(25);
+
+        sprName.Push("XS32");
+        frameStep.Push(2);
+        startFrame.Push(0);
+        endFrame.Push(11);
+    }
+
+    override void PB_AnimateSelf()
+    {
+        vel.xy *= 0.95;
+        vel.z -= 0.1;
+        alpha *= 0.94;
+        roll += rollVel;
+        scale *= 1.02;
+    }
+}
 
 Class PB_BulletImpact : PB_BaseBulletImpact
 {
@@ -116,11 +154,11 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 	
 	Default
 	{
-		PB_BulletImpact.PuffColors "FFFFFF", "FFFFFF", "C9C9C9";
+		PB_BulletImpact.PuffColors "E3E3E3", "FFFFFF", "C9C9C9";
 		+FLATSPRITE;
         +SQUAREPIXELS;
 		Scale 0.6;
-		Alpha 1.0;
+		Alpha 0.6;
 		RenderStyle "Shaded";
 	}
 	
@@ -133,11 +171,14 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 
                 if(distfromplayer < DISTANT_THRESHOLD)
                 {
+                    let smk = PB_SummonSmokeThinker("PB_WallDebris", smkVel: PB_Math.VecFromAngles(angle, pitch, frandom[impacts](2, 4)));
+                    if(smk) smk.scolor = color1;
+
                     if(!smallCal)
                     {
 						SpawnMainPuff2();
 						// SpawnPuffSmoke();
-                        int spallCount = randompick(0, 0, 0, random(0, 4));
+                        int spallCount = randompick[impacts](0, 0, 0, random[impacts](0, 4));
 
                         for(int i = 0; i < spallCount; i++)
                     	    BulletSpall(hitWhat);
@@ -174,10 +215,8 @@ Class PB_BulletImpact : PB_BaseBulletImpact
         FlatPuff:
             TNT1 A 0 A_Jump(256, random(0, 5));
 			XS19 ABCDEFGHIJKLMNOP 1 {
-                if(GetAge() < 5)
-                    alpha -= 0.1;
-
-                A_FadeOut(0.05);
+                if(GetAge() > 5)
+                    A_FadeOut(0.1);
             }
         	Stop;
 		Melee:
@@ -270,7 +309,7 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 			}
 			PUFSPRK.Vel = (0, 0, 0);
 			PUFSPRK.Startroll = random[impacts](0, 359);
-			PUFSPRK.StartAlpha = 0.5;
+			PUFSPRK.StartAlpha = default.Alpha;
 			PUFSPRK.SizeStep = 2;
 			PUFSPRK.Lifetime = random[impacts](15,70); 
 			PUFSPRK.accel = (0, 0,-0.05);
@@ -372,7 +411,7 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 			vls = (mag * (i * 0.5), vvels);
 			
 			int ofsimpact = !smallCal ? 10 : 2;
-			PUFSMK.Size = 15 * (1+((count - i) * 0.3));
+			PUFSMK.Size = 20 * (1+((count - i) * 0.3));
 			if(hitWhat == 1)
 			{
 				vls = (RotateVector(vls.xy, wallNormal), vls.z);
@@ -407,7 +446,7 @@ Class PB_BulletImpact : PB_BaseBulletImpact
 			PUFSMK.Flags = SPF_ROLL;
 			PUFSMK.StartRoll = random[impacts](0,360);
 			PUFSMK.RollVel = random[impacts](-4,4);
-			PUFSMK.StartAlpha = 0.6;
+			PUFSMK.StartAlpha = default.Alpha;
 			PUFSMK.FadeStep = -1;
 			PUFSMK.SizeStep = random[impacts](1,5);
 			PUFSMK.Lifetime = 13; 

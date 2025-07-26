@@ -601,10 +601,9 @@ class PB_MPNameHandler : EventHandler
 		
         for(int i = 0; i < players.Size(); i++)
         {
-            if(i == consoleplayer) continue;
-
             PlayerInfo buddy = players[i];
             if(!buddy || !buddy.mo) continue;
+            if(e.camera == buddy.mo) continue;
 
             double buddyDist = buddy.mo.Distance3D(e.camera);
             double clampedScalar = 1.0 - clamp(buddyDist / 1000.f, 0, 0.5);

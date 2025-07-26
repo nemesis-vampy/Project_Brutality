@@ -585,6 +585,10 @@ OptionMenu "RenderingSettings"
     StaticText "Use less effects for Flamethrower fire"
 	StaticText " "
 
+    Option "Gun Smoke Type", "pb_gunsmoketype", "PBSmokeTypes"
+    StaticText "Decide which muzzle smoke particle effect to use"
+    StaticText " "
+
 	Option "Exaggerated Weapon Recoil", "PB_ExaggeratedRecoil", "YesNo"
 	Slider "Exaggeration Multiplier", "PB_ExaggeratedRecoilMul", 0.1, 2.0, 0.1, 1, "PB_ExaggeratedRecoil"
 	StaticText "Exaggerated recoil for fully automatic weapons, they will sway around and tilt while firing."
@@ -1082,10 +1086,12 @@ OptionMenu "GoreDebrisMenu"
 	StaticText ""
 
 	StaticText "$NASHGOREMNU_BLOOD_TITLE", 1
-	NashGoreOption "$NASHGOREMNU_BLOOD_TYPE",		"$NASHGOREMNU_HELPTEXT_BLOOD_TYPE",			"nashgore_bloodtype",	"NashGoreBloodTypes"
+	// NashGoreOption "$NASHGOREMNU_BLOOD_TYPE",		"$NASHGOREMNU_HELPTEXT_BLOOD_TYPE",			"nashgore_bloodtype",	"NashGoreBloodTypes"
+    NashGoreOption "$NASHGOREMNU_BLOOD_TYPE",		        "Use modern blood impact effects.",			"pb_usemodernblood",	"PBBloodTypes"
 	NashGoreSlider "$NASHGOREMNU_BLOOD_AMOUNT",		"$NASHGOREMNU_HELPTEXT_BLOOD_AMOUNT",		"nashgore_bloodmult",	0.0, 10.0, 0.1, 1
 	NashGoreOption "$NASHGOREMNU_BLOOD_SPRITES",	"$NASHGOREMNU_HELPTEXT_BLOOD_SPRITES",		"nashgore_spriteblood",	"NashGoreBloodSpriteValues"
 	NashGoreOption "$NASHGOREMNU_BLOOD_SPURTS",		"$NASHGOREMNU_HELPTEXT_BLOOD_SPURTS",		"nashgore_bloodspurt",	"OnOff"
+    NashGoreOption "Hide Blood Mist",		        "Hide blood cloud effects.",    		    "pb_hidebloodmist",	    "YesNo"
 
 	StaticText ""
 
@@ -1112,6 +1118,19 @@ OptionValue "NashGoreBloodTypes"
 	0, "$NASHGOREMNU_DEFAULT"
 	1, "$NASHGOREMNU_BLOOD_TYPE_CLASSIC"
 	2, "$NASHGOREMNU_VANILLA"
+}
+
+OptionValue "PBBloodTypes"
+{
+	0, "Classic"
+	1, "Modern"
+}
+
+OptionValue "PBSmokeTypes"
+{
+	0, "Modern"
+	1, "Simple"
+    2, "Off"
 }
 
 OptionValue "NashGoreBloodSpriteValues"

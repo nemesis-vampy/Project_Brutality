@@ -496,7 +496,7 @@ class NashGoreBloodParticle_Large : NashGoreBloodBase
 	Spawn:
 		TNT1 A 1 NoDelay {
 			SpawnCeilingBlood();
-			A_Jump(256, "Blood1", "Blood2", "Blood3", "Blood4", "Blood5", "Blood6");
+			return A_Jump(256, "Spawn1", "Spawn2", "Spawn3");
 		}
 	Spawn1:
 		X057 ABCDEFGHIJKLMNOPQRS 1;

@@ -541,7 +541,7 @@ extend class PB_WeaponBase
         {
             randvel = (frandom(2, 10), frandom(-3, 3), frandom(-1, 1));
             double fovOfs = (120 - self.player.desiredfov) / 3.f;
-            spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle + angleOfs, self.pitch, self.roll), (self.radius + d2 - (5.0 * abs(sin(self.pitch))) + fovOfs, -d1, d3) + (5, randvel.y, randvel.z), true);
+            spos = PB_Math.RelativeToGlobalCoords((self.pos.xy, self.player.viewz), (self.angle + angleOfs, self.pitch, self.roll), (self.radius + d2 - (5.0 * abs(sin(self.pitch))) + fovOfs, -d1, d3) + (0, randvel.y, randvel.z), true);
 		    svel = PB_Math.RelativeToGlobalCoords((0, 0, 0), (self.angle + angleOfs, self.pitch, self.roll), randvel);
             
             PUFSPRK.Vel = svel;

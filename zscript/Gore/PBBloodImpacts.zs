@@ -44,7 +44,6 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
 	Default
 	{
 		+NOGRAVITY
-        LightLevel 32;
         +ADDLIGHTLEVEL;
     }
 
@@ -103,29 +102,36 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
 		TNT1 A 0 { chanceMod = 220;		return ResolveState("Spawn2"); }
 	Spawn2:
         TNT1 A 0 { if(target) angToTarget = AngleTo(target); } // save this before everything for if the target gets destroyed
-        TNT1 A 1;
+        TNT1 A 2;
 		TNT1 A 0
 		{
             double normalizedDAng;
             if(sourceIsProjectile)
+            {
                 normalizedDAng = Normalize180(angToTarget - players[consoleplayer].camera.angle);
+                LightLevel = 32;
+            }
             else 
-                normalizedDAng = angToTarget = frandom(-180, 180);
-            
+                normalizedDAng = angToTarget;
+
             A_Stop();
             
             //console.printf("ste: %p %s %i %i", self, self.GetClassName(), self.sourceIsProjectile, self.projectileDamage);
 
-            Actor spawnedImpact, spawnedImpact2;
-            if(abs(normalizedDAng) > 35) {
-                spawnedImpact = PB_SpawnBloodActor("PB_SideBloodImpact", true, angToTarget - 180, (frandom(1, 2), frandom(-0.5, 0.5), 0));
-                if(spawnedImpact) spawnedImpact.bSPRITEFLIP = normalizedDAng > 0;
-            }
-            else
-                PB_SpawnBloodActor("PB_FrontBloodImpact", true, angToTarget - 180, (frandom(1, 2), frandom(-0.5, 0.5), 0));
+            PB_BloodSquib spawnedImpact;
+            Actor spawnedImpact2;
+            
+            spawnedImpact = PB_BloodSquib(PB_SpawnBloodActor("PB_BloodSquib", true, angToTarget - 180, (frandom(1, 2), frandom(-0.5, 0.5), 0)));
 
             if(sourceIsProjectile)
             {
+                if(abs(normalizedDAng) > 35) {    
+                    spawnedImpact.sideSquib = true;
+                    if(spawnedImpact) spawnedImpact.bSPRITEFLIP = normalizedDAng > 0;
+                }
+                else
+                    spawnedImpact.sideSquib = false;
+
                 // dmgScalar = 0.5 + (0.5 * PB_Math.LinearMap( -(cos(180 * clamp(projectileDamage / 165.f, 0, 1)) - 1) / 2.f, 0.0, 1.0, 1, 2.0 ));
                 dmgScalar = 0.5 + (0.5 * clamp(PB_Math.LinearMap(projectileDamage, 22, 165, 1.0, 2.0), 0.5, 2.0));
 
@@ -150,7 +156,7 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
             let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult * round(dmgScalar), chanceMod);
 			for (int i = 0; i < amt; i++)
 			{
-                if(random[rnd_SpawnBlood](0, 256) >= chanceMod) PB_SpawnBloodActor("PB_FrontBloodImpact", true, angToTarget - 180, (frandom(0.5, 3), frandom(-0.5, 0.5), frandom(0, 1)));
+                if(random[rnd_SpawnBlood](0, 256) >= chanceMod) PB_SpawnBloodActor("PB_BloodSquib", true, angToTarget - 180, (frandom(0.5, 3), frandom(-0.5, 0.5), frandom(0, 1)));
             }
 
             PB_SpawnBloodActor("PB_LocationalBloodSplat", true, angToTarget - 180, (frandom(0, 4), frandom(-2, 2), 0));
@@ -166,7 +172,7 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
         }*/
         Stop;
     Drips:
-        TNT1 AAAAA 1 {
+        TNT1 AAAAA 3 {
             let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
 			for (int i = 0; i < amt; i++)
 			{
@@ -200,10 +206,10 @@ class PB_BloodCloud : PB_LightActor
         +SQUAREPIXELS;
         -STRETCHPIXELS;
 
-		Scale 0.08;
-		Alpha 0.5;
-		RenderStyle "Shaded";
-        StencilColor "680000";
+		Scale 0.13;
+		Alpha 0.65;
+		RenderStyle "Stencil";
+        StencilColor "FF0000";
 	}
 	
 	double dissipateRotation;
@@ -220,12 +226,12 @@ class PB_BloodCloud : PB_LightActor
             if(master)
                 CopyBloodColor(master);
 			else
-                bcbuffer = 0xff640000;
+                bcbuffer = 0xffff0000;
 		}
 		else
 		    CopyBloodColor(target);
 
-        if(bloodcolor == 0) bcbuffer = 0xff640000;
+        if(bloodcolor == 0) bcbuffer = 0xffff0000;
         else bcbuffer = bloodcolor;
 		
         //SetShade(PB_Math.PB_DesaturateColor(bcbuffer, 0.2, 1)); 
@@ -239,10 +245,9 @@ class PB_BloodCloud : PB_LightActor
 
     virtual void SmokeBegin()
     {
-        scale.y *= 0.75;
         bYFLIP = randompick(0, 1);
         roll = frandom(-20, 20);
-        alpha *= frandom(0.8, 1.2);
+        alpha *= frandom(0.5, 1.2);
         spriteOffset = (frandom(-10, 10), frandom(-2, 2));
         scale *= frandom(0.83, 1.2);
     }
@@ -252,9 +257,9 @@ class PB_BloodCloud : PB_LightActor
         Super.Tick();
         
         if(level.IsFrozen()) return;
-        desat = 1.0 - (0.74 + min(1.0, (GetAge() / 5.0)) * 0.26);
+        desat = 1.0 - (0.74 + clamp(GetAge() / 4.0, 0.0, 1.0) * 0.26);
 
-        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat * 0.75, 1 /*min(1.0, 1 + (desat - 0.15))*/));
+        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, (100.f / 255.f) /*min(1.0, 1 + (desat - 0.15))*/));
         BloodCloudTick();
     }
 
@@ -263,7 +268,11 @@ class PB_BloodCloud : PB_LightActor
         //if(GetAge() < 8) 
         //{
             if(GetAge() < 3) 
-                scale *= 1.5;
+            {
+                scale.x *= 1.25;
+                scale.y *= 1.15;
+                A_Fadeout(0.06 * default.alpha, FTF_CLAMP|FTF_REMOVE);
+            }
             else
             {
                 vel.z -= 0.02;
@@ -481,7 +490,17 @@ class PB_BloodExplosion : PB_BloodCloud3
     override void Tick() 
     {
         Super.Tick();
-        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, 1));
+        desat = 1.0 - (0.74 + clamp(GetAge() / 5.0, 0.0, 1.0) * 0.26);
+        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, (100.f / 255.f)));
+    }
+	
+	States 
+    {
+        Spawn:
+        BloodLoop:
+            XS19 ABCDEFG 1;
+            XS19 HIJKLMNOP 2;
+            Stop;
     }
 }
 
@@ -491,7 +510,7 @@ class PB_BloodExplosion : PB_BloodCloud3
 //
 //===========================================================================
 
-class PB_SideBloodImpact : PB_LightActor
+class PB_BloodSquib : PB_LightActor
 {
     Default 
     {
@@ -510,6 +529,7 @@ class PB_SideBloodImpact : PB_LightActor
     }
 
     color bcbuffer;
+    bool sideSquib;
 
     override void PostBeginPlay()
     {
@@ -521,15 +541,9 @@ class PB_SideBloodImpact : PB_LightActor
     States {
         Spawn:
             TNT1 A 0;
-            TNT1 A 0 NoDelay A_Jump(256, "Spawn1");
-            Stop;
-        Spawn1:
-            NGB3 A 0;
-            Goto BloodLoop;
-        Spawn2:
-            NGB4 A 0;
-            Goto BloodLoop;
-
+            NGB3 A 0 {
+                sprite = GetSpriteIndex(String.Format("NGB%i", sideSquib ? crandompick(3, 4) : crandompick(1, 2)));
+            }
         BloodLoop:
             "####" ABC 1 {
                 scale += (0.1, 0.1);
@@ -545,46 +559,12 @@ class PB_SideBloodImpact : PB_LightActor
                 A_FadeOut(0.125);
             }
             Wait;
-    }
-}
 
-class PB_FrontBloodImpact : PB_SideBloodImpact
-{
-    override void PostBeginPlay()
-    {
-        roll = cfrandom(0, 360);
-        ClearInterpolation();
-    }
-
-    States
-    {
-        Spawn:
-            TNT1 A 0;
-            TNT1 A 0 NoDelay A_Jump(256, "Spawn1", "Spawn2");
-            Stop;
-        Spawn1:
-            NGB1 A 0;
-            Goto BloodLoop;
-        Spawn2:
-            NGB2 A 0;
-            Goto BloodLoop;
-
-        BloodLoop:
-            "####" ABC 1 {
-                scale += (0.1, 0.1);
-            }
-            "####" DEFGH 1 {
-                vel.z -= 0.2;
-            }
-            "####" IJKLM 1 {
-                vel.z -= 0.2;
-                //A_FadeOut(0.125);
-            }
-            "####" M 1 {
-                vel.z -= 0.2;
-                A_FadeOut(0.125);
-            }
-            Wait;
+        CacheSprites:
+            NGB1 ABCDEFGHIJKMNOP 0;
+            NGB2 ABCDEFGHIJKMNOP 0;
+            NGB3 ABCDEFGHIJKMNOP 0;
+            NGB4 ABCDEFGHIJKMNOP 0;
     }
 }
 
