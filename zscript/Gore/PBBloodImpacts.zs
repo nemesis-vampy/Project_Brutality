@@ -48,7 +48,7 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
     }
 
     bool sourceIsProjectile, smallCal, isBloodExplosionGenerator;
-    int projectileDamage;
+    int projectileDamage, targetRadius;
     float dmgScalar;
     double angToTarget;
 
@@ -64,9 +64,10 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
         "PB_BloodCloud4"
     };
 
-    action Actor PB_SpawnBloodActor(class<Actor> bloodActor, bool translate = false, double rotAngle = 0, vector3 squibVel = (0, 0, 0), bool scaleWithDmg = false)
+    action Actor PB_SpawnBloodActor(class<Actor> bloodActor, bool translate = false, double rotAngle = 0, vector3 squibVel = (0, 0, 0), bool scaleWithDmg = false, vector3 squibOfs = (0, 0, 0))
     {
-        Actor mo = Spawn(bloodActor, pos, ALLOW_REPLACE);
+		vector3 ofr = squibOfs;
+        Actor mo = Spawn(bloodActor, Vec3Offset(ofr.x, ofr.y, ofr.z), ALLOW_REPLACE);
 
         if(!mo) return null;
 
@@ -101,14 +102,20 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
 		TNT1 A 0 { chanceMod = 100;		return ResolveState("Spawn2"); }
 		TNT1 A 0 { chanceMod = 220;		return ResolveState("Spawn2"); }
 	Spawn2:
-        TNT1 A 0 { if(target) angToTarget = AngleTo(target); } // save this before everything for if the target gets destroyed
+        TNT1 A 0 { 
+			if(target) {
+				angToTarget = AngleTo(target); 
+				targetRadius = target.Radius;
+			}
+		} // save this before everything for if the target gets destroyed
         TNT1 A 2;
 		TNT1 A 0
 		{
-            double normalizedDAng;
+            double normalizedDAng, angleDelta;
             if(sourceIsProjectile)
             {
                 normalizedDAng = Normalize180(angToTarget - players[consoleplayer].camera.angle);
+				angleDelta = abs(Normalize180(angleTo(players[consoleplayer].camera)));
                 LightLevel = 32;
             }
             else 
@@ -121,13 +128,13 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
             PB_BloodSquib spawnedImpact;
             Actor spawnedImpact2;
             
-            spawnedImpact = PB_BloodSquib(PB_SpawnBloodActor("PB_BloodSquib", true, angToTarget - 180, (frandom(1, 2), frandom(-0.5, 0.5), 0)));
+            spawnedImpact = PB_BloodSquib(PB_SpawnBloodActor("PB_BloodSquib", true, angToTarget, (frandom(1, 2), frandom(-0.5, 0.5), 0), false, (RotateVector((targetRadius * 1.3, 0), angle), 0)));
 
             if(sourceIsProjectile)
             {
-                if(abs(normalizedDAng) > 35) {    
+                if(abs(normalizedDAng) < 125) {
                     spawnedImpact.sideSquib = true;
-                    if(spawnedImpact) spawnedImpact.bSPRITEFLIP = normalizedDAng > 0;
+                    if(spawnedImpact) spawnedImpact.bSPRITEFLIP = normalizedDAng < 0;
                 }
                 else
                     spawnedImpact.sideSquib = false;
@@ -144,19 +151,19 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
                     return;
                 }
 
-                if(!smallCal) PB_SpawnBloodActor("PB_BloodCloud", false, scaleWithDmg: true);
+                if(!smallCal) PB_SpawnBloodActor("PB_BloodCloud", false, scaleWithDmg: true, squibOfs: (RotateVector((targetRadius * 0.6, 0), angle), 0));
                 
                 if(smallCal || random[rnd_SpawnBloodCloud](0, 256) >= chanceMod) {
-                    spawnedImpact2 = PB_SpawnBloodActor(PuffImpactActors[random[rnd_SpawnBloodCloud](0, 2)], false, scaleWithDmg: true);
+                    spawnedImpact2 = PB_SpawnBloodActor(PuffImpactActors[random[rnd_SpawnBloodCloud](0, 2)], false, scaleWithDmg: true, (RotateVector((targetRadius, 0), angle), 0));
                     if(spawnedImpact && spawnedImpact2) spawnedImpact2.tracer = spawnedImpact;
                 }
                 if(!smallCal && random[rnd_SpawnBloodCloud](0, 256) >= chanceMod) PB_SpawnBloodActor(PuffImpactActors[random[rnd_SpawnBloodCloud](0, 2)], false, scaleWithDmg: true);                
             }
 
-            let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult * round(dmgScalar), chanceMod);
-			for (int i = 0; i < amt; i++)
+            let[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
+			for (int i = 0; i < amt * 2; i++)
 			{
-                if(random[rnd_SpawnBlood](0, 256) >= chanceMod) PB_SpawnBloodActor("PB_BloodSquib", true, angToTarget - 180, (frandom(0.5, 3), frandom(-0.5, 0.5), frandom(0, 1)));
+                PB_SpawnBloodActor("PB_BloodSquib", true, angToTarget - 180, (frandom(0.5, 3), frandom(-0.5, 0.5), frandom(0, 1)));
             }
 
             PB_SpawnBloodActor("PB_LocationalBloodSplat", true, angToTarget - 180, (frandom(0, 4), frandom(-2, 2), 0));
@@ -189,6 +196,8 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
 //
 //===========================================================================
 
+const PB_BLOODCLOUD_L = float(100.f / 255.f);
+
 class PB_BloodCloud : PB_LightActor
 {
 	Default
@@ -206,8 +215,8 @@ class PB_BloodCloud : PB_LightActor
         +SQUAREPIXELS;
         -STRETCHPIXELS;
 
-		Scale 0.13;
-		Alpha 0.65;
+		Scale 0.16;
+		Alpha 0.5;
 		RenderStyle "Stencil";
         StencilColor "FF0000";
 	}
@@ -247,9 +256,9 @@ class PB_BloodCloud : PB_LightActor
     {
         bYFLIP = randompick(0, 1);
         roll = frandom(-20, 20);
-        alpha *= frandom(0.5, 1.2);
+        alpha *= frandom(0.7, 1.0);
         spriteOffset = (frandom(-10, 10), frandom(-2, 2));
-        scale *= frandom(0.83, 1.2);
+        scale *= frandom(0.83, 1.0);
     }
 
     override void Tick()
@@ -258,8 +267,9 @@ class PB_BloodCloud : PB_LightActor
         
         if(level.IsFrozen()) return;
         desat = 1.0 - (0.74 + clamp(GetAge() / 4.0, 0.0, 1.0) * 0.26);
+		//double brighten = 1.0 - (0.75 + clamp(GetAge() / 20.0, 0.0, 1.0) * 0.25);
 
-        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, (100.f / 255.f) /*min(1.0, 1 + (desat - 0.15))*/));
+        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, PB_BLOODCLOUD_L /*min(1.0, 1 + (desat - 0.15))*/));
         BloodCloudTick();
     }
 
@@ -267,18 +277,19 @@ class PB_BloodCloud : PB_LightActor
     {
         //if(GetAge() < 8) 
         //{
-            if(GetAge() < 3) 
-            {
-                scale.x *= 1.25;
-                scale.y *= 1.15;
-                A_Fadeout(0.06 * default.alpha, FTF_CLAMP|FTF_REMOVE);
-            }
-            else
-            {
-                vel.z -= 0.02;
-                scale *= 1.02;
-                A_Fadeout(0.03 * default.alpha, FTF_CLAMP|FTF_REMOVE);
-            }
+		int age = GetAge();
+		if(age < 4 && age > 1) 
+		{
+			scale.x *= 1.397;
+			scale.y *= 1.287;
+			A_Fadeout(0.15 * default.alpha, FTF_CLAMP|FTF_REMOVE);
+		}
+		else
+		{
+			vel.z -= 0.02;
+			scale *= 1.01;
+			//A_Fadeout(0.02 * default.alpha, FTF_CLAMP|FTF_REMOVE);
+		}
             
             
             /*if(CeilingPic == SkyFlatNum) {
@@ -317,11 +328,11 @@ class PB_BloodCloud : PB_LightActor
         BloodLoop:
             TNT1 A 0;
             TNT1 A 0 A_Jump(256, random(0, 4));
-            XS11 ABCDFGHIJ 1;
-            XS11 KLMNOPQRSTUVWXYZ 2;
-            XS21 ABCDEF 2;
-            //XS38 ABCD 2;
-            Wait;
+            XS11 ABCDFGHIJKLMNOPQRSTUVWXYZ 1;
+            XS21 ABCDEF 1;
+			//XS11 KLMNOPQRSTUVWXYZ 2;
+            //XS21 ABCDEF 2;
+            Stop;
     }
 }
 
@@ -330,7 +341,7 @@ class PB_BloodCloud2 : PB_BloodCloud
 	Default 
     {
         Scale 0.025;
-        Alpha 1.0;
+        Alpha 0.6;
         -ROLLCENTER;
     }
 
@@ -392,7 +403,6 @@ class PB_BloodCloud3 : PB_BloodCloud2
     Default 
     {
         Scale 0.032;
-        Alpha 0.7;
     }
 
     States 
@@ -411,7 +421,6 @@ class PB_BloodCloud4 : PB_BloodCloud3
     {
         XScale 0.006;
         YScale 0.0075;
-        Alpha 1.0;
     }
 
     States 
@@ -490,8 +499,8 @@ class PB_BloodExplosion : PB_BloodCloud3
     override void Tick() 
     {
         Super.Tick();
-        desat = 1.0 - (0.74 + clamp(GetAge() / 5.0, 0.0, 1.0) * 0.26);
-        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, (100.f / 255.f)));
+        desat = 1.0 - (0.5 + clamp(GetAge() / 6.0, 0.0, 1.0) * 0.5);
+        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, PB_BLOODCLOUD_L));
     }
 	
 	States 
