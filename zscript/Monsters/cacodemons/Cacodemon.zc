@@ -1590,7 +1590,7 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
 		
 		isAlive = true;
         startTime = level.time;
-		initialVelocity = vel.Length() > 0 ? vel.Length() : 12; // Default to Speed if vel is zero (edit by leviathan)
+		initialVelocity = vel.Length();
 		CascadeTimer = 35;
 		OrbTimer = 22;
 		checkDistanceTimer = 5;
@@ -1600,7 +1600,7 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
         double centerY = self.pos.y;
         for (int i = 0; i < 3; i++)
         {
-			double angleDeg = i * 120.0; // Spread 3 orbiters evenly (360° / 3 = 120°) (edit by leviathan)
+			double angleDeg = i * 120.0; // Spread 3 orbiters evenly (360° / 3 = 120°)
 			double offsetX = 30.0 * Cos(angleDeg); 
 			double offsetY = 30.0 * Sin(angleDeg); 
 
@@ -1613,7 +1613,7 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
             {
                 orb.master = self;
                 if (self.target)
-                    orb.target = self.target;  // Prevent the orbiter from colliding with the shooter. (edit by leviathan)
+                    orb.target = self.target;  // Prevent the orbiter from colliding with the shooter.
                 orbiters[i] = orb;
             }
             else
@@ -1623,104 +1623,143 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
         }
     }
 
-	override void Tick()  //(edit by leviathan)
-{
-    Super.Tick();
-    if (!isAlive)
-        return;
+	override void Tick()
+	{
+		Super.Tick();
+		if (!isAlive)
+			return;
 
-    int ticDiff = level.time - startTime;
-    int distanceTimer = level.time - distanceTimerInterval;
+		int ticDiff = level.time - startTime;
+		int distanceTimer = level.time - distanceTimerInterval;
 
-    if (distanceTimer >= checkDistanceTimer)
-    {
-        distanceTimerInterval = level.time;
-        if (self.target && self.target.target)
-        {
-            lastKnownTarget = self.target.target;
-            dist = distance3d(self.target.target);
-        }
-        else if (lastKnownTarget)
-        {
-            dist = distance3d(lastKnownTarget);
-        }
-        else
-        {
-            dist = 4096;
-            Console.Printf("\ckUnable to lock target");
-        }
+		if (distanceTimer >= checkDistanceTimer)
+		{
+			distanceTimerInterval = level.time;
+			if (self.target && self.target.target)
+			{
+				lastKnownTarget = self.target.target; // Keep updating if possible
+				dist = distance3d(self.target.target);
+			}
+			else if (lastKnownTarget)
+			{
+				dist = distance3d(lastKnownTarget); // Use last known target if lost
+			}
+			else
+			{
+				dist = 4096;
+				Console.Printf("\ckUnable to lock target");
+			}
 
-        FLineTraceData traceData;
-        bool traceResult = self.LineTrace(angle, 75, 25, TRF_THRUACTORS, 0, 0, 0, data: traceData);
-        if (traceResult && (traceData.HitType == TRACE_HitFloor || traceData.HitType == TRACE_HitWall))
-        {
-            if (vel.z != 0) vel.z += 0.3; // Avoid adding to NaN 
-        }
-    }
 
-    // Start the launch timer only when dist <= 700 for the first time
-    if (launchStartTime == -1 && dist <= 800)
-    {
-        launchStartTime = level.time;
-    }
+			double checkPitch = 25;     
 
-    if (dist <= 700)
-    {
-        double timePassed = (double)(ticDiff - CascadeTimer);
-        double decelerationRate = (initialVelocity * 0.5) / 40.0;
-        double velocityFactor = Max(initialVelocity * 0.5, initialVelocity - (timePassed * decelerationRate));
-        if (vel.Length() > 0) vel = vel.Unit() * velocityFactor; // Ensure vel is valid
-    }
+			FLineTraceData traceData;
+/* 	bool traceResult = Line3d.LineTraceVisual(
+				self,             // Source actor
+				angle,                // Yaw (straight up)
+				75,               // Distance to check
+				checkPitch,        // Pitch
+				TRF_THRUACTORS, // Ignore actors, but stop at sky
+				0,                 // OffsetZ (check from above)
+				0,                  // OffsetXY
+				0,                  // OffsetSide
+				data: traceData,    // Output trace data
+				LineClassName: "Line3d",
+				TimeToLive: 35,
+				TimeToCycle: 0,
+				MarkerClassName: "Marker3d"
+			);
+ */			
+				bool traceResult = self.LineTrace(
+				angle,                // Yaw (straight up)
+				75,               // Distance to check
+				checkPitch,        // Pitch
+				TRF_THRUACTORS, // Ignore actors, but stop at sky
+				0,                 // OffsetZ (check from above)
+				0,                  // OffsetXY
+				0,                  // OffsetSide
+				data: traceData
+			);
+			
+			if (traceResult && traceData.HitType == TRACE_HitFloor || traceData.HitType == TRACE_HitWall)
+			{
+				vel.z += 0.3;
+			}
 
-    double angleStepDeg = 360.0 / double(orbitDurationTics);
-    double rotationAngleDeg = ticDiff * angleStepDeg;
 
-    for (int i = 0; i < 3; i++)
-    {
-        if (orbiters[i])
-        {
-            if (launchStartTime != -1)
-            {
-                int launchTime = launchStartTime + (i * OrbTimer);
-                if (level.time >= launchTime)
-                {
-                    LaunchOrbiter(i);
-                    continue;
-                }
-            }
+		}
 
-            double rotatedX = orbInitX[i] * Cos(rotationAngleDeg) - orbInitY[i] * Sin(rotationAngleDeg);
-            double rotatedY = orbInitX[i] * Sin(rotationAngleDeg) + orbInitY[i] * Cos(rotationAngleDeg);
-            orbiters[i].SetOrigin((self.pos.x + rotatedX, self.pos.y + rotatedY, self.pos.z), false);
-        }
-    }
-}
+		// Start the launch timer only when dist <= 700 for the first time
+		if (launchStartTime == -1 && dist <= 800)
+		{
+			launchStartTime = level.time; // Capture the time the launch should begin
+		}
 
-void LaunchOrbiter(int i)
-{
-    Actor orb = orbiters[i];
-    if (!orb)
-        return;
+		if (dist <= 700)
+		{
+			double timePassed = (double)(ticDiff - CascadeTimer);
+			double decelerationRate = (initialVelocity * 0.5) / 40.0;
+			double velocityFactor = Max(initialVelocity * 0.5, initialVelocity - (timePassed * decelerationRate));
+			vel = vel.Unit() * velocityFactor;
+		}
 
-    if (self.target && self.target.target)
-    {
-        Vector3 direction = (self.target.target.pos - orb.pos).Unit();
-        if (direction.Length() > 0) orb.vel = direction * 30.0; // Guard against zero vector
-        else orb.vel = (30.0, 0.0, 0.0); // Fallback direction
-    }
-    else if (lastKnownTarget)
-    {
-        Vector3 direction = (lastKnownTarget.pos - orb.pos).Unit();
-        if (direction.Length() > 0) orb.vel = direction * 30.0; // Guard against zero vector
-        else orb.vel = (30.0, 0.0, 0.0); // Fallback direction
-    }
-    else
-    {
-        orb.vel = (30.0, 0.0, 0.0);
-    }
 
-    // 💥 Remove from orbiting system
-    orbiters[i] = null;
+
+		double angleStepDeg = 360.0 / double(orbitDurationTics);
+		double rotationAngleDeg = ticDiff * angleStepDeg;
+
+		for (int i = 0; i < 3; i++)
+		{
+			if (orbiters[i]) 
+			{
+				if (launchStartTime != -1) // Ensure launch sequence doesn't start prematurely
+				{
+					int launchTime = launchStartTime + (i * OrbTimer);
+					if (level.time >= launchTime) // 🚀 Launch if it's time
+					{
+						LaunchOrbiter(i);
+						continue;
+					}
+				}
+
+				// 🌀 Keep orbiting
+				double rotatedX = orbInitX[i] * Cos(rotationAngleDeg) - orbInitY[i] * Sin(rotationAngleDeg);
+				double rotatedY = orbInitX[i] * Sin(rotationAngleDeg) + orbInitY[i] * Cos(rotationAngleDeg);
+
+				orbiters[i].SetOrigin((self.pos.x + rotatedX, self.pos.y + rotatedY, self.pos.z), false);
+			}
+		}
+	}
+
+
+	void LaunchOrbiter(int i)
+	{
+		Actor orb = orbiters[i];
+		if (!orb)
+			return;
+
+
+
+		if (self.target && self.target.target)
+		{
+			Vector3 direction = (self.target.target.pos - orb.pos).Unit();
+			orb.vel = direction * 30.0;
+		}
+		else if (lastKnownTarget) 
+		{
+			Vector3 direction = (lastKnownTarget.pos - orb.pos).Unit();
+			orb.vel = direction * 30.0;
+	//		Console.Printf("\cr Using last known target!");
+		}
+		else 
+		{
+			orb.vel = (30.0, 0.0, 0.0);
+	//		Console.Printf("\cr No valid target! Launching in default direction.");
+		}
+
+
+		// 💥 Remove from orbiting system
+		orbiters[i] = null;
 	}
 
 
