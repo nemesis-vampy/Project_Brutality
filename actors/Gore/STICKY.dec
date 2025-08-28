@@ -12,7 +12,7 @@ ACTOR DetectCeilXDeath2
  Alpha 0.95
 	DamageType Blood
    +MISSILE
-   +CLIENTSIDEONLY
+   //+CLIENTSIDEONLY
    +NOTELEPORT
    +NOBLOCKMAP
    +FORCEXYBILLBOARD
@@ -29,7 +29,7 @@ ACTOR DetectCeilXDeath2
 	 Stop
 	 Death:
 	 TNT1 A 0
-	 TNT1 A 0 A_CustomMissile ("CeilXDeath2Checker", -15, 0, 90, 2, 90)
+	 TNT1 A 0 A_SpawnProjectile("PB_CeilXDeath2Checker", -15, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 90)
   Stop
     }
 }
@@ -44,7 +44,7 @@ ACTOR SmearingXDeath2
     +NOBLOCKMAP
     +NOTELEPORT
 	+THRUGHOST
-	+CLIENTSIDEONLY
+	//+CLIENTSIDEONLY
     +DONTSPLASH
     +MOVEWITHSECTOR
 	-DONTSPLASH
@@ -156,7 +156,7 @@ Goto Live1
 
 ACTOR XDeath2NoStick: XDeath1
 {
-    +CLIENTSIDEONLY
+    //+CLIENTSIDEONLY
 	+DONTSPLASH
     Speed 0
 	Gravity 0.4
@@ -170,7 +170,7 @@ ACTOR XDeath2NoStick: XDeath1
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CheckFloor("Death")
-        XME1 H 3 //A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        XME1 H 3 //A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
 
     }
@@ -190,7 +190,7 @@ ACTOR DetectCeilXDeath3
  Alpha 0.95
 	DamageType Blood
    +MISSILE
-   +CLIENTSIDEONLY
+   //+CLIENTSIDEONLY
    +NOTELEPORT
    +NOBLOCKMAP
    +FORCEXYBILLBOARD
@@ -207,7 +207,7 @@ ACTOR DetectCeilXDeath3
 	 Stop
 	 Death:
 	 TNT1 A 0
-	 TNT1 A 0 A_CustomMissile ("CeilXDeath3Checker", -15, 0, 90, 2, 90)
+	 TNT1 A 0 A_SpawnProjectile("PB_CeilXDeath2Checker", -15, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 90)
   Stop
     }
 }
@@ -222,7 +222,7 @@ ACTOR SmearingXDeath3
     +NOBLOCKMAP
     +NOTELEPORT
 	+THRUGHOST
-	+CLIENTSIDEONLY
+	//+CLIENTSIDEONLY
     +DONTSPLASH
     +MOVEWITHSECTOR
 	-DONTSPLASH
@@ -336,7 +336,7 @@ Goto Live1
 
 ACTOR XDeath3NoStick: XDeath1
 {
-    +CLIENTSIDEONLY
+    //+CLIENTSIDEONLY
 	+DONTSPLASH
     Speed 0
 	Gravity 0.4
@@ -350,7 +350,7 @@ ACTOR XDeath3NoStick: XDeath1
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CheckFloor("Death")
-        XME2 H 3 //A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        XME2 H 3 //A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
 
     }
@@ -370,7 +370,7 @@ ACTOR DetectCeilXDeath4
  Alpha 0.95
 	DamageType Blood
    +MISSILE
-   +CLIENTSIDEONLY
+   //+CLIENTSIDEONLY
    +NOTELEPORT
    +NOBLOCKMAP
    +FORCEXYBILLBOARD
@@ -387,7 +387,7 @@ ACTOR DetectCeilXDeath4
 	 Stop
 	 Death:
 	 TNT1 A 0
-	 TNT1 A 0 A_CustomMissile ("CeilXDeath4Checker", -15, 0, 90, 2, 90)
+	 TNT1 A 0 A_SpawnProjectile("PB_CeilXDeath2Checker", -15, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 90)
   Stop
     }
 }
@@ -460,7 +460,7 @@ Goto Live1
 
 ACTOR XDeath4NoStick: XDeath1
 {
-    +CLIENTSIDEONLY
+    //+CLIENTSIDEONLY
 	+DONTSPLASH
     Speed 0
 	Gravity 0.4
@@ -473,10 +473,10 @@ ACTOR XDeath4NoStick: XDeath1
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-        XME3 ABCD 3 //A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        XME3 ABCD 3 //A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         Loop
     Death:
-        TNT1 AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
+        TNT1 AAAAAAA 0 A_SpawnProjectile("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
         XME3 E 2002
         Stop
     Splash:
@@ -498,7 +498,7 @@ ACTOR SmallBrainPieceFast
     +NOBLOCKMAP
     +NOTELEPORT
 	+THRUGHOST
-	+CLIENTSIDEONLY
+	//+CLIENTSIDEONLY
     +DONTSPLASH
     +MOVEWITHSECTOR
 	-DONTSPLASH
@@ -535,7 +535,7 @@ ACTOR DetectCeilBrain
  Alpha 0.95
 	DamageType Blood
    +MISSILE
-   +CLIENTSIDEONLY
+   //+CLIENTSIDEONLY
    +NOTELEPORT
    +NOBLOCKMAP
    +FORCEXYBILLBOARD
@@ -552,7 +552,7 @@ ACTOR DetectCeilBrain
 	 Stop
 	 Death:
 	 TNT1 A 0
-	 TNT1 A 0 A_CustomMissile ("SmallBrainPiece", -15, 0, 90, 2, 90)
+	 TNT1 A 0 A_SpawnProjectile("PB_SmallBrainPiece", -15, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 90)
   Stop
     }
 }
@@ -567,7 +567,7 @@ ACTOR SmearingBrain
     +NOBLOCKMAP
     +NOTELEPORT
 	+THRUGHOST
-	+CLIENTSIDEONLY
+	//+CLIENTSIDEONLY
     +DONTSPLASH
     +MOVEWITHSECTOR
 	-DONTSPLASH

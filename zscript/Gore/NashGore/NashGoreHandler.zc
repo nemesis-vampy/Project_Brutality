@@ -33,9 +33,8 @@
 class NashGoreHandler : EventHandler
 {
 	int maxgore;
-	int maxgore_old, maxgore_new;
 	int maxcasings;
-	int maxcasings_old, maxcasings_new;
+	bool cheapCasings;
 
 	Array<String> bloodTypes;
 
@@ -73,21 +72,10 @@ class NashGoreHandler : EventHandler
 
 	override void WorldTick(void)
 	{
-		// update gore queue
-		maxgore_new = nashgore_maxgore;
-		if (maxgore_old != maxgore_new)
-		{
-			maxgore = maxgore_new;
-			maxgore_old = maxgore_new;
-		}
-		
-		// update casings queue
-		maxcasings_new = nashgore_maxcasings;
-		if (maxcasings_old != maxcasings_new)
-		{
-			maxcasings = maxcasings_new;
-			maxcasings_old = maxcasings_new;
-		}
+		// update queues
+		maxgore = nashgore_maxgore;
+		maxcasings = nashgore_maxcasings;
+		cheapCasings = pb_cheapcasings;
 	}
 
 	//===========================================================================
@@ -159,8 +147,7 @@ class NashGoreHandler : EventHandler
 			class<Actor> miscBloodCls;
 			miscBloodCls = String.Format("%s", bloodTypes[i]);
 
-			if (e.Replacee == "Blood" || e.Replacee == "BloodSplatter" || e.Replacee == "AxeBlood"
-				|| (miscBloodCls != NULL && e.Replacee == miscBloodCls))
+			if (miscBloodCls != NULL && e.Replacee == miscBloodCls)
 			{
 				class<Actor> bloodCls;
 
@@ -179,12 +166,32 @@ class NashGoreHandler : EventHandler
 				}
 
 				e.Replacement = bloodCls;
+                return;
 			}
 		}
 
+		if(e.Replacee == "NashGoreBlood" && pb_usemodernblood)
+        {
+            e.Replacement = "PB_GunshotBlood"; 
+            return;
+        }
+        else if(e.Replacee == "PB_GunshotBlood" && !pb_usemodernblood)
+        {
+            e.Replacement = "NashGoreBlood"; 
+            return;
+        }
+
 		// other stuff
-		if (e.Replacee == "RealGibs") e.Replacement = "NashGoreRealGibs";
-		if (nashgore_icedeath == true && e.replacee == "IceChunk") e.Replacement = "NashGoreIceChunk";
+		if (e.Replacee == "RealGibs") 
+        {
+            e.Replacement = "NashGoreRealGibs";
+            return;
+        }
+		if (nashgore_icedeath == true && e.replacee == "IceChunk") 
+        {
+            e.Replacement = "NashGoreIceChunk";
+            return;
+        }
 	}
 
 	//===========================================================================

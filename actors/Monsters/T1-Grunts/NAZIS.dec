@@ -21,7 +21,6 @@ ACTOR PB_Nazi : PB_Monster
 	+MISSILEMORE
 	+FASTER
 	+DONTHURTSPECIES
-    BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
 	SeeSound "nazi/sight"
 	PainSound "nazi/pain"
 	DeathSound "nazi/death"
@@ -39,7 +38,8 @@ ACTOR PB_Nazi : PB_Monster
 	MaxDropOffHeight 32
 	Species "Nazi"
 damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-	DropItem "PB_MP40"
+	DropItem "PB_WolfSSdrop"
+    BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	States
 	{
 	
@@ -57,7 +57,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		Goto Death.SSG+3
 	
 	Pain.Siphon:
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		
 		TNT1 AAA 0 A_SpawnItemEx ("RedLightning_Small", random (-12, 12), random (-12, 12), random (16, 52), 0, 0)
 		NAZI G 1 
@@ -72,22 +72,22 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Pain.Stun:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("StunElectrocute", random (-4, 4), random (-4, 4),  random (16, 32), 0, 0)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		NAZI G 1 A_Pain
 		NAZI GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		NAZI G 1 A_Pain
 		NAZI GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		NAZI G 1 A_Pain
 		NAZI GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		NAZI G 1 A_Pain
 		NAZI GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		NAZI G 1 A_Pain
 		NAZI GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+        TNT1 A 0
 		NAZI G 1 A_Pain
 		Goto See
 		
@@ -99,33 +99,33 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			}
 			
 		Stand:
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 55,0)
+		TNT1 B 0 
 		NAZI A 20 A_Look
 		Loop
     See:
 	    TNT1 A 0 A_TakeInventory("SKNazi", 1)
 		TNT1 A 0 A_Jump(64, "See2")
 		TNT1 A 0 A_CheckSight("See2")
-		TNT1 A 0 A_Jump(32, "MissileWalkingFrontWard")
+		TNT1 A 0 A_Jump(32, "MissileWalkingForward")
 		
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		NAZW A 2 A_Recoil(-1)
 		NAZW A 0 A_Chase
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZW B 1 A_FaceTarget
 		NAZW B 2 A_Recoil(-1)
 		NAZW A 0 A_Chase
 		
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		NAZW C 2 A_Recoil(-1)
 		NAZW A 0 A_Chase
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZW D 1 A_FaceTarget
 		NAZW D 2 A_Recoil(-1)
 		NAZW A 0 A_Chase
@@ -134,108 +134,116 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	See2:
 	    TNT1 A 0 A_TakeInventory("SKNazi", 1)
         
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZI AAAA 1 A_Chase("","")
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZI BBBB 1 A_Chase("","")
 		
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZI CCCC 1 A_Chase("","")
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40,0)
+		TNT1 B 0 
 		NAZI BBBBB 1 A_Chase
 		Goto See
 	
 	Melee:
 			NZ1B A 3 A_FaceTarget
 			TNT1 A 0 A_StartSound("skeleton/swing")
-			NZ1B B 3 A_CustomMeleeAttack(3 * random(1,4), "monsters/nazi/bash", "", "Melee", false)
+			NZ1B B 3 A_CustomMeleeAttack(10, "monsters/nazi/bash", "", "Melee", false)
 			NZ1B A 3 A_FaceTarget
 			Goto See
 			
 	Missile:
 		TNT1 A 0 A_TakeInventory("SKNazi", 1)
 		TNT1 A 0 A_CheckRange(250, "CrouchAttack")
-		TNT1 A 0 A_Jump(32, "MissileWalkingFrontWard")
+		TNT1 A 0 A_Jump(32, "MissileWalkingForward")
 		TNT1 A 0 A_Jump(64, "MissileWalkingRight", "MissileWalkingLeft")
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 5, 40,0)
+		TNT1 A 0 
 		NAZI E 8 A_FaceTarget
 		
-		NAZI F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		NAZI F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
     TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 40,0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZI E 2 A_FaceTarget
 		
-		NAZI F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		NAZI F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
     TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZI E 2 A_FaceTarget
 		
-		NAZI F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		NAZI F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
         TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZI E 2 A_FaceTarget
 		
-		NAZI F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		NAZI F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
     TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZI E 6 A_FaceTarget
 		Goto See
 		
-	MissileWalkingFrontward:
+	MissileWalkingForward:
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		NAZW A 1 A_Recoil(-1)
 
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW F 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW F 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZW F 1 BRIGHT A_Recoil(-1)
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		NAZW C 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW E 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW E 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZW E 1 BRIGHT A_Recoil(-1)
 		
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		NAZW A 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW F 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW F 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZW F 1 BRIGHT A_Recoil(-1)
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		NAZW C 1 A_Recoil(-1)
 
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW E 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW E 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
@@ -245,24 +253,26 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		
 	MissileWalkingLeft:
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
 		NAZW A 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW F 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW F 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		TNT1 A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
 		NAZW F 1 BRIGHT A_Recoil(-1)
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
 		NAZW C 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW E 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW E 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
@@ -270,23 +280,25 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		NAZW E 1 BRIGHT A_Recoil(-1)
 		
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
 		NAZW A 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW F 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW F 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZW F 1 BRIGHT A_Recoil(-1)
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
 		NAZW C 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW E 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW E 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
@@ -296,24 +308,26 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		
 	MissileWalkingRight:
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
 		NAZW A 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW F 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW F 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		TNT1 A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
 		NAZW F 1 BRIGHT A_Recoil(-1)
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
 		NAZW C 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW E 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW E 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
@@ -321,23 +335,25 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		NAZW E 1 BRIGHT A_Recoil(-1)
 		
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW A 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
 		NAZW A 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW F 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW F 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
 		NAZW F 1 BRIGHT A_Recoil(-1)
 		
-		TNT1 B 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 B 0 
 		NAZW C 1 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
 		NAZW C 1 A_Recoil(-1)
 		TNT1 A 0 A_PlaySound("weapons/MP40_fire")
-		NAZW E 1 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
+		NAZW E 1 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"reload")
@@ -349,34 +365,38 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	CrouchAttack:
 		NAZI E 6 A_FaceTarget
 		N42I E 4 A_FACETARGET
-		N42I F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		N42I F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
     TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 40,0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"CrouchNoAmmoLeft")
 		N42I E 2 A_FaceTarget
 		
-		N42I F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		N42I F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
     TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"CrouchNoAmmoLeft")
 		N42I E 2 A_FaceTarget
 		
-		N42I F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		N42I F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
         TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"CrouchNoAmmoLeft")
 		N42I E 2 A_FaceTarget
 		
-		N42I F 2 BRIGHT A_CustomMissile("EvilNaziTracer", 38, 0, random(-2, 2), 1)
+		N42I F 2 BRIGHT A_CustomMissile("PB_NaziBullet", 38, 0, random(-2, 2), 1)
     TNT1 A 0 A_PlaySound("weapons/MP40_fire")
+	TNT1 A 0 PB_DynamicTailMonster("smg", "smg")
 		TNT1 A 0 A_GiveInventory("NaziAmmo",1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 30,0)
 		TNT1 A 0 A_JumpIfInventory("NaziAmmo",32,"CrouchNoAmmoLeft")
 		N42I E 2 A_FACETARGET
@@ -390,7 +410,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Pain:
 	    TNT1 A 0 A_ChangeFlag(GHOST, 0)
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Downed")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 A 0 
 		TNT1 A 0 A_PlaySOund("nazi/pain")
 		TNT1 A 0 A_TakeInventory("SKNazi", 1)
 		NAZI G 3 A_Pain
@@ -400,13 +420,13 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0
 		Goto See
 	
-	Respawned:
-		TNT1 A 0 
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_ChangeFlag(FRIENDLY, 1)
-		TNT1 A 0 A_SpawnItem("NaziChecker")
-		TNT1 A 0
-		Stop
+// 	Respawned:
+// 		TNT1 A 0
+// 		TNT1 A 0 A_NoBlocking
+// 		TNT1 A 0 A_ChangeFlag(FRIENDLY, 1)
+// 		TNT1 A 0 A_SpawnItem("NaziChecker")
+// 		TNT1 A 0
+// 		Stop
 		
 	Reload:
 		NAZI A 4 {
@@ -414,10 +434,9 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 				A_TakeInventory("NaziAmmo", 32);
 				A_SpawnItemEx("EmptyMagMP40",21,-9.4, 24.4,frandom(-1,1),frandom(-5,-2),frandom(3, 5));
 				A_StartSound("NAZRELD", 1);
-				A_SpawnItem ("HeadshotTarget30", 0, 45,0);
 				}
-		NZRL ABCDE 10 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
-		NAZI A 10 A_SpawnItem ("HeadshotTarget30", 0, 45,0)
+		NZRL ABCDE 10
+		NAZI A 10
 		Goto See
 			
 	Pain.Killme:
@@ -428,7 +447,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		Pain.Fatality:
 		TNT1 A 0 A_ChangeFlag(GHOST, 0)
 		NAZI G 3
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 5, 40, 0)
+		TNT1 A 0 
 		NAZI G 3 A_Pain
 		Goto See
 	Death.Fatality:
@@ -463,9 +482,9 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			{return state("Death.Fire");}
 			if(CountInv("BHCSelected",AAPTR_TARGET) == 1)
 			{return state("Death.Blackhole");}
-			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("FireModeCryoRifleBeam", AAPTR_TARGET) == 1 && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1)
+			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("FireModeCryoRifleBeam", AAPTR_TARGET) == 1 /* && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1 */)
 			{return state("Death.IceBeam");}
-			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1)
+			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 /* && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1 */)
 			{return state("Death.Ice");}
 			return state("");
 		}
@@ -473,12 +492,12 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Death.Downed")
 		TNT1 A 0 A_Jump(256, "NormalDeath", "Death2", "Death3", "Wolf3DDeath")
 	NormalDeath:
-        TNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("PB_MuchBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		NAZI H 5
 		NAZI I 5 A_Scream
 		NAZI J 5 A_NoBlocking
 		NAZI K 5	
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	DownDeath:
 		NAZI L 1 
 		NAZI A 0 A_SpawnItemEx("DeadNazi1",0,0,0,0,0,0,0,SXF_SETMASTER,0,0)
@@ -493,7 +512,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			NA21 I 6
 			NA21 J 6 A_NoBlocking
 			NA21 K 6
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_StartSound("BODYF",6)
 			NA21 L 1
 			TNT1 A 0 A_SpawnItemEx("DeadNazi2",0,0,0,0,0,0,0,SXF_SETMASTER,0,0)
@@ -502,7 +521,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Stop
 		NA21 A 6 A_ScreamAndUnblock
 		NA21 BCD 6
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_StartSound("BODYF",6)
 		NA21 E 1
 		TNT1 A 0 A_SpawnItemEx("DeadNazi3",0,0,0,0,0,0,0,SXF_SETMASTER,0,0)
@@ -512,9 +531,9 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Stop
 		NWF3 V 6 A_ScreamAndUnblock
 		NWF3 W 6 {
-			A_CustomMissile ("MuchBlood", 50, -13, random (0, 360), 2, random (0, 160));
-			A_CustomMissile ("Brutal_Blood", 50, -13, random (0, 360), 2, random (0, 160));
-			A_CustomMissile ("Brutal_Blood", 50, -13, random (0, 360), 2, random (0, 160));
+			A_SpawnProjectile("PB_MuchBlood", 50, -13, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160));
+			A_SpawnProjectile("NashGoreBloodParticle1", 50, -13, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160));
+			A_SpawnProjectile("NashGoreBloodParticle1", 50, -13, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160));
 			}
 		NWF3 XY 6
 		TNT1 A 0 A_StartSound("BODYF",6)
@@ -581,7 +600,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 				frandom(0, 360));
 			}
 			NZD1 FGH 6
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_StartSound("BODYF",6)
 			TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
 			Stop
@@ -606,19 +625,19 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			{return state("Death.Fire");}
 			if(CountInv("BHCSelected",AAPTR_TARGET) == 1)
 			{return state("Death.Blackhole");}
-			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("FireModeCryoRifleBeam", AAPTR_TARGET) == 1 && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1)
+			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("FireModeCryoRifleBeam", AAPTR_TARGET) == 1 /* && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1 */)
 			{return state("Death.IceBeam");}
-			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1)
+			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 /* && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1 */)
 			{return state("Death.Ice");}
 			return state("");
 		}
 		TNT1 A 0 A_SpawnItem("NaziHeadExplode", 0, 50)
 	NoHeadDeathResumed:
 		TNT1 A 0 A_NoBlocking
-        NAZH AAAAABBBBBBBBBBCCCCC 2 A_CustomMissile ("Brutal_liquidblood3", 30, 0, random (0, 360), 2, random (60, 120))
-		NAZH DDDDEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 10, 0, random (0, 360), 2, random (60, 120))
-		NAZH EEEEEEEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 5, 0, random (0, 360), 2, random (10, 40))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+        NAZH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile("Brutal_liquidblood3", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120))
+		NAZH DDDDEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (60, 120))
+		NAZH EEEEEEEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 40))
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		NAZH E -1
 		TNT1 A 0 A_SpawnItemEx("BeheadedNazi",0,0,0,0,0,0,0,SXF_SETMASTER,0,0)
 		Stop
@@ -637,9 +656,9 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Jumpif(CountInv("RailgunSelected",AAPTR_TARGET) && CountInv("RailgunLaserMode",AAPTR_TARGET) == 1, "Death.Incinerate")
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-        TNT1 A 1 A_CustomMissile ("NaziXDeath", 0, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAA 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 1 A_SpawnProjectile("NaziXDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("PB_MuchBlood2", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAA 0 A_SpawnProjectile("PB_MuchBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         Stop
 	
 	Death.Incinerate:
@@ -796,16 +815,16 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
         TNT1 A 0
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-        TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
-		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("GreenFlameTrails", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
 		
@@ -816,12 +835,12 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	TNT1 A 0 A_StopSound(CHAN_BODY)
 	TNT1 A 0 A_Jump(10, "XDeath.Plasma")
 	PBR1 A 6 A_Scream
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Ashes1", 32, 0, random (0, 360), 2, random (0, 180))
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Ashes2", 32, 0, random (0, 360), 2, random (0, 180))
-	TNT1 AAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 32, 0, random (0, 360), 2, random (0, 180))
+	TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("Ashes1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+	TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("Ashes2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+	TNT1 AAAA 0 A_SpawnProjectile("BluePlasmaFireNonStatic", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 	PBR1 B 6 A_NoBlocking
-	PBR1 CDEFGH 6 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160))
-	PBR1 HHHHHHHHHHHHHHHHHHHHHH 8 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	PBR1 CDEFGH 6 A_SpawnProjectile("Blood", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	PBR1 HHHHHHHHHHHHHHHHHHHHHH 8 A_SpawnProjectile("PlasmaSmoke", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	PBR1 H -1
 	Stop
 	
@@ -830,20 +849,20 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-        TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-        TNT1 A 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         TNT1 A 0
         Stop
 		
@@ -863,10 +882,10 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Changeflag("NOBLOOD",1)	
       BURN W 6 //A_Scream
       BURN X 6 A_NoBlocking
-       BUR2 ABCD 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-       BURN FGHIJKL 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-       BURN MNOPQRSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-        BURN VVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+       BUR2 ABCD 6 BRIGHT A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+       BURN FGHIJKL 6 BRIGHT A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+       BURN MNOPQRSTUV 6 BRIGHT A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+        BURN VVVVVVVVVVVVVV 6 A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
         BURN V -1
       Stop
 	  
@@ -973,6 +992,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	
 	Possession:
 			NAZI G 3 {
+				A_SetRoll(0);
 				A_SetInvulnerable;
 				A_Pain;
 				}
@@ -1013,10 +1033,10 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			TNT1 AAAA 0 A_SpawnProjectile("PB_Intestine", 24, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (0, 160))
 			TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 42, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (0, 160))
 			TNT1 AAA 0 A_SpawnProjectile ("PB_SmallGib", 42, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (0, 160))
-			TNT1 AAA 0 A_SpawnProjectile ("BloodMistBig", 40, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 90))
+			TNT1 AAA 0 A_SpawnProjectile ("PB_BloodmistBig", 40, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 90))
 			NXD1 E 6 A_XScream
 			NXD1 FGHI 6
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			NXD1 IIIIIIIIIII 3 A_SpawnProjectile ("Brutal_LiquidBlood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60))
 			TNT1 A 0 A_SpawnItem("DeadNaziNXD1I")
 			stop
@@ -1032,13 +1052,13 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			NZ2X BBBB 2 A_SpawnProjectile ("Brutal_liquidblood3", 32, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60))
 			NZ2X CCCC 2 A_SpawnProjectile ("Brutal_liquidblood3", 20, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60))
 			SP2X DDDD 2 A_SpawnProjectile ("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60))
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_StartSound("BODYF",6)
 			NZ2X EEEEEEEEEEEEEEEE 2 A_SpawnProjectile ("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60))
 			TNT1 A 0 A_SpawnItem ("DeadNaziNZ2XE")
 			Stop
 	DeathSaw2:
-			TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 30, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 90))
+			TNT1 AAAAA 0 A_SpawnProjectile ("PB_BloodmistBig", 30, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 90))
 			TNT1 A 0 A_SpawnProjectile ("PB_XDeathHalfNazi1", 30, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (0, 160))
 			TNT1 AAAA 0 A_SpawnProjectile ("PB_XDeath1", 32, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (0, 160))
 			TNT1 AAAA 0 A_SpawnProjectile ("PB_SmallGib", 32, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (0, 160))
@@ -1050,7 +1070,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 				frandom(0, 360));
 			}
 			NZD1 FGH 6
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_StartSound("BODYF",6)
 			TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
 			Stop
@@ -1103,7 +1123,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Jump(166, "BlastMirrored")
 		ZNZ7 A 6 {
 			A_Stop;
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			}
 		ZNZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (30, 60))
 		ZNZ7 CCC 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (10, 40))
@@ -1115,7 +1135,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_ChangeFlag("SPRITEFLIP",1)
 		ZNZ7 A 6 {
 			A_Stop;
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			}
 		ZNZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (30, 60))
 		ZNZ7 CCC 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (10, 40))
@@ -1157,7 +1177,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Jump(166, "Blast2Mirrored")
 		ZNZ6 A 6 {
 			A_Stop;
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			}
 		ZNZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (30, 60))
 		ZNZ6 CCC 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (10, 40))
@@ -1170,7 +1190,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_ChangeFlag("SPRITEFLIP",1)
 		ZNZ6 A 6 {
 			A_Stop;
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			}
 		ZNZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (30, 60))
 		ZNZ6 CCC 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (10, 40))
@@ -1207,22 +1227,22 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Jump(110, "Death.Blast")
 		TNT1 A 0 A_Jump(10, "ClassicXDeath")
 		TNT1 A 0 A_PlaySound("BLANKSND")
-		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("xdeath4", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 32, 0, random (180, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 32, 0, random (160, 170), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("NaziHeadExplode", 32, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath4", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 46, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 32, 0, random (180, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 32, 0, random (160, 170), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("NaziHeadExplode", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
         NZD1 EFGH 12
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
         Stop
 	Death.SuperPunch:
@@ -1252,13 +1272,13 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			ND14 CDEF 3 A_CheckFloor ("Dead.ExplosiveImpact")
 			ND14 F 5 A_CheckFloor ("Dead.ExplosiveImpact")
 			TNT1 A 0 A_StartSound("BODYF",6)
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			ND14 G 1 A_SpawnItem("NaziPunchedHard")
 			Stop
 			
 		Dead.ExplosiveImpact:
 			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodSpurt", 0, 0, 0, 2, 90)
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_StartSound("BODYF",6)
 			ND14 G 1 A_SpawnItem("NaziPunchedHard")
 			Stop
@@ -1266,18 +1286,18 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	ClassicXDeath:
 	    NAZX M 1 A_Pain
 		NAZX M 1 A_FaceTarget
-        //TNT1 A 0 A_CustomMissile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
-				TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-						TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AA 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 32, 0, random (170, 190), 2, random (0, 40))
+        //TNT1 A 0 A_SpawnProjectile("MeatDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+				TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+						TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 46, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
         NAZX MOPQRSTU 6
@@ -1300,9 +1320,9 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			{return state("Death.Fire");}
 			if(CountInv("BHCSelected",AAPTR_TARGET) == 1)
 			{return state("Death.Blackhole");}
-			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("FireModeCryoRifleBeam", AAPTR_TARGET) == 1 && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1)
+			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("FireModeCryoRifleBeam", AAPTR_TARGET) == 1 /* && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1 */)
 			{return state("Death.IceBeam");}
-			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1)
+			if(CountInv("CryoRifleSelected", AAPTR_TARGET)  == 1 /* && CountInv("CryoRiflePistolToken", AAPTR_TARGET) != 1 */)
 			{return state("Death.Ice");}
 			return state("");
 			}
@@ -1325,7 +1345,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			NS24 ABC 3
 			NS24 D 4
 			TNT1 A 0 {
-				A_SpawnItem ("GrowingBloodPool");
+				A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 				A_StartSound("BODYF",6);
 				A_SpawnItem ("DeadNazi_NoLegBoth");
 			}
@@ -1338,7 +1358,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			A_SpawnProjectile ("PB_NaziLeg", 35, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			A_SpawnProjectile ("PB_SmallGib", 15, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			A_SpawnProjectile ("PB_SmallGib", 15, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			A_ScreamAndUnblock;
 			A_SpawnItemEx ("NaziGotHisLegBlownOff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			}
@@ -1349,7 +1369,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 			A_SpawnProjectile ("PB_MuchBlood2", 15, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			A_SpawnProjectile ("PB_XDeath1", 15, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			A_SpawnProjectile ("PB_NaziLeg", 35, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			A_ScreamAndUnblock;
 			A_SpawnItemEx ("NaziSacilol",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 		}
@@ -1369,120 +1389,120 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 }
 
 
-ACTOR NaziChecker: PB_Nazi //Replaces WolfensteinSS
-{
-    Speed 0
-    BloodType "none"
-	SeeSound "none"
-	AttackSound "none"
-	PainSound "none"
-	DeathSound "none"
-	DropItem "None"
-	+LOOKALLAROUND
-	+FRIENDLY
-	States
-	{
+// ACTOR NaziChecker: PB_Nazi //Replaces WolfensteinSS
+// {
+//     Speed 0
+//     BloodType "none"
+// 	SeeSound "none"
+// 	AttackSound "none"
+// 	PainSound "none"
+// 	DeathSound "none"
+// 	DropItem "None"
+// 	+LOOKALLAROUND
+// 	+FRIENDLY
+// 	States
+// 	{
 	
-	Spawn:
-	TNT1 A 1
-	TNT1 A 0 A_checkSight("Spawn")
-	Goto See
+// 	Spawn:
+// 	TNT1 A 1
+// 	TNT1 A 0 A_checkSight("Spawn")
+// 	Goto See
 	
-	See:
-    TNT1 A 0
-	NAZI A 1 A_Pain
-	NAZI A 1 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "CheckIfAlliesNearby")
-	Goto Surrender
+// 	See:
+//     TNT1 A 0
+// 	NAZI A 1 A_Pain
+// 	NAZI A 1 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "CheckIfAlliesNearby")
+// 	Goto Surrender
 	
 	
-	CheckIfAlliesNearby:
-	NAZI A 1
-	TNT1 A 0 A_ChangeFlag(FRIENDLY, 0)
-	NAZI A 1
-	NAZI A 1 A_Pain
-	NAZI A 1 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "SpawnMonster")
-	Goto Surrender
+// 	CheckIfAlliesNearby:
+// 	NAZI A 1
+// 	TNT1 A 0 A_ChangeFlag(FRIENDLY, 0)
+// 	NAZI A 1
+// 	NAZI A 1 A_Pain
+// 	NAZI A 1 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "SpawnMonster")
+// 	Goto Surrender
 	
-	Pain.KillMe:
-	SpawnMonster:
-	TNT1 A 0 A_ChangeFlag(FRIENDLY, 0)
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_SpawnItem("PB_Nazi")
-	TNT1 A 2
-	Stop
+// 	Pain.KillMe:
+// 	SpawnMonster:
+// 	TNT1 A 0 A_ChangeFlag(FRIENDLY, 0)
+// 	TNT1 A 0 A_NoBlocking
+// 	TNT1 A 0 A_SpawnItem("PB_Nazi")
+// 	TNT1 A 2
+// 	Stop
 	
-	Surrender:
-	TNT1 A 0
-	TNT1 A 0 A_Jump(160, "SpawnMonster")
-	TNT1 A 0 A_ChangeFlag(FRIENDLY, 0)
-	NAZI A 1 A_Pain
-	TNT1 A 0 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "SurrenderNow")
-	Goto SpawnMonster
+// 	Surrender:
+// 	TNT1 A 0
+// 	TNT1 A 0 A_Jump(160, "SpawnMonster")
+// 	TNT1 A 0 A_ChangeFlag(FRIENDLY, 0)
+// 	NAZI A 1 A_Pain
+// 	TNT1 A 0 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "SurrenderNow")
+// 	Goto SpawnMonster
 	
-	SurrenderNow:
-	SAZI K 15
-	SAZI LM 7
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 0 A_SpawnItem("PB_MP40")
-	TNT1 A 0 A_SpawnItem("NaziSurrendered")
-	Stop
-	}
-}
+// 	SurrenderNow:
+// 	SAZI K 15
+// 	SAZI LM 7
+// 	TNT1 A 0 A_NoBlocking
+// 	TNT1 A 0 A_SpawnItem("PB_WolfSSdrop")
+// 	TNT1 A 0 A_SpawnItem("NaziSurrendered")
+// 	Stop
+// 	}
+// }
 
 
-ACTOR NaziSurrendered: PB_Nazi
-{
-	States
-	{
-	Spawn:
-    SAZI NO 10
-	Loop
+// ACTOR NaziSurrendered: PB_Nazi
+// {
+// 	States
+// 	{
+// 	Spawn:
+//     SAZI NO 10
+// 	Loop
 
-	Death:
-	    TNT1 A 0
-	    TNT1 A 0 A_PlaySound ("grunt/death")
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg")
-		Stop
+// 	Death:
+// 	    TNT1 A 0
+// 	    TNT1 A 0 A_PlaySound ("grunt/death")
+// 		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg")
+// 		Stop
 	
-	LEaveCrawling:
-	TNT1 A 0 A_SpawnItem ("DyingZombieMan")
-	Stop
+// 	LEaveCrawling:
+// 	TNT1 A 0 A_SpawnItem ("DyingZombieMan")
+// 	Stop
 
-    Death.Head:
-    Death.Decaptate:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon",1,"Death.Plasma")
-        TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 AAAA 0 A_CustomMissile ("Brains1", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains2", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains3", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains4", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains5", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_Scream
-TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg", 1)
-		Stop
+//     Death.Head:
+//     Death.Decaptate:
+// 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon",1,"Death.Plasma")
+//         TNT1 A 0 A_PlaySound("misc/xdeath4")
+// 		TNT1 AAAA 0 A_SpawnProjectile("Brains1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_SpawnProjectile("Brains2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_SpawnProjectile("PB_Brains3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_SpawnProjectile("Brains4", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_SpawnProjectile("Brains5", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_Scream
+// TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 37, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_NoBlocking
+//         TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg", 1)
+// 		Stop
 		
-		Death.Fatality:
-		Death.SuperPunch:
-        TNT1 A 0 A_NoBlocking
+// 		Death.Fatality:
+// 		Death.SuperPunch:
+//         TNT1 A 0 A_NoBlocking
         
-        Stop		
+//         Stop
 
-Death.Shotgun:
-Death.Kick:
-Death.Melee:
-        TNT1 A 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_Scream
-		TNT1 A 0 ThrustThingZ(0,30,0,1)
-		TNT1 A 0 A_NoBlocking
-         ID11 KL 15
-         TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg")
-		 Stop
+// Death.Shotgun:
+// Death.Kick:
+// Death.Melee:
+//         TNT1 A 0 A_SpawnProjectile("PB_MuchBlood2", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+// 		TNT1 A 0 A_Scream
+// 		TNT1 A 0 ThrustThingZ(0,30,0,1)
+// 		TNT1 A 0 A_NoBlocking
+//          ID11 KL 15
+//          TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg")
+// 		 Stop
 
 
-	}
-}
+// 	}
+// }
 
 Actor DeadNaziNZSXO: ZombiemanTorso
 {
@@ -1493,9 +1513,9 @@ States{Spawn:
 		
 		Death:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 1 A_CustomMissile ("PB_Brains4Blonde", 10, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAAAAA 0 A_CustomMissile ("PB_SmallGib", 10, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 1 A_SpawnProjectile("PB_Brains4Blonde", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_SmallGib", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Stop
 		
 }}
@@ -1508,8 +1528,8 @@ States{Spawn:
 		
 		Death:
 		TNT1 A 0 A_NoBlocking
-		TNT1 AAAAAAAA 0 A_CustomMissile ("PB_SmallGib", 10, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAA 0 A_SpawnProjectile("PB_SmallGib", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 A 0 A_SpawnItem("NaziHeadExplodeNoHelmet")
 		Stop
 }}
@@ -1579,7 +1599,7 @@ ACTOR FrozenNazi
 	Death.Breakout:	
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_PlaySound ("IceBreakMedium")
-		TNT1 AAAAA 0 A_CustomMissile ("IceDust", 5, 0, random (0, 360), 2, random (0, 160), SXF_NOCHECKPOSITION)
+		TNT1 AAAAA 0 A_SpawnProjectile("IceDust", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160), SXF_NOCHECKPOSITION)
 		TNT1 AAA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.1, 0, random(0, 10)*0.1, random(1,360), SXF_NOCHECKPOSITION)
 		TNT1 AA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_NOCHECKPOSITION,64)
 		TNT1 AAA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_NOCHECKPOSITION,64)
@@ -1590,14 +1610,14 @@ ACTOR FrozenNazi
 	Death:	
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_PlaySound ("IceBreakMedium")
-		TNT1 AAA 0 A_CustomMissile ("IceBlood", 5, 0, random (0, 360), 2, random (0, 160), SXF_NOCHECKPOSITION)
-		TNT1 AAAAA 0 A_CustomMissile ("IceDust", 5, 0, random (0, 360), 2, random (0, 160), SXF_NOCHECKPOSITION)
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 48, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("XDeath2", 48, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("XDeath3", 48, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAAA 0 A_CustomMissile ("MuchBlood", 48, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_MP40")
+		TNT1 AAA 0 A_SpawnProjectile("IceBlood", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160), SXF_NOCHECKPOSITION)
+		TNT1 AAAAA 0 A_SpawnProjectile("IceDust", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160), SXF_NOCHECKPOSITION)
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnItem("PB_WolfSSdrop")
 		FRNZ C -1
 		//FZD1 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01)
 		Stop
@@ -1628,8 +1648,8 @@ ACTOR BrutalizedNazi1 : BrutalizedASGGuy1
 	Spawn:
 	TNT1 A 0
 	TNT1 A 0 A_Recoil(2)
-	TNT1 A 0 A_CustomMissile ("PB_NaziArm", 35, 0, random (0, 360), 2, random (0, 160))
-    TNT1 AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	Pain:
     NZD1 A 30
 	Goto DieNow
@@ -1641,17 +1661,17 @@ ACTOR BrutalizedNazi1 : BrutalizedASGGuy1
 
 	Death:
 	    TNT1 A 0
-		TNT1 AAAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains2", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains4Blonde", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("PB_XDeathNaziHelmet", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains5", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
-		TNT1 AAAA 0 A_CustomMissile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
-        TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("Brains1", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains2", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_Brains3", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains4Blonde", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHelmet", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains5", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (-10, 10))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SmallBrainPiece", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 46, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+        TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_Recoil(2)
 	    NZD1 B 16
 	    TNT1 A 0
@@ -1660,9 +1680,29 @@ ACTOR BrutalizedNazi1 : BrutalizedASGGuy1
 
 	Death.SSG:
 	XDeath:
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_CustomMissile ("NaziXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_FaceMovementDirection
+		TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		TNT1 A 0 A_SpawnItem ("PB_BigBloodSpot")
+		TNT1 AAAA 0 A_SpawnProjectile("Brains1", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains2", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_Brains3", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains4Blonde", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHelmet", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains5", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (-10, 10))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SmallBrainPiece", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 46, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+        TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("PB_SuperWallRedBlood", 40, 0, angle+random(-15,15), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (-15, 15))
+		TNT1 A 0 A_SpawnProjectile ("PB_NaziArm", 48, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("PB_NaziLeg", 32, 0, Angle+random(-15,15), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160))
+		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("PB_BloodmistBig", 30, 0, random (0, 360), 2, random (20, 90))
         Stop
 
 	Death.Plasma: Death.Plasma2:
@@ -1670,20 +1710,20 @@ ACTOR BrutalizedNazi1 : BrutalizedASGGuy1
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-        TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-        TNT1 A 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-		TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         TNT1 A 0
         Stop
 }}
@@ -1693,11 +1733,11 @@ actor BrutalizedNaziStop: PB_CurbstompedMarine
     States
     {
     Spawn:
-	NZD2 ABC 5 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+	NZD2 ABC 5 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 	NZD3 D -1
        Stop    }}
 	   
-ACTOR BrutalizedNazi2: BrutalizedASGGuy1
+ACTOR BrutalizedNazi2: BrutalizedNazi1
 {
 	States
 	{
@@ -1715,23 +1755,41 @@ ACTOR BrutalizedNazi2: BrutalizedASGGuy1
 		TNT1 A 0
 		TNT1 A 0 A_Recoil(2)
 		NZD1 C 12
-	TNT1 A 0 A_CustomMissile ("PB_NaziArm", 35, 0, random (0, 360), 2, random (0, 160))
-    TNT1 AAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	    TNT1 A 0
 		TNT1 A 0 A_SpawnItem ("BrutalizedNazi3")
 		Stop
-}}
+		
+	Death.SSG:
+	XDeath:
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
+		TNT1 A 0 A_XScream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_FaceMovementDirection
+		TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		TNT1 A 0 A_SpawnItem ("PB_BigBloodSpot")
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("PB_SuperWallRedBlood", 40, 0, angle+random(-15,15), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (-15, 15))
+		TNT1 A 0 A_SpawnProjectile ("PB_NaziArm", 48, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("PB_NaziLeg", 32, 0, Angle+random(-15,15), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160))
+		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("PB_BloodmistBig", 30, 0, random (0, 360), 2, random (20, 90))
+        Stop
+	}
+}
 
 actor BrutalizedNaziStop2: PB_CurbstompedMarine
 {
     States
     {
     Spawn:
-		NZD3 EFG 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+		NZD3 EFG 6 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 		NZD3 H -1
        Stop    }}
 
-ACTOR BrutalizedNazi3: BrutalizedASGGuy1
+ACTOR BrutalizedNazi3: BrutalizedNazi2
 {
 	States
 	{
@@ -1749,24 +1807,41 @@ ACTOR BrutalizedNazi3: BrutalizedASGGuy1
 		TNT1 A 0
 		TNT1 A 0 A_Recoil(2)
 		NZD1 C 12
-		 TNT1 AAAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-    TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeath2", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 	    TNT1 A 0
 		NZD1 EFGH 6
 		TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
 		Stop
-}}
+		
+	Death.SSG:
+	XDeath:
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
+		TNT1 A 0 A_XScream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_FaceMovementDirection
+		TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		TNT1 A 0 A_SpawnItem ("PB_BigBloodSpot")
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("PB_SuperWallRedBlood", 40, 0, angle+random(-15,15), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (-15, 15))
+		TNT1 AA 0 A_SpawnProjectile ("PB_NaziLeg", 32, 0, Angle+random(-15,15), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160))
+		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("PB_BloodmistBig", 30, 0, random (0, 360), 2, random (20, 90))
+        Stop
+	}
+}
 
 actor BrutalizedNaziStop3: PB_CurbstompedMarine
 {
     States
     {
     Spawn:
-		NZD4 AB 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+		NZD4 AB 6 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 		NZD4 C -1
        Stop    }}
 	   
@@ -1793,8 +1868,8 @@ States{Spawn:
         TNT1 A 0 A_SpawnItem ("PB_Nazi", 3)
 		Stop
     Death:
-		TNT1 A 0 A_CustomMissile ("PB_NaziLeg", 5, 0, random (0, 360), 2, random (0, 160))
-		SPOS A 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziLeg", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SPOS A 0 A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
          TNT1 A 1 A_SpawnItem ("DeadNazi_NoLeg", 5)
         Stop
 
@@ -1802,25 +1877,25 @@ States{Spawn:
         TNT1 A 0
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-        TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		EXPL AAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		EXPL AAA 0 A_SpawnProjectile("ExplosionSmoke", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         TNT1 A 0
         Stop
 		
 		Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_CustomMissile ("Instestin", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 		TNT1 AA 0 A_SpawnProjectile ("PB_NaziLeg", 15, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 180))
 		TNT1 A 1 //A_SpawnItem("DeadShotgunguyJustLegsAreLeft")
 		TNT1 A -1 //I'm too fucking lazy to do this shit, so this will be done later.
@@ -1835,10 +1910,10 @@ ACTOR RipNazi: RipSergeant
     States
     {
     Spawn:
-	    TNT1 A 0 A_SpawnItem("BloodSplasher2")
-        TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAAA 0 A_CustomMissile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeathHalfNazi", 32, 0, random (0, 360), 2, random (0, 160))
+	    
+        TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAA 0 A_SpawnProjectile("Instestin2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 A 0 A_SpawnProjectile("XDeathHalfNazi", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	Death:
 	    TNT1 A 0
         Stop
@@ -1923,10 +1998,10 @@ States{Spawn:
         TNT1 A 0 A_SpawnItem ("PB_Nazi", 3)
 		Stop
     Death:
-		//TNT1 A 0 A_CustomMissile ("PB_NaziLeg", 5, 0, random (0, 360), 2, random (0, 160))
-		SPOS AAA 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
-		SPOS AA 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		SPOS A 0 A_CustomMissile ("XDeath5", 5, 0, random (0, 360), 2, random (0, 160))
+		//TNT1 A 0 A_SpawnProjectile("PB_NaziLeg", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SPOS AAA 0 A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SPOS AA 0 A_SpawnProjectile("PB_XDeath2", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SPOS A 0 A_SpawnProjectile("PB_XDeath5", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
          TNT1 A -1 //A_SpawnItem ("DeadShotgunGuy_NoLeg", 5)
         Stop
 
@@ -1934,11 +2009,11 @@ States{Spawn:
         TNT1 A 0
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
-        TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		EXPL AAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAA 0 A_SpawnProjectile("PB_FlyingBlood", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		EXPL AAA 0 A_SpawnProjectile("ExplosionSmoke", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
         TNT1 A 0
         Stop
 }}
@@ -1954,20 +2029,20 @@ ACTOR NaziGotHisLegBlownOff: ZombiemanGotHisLegBlowed
 	Spawn:
 	TNT1 A 0
 	TNT1 A 0 A_PlaySound ("nazi/sufferarm")
-    NAZL AAAAABBCC 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random (0, 360), 2, random (0, 45))
-	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+    NAZL AAAAABBCC 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+	TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 	TNT1 A 0 A_Jump(16, "GotoDeath")
 		
 	Goto Suffer
 	Suffer:
 	    TNT1 A 0
 	    		        
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NAZL EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 45))
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+		TNT1 A 0 
+        NAZL EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+        TNT1 A 0 
 		
-	    NAZL FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 45))
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	    NAZL FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+        TNT1 A 0 
 		
 		TNT1 A 0 A_Jump(12, "LastStand")
 		
@@ -1992,8 +2067,8 @@ ACTOR NaziGotHisLegBlownOff: ZombiemanGotHisLegBlowed
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE",0)
 		TNT1 A 0 A_PlaySound("nazi/burninhell")
 		TNT1 A 0 A_Changeflag("NOBLOOD",1)
-		BURN OPQRSSRRSSRRSSRRSSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN OPQRSSRRSSRRSSRRSSTUV 6 BRIGHT A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		BURN V -1
 		Stop
 				
@@ -2026,8 +2101,8 @@ ACTOR NaziGotHisLegBlownOff: ZombiemanGotHisLegBlowed
 	 Death.Decaptate:
 		TNT1 A 0 A_StopSound(4)
         TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 AA 0 A_CustomMissile ("PB_SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("PB_XDeathNaziHead", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_SmallBrainPiece", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHead", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
 		NAZL GHI 6
@@ -2048,7 +2123,7 @@ Death.Kick:
 Death.Extremepunches:
 Death.Melee:
 		TNT1 A 0 A_StopSound(4)
-        TNT1 A 0 A_CustomMissile ("PB_MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("PB_MuchBlood2", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
 		TNT1 A 0 A_NoBlocking
@@ -2066,11 +2141,11 @@ Death.Melee:
 		TNT1 A 0 A_PlaySound ("misc/xdeath4")
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_FaceTarget
-		TNT1 AAA 0 A_CustomMissile ("PB_XDeath1", 42, 0, random (170, 190), 2, random (10, 60))
-		TNT1 AAA 0 A_CustomMissile ("PB_XDeath3", 42, 0, random (170, 190), 2, random (10, 60))
-		TNT1 A 0 A_CustomMissile ("PB_XDeath2", 42, 0, random (170, 190), 2, random (10, 60))
-		TNT1 A 0 A_CustomMissile ("PB_XDeath4", 42, 0, random (170, 190), 2, random (10, 60))
-        TNT1 A 0 A_CustomMissile ("NaziXDeath", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath4", 42, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 60))
+        TNT1 A 0 A_SpawnProjectile("NaziXDeath", 2, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         Stop
 	}
 }
@@ -2108,32 +2183,32 @@ Height 48
 	Suffer:
 	    TNT1 A 0
 	    
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 48,0)
+        TNT1 A 0 
 		NZ1E ABC 3
         TNT1 A 0 A_SpawnItem ("NashGoreClassicBloodTrailSpawner", 0, 30)
 		NZ1E DDDD 1 A_Wander
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 48,0)
+		TNT1 A 0 
 		NZ1E ABC 3
         TNT1 A 0 A_SpawnItem ("NashGoreClassicBloodTrailSpawner", 0, 30)
 		NZ1E DDDD 1 A_Wander
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 48,0)
+		TNT1 A 0 
 		NZ1E ABC 3
         TNT1 A 0 A_SpawnItem ("NashGoreClassicBloodTrailSpawner", 0, 30)
 		NZ1E DDDD 1 A_Wander
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 48,0)
+		TNT1 A 0 
 		NZ1E ABC 3
         TNT1 A 0 A_SpawnItem ("NashGoreClassicBloodTrailSpawner", 0, 30)
 		NZ1E DDDD 1 A_Wander
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 48,0)
+		TNT1 A 0 
 		NZ1E ABC 3
         TNT1 A 0 A_SpawnItem ("NashGoreClassicBloodTrailSpawner", 0, 30)
 		NZ1E DDDD 1 A_Wander
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 48,0)
+		TNT1 A 0 
 		NZ1E ABC 3
         TNT1 A 0 A_SpawnItem ("NashGoreClassicBloodTrailSpawner", 0, 30)
 		NZ1E D 1 A_Wander
@@ -2172,9 +2247,9 @@ States{Spawn:
 		
 		Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_CustomMissile ("PB_NaziLeg", 5, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("PB_XDeath1", 15, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAAA 0 A_CustomMissile ("PB_BloodMist", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 0 A_SpawnProjectile("PB_NaziLeg", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_BloodMist", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
         TNT1 A 0 A_SpawnItem ("PB_GibsZ")
 		Stop
 		
@@ -2185,17 +2260,14 @@ Actor DeadNazi_Slumped: ZombiemanTorso
 +NOPAIN
 Health 200
 DamageFactor "Head", 15.0
-Height 22
+Height 34
 Radius 6
 States{Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_Recoil(6)
 		N2ST A 6
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
-		TNT1 A 0 A_SpawnItemEx("HeadshotTarget20", 0, 0, 22)
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
+		TNT1 A 0 
 		N2ST A 16
         Loop  
 	LayDown:
@@ -2217,15 +2289,15 @@ States{Spawn:
 		
 	Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AA 0 A_CustomMissile ("PB_NaziArm", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+		TNT1 AA 0 A_SpawnProjectile("PB_NaziArm", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 		TNT1 A 0 A_SpawnItemEx("NaziHeadExplode", 0, 0, 22)
 		TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
 		Stop
@@ -2253,19 +2325,28 @@ States{Spawn:
 	Death.Explosives:
 	Death.ExplosiveImpact:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("NaziXDeath")
+		TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+		TNT1 AA 0 A_SpawnProjectile("PB_NaziArm", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+		TNT1 AA 0 A_SpawnProjectile("PB_NaziLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		Stop	
 	Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AA 0 A_CustomMissile ("PB_NaziArm", 40, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+		TNT1 AA 0 A_SpawnProjectile("PB_NaziArm", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 		TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
 		Stop	
 		}}
@@ -2274,7 +2355,7 @@ ACTOR DyingNaziNoArm : DyingSergeant
 {
 	Game Doom
 	Radius 16
-	Height 28
+	Height 32
 	Health 50
 		PainSound "nazi/pain"
 		PainChance 255
@@ -2314,8 +2395,8 @@ ACTOR DyingNaziNoArm : DyingSergeant
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE",0)
 		TNT1 A 0 A_PlaySound("nazi/burninhell")
 		TNT1 A 0 A_Changeflag("NOBLOOD",1)
-		BURN OPQRSSRRSSRRSSRRSSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN OPQRSSRRSSRRSSRRSSTUV 6 BRIGHT A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		BURN V -1
 		Stop
 				
@@ -2325,13 +2406,13 @@ ACTOR DyingNaziNoArm : DyingSergeant
 			TNT1 A 0 A_PlaySound ("nazi/sufferarm",1)
 			NZD2 A 1 A_Chase
 			TNT1 A 0 A_FaceTarget
-			NZD2 AAAAA 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, 90, 2, random (0, 45))
+			NZD2 AAAAA 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 			TNT1 A 0 A_Jump(16, "Death")
 		Suffer:
-			TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-			NZ41 BBBBB 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, 90, 2, random (0, 45))
-			TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-			NZ41 CCCCC 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, 90, 2, random (0, 45))
+			TNT1 A 0 
+			NZ41 BBBBB 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+			TNT1 A 0 
+			NZ41 CCCCC 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, 90, CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 			TNT1 A 0 A_Jump(12, "LastStand")  
 			TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
 			TNT1 A 0 A_JumpIfInventory("DeathTimer1", 5, "GotoDeath")
@@ -2348,7 +2429,7 @@ ACTOR DyingNaziNoArm : DyingSergeant
 			TNT1 A 0 A_StopSound(1)
 			TNT1 A 0 A_PlaySound("nazi/death")
 			NZ41 D 8
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_SpawnItem ("DeadNazi_NoArm")
 			Stop
 
@@ -2356,40 +2437,40 @@ ACTOR DyingNaziNoArm : DyingSergeant
 			TNT1 A 0 A_StopSound(1)
 			TNT1 A 0 A_PlaySound("misc/xdeath4")
 			TNT1 A 0 A_SpawnItem("NaziHeadExplode", 0, 30)
-			TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
-			N241 DDDDDD 2 A_CustomMissile ("Brutal_liquidblood3", 25, 0, random (0, 360), 2, random (30, 110))
-			NZD3 GGGGGGG 2 A_CustomMissile ("Brutal_liquidblood3", 25, 0, random (0, 360), 2, random (30, 110))
+			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 37, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			N241 DDDDDD 2 A_SpawnProjectile("Brutal_liquidblood3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
+			NZD3 GGGGGGG 2 A_SpawnProjectile("Brutal_liquidblood3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-			NZD3 HHHHHHHHHHHHHHHH 1 A_CustomMissile ("Brutal_liquidblood3", 10, 0, random (0, 360), 2, random (30, 110))
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
+			NZD3 HHHHHHHHHHHHHHHH 1 A_SpawnProjectile("Brutal_liquidblood3", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 			TNT1 A 0 A_SpawnItem ("DeadNaziNZD1H")
 			Stop
 	
 		Death.Decaptate:
 			TNT1 A 0 A_StopSound(1)
 			TNT1 A 0 A_PlaySound("misc/xdeath4")
-			TNT1 A 0 A_SpawnItem("BloodSplasher2")
-			TNT1 AAAAAAAA 0 A_CustomMissile ("SmallSuperGore", 32, 0, random (0, 360), 2, random (10, 170))
-			TNT1 A 0 A_CustomMissile ("PB_XDeathNaziHead", 32, 0, random (0, 360), 2, random (0, 160))
+			
+			TNT1 AAAAAAAA 0 A_SpawnProjectile("SmallSuperGore", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 170))
+			TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHead", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_XScream
-			TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
+			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 37, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_NoBlocking
-			N241 DDDDDD 2 A_CustomMissile ("Brutal_liquidblood3", 25, 0, random (0, 360), 2, random (30, 110))
-			NZD3 GGGGGGG 2 A_CustomMissile ("Brutal_liquidblood3", 25, 0, random (0, 360), 2, random (30, 110))
+			N241 DDDDDD 2 A_SpawnProjectile("Brutal_liquidblood3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
+			NZD3 GGGGGGG 2 A_SpawnProjectile("Brutal_liquidblood3", 25, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-			NZD3 HHHHHHHHHHHHHHHH 1 A_CustomMissile ("Brutal_liquidblood3", 10, 0, random (0, 360), 2, random (30, 110))
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
+			NZD3 HHHHHHHHHHHHHHHH 1 A_SpawnProjectile("Brutal_liquidblood3", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 			TNT1 A 0 A_SpawnItem ("DeadNaziNZD1H")
 			Stop
 	
 		Death.Shotgun:
 			TNT1 A 0 A_StopSound(1)
-			TNT1 A 0 A_CustomMissile ("PB_MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("PB_MuchBlood2", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_PlaySound("nazi/death")
 			TNT1 A 0 ThrustThingZ(0,30,0,1)
 			TNT1 A 0 A_NoBlocking
 			ND11 OP 15
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+			TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 			TNT1 A 0 A_SpawnItem ("DeadNazi_NoArm")
 			Stop
 		 
@@ -2399,20 +2480,20 @@ ACTOR DyingNaziNoArm : DyingSergeant
 			TNT1 A 0 A_XScream
 			TNT1 A 0 A_NoBlocking
 			XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
-			TNT1 A 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("XDeathBurnedArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("XDeathBurnedLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("XDeathBurnedSkull", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("XDeathBurnedMeat2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("PB_XDeathBurnedMeat3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 			XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 A 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("NashGoreBloodParticle1", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
-			TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
-			TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
+			TNT1 AAAAA 0 A_SpawnProjectile("PlasmaParticleX", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+			TNT1 AAA 0 A_SpawnProjectile("BigPlasmaParticleX", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 			TNT1 A 0
 			Stop		 
 		 
@@ -2423,19 +2504,19 @@ ACTOR DyingNaziNoArm : DyingSergeant
 			TNT1 A 0 A_StopSound(1)
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus10Armor")
 			TNT1 A 0 A_XScream
-			TNT1 A 0 A_CustomMissile ("PB_NaziArm", 42, 0, random (0, 360), 2, random (0, 40))
-			TNT1 AAA 0 A_CustomMissile ("PB_Intestine", 32, 0, random (150, 210), 2, random (0, 40))
-			TNT1 AAA 0 A_CustomMissile ("PB_XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
-			TNT1 AAA 0 A_CustomMissile ("PB_XDeath3", 16, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AA 0 A_CustomMissile ("PB_XDeath2", 16, 0, random (130, 210), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("NashgoreBlood", 32, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("PB_SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
+			TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 42, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAA 0 A_SpawnProjectile("PB_Intestine", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 16, 0, random (130, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodParticle1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
 			ZNZ7 A 6 {
 			A_Stop;
-			A_SpawnItem ("GrowingBloodPool");
+			A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
 			}
 		ZNZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (30, 60))
 		ZNZ7 CCC 3 A_SpawnProjectile ("Brutal_liquidblood3", 26, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (10, 40))
@@ -2463,11 +2544,11 @@ Actor DeadNazi_NoArm: DeadShotgunGuy1
     Death.Cut:    
 	Death:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 AAAA 0 A_CustomMissile ("Brains1", 6, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains2", 6, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains3", 6, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains4Blonde", 6, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Brains5", 6, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("Brains1", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains2", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_Brains3", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains4Blonde", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("Brains5", 6, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         TNT1 A 0 A_SpawnItem ("DeadNaziNZD1H", 1)
 		Stop
     Death.Fatality:
@@ -2501,8 +2582,8 @@ States{Spawn:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
 		TNT1 A 0 A_SpawnItem("RipGuts")
-		 TNT1 AA 0 A_CustomMissile ("PB_NaziLeg", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_SpawnProjectile("PB_NaziLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		Stop
 		
 		 Death.Fatality:
@@ -2524,8 +2605,8 @@ States{Spawn:
         TNT1 A 0 A_SpawnItem ("PB_Nazi", 3)
 		Stop
     Death:
-		TNT1 A 0 A_CustomMissile ("PB_NaziLeg", 5, 0, random (0, 360), 2, random (0, 160))
-		SPOS A 0 A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziLeg", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SPOS A 0 A_SpawnProjectile("PB_XDeath1", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
          TNT1 A 1 A_SpawnItem ("DeadNazi_NoLeg", 5)
         Stop
 }}
@@ -2543,48 +2624,30 @@ States{Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_PlaySound("Weapons/NailHitBleed")
 		TNT1 A 0 A_Recoil(15)
-		PNZ1 AA 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
+		PNZ1 AA 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_Recoil(10)
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_Recoil(10)
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_Recoil(10)
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_Recoil(10)
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_Recoil(10)
-		PNZ1 A 4 A_CustomMissile ("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), 2, random (0, 40))
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
+		PNZ1 A 4 A_SpawnProjectile("Brutal_LiquidBlood3", 25, random(-2,2), random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
 		JustHangThere:
 		TNT1 A 0 A_Recoil(6)
 		PNZ1 A 6
-		TNT1 A 0 A_JumpIf(momx < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy < 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momx > 0, "LayDown")
-		TNT1 A 0 A_JumpIf(momy > 0, "LayDown")
+		TNT1 A 0 A_JumpIf(momx != 0 || momy != 0, "LayDown")
 		PNZ1 A 16
         Loop
 		
@@ -2602,25 +2665,25 @@ States{Spawn:
 		Stop	
 	
 	Death:
-	    TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 35, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAAA 0 A_CustomMissile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 A 0 A_CustomMissile ("PB_XdeathNaziHelmet", 72, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (150, 210), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodMuchFaster", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAAA 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AA 0 A_CustomMissile ("PB_NaziArm", 32, 0, random (170, 190), 2, random (0, 40))
+	    TNT1 AAA 0 bright A_SpawnProjectile("PB_SuperWallRedBlood", 35, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("PB_BloodmistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_XdeathNaziHelmet", 72, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_FlyingBloodMuchFaster", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 46, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 AA 0 A_SpawnProjectile("PB_NaziArm", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
         TNT1 A 0 
 		TNT1 A 0 A_NoBlocking
         NZD1 DEFGH 5
 		TNT1 A 0 A_PlaySound("BODYF",6)
 		TNT1 A 0 A_SpawnItem("DeadNaziJustLegsAreLeft")
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		Stop
 		}}
 
@@ -2636,7 +2699,7 @@ ACTOR PinnedNaziTorso : PinnedZombiemanTorso
 	+MISSILE
     +NOTELEPORT
     +MOVEWITHSECTOR
-    +CLIENTSIDEONLY
+    //+CLIENTSIDEONLY
     +RIPPER
     +BLOODLESSIMPACT 
 	-DONTSPLASH
@@ -2647,21 +2710,21 @@ ACTOR PinnedNaziTorso : PinnedZombiemanTorso
 	damagetype Blood
     SeeSound "misc/xdeath4"
     DeathSound "misc/xdeath1"
-	Decal BrutalBloodSuper
+	Decal BloodSuper
 	Mass 1
     States
     {
     Spawn:
-        NZH1 A 4 A_CustomMissile ("Brutal_liquidblood3", 0, 0, random (0, 360), 2, random (0, 360))
+        NZH1 A 4 A_SpawnProjectile("Brutal_liquidblood3", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 A 0 A_JumpIf((MomY == 0), "PinToWall")
 		TNT1 A 0 A_CheckFloor("HitTheFloor")
         Loop
 		
 	PinToWall:
 	Death:
-		TNT1 A 0 A_CustomMissile ("PB_MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("PB_XDeath1", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("PB_SuperWallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 A 0 A_SpawnProjectile("PB_MuchBlood2", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 6, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 A 0 A_PlaySound("Weapons/NailHitBleed")
 	Pinned:
 		TNT1 A 0 A_SpawnItemEx("PinnedNaziTorso_Hanging", 0, -1)
@@ -2691,29 +2754,29 @@ Actor PinnedNaziTorso_Hanging: ZombiemanTorso
 		Hang:
 			TNT1 A 0 A_Recoil(-6)
 			PNZ1 BBBBB 2 {
-				A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 90));
+				A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90));
 				//if(momx < 0 || momx > 0 || momy < 0 || momy > 0) {return state("HitTheFloor");}
 				return state("");
 			}
 			PNZ1 BBBBB 2 {
-				A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 90));
+				A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90));
 				if(momx < 0 || momx > 0 || momy < 0 || momy > 0) {return state("HitTheFloor");}
 				return state("");
 			}
 			TNT1 A 0 A_Recoil(-6)
 			PNZ1 BBBBB 2 {
-				A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 90));
+				A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90));
 				//if(momx < 0 || momx > 0 || momy < 0 || momy > 0) {return state("HitTheFloor");}
 				return state("");
 			}
 			PNZ1 BBBBB 2 {
-				A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 90));
+				A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90));
 				if(momx < 0 || momx > 0 || momy < 0 || momy > 0) {return state("HitTheFloor");}
 				return state("");
 			}
 			TNT1 A 0 A_Recoil(-6)
 			PNZ1 BBBBB 2 {
-				A_CustomMissile ("Brutal_liquidblood3", 12, 0, random (0, 360), 2, random (0, 90));
+				A_SpawnProjectile("Brutal_liquidblood3", 12, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90));
 				//if(momx < 0 || momx > 0 || momy < 0 || momy > 0) {return state("HitTheFloor");}
 				return state("");
 			}
@@ -2729,15 +2792,15 @@ Actor PinnedNaziTorso_Hanging: ZombiemanTorso
 			
 		Death:
 			TNT1 A 0 A_StopSound(6)
-			TNT1 AAA 0 A_CustomMissile ("PB_XDeath1", 32, 0, random (150, 210), 2, random (0, 40))
-			TNT1 AAAAAA 0 A_CustomMissile ("PB_SmallGib", 32, 0, random (150, 210), 2, random (0, 40))
-			TNT1 AAA 0 A_CustomMissile ("PB_Xdeath3", 16, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AA 0 A_CustomMissile ("PB_Xdeath2", 16, 0, random (130, 210), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("NashGoreBloodSpurt", 32, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("PB_SuperWallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
-			TNT1 AAAA 0 A_CustomMissile ("PB_BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
-			TNT1 AA 0 A_CustomMissile ("PB_NaziArm", 15, 0, random (0, 360), 2, random (0, 160))
-			TNT1 A 0 A_CustomMissile ("PB_XDeathNaziHead", 35, 0, random (0, 360), 2, random (0, 160))
+			TNT1 AAA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAAAA 0 A_SpawnProjectile("PB_SmallGib", 32, 0, random (150, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAA 0 A_SpawnProjectile("PB_Xdeath3", 16, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AA 0 A_SpawnProjectile("PB_Xdeath2", 16, 0, random (130, 210), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("NashGoreBloodSpurt", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (170, 190), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+			TNT1 AAAA 0 A_SpawnProjectile("PB_BloodMistBig", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 90))
+			TNT1 AA 0 A_SpawnProjectile("PB_NaziArm", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+			TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHead", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 			Stop
 			
 		HitTheFloor:
@@ -2766,11 +2829,11 @@ States{Spawn:
 		Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 AA 0 A_CustomMissile ("PB_XDeath1", 15, 0, random (0, 360), 2, random (0, 180))
-		TNT1 A 0 A_CustomMissile ("PB_XDeath2", 15, 0, random (0, 360), 2, random (0, 180))
-		TNT1 A 0 A_CustomMissile ("PB_XDeath3", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		TNT1 AAAAA 0 A_SpawnProjectile ("NashGoreClassicBloodTrail", 0, 0, random (0, 180), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 180))
-		TNT1 AAAA 0 A_CustomMissile ("PB_BloodMist", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_BloodMist", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
         TNT1 A 0 A_SpawnItem ("PB_GibsZ")
 		Stop
 		
@@ -2824,15 +2887,15 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 	Death.cut:
 	Death.saw:
 		TNT1 A 0 A_StopSound(1)
-        TNT1 AA 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_SpawnProjectile("PB_MuchBlood2", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
   	    TNT1 O 0 A_NoBlocking
-		TNT1 A 0 A_CustomMissile ("PB_XDeathHalfNazi1", 0, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 AAAA 0 A_CustomMissile ("Brutal_liquidblood3", 30, 0, random (0, 360), 2, random (0, 40))
-		NZD1 FG 9 A_CustomMissile ("Brutal_liquidblood3", 30, 0, random (0, 360), 2, random (0, 40))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnProjectile("PB_XDeathHalfNazi1", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+	    TNT1 AAAA 0 A_SpawnProjectile("Brutal_liquidblood3", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		NZD1 FG 9 A_SpawnProjectile("Brutal_liquidblood3", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		NZD1 HHHHHHHHHHHHHHHH 1 {
-				A_SpawnProjectile ("Brutal_LiquidBlood2", random(28, 34), 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60));
+				A_SpawnProjectile ("PB_SquirtingBloodTrail", random(28, 34), 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (30, 60));
 				A_SpawnItemEx("NashGoreBloodSpurt",
 				frandom(-5, 5), frandom(-5, 5), frandom(30, 32),
 				frandom(-2, 2), frandom(-2, 2), frandom(4, 8),
@@ -2857,55 +2920,55 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 	Suffer:
 	    TNT1 A 0
         
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_CustomMissile ("PB_BloodmistSmall", 18, -5, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		TNT1 A 0 A_SpawnProjectile("PB_BloodmistSmall", 18, -5, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 
 
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+        TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_CustomMissile ("PB_BloodmistSmall", 18, -5, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		TNT1 A 0 A_SpawnProjectile("PB_BloodmistSmall", 18, -5, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+		TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-				TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+				TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-				TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+				TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-				TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
+				TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
 		
-				TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D FFFFF 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_CustomMissile ("PB_BloodmistSmall", 18, -5, random (0, 360), 2, random (0, 160))
+				TNT1 A 0 
+        NZ0D FFFFF 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		TNT1 A 0 A_SpawnProjectile("PB_BloodmistSmall", 18, -5, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
-				TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
-        NZ0D EEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_CustomMissile ("PB_BloodmistSmall", 18, -5, random (0, 360), 2, random (0, 160))
+				TNT1 A 0 
+        NZ0D EEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 20, 0, random(0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 45))
+		TNT1 A 0 A_SpawnProjectile("PB_BloodmistSmall", 18, -5, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		Goto Death
 	
 	Death.Cut:
@@ -2913,7 +2976,7 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 	Death:
 		TNT1 A 0 A_StopSound(1)
 		NZ0D G 6 A_Playsound("nazi/death")
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_SpawnItem ("DeadNazi_IntestinesRipped")
 		Stop
 		
@@ -2921,12 +2984,12 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 	Death.Minorhead:
 		TNT1 A 0 A_StopSound(1)
 		TNT1 A 0 A_SpawnItem("NaziHeadExplode", 0, 30)
-		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile("BrainBlood", 37, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
-        NZ0D HHHHIIII 2 A_CustomMissile ("Brutal_liquidblood3", 30, 0, random (0, 360), 2, random (0, 90))
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-		NAZH EEEEEEEEEEEEEEEEEEEE 2 A_CustomMissile ("Brutal_liquidblood3", 10, 0, random (0, 360), 2, random (0, 90))		
+        NZ0D HHHHIIII 2 A_SpawnProjectile("Brutal_liquidblood3", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
+		NAZH EEEEEEEEEEEEEEEEEEEE 2 A_SpawnProjectile("Brutal_liquidblood3", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))		
         NAZH E -1 
 		Stop
 
@@ -2934,13 +2997,13 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 	Death.Decaptate:
 		TNT1 A 0 A_StopSound(1)
         TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 A 0 A_SpawnItem("BloodSplasher2")
-		TNT1 A 0 A_CustomMissile ("PB_XDeathNaziHead", 35, 0, random (0, 360), 2, random (30, 110))
+		
+		TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHead", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 110))
 		TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
-        NZ0D HHHHIIII 2 A_CustomMissile ("Brutal_liquidblood3", 35, 0, random (0, 360), 2, random (0, 90))
-		NAZH EEEEEEEEEEEEEEEEEEEE 1 A_CustomMissile ("Brutal_liquidblood3", 10, 0, random (0, 360), 2, random (0, 90))
+        NZ0D HHHHIIII 2 A_SpawnProjectile("Brutal_liquidblood3", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
+		NAZH EEEEEEEEEEEEEEEEEEEE 1 A_SpawnProjectile("Brutal_liquidblood3", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 90))
         NAZH E -1
 		Stop
 
@@ -2949,7 +3012,7 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 	Death.Extremepunches:
 	Death.Melee:
 		TNT1 A 0 A_StopSound(1)
-        TNT1 A 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("PB_MuchBlood2", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
 		TNT1 A 0 A_NoBlocking
@@ -2958,7 +3021,7 @@ ACTOR NaziDyingAfterFatality: DyingNaziNoArm
 		Stop
 		 
 		 Death.Fatality:
-		 TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+		 TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
 		Goto XDeath
 
 	}
@@ -3063,7 +3126,6 @@ MONSTER
 +LOOKALLAROUND
 //Radius 16
 	//Height 32
-BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
 States
 	{
 	Spawn:
@@ -3071,22 +3133,22 @@ States
 	Goto See
 	
 	See:
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS AAAAA 1 A_Chase
 	Loop
 	
 	Missile:
 	TNT1 A 0
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+    TNT1 A 0 
 	TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 24, 18, 15, 0)
     TNT1 A 0 A_PlaySound("LUGFIRE")
 	NZLS B 6 BRIGHT {
@@ -3096,13 +3158,13 @@ States
     TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 20,0)
 	
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+    TNT1 A 0 
 	TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 24, 18, 15, 0)
     TNT1 A 0 A_PlaySound("LUGFIRE")
 	NZLS B 6 BRIGHT {
@@ -3112,13 +3174,13 @@ States
     TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 20,0)
 	
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+    TNT1 A 0 
 	TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 24, 18, 15, 0)
     TNT1 A 0 A_PlaySound("LUGFIRE")
 	NZLS B 6 BRIGHT {
@@ -3127,11 +3189,11 @@ States
 		}
     TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 20,0)
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+    TNT1 A 0 
 	TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 24, 18, 15, 0)
     TNT1 A 0 A_PlaySound("LUGFIRE")
 	NZLS B 6 BRIGHT {
@@ -3140,17 +3202,17 @@ States
 		}
     TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 20,0)
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+    TNT1 A 0 
 	TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 24, 18, 15, 0)
     TNT1 A 0 A_PlaySound("LUGFIRE")
 	NZLS B 6 BRIGHT {
@@ -3160,13 +3222,13 @@ States
     TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 20,0)
 	
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-    TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+    TNT1 A 0 
 	TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 24, 18, 15, 0)
     TNT1 A 0 A_PlaySound("LUGFIRE")
 	NZLS B 6 BRIGHT {
@@ -3175,13 +3237,13 @@ States
 		}
     TNT1 A 0 A_SpawnItem ("Mp40CaseSpawn", 0, 20,0)
 	
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
-	TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 28,0)
+	TNT1 A 0 
 	NZLS A 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
 	TNT1 A 0 A_CHangeFlag("SHOOTABLE", 0)
@@ -3195,16 +3257,16 @@ States
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE",0)
 		TNT1 A 0 A_PlaySound("nazi/burninhell")
 		TNT1 A 0 A_Changeflag("NOBLOOD",1)
-		BURN OPQRSSRRSSRRSSRRSSTUV 6 BRIGHT A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
-		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
+		BURN OPQRSSRRSSRRSSRRSSTUV 6 BRIGHT A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 A_SpawnProjectile("PlasmaSmoke", 8, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		BURN V -1
 		Stop
 		
 	Death.MinorHead:
 	Death.Head:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 AA 0 A_CustomMissile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAA 0 A_CustomMissile ("BrainBlood", 37, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_SmallBrainPiece", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAA 0 A_SpawnProjectile("BrainBlood", 37, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem("NaziHeadExplode")
 		TNT1 A 0 A_NoBlocking
 		NAZL GHI 6
@@ -3216,7 +3278,7 @@ States
 
 ACTOR StompedNazi: DeadNazi_NoLeg
 {Health 300 States{Pain:
-		TNT1 AAAA 0 A_CustomMissile ("Brutal_liquidblood3", 15, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAA 0 A_SpawnProjectile("Brutal_liquidblood3", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
 		Goto Spawn
 		Spawn:
         N2CB F -1
@@ -3236,8 +3298,8 @@ ACTOR BrutalizedNazi_alt1 : BrutalizedASGGuy_alt1
 	Spawn:
 	TNT1 A 0
 	TNT1 A 0 A_Recoil(2)
-	TNT1 A 0 A_CustomMissile ("PB_NaziArm", 35, 0, random (0, 360), 2, random (0, 160))
-    TNT1 AAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+    TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	Pain:
     NAZ7 A 40
 	Goto DieNow
@@ -3249,8 +3311,8 @@ ACTOR BrutalizedNazi_alt1 : BrutalizedASGGuy_alt1
 
 	Death:
 	    TNT1 A 0
-		TNT1 AAAAA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("PB_NaziArm", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_NaziArm", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_Recoil(2)
 	    NAZ9 A 2
 	    TNT1 A 0
@@ -3262,7 +3324,7 @@ ACTOR BrutalizedNazi_alt1 : BrutalizedASGGuy_alt1
 		TNT1 A 0 A_XScream
 
 		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_CustomMissile ("NaziXDeath", 0, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("NaziXDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         Stop
 }}
 
@@ -3271,7 +3333,7 @@ actor BrutalizedNaziStop_alt1: PB_CurbstompedMarine
     States
     {
     Spawn:
-	NZD2 BC 5 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+	NZD2 BC 5 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 	NZD3 D -1
        Stop    }}
 	   
@@ -3298,7 +3360,7 @@ ACTOR BrutalizedNazi2_alt1: BrutalizedNazi_alt1
 	TNT1 A 0 A_SpawnItem ("BrutalizedNaziStop2_alt1")
 	Stop
 	TNT1 A 0
-	TNT1 A 0 A_CustomMissile ("PB_XDeathNaziHelmet", 0, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnProjectile("PB_XDeathNaziHelmet", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 	TNT1 A 0 A_SpawnItem("BrutalizedNaziStop2_alt2")
 	Stop
 	
@@ -3317,7 +3379,7 @@ actor BrutalizedNaziStop2_alt1: PB_CurbstompedMarine
     States
     {
     Spawn:
-NAZ8 AD 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+NAZ8 AD 6 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 NAZ8 F -1
        Stop    }}
 	   
@@ -3326,7 +3388,7 @@ actor BrutalizedNaziStop2_alt2: PB_CurbstompedMarine
     States
     {
     Spawn:
-NAZ8 AD 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+NAZ8 AD 6 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 NAZ8 E -1
        Stop    }}
 	   
@@ -3347,10 +3409,10 @@ ACTOR BrutalizedNAZI3_alt1: BrutalizedNazi_alt1
 	Death:
 	    TNT1 A 0
 		TNT1 A 0 A_Recoil(2)
-	TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AA 0 A_CustomMissile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("XDeath2", 40, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("PB_XDeath2", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 		TNT1 A 0 A_SpawnItem ("BrutalizedNAZI4_alt1")
 		Stop
@@ -3361,7 +3423,7 @@ actor BrutalizedNaziStop3_alt1: PB_CurbstompedMarine
     States
     {
     Spawn:
-NAZ9 AB 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+NAZ9 AB 6 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 NAZ9 C -1
        Stop    }}
   
@@ -3370,7 +3432,7 @@ actor BrutalizedNAZI4_alt1: PB_CurbstompedMarine
     States
     {
     Spawn:
-NAZ9 DD 12 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+NAZ9 DD 12 A_SpawnItem("PB_FlyingBlood",0,5,0,1)
 NAZ9 EF 7
 NAZ9 F -1
        Stop    }}//DSFASGGuy1

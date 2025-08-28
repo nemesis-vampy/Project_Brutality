@@ -9,7 +9,7 @@ class PB_ZombieXDeath : PB_GibBase
 		Mass 1;
 		Decal "BloodSuper";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -60,7 +60,7 @@ class PB_ZombieXDeathNoHead : PB_GibBase
 		Mass 1;
 		Decal "BloodSuper";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -110,7 +110,7 @@ class PB_HelmetZombieXDeath : PB_GibBase
 		Mass 1;
 		Decal "BloodSuper";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
@@ -152,10 +152,14 @@ class PB_HelmetZombieXDeath : PB_GibBase
 
 class PB_ZombiemanHeadExplode: PB_ZombieXDeath
 {
+    Default {
+        Height 0;
+        Radius 0;
+    }
     States
     {
 		Spawn:
-			TNT1 A 0 A_StartSound("misc/xdeath4");
+			TNT1 A 0 NoDelay A_StartSound("misc/xdeath4");
 			TNT1 A 0 A_StartSound("gore/headshot", 2);
 			TNT1 AAAAA 0 A_SpawnProjectile ("PB_BloodmistBig", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAA 0 A_SpawnProjectile ("NashGoreBloodSpurt", 0, 0, random (0, 360), 2, random (30, 90));
@@ -185,7 +189,7 @@ class PB_CarbineZombieXDeath : PB_GibBase
 		Mass 1;
 		Decal "BloodSuper";
 		BounceFactor 0.5;
-		+DOOMBOUNCE;
+		+BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
 		+MISSILE;
 		+NOBLOCKMAP;
 		+NOTELEPORT;

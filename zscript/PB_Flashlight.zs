@@ -1,13 +1,30 @@
-//Adapted from Flashlight++, available at https://forum.zdoom.org/viewtopic.php?t=75585
+/* Flashlight++, an extended version of Flashlight+ with extra customizability.
+Copyright (C) 2024  generic name guy
 
-//Light
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+
+// Modified version of Flashlight++, available at https://forum.zdoom.org/viewtopic.php?t=75585
+// Adapted for Project Brutality by generic name guy
+
+
+// Light
 class PB_FPP_Light : Spotlight
 {
 	Default 
 	{
 		+NOINTERACTION;
-		+DYNAMICLIGHT.ATTENUATE;
+		// +DYNAMICLIGHT.ATTENUATE;
 	}
 	
 	PlayerPawn toFollow;
@@ -18,16 +35,15 @@ class PB_FPP_Light : Spotlight
 	bool thisIsLight2;
 	
 	const spIntensity = sp2Intensity;
-	const spInnerAngle = 35.0;
-	const spOuterAngle = 40.0;
+	const spInnerAngle = 0.0;
+	const spOuterAngle = 60.0;
+	const beamSpillColor = 0x8086A3;
 	
 	const sp2Intensity = 584.0;
-	const sp2InnerAngle = 0.0;
+	const sp2InnerAngle = 10.0;
 	const sp2OuterAngle = 30.0;
+	const beamColor = 0xEBEBEB;
 	
-	const beamColor = 0xFFF4DA;
-	
-	const darkenSpillMod = 3;
 	
 	//This is run whenever the flashlight is turned on.
 	PB_FPP_Light Init(PlayerPawn p, bool second)
@@ -36,17 +52,10 @@ class PB_FPP_Light : Spotlight
 		toInfo = p.player;
 		thisIsLight2 = second; //ignore monster alerting on the second light for optimization purposes
 		
-		if(second) {
+		if(second)
 			baseColor = beamColor;
-			bNOSHADOWMAP = true;
-		}
-		else {
-			fCol = beamColor;
-			baseColor = color(255, 
-			fCol.r / darkenSpillMod, 
-			fCol.g / darkenSpillMod, 
-			fCol.b / darkenSpillMod);
-		}
+		else
+			baseColor = beamSpillColor;
 		
 		args[0] = baseColor.r;
 		args[1] = baseColor.g;
@@ -67,16 +76,16 @@ class PB_FPP_Light : Spotlight
     	if (toFollow && toFollow.player)
     	{
     		//console.printf("\cax: %f\cj, \cdy: %f", (90 + -abs(toFollow.pitch)) / 90.0, -toFollow.Pitch / 90.0);
-        	A_SetAngle(toFollow.angle, SPF_INTERPOLATE);
+        	A_SetAngle(toFollow.angle - 1.5, SPF_INTERPOLATE);
         	A_SetPitch(toFollow.pitch, SPF_INTERPOLATE);
         	A_SetRoll(toFollow.roll, SPF_INTERPOLATE);
         	
-        	SetOrigin(toFollow.pos + (RotateVector((offset.x, offset.y * ((90 + -abs(toFollow.pitch)) / 90.0)), toFollow.angle - 90.0), toFollow.player.viewheight + offset.z + (offset.y * (-toFollow.Pitch / 90.0))), true);
+        	SetOrigin(toFollow.pos + (RotateVector((offset.x, offset.y * cos(toFollow.Pitch)), toFollow.angle - 90.0), toFollow.player.viewheight + offset.z + (offset.y * -sin(toFollow.Pitch))), true);
         }
         
         //BD:BE monster alerting stuff, this was a nightmare to implement
         //Credits to Blackmore1014 for this
-        if(!thisIsLight2 && gametic % 15 == 0 && SpotOuterAngle > 0)
+        if(!thisIsLight2 && level.time >= 5 * TICRATE && gametic % 15 == 0 && SpotOuterAngle > 0)
         {
 		    double cosBeamAngle = cos(SpotOuterAngle);
 			double distanceToWake = args[3] / sqrt(1.0 - cosBeamAngle);
@@ -111,8 +120,7 @@ class PB_FPP_Light : Spotlight
 	}
 }
 
-//Holder
-
+// Holder
 class PB_FPP_Holder : Inventory 
 {
 	PB_FPP_Light light1;
@@ -124,16 +132,19 @@ class PB_FPP_Holder : Inventory
 	const debuggerMode = 0;
 	
 	const flashlightChargeMax = 100.0;
+	
 	//100 / 1.1111 = 90 seconds, not exact but you can't tell
 	const flashlightDrainTime = 1.1111 / float(ticrate); 
+	
 	//100 / 25.0 = 4 seconds
 	const flashlightChargeTime = 25.0 / float(ticrate);
+	
 	//100 / 12.5 = 8 seconds
 	const flashlightChargeTimeSlow = 12.5 / float(ticrate);
 	
 	double SimpleSpline(double value)
 	{
-		double valueSquared = value * value;
+		double valueSquared = value ** 2;
 		
 		// Nice little ease-in, ease-out spline-like curve
 		return (3 * valueSquared - 2 * valueSquared * value);
@@ -194,9 +205,9 @@ class PB_FPP_Holder : Inventory
 			
 			flScale = clamp(flScale, 0.0, 1.0);
 			
-			if(flScale < 0.5)
+			if(flScale < 0.35)
 			{
-				double flFlicker = frandom(-1.0, 1.0);
+				double flFlicker = cos(gametic * 343.775) * sin(gametic * 859.437);
 				
 				if(flFlicker > 0.25 && flFlicker < 0.75)
 				{
@@ -271,7 +282,10 @@ class PB_FPP_Holder : Inventory
 		{
 			Disable();
 			flOutOfBatteryPenalty = true;
-			owner.A_StartSound("PB/FlashlightOff", CHAN_AUTO);
+			
+			owner.A_StartSound("PLSOFF", CHAN_AUTO);
+			owner.A_StartSound("BEPBEP", CHAN_AUTO);
+			owner.A_StartSound("weapons/plasma/fancybutton", CHAN_AUTO);
 		}
 	}
 	
@@ -356,8 +370,7 @@ class PB_FPP_Holder : Inventory
 	}
 }
 
-//Handler
-
+// Handler
 extend class PB_EventHandler
 {
 	PB_FPP_Holder setupFlashlightHolder(PlayerPawn p)
