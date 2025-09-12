@@ -522,7 +522,6 @@ server	noarchive	bool	V5_Mlock	= False;
 ////////////////////////////////
 
 user bool pb_weapon_crosshairs = false;
-server bool pb_ScaleXWeapons = true;
 
 ////////////////////////////////////
 // Generic's HUD
@@ -639,3 +638,5 @@ user int pb_gunsmoketype = 0;
 server bool PB_MP_MovementTesting = false;
 cheat server bool pb_forcespmovement = false;
 HandlerClass(PB_CallSignHandler) user string pb_mpcallsign = "PB3";
+
+server int PB_PixelRenderingFix = 1;
