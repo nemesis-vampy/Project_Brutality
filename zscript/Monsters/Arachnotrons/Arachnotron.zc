@@ -703,7 +703,7 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 		+THRUSPECIES;
 		+MTHRUSPECIES;
 		renderstyle "Add";
-		Obituary "$OB_MPPLASMARIFLE";
+		Obituary "$OB_BABY";
     }
 	
 		override void BeginPlay()
@@ -1367,7 +1367,7 @@ Class ArachnoPlasma_Ball : PB_Monster_Projectile
 		Scale 0.19;
 		DeathSound "PlasmaExp";
 		SeeSound "PlasmaFire";
-		Obituary "$OB_MPPLASMARIFLE";
+		Obituary "$OB_BABY";
 	}
 	
 
