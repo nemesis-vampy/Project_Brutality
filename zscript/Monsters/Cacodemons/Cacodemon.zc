@@ -1523,7 +1523,7 @@ class LightningBolt : Actor
 	Spawn:
 		//LTNG B 4 BRIGHT;
 		LTNA BDFH 1 BRIGHT Light("PB_Lightning_Bolt");
-		TNT1 A 0 A_Explode(random(24,36),90, XF_CIRCULAR | XF_NOTMISSILE ,fulldamagedistance:60,damagetype:"Plasma");
+		TNT1 A 0 A_Explode(random(12,24),90, XF_CIRCULAR | XF_NOTMISSILE ,fulldamagedistance:60,damagetype:"Plasma");
 		LTNA JLNPRTVXZ 1 BRIGHT;
 		Stop;
 
@@ -1618,7 +1618,7 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
             }
             else
             {
-                Console.Printf("Failed to spawn orbiter %d", i);
+                //Console.Printf("Failed to spawn orbiter %d", i);
             }
         }
     }
@@ -1705,18 +1705,18 @@ void LaunchOrbiter(int i)
     if (self.target && self.target.target)
     {
         Vector3 direction = (self.target.target.pos - orb.pos).Unit();
-        if (direction.Length() > 0) orb.vel = direction * 30.0; // Guard against zero vector
-        else orb.vel = (30.0, 0.0, 0.0); // Fallback direction
+        if (direction.Length() > 0) orb.vel = direction * 16.0; // Guard against zero vector
+        else orb.vel = (16.0, 0.0, 0.0); // Fallback direction
     }
     else if (lastKnownTarget)
     {
         Vector3 direction = (lastKnownTarget.pos - orb.pos).Unit();
-        if (direction.Length() > 0) orb.vel = direction * 30.0; // Guard against zero vector
-        else orb.vel = (30.0, 0.0, 0.0); // Fallback direction
+        if (direction.Length() > 0) orb.vel = direction * 16.0; // Guard against zero vector
+        else orb.vel = (16.0, 0.0, 0.0); // Fallback direction
     }
     else
     {
-        orb.vel = (30.0, 0.0, 0.0);
+        orb.vel = (16.0, 0.0, 0.0);
     }
 
     // 💥 Remove from orbiting system
@@ -1776,7 +1776,7 @@ class PB_CacodemonBall : Actor Replaces CacodemonBall
 		DeathSound "CacoBallImpact";
 		Radius 6;
 		Height 8;
-		Speed 22;
+		Speed 12;
 		FastSpeed 20;
 		DamageFunction cacodemonDamage();
 		RenderStyle "Add";

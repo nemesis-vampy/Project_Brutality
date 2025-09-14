@@ -1015,6 +1015,12 @@ OptionMenu "WeaponVisuals"
 	Title "Weapon Visual Options"
 	Position -32
 	
+	StaticText	"Sprite Rendering", 1
+	Option		"Fix GZDooM archaic rectangular pixels", "PB_PixelRenderingFix", "PixelFixOptions"
+	StaticText	"Because basically, GZDooM has archaic rendering code designed for 4:3 monitors of the old era.", 1
+	StaticText	"This isn't needed anymore, and really only results in weapon sprites being rendered stretched.", 1
+	StaticText	"Pixels no longer being squares and what not, so we forcefully fix it for the weapon sprites.", 1
+	StaticText 	""
 	StaticText	"Bobbing", 1
 	ZMoveSlider	"Walk/Run View Bobbing",				"Adjust view bobbing's intensity when moving",											"movebob",					0.0,	1.0,	0.1
 	ZMoveSlider	"Still View Bobbing",					"Adjust view bobbing's intensity when not moving",										"stillbob",					0.0,	1.0,	0.1
@@ -1075,6 +1081,13 @@ OptionValue "Speedometer"
 	0, "Off"
 	1, "Doom Units"
 	2, "Quake Units"
+}
+
+OptionValue "PixelFixOptions"
+{
+	0, "Remove 20% stretch"
+	1, "Counteract 20% stretch"
+	2, "You like your sprites rendering wrong???"
 }
 
 OptionMenu "GoreDebrisMenu"

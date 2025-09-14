@@ -2436,13 +2436,21 @@ action int getReadyFlags(int weapflags, bool noReload)
 			player.WeaponState |= WF_WEAPONBOBBING;
 		}
 		
-		if(pb_ScaleXWeapons)
+		switch (PB_PixelRenderingFix)
 		{
-			WeaponScaleX = 1.2;
-		}
-		else
-		{
-			WeaponScaleX = 1;
+			case 0:
+				WeaponScaleY = 1.0; 
+				WeaponScaleX = 1.0; //remove 20% stretch (HOW THE ENGINE SHOULD BE NOWADAYS ANYWAYS IF NOT ON 4:3)
+				break;
+			default:
+			case 1:
+				WeaponScaleY = 1.2; 
+				WeaponScaleX = 1.2; //counter act 20% stretch (THE INTENDED PB VISUALS)
+				break;
+			case 2:
+				WeaponScaleY = 1.2; 
+				WeaponScaleX = 1.0; //garbo bullshit 4:3 forced rendering, will need to see about enabling this automatically if on 4:3 resolution
+				break;
 		}
 	}
 	
