@@ -703,7 +703,7 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 		+THRUSPECIES;
 		+MTHRUSPECIES;
 		renderstyle "Add";
-		Obituary "$OB_MPPLASMARIFLE";
+		Obituary "$OB_BABY";
     }
 	
 		override void BeginPlay()
@@ -1279,7 +1279,7 @@ class Shield : Actor
 			if (owner != null)
 			{
 				owner.shieldActive = true;
-				owner.bShootable = false;
+				//owner.bShootable = false;
 				owner.bNopain = true;
 
 			}
@@ -1296,7 +1296,7 @@ class Shield : Actor
             if (owner != null)
             {
                 owner.shieldActive = false;
-				owner.bShootable = true;
+				//owner.bShootable = true;
 				owner.bNopain = false;
 
             }
@@ -1367,7 +1367,7 @@ Class ArachnoPlasma_Ball : PB_Monster_Projectile
 		Scale 0.19;
 		DeathSound "PlasmaExp";
 		SeeSound "PlasmaFire";
-		Obituary "$OB_MPPLASMARIFLE";
+		Obituary "$OB_BABY";
 	}
 	
 

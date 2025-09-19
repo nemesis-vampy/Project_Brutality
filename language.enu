@@ -385,3 +385,6 @@ PB_CRYO_CLS = "Classic (Instant)";
 PB_SSG_RNDSPWN = "SSG-class weapons randomly replace Pump Shotgun";
 
 PB_CRYO_CLS = "Classic (Instant)";
+
+// Player Obituaries
+OB_BABY = "%o was electroboomed by an Arachnotron.";
