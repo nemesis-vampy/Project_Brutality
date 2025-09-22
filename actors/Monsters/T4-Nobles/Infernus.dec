@@ -28,8 +28,8 @@ Actor PB_Infernus : PB_Baron //Replaces BaronofHell
 	// 			A_Stop;
 				A_Stopsound;
 				A_FaceTarget;
-				A_NoBlocking;
-				A_BossDeath;
+				A_NoBlocking(false);
+				//A_BossDeath;
 			}
 			BRUS EF 4 
 			TNT1 A 0 A_Pain

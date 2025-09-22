@@ -43,7 +43,7 @@ ACTOR PB_SufferingElemental : PB_Elemental //Replaces PainElemental
 		TNT1 A 0 {
  			A_Stopsound;
 			A_FaceTarget;
-			A_NoBlocking;
+			A_NoBlocking(false);
 		}
 		PL3M DE 4 
 		PL3M G 21 A_Pain

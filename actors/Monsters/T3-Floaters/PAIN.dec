@@ -42,7 +42,7 @@ ACTOR PB_PainElemental : PB_Elemental{//Replaces PainElemental
 		TNT1 A 0 {
 			A_Stopsound;
 			A_FaceTarget;
-			A_NoBlocking;
+			A_NoBlocking(false);
 		}
 		PAIN DE 4 
 		PAIN G 21 A_Pain

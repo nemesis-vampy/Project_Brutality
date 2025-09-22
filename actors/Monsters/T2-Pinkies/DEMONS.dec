@@ -82,7 +82,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 // 			A_Stop;
  			A_Stopsound;
 			A_FaceTarget;
-			A_NoBlocking;
+			A_NoBlocking(false);
 		}
 		SARG EF 4 
 		TNT1 A 0 A_Pain
@@ -887,7 +887,7 @@ States
 		TNT1 A 0 {
  			A_Stopsound;
 			A_FaceTarget;
-			A_NoBlocking;
+			A_NoBlocking(false);
 		}
 		SG1A EF 4 
 		TNT1 A 0 A_Pain

@@ -59,7 +59,7 @@ ACTOR PB_CyberPaladin //Replaces HellKnight
 	// 			A_Stop;
 				A_Stopsound;
 				A_FaceTarget;
-				A_NoBlocking;
+				A_NoBlocking(false);
 			}
 			HPAL MN 4 
 			TNT1 A 0 A_Pain

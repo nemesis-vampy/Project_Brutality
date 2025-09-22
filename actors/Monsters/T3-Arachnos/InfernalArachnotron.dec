@@ -34,7 +34,7 @@ ACTOR PB_InfernalArachnotron: Arachnotron //replaces Arachnotron
 		TNT1 A 0 {
  			A_Stopsound;
 			A_FaceTarget;
-			A_NoBlocking;
+			A_NoBlocking(false);
 		}
 		RSPI AG 4 
 		TNT1 A 0 A_Pain
