@@ -603,7 +603,7 @@ class PB_Baron1 : PB_Monster
             Goto Missile;
 
 		Death.Execution:
-            TNT1 A 0 { A_Stopsound(); A_FaceTarget(); A_NoBlocking(); }
+            TNT1 A 0 { A_Stopsound(); A_FaceTarget(); A_NoBlocking(false); }
             BTS3 AB 4;
             TNT1 A 0 A_Pain;
             BOSS H 21;

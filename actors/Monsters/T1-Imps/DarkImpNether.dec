@@ -68,7 +68,7 @@ actor PB_DarkImpNether : PB_Monster //Replaces DoomImp
 // 			A_Stop;
  			A_Stopsound;
 			A_FaceTarget;
-			A_NoBlocking;
+			A_NoBlocking(false);
 		}
 		DRKF IJ 4 
 		TNT1 A 0 A_Pain
