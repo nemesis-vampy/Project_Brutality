@@ -53,8 +53,8 @@ Class PB_Arachnotron1 : PB_Monster
 		suppressiveOffZ = 25;
         suppressiveOffXY = 0;
         suppressiveMissile = "ArachnoRailGun";
-		suppressLimit = 8;
-		suppressLimit2 = 15;
+		suppressLimit = 5;
+		suppressLimit2 = 10;
 		shieldActive = false;
 	}
 		
@@ -160,6 +160,7 @@ Class PB_Arachnotron1 : PB_Monster
 		GoTo See;
 
 	Missile:
+		// Turning off Shield for now.
 		//TNT1 A 0 A_JumpIf(random(0, 100) < 80 && FirstTime, "Shield");
 //		TNT1 A 0 {{SetState(FindState("Arty"));}}   /// Setting direct state is for debugging a state/projectile
 		BSPI A 2 BRIGHT A_FaceTarget;
