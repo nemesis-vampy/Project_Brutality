@@ -1537,6 +1537,7 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
        const PI = 3.14159265;
     bool isAlive;
     int startTime;
+	bool enableOrbiter; // Easy way to turn the orbiter off for now.
     
     // Set full orbit duration in tics.
     const orbitDurationTics = 35;  // A full orbit will take 35 tics.
@@ -1586,8 +1587,9 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
 		{
 			lastKnownTarget = self.target.target;
 		}
-
 		
+		
+		enableOrbiter = false; //Turning off for testing.
 		isAlive = true;
         startTime = level.time;
 		initialVelocity = vel.Length() > 0 ? vel.Length() : 12; // Default to Speed if vel is zero (edit by leviathan)
@@ -1596,6 +1598,7 @@ class PB_CacodemonBall2 : PB_Monster_Projectile
 		checkDistanceTimer = 5;
 		launchStartTime = -1;
 
+		if (!enableOrbiter) return; // Quick way to turn Orbiters off.
         double centerX = self.pos.x;
         double centerY = self.pos.y;
         for (int i = 0; i < 3; i++)
