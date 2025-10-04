@@ -105,7 +105,7 @@ Class PB_Arachnotron1 : PB_Monster
 		BSPI A 1;
 
 	Stand:
-		BSPI A 10 A_Look;
+		BSPI A 10 A_Look();
 		Loop;
 
 	See:
@@ -138,7 +138,7 @@ Class PB_Arachnotron1 : PB_Monster
 		BSPI H 2 BRIGHT {self.suppressiveOffZ = 25; self.suppressiveOffXY =  0; self.suppressiveMissile = "ArachnoArtyPlasmaBallSuppress";  A_SuppressiveFire(highRiders : true, pitchOffset:40);if (CheckSight(target)) SetStateLabel("See");suppressCount += 1;}
 		
 		TNT1 A 0 { self.inSuppressiveFire = false; }
-	GoTo FrontMove;
+		GoTo FrontMove;
 
 	SuppressiveFire2:
 		TNT1 A 0 { self.inSuppressiveFire = true; if (CheckSight(target)) SetState(FindState("See")); } 
@@ -160,7 +160,7 @@ Class PB_Arachnotron1 : PB_Monster
 		GoTo See;
 
 	Missile:
-		TNT1 A 0 A_JumpIf(random(0, 100) < 80 && FirstTime, "Shield");
+		//TNT1 A 0 A_JumpIf(random(0, 100) < 80 && FirstTime, "Shield");
 //		TNT1 A 0 {{SetState(FindState("Arty"));}}   /// Setting direct state is for debugging a state/projectile
 		BSPI A 2 BRIGHT A_FaceTarget;
 		TNT1 A 0 A_JumpIf(random(0, 99) < 40 , "RailGun");
@@ -175,7 +175,6 @@ Class PB_Arachnotron1 : PB_Monster
 			{A_SpawnProjectile("ArachnoPlasma_Ball", 25, 0, 0, 0);} 
 			
 		} */
-
 		
 		Goto See;
 
@@ -527,7 +526,6 @@ Class PB_Arachnotron1 : PB_Monster
 
 	Death.Massacre:
 		Goto Death;
-
 	}
 }
 
@@ -543,8 +541,6 @@ Class ArachnoRailGun: FastProjectile
 		SeeSound "RailFire";
 	//	DeathSound "RailExp";
 	}
-	
-	
 	
 	override void PostBeginPlay() 
     {
@@ -583,10 +579,8 @@ Class ArachnoRailGun: FastProjectile
 					{Projectile_damage = random(13,19); victim.DamageMobj(self, self.target, Projectile_damage, "Plasma");}
 				else
 					{Projectile_damage = random(24,37); victim.DamageMobj(self, self.target, Projectile_damage, "Plasma");}
-
             }
         }
-
 		return 1;
     }
 
@@ -614,7 +608,6 @@ Class ArachnoRailGun: FastProjectile
 
 	Action Void PB_DrawRailFxBlue(vector3 where)
 	{
-
 		FSpawnParticleParams BlueRailPx;
 		int fm = random(1,4);
 		BlueRailPx.Texture = TexMan.CheckForTexture("BlueR"..fm);
@@ -633,7 +626,6 @@ Class ArachnoRailGun: FastProjectile
 		BlueRailPx.Lifetime = random(30,40); 
 		BlueRailPx.Pos = where;
 		Level.SpawnParticle(BlueRailPx);
-		
 		
 		FSpawnParticleParams BlueRailSmoke;
 		string f = String.Format("%c", int("A") + random(0,3)); //this feels so illegal :p
@@ -668,13 +660,11 @@ Class ArachnoRailGun: FastProjectile
 			TNT1 A 0 { PB_SpawnRailShockWave(self.pos,0,2); A_StartSound("RailExp", 0,0, 1.0); }
 			Stop;
 	}
-
 }
-
 
 Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 {
-	    Default
+	Default
     {
 		Projectile;
         SeeSound "PLSULT";
@@ -706,12 +696,11 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 		Obituary "$OB_BABY";
     }
 	
-		override void BeginPlay()
+	override void BeginPlay()
     {
 		drop_rate = -5;  
         Super.BeginPlay();
     }
-	
 	
 	void SpawnPlasmaSmoke()
 	{
@@ -738,7 +727,6 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 	
 	void SlowExplodeNoPain(double projdamage, double radius, Name damagetype)
 	{
-		
 		BlockThingsIterator it = BlockThingsIterator.Create(self, radius);
 		Actor Thing;
 		
@@ -791,16 +779,11 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 							P.health = 0; // Prevent negative health
 							Thing.Die(self, self); // Force death state
 						}
-						
 						Thing.A_SetBlend("116 123 229", 0.4, 24);
 					}
-
 				}
 				else
 				{Thing.DamageMobj(self, self, projdamage, damagetype, DMG_NO_PAIN, angle);}
-
-				 
-	 
 			}
 		}
 	}
@@ -817,7 +800,6 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 			Loop; */
 			PLAR ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT { ThrustThingZ(0, drop_rate, 0, 1); }
 			PLR2 ABCDEFGHIJKLMOPQRS 1 { ThrustThingZ(0, drop_rate, 0, 1); }
-
 			Loop;
 		
 		Death:
@@ -840,15 +822,11 @@ Class ArachnoArtyPlasmaBallSuppress: PB_Monster_Projectile
 			TNT1 A 4;
 			TNT2 AAA 9 SpawnPlasmaSmoke();//A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, -random (0, 160));
 			Stop;
-		
-		
 	}
-	
 }
 
 Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 {
-	
      int mySpawnIndex;
 
     // Position where the projectile should be attached (updated every tick)
@@ -890,8 +868,6 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 		Radius 14;
 		Height 7;
     }
-	
-
     
 	override void BeginPlay()
     {
@@ -915,21 +891,18 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
             } */
             if (myOwner != null)
             {
-
 				int spawnRemap[4] = { 0, 1, 2, 3 };    // Rearranges the order properly
 			//	mySpawnIndex = spawnRemap[myOwner.artyCounter % 4];
          //       mySpawnIndex = myOwner.artyCounter % 4;
 				mySpawnIndex = (myOwner.artyCounter - 1) % 4;
 
            //     Console.Printf("ArachnoArtyPlasmaBall: Post-Increment artyCounter = %d, mySpawnIndex = %d\n", myOwner.artyCounter, mySpawnIndex);
-				
             }
             
             // Assign owner regardless of cast result (for safety)
             owner = target;
             finalTarget = owner.target;
         }
-
     }
     
     Override void Tick()
@@ -1007,7 +980,6 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 				}
 			}
 		}
-		
     }
 	
 	void AdjustFromVel()
@@ -1027,13 +999,11 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 
 		if(!arcClear)
 		{
-
 			int drop_rateZ_int = -3;
 			drop_rateZ = -3.0/4.0;
 			let proj_cast = PB_Monster_Projectile(self);
 			proj_cast.drop_rate = drop_rateZ_int;
 			let [t, Vx, Vz, dist] = AdjustProjectileForArc2(self, self.target.target, drop_rateZ);
-
 			
 			bool arcClear2 = CheckArcUnobstructed(self,self.pos,horizDir,dist,t,Vx,Vz,drop_rateZ,30,20,0,0,"LaserBlast",self.target.target);
 //					Console.Printf("Secondary arc clear? %s", (arcClear2 ? "Yes" : "No"));
@@ -1050,7 +1020,6 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 		//		Console.Printf("Ternary arc clear? %s", (arcClear3 ? "Yes" : "No"));
 			}
 		}
-			
 	}
 	
 	void SlowExplodeNoPain(double projdamage, double radius, Name damagetype)
@@ -1095,8 +1064,6 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 				
 				if (Thing.player)
 				{
-					
-					
 					if (Thing.bInvulnerable || Thing.player.cheats & CF_GODMODE || Thing.player.cheats & CF_GODMODE2)
 						continue;
 
@@ -1113,14 +1080,9 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 						
 						Thing.A_SetBlend("116 123 229", 0.4, 24);
 					}
-					
-
 				}
 				else
 				{Thing.DamageMobj(self, self, projdamage, damagetype, DMG_NO_PAIN, angle);}
-
-				 
-	 
 			}
 		}
 	}
@@ -1137,7 +1099,6 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 			Loop; */
 			PLAR ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT { ThrustThingZ(0, drop_rate, 0, 1); }
 			PLR2 ABCDEFGHIJKLMOPQRS 1 { ThrustThingZ(0, drop_rate, 0, 1); }
-
 			Loop;
 		
 		Death:
@@ -1160,13 +1121,7 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 			TNT1 A 4;
 			TNT2 AAA 9 SpawnPlasmaSmoke();//A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, -random (0, 160));
 			Stop;
-		
-		
 	}
-
-
-		
-
 }
 
 class ShieldPuff: Actor 
