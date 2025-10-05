@@ -2,6 +2,7 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 {
 	bool jawDetached;
 	bool monsterActivated;
+	Name whatAmI; // Cache the name of this actor so we only grab it once.
 	
 	override int TakeSpecialDamage(actor inflictor,actor source, int damage, name damagetype)
 	{
@@ -25,11 +26,7 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 	override void BeginPlay()
 	{
 		Super.BeginPlay();
-		suppressiveOffZ = 0;
-		suppressiveOffXY = 0;
-		suppressiveMissile = "PB_Cacodemonball2";
-		suppressiveMissileRadius = 8;
-		suppressLimit = 6;
+		whatAmI = self.GetClassName(); // Cache the name at start so we don't need to do it with each Chase check.
 	}
 	
 	Default
@@ -64,9 +61,9 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 		////BloodColor "Blue";
 		//BLoodType "NashGoreBlood";
 		Species "Cacodemon";
+
 		PB_Monster.PBMonSpeed 6, 4, 2, 2.5;
 		PB_Monster.MonPosHB 0.7, 0.5, 0.38, 0.40;
-		
 		PB_Monster.ignoreDickDamage true;
 		PB_Monster.CanIFallback false;
 		PB_Monster.CanIRoll true;
@@ -131,31 +128,19 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 					//This is to prevent it from floating off into infinity
 					//due to being thrusted and has no gravity or friction
 				}
-			//	A_SmartChase();
-				A_CustomChase(UseASmartChase : true); // This will make sure the A_CustomChase goes back to A_SmartChase instead of A_Chase 
+				// [DarynS] Use Smart or CustomChase based on which variant is in play.
+				// Don't want Suppress on the base Caco, so we use CustomChase for the buffed variant.
+				if (whatAmI == "PB_CacodemonBuffed")
+				{
+					A_CustomChase(UseASmartChase : true); // This will make sure the A_CustomChase goes back to A_SmartChase instead of A_Chase
+				}
+				else
+				{
+					A_SmartChase();
+				}
 			}
 			Loop;
 			
-		FrontMove:
-			 HEAD AA 2 {Thrust(2);}
-			 HEAD EE 2 ;
-			 HEAD AA 2;
-			 HEAD EE 2;
-			 Goto See;
-		
-		SuppressiveFire:
-			TNT1 A 0 { self.inSuppressiveFire = true; }
-//			TNT1 A 0 { int attackRoll = random(0, 99); if (attackRoll > 50) { SetStateLabel("SuppressiveFire2");}}
-
-			HEAD EAB 2 A_FaceTarget();
-			HEAD C 5 BRIGHT A_FaceTarget();
-			HEAD D 7 BRIGHT { self.suppressiveOffZ = int(self.height / 2); self.suppressiveOffXY = 0; self.suppressiveMissile = "PB_Cacodemonball2";  A_SuppressiveFire();}
-			HEAD C 2 {if (target && CheckSight(target)) SetStateLabel("See");}
-			
-			HEAD CCBBAE 1;
-			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
-			GoTo FrontMove;
-		
 		Missile:
 			TNT1 A 0 A_JumpIf(health < 1, "Death_NoJaw");
 			TNT1 A 0 A_JumpIf(jawDetached, "Missile_NoJaw");
@@ -742,6 +727,93 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 	}
 }
 
+// This tougher variant is a subclass of the main PB_Cacodemon. 
+// Not a lot will change between them, so why duplicate hundreds of lines of code?
+Class PB_CacodemonBuffed : PB_Cacodemon
+{
+	// Suppressive Fire will be for this tougher variant.
+	override void BeginPlay()
+	{
+		Super.BeginPlay();
+		suppressiveOffZ = 0;
+		suppressiveOffXY = 0;
+		suppressiveMissile = "PB_Cacodemonball2";
+		suppressiveMissileRadius = 8;
+		suppressLimit = 6;
+	}
+	
+	Default
+	{
+		Monster;
+		Radius 31;
+		Height 56;
+		Speed 10;
+		Mass 400;
+		Health 500;
+		GibHealth 25;
+		MeleeRange 60;
+		MeleeThreshold 120;
+		
+		PB_Monster.PBMonSpeed 6, 4, 2, 2.5;
+		PB_Monster.MonPosHB 0.7, 0.5, 0.38, 0.40;
+		PB_Monster.ignoreDickDamage true;
+		PB_Monster.CanIFallback false;
+		PB_Monster.CanIRoll true;
+		PB_Monster.CanIReload false;
+	}
+	
+	States
+	{	
+		// Forward rush as part of Suppressive Routine			
+		FrontMove:
+			HEAD AA 2 {Thrust(2);}
+			HEAD EE 2 ;
+			HEAD AA 2;
+			HEAD EE 2;
+			Goto See;
+		// Suppressive Fire. Spam Fireballs!
+		SuppressiveFire:
+			TNT1 A 0 { self.inSuppressiveFire = true; }
+			HEAD EAB 2 A_FaceTarget();
+			HEAD C 5 BRIGHT A_FaceTarget();
+			HEAD D 7 BRIGHT { 
+				self.suppressiveOffZ = int(self.height / 2);
+				self.suppressiveOffXY = 0;
+				self.suppressiveMissile = "PB_Cacodemonball2";
+				A_SuppressiveFire();
+			}
+			HEAD C 2 {if (target && CheckSight(target)) SetStateLabel("See");}
+			HEAD CCBBAE 1;
+			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
+			GoTo FrontMove;
+		
+		Missile:
+			TNT1 A 0 A_JumpIf(health < 1, "Death_NoJaw");
+			TNT1 A 0 A_JumpIf(jawDetached, "Missile_NoJaw");
+			TNT1 A 0 A_Jump(128, "Missile_Special");
+			TNT1 A 0 A_StartSound("caco/growl", CHAN_BODY);
+			HEAD EAB 2 A_FaceTarget();
+			HEAD C 5 BRIGHT A_FaceTarget();
+		//	HEAD D 5 BRIGHT A_HeadAttack(); 
+			HEAD D 5 A_DropAdjust2("PB_CacodemonBall","PB_CacodemonBall", 0, 0, 32, minRange: 0, maxRange: 1000, shootDownward: false);
+			HEAD CCBBAE 1;
+			Goto See;
+		Missile_Special:
+			TNT1 A 0 A_StartSound("caco/heavyattack", CHAN_BODY);
+			HEAD EABAB 2 A_FaceTarget();
+			HEAD C 5 BRIGHT A_FaceTarget();
+			HEAD D 7 BRIGHT {
+				
+				
+				A_SpawnProjectile("PB_CacodemonBall2");
+/* 				A_SpawnProjectile("PB_CacodemonBall");
+				A_SpawnProjectile("PB_SpecialCacoDemonBall1");
+				A_SpawnProjectile("PB_SpecialCacoDemonBall2"); */
+			}
+			HEAD CCBBAEABABAA 2;
+			Goto See;
+	}
+}
 
 /*
 ************************
