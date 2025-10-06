@@ -174,6 +174,7 @@ server int pb_NoMechDemon = 0;
 server int pb_VoidSpectre = 0;
 
 //Cacodemon Variants
+server int pb_NoClassic = 0;
 server int pb_NoMagCaco = 0;
 server int pb_NoAfrit = 0;
 

@@ -1,4 +1,4 @@
-Class PB_Cacodemon : PB_Monster// Replaces DoomImp
+Class PB_Cacodemon : PB_Monster
 {
 	bool jawDetached;
 	bool monsterActivated;
@@ -69,11 +69,11 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 		PB_Monster.CanIRoll true;
 		PB_Monster.CanIReload false;
 		
-		//+FLOATBOB;
-		FloatBobStrength 0.25;
-		
 		+FLOAT;
 		FloatSpeed 4;
+
+		//+FLOATBOB;
+		FloatBobStrength 0.25;
 		
 		+NOGRAVITY;
 		Gravity 0;
@@ -130,6 +130,7 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 				}
 				// [DarynS] Use Smart or CustomChase based on which variant is in play.
 				// Don't want Suppress on the base Caco, so we use CustomChase for the buffed variant.
+				// Likely going to end up making a merged, multi-purpose chase eventually.
 				if (whatAmI == "PB_CacodemonBuffed")
 				{
 					A_CustomChase(UseASmartChase : true); // This will make sure the A_CustomChase goes back to A_SmartChase instead of A_Chase
@@ -178,8 +179,13 @@ Class PB_Cacodemon : PB_Monster// Replaces DoomImp
 			HEBD CA 3;
 			Goto See;
 		Melee:
-			TNT1 A 0 A_JumpIf(health < 1, "Death_NoJaw");
-			TNT1 A 0 A_JumpIf(jawDetached, "Melee_NoJaw");
+			TNT1 A 0 {
+				if (jawDetached && health < 1)
+					return ResolveState("Death_NoJaw");
+				else if (jawDetached)
+					return ResolveState("Melee_NoJaw");
+				return ResolveState(null);
+			}
 			HEAD B 4 {
 				A_Facetarget();
 				A_StartSound("caco/melee");

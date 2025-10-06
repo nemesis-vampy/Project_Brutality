@@ -48,7 +48,7 @@ Class PB_CacoSpawner_T1 : PB_MonsterSpawner
 {
 	default
 	{
-		dropitem "PB_Cacodemon",255,1;
+		dropitem "PB_CacodemonBuffed",255,1;
 	}
 	
 	override void HandleSpawnExeptions(in out name toSpawn)
@@ -57,6 +57,8 @@ Class PB_CacoSpawner_T1 : PB_MonsterSpawner
 				toSpawn = pb_cacodemon_override;
 				return;
 		}
+		if(pb_NoClassic && toSpawn == "PB_CacodemonBuffed")
+			toSpawn = "PB_Cacodemon";
 	}
 }
 
