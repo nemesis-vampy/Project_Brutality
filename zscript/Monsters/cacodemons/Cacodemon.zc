@@ -68,6 +68,7 @@ Class PB_Cacodemon : PB_Monster
 		PB_Monster.CanIFallback false;
 		PB_Monster.CanIRoll true;
 		PB_Monster.CanIReload false;
+		PB_Monster.CanSuppress false;
 		
 		+FLOAT;
 		FloatSpeed 4;
@@ -770,6 +771,7 @@ Class PB_CacodemonBuffed : PB_Cacodemon
 		PB_Monster.CanIFallback false;
 		PB_Monster.CanIRoll true;
 		PB_Monster.CanIReload false;
+		PB_Monster.CanSuppress true;
 	}
 	
 	States
