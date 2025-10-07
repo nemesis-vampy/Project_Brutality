@@ -53,8 +53,8 @@ Class PB_Arachnotron1 : PB_Monster
 		suppressiveOffZ = 25;
         suppressiveOffXY = 0;
         suppressiveMissile = "ArachnoRailGun";
-		suppressLimit = 5;
-		suppressLimit2 = 10;
+		suppressLimit = 8;
+		suppressLimit2 = 15;
 		shieldActive = false;
 	}
 		

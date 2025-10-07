@@ -57,7 +57,7 @@ Class PB_CacoSpawner_T1 : PB_MonsterSpawner
 				toSpawn = pb_cacodemon_override;
 				return;
 		}
-		if(pb_NoClassic && toSpawn == "PB_CacodemonBuffed")
+		if(pb_NoBuffCaco && toSpawn == "PB_CacodemonBuffed")
 			toSpawn = "PB_Cacodemon";
 	}
 }
