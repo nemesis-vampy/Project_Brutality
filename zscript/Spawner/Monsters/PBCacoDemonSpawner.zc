@@ -57,7 +57,7 @@ Class PB_CacoSpawner_T1 : PB_MonsterSpawner
 				toSpawn = pb_cacodemon_override;
 				return;
 		}
-		if(pb_NoBuffCaco && toSpawn == "PB_CacodemonBuffed")
+		if(toSpawn == "PB_CacodemonBuffed" && pb_NoBuffCaco)
 			toSpawn = "PB_Cacodemon";
 	}
 }
@@ -74,7 +74,9 @@ Class PB_CacoSpawner_T2 : PB_MonsterSpawner
 				toSpawn = pb_cacodemon_override;
 				return;
 		}
-		if(pb_NoMagCaco && toSpawn == "PB_InfernalCaco")
+		if(toSpawn == "PB_InfernalCaco" && pb_NoMagCaco)
+			toSpawn = "PB_CacodemonBuffed";
+		if(toSpawn == "PB_CacodemonBuffed" && pb_NoBuffCaco)
 			toSpawn = "PB_Cacodemon";
 	}
 }
@@ -91,10 +93,11 @@ Class PB_CacoSpawner_T3 : PB_MonsterSpawner
 				toSpawn = pb_cacodemon_override;
 				return;
 		}
-		if(pb_NoAfrit && toSpawn == "PB_Afrit")
+		if(toSpawn == "PB_Afrit" && pb_NoAfrit)
 			toSpawn = "PB_InfernalCaco";
-			
-		if(pb_NoMagCaco && toSpawn == "PB_InfernalCaco")
+		if(toSpawn == "PB_InfernalCaco" && pb_NoMagCaco)
+			toSpawn = "PB_CacodemonBuffed";
+		if(toSpawn == "PB_CacodemonBuffed" && pb_NoBuffCaco)
 			toSpawn = "PB_Cacodemon";
 	}
 }
@@ -111,10 +114,11 @@ Class PB_CacoSpawner_T4 : PB_MonsterSpawner
 				toSpawn = pb_cacodemon_override;
 				return;
 		}
-		if(pb_NoAfrit && toSpawn == "PB_Afrit")
+		if(toSpawn == "PB_Afrit" && pb_NoAfrit)
 			toSpawn = "PB_InfernalCaco";
-			
-		if(pb_NoMagCaco && toSpawn == "PB_InfernalCaco")
+		if(toSpawn == "PB_InfernalCaco" && pb_NoMagCaco)
+			toSpawn = "PB_CacodemonBuffed";
+		if(toSpawn == "PB_CacodemonBuffed" && pb_NoBuffCaco)
 			toSpawn = "PB_Cacodemon";
 	}
 }

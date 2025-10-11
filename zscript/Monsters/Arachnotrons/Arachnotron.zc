@@ -44,7 +44,7 @@ Class PB_Arachnotron1 : PB_Monster
 		DropItem "Demonpickup2", 255;
 		DropItem "Demonpickup", 55;
 
-		PB_Monster.CanSuppress false; // Will use A_Chase.
+		PB_Monster.CanISuppress false; // Will use A_Chase.
 	}
 
 	States
@@ -106,35 +106,25 @@ Class PB_Arachnotron1 : PB_Monster
 
 	Missile:
 		BSPI A 2 BRIGHT A_FaceTarget;
-		TNT1 A 0 {SetState(FindState("PlasmaBallAttack"));}
-
-/* 		BSPI H 2 BRIGHT {					/// Will keep just in case
-			int allowedChance = 0 ;
-			double chance = random(0, 100);
-			if (chance > allowedChance)
-			{A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);}
-			else
-			{A_SpawnProjectile("ArachnoPlasma_Ball", 25, 0, 0, 0);} 
-			
-		} */
-		
-		Goto See;
+		// Just a simple state jump. Less complex than buffed spider, but may add another attack later.
+		Goto PlasmaBallAttack;
 
 	PlasmaBallAttack:
-		BSPI G 10;
+		BSPI G 4;
 		BSPI H 2 BRIGHT 			
-			{ 
-				if (plasmaBallCounter <= 14)
-				{
-					A_FaceTarget();
-					A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
-					plasmaBallCounter++;
-				}					
-				else
-				{
-					SetState(FindState("See")); 
-				}
+		{
+			if (plasmaBallCounter <= 14)
+			{
+				A_FaceTarget();
+				A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
+				plasmaBallCounter++;
+			}					
+			else
+			{
+				return ResolveState("See");
 			}
+			return ResolveState(null);
+		}
 
 		Loop;
 	
@@ -447,7 +437,7 @@ Class PB_Arachnotron1Buffed : PB_Arachnotron1
     }
 	Default
 	{
-		PB_Monster.CanSuppress true; // This new property gets used to switch Chase Functions
+		PB_Monster.CanISuppress true; // This new property gets used to switch Chase Functions
 	}
 
 	States
