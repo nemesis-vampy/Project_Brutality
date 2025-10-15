@@ -71,7 +71,6 @@ class PB_Mancubus1 : PB_Monster
 
 		Species "BigFatAss";
 
-		+DONTHURTSPECIES;
 		+DONTHARMSPECIES;
 		+THRUGHOST;
 		+BOSSDEATH;

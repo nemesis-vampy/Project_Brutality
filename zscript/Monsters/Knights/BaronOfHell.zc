@@ -43,7 +43,6 @@ class PB_Baron1 : PB_Monster
         MaxStepHeight 24;
         MaxDropOffHeight 32;
 
-        +DONTHURTSPECIES;
         +DONTHARMSPECIES;
         +NOBLOODDECALS;
         +QUICKTORETALIATE;
@@ -1754,7 +1753,7 @@ class XDeathHalfBOH : Actor
         Speed 10;
         Mass 8;
         BounceFactor 0.3;
-        +DOOMBOUNCE;
++       BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
         +NOBLOCKMAP;
         +MISSILE;
         +NOTELEPORT;

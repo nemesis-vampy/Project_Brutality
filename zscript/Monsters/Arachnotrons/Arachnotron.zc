@@ -1601,7 +1601,8 @@ class PB_SpiderPart2 : Actor
         +MOVEWITHSECTOR;
         +RIPPER;
         +BLOODLESSIMPACT;
-        +DOOMBOUNCE;
+        +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
+;
     }
 
     States

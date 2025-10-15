@@ -829,9 +829,6 @@ Class PB_BulletImpactSheetMetal : PB_BulletImpactMetal
 	{
         // for barrel blood
         Spawn:
-            TNT1 A 0;
-            TNT1 A 0;
-            TNT1 A 0;
 		Puff:
 			TNT1 A 0 NoDelay {
                 A_StartSound("bulletimpact/metal/b", pitch: frandom[impacts](0.9, 1.1));
