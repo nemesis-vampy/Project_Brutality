@@ -584,8 +584,9 @@ class PB_Baron1 : PB_Monster
         Pain.Kick:
         Pain.ExtremePunches:
             TNT1 A 0 ;
-            TNT1 A 0 {bMISSILEMORE = true ;}
-            TNT1 A 0 {bMISSILEEVENMORE = true ;}
+            //TNT1 A 0 {bMISSILEMORE = true ;}
+            //TNT1 A 0 {bMISSILEEVENMORE = true ;}
+            TNT1 A 0 {MissileChanceMult = 0.0625;}
             TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
             TNT1 A 0 A_JumpIfInventory("StopKickingMyBalls", 1, "Missile");
             TNT1 A 0 A_GiveInventory("StopKickingMyBalls", 1);
