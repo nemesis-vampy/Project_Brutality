@@ -26136,7 +26136,7 @@ vn -0.319866 -0.944718 -0.072073
 #end 8594 normals 
 
 #begin 8592 faces
-usemtl initialShadingGroup
+//usemtl initialShadingGroup
 g pSphere5
 s 1
 f 3/3/1 4299/4299/2 6439/6439/3 4302/4302/4 
