@@ -987,9 +987,9 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
         {
             if (finalTarget != null)
             {
-                double dx = finalTarget.X - pos.x;
-                double dy = finalTarget.Y - pos.y;
-                double dz = finalTarget.Z + finalTarget.Height * 0.5 - pos.z;
+                double dx = finalTarget.pos.x - pos.x;
+                double dy = finalTarget.pos.y - pos.y;
+                double dz = finalTarget.pos.z + finalTarget.Height * 0.5 - pos.z;
                 double distance = sqrt(dx*dx + dy*dy + dz*dz);
 
                 double launchSpeed = 160.0;  // Adjust to set how fast it launches
@@ -1012,9 +1012,9 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
 				Actor newTarget = self.target.target; 
 
 				
-				double dx = newTarget.X - self.pos.x;
-				double dy = newTarget.Y - self.pos.y;
-				double dz = newTarget.Z - self.pos.z;
+				double dx = newTarget.pos.x - self.pos.x;
+				double dy = newTarget.pos.y - self.pos.y;
+				double dz = newTarget.pos.z - self.pos.z;
 				double newTargetDistance = sqrt(dx*dx + dy*dy + dz*dz);
 
 				// If the distance is exactly 200, print a message
