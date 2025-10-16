@@ -142,7 +142,7 @@ actor VeryVeryDeadMarine2 : VeryVeryDeadMarine //Replaces GibbedMarineExtra
 {
 	Game Doom
 }
-
+/*
 actor CurbstompedMarine
 {   Radius 10
     Height 6
@@ -249,7 +249,7 @@ PLDH A 3000
 		 Stop
 	
 		}}
-
+*/
 actor RappedMarine: CurbstompedMarine
 {
     States

@@ -1160,6 +1160,7 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 // 	}
 // }
 
+/*
 Actor DeadKnight: CurbstompedMarine
 {
     Radius 24
@@ -1245,6 +1246,7 @@ States
 		 TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 AAA 0 A_SpawnProjectile("PB_XDeath4", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
          Stop}}
+*/
 		 
 Actor DeadHellKnightBOH2H: DeadKnight
 {States{Spawn:  

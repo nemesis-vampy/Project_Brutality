@@ -475,7 +475,7 @@ ACTOR PB_Cyberdemon: Cyberdemon //Replaces Cyberdemon
 	
 	}
 }
-
+/*
 ACTOR CyberStepAttack
 {
 	Radius 10
@@ -660,6 +660,7 @@ ACTOR CyberDemonLaserPointer
 	Loop
 	}
 }
+*/
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
