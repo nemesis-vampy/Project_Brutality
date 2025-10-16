@@ -116,7 +116,7 @@ Class PB_Arachnotron1 : PB_Monster
 			if (plasmaBallCounter <= 10)
 			{
 				A_FaceTarget();
-				A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
+				A_SpawnProjectile("ArachnoPlasma_Ball", 25, 0, 0, 0);
 				plasmaBallCounter++;
 			}					
 			else
