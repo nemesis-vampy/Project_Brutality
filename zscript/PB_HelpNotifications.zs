@@ -139,7 +139,7 @@ const PB_HELPNOTIF_DURATION = (4 * thinker.TICRATE);
 extend class PB_Hud_ZS 
 {
     brokenlines brokenTooltip;
-    uint tooltipUntilTic;
+    int tooltipUntilTic;
     vector2 tooltipBoxSize, tooltipBoxPos;
 
     void UpdateTooltip(string tipText)
