@@ -1,4 +1,4 @@
-class PB_PlayerPawn : PlayerPawnBase
+class PB_PlayerPrawn : PlayerPawnBase
 {
 	bool lfoot;
 	
@@ -641,7 +641,7 @@ class PB_PlayerPawn : PlayerPawnBase
 	}
 }
 
-class PB_VoodooDoll : PB_PlayerPawn
+class PB_VoodooDoll : PB_PlayerPrawn
 {
 	override void PostBeginPlay() {}
 	

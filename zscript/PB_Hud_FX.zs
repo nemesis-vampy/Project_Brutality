@@ -377,7 +377,7 @@ class PB_HUDFXHandler : EventHandler
 	    if(!e.thing || !(e.thing is 'Blood'))
 	        return;
 	        
-	    PB_PlayerPawn pmo = PB_PlayerPawn(players[consoleplayer].mo);
+	    PB_PlayerPrawn pmo = PB_PlayerPrawn(players[consoleplayer].mo);
 	    if(pmo && e.thing && e.thing.target && e.thing.target.bISMONSTER && e.thing.Distance3D(pmo) <= 80 + pmo.Radius && crandom(0, 100) > 75)
 	    {
 	        if(e.Thing is 'PB_Bloodmist' || e.Thing is 'PB_GibBloodCloud' || e.Thing is 'NashGoreBloodParticle1')
@@ -412,7 +412,7 @@ class PB_HUDFXHandler : EventHandler
 		if(!e.Thing)
 			return;
 		
-		PB_PlayerPawn pmo = PB_PlayerPawn(players[consoleplayer].mo);
+		PB_PlayerPrawn pmo = PB_PlayerPrawn(players[consoleplayer].mo);
 		if(e.Thing == pmo)
 		{
 			switch(e.DamageType)
