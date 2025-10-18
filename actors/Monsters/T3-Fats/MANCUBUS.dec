@@ -1,5 +1,5 @@
 
-
+/*
 Actor MancubusSwitchModeEffect 
 {
 	Speed 5
@@ -11,6 +11,7 @@ Actor MancubusSwitchModeEffect
 		Stop
 	}
 }
+*/
 
 ACTOR PB_Mancubus: Fatso //replaces Fatso
 {
@@ -682,6 +683,7 @@ Pain.Taunt:
        } 
 } 
 
+/*
 ACTOR BigFireBall Replaces Fatshot
 {
 	Game Doom
@@ -1592,6 +1594,7 @@ Health 130 States
 			TNT1 A 0 A_SpawnItem("DeadFatLegStumps")
 			Stop
 			}}	
+*/
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 

@@ -618,7 +618,6 @@ class PB_LocationalBloodSplat : NashGoreBloodBase
 
     States {
         Spawn:
-            TNT1 A 0;
             XS55 DCBA 1 NoDelay {
                 alpha += 0.2;
             }

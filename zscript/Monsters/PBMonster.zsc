@@ -54,6 +54,8 @@ class PB_Monster : Actor abstract
 	//bools controlling whether an enemy can Dodge if the player is looking at them
 	bool canReload;
 	property CanIReload : canReload;
+	bool canSuppress;
+	property CanISuppress : canSuppress;
 	
 	double combatSpeed;
 	double chaseSpeed;
