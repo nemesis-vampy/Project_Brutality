@@ -102,7 +102,7 @@ Skill HELL
 
 GameInfo
 {
-	AddPlayerClasses = "PB_PlayerPrawn"
+	PlayerClasses = "PB_PlayerPrawn"
 	PrecacheClasses = "BlackHole"
 	StatusBarClass = "PB_Hud_ZS"
 	StatScreen_Single = "PB_DoomStatusScreen"
