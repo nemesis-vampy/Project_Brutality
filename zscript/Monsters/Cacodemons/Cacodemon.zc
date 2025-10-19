@@ -81,13 +81,20 @@ Class PB_Cacodemon : PB_Monster
 	
 	States
 	{	
-		// TODO: convert
 		Execution:
-			TNT1 A 1 A_Die("Execution");
-			Stop;
+			//TNT1 A 1 A_Die("Execution");
+			//Stop;
 		Death.Execution:
-			TNT1 A 0 A_Stopsound();
-			Stop;
+			TNT1 A 0 {
+				A_Stopsound();
+				A_FaceTarget();
+				A_NoBlocking(false);
+			}
+			HEAD BC 4;
+			TNT1 A 0 A_Pain();
+			HEAD E 21;
+			TNT1 A 0 A_Recoil(4);
+			Goto Death.SSG;
 		
 		Spawn:
 			HEAD A 10 A_Look();
