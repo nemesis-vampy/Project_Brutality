@@ -548,7 +548,7 @@ class PB_EventHandler : EventHandler
 			
 			//spiders
 			case 'PB_Arachnophyte': case 'Aracnorb': case 'PB_EliteArachnotron':
-			case 'PB_InfernalArachnotron': case 'PB_Arachnotron1':
+			case 'PB_InfernalArachnotron': case 'PB_Arachnotron1': case 'PB_Arachnotron1Buffed':
 				e.replacee = 'Arachnotron'; Break;
 			
 			//mancubi
