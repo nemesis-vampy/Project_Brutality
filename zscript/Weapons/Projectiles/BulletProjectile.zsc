@@ -441,7 +441,7 @@ class PB_Projectile : FastProjectile abstract
 	// crytek plz dont sue
 	void PB_HandleWhizby()
 	{
-		PB_PlayerPawn plr = PB_PlayerPawn(players[consoleplayer].camera);
+		PB_PlayerPrawn plr = PB_PlayerPrawn(players[consoleplayer].camera);
         
         if(!plr) 
             return;
