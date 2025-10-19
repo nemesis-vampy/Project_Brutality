@@ -44,7 +44,10 @@ Class PB_Arachnotron1 : PB_Monster
 		DropItem "Demonpickup2", 255;
 		DropItem "Demonpickup", 55;
 
-		PB_Monster.CanISuppress false; // Will use A_Chase.
+		PB_Monster.CanIFallback false;
+		PB_Monster.CanIReload false;
+		PB_Monster.CanIRoll false;
+		PB_Monster.CanISuppress false;
 	}
 
 	States
@@ -89,19 +92,9 @@ Class PB_Arachnotron1 : PB_Monster
 
 	See:
 		BSPI A 1 {A_StartSound("baby/walk", 1); plasmaBallCounter = 0; }
-		BSPI AABBBCCC 1 {
-			if (canSuppress)
-				A_CustomChase();
-			else
-				A_Chase();
-			}
+		BSPI AABBBCCC 1 A_SmartChase();
 		BSPI D 1;
-		BSPI DDDEEEFFF 1 {
-			if (canSuppress)
-				A_CustomChase();
-			else
-				A_Chase();
-			}
+		BSPI DDDEEEFFF 1 A_SmartChase();
 		Loop;
 
 	Missile:
@@ -528,9 +521,9 @@ Class PB_Arachnotron1Buffed : PB_Arachnotron1
 		Goto See;
 	FrontMove:
 		BSPI A 2 {Thrust(1); }
-		BSPI AABBBCCC 2 {Thrust(1); A_CustomChase(); }
+		BSPI AABBBCCC 2 {Thrust(1); A_SmartChase(); }
 		BSPI D 2 ;
-		BSPI DDDEEEFFF 2 {Thrust(1); A_CustomChase();}
+		BSPI DDDEEEFFF 2 {Thrust(1); A_SmartChase();}
 		Goto See;
 
 	SuppressiveFire:

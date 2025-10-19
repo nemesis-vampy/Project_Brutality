@@ -59,6 +59,11 @@ Class PB_ZombieMan : PB_Monster
 		Species "Former_Human";
 		
 		PB_Monster.PBMonSpeed 4, 3, 1.5, 2;
+
+		PB_Monster.CanIFallback true;
+		PB_Monster.CanIReload true;
+		PB_Monster.CanIRoll true;
+		PB_Monster.CanISuppress false;
 	}
 		
 	int movement_direction;
