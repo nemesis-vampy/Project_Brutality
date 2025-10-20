@@ -100,10 +100,10 @@ Class PB_Arachnotron1 : PB_Monster
 	Missile:
 		BSPI A 2 BRIGHT A_FaceTarget;
 		// Just a simple state jump. Less complex than buffed spider, but may add another attack later.
-		Goto PlasmaBallAttack;
+		Goto ClassicPlasma;
 
-	PlasmaBallAttack:
-		BSPI G 4;
+	ClassicPlasma:
+		BSPI G 8;
 		BSPI H 2 BRIGHT 			
 		{
 			if (plasmaBallCounter <= 10)
@@ -118,7 +118,6 @@ Class PB_Arachnotron1 : PB_Monster
 			}
 			return ResolveState(null);
 		}
-
 		Loop;
 	
 	Pain:
@@ -436,14 +435,27 @@ Class PB_Arachnotron1Buffed : PB_Arachnotron1
 	States
 	{
 	Missile:
-		TNT1 A 0 A_JumpIf(random(0, 100) < 80 && FirstTime, "Shield");
+		BSPI A 2 BRIGHT A_FaceTarget();
 //		TNT1 A 0 {{SetState(FindState("Arty"));}}   /// Setting direct state is for debugging a state/projectile
-		BSPI A 2 BRIGHT A_FaceTarget;
-		TNT1 A 0 A_JumpIf(random(0, 99) < 40 , "RailGun");
-		TNT1 A 0 {SetState(FindState("PlasmaBallAttack"));}
+		TNT1 A 0 {
+			if (random(0,100) < 80 && FirstTime)
+			{
+				// [DarynS] Since this will only run once, we don't need a dedicated State for it.
+				// So we can handle the toggling of the variable, spawning the shield, and jumping to the attack state.
+				FirstTime = false;
+				A_SpawnItemEx("Shield",pos.x,pos.y,pos.z,flags: SXF_SETMASTER);	
+				return ResolveState("Arty");
+			}
+			else if (random(0, 99) > 50)
+				return ResolveState("ClassicPlasma");
+			else if (random(0, 99) < 40)
+				return ResolveState("RailGun");
+			else
+				return ResolveState("PlasmaBallAttack");
+		}
 
 /* 		BSPI H 2 BRIGHT {					/// Will keep just in case
-			int allowedChance = 0 ;
+			int allowedChance = 0;
 			double chance = random(0, 100);
 			if (chance > allowedChance)
 			{A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);}
@@ -461,38 +473,33 @@ Class PB_Arachnotron1Buffed : PB_Arachnotron1
 				if (plasmaBallCounter <= 14 && HasClearShotIgnoringShield(self,target) )
 				{
 					A_FaceTarget();
-					A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false); plasmaBallCounter += 1;
+					A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
+					plasmaBallCounter++;
 				//	bool collisionCheck = CanReachTarget("ArachnoPlasma_Ball",30,0,25, tolerance:1, debug : true);
 					
 					int ArtyChance = 92 ; //92
 					double chance = random(0, 100);
 					if (chance > ArtyChance)
 					{
-						artyCounter = 0; SetState(FindState("Arty"));
+						artyCounter = 0;
+						return ResolveState("Arty");
 					}
 					else
-						SetState(FindState("PlasmaBallAttack"));
+						return ResolveState("PlasmaBallAttack");
 				}
 				else if (plasmaBallCounter > 14 && HasClearShotIgnoringShield(self,target))
 				{
-					SetState(FindState("RailGun")); 
+					return ResolveState("RailGun");
 				}
 				else if (plasmaBallCounter <= 14 && !HasClearShotIgnoringShield(self,target) )
 				{
-					SetState(FindState("RailGun")); 
+					return ResolveState("RailGun");
 				}
-				else
-				{
-					SetState(FindState("See")); 
-				}
+				return ResolveState(null);
 			}
 		Goto See;
 	
-	Shield:
-		TNT1 A 0 {FirstTime = false; A_SpawnItemEx("Shield",pos.x,pos.y,pos.z,flags: SXF_SETMASTER); }
-		Goto Arty;
 	Arty:
-		
 		BSPI A 3 BRIGHT {A_FaceTarget(); plasmaBallCounter = 0; if(target && Distance3d(target) > 1800) { SetState(FindState("Missile"));  } }
 		BSPI G 6 A_FaceTarget;
 		BSPI H 2 BRIGHT {A_SpawnProjectile("ArachnoArtyPlasmaBall", 25, 0, 0, 0);  artyCounter += 1; }
@@ -502,7 +509,6 @@ Class PB_Arachnotron1Buffed : PB_Arachnotron1
 		BSPI H 2 BRIGHT {A_SpawnProjectile("ArachnoArtyPlasmaBall", 25, 0, 0, 0);  artyCounter += 1; }
 		BSPI G 6 A_FaceTarget;
 		BSPI H 2 BRIGHT {A_SpawnProjectile("ArachnoArtyPlasmaBall", 25, 0, 0, 0);  artyCounter += 1; }
-		
 		Goto Missile;
 		
 	RailGun:
@@ -547,20 +553,20 @@ Class PB_Arachnotron1Buffed : PB_Arachnotron1
 	SuppressiveFire2:
 		TNT1 A 0 { self.inSuppressiveFire = true; if (CheckSight(target)) SetState(FindState("See")); } 
 	    BSPI G 10;
-		BSPI H 2 BRIGHT{ 
-						  self.suppressiveOffZ = 25; self.suppressiveOffXY = 0; self.suppressiveMissile = "ArachnoPlasma_Ball";  A_SuppressiveFire(pitchOffset:50);
-						  suppressCount2 += 1;
-						  if (suppressCount2 < suppressLimit2)
-						  {
-								SetState(FindState("SuppressiveFire2"));
-								self.inSuppressiveFire = false;
-						  }
-						  else if (suppressCount2 >= suppressLimit2)
-						  {
-								SetState(FindState("See"));
-								self.inSuppressiveFire = false;
-						  }
-					   }
+		BSPI H 2 BRIGHT {
+				self.suppressiveOffZ = 25; self.suppressiveOffXY = 0; self.suppressiveMissile = "ArachnoPlasma_Ball";  A_SuppressiveFire(pitchOffset:50);
+				suppressCount2 += 1;
+				if (suppressCount2 < suppressLimit2)
+				{
+					SetState(FindState("SuppressiveFire2"));
+					self.inSuppressiveFire = false;
+				}
+				else if (suppressCount2 >= suppressLimit2)
+				{
+					SetState(FindState("See"));
+					self.inSuppressiveFire = false;
+				}
+			}
 		GoTo See;
 	}
 }
@@ -1302,12 +1308,10 @@ class Shield : Actor
         if (ownerActor)
         {
             SetOrigin(ownerActor.Pos, false);
-
         }
         else
         {
             Destroy(); // If the owner is gone, remove the shield
-
         }
     }
 	
