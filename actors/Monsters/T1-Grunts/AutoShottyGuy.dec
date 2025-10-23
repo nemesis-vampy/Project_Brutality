@@ -23,6 +23,10 @@ ACTOR ASGGuy : PB_Sergeant //Replaces ShotgunGuy
     BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 	
 	PB_Monster.TailPitch 0.75
+	PB_Monster.CanIFallback 1
+	PB_Monster.CanIReload 1
+	PB_Monster.CanIReload 1
+	PB_Monster.CanISuppress 0
     States
     {
 		

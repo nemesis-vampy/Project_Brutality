@@ -99,6 +99,11 @@ ACTOR PB_DemonTechZombie : PB_Sergeant //Replaces ChaingunGuy
 	damagefactor "Taunt", 1.0
 	DropItem "LeechGrenade" 30
     BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
+
+	PB_Monster.CanIFallback 1
+	PB_Monster.CanIReload 1
+	PB_Monster.CanIRoll 1
+	PB_Monster.CanISuppress 0
 	States
 	{
 	

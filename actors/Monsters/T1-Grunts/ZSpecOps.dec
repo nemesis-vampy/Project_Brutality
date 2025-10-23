@@ -44,7 +44,10 @@ Actor PB_ZSpecOps : PB_Monster //Replaces ChaingunGuy
 	  DropItem "PB_ZSpecSMGDrop"
 	 PB_Monster.PBMonSpeed 10, 12, 8, 8
 	 PB_Monster.MonDMGMult 0.8, 1.0, 0.9, 1.0, 1.0, 0.9
-	 PB_Monster.CanIRoll 0
+	PB_Monster.CanIFallback 1
+	PB_Monster.CanIReload 1
+	PB_Monster.CanIRoll 0
+	PB_Monster.CanISuppress 0
 	 PB_Monster.AttackRange 250
 	 PB_Monster.TailPitch 1.2
 	 

@@ -59,8 +59,10 @@ Class PB_Chaingunguy : PB_Monster
 		Species "Former_Human";
 		
 		PB_Monster.PBMonSpeed 3, 2.5, 1, 2;
+		PB_Monster.CanIFallback true;
+		PB_Monster.CanIReload true;
 		PB_Monster.CanIRoll false;
-		PB_Monster.CanIFallback false;
+		PB_Monster.CanISuppress false;
 		PB_Monster.AttackRange 10000;
 	}
 		
