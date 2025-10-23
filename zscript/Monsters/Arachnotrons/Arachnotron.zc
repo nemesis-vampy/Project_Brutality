@@ -118,6 +118,7 @@ Class PB_Arachnotron1 : PB_Monster
 			}
 			return ResolveState(null);
 		}
+		TNT1 A 0 A_SpidRefire();
 		Loop;
 	
 	Pain:
