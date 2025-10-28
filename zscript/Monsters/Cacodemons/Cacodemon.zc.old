@@ -1,4 +1,4 @@
-Class PB_Cacodemon : PB_Monster
+Class PB_Cacodemon : PB_Monster //
 {
 	bool jawDetached;
 	bool monsterActivated;
