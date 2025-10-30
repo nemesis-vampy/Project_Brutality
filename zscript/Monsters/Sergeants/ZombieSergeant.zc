@@ -54,6 +54,11 @@ Class PB_ShotgunGuy : PB_Monster
 		+DOHARMSPECIES;
 		+HARMFRIENDS;
 		Species "Former_Human";
+
+		PB_Monster.CanIFallback true;
+		PB_Monster.CanIReload true;
+		PB_Monster.CanIRoll true;
+		PB_Monster.CanISuppress false;
 		
 		PB_Monster.AttackRange 1000;
 		PB_Monster.PBMonSpeed 4, 3, 1.5, 2;

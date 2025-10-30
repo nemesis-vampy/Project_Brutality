@@ -68,7 +68,10 @@ class PB_Cyberdemon1 : PB_Monster
 		DropItem "Demonpickup2", 255;
 		DropItem "Demonpickup2", 255;
 		
-
+		PB_Monster.CanIFallback false;
+		PB_Monster.CanIReload false;
+		PB_Monster.CanIRoll false;
+		PB_Monster.CanISuppress true;
     }
 	
 	override void BeginPlay()
@@ -119,22 +122,22 @@ class PB_Cyberdemon1 : PB_Monster
             TNT1 A 0 A_JumpIfTargetInLOS("Stomp", 0, JLOSF_DEADNOJUMP, 95);
             CYBR A 3;
             TNT1 A 0;
-            CYBR AA 2 A_CustomChase;
+            CYBR AA 2 A_SmartChase();
             TNT1 A 0 A_JumpIfTargetInLOS("Stomp", 0, JLOSF_DEADNOJUMP, 95);
-            CYBR BB 2 A_CustomChase;
+            CYBR BB 2 A_SmartChase();
             TNT1 A 0;
-            CYBR BBC 2 A_CustomChase;
+            CYBR BBC 2 A_SmartChase();
             TNT1 A 0 A_JumpIfTargetInLOS("Stomp", 0, JLOSF_DEADNOJUMP, 95);
             TNT1 A 0;
-            CYBR C 2 A_CustomChase;
+            CYBR C 2 A_SmartChase();
             CYBR C 2;
             CYBR C 2 A_StartSound ("cyber/metal", 6);
             TNT1 A 0;
-            CYBR D 2 A_CustomChase;
-            CYBR D 2 A_CustomChase;
+            CYBR D 2 A_SmartChase();
+            CYBR D 2 A_SmartChase();
             TNT1 A 0 A_JumpIfTargetInLOS("Stomp", 0, JLOSF_DEADNOJUMP, 95);
             TNT1 A 0;
-            CYBR DD 2 A_CustomChase;
+            CYBR DD 2 A_SmartChase();
             Loop;
         
         BossPossession: 

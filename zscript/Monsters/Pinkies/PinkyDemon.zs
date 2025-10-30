@@ -30,6 +30,7 @@ class PB_Demon : PB_Monster
 		PB_Monster.CanIFallback false;
 		PB_Monster.CanIRoll false;
 		PB_Monster.CanIReload false;
+        PB_Monster.CanISuppress false;
     }
 
     States

@@ -21,7 +21,6 @@ class PB_Monster : Actor abstract
 	vector3 lastPlayerPos;
 	const PI = 3.141592653589793;
 	
-
 	double lastSeenPosX;
 	double lastSeenPosY;
 	double lastSeenPosZ;
@@ -29,7 +28,6 @@ class PB_Monster : Actor abstract
 	vector3 targetHistory[20];
 	int historyIndex;
 	array <String> frames;
-
 	
 	int	HitBoxTimerNew;
 	int HitBoxTimerOld;
@@ -133,7 +131,6 @@ class PB_Monster : Actor abstract
 	// seeAllAround - Set whether a monster can look all around. Might be needed in some cases.
 	void A_SmartChase(statelabel s1 = "_a_chase_default", statelabel s2 = "_a_chase_default", int flags = 0, bool seeAllaround = false)
 	{
-		
 		// Decrement the skips counter. When we reach 0 we Look for a new Target.
 		if (retargetSkips > 0) retargetSkips--;
 		//console.Printf("RetargetSkips: %i", retargetSkips);
@@ -196,6 +193,75 @@ class PB_Monster : Actor abstract
 		if (Target)
 		{
 			Double Dist = Distance3DSquared (Target);
+			
+			// [DarynS] Merging in the A_CustomChase Suppression logic and tying it to the canSuppress variable.
+			if (canSuppress)
+			{
+				double corpseDistance = 999999; // Filling this with an arbitrary value temporarily.
+
+				if (lastSeenCorpse)
+				{
+					// If we've seen our Empty Corpse, how far was it?
+					corpseDistance = Distance3DSquared(lastSeenCorpse);
+				}
+
+				if (CheckSight(target))
+				{
+					suppress = true;
+					suppressCount = 0;
+					suppressCount2 = 0;
+					//A_Chase(s2, s1, flags);
+
+					if (lastSeenCorpse)
+					{
+						lastSeenCorpse.Destroy();
+						lastSeenCorpse = null;
+					}
+				}
+				else
+				{
+					vector3 delayedPosition = targetHistory[(historyIndex + 1) % 20];
+
+					if (!lastSeenCorpse)
+					{
+						lastSeenCorpse = Spawn("EmptyTarget", (delayedPosition.x, delayedPosition.y, delayedPosition.z + 8), ALLOW_REPLACE);
+					}
+
+					if (Dist < 300*300)
+					{
+						suppress = false;
+						//A_Chase(s2, s1, flags);
+						//return;
+					}
+
+					if (suppress)
+					{
+						if (suppressCount < suppressLimit)
+						{
+							if (ShouldDoSuppressiveFire())
+							{
+								SetStateLabel("SuppressiveFire");
+								return;
+							}
+						}
+						
+						else if (suppressCount >= suppressLimit && suppressCount2 < suppressLimit2)
+						{
+							if (ShouldDoSuppressiveFire())
+							{
+								SetStateLabel("SuppressiveFire2");
+								return;
+							}
+						}
+						
+						else
+						{
+						//	Console.Printf("\cgSuppressiveFire limit reached!");
+							suppress = false;
+						}
+					}
+				}
+			}
 			
 			// No need for a sight check here. If the player is within 150mu, make note of the time.
 			if (Dist <= 150*150)
@@ -399,7 +465,7 @@ class PB_Monster : Actor abstract
 		return diff;
 	}
 
-
+/* Disabling this since function is merged into SmartChase
 	void A_CustomChase(bool UseASmartChase = false)
 	{
 		if (target)
@@ -494,7 +560,7 @@ class PB_Monster : Actor abstract
 		//	A_Chase();
 		}
 	}
-
+*/
 
 	override void Tick()
 	{
@@ -599,7 +665,6 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 		float offsetSide = dy + offsetY; 
 		float offsetZ = offsetZ + dz;
 
-
 		if (debug)
 		{
 		 traceHit = Line3d.LineTraceVisual(
@@ -652,18 +717,11 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 				}
 			}
         }
-
     }
 
   //  Console.Printf(overallSuccess ? "\cdSuccess: All hit locations within threshold." : "\cjFailure: At least one hit outside threshold.");
     return overallSuccess;
 }
-
-
-
-
-
-
 
 	// Returns true if the line trace from the projectile's spawn position hits near the dummy corpse.
 	bool ShouldDoSuppressiveFire()
@@ -1862,9 +1920,6 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 		// **Direct return of the boolean value**
 		return tracer.HasClearShot();
 	}
-
-
-
 	
 	Default
 	{
@@ -1882,9 +1937,13 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 		//-MISSILEEVENMORE;
 		MissileChanceMult 1.0;
 		BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood";
-		PB_Monster.CanIRoll true;
-		PB_Monster.CanIFallback true;
-		PB_Monster.CanIReload true;
+
+		// [DarynS] Defaulting these flags to false for A_SmartChase failsafe.
+		PB_Monster.CanIRoll false;
+		PB_Monster.CanIFallback false;
+		PB_Monster.CanIReload false;
+		PB_Monster.CanISuppress false;
+
 		PB_Monster.MonDMGMult 2.0, 1.5, 0.70, 1.0, 1.25, 0.80;
 		PB_Monster.MonPosHB 0.8, 0.65, 0.38, 0.40;
 		PB_Monster.AttackRange 5000;

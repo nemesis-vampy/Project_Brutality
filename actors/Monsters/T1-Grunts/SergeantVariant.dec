@@ -192,6 +192,11 @@ Actor PB_PyroSergeant: PB_HelmetSergeant //Replaces ShotgunGuy
 	Tag "Pyro Sergeant"
 	+SLIDESONWALLS
 	+AVOIDMELEE
+
+	PB_Monster.CanIFallback 1
+	PB_Monster.CanIReload 1
+	PB_Monster.CanIRoll 1
+	PB_Monster.CanISuppress 0
 	States
 	{
 	

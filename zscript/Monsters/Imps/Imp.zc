@@ -55,6 +55,9 @@ Class PB_Imp1 : PB_Monster// Replaces DoomImp
 		Species "Imp";
 		
 		PB_Monster.CanIFallback false;
+		PB_Monster.CanIReload false;
+		PB_Monster.CanIRoll true;
+		PB_Monster.CanISuppress false;
 		PB_Monster.PBMonSpeed 5, 4, 2, 2.5;
 	}
 	
