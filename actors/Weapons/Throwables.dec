@@ -183,6 +183,7 @@ ACTOR DropedGrenade
 }
 
 //Revamped Proximity mines, courtesy from Brutal Hellfest!!
+/*
 Actor ThrownProxMine
 {
 	Radius 10
@@ -239,6 +240,7 @@ Actor ThrownProxMine
 		Stop
 	}
 }
+*/
 
 Actor GroundProxMine : SwitchableDecoration
 {

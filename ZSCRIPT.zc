@@ -151,6 +151,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Items/Ammo/AmmoFuel.zsc"
 #include "zscript/Items/Ammo/AmmoDemon.zsc"
 #include "zscript/Items/Ammo/AmmoPacks.zsc"
+#include "zscript/Items/Equipment/Throwables.zsc"
 #include "zscript/Items/HealthArmor/HP.zsc"
 #include "zscript/Items/HealthArmor/AP.zsc"
 
