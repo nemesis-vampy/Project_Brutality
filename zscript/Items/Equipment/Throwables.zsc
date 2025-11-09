@@ -1,5 +1,23 @@
+// Revenant Missile Stuff - I don't know if we still need this.
+Class HasRevGun : Inventory 
+{
+	Default
+	{
+		inventory.maxamount 1;
+	}
+}
+
+// Leech Grenade and Token
+Class HasLeech : Inventory
+{
+	Default
+	{
+		inventory.maxamount 1;
+	}
+}
+
+
 // Revamped Proximity mines, courtesy from Brutal Hellfest!!
-// Converted to ZS by DarynS. Blame me if something breaks.
 Class PB_ThrownProxMine : Actor
 {
     uint sinkTimer; // Submerged proximity mine will sink after the timer reaches a threshold.

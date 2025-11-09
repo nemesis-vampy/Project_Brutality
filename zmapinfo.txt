@@ -199,7 +199,7 @@ DoomEdNums
 	//Weapons
 	23027 = PB_QuickLauncherAmmo
 	23028 = PB_GrenadeAmmo
-	23029 = LeechGrenade
+	23029 = PB_LeechGrenadeAmmo
 	23030 = PB_ProxMineAmmo
 	23031 = PB_StunGrenadeAmmo
 	23032 = PB_Axe

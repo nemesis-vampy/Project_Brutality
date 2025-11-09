@@ -1,3 +1,4 @@
+/*
 Actor HasRevGun : Inventory {inventory.maxamount 1}
 
 ACTOR QuickLauncher: CustomInventory //23167
@@ -84,6 +85,7 @@ ACTOR MiniHellRocketAmmo : Ammo
 	  Stop
 	}
 }
+*/
 
 Actor MineAmmo : Ammo
 {
