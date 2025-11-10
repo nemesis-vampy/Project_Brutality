@@ -151,7 +151,6 @@ const MAXITERATIONS = 32676;
 #include "zscript/Items/Ammo/AmmoFuel.zsc"
 #include "zscript/Items/Ammo/AmmoDemon.zsc"
 #include "zscript/Items/Ammo/AmmoPacks.zsc"
-#include "zscript/Items/Equipment/Throwables.zsc"
 #include "zscript/Items/HealthArmor/HP.zsc"
 #include "zscript/Items/HealthArmor/AP.zsc"
 
@@ -232,6 +231,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Weapons/Projectiles/RailGunPj.zs"
 #include "zscript/Weapons/Projectiles/DragonsBreath.zs"
 #include "zscript/Weapons/Projectiles/Shrapnel.zsc"
+#include "zscript/Weapons/ProxMine.zsc"
 #include "zscript/Weapons/ThrownGrenades.zs"
 #include "zscript/Weapons/Keepweapmanager.zsc"
 

@@ -1,22 +1,3 @@
-// Revenant Missile Stuff - I don't know if we still need this.
-Class HasRevGun : Inventory 
-{
-	Default
-	{
-		inventory.maxamount 1;
-	}
-}
-
-// Leech Grenade and Token
-Class HasLeech : Inventory
-{
-	Default
-	{
-		inventory.maxamount 1;
-	}
-}
-
-
 // Revamped Proximity mines, courtesy from Brutal Hellfest!!
 Class PB_ThrownProxMine : Actor
 {
@@ -96,9 +77,10 @@ Class PB_ThrownProxMine : Actor
 	}
 }
 
-
 Class PB_GroundProxMine : SwitchableDecoration
 {
+	Mixin PB_CheckFunctions;
+
 	const ProxDist = 160; // The Trigger Distance for the Proximity Mine.
 	bool armed; // Toggle for the Mine's armed state which will start playing the tick sound.
 
@@ -119,10 +101,10 @@ Class PB_GroundProxMine : SwitchableDecoration
 			if (isFriend(trg))
 				continue;
 
-			// Check the object is either a monster or a player, isn't the same
+			// Check the target is either a monster or a player, isn't the same
 			// as the projectile's target (so that the shooter can't trigger it),
-			// then checks that it's alive and within distance:
-			if ((trg.bISMONSTER || trg.player) && (!target || trg != target) && trg.health > 0 && Distance3D(trg) <= ProxDist)
+			// then checks that it's alive and within distance and can be seen.
+			if ((trg.bISMONSTER || trg.player) && (!target || trg != target) && trg.health > 0 && Distance3D(trg) <= ProxDist && CheckSight(trg, SF_IGNOREWATERBOUNDARY))
 			{
 				A_Die();
 			}
@@ -133,10 +115,10 @@ Class PB_GroundProxMine : SwitchableDecoration
 	{
 		super.Tick();
 
-		if (isFrozen() || bDESTROYED || !armed)
+		if (isFrozen() || IsDead(self) || !armed)
 			return;
 
-		if (GetAge() % 30 == 0)
+		if (GetAge() % 30 == 0 && !IsInState(self, "Active"))
 			A_StartSound("Weapons/StickyBombTick", CHAN_AUTO);
 	}
 
