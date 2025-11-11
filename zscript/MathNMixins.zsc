@@ -1,5 +1,25 @@
 class PB_Math abstract
 {
+    clearscope static Color PB_MultiplyColors(Color baseColor, Color mixColor)
+    {
+        int desat_r = baseColor.r * (mixColor.r / 255.f);
+        int desat_g = baseColor.g * (mixColor.g / 255.f);
+        int desat_b = baseColor.b * (mixColor.b / 255.f);
+        
+        // return le color
+        return Color(255, desat_r, desat_g, desat_b);
+    }
+    
+    clearscope static Color PB_BlendColors(Color baseColor, Color mixColor)
+    {
+        int desat_r = (baseColor.r + mixColor.r) / 2;
+        int desat_g = (baseColor.g + mixColor.g) / 2;
+        int desat_b = (baseColor.b + mixColor.b) / 2;
+        
+        // return le color
+        return Color(255, desat_r, desat_g, desat_b);
+    }
+    
     clearscope static Color PB_DesaturateColor(Color baseColor, double desaturate = 0.0, double brightness = 1.0)
     {
         // [gng] convert the color to luma
