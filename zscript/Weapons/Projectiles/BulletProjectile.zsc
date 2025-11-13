@@ -553,63 +553,6 @@ class PB_Projectile : FastProjectile abstract
 		}
 	}
 
-	string PB_GetImpact(name texname)
-	{
-		string tmpstring = texName;
-		string mat;
-		switch(PB_Materialsys.GetMaterialFromTexName(texname))
-		{
-			default:
-			case 'tile/a':
-			case 'tile/b':
-			case 'hard':
-			case 'carpet':
-				mat = "PB_BulletImpact";
-				break;
-			case 'flesh':
-				mat = "NashGoreBlood";
-				break;
-			case 'lava':
-				mat = "PB_BulletImpact";
-				break;
-			case 'dirt':
-			case 'gravel':
-				mat = "PB_BulletImpactDirt";
-				break;
-			case 'wood':
-				mat = "PB_BulletImpactWood";
-				break;
-			case 'rock':
-				mat = "PB_BulletImpactBrownRock";
-				break;
-			case 'metal/a':
-				mat = "PB_BulletImpactMetal";
-				break;
-			case 'metal/b':
-				mat = "PB_BulletImpactSheetMetal";
-				break;
-			case 'water':
-				tmpstring = tmpstring.MakeLower();
-				
-				if(tmpstring.IndexOf("blood") >= 0 || tmpstring.IndexOf("bfall") >= 0)
-					mat = "PB_BulletImpactBlood";
-				else
-					mat = "PB_BulletImpactWater";
-
-				break;
-			case 'slime':
-				tmpstring = tmpstring.MakeLower();
-				
-				if(tmpstring.IndexOf("slime") >= 0)
-					mat = "PB_BulletImpactSlime";
-				else
-					mat = "PB_BulletImpactNukage";
-
-				break;
-		}
-		return mat;
-	}
-
 	double ExtraDamageFactor;
 	protected Actor LastActor;
 	
@@ -676,9 +619,9 @@ class PB_Projectile : FastProjectile abstract
         }
 
         surfaceTexId = tr.HitTexture;
-        string impact;
-        impact = PB_GetImpact(Texman.GetName(surfaceTexId));
-        puff = PB_BaseBulletImpact(SpawnPuff(impact, pos, angle, normal + 90, 0));
+        PB_MaterialDataStorage impact;
+        impact = PB_Materialsys.GetMaterialDefFromTexName(Texman.GetName(surfaceTexId));
+        if(impact) puff = PB_BaseBulletImpact(SpawnPuff(impact.bulletImpact, pos, angle, normal + 90, 0));
         
         if(puff)
         {
@@ -689,6 +632,7 @@ class PB_Projectile : FastProjectile abstract
             puff.hitWhat = hitSurfaceType;
             puff.wallNormal = normal + 90;
             puff.smallCal = bSMALLIMPACT;
+            puff.matTintColor = impact.tintColor;
         }
 	}
 

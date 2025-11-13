@@ -216,7 +216,7 @@ class PB_BloodCloud : PB_LightActor
         -STRETCHPIXELS;
 
 		Scale 0.16;
-		Alpha 0.5;
+		Alpha 0.70;
 		RenderStyle "Stencil";
         StencilColor "FF0000";
 	}
@@ -269,7 +269,7 @@ class PB_BloodCloud : PB_LightActor
         desat = 1.0 - (0.74 + clamp(GetAge() / 4.0, 0.0, 1.0) * 0.26);
 		//double brighten = 1.0 - (0.75 + clamp(GetAge() / 20.0, 0.0, 1.0) * 0.25);
 
-        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, PB_BLOODCLOUD_L /*min(1.0, 1 + (desat - 0.15))*/));
+        SetShade(PB_Math.PB_MixWhiteWithColor(bcbuffer, desat, PB_BLOODCLOUD_L *min(1.0, 1 + (desat - 0.15))));
         BloodCloudTick();
     }
 
@@ -341,7 +341,7 @@ class PB_BloodCloud2 : PB_BloodCloud
 	Default 
     {
         Scale 0.025;
-        Alpha 0.6;
+        Alpha 0.67;
         -ROLLCENTER;
     }
 

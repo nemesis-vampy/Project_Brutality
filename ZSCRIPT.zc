@@ -2,16 +2,15 @@ version "4.14.2"
 
 const MAXITERATIONS = 32676;
 
-#include "zscript/FastMaterialCheck.zs"
-
-#include "actors/Weapons/Slot9/BlackHole.zc"
-#include "actors/Weapons/Slot9/SuperBFGBall.zc"
-
 //PB_CORE
 #include "zscript/PBCore.zsc"
 #include "zscript/MathNMixins.zsc"
 #include "zscript/PBHandler.zc"
-//#include "zscript/PBPDA.zc"
+#include "zscript/ZJSON/Include.zs"
+#include "zscript/FastMaterialCheck.zs"
+/*#include "zscript/PDA/Logic/PDA_Entry.zs"
+#include "zscript/PDA/Logic/PDA_Inventory.zs"
+#include "zscript/PDA/Logic/PDA_Main.zs"*/
 #include "zscript/PB_Hud.zs"
 #include "zscript/PB_Hud_FX.zs"
 #include "zscript/PB_HudMessages.zs"
@@ -241,6 +240,9 @@ const MAXITERATIONS = 32676;
 #include "zscript/Weapons/Slot3/Shotgun.zs"
 #include "zscript/Weapons/Slot6/SuperGL.zs"
 #include "zscript/Weapons/Slot7/PlasmaM1.zs"
+
+#include "actors/Weapons/Slot9/BlackHole.zc"
+#include "actors/Weapons/Slot9/SuperBFGBall.zc"
 
 //Spawners
 #include "zscript/Spawner/PB_SpawnerBase.zc"
