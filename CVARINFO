@@ -200,11 +200,13 @@ server int pb_NoCyberKnight = 0;
 server int pb_NoCyberPaladin = 0;
 
 //Baron Variants
+server int pb_NoBuffBaron = 0;
 server int pb_NoCyberBaron = 0;
 server int pb_NoBelphegor = 0;
 server int pb_NoInfernus = 0;
 
 //Fatso Variants
+server int pb_NoBuffFatso = 0;
 server int pb_NoDaedabus = 0;
 server int pb_NoVolcabus = 0;
 
