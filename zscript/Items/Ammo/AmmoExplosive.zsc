@@ -48,34 +48,6 @@ class PB_GrenadeAmmo : PB_Ammo
 	}
 }
 
-// Leech Grenade and Token
-Class HasLeech : Inventory
-{
-	Default
-	{
-		inventory.maxamount 1;
-	}
-}
-Class PB_LeechGrenadeAmmo : PB_Ammo 
-{
-	Default
-	{
-		//$Title Leech Grenade
-		//$Category Project Brutality - Weapons/Equipment
-		Scale 0.45;
-		Tag "Leech Grenade";
-		Inventory.Icon "FLSPA1";
-		Inventory.PickupSound "SiphonGrowl";
-		PB_Ammo.AmmoType "leechnade";
-	}
-
-	override bool TryPickup(in out actor toucher)
-	{
-		toucher.GiveInventory("HasLeech",1) ;
-		return Super.TryPickup(toucher);
-	}
-}
-
 class PB_StunGrenadeAmmo : PB_Ammo
 {
 	Default
