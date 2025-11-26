@@ -122,18 +122,11 @@ OptionMenu "PBSettings"
 	StaticText " "
 	StaticText " "
 	Submenu "$PB_SPAWN_OPTIONS",		"GlobalSettings"
-	StaticText " "
 	Submenu "$PB_GAMEPLAY_OPTIONS",		"GameplaySettings"
-	StaticText " "
 	Submenu "$PB_VISUAL_OPTIONS",		"RenderingSettings"
-	StaticText " "
 	Submenu "$PB_HUD_OPTIONS",			"PB_HUDOptions"
-    statictext ""
 	Submenu "$PB_MP_OPTIONS","PB_MultiplayerOptions"
-	statictext ""
 	Submenu "$GB_OPTIONS","gb_Options"
-	StaticText " "
-	StaticText " "
 	StaticText " "
 	Command "$PB_GO_TESTMAP", "map PBTEST"
 	StaticText " "
@@ -144,16 +137,16 @@ OptionMenu "PBSettings"
 OptionMenu "PB_MultiplayerOptions"
 {
     Title "Project Brutality MP Options"
+	Class "PB_OptionMenu"
 
-    StaticText "Options", gold
     Option "Force Singleplayer Movement", "pb_forcespmovement", "YesNo"
     TextField "Callsign", "pb_mpcallsign"
-    StaticText "Callsigns are three letter, uppercase names that appear instead of your full nickname."
 }
 
 OptionMenu "PB_HUDOptions"
 {
 	Title "Project Brutality HUD Options"
+	Class "PB_OptionMenu"
 	
 	StaticText "Options", gold
 	Option "HUD Sways when moving", "PB_HudDynamics", "YesNo"
@@ -162,7 +155,6 @@ OptionMenu "PB_HUDOptions"
 	Option "Visor Glass", "pb_showhudvisorglass", "YesNo"
 	Option "Level Stats", "pb_showlevelstats", "YesNo"
 	Option "Low Resolution Font", "pb_uselowreshudfont", "YesNo"
-	StaticText "Better on low resolution displays", darkgray
 	Option "Show Ammo List", "pb_showammolist", "YesNo"
 	Option "Ammo List Displays current/max", "pb_curmaxammolist", "YesNo", "pb_showammolist"
 	Option "Hide Unused Ammo Types on Ammo List", "pb_hideunusedtypes", "YesNo", "pb_showammolist"
@@ -175,8 +167,6 @@ OptionMenu "PB_HUDOptions"
 	Slider "Message Size", "pb_messagesize", 0, 1, 0.02, 2
 	StaticText " "
 	StaticText "GZDoom HUD scaling", gold
-	StaticText "Disable if your HUD is too big or too small. Also allows finer scaling.", brick
-    StaticText "Set to 0.98 for smoother swaying.", brick
 	Option "Old HUD Scaling", "hud_oldscale", "YesNo"
 	Slider "Scale Factor", "hud_scalefactor", 0.36, 1.0, 0.02, 2
 	StaticText " "
@@ -279,11 +269,9 @@ OptionMenu "GlobalSettings"
 	StaticText " "
 	StaticText "--------- Determine what type of weapons and enemies you'll encounter. ---------"
 	StaticText " "
-	Submenu "Global Spawn Rules",		"SpawnPresets"
-	StaticText " "
-	Submenu "Customize Monster Spawns",		"MonsterSpawns"
-	StaticText " "
-	Submenu "Customize Weapon Spawns",		"WeaponSpawns"
+	Submenu "Global Spawn Rules", "SpawnPresets"
+	Submenu "Customize Monster Spawns", "MonsterSpawns"
+	Submenu "Customize Weapon Spawns", "WeaponSpawns"
 	StaticText " "
 	
 	//StaticText "Spawn Weapons At Map Start Instead of Dynamically", gold
@@ -292,11 +280,8 @@ OptionMenu "GlobalSettings"
 	//StaticText "of the map. Fixed will spawn the weapons within your tier randomly instead of dynamic"
 	//StaticText "which will give you the next one you don't have."
 	//StaticText " "
-	Option "$PB_SSG_RNDSPWN",				"pb_SSGRandomSpawn", "OnOff"
-	
-	StaticText ""
-	
-	Option "Weapons persist through death exits",				"PlayerCatchup", "YesNo"
+	Option "$PB_SSG_RNDSPWN", "pb_SSGRandomSpawn", "OnOff"
+	Option "Weapons persist through death exits", "PlayerCatchup", "YesNo"
 }
 
 OptionValue "SpawnChoiceSpawner"
@@ -308,24 +293,30 @@ OptionValue "SpawnChoiceSpawner"
 OptionMenu "SpawnPresets"
 {
 	Title "--------- Global Spawn Rules ---------"
+	Class "PB_OptionMenu"
 	//StaticText " "
 	//StaticText "Spawn Monsters as you approach them rather than on map start", gold
 	//Option "--------- Dynamically Spawn Monsters ---------",   "DynamicSpawnMonsters","YesNo"
 	StaticText " "
 	
 	Slider "Levels In Mapset", "levelsToPlay", 4, 512, 4
-	StaticText "How long the mapset you're playing is, so that PB can scale spawning across it."
-	Option "SPAWN RULE: ", "SpawnBalance","PBSpawnChoices"
+	Option "SPAWN RULE: ","SpawnBalance","PBSpawnChoices"
 	StaticText " "
 	StaticText "--------- Dynamic Progression ---------", gold
 	StaticText "Subtle curving of tiers, with overlaps between the previous/new tier."
-	StaticText "When a tier begins, spawns from the previous tier and new tier have 50/50 spawn priority." 
-	StaticText "As maps in a tier (i.e maps 9-16) progress, these ratios gradually change, until the new tier is 100% of the spawn pool"
-	StaticText "This is the intended 'vanilla' setting for Project Brutality, when playing through standard IWADS or full megawads.", green
-	StaticText "This is sequential, if you do dynamic progression make sure you start a new game for the proper experience", green
+	StaticText "When a tier begins, spawns from the previous tier" 
+	StaticText "and new tier have 50/50 spawn priority."
+	StaticText "As maps in a tier (i.e maps 9-16) progress"
+	StaticText "these ratios gradually change,"
+	StaticText "until the new tier is 100% of the spawn pool."
+	StaticText "This is the intended 'vanilla' setting for Project Brutality,",green
+	StaticText "when playing through standard IWADS or full megawads.",green
+	StaticText "This is sequential, if you do dynamic progression",green
+	StaticText "make sure you start a new game for the proper experience",green
 	StaticText " "
 	StaticText "--------- Tiered Progression ---------", gold
-	StaticText "Hard skip from tier to tier. When a tier begins, there is no subtle curving - all spawns adhere to the active tier."
+	StaticText "Hard skip from tier to tier. When a tier begins,"
+	StaticText "there is no subtle curving - all spawns adhere to the active tier."
 	StaticText " "
 	StaticText "--------- Tier 1 ---------", gold
 	StaticText "Play with just weapons and monsters from Tier 1"
@@ -344,10 +335,13 @@ OptionMenu "SpawnPresets"
 	StaticText "This is the reccomended setting for single-map mods.", green
 	StaticText " "
 	StaticText "--------- Death Wish ---------", gold
-	StaticText "The Development Team's personal choice of what we consider the toughest monsters and weakest weapons. You've been warned."
+	StaticText "The Development Team's personal choice of what we consider"
+	StaticText "the toughest monsters and weakest weapons. You've been warned."
 	StaticText " "
 	StaticText " "
-	StaticText "TIERING IS WRITTEN UNDER THE ASSUMPTION YOU ARE PLAYING A 32 MAP MEGAWAD. NEW TIERS BEGIN AT MAPS 9, 17, AND 25.", orange
+	StaticText "TIERING IS WRITTEN UNDER THE ASSUMPTION YOU ARE",orange
+	StaticText "PLAYING A 32 MAP MEGAWAD.",orange
+	StaticText "NEW TIERS BEGIN AT MAPS 9, 17, AND 25.",orange
 }
 OptionMenu "WeaponSpawns"
 {
@@ -408,11 +402,10 @@ optionvalue "MonsterDrops"
 OptionMenu "GameplaySettings"
 {
 	Title "---------Game Settings---------"
+	Class "PB_OptionMenu"
 	
 	StaticText " "
 	Option "Unique Weapon Crosshairs",	"pb_weapon_crosshairs", "OnOff"
-	StaticText "Cross is unique for each weapon (overrides custom crosshair setting)"
-	StaticText " "
 	StaticText " "
 	option "Keep unupgraded weapons ","pb_keepweapons","EnabledOption"//,false,0
 	StaticText "Only effective if keep weapons is disabled"
@@ -425,24 +418,9 @@ OptionMenu "GameplaySettings"
 	StaticText " "
 	option "Wall Penetration ","pb_wallpenetration","EnabledOption"
 	option "Demon Tech fire ","pb_dtechfire","EnabledOption"
-	StaticText "Allow DTech projectiles to spawn hurting fire"
 	Slider "Nail stay time", "pb_naillifetime", 0, 60, 1, 0
-	StaticText " "
-	StaticText " "
 	option "Monster weapon drops ","PB_WeaponDrops","MonsterDrops"
-	StaticText " "
-	StaticText " "
-	
-  StaticText " "
 	Option "$PB_DUALSTYLE",	"SingleDualFire", "DualWieldOption"
-	StaticText "$PB_DUALSTYLE_SIN", green
-//	StaticText "$PB_DUALSTYLE_SINEXTRA", green
-	StaticText "$PB_DUALSTYLE_DEF"
-	StaticText "$PB_DUALSTYLE_INV", darkgray
-	//StaticText "NOTICE: Inverted doesn't work at the moment."
-	StaticText " "
-	StaticText " "	
-	
 	//Option "Weapon Wheel Freezes Time",	"py_weaponwheel_freeze", "OnOff"
 	Option "Weapon ADS Controls","pb_toggle_aim_hold", "AimingStyle" //Looks like we are using this newer line.
 	StaticText " "
@@ -463,165 +441,64 @@ OptionMenu "GameplaySettings"
 	//StaticText " "
 
 			
-  StaticText "Pump Shot Gun Settings"
-	StaticText " "
+	StaticText "Pump Shot Gun Settings"
 	Option "Alternate Ammo Swap Animation",	"pb_SGAltAmmoSwap", "OnOff"
-	StaticText "Ammo Swap is slower and more realistic"
 	Option "Alternate Pump Animation",	"pb_SGPumpFromHip", "OnOff"
-	StaticText "Pump shotgun from hip when you have berserk or a box magazine upgrade is in inventory"
-	
- StaticText " "
-	
- StaticText "Rail Gun Settings"
 	StaticText " "
+	StaticText "Rail Gun Settings"
 	Option "Overloaded Cell",	"pb_RLOverloadCell", "OnOff"
-	StaticText "A 50% Chance when firing a 60 cell laser blast you will overload the cell"
 	StaticText " "
-	StaticText " "
-	
 	Option "Advanced movement on hazard floors","pb_hazardmovement", "OnOff"
-	StaticText "Toggles hazard floors to inhibit or allow advanced movement, such as jumping and dashing"
-	StaticText "Turn this off for maps where advanced movement is not intended!!!"
-	StaticText " "
-	StaticText " "
-
-		
-	Option "Disable Helmet Animation",				"pb_NoHelmetAnimation", "OnOff"
-	StaticText "Disable the animation of putting on your helmet at the start of the game"
-	StaticText " "
-	StaticText " "
-		
-	Option "Disable Auto-Doomguy Talk",				"nodoomguytalk", "OnOff"
-	StaticText "Disables the chance for automatic taunts to play."
-	StaticText " "
-	StaticText " "
-	
+	Option "Disable Helmet Animation", "pb_NoHelmetAnimation", "OnOff"
+	Option "Disable Auto-Doomguy Talk", "nodoomguytalk", "OnOff"
 	Option "$PB_DISABLE_PRONE", "pb_disable_sergeant_prone", "YesNo"
-	StaticText "$PB_DISABLE_PRONE_DESC"
-	StaticText " "
-	StaticText " "
-	
 	Option "Standard Cyberdemon Death animation", "pb_cyberdemondeath", "YesNo"
-	StaticText "Plays standard cyberdemon death animation instead"
-	StaticText "of the slower, Hideous Destructor inspired death animation"
-	StaticText " "
-	StaticText " "
-	
-	
 	Slider "$PB_RECOIL_VERTICAL", "pb_weapon_recoil_mod_vertical", 0.0, 2.0, 0.1, 2
 	Slider "$PB_RECOIL_HORIZONTAL", "pb_weapon_recoil_mod_horizontal", 0.0, 2.0, 0.1, 2
-	StaticText "$PB_RECOIL_DESC"
 	Option "$PB_RECOIL_EXTRA", "pb_weapon_recoil_extra_weapons", YesNo
-	StaticText "$PB_RECOIL_EXTRA_DESC"
-	StaticText " "
 	StaticText " "	
 	/*
 	StaticText "-----------------Weapon Progression-----------------"
 	
 	StaticText " "
-	Option "Revolver upgrades Pistol",				"pb_UpgradeRevolver", "OnOff"
-	StaticText "No longer use the Pistol once you collect a revolver"
-	StaticText " "
-	
-	Option "LMG upgrades Carbine",				"pb_UpgradeLMG", "OnOff"
-	StaticText "No longer use the Carbine once you collect an LMG"
-	StaticText " "
-	
-	Option "Carbine upgrades DMR",				"pb_UpgradeCarbine", "OnOff"
-	StaticText "No longer use the DMR once you collect a Carbine"
-	StaticText " "
-	
-	Option "Autoshotgun upgrades Pump Shotgun",				"pb_UpgradeShotgun", "OnOff"
-	StaticText "No longer use the Pump Shotgun once you collect a Autoshotgun"
-	StaticText " "
-	
-	Option "Nailgun upgrades Minigun",				"pb_UpgradeNailgun", "OnOff"
-	StaticText "No longer use the Minigun when you collect a Nailgun"
-	StaticText " "
+	Option "Revolver upgrades Pistol", "pb_UpgradeRevolver", "OnOff"
+	Option "LMG upgrades Carbine", "pb_UpgradeLMG", "OnOff"
+	Option "Carbine upgrades DMR", "pb_UpgradeCarbine", "OnOff"
+	Option "Autoshotgun upgrades Pump Shotgun", "pb_UpgradeShotgun", "OnOff"
+	Option "Nailgun upgrades Minigun", "pb_UpgradeNailgun", "OnOff"
 	*/
 	StaticText "-----------------Weapon Misc-----------------"
 
 	Option "$PB_NO_M1PLASMACOOLDOWN", "pb_nocooldown", "YesNo"
-	StaticText "$PB_NO_M1PLASMACOOLDOWN_DESC"
-	StaticText "$PB_NO_M1PLASMACOOLDOWN_NOTICE", "darkgray"
-//	StaticText "$PB_NO_M1PLASMACOOLDOWN_EXTRA", "purple"
-	StaticText " "
-
 	Option "$PB_CRYOWARMUP", "pb_fastcryowarmup", "CryoWarmupOption"
-	StaticText "$PB_CRYOWARMUP_DESC"
-	StaticText "$PB_CRYOWARMUP_DESC2"
-	StaticText "$PB_CRYOWARMUP_DESC3"
-	StaticText "$PB_CRYOWARMUP_NO"
 	StaticText " "
 	StaticText "(Experimental Tweaks)"
 	Option "Quad Shotgun Quad-Load", "pb_qsgquadload", "OnOff"
-	StaticText "Allows Quad-Shotgun to reload all four shells at once. Only happens if the option to keep the SSG is off, or if keeping weapons is disabled."
-	StaticText " "
 }
 
 OptionMenu "RenderingSettings"
 {
 	Title "---------Rendering Settings---------"
+	Class "PB_OptionMenu"
 	StaticText " "
 	Submenu "Gore/Debris Settings", "GoreDebrisMenu"
-	StaticText " "
-	
 	Submenu "Motion Blur Settings", "MBlurOpts"
-	StaticText " "
-	
 	Submenu "Screen Tilt Settings", "TiltPlusPlusMenu"
-	StaticText " "
-	
 	Submenu "Weapon Visual Settings", "WeaponVisuals"
-	StaticText " "
-	
 	Submenu "Project Brutality Voxel Project settings", "PBVPOptions"
 	StaticText " "
-	
 	Slider "Maximum Wall Decals", "cl_maxdecals", 0, 10000, 100
-	StaticText " "
-
     Option "Performance Fire", "pb_performance_fire", "OnOff"
-    StaticText "Use less effects for Flamethrower fire"
-	StaticText " "
-
     Option "Gun Smoke Type", "pb_gunsmoketype", "PBSmokeTypes"
-    StaticText "Decide which muzzle smoke particle effect to use"
-    StaticText " "
-
 	Option "Exaggerated Weapon Recoil", "PB_ExaggeratedRecoil", "YesNo"
 	Slider "Exaggeration Multiplier", "PB_ExaggeratedRecoilMul", 0.1, 2.0, 0.1, 1, "PB_ExaggeratedRecoil"
-	StaticText "Exaggerated recoil for fully automatic weapons, they will sway around and tilt while firing."
-	StaticText " "
-	
 	Option "Show dash screen effect","pb_dasheffect", "OnOff"
-	StaticText "Toggles the screen effect when performing a dash"
-	StaticText " "
-	
     Option "Low Flashes Mode", "pb_lowflashesmode", "OnOff"
-    StaticText "Significantly lower flashing effects when a powerup is running out"
-	StaticText " "
-	
-	Option "Blood Splash Effects Mode",				"bloodsplash", "BloodSplashOption"
-	StaticText "Switch between the Regular PB Blood Splash and the Alternative Blood Splash"
-	StaticText " "
-	
-	Option "Disable Screen Splash Effects",				"noscreensplash", "OnOff"
-	StaticText "Disables the splashing of liquids on the screen"
-	StaticText " "
-	
-	Option "Disable Screen Pain Effects",				"nopaineffect", "OnOff"
-	StaticText "Disables the screen scratches, bullet holes, and cracks"
-	StaticText " "
-	
-	Option "Enable Light From Tracers",				"PB_tracerlight", "OnOff"
-	StaticText "Enables GL light emitted from tracers"
-	StaticText " "
+	Option "Blood Splash Effects Mode", "bloodsplash", "BloodSplashOption"
+	Option "Disable Screen Splash Effects", "noscreensplash", "OnOff"
+	Option "Disable Screen Pain Effects", "nopaineffect", "OnOff"
+	Option "Enable Light From Tracers", "PB_tracerlight", "OnOff"
 	Option "Alternate Tracers","PB_alttracer", "OnOff"
-	StaticText "Enables longer/more realistic tracer (Rifle/Minigun only currently)"
-	StaticText " "
-	
-	
 }
 
 OptionMenu "PBVPOptions" // Project Brutality Voxel Project settings
@@ -712,15 +589,13 @@ OptionMenu "MBlurOpts"
 OptionMenu "MonsterSpawns"
 {
 	Title	"---------Monster Spawns---------"
+	Class "PB_OptionMenu"
 	
 	Option "Disable PB Monsters", "pb_vanillamonster_override", "YesOrNo"
-	StaticText "Disable PB's Monsters, for those that are running custom enemy packs specifically"
-	StaticText " "
 	
 	StaticText "---------------Zombiemen Variants---------------", gold
 	
 	Option "Disable Nazi random replacements", "PB_NaziExclusiveSpawning", "EnabledOption"
-	StaticText "Disable the random chance for Nazis to be replaced by Grunts", red
 	StaticText " "
 	Option "Zombieman Override", "pb_zombieman_override", "PB_MonsterOverride"
 	StaticText " "
