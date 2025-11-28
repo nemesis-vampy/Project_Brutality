@@ -92,6 +92,7 @@ ACTOR PB_Nailgun : PB_Weapon
 		
 		SwitchToJavelin:
 			TNT1 A 0 {
+				A_Print("$PB_NAILGUN_JAVELIN");
 				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/up", CHAN_AUTO);
@@ -127,6 +128,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			
 		SwitchToNailgun:
 			TNT1 A 0 {
+				A_Print("$PB_NAILGUN_NAIL");
 				A_SetCrosshair(-1);
 				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/nailgun/up", CHAN_AUTO);

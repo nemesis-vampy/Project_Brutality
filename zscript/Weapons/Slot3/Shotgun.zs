@@ -1238,7 +1238,7 @@ Class PB_Shotgun : PB_WeaponBase
 		bool docancel = false;
 		if(countinv("SelectShotgun_No") > 0)
 		{
-			A_Log("Ammo type not available");
+			A_Print("$PB_NOTAVAILABLE");
 			docancel = true;
 		}
 		int actmode = getshellsmode();
@@ -1246,7 +1246,7 @@ Class PB_Shotgun : PB_WeaponBase
 		(actmode == Shell_Drag		&& CountInv("SelectShotgun_Dragonsbreath") >= 1) 	||
 		(actmode == Shell_Buck		&& CountInv("SelectShotgun_Buckshot") >= 1))
 		{
-			A_Log("Ammo type already selected");
+			A_Print("$PB_ALREADYSELECTED");
 			docancel = true;
 		}
 		

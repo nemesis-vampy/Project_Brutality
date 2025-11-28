@@ -421,7 +421,7 @@ ACTOR PB_Railgun : PB_Weapon
 			}
 			TNT1 A 0 A_JumpIfInventory("RailgunLaserMode",1,"SwitchToRailgun")
 		SwitchToLaser:
-			TNT1 A 0 A_Print ("Firemode: \cgLaser")
+			TNT1 A 0 A_Print ("$PB_RAILGUN_LASER")
 			TNT1 A 0 A_Setinventory("RailgunLaserMode",1)
 			TNT1 A 0 A_JumpIf(CountInv("RailgunAmmo") == 0, "SwitchToLaser_Empty")
 			TNT1 A 0 A_JumpIf(CountInv("RailgunAmmo") < 12, "SwitchToLaser_Partial")
@@ -457,7 +457,7 @@ ACTOR PB_Railgun : PB_Weapon
 			Goto Ready3
 			
 		SwitchToRailgun:
-			TNT1 A 0 A_Print ("Firemode: \chRail")
+			TNT1 A 0 A_Print ("$PB_RAILGUN_RAIL")
 			TNT1 A 0 A_Setinventory("RailgunLaserMode",0)
 			TNT1 A 0 A_JumpIf(CountInv("RailgunAmmo") == 0, "SwitchToRailgun_Empty")
 			TNT1 A 0 A_JumpIf(CountInv("RailgunAmmo") < 12, "SwitchToRailgun_Partial")

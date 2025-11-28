@@ -683,6 +683,7 @@ Class PB_SuperGL : PB_Weapon
 		findinventory("GrenadeTypeIncendiary") && getSGLMode() == 		SGL_Fire ||
 		findinventory("GrenadeTypeCryo") && getSGLMode() == 			SGL_Cryo)
 		{
+			A_Print("$PB_ALREADYSELECTED");
 			A_SetInventory("CantWeaponSpecial" ,0 );
 			A_SetInventory("GrenadeTypeImpact", 0);
 			A_SetInventory("GrenadeTypeSticky", 0);
