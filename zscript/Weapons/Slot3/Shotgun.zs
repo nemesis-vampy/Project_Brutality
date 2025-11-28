@@ -1144,24 +1144,21 @@ Class PB_Shotgun : PB_WeaponBase
 			SHMS BCDEFG 0;
 			SHMD BCDEFG 0;
 			SHTM A 4;
-			TNT1 A 0 {
-				if (CountInv("SelectShotgun_Buckshot") >= 1)
+			SHTM BCDEFG 1
+			{
+				if (CountInv("SelectShotgun_Buckshot") >= 1) //i hate this
 				{
-					setShellsMode(Shell_Buck);
-					//A_Print("$PB_SGBUCKLD");
+					PB_SetShellSprite("SHTM","SHTM","SHTM");
 				}
 				if (CountInv("SelectShotgun_Slugshot") >= 1)
 				{
-					setShellsMode(Shell_Slug);
-					//A_Print("$PB_SGSLUGLD");
+					PB_SetShellSprite("SHMS","SHMS","SHMS");
 				}
 				if (CountInv("SelectShotgun_Dragonsbreath") >= 1)
 				{
-					setShellsMode(Shell_Drag);
-					//A_Print("$PB_SGDBLD");
-				}	
+					PB_SetShellSprite("SHMD","SHMD","SHMD");
+				}
 			}
-			SHTM BCDEFG 1 PB_SetShellSprite("SHTM","SHMS","SHMD");
 			SHTM H 1 A_Startsound("weapons/shotgunmag/magin", 19,CHANF_OVERLAP);
 			SHTM I 1 A_Startsound("insertshell", 19,CHANF_OVERLAP);
 			SHTM JKLMN 1;
@@ -1171,13 +1168,25 @@ Class PB_Shotgun : PB_WeaponBase
 			SHMF K 0;
 			SHMG K 1
 			{
-				PB_SetShellSprite("SHMG","SHMA","SHMF");
 				switch(getshellsmode())
 				{
 					case Shell_Buck: PB_SpawnCasing("ShotgunCasingRedLive",28,-5,30,3,3,3);		break;
 					case Shell_Slug: PB_SpawnCasing("ShotgunCasingGreenLive",28,-5,30,3,3,3);	break;
 					case Shell_Drag: PB_SpawnCasing("ShotgunCasingOrangeLive",28,-5,30,3,3,3);	break;
 				}
+				if (CountInv("SelectShotgun_Buckshot") >= 1)
+				{
+					setShellsMode(Shell_Buck);
+				}
+				if (CountInv("SelectShotgun_Slugshot") >= 1)
+				{
+					setShellsMode(Shell_Slug);
+				}
+				if (CountInv("SelectShotgun_Dragonsbreath") >= 1)
+				{
+					setShellsMode(Shell_Drag);
+				}
+				PB_SetShellSprite("SHMG","SHMA","SHMF");
 				A_TakeInventory("ShotgunAmmo",1);
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 				A_Startsound("weapons/sgmvpump",19,CHANF_OVERLAP); 
