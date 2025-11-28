@@ -797,7 +797,7 @@ class ShouldCanCard : equipmentCard
 {
 	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
 	{
-		tags.push("Shoulder Cannon");
+		tags.push("Quick Launcher");
 		tokens.push("WW_RevGunSelected");
 		img.push("graphics/pywheel/Equip_RevGun.png");
 		sx.push(1.3);
