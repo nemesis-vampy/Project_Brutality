@@ -64,9 +64,8 @@ Class PB_LeechGrenadeAmmo : PB_Ammo
 	{
 		//$Title Leech Grenade
 		//$Category Project Brutality - Weapons/Equipment
-		Scale 0.45;
+		Scale 0.15;
 		Tag "Leech Grenade";
-		Inventory.Icon "FLSPA1";
 		Inventory.PickupSound "SiphonGrowl";
 		PB_Ammo.AmmoType "leechnade";
 	}

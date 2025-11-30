@@ -89,11 +89,8 @@ class PB_Ammo : Ammo
 		loop;
 	SpawnDTech:
 	SpawnLeechNade:
-		DB61 ABCDEFGH 2 bright A_FadeOut(.01 * (0.15 / Scale.X), FTF_REMOVE | FTF_CLAMP );
+		DB61 ABCDEFGH 2 bright A_FadeOut(.01 * (0.085 / Scale.X), FTF_REMOVE | FTF_CLAMP );
 		loop;
-	SpawnLeechNade:
-		FLSP BAFEFA 6;
-		Loop;
 	SpawnNade:
 		PGRN D -1;
 		stop;
@@ -102,6 +99,6 @@ class PB_Ammo : Ammo
 		stop;
 	LoadSprites:
 		MBLK A 0; AMOK A 0; CLIP A 0; AMMO A 0; SHEL A 0; SBOX A 0; ROCK A 0; BROK A 0; GSLN A 0; STNG A 0; XPFP A 0;
-		CELL ABCDEFGH 0; YELP ABCDEFGHIJ 0; DB61 ABCDEFGH 0; PGRN D 0; FATB D 0; FLSP ABEF 0;
+		CELL ABCDEFGH 0; YELP ABCDEFGHIJ 0; DB61 ABCDEFGH 0; PGRN D 0; FATB D 0; 
 	}
 }
