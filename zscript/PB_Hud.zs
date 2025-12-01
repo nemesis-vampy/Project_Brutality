@@ -738,7 +738,7 @@ class PB_Hud_ZS : BaseStatusBar
 			mug = "STF"; 
 		}
 			
-		PBHud_DrawTexture(GetMugShot(5, mugflags, mug), (25, -65), DI_ITEM_OFFSETS | DI_SCREEN_LEFT_BOTTOM, scale: (1.25, 1.25));
+		PBHud_DrawTexture(GetMugShot(5, mugflags, mug), (24.5, -70), DI_ITEM_OFFSETS | DI_SCREEN_LEFT_BOTTOM, scale: (1.25, 1.5));
 	}
 	
 	////////////////////////////////////
