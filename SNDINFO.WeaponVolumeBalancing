@@ -5,7 +5,7 @@ $volume weapons/suppressedpistol 1.0
 $volume revolver/fire 0.5
 $volume ZSpecOps/MGun 1.0 // the baseline for sound volume
 $volume weapons/silencedsmg 1.0
-$volume weapons/smg/overlay 1.0
+//$volume weapons/smg/overlay 1.0
 $volume Weapons/AutoShotgun 0.6
 $volume FLAKFIRE 0.5
 $volume QSGFIRE1 0.5
