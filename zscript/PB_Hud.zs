@@ -737,7 +737,7 @@ class PB_Hud_ZS : BaseStatusBar
 			mugflags = MugShot.STANDARD; 
 			mug = "STF"; 
 		}
-		if(CVar.GetCVar("hud_oldscale",cplayer).GetBool() && CVar.GetCVar("hud_scale",cplayer).GetInt() > -1)
+		if(CVar.GetCVar("hud_oldscale",cplayer).GetBool() && CVar.GetCVar("hud_scale",cplayer).GetInt() > -1 || customPBMugshot)
 		{
 			PBHud_DrawTexture(GetMugShot(5, mugflags, mug), (25.5, -65), DI_ITEM_OFFSETS | DI_SCREEN_LEFT_BOTTOM, scale: (1.25, 1.25));
 		}
