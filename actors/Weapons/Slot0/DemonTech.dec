@@ -96,7 +96,7 @@ ACTOR PB_Demontech : PB_Weapon
 	Weapon.AmmoType1 "PB_DTech"
 	Weapon.AmmoType2 "HellAmmo"
 	Tag "Demon-Tech Rifle"
-	Inventory.PickupMessage "Demon Tech Rifle (Slot 0)"
+	Inventory.PickupMessage "Demon-Tech Rifle (Slot 0)"
 	+WEAPON.NOAUTOAIM
 	Scale 0.48
 	Inventory.AltHUDIcon "HRPUA0"

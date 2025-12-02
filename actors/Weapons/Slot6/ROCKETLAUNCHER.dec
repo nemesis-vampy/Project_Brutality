@@ -267,7 +267,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
     +WEAPON.NOAUTOAIM
 	+WEAPON.EXPLOSIVE
     +WEAPON.NOALERT
-	Inventory.PickupMessage "UAC Guided Rocket Launcher (Slot 6)"
+	Inventory.PickupMessage "UAC-M10 Rocket Launcher (Slot 6)"
 	Tag "UAC-M10 Rocket Launcher"
 	Inventory.AltHUDIcon "RKTLZ0"
 	PB_WeaponBase.respectItem "RespectRocketLauncher"

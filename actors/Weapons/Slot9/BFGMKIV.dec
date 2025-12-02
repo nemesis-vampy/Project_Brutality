@@ -28,9 +28,9 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 	+WEAPON.NOAUTOAIM
 	+FLOORCLIP
 	+DONTGIB
-	Tag "BFG-9000 MK V"
+	Tag "UAC-MkV BFG-9000"
 //	+WEAPON.BFG
-	Inventory.PickupMessage "BFG-9000 Mark V! (Slot 9)"
+	Inventory.PickupMessage "UAC-MkV BFG-9000 (Slot 9)"
 	Scale .45
 	PB_WeaponBase.respectItem "RespectBFG"
 	PB_WeaponBase.OffsetRecoilX 1.9

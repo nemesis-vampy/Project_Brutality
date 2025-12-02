@@ -39,7 +39,7 @@ Actor PB_MinigunUpgrade: PB_UpgradeItem
 	-INVENTORY.ALWAYSPICKUP
 	-COUNTITEM
 	Inventory.Pickupsound "CHGNPKUP"
-	Inventory.PickupMessage "Minigun Upgrade!"
+	Inventory.PickupMessage "UAC-R64 Mach-3 \"Death Dealer\" Minigun (Slot 5, Upgrade)"
 	Tag "Minigun Upgrade"
 	Scale 0.52
 	FloatBobStrength 0.5

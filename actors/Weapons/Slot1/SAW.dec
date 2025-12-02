@@ -77,7 +77,7 @@ Actor PB_Chainsaw  : PB_Weapon //replaces Chainsaw
 	+WEAPON.NOALERT
 	+WEAPON.MELEEWEAPON
 	+WEAPON.AMMO_OPTIONAL
-	Tag "Beavertooth Painsaw"
+	Tag "MIXOM Beavertooth Painsaw"
 	Scale .49
 	Inventory.AltHUDIcon "CSAWA0"
 	FloatBobStrength 0.5

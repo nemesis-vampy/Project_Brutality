@@ -25,8 +25,8 @@ Class PB_SuperGL : PB_Weapon
 		+WEAPON.NOALERT;
 		+WEAPON.NOAUTOFIRE;
 		+FLOORCLIP;
-		Inventory.PickupMessage "UAC-MGL Automatic Grenade Launcher (Slot 6)";
-		Tag "UAC-M7 Super Grenade Launcher";
+		Inventory.PickupMessage "UAC-M7 Automatic Grenade Launcher (Slot 6)";
+		Tag "UAC-M7 Automatic Grenade Launcher";
 		Inventory.AltHUDIcon "SGL0Z0";
 		PB_WeaponBase.respectItem "RespectSGL";
 		PB_WeaponBase.UsesWheel true;
