@@ -91,6 +91,7 @@ Class PB_Revolver : PB_WeaponBase
 			Goto Ready3;
 		
 		Select:
+			R1V1 E 0 PB_SelectIfUpgrade("PB_Deagle");
 			TNT1 A 0 PB_WeaponRaise("REVOUP");
 			//goto SelectFirstPersonLegs;	//pb_Weaponraise already handles this
 		SelectContinue:

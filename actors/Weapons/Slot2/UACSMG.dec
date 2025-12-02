@@ -125,10 +125,10 @@ ACTOR PB_SMG : PB_Weapon
 	Inventory.Amount 1
 	+FLOORCLIP
 	+DONTGIB
-	Obituary "%o was shot down by %k's UAC-17 Compact Sub-Machine Gun."
+	Obituary "%o was shot down by %k's UAC-17 Compact Submachine Gun."
 	Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "UAC Compact Sub-Machine Gun (Slot 2, Upgrade)"
-	Tag "UAC-17 SMG"
+	Inventory.Pickupmessage "UAC-17 Compact Submachine Gun (Slot 2, Upgrade)"
+	Tag "UAC-17 Compact Submachine Gun"
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOALERT
 	+WEAPON.NOAUTOFIRE
@@ -631,10 +631,12 @@ ACTOR PB_SMG : PB_Weapon
 		TNT1 A 0 {
 			if(CountInv("SilencedSMG") == 1) 
 			{	
+				A_Print("$PB_PISTOL_SUPPRESSOFF");
 				return state ("ScrewOffSilencer");
 			}
 			else
 			{	
+				A_Print("$PB_PISTOL_SUPPRESSON");
 				return state ("ScrewOnSilencer");
 			}
 			return state("");
@@ -790,12 +792,12 @@ ACTOR PB_SMG : PB_Weapon
 	ToggleLaser:
 		TNT1 A 0 {
 				if(CountInv("LaserSightActivated")){A_SetInventory("LaserSightActivated",0); 
-				A_Print("\cgLaser Sight \c-Deactivated");
+				A_Print("$PB_SMG_LASEROFF");
 				PB_HandleCrosshair(67);
 				}
 				else{
 				A_SetInventory("LaserSightActivated",1); 
-				A_Print("\cgLaser Sight \c-Activated");
+				A_Print("$PB_SMG_LASERON");
 				A_SetCrosshair(-1);
 				}
 			}
@@ -1016,7 +1018,6 @@ ACTOR PB_SMG : PB_Weapon
 			A_SetInventory("PB_LockScreenTilt",0);
 			A_ClearOverlays(10,11);
 		}
-		TNT1 A 0 A_JumpIf(GetCvar("pb_UpgradeLMG") == 0, 2)
 		TNT1 A 0 PB_TakeIfUpgrade("PB_Pistol") //A_TakeInventory("PB_Carbine",2)
 		
 		TNT1 A 0 PB_ResetBarrelTokens

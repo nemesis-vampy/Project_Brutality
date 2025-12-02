@@ -13,7 +13,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		PB_WeaponBase.unloadertoken "PlasmaRifleHasUnloaded";
 		PB_WeaponBase.respectItem "RespectPlasmaGun";	
 		PB_WeaponBase.DualWieldToken "DualWieldingPlasma";	
-		inventory.pickupmessage "UAC-M1 Plasma Rifle(Slot 7)";
+		inventory.pickupmessage "UAC-M1 Plasma Rifle (Slot 7)";
 		Inventory.PickupSound "7LSPICK";
 		Inventory.AltHUDIcon "PLASA0";
 		Tag "UAC-M1 Plasma Rifle";
