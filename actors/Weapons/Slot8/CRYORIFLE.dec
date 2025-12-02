@@ -1122,7 +1122,8 @@ Actor IceTracer {
 					A_FadeOut(0.04);
 					A_SetRoll(roll-frandom(-15,15));
 				}
-				Stop	}
+				Stop
+			}
 	}
 				
 Actor SmallIceTracer : IceTracer {
@@ -1133,7 +1134,8 @@ Actor SmallIceTracer : IceTracer {
 					A_FadeOut(0.04);
 					A_SetRoll(roll-frandom(-15,15));
 				}
-				Stop	}
+				Stop
+				}
 	}
 
 ACTOR CryoTrail {

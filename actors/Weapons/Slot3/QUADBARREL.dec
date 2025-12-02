@@ -41,7 +41,7 @@ States {
 		TNT1 A 1	A_CustomMissile("QuadFlameMissileCheaper", random(-22, 25),	random(-25, 25), random(-25, 25), CMF_AIMDIRECTION )
 		TNT1 A 2
 		Stop
-}
+	}
 }
 
 Actor QuadFlameSpawnerCheapest : QuadFlameSpawnerCheap {
@@ -51,7 +51,7 @@ Spawn:
 	TNT1 A 1	A_CustomMissile("QuadFlameMissileCheaper", random(-15, 18),	random(-15, 18), random(-22, 18), CMF_AIMDIRECTION )
 	TNT1 A 2
 	Stop 
-}
+ }
 }
 
 ACTOR QuadFlameMissileCheap : FlamethrowerMissile
@@ -107,7 +107,7 @@ States {
 		DB54 L 1 BRIGHT A_SpawnItem("RedFlare", 0, 0)
 		TNT1 A 0 A_Playsound("Afrit/Hellfire")
 		Stop
-}
+	}
 }
 
 ACTOR QuadDemonicBreath4Blast: FastProjectile
@@ -183,7 +183,7 @@ States
 			EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
 			TNT1 AAA 20 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
 			Stop
-}
+	}
 }
 
 ACTOR QuadDemonicBreathBlast: QuadDemonicBreath4Blast
@@ -232,7 +232,7 @@ States
 			TNT1 AAAAAA 0 A_CustomMissile ("FireworkSFXType2", 2, 0, random (0, 360), 2, random (10, 80))
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 			Goto ExplosionEffect
-}
+	}
 }
 
 ACTOR QuadDemonicBreathOneBlast : QuadDemonicBreathBlast {
@@ -260,7 +260,7 @@ Death:
 			TNT1 AAAAAA 0 A_CustomMissile ("FireworkSFXType2", 2, 0, random (0, 360), 2, random (10, 80))
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 			Goto ExplosionEffect
-}
+	}
 }
 
 ACTOR ShotgunDemonicBreathUpdated: QuadDemonicBreathOneBlast {
