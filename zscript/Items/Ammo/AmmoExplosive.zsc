@@ -85,6 +85,14 @@ class PB_ProxMineAmmo : PB_Ammo
 	}
 }
 
+// QuickLauncher Token
+Class HasRevGun : Inventory 
+{
+	Default
+	{
+		inventory.maxamount 1;
+	}
+}
 class PB_QuickLauncherAmmo : PB_Ammo
 {
 	Default

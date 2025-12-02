@@ -48,3 +48,31 @@ class PB_DTechLarge : PB_DTech replaces demonpickup2
 		Super.DoPickupSpecial(toucher);
 	}
 }
+
+// Leech Grenade and Token
+Class HasLeech : Inventory
+{
+	Default
+	{
+		inventory.maxamount 1;
+	}
+}
+
+Class PB_LeechGrenadeAmmo : PB_Ammo 
+{
+	Default
+	{
+		//$Title Leech Grenade
+		//$Category Project Brutality - Weapons/Equipment
+		Scale 0.15;
+		Tag "Leech Grenade";
+		Inventory.PickupSound "SiphonGrowl";
+		PB_Ammo.AmmoType "leechnade";
+	}
+
+	override bool TryPickup(in out actor toucher)
+	{
+		toucher.GiveInventory("HasLeech",1) ;
+		return Super.TryPickup(toucher);
+	}
+}

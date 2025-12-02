@@ -1,3 +1,4 @@
+/*
 Actor HasRevGun : Inventory {inventory.maxamount 1}
 
 ACTOR QuickLauncher: CustomInventory //23167
@@ -84,6 +85,7 @@ ACTOR MiniHellRocketAmmo : Ammo
 	  Stop
 	}
 }
+*/
 
 Actor MineAmmo : Ammo
 {
@@ -139,7 +141,7 @@ ACTOR HandGrenade: CustomInventory //23167
 			Loop
 			
 		Pickup:
-		TNT1 A 0 A_GiveInventory("HandGrenadeAmmo",1) 		
+		TNT1 A 0 A_GiveInventory("PB_GrenadeAmmo",1) 		
 		TNT1 A 20
 		Stop
 		
@@ -239,6 +241,7 @@ Actor ThrownProxMine
 		Stop
 	}
 }
+
 
 Actor GroundProxMine : SwitchableDecoration
 {

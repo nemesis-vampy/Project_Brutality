@@ -74,9 +74,10 @@ class PB_Baron1 : PB_Monster
 		suppressiveMissileRadius = 15;
 		suppressLimit = 8;
 		suppressLimit2 = 6;
+        if (pb_NoBuffBaron)
+            canSuppress = false;
 	}
 
-	
 	 void SpawnEffect(string effect, int count, int heightMin, int heightMax)
     {
         for (int i = 0; i < count; i++)
@@ -94,7 +95,6 @@ class PB_Baron1 : PB_Monster
         }
     }
 
-
     States
     {
         Spawn:
@@ -106,13 +106,13 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
             TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
             TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon");
-            BOSS BB 10 A_Look;
+            BOSS BB 10 A_Look();
             Loop;
 
         See:
             TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel");
             BTS3 ABC 1;
-            TNT1 A 0 A_FaceTarget;
+            TNT1 A 0 A_FaceTarget();
             BTS3 D 4;
             BTS3 EDFD 4;
             BTS3 CBA 1;
@@ -127,6 +127,77 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
             TNT1 A 0 A_JumpIfInventory("HasExplosiveBarrel", 1, "MissileBarrel");
             Goto See4;
+
+        See3:
+            BOSS AA 3 A_SmartChase();
+            TNT1 A 0 A_StartSound("baron/step", 5);
+            BOSS BBCC 3 A_SmartChase();
+            TNT1 A 0 A_StartSound("baron/step", 5);
+            BOSS DD 3 A_SmartChase();
+            Goto See4;
+
+        Idle:
+        LookingForPlayer:
+            TNT1 A 0 A_GiveInventory("SKImp", 1);
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0 A_SetAngle(angle - 40);
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0 A_SetAngle(angle + 40);
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+            TNT1 A 0;
+            BOSS B 10 A_Look();
+
+            BOSS A 0 A_Wander();
+            BOSS AA 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            TNT1 A 0 A_StartSound("baron/step", 5);
+            BOSS B 0 A_Wander();
+            BOSS BB 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            BOSS C 0 A_Wander();
+            BOSS CC 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            TNT1 A 0 A_StartSound("baron/step", 5);
+            BOSS D 0 A_Wander();
+            BOSS DD 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            TNT1 A 0 A_jump(128, "LookingForPlayer");
+            BOSS A 0 A_Wander();
+            BOSS AA 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            TNT1 A 0 A_StartSound("baron/step", 5);
+            BOSS B 0 A_Wander();
+            BOSS BB 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            BOSS C 0 A_Wander();
+            BOSS CC 2 A_Look();
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            BOSS D 0 A_Wander();
+            BOSS DD 2 A_Look();
+            TNT1 A 0 A_StartSound("baron/step", 5);
+            TNT1 A 0 A_Recoil(-2);
+            TNT1 A 0;
+            Goto LookingForPlayer;
 
         See4:
 //            TNT1 A 0 A_GiveInventory("EnemyMemory", 1);
@@ -155,137 +226,60 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat");
             Loop;
 
+        // Won't go into this state sequence unless canSuppress is true. This is set True by default, but set False on spawn if
+        // the pb_NoBuffBaron CVAR is True.
 		SuppressiveFire:
 			TNT1 A 0 { self.inSuppressiveFire = true; }
 			TNT1 A 0 { int attackRoll = random(0, 99); if (attackRoll > 50 && suppressCount2 < suppressLimit2) { SetStateLabel("SuppressiveFire2");}}
-
 			BOSS P 6;
-			
 			BOSS Q 3 BRIGHT { self.suppressiveOffZ = 36; self.suppressiveOffXY = 15; self.suppressiveMissile = "Baron_Slash";  A_SuppressiveFire();}
 			BOSS P 3 {if (target && CheckSight(target)) SetStateLabel("See2");}
-			
 			BOSS Q 3 BRIGHT { self.suppressiveOffZ = 36; self.suppressiveOffXY = 15; self.suppressiveMissile = "Baron_Slash";  A_SuppressiveFire();}
 			BOSS P 0 {if (target && CheckSight(target)) SetStateLabel("See2");}
-			
-
 			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
 			GoTo FrontMove;
 		
+        // Same as above
 		SuppressiveFire2:
 			TNT1 A 0 { self.inSuppressiveFire = true; }
 			BOSS P 16;
-			
 			BOSS Q 3 BRIGHT { self.suppressiveOffZ = 78; self.suppressiveOffXY = 0; self.suppressiveMissile = "BaronMeteor";  A_SuppressiveFire(highRiders : true);}
 			BOSS P 0 {if (target && CheckSight(target)) SetStateLabel("See2");}
-			
-
 			TNT1 A 0 { self.inSuppressiveFire = false;  suppressCount += 1;  }
 			GoTo FrontMove;
 
+        // Ditto, this is part of the Suppres behavior we want to turn off with the CVAR
 		FrontMove:
 			 BOSS AA 2 {Thrust(3);}
 			 BOSS BB 2 {Thrust(2);}
 			 BOSS CC 2 { Thrust(1);}
 			 BOSS DD 2 { Thrust(1);}
 
-//
         SeeNeverSeen:
             TNT1 A 0;
             BOSS A 0 A_CheckSight("SEE3");
-            BOSS AA 2 A_Chase;
+            BOSS AA 2 A_SmartChase();
             TNT1 A 0;
-            BOSS AA 2 A_Chase;
+            BOSS AA 2 A_SmartChase();
             TNT1 A 0;
-            BOSS AA 2 A_Chase;
+            BOSS AA 2 A_SmartChase();
             TNT1 A 0 A_StartSound("baron/step", 5);
             TNT1 A 0;
-            BOSS B 4 A_Chase;
+            BOSS B 4 A_SmartChase();
             TNT1 A 0;
-            BOSS BB 2 A_Chase;
+            BOSS BB 2 A_SmartChase();
             TNT1 A 0;
-            BOSS CC 2 A_Chase;
+            BOSS CC 2 A_SmartChase();
             TNT1 A 0;
-            BOSS CC 2 A_Chase;
+            BOSS CC 2 A_SmartChase();
             TNT1 A 0 A_StartSound("baron/step", 5);
             TNT1 A 0;
-            BOSS DD 2 A_Chase;
+            BOSS DD 2 A_SmartChase();
             TNT1 A 0;
-            BOSS DD 2 A_Chase;
+            BOSS DD 2 A_SmartChase();
             TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat");
             TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat");
             Loop;
-
-        See3:
-            BOSS AA 3 A_SmartChase();
-            TNT1 A 0 A_StartSound("baron/step", 5);
-            BOSS BBCC 3 A_SmartChase();
-            TNT1 A 0 A_StartSound("baron/step", 5);
-            BOSS DD 3 A_SmartChase();
-            Goto See4;
-
-        Idle:
-        LookingForPlayer:
-            TNT1 A 0 A_GiveInventory("SKImp", 1);
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0 A_SetAngle(angle - 40);
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0 A_SetAngle(angle + 40);
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-            TNT1 A 0;
-            BOSS B 10 A_Look;
-
-            BOSS A 0 A_Wander;
-            BOSS AA 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            TNT1 A 0 A_StartSound("baron/step", 5);
-            BOSS B 0 A_Wander;
-            BOSS BB 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            BOSS C 0 A_Wander;
-            BOSS CC 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            TNT1 A 0 A_StartSound("baron/step", 5);
-            BOSS D 0 A_Wander;
-            BOSS DD 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            TNT1 A 0 A_jump(128, "LookingForPlayer");
-
-            BOSS A 0 A_Wander;
-            BOSS AA 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            TNT1 A 0 A_StartSound("baron/step", 5);
-            BOSS B 0 A_Wander;
-            BOSS BB 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            BOSS C 0 A_Wander;
-            BOSS CC 2 A_Look;
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            BOSS D 0 A_Wander;
-            BOSS DD 2 A_Look;
-            TNT1 A 0 A_StartSound("baron/step", 5);
-            TNT1 A 0 A_Recoil(-2);
-            TNT1 A 0;
-            Goto LookingForPlayer;
 
         ForgetTarget:
   //          TNT1 A 0 A_ClearTarget;
@@ -323,11 +317,12 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
             Goto See2;
 
+        // ? This state is never entered.
         Melee2:
             TNT1 A 0;
-            BOSS E 6 A_FaceTarget;
+            BOSS E 6 A_FaceTarget();
             TNT1 A 0;
-            BOSS F 6 A_FaceTarget;
+            BOSS F 6 A_FaceTarget();
             TNT1 A 0;
             BOSS G 6 A_CustomMeleeAttack(28, "", "", "BHFT");
             TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
@@ -336,6 +331,7 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon");
             TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
             Goto See2;
+
 		Missile:
             BOSS A 1;
             TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat");
@@ -346,82 +342,73 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
             TNT1 A 0 A_JumpIfInTargetInventory("TypeZombieman", 1, "See2");
             TNT1 A 0 A_JumpIfInTargetInventory("TypeSergeant", 1, "See2");
-
-          //  TNT1 A 0 A_Jump(64, "SpecialAttack");
+            //TNT1 A 0 A_Jump(64, "SpecialAttack");
 			//TNT1 A 0 A_Jump(256, "BaronSlashAttack");
 /* 			TNT1 A 0 A_Jump(128, "BaronMeteorAttack");
 			TNT1 A 0 A_Jump(128, "BaronSlashAttack"); */
 			TNT1 A 0 A_JumpIf(random(0, 99) < 50, "BaronMeteorAttack"); 
-			TNT1 A 0 A_JumpIf(random(0, 99) < 75, "BaronSlashAttack");
+			TNT1 A 0 A_JumpIf(!pb_NoBuffBaron && random(0, 99) < 75, "BaronSlashAttack");
             TNT1 A 0 A_TakeInventory("CantFire", 1);
             TNT1 A 0 A_JumpIfCloser(900, 3);
             TNT1 A 0 A_SpawnProjectile("MonsterTargetCheck", 34, 0, 0, 0);
             TNT1 A 0 A_SpawnProjectile("MonsterTargetCheckFaster", 34, 0, 0, 0);
-            
-            BOSS F 3 A_FaceTarget;
+            BOSS F 3 A_FaceTarget();
             TNT1 A 0 A_JumpIfInventory("CantFire", 1, "See4");
-            
-            BOSS E 2 A_FaceTarget;
+            BOSS E 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS E 2 A_FaceTarget;
+            BOSS E 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS E 2 A_FaceTarget;
+            BOSS E 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS E 2 A_FaceTarget;
+            BOSS E 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            
-            BOSS E 2 A_FaceTarget;
-            BOSS F 3 A_FaceTarget;
-    //        BOSS G 8 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 0, 0, 1);
+            BOSS E 2 A_FaceTarget();
+            BOSS F 3 A_FaceTarget();
+            //BOSS G 8 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 0, 0, 1);
 			BOSS G 6 {
-                if(random(0, 100) < 70)
-                A_DropAdjust2("PB_GreenPlasmaBall","Baron_Slash", 0, 0, 36, speedmult: 1.0, minRange: 0, maxRange: 1000, shootDownward: false);
+                // If the CVAR is true, always fires projectile without target prediction.
+                if(!pb_NoBuffBaron && random(0, 100) < 70)
+                    A_DropAdjust2("PB_GreenPlasmaBall","Baron_Slash", 0, 0, 36, speedmult: 1.0, minRange: 0, maxRange: 1000, shootDownward: false);
                 else
-                A_SpawnProjectile("PB_GreenPlasmaBall", 36, 0, 0, 1);
+                    A_SpawnProjectile("PB_GreenPlasmaBall", 36, 0, 0, 1);
             }
             TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1);
             Goto See2;
 
         SpecialAttack:
-
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-
-
-
             BOSS Q 3 {A_FaceTarget();
                     GoreEffects(1, "SmallGreenFlameTrails", 58, 30, random(0, 360), 2, random(70, 110));
                     GoreEffects(1, "SmallGreenFlameTrails", 58, -30, random(0, 360), 2, random(70, 110));
             }
-
             BOSS Q 3 {A_FaceTarget(); 
                     GoreEffects(1, "SmallGreenFlameTrails", 48, 30, random(0, 360), 2, random(70, 110));
                     GoreEffects(1, "SmallGreenFlameTrails", 48, -30, random(0, 360), 2, random(70, 110));
             }
-
             TNT1 A 0 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 15, 9, 11);
             TNT1 A 0 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 15, -9, 11);
             TNT1 A 0 A_SpawnProjectile("PB_GreenPlasmaBall", 36, 15, 22, 11);
@@ -430,59 +417,46 @@ class PB_Baron1 : PB_Monster
             TNT1 A 0 A_TakeInventory("ComingToGetTheBarrel", 1);
             Goto See2;
 			
-			BaronSlashAttack:
-
-            BOSS P 2 A_FaceTarget;
+        BaronSlashAttack:
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 2 A_FaceTarget;
+            BOSS P 2 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-            BOSS P 1 A_FaceTarget;
+            BOSS P 1 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 40, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-
-
             BOSS Q 3 {A_FaceTarget();
                     GoreEffects(1, "SmallGreenFlameTrails", 58, 30, random(0, 360), 2, random(70, 110));
                     GoreEffects(1, "SmallGreenFlameTrails", 58, -30, random(0, 360), 2, random(70, 110));
 					A_DropAdjust2("Baron_Slash","Baron_Slash", 15, 10, 36, speedmult: 1.0, minRange: 0, maxRange: 1000, shootDownward: false);
-
 			}
-
             BOSS Q 3 {A_FaceTarget(); 
                     GoreEffects(1, "SmallGreenFlameTrails", 48, 30, random(0, 360), 2, random(70, 110));
                     GoreEffects(1, "SmallGreenFlameTrails", 48, -30, random(0, 360), 2, random(70, 110));
             }
-			
-
-            
             BOSS R 3 A_DropAdjust2("Baron_Slash","Baron_Slash", 15, 10, 36, speedmult: 1.0, minRange: 0, maxRange: 1000, shootDownward: true);
             Goto See2;
-			
 
 //			Goto See;
 			
-			
-			BaronMeteorAttack:
-
-            BOSS P 4 A_FaceTarget;
+        BaronMeteorAttack:
+            BOSS P 4 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 0, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 0, random (0, 140), 2, random (0, 160));
-            BOSS P 4 A_FaceTarget;
+            BOSS P 4 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 0, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 0, random (0, 140), 2, random (0, 160));
-            BOSS P 4 A_FaceTarget;
+            BOSS P 4 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 0, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 0, random (0, 140), 2, random (0, 160));
-            BOSS P 4 A_FaceTarget;
+            BOSS P 4 A_FaceTarget();
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 0, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 0, random (0, 140), 2, random (0, 160));
-
-
             BOSS Q 3 {A_FaceTarget();
                     GoreEffects(1, "SmallGreenFlameTrails", 58, 30, random(0, 360), 2, random(70, 110));
                     GoreEffects(1, "SmallGreenFlameTrails", 58, -30, random(0, 360), 2, random(70, 110));
@@ -495,7 +469,7 @@ class PB_Baron1 : PB_Monster
             Goto Missile+5;
 
         Retreat:
-            TNT1 A 0 A_FaceTarget;
+            TNT1 A 0 A_FaceTarget();
             TNT1 A 0 ;
             BOSS DD 2 A_Recoil(2);
             TNT1 A 0 ;
@@ -979,12 +953,14 @@ class PB_Baron1 : PB_Monster
 			Goto Death;
 
 		Crush:
-		Death.Stomp:TNT1 A 0 {
-			GoreEffects(12, "PB_SquirtingBloodTrail", 0, 0, random(0, 360), 2, random(0, 360));
-			GoreEffects(4, "SuperGoreSpawner", 5, 0, random(0, 360), 2, random(30, 180));
-			GoreEffects(3, "PB_XDeath1", 5, 0, random(0, 360), 2, random(30, 180));
-			GoreEffects(3, "PB_XDeath2", 55, 0, random(0, 360), 2, random(30, 180));
-			GoreEffects(3, "PB_XDeath3", 55, 0, random(0, 360), 2, random(30, 180));}
+		Death.Stomp:
+            TNT1 A 0 {
+                GoreEffects(12, "PB_SquirtingBloodTrail", 0, 0, random(0, 360), 2, random(0, 360));
+                GoreEffects(4, "SuperGoreSpawner", 5, 0, random(0, 360), 2, random(30, 180));
+                GoreEffects(3, "PB_XDeath1", 5, 0, random(0, 360), 2, random(30, 180));
+                GoreEffects(3, "PB_XDeath2", 55, 0, random(0, 360), 2, random(30, 180));
+                GoreEffects(3, "PB_XDeath3", 55, 0, random(0, 360), 2, random(30, 180));
+            }
 			TNT1 A 0 A_SpawnItem("GrowingBloodPool");
 			TNT1 A 0 A_SpawnItem("CrushedRemains");
 			TNT1 A 1;
@@ -997,7 +973,7 @@ class PB_Baron1 : PB_Monster
 
 class PB_GreenPlasmaBall : PB_Monster_Projectile 
 {
-	    Default
+	Default
     {
         Radius 10;
         Height 16;
@@ -1759,7 +1735,7 @@ class XDeathHalfBOH : Actor
         Speed 10;
         Mass 8;
         BounceFactor 0.3;
-+       BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
+        +BOUNCEONWALLS; +BOUNCEONFLOORS; +ALLOWBOUNCEONACTORS; +BOUNCEAUTOOFF;
         +NOBLOCKMAP;
         +MISSILE;
         +NOTELEPORT;

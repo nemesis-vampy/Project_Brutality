@@ -336,7 +336,7 @@ extend class PB_WeaponBase
 			XPFS B 4 A_StartSound("weapons/pbarm", 2);
 			XHFF A 0 {
 				A_StartSound("MINE002", 3);
-				A_ThrowGrenade("ThrownProxMine",4,11,1,0);
+				A_ThrowGrenade("PB_ThrownProxMine",4,11,1,0);
 				A_TakeInventory("PB_ProxMineAmmo", 1);
 			}
 			XHFF MNOPQRSTUVWXYZ 1;
