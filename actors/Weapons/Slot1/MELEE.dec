@@ -271,7 +271,9 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 			A_PlaySoundEx("weapons/fists_up", "Auto");
 			A_SetCrosshair(-1);
 		}
-		P9NS EFGHITUVW 1 A_DoPBWeaponAction
+		P9NS EF 1 A_DoPBWeaponAction
+		TNT1 A 0 A_PlaySoundEx("weapons/fists_smash", "Auto")
+		P9NS GHITUVW 1 A_DoPBWeaponAction
 		P0NG A 1 A_DoPBWeaponAction
 		PUNS E 2 A_DoPBWeaponAction
 		TNT1 A 0 A_PlaySoundEx("KNUCKLED", "Auto")
@@ -282,7 +284,9 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		//Play raising animation
 	SelectAnimation:
 		TNT1 A 0 A_PlaySoundEx("weapons/fists_up", "Auto")
-		P9NS EFGHITUVW 1 
+		P9NS EF 1
+		TNT1 A 0 A_PlaySoundEx("weapons/fists_smash", "Auto")
+		P9NS GHITUVW 1 
 	ReadyFists:
 		TNT1 A 0 {
 			if(CountInv("GoFatality") >= 1) {
