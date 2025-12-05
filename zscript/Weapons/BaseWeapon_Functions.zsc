@@ -1695,6 +1695,7 @@ extend class PB_WeaponBase
 		}
 		
 		pitch += (pitchDelta * pb_weapon_recoil_mod_vertical * fac);
+		pitch = clamp(pitch,-90,90);
 		angle += (angleDelta * pb_weapon_recoil_mod_horizontal * fac);
 	}
 	
