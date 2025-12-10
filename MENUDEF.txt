@@ -151,7 +151,7 @@ OptionMenu "PB_HUDOptions"
 	StaticText "Options", gold
 	Option "HUD Sways when moving", "PB_HudDynamics", "YesNo"
 	Option "Helmet Corners", "pb_showhudvisor", "YesNo"
-    Option "Helmet Middle > Bottom", "pb_visormiddlepartbottom", "YesNo"
+    Option "Helmet Middle > Bottom", "pb_visormiddlepartbottom", "NoYes"
 	Option "Visor Glass", "pb_showhudvisorglass", "YesNo"
 	Option "Level Stats", "pb_showlevelstats", "YesNo"
 	Option "Low Resolution Font", "pb_uselowreshudfont", "YesNo"
