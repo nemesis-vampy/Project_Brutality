@@ -1286,6 +1286,7 @@ Class M1_HeatWave : Actor
 		-NODAMAGETHRUST;
 		//+DontHurtSpecies;
 		+RollSprite;
+		+SQUAREPIXELS;
 		+NOGRAVITY;
 		//Species "Marine";
 		ReactionTime 7;
@@ -1336,6 +1337,7 @@ Class HeatBlastEffect1 : Actor
 		 scale 0.03;
 		 alpha 0.9;
 		 +rollsprite;
+		 +squarepixels;
 		 +nointeraction;
 		 Translation "0:255=%[0,0,0]:[0,0.6,1]";
 	}
@@ -1375,6 +1377,8 @@ Class HeatBlastEffect3 : HeatBlastEffect1
 { 
 	default
 	{
+		XScale 0.025;
+		YScale 0.03;
 		alpha 0.99;
 		+FLATSPRITE;
 	}
@@ -1384,7 +1388,7 @@ Class HeatBlastEffect3 : HeatBlastEffect1
 			 X060 A 1 BRIGHT {
 				A_FadeOut(0.05);
 				A_SetRoll(roll-2);
-				A_SetScale(self.Scale.X+0.3);
+				A_SetScale(self.Scale.X+0.25,self.Scale.y+0.3);
 			 }
 			 loop;
 	}
