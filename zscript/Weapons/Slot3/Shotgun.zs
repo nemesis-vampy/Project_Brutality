@@ -552,7 +552,6 @@ Class PB_Shotgun : PB_WeaponBase
 			
 		EmptyMagReload:
 			SHTN GHIJKL 1;
-			TNT1 A 0 A_JumpIf(countinv("ShotgunAmmo") > 0,"InsertMag");
 			TNT1 A 0 PB_SpawnCasing("EmptyClipMP40", 45.6, 9, 18.75,frandom(-1,1),frandom(-1.2, -0.6), frandom(1,-1));
 			//TNT1 A 0 A_FireCustomMissile("EmptyClipMP40",-5,0,8,-4);
 		InsertMag:
@@ -1138,7 +1137,6 @@ Class PB_Shotgun : PB_WeaponBase
 			goto InsertMagAmmoSwap;
 		EmptyMagReloadSwap:
 			SHTN GHIJKL 1;
-			TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",1,2);
 			TNT1 A 0 A_FireProjectile("EmptyClipMP40",-5,0,8,-4);
 		InsertMagAmmoSwap:
 			SHMS BCDEFG 0;

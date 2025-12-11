@@ -757,7 +757,7 @@ ACTOR PB_DMR : PB_Weapon
 				A_StartSound("weapons/hdmr/fire", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 			PB_DynamicTail("lmg", "lmg");
 				A_Overlay(-41,"DualRightMuzzleFlashHandler_Upgraded", true);
-				PB_SpawnCasing("LMGCasingStandard",	22.5, 10, 20.5,3,frandom(6,7),random(8,9));
+				PB_SpawnCasing("LMGCasingStandard", 22.5, 20, 20.5,3,frandom(5,6),random(8,9));
 			}
 			else {
 				A_StartSound("weapons/rifle", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -833,7 +833,7 @@ ACTOR PB_DMR : PB_Weapon
 			A_AlertMonsters;
 			PB_LowAmmoSoundWarning("sniper", "SuperMario64ForTheXboxOne", 2);
 			A_Takeinventory("DMRAmmo",2);
-			PB_SpawnCasing("LMGCasingStandard",26,2,28,Frandom(-2, -1),Frandom(5,8),Frandom(3,4));
+			PB_SpawnCasing("LMGCasingStandard", 22.5, 20, 20.5,3,frandom(5,6),random(8,9));
 			A_Giveinventory("SniperFiringCooldown",1);
 			A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, 4, 0, 0, 0);
@@ -893,7 +893,7 @@ ACTOR PB_DMR : PB_Weapon
 			}
 			A_AlertMonsters;
 			A_Takeinventory("LeftDMRAmmo",2);
-			PB_SpawnCasing("LMGCasingStandard",26,2,28,Frandom(-2, -1),Frandom(5,8),Frandom(3,4));
+			PB_SpawnCasing("LMGCasingStandard", 22.5, -23, 20.5,3,frandom(5,6),random(8,9));
 			A_Giveinventory("LeftSniperFiringCooldown",1);
 			A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0);
 			//A_FireCustomMissile("GunFireSmoke", 0, 0, -4, 0, 0, 0);
@@ -2393,10 +2393,13 @@ ACTOR PB_DMR : PB_Weapon
 			A_PlaySoundEx("weapons/rifle/magchange", "Auto");
 		}
 		TNT1 A 0 {
-			if(CountInv("DMRAmmo") < 1 && CountInv("HDMRSniperMode") != 1) {
+			if(CountInv("DMRAmmo") < 2 && CountInv("DMRUpgraded") == 0) {
 				PB_SpawnCasing("EmptyDMRMag",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
 				}
-			if(CountInv("DMRAmmo") < 1 && CountInv("DMRUpgraded") == 1 && CountInv("HDMRSniperMode") == 1) {
+			else if(CountInv("DMRAmmo") < 2 && CountInv("HDMRSniperMode") == 0) {
+				PB_SpawnCasing("EmptyHDMRMag",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
+				}
+			else if(CountInv("DMRAmmo") < 3 && CountInv("HDMRSniperMode") == 1) {
 				PB_SpawnCasing("EmptyHDMRMag_Sniper",38,18,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
 				}
 			}
@@ -2546,7 +2549,7 @@ ACTOR PB_DMR : PB_Weapon
 		//goto FinishInsertBullets
 	SkipLeftReload:
 		R2F6 ABCD 1
- 		Goto InsertBullets4
+ 		Goto FinishInsertBullets
 		
 	SkipRightReload:
 		R2F7 ABCD 1
@@ -2590,15 +2593,10 @@ ACTOR PB_DMR : PB_Weapon
 		TNT1 A 0 A_PlaySoundEx("weapons/rifle/magout", "Auto")
 		R3F0 OPQRSTUVW 1
 		TNT1 A 0 {
-			if(CountInv("DMRAmmo") < 1) {
-				if(CountInv("DMRUpgraded") != 1 || CountInv("HDMRSniperMode") != 1) {
-					PB_SpawnCasing("EmptyDMRMag",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
-				}
-				else {
-					PB_SpawnCasing("EmptyHDMRMag_Sniper",38,18,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
+			if(CountInv("DMRAmmo") < 2) {
+				PB_SpawnCasing("EmptyDMRMag",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
 				}
 			}
-		}
 		R3F0 XYZ 1 
 		TNT1 A 0 A_PlaySoundEx("weapons/rifle/magchange", "Auto")
 		R3F1 ABCD 1 
@@ -2620,21 +2618,19 @@ ACTOR PB_DMR : PB_Weapon
 		R3F2 A 1 
 	ReloadLeftGun:
 		TNT1 A 3
- 		TNT1 A 0 A_JumpIfInventory("LeftDMRAmmo",31,"SkipLeftReload")
-		R3F2 BCDEFGHIJKLMN 1 
+		R3F2 BCDEFGHIJ 1 
 		TNT1 A 0 A_PlaySoundEx("weapons/rifle/magout", "Auto")
-		R3F2 OPQR 1
+		R3F2 KLMNOPQRS 1
 		TNT1 A 0 {
-			if(CountInv("LeftDMRAmmo") < 1) {
-				PB_SpawnCasing("EmptyDMRMag",38,-20,7,frandom(0, 3.5),frandom(3.3, 7.2),frandom(3,7));
+			if(CountInv("LeftDMRAmmo") < 2) {
+				PB_SpawnCasing("EmptyDMRMag",38,-20,7,frandom(0, 3.5),frandom(7.2, 3.3),frandom(3,7));
 				}
 			}
-		R3F2 ST 1 
+		R3F2 TUV 1 
 		TNT1 A 0 A_PlaySoundEx("weapons/rifle/magchange", "Auto")
-		R3F2 UVWX 1 
+		R3F2 WXYZ 1
 		TNT1 A 0 A_PlaySoundEx("weapons/rifle/magin", "Auto")
-		R3F2 YZ 1
-		R3F3 ABCDEFGHI 1 
+		R3F3 ABCDEFGHIJ 1 
 		TNT1 A 0 A_PlaySoundEx("weapons/rifle/magslap", "Auto")
 		TNT1 A 0 A_PlaySoundEx("weapons/riflemagslap", "Auto")
 		"----" A 0 {
@@ -2647,10 +2643,7 @@ ACTOR PB_DMR : PB_Weapon
 				else{PB_AmmoIntoMag("LeftDMRAmmo","PB_HighCalMag",31,1);}
 			}
 		}
-		R3F3 JKLMNOP 1 
-		R3F3 OP 1
-		//TNT1 A 0 A_JumpIfInventory("DMRUpgraded", 1, "InsertBullets4")
-		R3F3 QRSTUVWXYZ 1
+		R3F3 KLMNOPQRSTUVWXYZ 1
 		TNT1 A 0 {A_Takeinventory("DMRWasEmpty",1);A_Takeinventory("HasUnloadedDMR",1);}
 		Goto Ready3
 		
@@ -2752,15 +2745,13 @@ ACTOR PB_DMR : PB_Weapon
 			}
 		}
 		TNT1 A 0 {
-			if(CountInv("DMRAmmo") < 1){
-			if(CountInv("HDMRSniperMode") == 1) {
-				PB_SpawnCasing("EmptyHDMRMag_Sniper",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
+			if(CountInv("DMRAmmo") < 2 && CountInv("HDMRSniperMode") == 0) {
+				PB_SpawnCasing("EmptyHDMRMag",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
 				}
-			else {
-				PB_SpawnCasing("EmptyDMRMag",38,26,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
+			else if(CountInv("DMRAmmo") < 3 && CountInv("HDMRSniperMode") == 1) {
+				PB_SpawnCasing("EmptyHDMRMag_Sniper",38,18,7,frandom(0, 3.5),frandom(-7.2, -3.3),frandom(3,7));
 				}
 			}
-		}
 		H8F0 XYZ 1 {
 			if(CountInv("HDMRSniperMode") == 1) {
 				A_SetWeaponSprite("H90F");
@@ -2823,7 +2814,26 @@ ACTOR PB_DMR : PB_Weapon
 		}
 		TNT1 A 0 A_StartSound("weapons/rifle/magout", 0)
 		Continue_DWReloadLeft:
-		H8F2 LMNOPQR 1 {
+		H8F2 LMNO 1 {
+			if(CountInv("HasUnloadedDMR") == 1) {
+						A_SetWeaponSprite("H8F6");
+					}
+			if(CountInv("HDMRSniperMode") == 1 && CountInv("HasUnloadedDMR") == 1) {
+				A_SetWeaponSprite("H9F6");
+			}
+			if(CountInv("HDMRSniperMode") == 1 && CountInv("HasUnloadedDMR") != 1) {
+					A_SetWeaponSprite("H92F");
+				}
+			}
+		TNT1 A 0 {
+			if(CountInv("LeftDMRAmmo") < 2 && CountInv("HDMRSniperMode") == 0) {
+				PB_SpawnCasing("EmptyHDMRMag",38,-20,7,frandom(0, 3.5),frandom(7.2, 3.3),frandom(3,7));
+				}
+			else if(CountInv("LeftDMRAmmo") < 3 && CountInv("HDMRSniperMode") == 1) {
+				PB_SpawnCasing("EmptyHDMRMag_Sniper",38,-12,7,frandom(0, 3.5),frandom(7.2, 3.3),frandom(3,7));
+				}
+			}
+		H8F2 PQR 1 {
 			if(CountInv("HasUnloadedDMR") == 1) {
 						A_SetWeaponSprite("H8F6");
 					}
