@@ -324,7 +324,7 @@ extend class PB_WeaponBase
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData ltd;
 		LineTrace(angle, range, pitch, offsetz: pz, data: ltd);
-		if (ltd.HitLine)
+		if (ltd.HitLine && ltd.LineSide == line.front)
 		{
 			ltd.HitLine.Activate(player.mo, ltd.LineSide, SPAC_Use);
 		}
