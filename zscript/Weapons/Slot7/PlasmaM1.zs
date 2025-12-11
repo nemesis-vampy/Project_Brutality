@@ -1286,6 +1286,7 @@ Class M1_HeatWave : Actor
 		-NODAMAGETHRUST;
 		//+DontHurtSpecies;
 		+RollSprite;
+		+FORCEXYBILLBOARD;
 		+SQUAREPIXELS;
 		+NOGRAVITY;
 		//Species "Marine";
@@ -1337,6 +1338,7 @@ Class HeatBlastEffect1 : Actor
 		 scale 0.03;
 		 alpha 0.9;
 		 +rollsprite;
+		 +forcexybillboard;
 		 +squarepixels;
 		 +nointeraction;
 		 Translation "0:255=%[0,0,0]:[0,0.6,1]";
