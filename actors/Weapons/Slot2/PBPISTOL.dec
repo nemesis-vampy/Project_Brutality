@@ -1736,7 +1736,7 @@ ACTOR PB_Pistol : PB_Weapon
 		}
 		TNT1 A 0 A_PlaySoundEx("PSRLOUT", "Auto")
 		TNT1 A 0 A_JumpIfInventory("PrimaryPistolAmmo",2,2)
-		TNT1 A 0 A_FireCustomMissile("EmptyPistolMag",-80,0,3,-4,0,-45)
+		TNT1 A 0 PB_SpawnCasing("EmptyPistolMag",30,26,20,1,5,-2,false)
 		D5GB IIJ 1 {
 		
 			if (CountInv("SilencerEquipped") == 1 ) {
@@ -1915,10 +1915,10 @@ ACTOR PB_Pistol : PB_Weapon
 					A_SetWeaponSprite("D6GE");
 			}
 			if (CountInv("PrimaryPistolAmmo") < 2 && CountInv("PB_PistolHasUnloaded") == 0) {
-				A_FireCustomMissile("EmptyPistolMag",5,0,6,-20);
+				PB_SpawnCasing("EmptyPistolMag",30,12,16,1,-2,-2,false);
 			}
 			if (CountInv("SecondaryPistolAmmo") < 2 && CountInv("PB_PistolHasUnloaded") == 0) {
-				A_FireCustomMissile("EmptyPistolMag",-5,0,-6,-20);
+				PB_SpawnCasing("EmptyPistolMag",30,-12,16,1,2,-2,false);
 			}
 			A_WeaponReady(WRF_NOFIRE);
 			}
