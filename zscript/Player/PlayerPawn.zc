@@ -2852,6 +2852,7 @@ class DEDashJump : Inventory
 		{
 			owner.vel.xy *= 0;
 			dashTics = 0;
+			owner.TakeInventory("PlayerDashed",1);
 			TakeInventory( "EvadeCheck", 2 );
 			TakeInventory( "EvadeHold", 2 );
 		}

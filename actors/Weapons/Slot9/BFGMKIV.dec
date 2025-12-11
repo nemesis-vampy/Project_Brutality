@@ -473,6 +473,7 @@ ACTOR BlackHole_GravityBomb
 	+MTHRUSPECIES
 	+FRIENDLY
 	+RollSprite
+	+SQUAREPIXELS
 	+NODAMAGETHRUST
 	+EXTREMEDEATH
 	Species "Marines"
@@ -661,6 +662,7 @@ Actor Blackhole_Ball
 	Damage 30
 	Projectile
 	+FORCEXYBILLBOARD
+	+SQUAREPIXELS
 	+NODAMAGETHRUST
 	+NOBOSSRIP
 	+Friendly
@@ -1173,6 +1175,7 @@ Actor SuperBFGExtra : BFGExtra Replaces BFGExtra
 	+THRUSPECIES
 	+MTHRUSPECIES
 	+DONTHURTSPECIES
+	+SQUAREPIXELS
   States
   {
   Spawn:
@@ -1238,6 +1241,7 @@ ACTOR GreenShockWave
 	+THRUSPECIES
 	+MTHRUSPECIES
 	+DONTHARMSPECIES
+	+SQUAREPIXELS
 	States 
 	{ 
 	Spawn: 

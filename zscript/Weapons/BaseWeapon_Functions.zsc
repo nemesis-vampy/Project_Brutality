@@ -324,7 +324,7 @@ extend class PB_WeaponBase
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData ltd;
 		LineTrace(angle, range, pitch, offsetz: pz, data: ltd);
-		if (ltd.HitLine)
+		if (ltd.HitLine && ltd.LineSide == line.front)
 		{
 			ltd.HitLine.Activate(player.mo, ltd.LineSide, SPAC_Use);
 		}
@@ -1779,7 +1779,7 @@ extend class PB_WeaponBase
 		CasingCount = 6 - CountInv(AmmoSide);
 		for(CasingCount > 0; CasingCount--;)
 		{
-			A_FireProjectile("EmptyBrassMagnum",-5,0,0,-30);
+			A_FireProjectile("EmptyBrassMagnum",frandom(-5,5),0,0,-30);
 		}
 	}
 	
