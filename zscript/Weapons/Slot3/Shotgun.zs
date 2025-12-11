@@ -450,9 +450,9 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetInventory("Zoomed",0);
 				A_ZoomFactor(1.0);
-				PB_HandleCrosshair(69);
 			}
 			SHT8 KDEE 1 PB_SetShellSprite("SHT8","SHT6","SHT4");
+			TNT1 A 0 PB_HandleCrosshair(69);
 			Goto Ready3;
 		
 		ReloadWithNoAmmoLeft:

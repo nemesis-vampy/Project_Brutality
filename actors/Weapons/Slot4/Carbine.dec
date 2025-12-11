@@ -1313,11 +1313,16 @@ ACTOR PB_Carbine : PB_Weapon
 			A_Takeinventory("Zoomed",1);
 			A_Takeinventory("ADSmode",1);
 			A_ZoomFactor(1.0);
-			PB_HandleCrosshair(29);
 			A_ClearOverlays(6,6);
 			}
 		TNT1 A 0 A_JumpifInventory("SemiFire",1,"ZoomOutLower")
-		4AFZ EDCBA 1 A_ClearOverlays(6,6)
+		4AFZ E 1 {
+		A_Overlay(6,"Reticle1");
+		A_OverlayPivotAlign(6,PSPA_CENTER,PSPA_TOP);
+		A_Overlayscale(6,0.25,0.25);
+		}
+		4AFZ DCBA 1 A_ClearOverlays(6,6)
+		TNT1 A 0 PB_HandleCrosshair(29)
 		TNT1 A 0 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready3
 		
@@ -1338,6 +1343,7 @@ ACTOR PB_Carbine : PB_Weapon
 		A_ZoomFactor(1);
 		}
 		4AFZ DCBA 1
+		TNT1 A 0 PB_HandleCrosshair(29)
 		Goto Ready3
 		
 	NoAmmo:

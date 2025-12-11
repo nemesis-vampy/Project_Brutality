@@ -655,9 +655,9 @@ class PB_Deagle : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetInventory("Zoomed",0);
 				A_ZoomFactor(1.0);
-				PB_HandleCrosshair(42);
 			}
 			D3E1 EDCBA 1;
+			TNT1 A 0 PB_HandleCrosshair(42);
 			Goto Ready3;
 		
 		Ready2:
