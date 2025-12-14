@@ -89,12 +89,14 @@ class PB_Ammo : Ammo
 		YELP ABCDEFGHIJ 2;
 		loop;
 	SpawnDTech:
-	SpawnLeechNade:
 		DB61 ABCDEFGH 2 bright A_FadeOut(.01 * (0.085 / Scale.X), FTF_REMOVE | FTF_CLAMP );
 		loop;
 	SpawnPermaDTech:
 		DB61 ABCDEFGH 2 bright;
 		loop;
+	SpawnLeechNade:
+		FLSP BAFEFA 6;
+		Loop;
 	SpawnNade:
 		PGRN D -1;
 		stop;

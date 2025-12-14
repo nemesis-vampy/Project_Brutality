@@ -81,7 +81,7 @@ Class PB_LeechGrenadeAmmo : PB_Ammo
 	{
 		//$Title Leech Grenade
 		//$Category Project Brutality - Weapons/Equipment
-		Scale 0.15;
+		Scale 0.35;
 		Tag "Leech Grenade";
 		Inventory.PickupSound "SiphonGrowl";
 		PB_Ammo.AmmoType "leechnade";
@@ -91,5 +91,10 @@ Class PB_LeechGrenadeAmmo : PB_Ammo
 	{
 		toucher.GiveInventory("HasLeech",1) ;
 		return Super.TryPickup(toucher);
+	}
+	
+	override string PickupMessage()
+	{
+		return "What the hell is this thing..?";
 	}
 }
