@@ -407,7 +407,7 @@ PB_BFG_PLASMA = "Firemode: \cdPlasma";
 PB_BFG_BLACKHOLE = "Firemode: \ctBlack Hole";
 
 //Demon-Tech Rifle
-PB_DTECH_INFERNO= "Firemode: \cgInferno";
+PB_DTECH_INFERNO= "Firemode: \c[PB_DTech]Inferno";
 PB_DTECH_CAUSTIC = "Firemode: \cdCaustic";
 
 //Unmaker

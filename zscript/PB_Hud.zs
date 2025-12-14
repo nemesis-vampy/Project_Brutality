@@ -758,8 +758,8 @@ class PB_Hud_ZS : BaseStatusBar
 		"AMMOIC1, PB_HighCalMag, Yellow, Ammo",
 		"AMMOIC4, PB_RocketAmmo, Red, Ammo",
 		"AMMOIC5, PB_Cell, Purple, Ammo",
-		"AMMOIC6, PB_Fuel, Orange, Ammo",
-		"AMMOIC7, PB_DTech, DarkRed, Ammo",
+		"AMMOIC6, PB_Fuel, PB_Fuel, Ammo",
+		"AMMOIC7, PB_DTech, PB_DTech, Ammo",
 		"ALISTGRN, PB_GrenadeAmmo, Green, Equipment",
 		"ALISTSTN, PB_StunGrenadeAmmo, Cyan, Equipment",
 		"ALISTREV, PB_QuickLauncherAmmo, LightBlue, Equipment",
@@ -1552,13 +1552,13 @@ class PB_Hud_ZS : BaseStatusBar
 				}
 				else if(WeaponUsesAmmoType("PB_Fuel") && !(CheckWeaponSelected("PB_Chainsaw") || CheckWeaponSelected("PB_Flamethrower")))
 				{
-					weaponBarAccent = Font.CR_ORANGE;
-					DrawAmmoBar("BARBACD1", "BARBACD2", "BAMBAR6", "ABAR6", "ABAR6", "AMMOIC6", Font.CR_ORANGE);
+					weaponBarAccent = Font.FindFontColor("PB_Fuel");
+					DrawAmmoBar("BARBACD1", "BARBACD2", "BAMBAR6", "ABAR6", "ABAR6", "AMMOIC6", Font.FindFontColor("PB_Fuel"));
 				}
 				else if(WeaponUsesAmmoType("PB_DTech") && !(CheckWeaponSelected("PB_Unmaker")))
 				{
-					weaponBarAccent = Font.CR_DARKRED;
-					DrawAmmoBar("BARBACZ1", "BARBACZ2", "BAMBAR7", "ABAR7", "ABAR7", "AMMOIC7", Font.CR_DARKRED);
+					weaponBarAccent = Font.FindFontColor("PB_DTech");
+					DrawAmmoBar("BARBACZ1", "BARBACZ2", "BAMBAR7", "ABAR7", "ABAR7", "AMMOIC7", Font.FindFontColor("PB_DTech"));
 				}
 				else if(WeaponUsesPBAmmoType1() && !CheckWeaponSelected("PB_Unmaker") && !CheckWeaponSelected("PB_Chainsaw") && !CheckWeaponSelected("PB_Flamethrower") && !CheckWeaponSelected("PB_MG42") && !CheckWeaponSelected("PB_TauntWeapon") ){
 					weaponBarAccent = Font.CR_CYAN;
@@ -1587,17 +1587,17 @@ class PB_Hud_ZS : BaseStatusBar
 						PBHud_DrawBar("ABAR7", "BGBARL", Secondary.Amount, Secondary.MaxAmount, (-112, -51), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						PBHud_DrawBar("ABAR7", "BGBARL", Primary.Amount, Primary.MaxAmount, (-112, -30), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						//Numbers
-						PBHud_DrawString(mDefaultFont, "SOULS", (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.CR_DARKRED);
-						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.CR_DARKRED);
+						PBHud_DrawString(mDefaultFont, String.Format("%u%%",GetAmount("UnmakerOverchargeCounter") * 2), (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_DTech"));
+						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_DTech"));
 						//Icon
 						PBHud_DrawImage("AMMOIC7", (-77, -24), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, 1, (27, 19));
-						weaponBarAccent = Font.CR_DARKRED;
+						weaponBarAccent = Font.FindFontColor("PB_DTech");
 						break;
 					case 'PB_Chainsaw':
 						PBHud_DrawImage("BARBACD1", (-72, -17), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, playerBoxAlpha);
 						PBHud_DrawBar("ABAR6", "BGBARL", Primary.Amount, Primary.MaxAmount, (-112, -30), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						//Numbers
-						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.CR_ORANGE);
+						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_Fuel"));
 						//Icon
 						PBHud_DrawImage("AMMOIC6", (-77, -24), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, 1, (27, 19));
 
@@ -1605,7 +1605,7 @@ class PB_Hud_ZS : BaseStatusBar
 						{
 							PBHud_DrawImage("CHAINHL", (-90, -50), DI_SCREEN_RIGHT_BOTTOM, 1, (32, 32));
 						}
-						weaponBarAccent = Font.CR_ORANGE;
+						weaponBarAccent = Font.FindFontColor("PB_Fuel");
 						break;
 					case 'PB_MG42':
 						PBHud_DrawImage("BARBACY1", (-72, -17), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, playerBoxAlpha);
@@ -1614,7 +1614,7 @@ class PB_Hud_ZS : BaseStatusBar
 						PBHud_DrawBar("ABAR4", "BGBARL", Secondary.Amount, Secondary.MaxAmount, (-112, -51), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						PBHud_DrawBar("ABAR1", "BGBARL", Primary.Amount, Primary.MaxAmount, (-112, -30), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						//Numbers
-						PBHud_DrawString(mDefaultFont, "HEAT", (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.CR_RED);
+						PBHud_DrawString(mDefaultFont, String.Format("%u°",GetAmount("MG42HeatLevel") * 5), (-201, -69), DI_TEXT_ALIGN_RIGHT, Font.CR_RED);
 						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.CR_YELLOW);
 						//Icon
 						PBHud_DrawImage("AMMOIC1", (-77, -24), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, 1, (27, 19));
@@ -1627,11 +1627,11 @@ class PB_Hud_ZS : BaseStatusBar
 						if(!CheckInventory("FlamerUpgraded")) { PBHud_DrawBar("ABAR6", "BGBARL", Secondary.Amount, Secondary.MaxAmount, (-112, -51), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM); }
 						PBHud_DrawBar("ABAR6", "BGBARL", Primary.Amount, Primary.MaxAmount, (-112, -30), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						//Numbers
-						if(!CheckInventory("FlamerUpgraded")) { PBHud_DrawString(mDefaultFont, FormatNumber(Secondary.Amount), (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.CR_ORANGE); }
-						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.CR_ORANGE);
+						if(!CheckInventory("FlamerUpgraded")) { PBHud_DrawString(mDefaultFont, FormatNumber(Secondary.Amount), (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_Fuel")); }
+						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_Fuel"));
 						//Icon
 						PBHud_DrawImage("AMMOIC6", (-77, -24), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, 1, (27, 19));
-						weaponBarAccent = Font.CR_ORANGE;
+						weaponBarAccent = Font.FindFontColor("PB_Fuel");
 						break;
 					case 'PB_Axe':
 						int AxeCount = CPlayer.mo.CountInv("PB_Axe");
