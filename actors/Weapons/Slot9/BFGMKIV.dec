@@ -104,7 +104,11 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
-			TNT1 A 0 A_StopSound(CHAN_BODY)
+			
+			TNT1 A 0 {
+				A_StopSound(CHAN_BODY);
+				A_ClearOverlays(-52,-52);
+			}
 			044G ABCD 0
 			045G ABCD 0
 			013G ABCD 1 {
@@ -118,7 +122,11 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 			Wait
 		Select:
-			TNT1 A 0 
+			TNT1 A 0 {
+				if(CountInv("BFGBlackHoleMode") == 1) {
+					A_Overlay(-52,"DetonatorLayer");
+				}
+			}
 			TNT1 A 0 PB_ResetBarrelTokens
 			Goto SelectFirstPersonLegs
 		SelectContinue:
@@ -210,6 +218,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 				A_SetInventory("BFGBlackHoleMode", 1);
 				A_StopSound(CHAN_WEAPON);
 				A_StartSound("weapons/bfg_switch2", CHAN_AUTO);
+				A_Overlay(-52,"DetonatorLayer");
 			}
 			017G ABCDEFGHIJKLMNO 1 BRIGHT
 			017G PP 1
@@ -224,6 +233,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 				A_SetInventory("BFGBlackHoleMode", 0);
 				A_StopSound(CHAN_WEAPON);
 				A_StartSound("weapons/bfg_switch2", CHAN_AUTO);
+				A_ClearOverlays(-52,-52);
 			}
 			019G ABCDEFGHIJKLMNO 1 BRIGHT
 			019G PP 1
@@ -402,18 +412,16 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			
 			028G FGHI 1 BRIGHT
 			Goto Ready3
-		
-		Reload:
-			"####" A 0 A_JumpIfInventory("BFGBlackHoleMode",1,2)
-			"####" A 0
-			Goto Ready3
-			"####" A 0 A_StartSound("weapons/pbarm",CHAN_AUTO)
-		ReloadHold:
-			"####" A 1 A_SetInventory("BlackHoleDetonator",1)
-			"####" A 0 A_SetInventory("BlackHoleDetonator",0)
-			"####" A 0 A_JumpIf(PressingReload(), "ReloadHold")
-			Goto Ready3
-			
+		DetonatorLayer:
+			TNT1 A 1 {
+				if(JustPressed(BT_RELOAD))
+				{
+					A_SetInventory("BlackHoleDetonator",1);
+					A_Startsound("weapons/pbarm",36,CHANF_NOSTOP);
+				}
+			}
+			TNT1 A 0 A_SetInventory("BlackHoleDetonator",0)
+			Loop
 		FlashKicking:
 			034G ABCDEFGGGHIJKLMNO 0
 			035G ABCDEFGGGHIJKLMNO 0
