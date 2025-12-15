@@ -1811,6 +1811,30 @@ extend class PB_WeaponBase
 			}
 		}
 		
+	//overheating mechanic, like on the mg42 and nailgun
+	action void PB_ModifyOverheat(int mod, bool dual = false)
+	{
+		if(dual)
+			invoker.leftOverheat = clamp(invoker.leftOverheat + mod,0,invoker.maxOverheat);
+		else
+			invoker.overheat = clamp(invoker.overheat + mod,0,invoker.maxOverheat);
+	}
+	
+	action void PB_SetOverheat(int set, bool dual = false)
+	{
+		if(dual)
+			invoker.leftOverheat = clamp(set,0,invoker.maxOverheat);
+		else
+			invoker.overheat = clamp(set,0,invoker.maxOverheat);
+	}
+	
+	action int PB_GetOverheat(bool dual = false)
+	{
+		if(dual)
+			return invoker.leftOverheat;
+		else
+			return invoker.overheat;
+	}
 	
 	//[Pop] This is a hack, ideally we shouldnt have to do this and once weapons are fully ZScript each one
 	//will have its own function for firing that gets called. Even after it may be good to keep this for 

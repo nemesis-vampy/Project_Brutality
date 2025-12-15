@@ -12,6 +12,12 @@ class PB_WeaponBase : DoomWeapon
 	string UnloadeLToken;//left unloaded
 	property UnloadeLToken: UnloadeLToken;
 	int integer;
+	int maxOverheat;
+	property maxOverheat: maxOverheat;
+	
+	int overheat;
+	int leftOverheat;
+	
 	string MidWeaponPickupMessage;
 	property MidPickupMessage: MidWeaponPickupMessage;
 	string lastGrenadeType;
