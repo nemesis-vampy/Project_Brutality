@@ -1463,7 +1463,7 @@ class PB_Hud_ZS : BaseStatusBar
 						PBHud_DrawBar("ABAR7", "BGBARL", Secondary.Amount, Secondary.MaxAmount, (-112, -51), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						PBHud_DrawBar("ABAR7", "BGBARL", Primary.Amount, Primary.MaxAmount, (-112, -30), 0, 1, DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM);
 						//Numbers
-						PBHud_DrawString(mDefaultFont, String.Format("%u%%",GetAmount("UnmakerOverchargeCounter") * 2), (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_DTech"));
+						PBHud_DrawString(mDefaultFont, String.Format("%u%%",GetAmount("UnmakerOverchargeCounter")), (-207, -69), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_DTech"));
 						PBHud_DrawString(mDefaultFont, Formatnumber(Primary.Amount), (-207, -48), DI_TEXT_ALIGN_RIGHT, Font.FindFontColor("PB_DTech"));
 						//Icon
 						PBHud_DrawImage("AMMOIC7", (-77, -24), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_RIGHT_BOTTOM, 1, (27, 19));
