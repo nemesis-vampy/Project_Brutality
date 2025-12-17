@@ -481,7 +481,11 @@ damage 25
 actor EnemyStunGrenadeExplosion
 {
 +NOBLOCKMAP
++NOGRAVITY
 +MISSILE
++FORCEXYBILLBOARD
++SQUAREPIXELS
+RenderStyle "Add"
 Radius 2
 Height 2
 Damagetype Plasma
@@ -490,7 +494,7 @@ States	{
 	Goto Death
 	Death:
 		  TNT1 A 0 A_PlaySound("LGBOMB", 3)
-		  TNT1 A 0 A_SetScale(0.1,0.01)
+		  TNT1 A 0 A_SetScale(0.1,0.1)
 		  STFL ABCDEFGHIJKL 1 BRIGHT Light("LightningImpactLight") A_SetScale(ScaleX+0.12,ScaleY+0.12)
 		  TNT1 A 0 BRIGHT A_SpawnItem("LightningGunPuff_Bigger",0)
 		  TNT1 A 0 BRIGHT A_SpawnItem("BlueFlare",0)
@@ -503,16 +507,21 @@ States	{
 actor StunGrenadeExplosion
 {
 +NOBLOCKMAP
++NOGRAVITY
 +MISSILE
++FORCEXYBILLBOARD
++SQUAREPIXELS
+RenderStyle "Add"
 Radius 2
 Height 2
 Damagetype Stun
 States	{
 	Spawn:
-	Goto Death
+		TNT1 A 0
+		Goto Death
 	Death:
 		  TNT1 A 0 A_PlaySound("LGBOMB", 3)
-		  TNT1 A 0 A_SetScale(0.1,0.01)
+		  TNT1 A 0 A_SetScale(0.1,0.1)
 		  STFL ABCDEFGHIJKL 1 BRIGHT Light("LightningImpactLight") A_SetScale(ScaleX+0.12,ScaleY+0.12)
 		  TNT1 A 0 BRIGHT A_SpawnItem("LightningGunPuff_Bigger",0)
 		  TNT1 A 0 BRIGHT A_SpawnItem("BlueFlare",0)

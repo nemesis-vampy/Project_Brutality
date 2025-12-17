@@ -483,6 +483,7 @@ Class StunBomb : Actor
 		+MISSILE;
 		+THRUGHOST;
 		+FORCEXYBILLBOARD;
+		+SQUAREPIXELS;
 		Gravity .5;
 		SeeSound "";
 		DeathSound "LGBOMB";
