@@ -47,36 +47,6 @@ Class PB_CarbineWeaponWheel : wheelinfocontainer
 		
 		vector2 iconScale = (0.65, 0.65);
 		
-		PB_SpecialWheel_Mode carbine_fullauto = new ("PB_SpecialWheel_Mode");
-		carbine_fullauto.img = "graphics/pywheel/Carbine_Auto.png";
-		carbine_fullauto.Alias = "Full-Auto Mode";
-		carbine_fullauto.tokentogive = "SelectCarbine_FullAutoFire";
-		carbine_fullauto.scalex = iconscale.x;
-		carbine_fullauto.scaley = iconscale.y;
-		
-		
-		
-		PB_SpecialWheel_Mode carbine_burst = new ("PB_SpecialWheel_Mode");
-		carbine_burst.img = "graphics/pywheel/Carbine_Semi.png";
-		carbine_burst.Alias = "Semi-Auto Mode";
-		carbine_burst.tokentogive = "SelectCarbine_SemiFire";
-		carbine_burst.scalex = iconscale.x;
-		carbine_burst.scaley = iconscale.y;
-			
-		
-		PB_SpecialWheel_Mode carbine_semi = new ("PB_SpecialWheel_Mode");
-		carbine_semi.img = "graphics/pywheel/Carbine_Burst.png";
-		carbine_semi.Alias = "Burst Mode";
-		carbine_semi.tokentogive = "SelectCarbine_BurstFire";
-		carbine_semi.scalex = iconscale.x;
-		carbine_semi.scaley = iconscale.y;
-		
-		
-		spw.Push(carbine_fullauto);
-		spw.Push(carbine_burst);
-		spw.Push(carbine_semi);
-		
-		
 		if(!dualling)
 		{
 			PB_SpecialWheel_Mode carbine_dualwield = new ("PB_SpecialWheel_Mode");
@@ -101,6 +71,30 @@ Class PB_CarbineWeaponWheel : wheelinfocontainer
 			spw.Push(carbine_dualwield);
 		}
 		
+		PB_SpecialWheel_Mode carbine_fullauto = new ("PB_SpecialWheel_Mode");
+		carbine_fullauto.img = "graphics/pywheel/Carbine_Auto.png";
+		carbine_fullauto.Alias = "Full-Auto Mode";
+		carbine_fullauto.tokentogive = "SelectCarbine_FullAutoFire";
+		carbine_fullauto.scalex = iconscale.x;
+		carbine_fullauto.scaley = iconscale.y;
+		
+		PB_SpecialWheel_Mode carbine_burst = new ("PB_SpecialWheel_Mode");
+		carbine_burst.img = "graphics/pywheel/Carbine_Burst.png";
+		carbine_burst.Alias = "Burst Mode";
+		carbine_burst.tokentogive = "SelectCarbine_BurstFire";
+		carbine_burst.scalex = iconscale.x;
+		carbine_burst.scaley = iconscale.y;
+		
+		PB_SpecialWheel_Mode carbine_semi = new ("PB_SpecialWheel_Mode");
+		carbine_semi.img = "graphics/pywheel/Carbine_Semi.png";
+		carbine_semi.Alias = "Semi-Auto Mode";
+		carbine_semi.tokentogive = "SelectCarbine_SemiFire";
+		carbine_semi.scalex = iconscale.x;
+		carbine_semi.scaley = iconscale.y;
+		
+		spw.Push(carbine_fullauto);
+		spw.Push(carbine_burst);
+		spw.Push(carbine_semi);
 	}
 }
 
@@ -117,30 +111,6 @@ class PB_pistolWheel : wheelinfocontainer
 			return;
 		
 		vector2 iconScale = (0.75, 0.75);
-		
-		//check suppresor
-		if(requester.FindInventory("SilencerEquipped"))
-		{
-			PB_SpecialWheel_Mode pistol_unsilenced = new ("PB_SpecialWheel_Mode");
-			pistol_unsilenced.img = "graphics/pywheel/PISTOL_5.png";
-			pistol_unsilenced.Alias = "Detach Suppressor";
-			pistol_unsilenced.tokentogive = "SelectPistolSuppressor";
-			pistol_unsilenced.scalex = iconscale.x;
-			pistol_unsilenced.scaley = iconscale.y;
-			
-			spw.Push(pistol_unsilenced);
-		}
-		else
-		{
-			PB_SpecialWheel_Mode pistol_silencer = new ("PB_SpecialWheel_Mode");
-			pistol_silencer.img = "graphics/pywheel/PISTOL_1.png";
-			pistol_silencer.Alias = "Attach Suppressor";
-			pistol_silencer.tokentogive = "SelectPistolSuppressor";
-			pistol_silencer.scalex = iconscale.x;
-			pistol_silencer.scaley = iconscale.y;
-			
-			spw.Push(pistol_silencer);
-		}
 		
 		//check dw
 		if(requester.FindInventory("DualWieldingPistols"))
@@ -189,7 +159,30 @@ class PB_pistolWheel : wheelinfocontainer
 			
 			spw.Push(pistol_burst);
 		}
-	
+		
+		//check suppresor
+		if(requester.FindInventory("SilencerEquipped"))
+		{
+			PB_SpecialWheel_Mode pistol_unsilenced = new ("PB_SpecialWheel_Mode");
+			pistol_unsilenced.img = "graphics/pywheel/PISTOL_5.png";
+			pistol_unsilenced.Alias = "Detach Suppressor";
+			pistol_unsilenced.tokentogive = "SelectPistolSuppressor";
+			pistol_unsilenced.scalex = iconscale.x;
+			pistol_unsilenced.scaley = iconscale.y;
+			
+			spw.Push(pistol_unsilenced);
+		}
+		else
+		{
+			PB_SpecialWheel_Mode pistol_silencer = new ("PB_SpecialWheel_Mode");
+			pistol_silencer.img = "graphics/pywheel/PISTOL_1.png";
+			pistol_silencer.Alias = "Attach Suppressor";
+			pistol_silencer.tokentogive = "SelectPistolSuppressor";
+			pistol_silencer.scalex = iconscale.x;
+			pistol_silencer.scaley = iconscale.y;
+			
+			spw.Push(pistol_silencer);
+		}
 	}
 }
 
