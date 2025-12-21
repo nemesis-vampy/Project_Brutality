@@ -774,7 +774,7 @@ ListMenu "MainMenu"
 	Font "PBBIG","red","white"
 	IfGame(Doom, Chex)
 	{
-		StaticPatch 80, -10, "M_DOOMPB"
+		StaticPatch 160, -2, "M_DOOMPB", 1
 		Position 85, 66
 	}
 	IfGame(Doom, Strife, Chex)
