@@ -59,6 +59,7 @@ Class PB_Imp1 : PB_Monster// Replaces DoomImp
 		PB_Monster.CanIRoll true;
 		PB_Monster.CanISuppress false;
 		PB_Monster.PBMonSpeed 5, 4, 2, 2.5;
+		PB_Monster.MonPosHB 0.7, 0.65, 0.38, 0.40;
 	}
 	
 	double wallFacingAngle;

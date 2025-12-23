@@ -21,6 +21,7 @@ Actor PB_QSGZombie: PB_HelmetSergeant //Replaces ShotgunGuy
   DropItem "PB_Shell"
   DropItem "PB_QSGZombieDrop", 64
   DropItem "PB_GrenadeAmmo" 5
+  PB_Monster.MonPosHB 0.75, 0.65, 0.38, 0.40
   States
   {	
 	

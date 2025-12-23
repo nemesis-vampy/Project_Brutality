@@ -9,6 +9,7 @@ Actor DNImpVariant1 : PB_Imp //Replaces DoomImp
 	Speed 9
 	SpawnID 1430
 	Tag "Vicious Imp"
+	PB_Monster.MonPosHB 0.7, 0.65, 0.38, 0.40
 	States
 	{
 	////////////////////////////////////////////////////////////////////////////

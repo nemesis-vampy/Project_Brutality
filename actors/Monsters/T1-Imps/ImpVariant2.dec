@@ -13,7 +13,7 @@ Actor DNImpVariant2 : PB_Imp //Replaces DoomImp
     +FLOORCLIP
     Obituary "%o got imped."
     Tag "Mean Imp"
-	
+	PB_Monster.MonPosHB 0.7, 0.65, 0.38, 0.40
 	States
 	{
 	////////////////////////////////////////////////////////////////////////////

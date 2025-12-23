@@ -54,7 +54,7 @@ ACTOR PB_InfectedImp: PB_Imp //Replaces DoomImp
 	PainChance "Trample", 255
 	
 	DropItem "Demonpickup" 60
-	
+	PB_Monster.MonPosHB 0.7, 0.65, 0.38, 0.40
 	States
 	{
 	

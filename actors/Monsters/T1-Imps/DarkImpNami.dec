@@ -60,6 +60,7 @@ actor PB_DarkImpNami : PB_Monster //Replaces DoomImp
 	MaxDropOffHeight 32
 	DropItem "Demonpickup" 225
     BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
+	PB_Monster.MonPosHB 0.7, 0.65, 0.38, 0.40
     States
     {
 	
