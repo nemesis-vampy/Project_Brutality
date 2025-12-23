@@ -176,9 +176,9 @@ extend class PB_WeaponBase
 	
 	//to avoid spaming A_jumpifinventory(barrel, barrelstate)
 	//just pass the respective state to jump in case of the barrel
-	action state PB_jumpIfHasBarrel(statelabel nukage,statelabel flame, statelabel ice)
+	action void PB_jumpIfHasBarrel(statelabel nukage,statelabel flame, statelabel ice)
 	{
-		bool b;	int type;
+		/*bool b;	int type;
 		[b,type] = isHoldingBarrel();
 		
 		if(!b)
@@ -190,7 +190,40 @@ extend class PB_WeaponBase
 			case 2:		return resolvestate(flame);		break;
 			case 3:		return resolvestate(ice);		break;
 		}
-		return resolvestate(null);
+		return resolvestate(null);*/
+	}
+	
+	override state GetAtkState(bool hold)
+	{
+		if(owner.findinventory("GrabbedBarrel"))
+			return resolvestate("ThrowBarrel");
+		if(owner.findinventory("GrabbedFlameBarrel"))
+			return resolvestate("ThrowFlameBarrel");
+		if(owner.findinventory("GrabbedIceBarrel"))
+			return resolvestate("ThrowIceBarrel");
+		return super.GetAtkState(hold);
+	}
+	
+	override state GetAltAtkState(bool hold)
+	{
+		if(owner.findinventory("GrabbedBarrel"))
+			return resolvestate("PlaceBarrel");
+		if(owner.findinventory("GrabbedFlameBarrel"))
+			return resolvestate("PlaceFlameBarrel");
+		if(owner.findinventory("GrabbedIceBarrel"))
+			return resolvestate("PlaceIceBarrel");
+		return super.GetAltAtkState(hold);
+	}
+	
+	override state GetDownState()
+	{
+		if(owner.findinventory("GrabbedBarrel"))
+			return resolvestate("PlaceBarrel");
+		if(owner.findinventory("GrabbedFlameBarrel"))
+			return resolvestate("PlaceFlameBarrel");
+		if(owner.findinventory("GrabbedIceBarrel"))
+			return resolvestate("PlaceIceBarrel");
+		return super.GetDownState();
 	}
 	
 	//put this in the beggining of the fire state to determine if it can fire or needs reloading
@@ -2322,11 +2355,12 @@ action int getReadyFlags(int weapflags, bool noReload)
 
 	action state A_DoPBWeaponAction(int weapflags = WRF_ALLOWRELOAD, int pbFlags = 0, string unloadtoken = "HasUnloaded", bool noReload = false)
 	{
+		bool grabbedbarrel = IsHoldingBarrel();
 		bool initialWRF_ALLOWRELOAD = false;
 		if (weapflags & WRF_ALLOWRELOAD) initialWRF_ALLOWRELOAD = true;
 		weapFlags &= ~(WRF_ALLOWRELOAD);
-		if(invoker is "PB_Fists"){weapFlags |= WRF_ALLOWRELOAD;}
-		if(invoker is "PB_MG42" && (CountInv("MG42HasOverheated") || CountInv("MG42BarrelOverheat") >= 1) ){weapFlags |= WRF_ALLOWRELOAD;}
+		if(invoker is "PB_Fists" && !grabbedbarrel){weapFlags |= WRF_ALLOWRELOAD;}
+		if(invoker is "PB_MG42" && (CountInv("MG42HasOverheated") || CountInv("MG42BarrelOverheat") >= 1) && !grabbedbarrel){weapFlags |= WRF_ALLOWRELOAD;}
 		bool dualWieldCheck = invoker.DualWieldToken && FindInventory(invoker.DualWieldToken);
 		bool canLoadAmmoLeft = invoker.AmmoTypeLeft && countinv(invoker.ammotype1) > 0 && countInv(invoker.AmmoTypeLeft) < GetAmmoCapacity(invoker.AmmoTypeLeft);
 		bool canLoadAmmo = invoker.ammotype2 && countinv(invoker.ammotype1) > 0 && countinv(invoker.ammotype2) < GetAmmoCapacity(invoker.ammotype2);
@@ -2350,7 +2384,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 			"Steady", "QuickPunch", //"LedgeClimb",
 			"DoKick", "Taunt", "Salute", "Salute",
 			"UseEquipment", "SwitchEquipment", "DualWieldBaby",
-			"NoDualWield", "WeaponSpecial", "ReadyBarrel", "ReadyBarrel",
+			"NoDualWield", "WeaponSpecial", "ReadyBarrel", "ReadyIceBarrel",
 			"ReadyFlameBarrel", "ThrowBarrel", "ThrowIceBarrel", 
 			"ThrowFlameBarrel", "IdleBarrel", "IdleIceBarrel", 
 			"IdleFlameBarrel"
