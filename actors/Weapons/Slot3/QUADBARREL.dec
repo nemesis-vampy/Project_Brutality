@@ -738,17 +738,17 @@ ACTOR PB_QuadSG : PB_Weapon
 		Q2L4 A 1	BRIGHT
 		TNT1 A 0 A_ZoomFactor(0.95)
 		Q2L4 B 1 BRIGHT
-		Q2L4 C 1 {
+		Q2L4 F 1 {
 			PB_WeaponRecoil(-12.80,+7.40);
 		}
-		Q2L4 D 1 {
+		Q2L4 G 1 {
 			A_ZoomFactor(1.0);
 			PB_WeaponRecoil(-8.80,+8.40);
 		}
-		Q2L4 E 1 {
+		Q2L4 H 1 {
 			PB_WeaponRecoil(-6.80,+4.40);
 		}
-		Q2L4 FGHIJKL 1 PB_WeaponRecoil(-2.80,+1.40)
+		Q2L4 IJKL 1 PB_WeaponRecoil(-4.90,+2.45)
 		Q2L4 MNOPQRS 1
 		Q2L4 T 1 {
 			//CountInv("DualFiring")==0
@@ -775,15 +775,15 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(0.95)
 		Q2L2 D 1 BRIGHT
 	LeftRecoil_HalfBlastRecoil:
-		Q2L2 E 1 {
+		Q2L2 H 1 {
 			PB_WeaponRecoil(-10.80,+6.40);
 		}
-		Q2L2 F 1 {
+		Q2L2 I 1 {
 			A_ZoomFactor(1.0);
 			PB_WeaponRecoil(-6.80,+4.40);
 		}
 
-		Q2L2 GHIJ 1 PB_WeaponRecoil(-2,+0.60)
+		Q2L2 JK 1 PB_WeaponRecoil(-4,+1.20)
 		Q2L2 KLMN 1
 		Q2L2 O 1 {
 			//CountInv("DualFiring")==0
@@ -929,17 +929,17 @@ ACTOR PB_QuadSG : PB_Weapon
 		Q1L4 A 1	BRIGHT
 		TNT1 A 0 A_ZoomFactor(0.95)
 		Q1L4 B 1 BRIGHT
-		Q1L4 C 1 {
+		Q1L4 F 1 {
 			PB_WeaponRecoil(-12.80,-8.40);
 		}
-		Q1L4 D 1 {
+		Q1L4 G 1 {
 			A_ZoomFactor(1.0);
 			PB_WeaponRecoil(-8.80,-8.40);
 		}
-		Q1L4 E 1 {
+		Q1L4 H 1 {
 			PB_WeaponRecoil(-6.80,-4.40);
 		}
-		Q1L4 FGHIJKL 1 PB_WeaponRecoil(-2,-0.60)
+		Q1L4 IJKL 1 PB_WeaponRecoil(-4.90,-2.45)
 		Q1L4 MNOPQRS 1
 		Q1L4 T 1 {
 			//CountInv("DualFiring")==0
@@ -966,15 +966,15 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(0.95)
 		Q1L2 D 1 BRIGHT
 	RightRecoil_HalfBlastRecoil:
-		Q1L2 E 1 {
+		Q1L2 H 1 {
 			PB_WeaponRecoil(-10.80,-6.40);
 		}
-		Q1L2 F 1 {
+		Q1L2 I 1 {
 			A_ZoomFactor(1.0);
 			PB_WeaponRecoil(-6.80,-4.40);
 		}
 
-		Q1L2 GHIJ 1 PB_WeaponRecoil(-2,-0.60)
+		Q1L2 JK 1 PB_WeaponRecoil(-4,-1.20)
 		Q1L2 KLMN 1
 		Q1L2 O 1 {
 			//CountInv("DualFiring")==0
@@ -1562,6 +1562,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		QAKS NOPQR 1
 		TNT1 A 6
 	ReloadAkimboOnlyLeft:
+		TNT1 A 0 A_OverlayFlags(1,PSPF_FLIP|PSPF_MIRROR,true)
 		QSSG IJKLMNOPQ 1
 		TNT1 A 0 A_PlaySound("QSGOPN", 8)
 		QRS3 A 0 A_JumpIfInventory("LeftQSSGAmmoCounter", 3, 4)
@@ -1679,6 +1680,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		QSS1 RSTUVWXYZ 1
 		QSS2 AEFG 1
 		TNT1 A 8
+		TNT1 A 0 A_OverlayFlags(1,PSPF_FLIP|PSPF_MIRROR,false)
 		QAKS RQPON 1
 		Goto RealReady
 	FullLoadSoundOverlay:
@@ -1905,6 +1907,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		Goto RealReady
 		
 	UnloadAkimboLeft:
+		TNT1 A 0 A_OverlayFlags(1,PSPF_FLIP|PSPF_MIRROR,true)
 		QSSG IJKLMNOPQ 1
 		TNT1 A 0 A_SetInventory("LeftQuadShotgunHasUnloaded", 1)
 		TNT1 A 0 A_PlaySound("QSGOPN", 8)
@@ -1960,6 +1963,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		QSS1 RSTUVWXYZ 1
 		QSS2 AEFG 1
 		TNT1 A 8
+		TNT1 A 0 A_OverlayFlags(1,PSPF_FLIP|PSPF_MIRROR,false)
 		QAKS RQPON 1
 		Goto RealReady
 
