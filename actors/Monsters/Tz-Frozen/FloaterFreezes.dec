@@ -85,8 +85,12 @@ States
 	}
 }
 
-ACTOR FrozenMagCaco : FrozenCacodemon
+ACTOR FrozenMagCaco : FrozenEnemyBase
 {
+	Radius 31
+	Height 56
+	Health 30
+	Scale 1.0
 	States
 	{
 	Spawn:
@@ -168,8 +172,12 @@ ACTOR FrozenMagCaco : FrozenCacodemon
 	}
 }
 
-ACTOR FrozenWatcher : FrozenCacodemon
+ACTOR FrozenWatcher : FrozenEnemyBase
 {
+Radius 31
+Height 56
+Health 30
+Scale 1.0
 States
 	{
 	Spawn:
@@ -222,7 +230,7 @@ States
 		TNT1 AA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 46, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile("WatcherGib1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 40))
-		Stop
+		Goto Super::Death
 		
 	Death.Freeze:
 	Death.Ice:
@@ -235,8 +243,12 @@ States
 	}
 }
 
-ACTOR FrozenAfrit: FrozenCacodemon
+ACTOR FrozenAfrit: FrozenEnemyBase
 {
+	Radius 31
+	Height 56
+	Health 30
+	Scale 1.0
 	States
 	{
 	Spawn:
@@ -404,8 +416,12 @@ ACTOR FrozenPainElemental : FrozenEnemyBase
 	}
 }
 
-ACTOR FrozenSufferingElemental : FrozenPainElemental
+ACTOR FrozenSufferingElemental : FrozenEnemyBase
 {
+	Radius 31
+	Height 56
+	Health 30
+	Scale 1.0
 	States
 	{
 	Spawn:
@@ -565,8 +581,11 @@ ACTOR FrozenLostSoul : FrozenEnemyBase
 	}
 }
 
-Actor FrozenPhantasm : FrozenLostSoul
+Actor FrozenPhantasm : FrozenEnemyBase
 {
+	Health 10
+	Radius 16
+	Height 48
 	States
 	{
 	Spawn:
