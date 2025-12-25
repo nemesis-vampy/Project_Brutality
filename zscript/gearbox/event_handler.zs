@@ -435,7 +435,7 @@ class gb_EventHandler : EventHandler
 
 	private clearscope void close()
 	{
-		mSounds.playClose();
+		if(mActivity.isWeapons() || mActivity.isSpecials() || mActivity.isEquipment() || mActivity.isInventory()) mSounds.playClose();
 		mActivity.close();
 	}
   
