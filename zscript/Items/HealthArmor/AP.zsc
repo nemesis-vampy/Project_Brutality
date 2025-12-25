@@ -46,7 +46,7 @@ class PB_GreenArmor : PB_Armor
 		Height 16;
 		Armor.SavePercent 40;
 		Armor.SaveAmount 100;
-		Inventory.PickupMessage "Light Recon Armor";
+		Inventory.PickupMessage "Light Recon Armor (100 AP)";
 		Inventory.PickupSound "ARMOR";
 		//Scale .28;
 	}
@@ -70,7 +70,7 @@ class PB_BlueArmor : PB_Armor
 		Height 16;
 		Armor.SavePercent 70;
 		Armor.SaveAmount 200;
-		Inventory.PickupMessage "Heavy Assault Armor";
+		Inventory.PickupMessage "Heavy Assault Armor (200 AP)";
 		Inventory.PickupSound "ARMOR";
 		//Scale .28;
 	}

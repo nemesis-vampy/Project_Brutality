@@ -20,6 +20,9 @@ server string pb_dog_override = "Disabled";
 
 server bool pb_vanillamonster_override = false;
 
+user bool pb_powerup_shaders = false;
+user float pb_nightvision_exposure = 1.0;
+
 server bool pb_experimental = false;
 user bool py_weaponwheel_freeze = true;
 user int py_weaponwheel_invert = 0;

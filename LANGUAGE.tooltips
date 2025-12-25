@@ -41,3 +41,5 @@ TIP_PB_TRACERLIGHT = "Enables GL light emitted from tracers.";
 TIP_PB_ALTTRACER = "Enables longer/more realistic tracer. (Rifle/Minigun only currently)";
 TIP_PB_VANILLAMONSTER_OVERRIDE = "Disable PB's Monsters, for those that are running custom enemy packs specifically.";
 TIP_PB_NAZIEXCLUSIVESPAWNING = "Disable the random chance for Nazis to be replaced by Grunts.";
+TIP_PB_POWERUP_SHADERS = "Use shaders for prettier powerup effects.";
+TIP_PB_NIGHTVISION_EXPOSURE = "Brightness of the night vision effect. Values above 0 will be automatically dimmed in bright sectors.";

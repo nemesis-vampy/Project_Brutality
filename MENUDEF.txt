@@ -499,6 +499,8 @@ OptionMenu "RenderingSettings"
 	Option "Disable Screen Pain Effects", "nopaineffect", "OnOff"
 	Option "Enable Light From Tracers", "PB_tracerlight", "OnOff"
 	Option "Alternate Tracers","PB_alttracer", "OnOff"
+	Option "Powerup Shaders", "pb_powerup_shaders", "YesNo"
+	Slider "Night Vision Exposure", "pb_nightvision_exposure", 0.0, 1.0, 0.1, 1, "pb_nightvision_shader"
 }
 
 OptionMenu "PBVPOptions" // Project Brutality Voxel Project settings

@@ -103,6 +103,21 @@ HardwareShader postprocess scene
   Shader "shaders/mfx_bss_blur.fp" 330
 }
 
+HardwareShader PostProcess scene
+{
+	Name "NightVision"
+	Shader "Shaders/NightVision.fp" 330
+	Uniform float timer
+	Uniform float exposure
+	Uniform vec3 hsl
+}
+
+HardwareShader PostProcess scene
+{
+	Name "Invulnerability"
+	Shader "Shaders/Invulnerability.fp" 330
+	Uniform float intensity
+}
 
 pulselight M1HeatWave
 {
