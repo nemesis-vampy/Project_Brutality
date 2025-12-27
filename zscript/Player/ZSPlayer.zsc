@@ -89,7 +89,7 @@ class PB_PlayerPrawn : PlayerPawnBase
 		Player.StartItem "PB_NailgunAmmo",120;
 		Player.StartItem "PlasmaAmmo",60;
 		Player.StartItem "LeftPlasmaAmmo",60;
-		Player.StartItem "RocketRounds",6;
+		Player.StartItem "RocketRounds",10;
 		Player.StartItem "RailgunAmmo",60;
 		Player.StartItem "IsPlayer",1;
 		Player.StartItem "SMGAmmo",51;
