@@ -68,7 +68,7 @@ extend class PB_WeaponBase
 					}
 				if(CountInv("WW_LeechSelected") >=1)
 					{
-					if(CountInv("HasLeech") <=0)
+					if(CountInv("PB_LeechGrenadeAmmo") <=0)
 						{A_Print("No Leech Available"); return ResolveState("WheelCancelEquipment");}
 					}
 				if(CountInv("WW_RevGunSelected") >=1)

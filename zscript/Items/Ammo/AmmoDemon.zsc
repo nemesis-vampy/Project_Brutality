@@ -66,15 +66,7 @@ class PB_PermaDTechLarge : PB_DTechLarge
 	}
 }
 
-// Leech Grenade and Token
-Class HasLeech : Inventory
-{
-	Default
-	{
-		inventory.maxamount 1;
-	}
-}
-
+// Leech Grenade
 Class PB_LeechGrenadeAmmo : PB_Ammo 
 {
 	Default
@@ -85,12 +77,6 @@ Class PB_LeechGrenadeAmmo : PB_Ammo
 		Tag "Leech Grenade";
 		Inventory.PickupSound "SiphonGrowl";
 		PB_Ammo.AmmoType "leechnade";
-	}
-
-	override bool TryPickup(in out actor toucher)
-	{
-		toucher.GiveInventory("HasLeech",1) ;
-		return Super.TryPickup(toucher);
 	}
 	
 	override string PickupMessage()
