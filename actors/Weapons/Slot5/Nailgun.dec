@@ -299,19 +299,23 @@ ACTOR PB_Nailgun : PB_Weapon
 				return state("");
 				}
 		ReadyToFire:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			TNT1 A 0 A_GunFlash("HeatOverlayIdle")
 			N1N0 D 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			Loop
 		ReadyToFireEmpty:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			N1N1 D 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			Loop
 		ReadyToFireUnloaded:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			N1N2 D 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			Loop
-			
+		Cooling:
+			TNT1 A 1 PB_ModifyOverheat(-5)
+			Loop
 		HeatOverlayIdle:
 			N8N1 ABCDEFGHI 0
-			TNT1 A 0 PB_ModifyOverheat(-5)
 			TNT1 A 0 A_JumpIf(PB_GetOverheat >= 1000, "Glow0")
 			TNT1 A 0 A_JumpIf(PB_GetOverheat >= 900, "Glow1")
 			TNT1 A 0 A_JumpIf(PB_GetOverheat >= 300, "Glow2")
@@ -425,12 +429,15 @@ ACTOR PB_Nailgun : PB_Weapon
 			TNT1 A 0 A_JumpIfInventory("NailgunHasUnloaded",1,"JavelinReadyUnloaded")
 			TNT1 A 0 A_JumpIf(CountInv("PB_NailgunAmmo") < 20 ,"JavelinReadyEmpty")
 		JavelinReadyToFire:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			J0N0 D 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			Loop
 		JavelinReadyEmpty:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			J0N1 D 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			Loop
 		JavelinReadyUnloaded:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			J0N2 D 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			Loop
 		
@@ -448,12 +455,12 @@ ACTOR PB_Nailgun : PB_Weapon
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(76);
+				A_ClearOverlays(3,3);
 				A_Setinventory("PB_LockScreenTilt",0);
 			}
 	//		TNT1 A 0 A_Setinventory("NailgunHasUnloaded",0)
 	//		TNT1 A 0 A_Setinventory("Unloading",0)
 			TNT1 A 0 A_Setinventory("RandomHeadExploder",0)
-			TNT1 A 0 PB_SetOverheat(0)
 			TNT1 A 0 A_StopSound(6)
 			TNT1 A 0 A_StopSound(4)
 			TNT1 A 0 SetPlayerProperty(0,0,0)
@@ -475,6 +482,7 @@ ACTOR PB_Nailgun : PB_Weapon
 				A_SetRoll(0);
 				PB_HandleCrosshair(76);
 				A_Setinventory("PB_LockScreenTilt",0);
+				PB_ModifyOverheat(-300);
 			}
 			
 			TNT1 A 0 PB_ResetBarrelTokens
@@ -501,6 +509,7 @@ ACTOR PB_Nailgun : PB_Weapon
 				A_SetRoll(0);
 				PB_HandleCrosshair(76);
 				A_Setinventory("PB_LockScreenTilt",0);
+				A_ClearOverlays(3,3);
 			}
 			N9N0 ABCDEF 0
 			N9N1 ABCDEF 0
@@ -670,6 +679,7 @@ ACTOR PB_Nailgun : PB_Weapon
 				A_SetRoll(0);
 				PB_HandleCrosshair(76);
 				A_Setinventory("PB_LockScreenTilt",0);
+				A_ClearOverlays(3,3);
 			}
 			N9N3 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0 // Initialize frames into virtual memory
 			TNT1 A 0 A_JumpIfInventory("JavelinMode", 1, "AltFireJavelin")
@@ -684,10 +694,18 @@ ACTOR PB_Nailgun : PB_Weapon
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N3");}
 				}
 			TNT1 A 0 A_FireBullets(0, 0, 1, 25, "shotpuff", 0, 250)
-			TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_FireCustomMissile("PB_MGNailHot", Random(-10, 10), 0, -1, Random(-10, 10))
+			TNT1 AAAAAAAAAAAAAAAAAAAA 0
+			{
+				if (PB_GetOverheat >= 450) {
+					A_FireCustomMissile("PB_MGNailHot", Random(-10, 10), 0, -1, Random(-10, 10));
+				}
+				else {
+					A_FireCustomMissile("PB_MGNail", Random(-10, 10), 0, -1, Random(-10, 10));
+				}
+			}
 			N5N0 W 1 {
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N3");}
-				PB_SetOverheat(1200);
+				PB_ModifyOverheat(300);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, -2, -8, 0, 0);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, 2, -8, 0, 0);
 				PB_GunSmoke_Basic(2,0,0);
@@ -714,6 +732,7 @@ ACTOR PB_Nailgun : PB_Weapon
 				A_ZoomFactor(1.0);
 				PB_WeaponRecoil(-1.5,+0.5);
 			}
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			TNT1 A 0 A_WeaponOffset(0, 32)
 			N8N0 A 0 A_JumpIfInventory("PB_NailgunAmmo",20,2)
 			N1N1 D 0 
@@ -818,12 +837,12 @@ ACTOR PB_Nailgun : PB_Weapon
 			Goto JavelinReady3
 		
 		Reload:
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
 			TNT1 A 0 A_StopSound(CHAN_WEAPON)
 			TNT1 A 0 A_JumpIfInventory("PB_NailgunAmmo",120,"Ready3")
-			TNT1 A 0 PB_SetOverheat(0)
 			TNT1 A 0 A_JumpIfInventory("JavelinMode", 1, "ReloadJavelin")
 			TNT1 A 0 A_JumpIfInventory("PB_HighCalMag",1,1)
 			Goto NoAmmo
@@ -1072,6 +1091,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelPunching")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelPunching")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelPunching")
+			TNT1 A 0 A_Overlay(3,"Cooling",true)
 			TNT1 A 0 A_JumpIfInventory("JavelinMode", 1, "FlashPunchingJavelin")
 			N4N0 ABCDEFGHIJKLMN 1
 			N1N0 D 1
