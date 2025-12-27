@@ -75,7 +75,7 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 	+WEAPON.NOAUTOAIM
 	Tag "Sawed-Off Shotgun"
 	+WEAPON.NOAUTOFIRE
-	Inventory.MaxAmount 3
+	Inventory.MaxAmount 2
 	Inventory.PickupMessage "Sawed-Off Shotgun (Slot 3)"
 	Obituary "%o was splattered by %k's SSG"
 	Inventory.PickupSound "CLIPINQS"

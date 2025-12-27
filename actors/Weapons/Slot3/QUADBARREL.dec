@@ -322,7 +322,7 @@ ACTOR PB_QuadSG : PB_Weapon
 	+FLOORCLIP
 	+DONTGIB
 	+WEAPON.NOAUTOAIM
-	Inventory.MaxAmount 3
+	Inventory.MaxAmount 2
 	Tag "Quad-Barrel Shotgun"
 	+WEAPON.NOAUTOFIRE
 	//+POWERED_UP

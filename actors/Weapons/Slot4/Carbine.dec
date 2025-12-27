@@ -69,7 +69,7 @@ ACTOR PB_Carbine : PB_Weapon
 	AttackSound "None"
 	Inventory.PickupSound "CLIPIN"
 	Inventory.Pickupmessage "UAC-41 Carbine (Slot 4)"
-	Inventory.MaxAmount 3
+	Inventory.MaxAmount 2
 	Inventory.Amount 1
 	Tag "UAC-41 Carbine"
 	+WEAPON.WIMPY_WEAPON

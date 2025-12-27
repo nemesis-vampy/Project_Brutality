@@ -219,7 +219,7 @@ ACTOR PB_DMR : PB_Weapon
 	Weapon.AmmoType2 "DMRAmmo"
 	weapon.slotpriority 0.5
 	PB_WeaponBase.AmmoTypeLeft "LeftDMRAmmo"
-	Inventory.MaxAmount 3
+	Inventory.MaxAmount 2
 	Inventory.Amount 1
 	+FLOORCLIP
 	+DONTGIB
