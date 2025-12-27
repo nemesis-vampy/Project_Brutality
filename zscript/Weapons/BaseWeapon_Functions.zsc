@@ -2735,34 +2735,114 @@ action int getReadyFlags(int weapflags, bool noReload)
 	const RedRail_Aim = 0;
 	const RedRail_Fire = 1;
 	const railpartstep = 20;
-	const railpartstepaim = 15;
-	
-	Action Void PB_VisualRailRed(int BeamType = RedRail_Aim,int power = 0)
+	const railpartstepaim = 5;
+
+	action void PB_FireLaser(int power = 0)
 	{
-		FLineTraceData t;
+		int bounce = int(power/10) + 2;
 		double vz = (height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor) - 8; //little offset
-		//double vz = height * 0.5;
-		bool hit = linetrace(angle,8000,pitch,0,vz,data:t);
-		
+		Vector3 dir = (AngleToVector(angle, cos(pitch)), -sin(pitch));
 		vector3 spos = (pos.xy,pos.z + vz);
-		vector3 fpos = t.HitLocation;
-		fpos -= t.hitdir; //step back 1 map unit, not necessary now, but for spawning something at hitlocation is useful
-		
-		vector3 dif = levellocals.Vec3diff(spos,fpos);
-		vector3 dr = dif.unit();
-		double dis = dif.length();
-		
-		int q = int(dis / (BeamType ? railpartstep : railpartstepaim)) + 1; //+ 1 to ensure its always more than 0, since distance cant be negative but can be 0
-		
-		double alfa = BeamType ? 1.0 : frandom(0.2,0.3);
-		for(int i = 0; i < q; i++)
+		for(int i = bounce; i > 0; i--)
 		{
-			spos += (dr * (BeamType ? railpartstep : railpartstepaim));
-			if(i > 0) //skip the first iteration, so it doesnt spawn a particle blocking the view
-				PB_DrawRailFx1(spos,BeamType,alfa,power);
+			let laser = new("PB_Laser");
+			laser.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKING,false,invoker.owner);
 			
-			if(Beamtype && (i % 4 == 0) && power >= 60) //appear the shockwave every 4 iterations if its not an aiming beam and its fullpower
-				PB_SpawnRailShockWave(spos,1,i/4);
+			if(laser)
+			{
+				let res = laser.results;
+				vector3 fpos = res.HitPos;
+				fpos -= res.HitVector; //step back 1 map unit, not necessary now, but for spawning something at hitlocation is useful
+				
+				vector3 dif = levellocals.Vec3diff(spos,fpos);
+				vector3 dr = dif.unit();
+				double dis = dif.length();
+				
+				int q = int(dis / railpartstep + 1); //+ 1 to ensure its always more than 0, since distance cant be negative but can be 0
+				
+				if(res.HitType !=TRACE_HitNone && power == 60 && i == 1)
+				{
+					let b = Spawn("RailgunLaserBlast1",fpos);
+					if(b)
+						b.target = self; //no self damage
+				}
+				for(int i = 0; i < laser.hitActors.Size(); i++)
+				{
+					laser.HitActors[i].DamageMobj(invoker.owner,invoker.owner,10*power,"Incinerate",DMG_THRUSTLESS);
+				}
+				
+				double alfa = 1.0;
+				for(int i = 0; i < q; i++)
+				{
+					spos += (dr * railpartstep);
+					if(i > 0) //skip the first iteration, so it doesnt spawn a particle blocking the view
+						PB_DrawRailFx1(spos,1,alfa,power);
+					
+					if(i % 4 == 0) //appear the shockwave every 4 iterations if its not an aiming beam and its fullpower
+					{
+						if(power == 60)
+							PB_SpawnRailShockWave(spos,1,i/4);
+						let p = RailgunAOEPuff(spawn("RailgunAOEPuff",spos)); //deals the aoe damage
+						if(p)
+							p.target = self; //no self damage
+							p.dmg = power * 3;
+							p.rad = power * 3;
+							p.damagetype = "incinerate";
+					}
+				}
+				Vector3 ndir;
+				if(res.HitType == TRACE_HitWall) //based on battle rifle ricochet from bdp
+					ndir = res.Side == Line.front ? (res.Hitline.delta.y, -res.Hitline.delta.x, 0).unit() : (-res.Hitline.delta.y, res.Hitline.delta.x, 0).unit();
+				else if (res.HitType == TRACE_HitFloor)
+					ndir = res.HitSector.FloorPlane.normal;
+				else if (res.HitType == TRACE_HitCeiling)
+					ndir = res.HitSector.CeilingPlane.normal;
+				dir = dir - 2 * ndir * (dir dot ndir);
+				spos = fpos;
+			}
+		}
+	}
+	
+	Action Void PB_VisualLaser(int power = 0)
+	{
+		int bounce = int(power/10) + 2;
+		double vz = (height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor) - 8; //little offset
+		Vector3 dir = (AngleToVector(angle, cos(pitch)), -sin(pitch));
+		vector3 spos = (pos.xy,pos.z + vz);
+		for(int i = bounce; i > 0; i--)
+		{
+			let laser = new("PB_Laser");
+			laser.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKING,false,invoker.owner);
+			
+			if(laser)
+			{
+				let res = laser.results;
+				vector3 fpos = res.HitPos;
+				fpos -= res.HitVector; //step back 1 map unit, not necessary now, but for spawning something at hitlocation is useful
+				
+				vector3 dif = levellocals.Vec3diff(spos,fpos);
+				vector3 dr = dif.unit();
+				double dis = dif.length();
+				
+				int q = int(dis / railpartstepaim + 1); //+ 1 to ensure its always more than 0, since distance cant be negative but can be 0
+				
+				double alfa = frandom(0.2,0.3) * max(1,power/20);
+				for(int i = 0; i < q; i++)
+				{
+					spos += (dr * railpartstepaim);
+					if(i > 0) //skip the first iteration, so it doesnt spawn a particle blocking the view
+						PB_DrawRailFx1(spos,0,alfa,power);
+				}
+				Vector3 ndir;
+				if(res.HitType == TRACE_HitWall)
+					ndir = res.Side == Line.front ? (res.Hitline.delta.y, -res.Hitline.delta.x, 0).unit() : (-res.Hitline.delta.y, res.Hitline.delta.x, 0).unit();
+				else if (res.HitType == TRACE_HitFloor)
+					ndir = res.HitSector.FloorPlane.normal;
+				else if (res.HitType == TRACE_HitCeiling)
+					ndir = res.HitSector.CeilingPlane.normal;
+				dir = dir - 2 * ndir * (dir dot ndir);
+				spos = fpos;
+			}
 		}
 	}
 	
@@ -2815,38 +2895,50 @@ action int getReadyFlags(int weapflags, bool noReload)
 	//Blue Rail Fire mode
 	//////////////////////////////////////////////////////////////////
 	
-	Action Void PB_VisualRailBlue()
+	action void PB_FireRail()
 	{
-		FLineTraceData t;
 		double vz = (height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor) - 8; //little offset
-		//double vz = height * 0.5;
-		bool hit = linetrace(angle,8000,pitch,0,vz,data:t);
-		
+		Vector3 dir = (AngleToVector(angle, cos(pitch)), -sin(pitch));
 		vector3 spos = (pos.xy,pos.z + vz);
-		vector3 fpos = t.HitLocation;
-		fpos -= t.hitdir; //step back 1 map unit, not necessary now, but for spawning something at hitlocation is useful
+		let rail = new("PB_Rail");
+		rail.wallbangCount = 3;
+		rail.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKING,false,invoker.owner);
 		
-		vector3 dif = levellocals.Vec3diff(spos,fpos);
-		vector3 dr = dif.unit();
-		double dis = dif.length();
-		
-		int q = int(dis / railpartstep) + 1; //+ 1 to ensure its always more than 0, since distance cant be negative but can be 0
-		
-		for(int i = 0; i < q; i++)
+		if(rail)
 		{
-			spos += (dr * railpartstep);
-			if(i > 0)
-				PB_DrawRailFxBlue(spos);
+			vector3 fpos = rail.results.HitPos;
+			fpos -= rail.results.HitVector; //step back 1 map unit, not necessary now, but for spawning something at hitlocation is useful
 			
-			if(i % 4 == 0)
+			vector3 dif = levellocals.Vec3diff(spos,fpos);
+			vector3 dr = dif.unit();
+			double dis = dif.length();
+			
+			int q = int(dis / railpartstep) + 1; //+ 1 to ensure its always more than 0, since distance cant be negative but can be 0
+			
+			if(rail.results.HitType !=TRACE_HitNone)
+				Spawn("PB_RailImpact",fpos);
+			for(int i = 0; i < rail.hitActors.Size(); i++)
 			{
-				PB_SpawnRailShockWave(spos,0,i/4);
-				//this is the most simple way i can think to do this, but i guess a blockthingsiterator with a small radiuscheck that deals the damage every 10 steps (or so) could work too
-				//not sure if that would be better performance-wise than spawning actors, but bti wouldnt have to go through (post)beginplay, WorldThingSpawned and other functions like that
-				//anyway this is a quick fix, may write a more fancy solution later
-				Actor p = spawn("RailgunAOEPuff",spos); //deals the aoe damage
-				if(p)
-					p.target = self; //no self damage
+				let d = Spawn("PB_RailDamage",(rail.hitX[i],rail.hitY[i],rail.hitZ[i]) + rail.results.hitVector);
+				d.target = self; //no self damage
+			}
+			
+			for(int i = 0; i < q; i++)
+			{
+				spos += (dr * railpartstep);
+				if(i > 0)
+					PB_DrawRailFxBlue(spos);
+				
+				if(i % 4 == 0)
+				{
+					PB_SpawnRailShockWave(spos,0,i/4);
+					//this is the most simple way i can think to do this, but i guess a blockthingsiterator with a small radiuscheck that deals the damage every 10 steps (or so) could work too
+					//not sure if that would be better performance-wise than spawning actors, but bti wouldnt have to go through (post)beginplay, WorldThingSpawned and other functions like that
+					//anyway this is a quick fix, may write a more fancy solution later
+					Actor p = spawn("RailgunAOEPuff",spos); //deals the aoe damage
+					if(p)
+						p.target = self; //no self damage
+				}
 			}
 		}
 	}
