@@ -899,16 +899,6 @@ Class PB_FragGrenade : Actor
 			Loop;
 		Bounce:
 			TNT1 A 0;
-			TNT1 A 0 {
-				if(pb_sglgrenadeimpact == 1)
-					return resolvestate("Death");
-				else if(pb_sglgrenadeimpact >= 2)
-				{
-					A_Stop();
-					Return resolvestate("Rest");
-				}
-				return resolvestate(null);
-			}
 			Goto spawn;
 		Rest:
 			GRNP A 35 Bright Light("SGL_FRAG") A_Jumpif(CheckDetonation(),"Detonate");
@@ -922,6 +912,12 @@ Class PB_FragGrenade : Actor
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("ImpactGrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("NewRocketExploFX", 0, 0, 0);
+			TNT1 A 0 {
+				for(int i = 0; i < 20; i++)
+				{
+					A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
+				}
+			}
 			TNT1 A 1;
 			XXXX A 0 A_Spawnprojectile ("ExplosionQuake", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAA 0 A_Spawnprojectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
@@ -1082,6 +1078,12 @@ Class PB_StickyGrenade: PB_FragGrenade
 			TNT1 A 0 A_StartSound("excavator/explode", 1);
 			TNT1 A 0 A_StartSound("FAREXPL",3);
 			EXPL AAA 0 A_Spawnprojectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 A 0 {
+				for(int i = 0; i < 20; i++)
+				{
+					A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
+				}
+			}
 			Stop;
 	}
 }
@@ -1217,16 +1219,6 @@ Class PB_IncendiaryGrenade : PB_FragGrenade
 
 		Bounce:
 			TNT1 A 0;
-			TNT1 A 0 {
-				if(pb_sglgrenadeimpact == 1)
-					return resolvestate("Death");
-				else if(pb_sglgrenadeimpact >= 2)
-				{
-					A_Stop();
-					Return resolvestate("Rest");
-				}
-				return resolvestate(null);
-			}
 			Goto spawn;
 
 		Rest:
@@ -1247,6 +1239,12 @@ Class PB_IncendiaryGrenade : PB_FragGrenade
 			FRFX ZZZ 0 BRIGHT A_Spawnprojectile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360));
 			EXPL AAAAA 0 A_Spawnprojectile ("FT_GroundFireSpawner", 12, random(-32,32), random (0, 360), 2, random (40, 60));
 			EXPL AAAAAAAAAA 0 A_Spawnprojectile ("FT_GroundFireSpawner", random(-32,32), 0, random (0, 360), 2, random (50, 130));
+			TNT1 A 0 {
+				for(int i = 0; i < 20; i++)
+				{
+					A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
+				}
+			}
 			Stop;
 	}
 }
@@ -1276,16 +1274,6 @@ Class PB_CryoGrenade: PB_FragGrenade
 
 		Bounce:
 			TNT1 A 0;
-			TNT1 A 0 {
-				if(pb_sglgrenadeimpact == 1)
-					return resolvestate("Death");
-				else if(pb_sglgrenadeimpact >= 2)
-				{
-					A_Stop();
-					Return resolvestate("Rest");
-				}
-				return resolvestate(null);
-			}
 			Goto spawn;
 
 		Rest:
@@ -1307,6 +1295,12 @@ Class PB_CryoGrenade: PB_FragGrenade
 			TNT1 AAA 0 Bright A_SpawnItemEx("IceExplosionImpact", random(-2,2), random(-2,2), random(-2,2), 0, 0, 0, random(1,360), SXF_NOCHECKPOSITION);
 			TNT1 AAAAA 0 A_SpawnItemEx ("DetectFloorIce",random(-150,150), random(-150,150),1,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterIce",0,0,1,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 {
+				for(int i = 0; i < 20; i++)
+				{
+					A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
+				}
+			}
 			Stop;
 	}
 }
@@ -1333,16 +1327,6 @@ Class PB_AcidGrenade : PB_FragGrenade
 
 		Bounce:
 			TNT1 A 0;
-			TNT1 A 0 {
-				if(pb_sglgrenadeimpact == 1)
-					return resolvestate("Death");
-				else if(pb_sglgrenadeimpact >= 2)
-				{
-					A_Stop();
-					Return resolvestate("Rest");
-				}
-				return resolvestate(null);
-			}
 			Goto spawn;
 
 		Rest:
@@ -1352,6 +1336,12 @@ Class PB_AcidGrenade : PB_FragGrenade
 			TNT1 A 0 A_StartSound("Daedabus/impact");
 		Death:
 		XDeath:
+			TNT1 A 0 {
+				for(int i = 0; i < 20; i++)
+				{
+					A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
+				}
+			}
 			TNT1 A 0 A_SpawnItem("BFGAltShockWave",0,0);
 			TNT1 A 0 A_SpawnItem("ACIDFOG", 0, 0);
 			TNT1 A 1;

@@ -96,7 +96,7 @@ class PB_ThrownGrenade : Actor
 		roll += frandom(-4.2, 4.2);
 		GrenadeBounceSmoke();
 		
-		if(pb_grenadeimpact && target && target.Player)
+		if((pb_grenadeimpact == 2 || pb_grenadeimpact == 1 && bounceMobj) && target && target.Player)
 			SetStateLabel("Explode");
 			
 		return Super.SpecialBounceHit(bounceMobj, bounceLine, bouncePlane);
@@ -163,12 +163,9 @@ class PB_ThrownGrenade : Actor
 				A_SpawnItemEx("PB_ExplosionFlames", zofs: 10, flags: SXF_NOCHECKPOSITION);
 				A_SpawnItemEx("NewExplosionFlare", zofs: 15, flags: SXF_NOCHECKPOSITION);
 				
-				if(pb_grenadeshrapnel)
+				for(int i = 0; i < 20; i++)
 				{
-					for(int i = 0; i < 20; i++)
-					{
-						A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
-					}
+					A_SpawnProjectile("PB_Shrapnel", 0, 0, random (0, 360), 2, random (-90, 90));
 				}
 			}
 			TNT1 AAA 0

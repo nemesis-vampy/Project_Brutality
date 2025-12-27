@@ -240,7 +240,6 @@ Class PB_M1Plasma : PB_WeaponBase
 				PB_WeaponRecoil(-0.24,+0.06);
 				}
 			TNT1 A 0 A_ReFire();
-			TNT1 A 0 A_JumpIf(pb_nocooldown, "Ready3");
 			TNT1 A 0 A_StartSound("weapons/plasma/startup", 15,CHANF_OVERLAP);
 			TNT1 A 0 A_Setinventory("PB_LockScreenTilt",1);
 			TNT1 A 0 A_StartSound("PLSCOOL",CHAN_VOICE);

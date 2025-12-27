@@ -8,6 +8,7 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 		Damagefactor "DestroyShield", 1.0;
 		Painchance "DestroyShield", 256;
 		DropItem "RiotShieldDrop";
+		DropItem "PB_ShotgunGuyDrop2";
 		PB_Monster.CanIRoll false;
 		PB_Monster.CanIFallback false;
 

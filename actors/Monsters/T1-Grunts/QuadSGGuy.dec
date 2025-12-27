@@ -18,8 +18,7 @@ Actor PB_QSGZombie: PB_HelmetSergeant //Replaces ShotgunGuy
   Obituary "%o was splattered by a Quad-Shotgun Zombie"
   DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
   damagefactor "TeleportRemover", 0.0
-  DropItem "PB_Shell"
-  DropItem "PB_QSGZombieDrop", 64
+  DropItem "PB_QSGZombieDrop"
   DropItem "PB_GrenadeAmmo" 5
   PB_Monster.MonPosHB 0.75, 0.65, 0.38, 0.40
   States

@@ -92,7 +92,7 @@ ACTOR FrozenZombieman : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_DMR")
+		TNT1 A 0 A_SpawnItem("PB_ZombieManDrop1")
 		FZD1 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -159,7 +159,7 @@ ACTOR FrozenHelmetRifleZombieman : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("DropedRifle")
+		TNT1 A 0 A_SpawnItem("PB_ZombieManDrop1")
 		FZD1 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -224,7 +224,7 @@ ACTOR FrozenPistolZombieman : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_Pistol")
+		TNT1 A 0 A_SpawnItem("PB_PistolGuyDrop")
 		FZD1 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -289,7 +289,7 @@ ACTOR FrozenPistolZombieman2 : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_Pistol")
+		TNT1 A 0 A_SpawnItem("PB_PistolGuyDrop")
 		FZD1 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -354,7 +354,7 @@ ACTOR FrozenPlasmaZombie: FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("Cell")
+		TNT1 A 0 A_SpawnItem("PB_PlasmaZombieDrop")
 		FZD1 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -420,7 +420,7 @@ States
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_Demontech")
+		TNT1 A 0 A_SpawnItem("PB_CultistDrop")
 		FZD2 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -485,7 +485,7 @@ ACTOR FrozenLabguy : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("DroppedPB_Axe")
+		TNT1 A 0 A_SpawnItem("PB_ScientistAxeDrop")
 		FZD2 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -550,7 +550,7 @@ ACTOR FrozenChainsawZombie : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_ChainsawPickup")
+		TNT1 A 0 A_SpawnItem("PB_ScientistSAWDrop")
 		FZD2 C 1
 		Goto Super::Death
 	Death.Freeze:
@@ -615,7 +615,7 @@ ACTOR FrozenCarbineZombie : FrozenEnemyBase
 		TNT1 AA 0 A_SpawnProjectile("PB_XDeath3", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile("Instestin", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 AAAAAA 0 A_SpawnProjectile("PB_MuchBlood", 48, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_SpawnItem("PB_Carbine")
+		TNT1 A 0 A_SpawnItem("PB_CarbineZombieDrop")
 		FZD1 C 1
 		Goto Super::Death
 	Death.Freeze:

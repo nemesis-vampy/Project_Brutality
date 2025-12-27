@@ -262,7 +262,7 @@ Class DTechBurningPiece : TinyBurningPiece
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "StopBurning");
-			TNT1 A 0 A_Explode(5, 35);
+			TNT1 A 0 A_Explode(5, 35, 0);
 			TNT1 A 0 SpawnParticleSlow("YAE4A0");
 			DFIR ABCDEFGHIJKLMNOP 2;
 			TNT1 A 0 A_Jump(50, "StopBurning");

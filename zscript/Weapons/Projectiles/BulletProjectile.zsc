@@ -50,7 +50,7 @@ class PB_Projectile : FastProjectile abstract
 			//Console.Printf("Critical");
 			scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgTorsoMult : 1.5);
 			dmgtype = damagetype;
-			if (Pos.Z > victim.Pos.Z + victim.Height * ((ptrPBMon) ? ptrPBMon.posHeadHB : 0.80) / headSizeMul)
+			if (Pos.Z > victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posHeadHB : 0.80) / headSizeMul)
 			{
 				// Check if the monster doesn't ignore headshots else default to 0 (its funky)
 				if(!((ptrPBMon) ? ptrPBMon.ignoreHeadDamage : 0))
@@ -186,7 +186,7 @@ class PB_Projectile : FastProjectile abstract
 	
 	virtual bool PenetrateWall(Vector3 frac)
 	{
-		if(!GetCVar("pb_wallpenetration") || Speed <= 0 || Mass <= 0 || penetrationCount == 0) 
+		if(Speed <= 0 || Mass <= 0 || penetrationCount == 0) 
 			return false;
 		
 		Vector3 lastP = pos;

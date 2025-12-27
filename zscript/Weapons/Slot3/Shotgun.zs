@@ -286,7 +286,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_WeaponOffset(0,32);
 			}
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagPump");
-			TNT1 A 0 A_JumpIf(CountInv("PB_PowerStrength") && Cvar.GetCvar("pb_SGPumpFromHip",player).getint() >= 1, "PumpFromHip");
+			TNT1 A 0 A_JumpIf(CountInv("PB_PowerStrength") && Cvar.GetCvar("pb_SGAltBehavior",player).getbool(), "PumpFromHip");
 			SHTG BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 		P1Begin:
 			SHTA K 0;
@@ -356,7 +356,7 @@ Class PB_Shotgun : PB_WeaponBase
 		
 		MagPump:
 			TNT1 A 0 {
-			if(Cvar.GetCvar("pb_SGPumpFromHip",player).getint() >=1)
+			if(Cvar.GetCvar("pb_SGAltBehavior",player).getbool())
 				Return resolveState("PumpFromHip");
 			Return resolveState(null);
 			}
@@ -624,7 +624,7 @@ Class PB_Shotgun : PB_WeaponBase
 			goto HandleUpgradeSpecial;
 		HandleUpgradeSpecial:
 			TNT1 A 0 pb_handlewheel();
-			TNT1 A 0 A_jumpif(Cvar.GetCvar("pb_SGAltAmmoSwap",player).getint() >= 1,"AltTubeAmmoSwap");
+			TNT1 A 0 A_jumpif(Cvar.GetCvar("pb_SGAltBehavior",player).getbool(),"AltTubeAmmoSwap");
 			SHTZ PON 1 PB_SetShellSprite("SHTZ","SHZA","SHZB");
 			SHTZ M 1;
 			TNT1 A 0 A_StartSound("weapons/shotgun/detach", 10,CHANF_OVERLAP);
@@ -1261,8 +1261,6 @@ Class PB_Shotgun : PB_WeaponBase
 				A_Print("$PB_SGDBLD");
 			if(CountInv("SelectShotgun_Buckshot")>=1)
 				A_Print("$PB_SGBUCKLD");
-			//if(Cvar.GetCvar("pb_SGAltAmmoSwap",player).getint() >= 1)
-			//			Return resolvestate("AltTubeAmmoSwap");
 		}
 		return resolvestate(null);
 		

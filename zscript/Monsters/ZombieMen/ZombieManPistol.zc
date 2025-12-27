@@ -5,7 +5,7 @@ Class PB_PistolZombieman1: PB_Zombieman //Replaces ZombieMan
 		//$Title Pistol Zombieman
 		//$Category Project Brutality - Monsters/Former Humans/Zombiemen
 		//$Sprite PSPOB1
-		DropItem "PB_Pistol";
+		DropItem "PB_PistolGuyDrop";
 
 		PB_Monster.TailPitch 0.8;
 	}
