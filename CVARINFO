@@ -481,3 +481,4 @@ server bool PB_MP_MovementTesting = false;
 cheat server bool pb_forcespmovement = false;
 user HandlerClass(PB_CallSignHandler) string pb_mpcallsign = "PB3";
 
+server bool PB_PixelRenderingFix = true;

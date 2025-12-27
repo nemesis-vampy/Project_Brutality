@@ -116,7 +116,7 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 	+WEAPON.NOAUTOFIRE
 	+FLOORCLIP
 	+DONTGIB
-	Inventory.MaxAmount 3
+	Inventory.MaxAmount 2
 	Inventory.PickupMessage "UAC-M2 Heavy Plasma Rifle (Slot 7)"
 	Tag "UAC-M2 Heavy Plasma Rifle"
 	PB_WeaponBase.UnloaderToken "M2PlasmaUnloaded"
@@ -535,7 +535,7 @@ ACTOR PB_M2Plasma : PB_Weapon //12222
 			A_PlaySoundEx("Ironsights", "Auto");
 			A_Setinventory("DualWieldingM2Plasma",0);
 			}
-		M231 EGDC 1 A_Setroll(roll-0.2, SPF_INTERPOLATE)
+		M231 GEDC 1 A_Setroll(roll-0.2, SPF_INTERPOLATE)
 		M231 BA 1 A_Setroll(roll+0.4, SPF_INTERPOLATE)
 		Goto Ready3
 	SwitchToLightningMode:
