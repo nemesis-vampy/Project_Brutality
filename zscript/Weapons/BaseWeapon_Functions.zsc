@@ -2442,7 +2442,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 		}
 		
 		if (!noReload) {
-			noReload = ((PressingFire() || JustPressed(BT_ATTACK)) || (ResolveState("AltFire") && (PressingAltFire() || JustPressed(BT_ALTATTACK))));
+			noReload = ((PressingFire() || JustPressed(BT_ATTACK)) || CountInv("Zoomed") == 0 && (ResolveState("AltFire") && (PressingAltFire() || JustPressed(BT_ALTATTACK))));
 		}
 		
 		if (noReload) {
