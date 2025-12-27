@@ -2160,9 +2160,6 @@ class PlayerPawnBase : PlayerPawn
 	
 	void BobWeaponAuxiliary()
 	{	
-		if(multiplayer)
-			return;
-
 		///////////////////////////
 		//Bobbing Speed
 		if(MoveRangeMulti) { BobTime += Vel.XY.Length() / pb_maxgroundspeed; }
@@ -2192,9 +2189,6 @@ class PlayerPawnBase : PlayerPawn
 	
 	Override Vector2 BobWeapon(double ticfrac)
 	{
-		if(multiplayer)
-			return Super.BobWeapon(ticfrac);
-
 		player.WeaponState |= WF_WEAPONBOBBING;
 		
 		let player = self.player;
