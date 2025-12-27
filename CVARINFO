@@ -1,3 +1,7 @@
+//Monster Spawner Overrides
+server bool pb_vanillamonster_override = false;
+server bool pb_vanillawolfss_override = false;
+
 server string pb_zombieman_override = "Disabled";
 server string pb_sergeant_override = "Disabled";
 server string pb_imp_override = "Disabled";
@@ -16,9 +20,40 @@ server string pb_archvile_override = "Disabled";
 server string pb_mastermind_override = "Disabled";
 server string pb_cyberdemon_override = "Disabled";
 server string pb_nazi_override = "Disabled";
-server string pb_dog_override = "Disabled";
 
-server bool pb_vanillamonster_override = false;
+//Spawner Filters
+server int pb_zombieman_filter = 0;
+server int pb_sergeant_filter = 0;
+server int pb_imp_filter = 0;
+server int pb_chaingunner_filter = 0;
+server int pb_pinky_filter = 0;
+server int pb_spectre_filter = 0;
+server int pb_cacodemon_filter = 0;
+server int pb_painelemental_filter = 0;
+server int pb_lostsoul_filter = 0;
+server int pb_revenant_filter = 0;
+server int pb_arachnotron_filter = 0;
+server int pb_hellknight_filter = 0;
+server int pb_baronofhell_filter = 0;
+server int pb_mancubus_filter = 0;
+server int pb_archvile_filter = 0;
+server int pb_mastermind_filter = 0;
+server int pb_cyberdemon_filter = 0;
+server int pb_nazi_filter = 0;
+
+server int pb_chainsaw_filter = 0;
+server int pb_pistol_filter = 0;
+server int pb_shotgun_filter = 0;
+server int pb_ssg_filter = 0;
+server int pb_chaingun_filter = 0;
+server int pb_rocketlauncher_filter = 0;
+server int pb_plasmarifle_filter = 0;
+server int pb_bfg_filter = 0;
+
+server int pb_healtharmor_filter = 0;
+server int pb_ammo_filter = 0;
+server int pb_ammobox_filter = 0;
+server int pb_powerup_filter = 0;
 
 user bool pb_powerup_shaders = false;
 user float pb_nightvision_exposure = 1.0;
@@ -139,132 +174,16 @@ user int PB_HatExtravaganza = 0;
 //Global Spawn balance. Do NOT touch.
 server int SpawnBalance=671;
 
-
-
-////////////////////Monster Spawning Toggles//////////////////////////
-
-//Zombieman
-server int pb_NoPistolZman = 0;
-server int pb_NoHelmetZman = 0;
-server int pb_NoZombieScientist = 0;
-server int pb_NoCarbineZombie = 0;
-
-//Sergeant
-server int pb_NoHelmetSergeant = 0;
-server int pb_NoAutoshotgunSergeant = 0;
-server int pb_NoZSpecOps = 0;
-server int pb_NoQuadSergeant = 0;
-server int pb_NoRocketSergeant = 0;
-server int pb_NoPyroSergeant = 0;
-server int pb_NoDemonTechSoldier = 0;
-server int pb_NoRiotShieldGuy = 0;
-
-//Commando
-server int pb_NoNailgunMajor = 0;
-server int pb_NoPlasmaZombie = 0;
-server int pb_NoClassicCommando = 0;
-
-//Imp Variants
-server int pb_NoBrownImps = 0;
-server int pb_NoDarkImps = 0;
-server int pb_NoSavageImps = 0;
-
-//Pinky Demon Variants
-server int pb_NoBloodDemon = 0;
-server int pb_NoMechDemon = 0;
-
-//Spectre Variants
-server int pb_VoidSpectre = 0;
-
-//Cacodemon Variants
-server int pb_NoBuffCaco = 0;
-server int pb_NoMagCaco = 0;
-server int pb_NoAfrit = 0;
-
-//Pain Elemental Variants
-server int pb_NoSufferElemental = 0;
-server int pb_NoOverlord = 0;
-
-//Lost Soul Variants
-server int pb_NoPhantasm = 0;
-
-//Revenant Variants
-server int pb_NoBeamRevenant = 0;
-server int pb_NoDraugr = 0;
-
-//Arachnotron Variants
-server int pb_NoBuffArachnotron = 0;
-server int pb_NoInfernoArachnotron = 0;
-server int pb_NoArachnotron2 = 0;
-server int pb_NoArachnophyte = 0;
-
-//Hell Knight Variants
-server int pb_NoCyberKnight = 0;
-server int pb_NoCyberPaladin = 0;
-
-//Baron Variants
-server int pb_NoBuffBaron = 0;
-server int pb_NoCyberBaron = 0;
-server int pb_NoBelphegor = 0;
-server int pb_NoInfernus = 0;
-
-//Fatso Variants
-server int pb_NoBuffFatso = 0;
-server int pb_NoDaedabus = 0;
-server int pb_NoVolcabus = 0;
-
-//Archvile Variants
-server int pb_NoIceVile = 0;
-server int pb_NoFleshwizard = 0;
-server int pb_NoHellion = 0;
-
-//Mastermind Variants
-server int pb_NoDemolisher = 0;
-server int pb_NoJuggernaut = 0;
-
-//Cyber Demon Variants
-server int pb_NoAnnihilator = 0;
-
-server bool PB_NaziExclusiveSpawning = true;
+server bool pb_NoBuffCaco = false;
+server bool pb_NoBuffArachnotron = false;
+server bool pb_NoBuffBaron = false;
+server bool pb_NoBuffFatso = false;
 
 // Should Collected Weapons Stay?
 User bool PlayerCatchup = false;
 
-////////////////////Weapon Spawning Toggles//////////////////////////
-server bool DynamicWeaponSpawn = true;
-
-//Tier 2 weapons
-server bool DisablePB_Revolver = false;
-server bool DisablePB_Autoshotgun = false;
-//Tier 2 weapons
-server bool DisablePB_Carbine = false;
-server bool DisablePB_SuperGL = false;
-server bool DisablePB_M2Plasma = false;
-//Tier 3 weapons
-server bool DisablePB_SMG = false;
-server bool DisablePB_HDMRUpgrade = false;
-server bool DisablePB_Nailgun = false;
-server bool DisablePB_SGMagazine = false;
-server bool DisablePB_QuadSG = false;
-server bool DisablePulseCannonUpgrade = false;
-server bool DisablePB_Railgun = false;
-server bool DisablePB_CryoRifle = false;
-//Tier 4 weapons
-server bool DisablePB_AutoshotgunUpgrade = false;
-server bool DisablePB_Deagle = false;
-server bool DisablePB_LMG = false;
-server bool DisablePB_MinigunUpgrade = false;
-server bool DisablePB_M2Upgrade = false;
-server bool DisablePB_Unmaker = false; //Why would you want this disabled???
-server bool DisablePB_FlamerUpgrade = false;	//not actually sure wich tier is this
-server bool DisablePB_Flamer = false;
-server int  DisablePB_MG42 = 0;	//0 can replace bfg, 1 only on wolfenstein maps, 2 or anything else is disabled
-server int pb_NoUpgrades = 0;
-server int pb_NoPulseCannonUpgrade = 0;
-
-
-server bool pb_nocooldown = false;
-server int pb_fastcryowarmup = 0;
+server bool PB_MG42WolfSpawner = false;
+server bool pb_NoUpgrades = false;
 user bool pb_qsgquadload = false;
 //user int pb_UpgradeRevolver = 0;
 //user int pb_UpgradeCarbine = 0;
@@ -498,21 +417,6 @@ user 	bool	zm_offsetdirection		= false;
 ////////////////
 //Other
 server	int		zm_speedometer			= 0;
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////**Spawner CVARS**///////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
-
-// General Spawn CVars
-server	bool	pb_spawner_tiered	= false;
-
-//Shotgun Spawn
-server	int		pb_spawner_autoshotgun			= 0;
-server	int		pb_spawner_shotgunupgrade			= 0;
-server	int		pb_spawner_drum		= 0;
-
 
 /////////////////////////////////
 //PBVP Model Toggle

@@ -504,24 +504,26 @@ class PB_EventHandler : EventHandler
 			case 'Fatso':					e.replacement = pb_vanillamonster_override ? 'Fatso' : 'PBMancubusSpawner';								break;
 			case 'Cyberdemon':				e.replacement = pb_vanillamonster_override ? 'Cyberdemon' : 'PBCyberDemonSpawner';						break;
 			case 'SpiderMastermind':		e.replacement = pb_vanillamonster_override ? 'SpiderMastermind' : 'PBSpiderMasterMindSpawner';			break;
-			case 'WolfensteinSS':			e.replacement = pb_vanillamonster_override ? 'WolfensteinSS' : 'EvilNaziSpawner';	WSuSinMap = true;	break;
+			case 'WolfensteinSS':			e.replacement = pb_vanillamonster_override || pb_vanillawolfss_override ? 'WolfensteinSS' : 'EvilNaziSpawner';	WSuSinMap = true;	break;
 
 			//
 			//	Stealth Monsters
 			//
-			case 'StealthArachnotron':		e.replacement = 'PBStealthArachnotronSpawner';	break;
-			case 'StealthArchvile':			e.replacement = 'PBStealthArchVileSpawner';	break;
-			case 'StealthBaron':			e.replacement = 'PBStealthBOHSpawner';	break;
-			case 'StealthCacodemon':		e.replacement = 'PBStealthCacoDemonSpawner';	break;
-			case 'StealthChaingunGuy':		e.replacement = 'PBStealthChainGunGuySpawner';	break;
-			case 'StealthDemon':			e.replacement = 'PBStealthPinkySpawner';	break;
-			case 'StealthDoomImp':			e.replacement = 'PBStealthImpSpawner';	break;
-			case 'StealthFatso':			e.replacement = 'PBStealthMancubusSpawner';	break;
-			case 'StealthHellKnight':		e.replacement = 'PBStealthHKSpawner';	break;
-			case 'StealthRevenant':			e.replacement = 'PBStealthRevSpawner';	break;
-			case 'StealthShotgunGuy':		e.replacement = 'PBStealthShotgunGuySpawner';	break;
-			case 'StealthZombieMan':		e.replacement = 'PBStealthZombieManSpawner';	break;
+			case 'StealthArachnotron':		e.replacement = pb_vanillamonster_override ? 'StealthArachnotron' : 'PBStealthArachnotronSpawner';	break;
+			case 'StealthArchvile':			e.replacement = pb_vanillamonster_override ? 'StealthArchvile' : 'PBStealthArchVileSpawner';	break;
+			case 'StealthBaron':			e.replacement = pb_vanillamonster_override ? 'StealthBaron' : 'PBStealthBOHSpawner';	break;
+			case 'StealthCacodemon':		e.replacement = pb_vanillamonster_override ? 'StealthCacodemon' : 'PBStealthCacoDemonSpawner';	break;
+			case 'StealthChaingunGuy':		e.replacement = pb_vanillamonster_override ? 'StealthChaingunGuy' : 'PBStealthChainGunGuySpawner';	break;
+			case 'StealthDemon':			e.replacement = pb_vanillamonster_override ? 'StealthDemon' : 'PBStealthPinkySpawner';	break;
+			case 'StealthDoomImp':			e.replacement = pb_vanillamonster_override ? 'StealthDoomImp' : 'PBStealthImpSpawner';	break;
+			case 'StealthFatso':			e.replacement = pb_vanillamonster_override ? 'StealthFatso' : 'PBStealthMancubusSpawner';	break;
+			case 'StealthHellKnight':		e.replacement = pb_vanillamonster_override ? 'StealthHellKnight' : 'PBStealthHKSpawner';	break;
+			case 'StealthRevenant':			e.replacement = pb_vanillamonster_override ? 'StealthRevenant' : 'PBStealthRevSpawner';	break;
+			case 'StealthShotgunGuy':		e.replacement = pb_vanillamonster_override ? 'StealthShotgunGuy' : 'PBStealthShotgunGuySpawner';	break;
+			case 'StealthZombieMan':		e.replacement = pb_vanillamonster_override ? 'StealthZombieMan' : 'PBStealthZombieManSpawner';	break;
 			
+			
+			case 'Rocket':				e.replacement = 'PB_Rocket';				break;
 		}
 	}
 	

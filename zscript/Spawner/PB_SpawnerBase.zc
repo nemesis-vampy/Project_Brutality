@@ -1,3 +1,118 @@
+enum WeaponSpawnFilters
+{
+	DisablePB_Axe					= 1 << 0,
+	DisablePB_Flamethrower			= 1 << 1,
+	DisablePB_FlamethrowerUpgrade	= 1 << 2,
+	
+	DisablePB_Revolver				= 1 << 0,
+	DisablePB_SMG					= 1 << 1,
+	DisablePB_Deagle				= 1 << 2,
+	
+	DisablePB_Autoshotgun			= 1 << 0,
+	DisablePB_SGMagazine			= 1 << 1,
+	DisablePB_AutoshotgunUpgrade	= 1 << 2,
+	
+	DisablePB_QuadSG				= 1 << 0,
+	
+	DisablePB_Carbine				= 1 << 0,
+	DisablePB_Nailgun				= 1 << 1,
+	DisablePB_HDMRUpgrade			= 1 << 2,
+	DisablePB_LMG					= 1 << 3,
+	DisablePB_MinigunUpgrade		= 1 << 4,
+	
+	DisablePB_SuperGL				= 1 << 0,
+	
+	DisablePB_M2Plasma				= 1 << 0,
+	DisablePB_CryoRifle				= 1 << 1,
+	DisablePB_M1PulseCannon			= 1 << 2,
+	DisablePB_M2Upgrade				= 1 << 3,
+	DisablePB_Demontech				= 1 << 4,
+	
+	DisablePB_Railgun				= 1 << 0,
+	DisablePB_MG42					= 1 << 1,
+	DisablePB_Unmaker				= 1 << 2,
+}
+
+enum MonsterSpawnFilters
+{
+	DisablePB_HelmetZombieman			= 1 << 0,
+	DisablePB_PistolZombieman1			= 1 << 1,
+	DisablePB_PistolZombieman2			= 1 << 2,
+	DisablePB_ZombieScientist			= 1 << 3,
+	DisablePB_ZombieScientistChainsaw	= 1 << 4,
+	DisablePB_CarbineZombieman			= 1 << 5,
+	DisablePB_ZSpecOps					= 1 << 6,
+	DisablePB_PlasmaZombie				= 1 << 7,
+	
+	DisablePB_ShotgunGuyHelmet			= 1 << 0,
+	DisablePB_RiotShieldGuy				= 1 << 1,
+	DisableASGGuy						= 1 << 2,
+	DisablePB_PyroSergeant				= 1 << 3,
+	DisablePB_QSGZombie					= 1 << 4,
+	DisablePB_RocketZombie				= 1 << 5,
+	
+	DisablePB_HelmetCommando			= 1 << 0,
+	DisablePB_NailgunMajor				= 1 << 1,
+	DisablePB_DemonTechZombie			= 1 << 2,
+	
+	DisableDNImpVariants				= 1 << 0,
+	DisablePB_InfectedImp				= 1 << 1,
+	DisablePB_DarkImps					= 1 << 2,
+	//DisablePB_							= 1 << 3,
+	
+	DisablePB_MeanDemon					= 1 << 0,
+	DisablePB_MechDemon					= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_VoidSpectre				= 1 << 0,
+	//DisablePB_							= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_Phantasm					= 1 << 0,
+	//DisablePB_							= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_InfernalCaco				= 1 << 0,
+	DisablePB_Afrit						= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_CyberKnight				= 1 << 0,
+	DisablePB_CyberPaladin				= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_CyberBaron				= 1 << 0,
+	DisablePB_Infernus					= 1 << 1,
+	DisablePB_Belphegor					= 1 << 2,
+	
+	DisablePB_InfernalArachnotron		= 1 << 0,
+	DisablePB_Arachnophyte				= 1 << 1,
+	DisablePB_EliteArachnotron			= 1 << 2,
+	
+	DisablePB_SufferingElemental		= 1 << 0,
+	//DisablePB_							= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_BeamRev					= 1 << 0,
+	DisablePB_Draugr					= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_Daedabus					= 1 << 0,
+	DisablePB_Volcabus					= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_Hellion					= 1 << 0,
+	//DisablePB_							= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_Demolisher				= 1 << 0,
+	DisablePB_Juggernaut				= 1 << 1,
+	//DisablePB_							= 1 << 2,
+	
+	DisablePB_Annihilator				= 1 << 0,
+	//DisablePB_							= 1 << 1,
+	//DisablePB_							= 1 << 2,
+}
+
 // Spawning Related Tokens
 
 Class SpawnwSSG : Inventory {default{inventory.maxamount 1;}}
@@ -56,15 +171,7 @@ Class PB_SpawnerBase : Actor
 		// Necessary for see states on the monster spawners
 		// so stuff doesn't break.
 		// does not apply with dynamic spawning turned off.
-		Monster; 
-		-SOLID;
 		+NOTIMEFREEZE;
-		-COUNTKILL;
-		//+NODAMAGE;
-		+DONTGIB;
-		//+NOMENU;
-		+FORCEXYBILLBOARD;
-		Species "spawner";
 	}
 
 	bool isTieredSet()
@@ -113,8 +220,8 @@ Class PB_SpawnerBase : Actor
 			case Tier_1:		st = "Tier1";			break;
 			case Tier_2:		st = "Tier2";			break;
 			case Tier_3:		st = "Tier3";			break;
-			case Tier_Death:
 			case Tier_4:		st = "Tier4";			break;
+			case Tier_Death:	st = "Death";			break;
 			
 			case Tier_Tiered:
 				if(Count <= lvtp)						{st = "Tier1";}
@@ -524,7 +631,6 @@ class PBRandomSpawner : RandomSpawner abstract
 		ProcessInjections();
 		
 		let s = ChooseSpawn();
-		HandleSpawnExeptions(s);
 		//console.printf(""..getclassname().." choose: "..s);
 		if (s == 'None')
 		{
@@ -557,7 +663,11 @@ class PBRandomSpawner : RandomSpawner abstract
 		int index = PBCore.GetWeightedResult(weights);
 		if (random[randomspawn](1, 255) <= Spawns[index].Chance * ChanceFactor)
 		{
-			return Spawns[index].Injected.GetClassName();
+			let ovrspawn = CVar.FindCVar(spawnOverride);
+			if(ovrspawn && ovrspawn.GetString() != "Disabled")
+				return ovrspawn.GetString();
+			else
+				return Spawns[index].Injected.GetClassName();
 		}
 
 		return 'None';
@@ -596,7 +706,7 @@ class PBRandomSpawner : RandomSpawner abstract
 		//console.printf("Running: InitInternalList() from: "..getclassname());
 		while (di)
 		{
-			if (di.Name == 'None' || !CanSpawn(di.Name))
+			if (di.Name == 'None' || !CanSpawn(di.Name) || !HandleSpawnExceptions(di.Name))
 			{
 				di = di.Next;
 				continue;
@@ -608,6 +718,14 @@ class PBRandomSpawner : RandomSpawner abstract
 				Spawns.Push(info);
 			}
 			di = di.Next;
+		}
+		if(Spawns.Size() == 0)
+		{
+			let fb = PBSpawnInfo.Create(GetClass(), fallback, 255, 1,null,0);
+			if (fb)
+			{
+				Spawns.Push(fb);
+			}
 		}
 	}
 	
@@ -700,14 +818,18 @@ class PBRandomSpawner : RandomSpawner abstract
 	}
 	
 	
-	//the idea here is:
-	//	this function is run after spawn choosing
-	//	it gets the choosed spawn thing, and here you can handle things like
-	//	change it to other thing if its option is disabled
-	virtual void HandleSpawnExeptions(in out name toSpawn)
+	//this function is checked when the spawner is reading its drops
+	//for each actor, if it returns false, that actor is removed from the drop pool
+	virtual bool HandleSpawnExceptions(name toSpawn)
 	{
-		
+		return true;
 	}
+	
+	name fallback;
+	property fallback: fallback;
+	
+	name spawnOverride;
+	property spawnOverride: spawnOverride;
 	
 	protected Array<PBSpawnInfo> Spawns;
 	protected PB_EventHandler Handler;
