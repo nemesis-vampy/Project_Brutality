@@ -232,7 +232,12 @@ DoomEdNums
 	23140 = PB_Pistol //Sure took a long time to add one of the mods' most basic weapons here. //TODO: ADD DIFFERENT EDITOR NUMBER !
 	
 	//Weapon upgrades
-	23180 = PB_HDMRUpgrade 
+	23178 = PB_SGMagazine
+	23179 = PB_AutoshotgunUpgrade
+	23180 = PB_HDMRUpgrade
+	23181 = PB_MinigunUpgrade
+	23182 = PB_M2Upgrade
+	23183 = PB_FlamethrowerUpgrade
 
 	//Monsters
 	23062 = PB_Zombieman
