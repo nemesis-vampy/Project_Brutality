@@ -8,6 +8,18 @@ Class PB_Cacodemon : PB_Monster
 		return Super.TakeSpecialDamage(inflictor,source,damage,damagetype);
 	}
 	
+	override void BeginPlay()
+	{
+		Super.BeginPlay();
+		if(!pb_NoBuffCaco)
+			canSuppress = true;
+		suppressiveOffZ = self.height * 0.5;
+		suppressiveOffXY = 0;
+		suppressiveMissile = "PB_Cacodemonball2";
+		suppressiveMissileRadius = 8;
+		suppressLimit = 6;
+	}
+	
 	override void Tick()
 	{
 		Super.Tick();
@@ -81,6 +93,32 @@ Class PB_Cacodemon : PB_Monster
 	
 	States
 	{	
+		//Buffed caco states
+		// Forward rush as part of Suppressive Routine			
+		FrontMove:
+			HEAD AA 2 {Thrust(2);}
+			HEAD EE 2 ;
+			HEAD AA 2;
+			HEAD EE 2;
+			Goto See;
+		// Suppressive Fire. Spam Fireballs!
+		SuppressiveFire:
+			TNT1 A 0 { self.inSuppressiveFire = true; }
+			HEAD EAB 2 A_FaceTarget();
+			HEAD C 5 BRIGHT A_FaceTarget();
+			HEAD D 7 BRIGHT A_SuppressiveFire(); // Offsets and Missile set in BeginPlay. No need to set them again here.
+			HEAD C 2 {if (target && CheckSight(target)) SetStateLabel("See");}
+			HEAD CCBBAE 1;
+			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
+			GoTo FrontMove;
+		
+		Missile_Special:
+			TNT1 A 0 A_StartSound("caco/heavyattack", CHAN_BODY);
+			HEAD EABAB 2 A_FaceTarget();
+			HEAD C 5 BRIGHT A_FaceTarget();
+			HEAD D 7 BRIGHT A_SpawnProjectile("PB_CacodemonBall2");
+			HEAD CCBBAEABABAA 2;
+			Goto See;
 		Execution:
 			//TNT1 A 1 A_Die("Execution");
 			//Stop;
@@ -141,7 +179,7 @@ Class PB_Cacodemon : PB_Monster
 				else if (jawDetached)
 					return ResolveState("Missile_NoJaw");
 				// Using the canSuppress variable to temporarily turn off Special attack Cacocola Classic.
-				else if (GetClassName() == "PB_CacodemonBuffed" && random(0,100) > 50)
+				else if (!pb_NoBuffCaco && random(0,100) > 50)
 					return ResolveState("Missile_Special");
 				return ResolveState(null);
 			}
@@ -151,7 +189,7 @@ Class PB_Cacodemon : PB_Monster
 		//	HEAD D 5 BRIGHT A_HeadAttack(); 
 			HEAD D 5 {
 				// Different attack based on the canSuppress variable. Base Caco will act more vanilla.
-				if (GetClassName() == "PB_CacodemonBuffed")
+				if (!pb_NoBuffCaco)
 					A_DropAdjust2("PB_CacodemonBall","PB_CacodemonBall", 0, 0, 32, minRange: 0, maxRange: 1000, shootDownward: false);
 				else
 					A_SpawnProjectile("PB_CacodemonBall");
@@ -740,72 +778,6 @@ Class PB_Cacodemon : PB_Monster
 		Raise:
 			HEAD L 8 A_UnSetFloorClip;
 			HEAD KJIHG 8;
-			Goto See;
-	}
-}
-
-// This tougher variant is a subclass of the main PB_Cacodemon. 
-// Not a lot will change between them, so why duplicate hundreds of lines of code?
-Class PB_CacodemonBuffed : PB_Cacodemon
-{
-	// Suppressive Fire will be for this tougher variant.
-	override void BeginPlay()
-	{
-		Super.BeginPlay();
-		suppressiveOffZ = self.height * 0.5;
-		suppressiveOffXY = 0;
-		suppressiveMissile = "PB_Cacodemonball2";
-		suppressiveMissileRadius = 8;
-		suppressLimit = 6;
-	}
-	
-	Default
-	{
-		Monster;
-		Radius 31;
-		Height 56;
-		Speed 10;
-		Mass 400;
-		Health 500;
-		GibHealth 25;
-		MeleeRange 60;
-		MeleeThreshold 120;
-		
-		PB_Monster.PBMonSpeed 6, 4, 2, 2.5;
-		PB_Monster.MonPosHB 0.7, 0.5, 0.38, 0.40;
-		PB_Monster.ignoreDickDamage true;
-		PB_Monster.CanIFallback false;
-		PB_Monster.CanIRoll false;
-		PB_Monster.CanIReload false;
-		PB_Monster.CanISuppress true;
-	}
-	
-	States
-	{	
-		// Forward rush as part of Suppressive Routine			
-		FrontMove:
-			HEAD AA 2 {Thrust(2);}
-			HEAD EE 2 ;
-			HEAD AA 2;
-			HEAD EE 2;
-			Goto See;
-		// Suppressive Fire. Spam Fireballs!
-		SuppressiveFire:
-			TNT1 A 0 { self.inSuppressiveFire = true; }
-			HEAD EAB 2 A_FaceTarget();
-			HEAD C 5 BRIGHT A_FaceTarget();
-			HEAD D 7 BRIGHT A_SuppressiveFire(); // Offsets and Missile set in BeginPlay. No need to set them again here.
-			HEAD C 2 {if (target && CheckSight(target)) SetStateLabel("See");}
-			HEAD CCBBAE 1;
-			TNT1 A 0 { self.inSuppressiveFire = false; suppressCount += 1; }
-			GoTo FrontMove;
-		
-		Missile_Special:
-			TNT1 A 0 A_StartSound("caco/heavyattack", CHAN_BODY);
-			HEAD EABAB 2 A_FaceTarget();
-			HEAD C 5 BRIGHT A_FaceTarget();
-			HEAD D 7 BRIGHT A_SpawnProjectile("PB_CacodemonBall2");
-			HEAD CCBBAEABABAA 2;
 			Goto See;
 	}
 }

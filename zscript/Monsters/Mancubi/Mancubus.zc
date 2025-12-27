@@ -87,8 +87,8 @@ class PB_Mancubus1 : PB_Monster
 		suppressiveOffZ = 36;
         suppressiveOffXY = 15;
         suppressiveMissile = "MancubusFlame";
-		suppressLimit = 4;
-		suppressLimit2 = 2;
+		suppressLimit = 1;
+		suppressLimit2 = 1;
         if (pb_NoBuffFatso)
             canSuppress = false;
 	}
