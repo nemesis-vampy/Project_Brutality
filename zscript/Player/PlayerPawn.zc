@@ -2508,6 +2508,10 @@ class PlayerPawnBase : PlayerPawn
 		if (!level.IsJumpingAllowed() || (player && player.mo && player.mo.JumpZ == 0)) A_GiveInventory("DoNotDoubleJump",1);
 		Shader.SetEnabled(Player,"NightVision",false);
 		Shader.SetEnabled(Player,"Invulnerability",false);
+		if(level.info.MapName == "TITLEMAP") {
+			player.fov = 90;
+			player.desiredfov = 90;
+		}
 	}
 	override void Tick()
 	{
