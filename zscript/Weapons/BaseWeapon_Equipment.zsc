@@ -200,7 +200,7 @@ extend class PB_WeaponBase
 			
 			HND1 I 1 A_StartSound("THRGRN", 1);
 			TNT1 A 0 A_TakeInventory("PB_StunGrenadeAmmo", 1);
-			HND1 J 1 A_FireProjectile("ThrownStunGrenade",0,0,0,0,0,0);
+			HND1 J 1 A_FireProjectile("PB_ThrownStunGrenade",0,0,0,0,0,0);
 			HND1 KLMNOPQ 1;
 			TNT1 A 0 {
 				A_TakeInventory("UseEquipment", 1);
