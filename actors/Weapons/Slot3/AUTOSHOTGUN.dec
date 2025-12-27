@@ -52,7 +52,7 @@ Actor PB_AutoshotgunUpgrade: PB_UpgradeItem{
 		LOOP
 	Pickup:
 		//TNT1 A 0 ACS_NamedExecuteAlways("AutoShotgunDrumMag", 0)
-		TNT1 A 0 A_JumpIf(!FindInventory("AutoshotgunDrumMag") || !FindInventory("PB_Autoshotgun") || CountInv("PB_Shell") < GetAmmoCapacity("PB_Shell"),1)
+		TNT1 A 0 A_JumpIf(!FindInventory("AutoshotgunDrumMag") || CountInv("PB_Autoshotgun") < 2 || CountInv("PB_Shell") < GetAmmoCapacity("PB_Shell"),1)
 		fail
 		TNT1 A 1{
 			if (CountInv("AutoshotgunDrumMag") == 0) {
