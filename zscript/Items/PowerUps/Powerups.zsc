@@ -359,13 +359,16 @@ class PB_Berserk : PB_Inventory //replaces Berserk
 
 	override bool Use(bool pickup)
 	{
+		if(owner.CountInv("PB_PowerStrength") == 0) {
+			array<int> speckeys;
+			Bindings.GetAllKeysForCommand(speckeys,"+pb_specialwheel");
+			owner.A_Print("Press "..Bindings.NameAllKeys(speckeys).." to swap modes");
+			owner.A_SelectWeapon("PB_Fists");
+		}
 		owner.A_GiveInventory("PB_PowerStrength");
 		owner.A_Log(String.Format(owner.health < 25 ? "Berserk Pack (+%u much needed HP)" : "Berserk Pack (+%u HP)",max(0,100 - owner.health)),true);
 		owner.GiveBody(100,0);
 		owner.A_SetBlend("Red",0.75,16);
-		array<int> speckeys;
-		Bindings.GetAllKeysForCommand(speckeys,"+pb_specialwheel");
-		owner.A_Print("Press "..Bindings.NameAllKeys(speckeys).." to swap modes");
 		if(pb_newmugshot) owner.A_SetMugshotState("BerserkGrin");
 		return true;
 	}
