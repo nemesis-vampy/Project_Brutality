@@ -193,7 +193,7 @@ Class PB_RocketZombieDrop : PB_MonsterDropBase
 {
 	default
 	{
-		PB_MonsterDropBase.drops "PB_Shotgun", "PB_RocketLauncher", "PB_RocketAmmo";
+		PB_MonsterDropBase.drops "PB_Shotgun", "PB_RocketAmmo", "PB_RocketAmmo";
 	}
 }
 
