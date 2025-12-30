@@ -341,10 +341,10 @@ extend class PB_WeaponBase
 				A_StartSound("KICK", 6);
 				A_ChangeVelocity(10, 0, 4, CVF_RELATIVE);
 				if(CountInv("GrabbedBarrel") == 1 || CountInv("GrabbedIceBarrel") == 1 || CountInv("GrabbedFlameBarrel") == 1)
-					A_Overlay(PSP_WEAPON, "FlashBarrelAirKicking");
+					A_Overlay(PSP_WEAPON, "FlashBarrelSlideKicking");
 				else if(PB_WeaponIsInReadyState() && invoker.FindState("FlashAirKicking"))
 				{
-					A_Overlay(PSP_WEAPON, "FlashAirKicking");
+					A_Overlay(PSP_WEAPON, "FlashSlideKicking");
 					A_GunFlash("Null");
 					A_OverlayOffset(PSP_WEAPON, 0, 32);
 				}
@@ -369,6 +369,17 @@ extend class PB_WeaponBase
 			}
 			KIC5 H 1 A_SetRoll(roll-16, SPF_INTERPOLATE);
 			KIC5 HI 1 A_SetRoll(roll-12, SPF_INTERPOLATE);
+			TNT1 A 0
+			{
+				if(CountInv("GrabbedBarrel") == 1 || CountInv("GrabbedIceBarrel") == 1 || CountInv("GrabbedFlameBarrel") == 1) {
+					A_Overlay(PSP_WEAPON, "FlashBarrelSlideKickingStop");
+				} else if((/*PB_WeaponIsInReadyState() ||*/PB_WeaponIsInSlidingState()) && invoker.FindState("FlashSlideKickingStop"))
+				{
+					A_Overlay(PSP_WEAPON, "FlashSlideKickingStop");
+					A_GunFlash("Null");
+					A_OverlayOffset(PSP_WEAPON, 0, 32);
+				}
+			}
 			KIC5 JK 1
 			{
 				A_SetRoll(roll-4, SPF_INTERPOLATE);
