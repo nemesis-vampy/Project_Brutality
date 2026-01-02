@@ -97,6 +97,8 @@ class PB_Monster : Actor abstract
 	property ignoreDickDamage : ignoreDickDamage;
 	property ignoreLegDamage : ignoreLegDamage;
 
+	mixin PB_SpawnGore;
+
 	action void PB_DynamicTailMonster(string tailInside, string tailOutside)
 	{	
 		double sndPitch = frandom(0.75, 1.25) * invoker.tailPitch;

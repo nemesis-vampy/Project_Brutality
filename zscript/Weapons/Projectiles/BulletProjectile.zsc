@@ -111,6 +111,7 @@ class PB_Projectile : FastProjectile abstract
                     pbBlood.smallCal = bSMALLIMPACT;
                     pbBlood.isBloodExplosionGenerator = isBloodExplosionGenerator;
                     pbBlood.projectileDamage = truedamage;
+					pbBlood.CopyBloodColor(victim);
                     // console.printf("ste: %p %s %i %i", pbBlood, pbBlood.GetClassName(), pbBlood.sourceIsProjectile, pbBlood.projectileDamage);
                 }
 

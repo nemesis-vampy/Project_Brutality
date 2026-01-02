@@ -11,7 +11,7 @@ ACTOR DyingBruiser1
 	damagefactor "KillMe", 0.0
 	damagefactor "Cutless", 0.6
     //BloodType "NashGoreBlood"
-	//BloodColor "DarkGreen"
+	BloodColor "DarkGreen"
 	Mass 999999
 	-SOLID
 	+SHOOTABLE
@@ -168,7 +168,7 @@ ACTOR DyingBruiser2
 	damagefactor "Cutless", 0.6
 	damagefactor "head", 1.75
     //BloodType "NashGoreBlood"
-	//BloodColor "DarkGreen"
+	BloodColor "DarkGreen"
   PainSound "superbaron/pain"
   DeathSound "superbaron/death"
 	Mass 999999

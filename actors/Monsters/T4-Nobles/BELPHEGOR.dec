@@ -22,7 +22,7 @@ ACTOR PB_Belphegor : PB_Baron //Replaces BaronofHell
     Health 1300
 	DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
     BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
-	//BloodColor "DarkGreen"
+	BloodColor "DarkGreen"
     DamageFactor "Shrapnel", 0.4
 	DamageFactor "Explosive", 1.7
 	DropItem "Demonpickup2" 76
@@ -305,7 +305,7 @@ TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 	Death.BlackHole:	
 		TNT1 A 0 A_BossDeath
 		//TNT1 A 0 A_Jump(128, "ExplodeTopHalf")
-		TNT1 AAAAA 0 A_SpawnProjectile("PB_BloodmistBig", 45, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnGoreProjectile("PB_BloodmistBig", 45, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("XDeathHellKnightArm", 52, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile("XDeathHellKnightTorso", 52, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile("XDeathBelphegorHead", 52, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
@@ -314,12 +314,12 @@ TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		 TNT1 AA 0 A_SpawnProjectile("XDeathBelphegorLeg", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 AA 0 A_SpawnProjectile("XDeathBelphegorLeg_Mirrored", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))		 
 		 TNT1 A 0 A_SpawnProjectile("XDeathBelphegorBottomTorso", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile("PB_XDeath1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile("PB_XDeath2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile("PB_XDeath3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile("PB_XDeath4", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath2b", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile("PB_XDeath3b", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 AA 0 A_SpawnGoreProjectile("PB_XDeath1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 A 0 A_SpawnGoreProjectile("PB_XDeath2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 A 0 A_SpawnGoreProjectile("PB_XDeath3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 A 0 A_SpawnGoreProjectile("PB_XDeath4", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnGoreProjectile("PB_XDeath2b", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnGoreProjectile("PB_XDeath3b", 15, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 A 0 A_SpawnItem ("GreenBigBloodSpot")
 		BXDE B  0 A_xScream
 		BXDE C  0 //A_bossdeath
@@ -501,7 +501,7 @@ Actor DeadBelphegor1
     DamageFactor "Blood", 0.0
     DamageFactor "Trample", 0.0
 	//BloodType "NashGoreBlood"
-	//BloodColor "DarkGreen"
+	BloodColor "DarkGreen"
 States
     {
     Spawn:
@@ -525,6 +525,7 @@ States
 		TNT1 AA 0 A_SpawnProjectile("XDeathBelphegorLeg", 29, 5, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 AAA 0 A_SpawnProjectile("PB_XDeath4", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		 TNT1 A 1
          Stop
     Death.Plasma: Death.Plasma2:
     Death.Flames:
@@ -552,7 +553,7 @@ Actor FatalizedBelphegor : DeadBelphegor1
     Health 200
     DamageFactor "Blood", 0.0
     DamageFactor "Trample", 0.0
-	//BloodColor "DarkGreen"
+	BloodColor "DarkGreen"
 States
     {
     Spawn:

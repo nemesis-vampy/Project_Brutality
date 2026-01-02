@@ -599,9 +599,11 @@ class CameraRunner : Inventory
 class LaserDeactivated : Inventory {}
 class XDeathGibBase : Actor
 {
+	mixin PB_SpawnGore;
+	
 	void A_PBGibMissile(class<Actor> missiletype, double spawnheight = 32, double spawnofs_xy = 0, double angle = 0, int flags = 0, double pitch = 0, int ptr = AAPTR_TARGET)
 	{
-		let a = A_SpawnProjectile(missiletype, spawnheight, spawnofs_xy, angle, flags | CMF_BADPITCH | CMF_SAVEPITCH, pitch, ptr);
+		let [bwaa, a] = A_SpawnGoreProjectile(missiletype, spawnheight, spawnofs_xy, angle, flags | CMF_BADPITCH | CMF_SAVEPITCH, pitch, ptr);
 		if (a)
 		{
 			a.VelFromAngle(vel.xy.Length() / 2, self.angle + frandom(-20, 20));
