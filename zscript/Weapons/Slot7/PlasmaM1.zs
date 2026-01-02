@@ -1204,6 +1204,8 @@ Class Plasma_Ball : PB_ProjectileAlt Replaces PlasmaBall
 		+NORADIUSDMG;
 		+THRUSPECIES;
 		+MTHRUSPECIES;
+		+FORCEXYBILLBOARD;
+		+SQUAREPIXELS;
 		//Species "Marines";
 		//damagefactor "Blood", 0.0; damagefactor "BlueBlood", 0.0; damagefactor "GreenBlood", 0.0; damagefactor "Taunt", 0.0; damagefactor "KillMe", 0.0; damagefactor "Shrapnel", 0.0;
 		//Health 5;
