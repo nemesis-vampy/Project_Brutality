@@ -22,7 +22,7 @@ Actor RocketLauncher_LockSound:Inventory
 Actor RocketLauncher_TargetPainted:Inventory
 {inventory.maxamount 1}
 Actor RocketLauncher_LockOnTargets: Inventory
-{inventory.maxamount 4 }
+{inventory.maxamount 6 }
 Actor RocketLauncher_Scope:Inventory
 {inventory.maxamount 1}
 Actor RocketLauncher_Multi: Inventory
@@ -604,6 +604,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			
 			
 			RL06 A 1 BRIGHT {
+				A_ClearOverlays(-99,-99);
+				A_ClearOverlays(99,99);
 				A_StartSound("0SRFIRE");
 				PB_DynamicTail("rpg", "rpg");
 				A_Overlay(-3,"MuzzleFlash");
@@ -616,6 +618,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 				A_FireCustomMissile("RocketGlassBreaker", 0, 0, 0, -3);
 				A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0);
 				A_Takeinventory("RocketRounds",1);
+				if(CountInv("RocketRounds") < 2) {PB_SetMagEmpty(true);}
+				if(CountInv("RocketRounds") < 1) {PB_SetChamberEmpty(true);}
 				if (PB_GetCurrentRocketMode() == "Standard") {
 					A_FireCustomMissile("Rocket", 0, 0, 0, -3);
 				}
@@ -624,7 +628,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 					A_FireCustomMissile("PB_GuidedRocket", 0, 0, 0, -3);
 				}
 				if (PB_GetCurrentRocketMode() == "Homing") {
-					A_TakeInventory("RocketLauncher_LockOnTargets", 4);
+					A_SetInventory("RocketLauncher_LockOnTargets", 0);
 					A_FireCustomMissile("PB_HomingRocket_1", 0, 0, 0, -3);
 				}
                 PB_WeaponRecoil(-3.2,+1.61); //same as the SuperGL - sarge945
@@ -713,18 +717,20 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			Stop
 		LockOn_Overlay:
 			TNT1 A 1 {
-				if(A_JumpIfTargetInLOS("NULL",0,JLOSF_NOAUTOAIM) || CountInv("RocketLauncher_LockOnTargets") > 0) {
-					//A_SetWeaponSprite("RL98");
+				if(A_JumpIfTargetInLOS("NULL",0,JLOSF_NOAUTOAIM)) {
 					A_Overlay(99,"LockOn_LaserFlash");
 					
 					// Target Painted
 					if(JustPressed(BT_ALTATTACK) && CountInv("RocketRounds") >= 1) {
-						if(CountInv("RocketLauncher_LockOnTargets") > 2 || CountInv("RocketLauncher_LockOnTargets") > 0 && CountInv("RocketRounds") < 2 || CountInv("RocketLauncher_LockOnTargets") > 1 && CountInv("RocketRounds") < 3) {
+						if(CountInv("RocketLauncher_LockOnTargets") > 0 && CountInv("RocketRounds") < 2 || CountInv("RocketLauncher_LockOnTargets") > 1 && CountInv("RocketRounds") < 3) {
 							A_SetInventory("RocketLauncher_LockOnTargets",0);
 						}
-						if(CountInv("RocketLauncher_LockOnTargets") == 0) {A_FireBullets(0,0,1,0,"LockOnPuff_Painted_1", FBF_NORANDOMPUFFZ);}
-						else if(CountInv("RocketLauncher_LockOnTargets") == 1 && CountInv("RocketRounds") >= 2) {A_FireBullets(0,0,1,0,"LockOnPuff_Painted_2", FBF_NORANDOMPUFFZ);}
-						else if(CountInv("RocketLauncher_LockOnTargets") == 2 && CountInv("RocketRounds") >= 3) {A_FireBullets(0,0,1,0,"LockOnPuff_Painted_3", FBF_NORANDOMPUFFZ);}
+						if(CountInv("RocketLauncher_LockOnTargets") == 6) {
+							A_SetInventory("RocketLauncher_LockOnTargets",3);
+						}
+						if(CountInv("RocketLauncher_LockOnTargets") == 0 || CountInv("RocketLauncher_LockOnTargets") == 3) {A_FireBullets(0,0,1,0,"LockOnPuff_Painted_1", FBF_NORANDOMPUFFZ);}
+						else if((CountInv("RocketLauncher_LockOnTargets") == 1 || CountInv("RocketLauncher_LockOnTargets") == 4) && CountInv("RocketRounds") >= 2) {A_FireBullets(0,0,1,0,"LockOnPuff_Painted_2", FBF_NORANDOMPUFFZ);}
+						else if((CountInv("RocketLauncher_LockOnTargets") == 2 ||  CountInv("RocketLauncher_LockOnTargets") == 5) && CountInv("RocketRounds") >= 3) {A_FireBullets(0,0,1,0,"LockOnPuff_Painted_3", FBF_NORANDOMPUFFZ);}
 						
 						if(CountInv("RocketLauncher_TargetPainted") == 0) {
 							A_StartSound("weapons/rocket/seeker_painted", CHAN_AUTO, CHANF_OVERLAP);
@@ -747,6 +753,9 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 					if(CountInv("RocketLauncher_LockSound") == 1) {
 						A_StartSound("weapons/rocket/seeker_lost", CHAN_AUTO, CHANF_OVERLAP);
 						A_TakeInventory("RocketLauncher_LockSound");
+					}
+					if(JustPressed(BT_ALTATTACK)) {
+						A_StartSound("weapons/rocket/seeker_nofire", CHAN_AUTO, CHANF_OVERLAP);
 					}
 				}
 			}
@@ -1044,7 +1053,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 				}
 				if (PB_GetCurrentRocketMode() == "Homing") {
 					A_SetWeaponSprite("R106");
-					A_TakeInventory("RocketLauncher_LockOnTargets", 4);
+					A_SetInventory("RocketLauncher_LockOnTargets", 0);
 					A_FireCustomMissile("PB_HomingRocket_1", 0, 0, 0, -3);
 				}
                 PB_WeaponRecoil(-3.2,+1.61); //same as the SuperGL - sarge945
@@ -1185,6 +1194,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		TNT1 A 0 A_JumpIf(PressingAltfire() && CountInv("RocketRounds") >= 3, "LoadRocket_Triple")
 	FireRocket_Double:
 		RL06 A 1 BRIGHT {
+			A_ClearOverlays(-99,-99);
+			A_ClearOverlays(99,99);
 			A_Overlay(-3,"MuzzleFlash");
 			A_OverlayPivotAlign(-3,PSPA_CENTER,PSPA_CENTER);
 			A_OverlayRotate(-3,frandom(-255,255));
@@ -1196,6 +1207,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			A_FireCustomMissile("RocketGlassBreaker", 0, 0, 0, -3);
 			A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0);
 			A_Takeinventory("RocketRounds",2);
+			if(CountInv("RocketRounds") < 2) {PB_SetMagEmpty(true);}
+			if(CountInv("RocketRounds") < 1) {PB_SetChamberEmpty(true);}
 			
 			// Change to correct sprite
 			
@@ -1223,7 +1236,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			
 			
 			if (PB_GetCurrentRocketMode() == "Homing") {
-				A_TakeInventory("RocketLauncher_LockOnTargets", 4);
+				A_SetInventory("RocketLauncher_LockOnTargets", 0);
 				A_SpawnLaserPuff(0,0,"GuidedLaser");
 				A_FireCustomMissile("PB_HomingRocket_1", 0, 0, -1, -4);
 				A_FireCustomMissile("PB_HomingRocket_2", 0, 0, 1, -4);
@@ -1362,6 +1375,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		
 	FireRocket_Triple:
 		RL06 A 1 BRIGHT {
+			A_ClearOverlays(-99,-99);
+			A_ClearOverlays(99,99);
 			A_Overlay(-3,"MuzzleFlash");
 			A_OverlayPivotAlign(-3,PSPA_CENTER,PSPA_CENTER);
 			A_OverlayRotate(-3,frandom(-255,255));
@@ -1373,6 +1388,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			A_FireCustomMissile("RocketGlassBreaker", 0, 0, 0, -3);
 			A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0);
 			A_Takeinventory("RocketRounds",3);
+			if(CountInv("RocketRounds") < 2) {PB_SetMagEmpty(true);}
+			if(CountInv("RocketRounds") < 1) {PB_SetChamberEmpty(true);}
 			
 			
 			if (PB_GetCurrentRocketMode() == "Standard") {
@@ -1401,7 +1418,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			
 			if (PB_GetCurrentRocketMode() == "Homing") {
 				A_SetWeaponSprite("RL33");
-				A_TakeInventory("RocketLauncher_LockOnTargets", 4);
+				A_SetInventory("RocketLauncher_LockOnTargets", 0);
 				A_SpawnLaserPuff(0,0,"GuidedLaser");
 				A_FireCustomMissile("PB_HomingRocket_1", 0, 0, -1, -4);
 				A_FireCustomMissile("PB_HomingRocket_2", 0, 0, 0, -3);
@@ -1509,7 +1526,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			A_ClearOverlays(99,99);
 		}
 		TNT1 A 0 A_StartSound("weapons/rocket/handling", CHAN_AUTO, CHANF_OVERLAP)
-        TNT1 A 0 A_JumpIfInventory("RocketLauncherUnloaded",1,"Reload_Unloaded")
+        TNT1 A 0 A_JumpIf(PB_GetMagUnloaded,"Reload_Unloaded")
 		
 		RL62 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
 		RL63 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
@@ -1604,7 +1621,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		}
 		TNT1 A 0 A_StartSound("weapons/rocket/handling", CHAN_AUTO, CHANF_OVERLAP)
 		// Jump to rechamber animation
-        TNT1 A 0 A_JumpIfInventory("RocketRounds",1,"Reload_Normal")
+        TNT1 A 0 A_JumpIf(!PB_GetChamberEmpty,"Reload_Normal")
 	Reload_Rechamber:
 		TNT1 A 0 A_StartSound("weapons/rocket/innercycle", CHAN_AUTO, CHANF_OVERLAP)
 		RL22 ABCDEF 1 {
@@ -1633,6 +1650,9 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		}
 		TNT1 A 0 {
 			PB_AmmoIntoMag("RocketRounds","PB_RocketAmmo",9,1);
+			PB_SetMagUnloaded(false);
+			PB_SetChamberEmpty(false);
+			PB_SetMagEmpty(false);
 		}
 		Goto Ready3
 	Reload_Normal:
@@ -1643,10 +1663,12 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		}
 		TNT1 A 0 A_SetRoll(0,SPF_INTERPOLATE)
 		TNT1 A 0 {
-			if(CountInv("RocketRounds") < 1) {
+			if(PB_GetChamberEmpty) {
 				PB_AmmoIntoMag("RocketRounds","PB_RocketAmmo",9,1); }
 			else {
 				PB_AmmoIntoMag("RocketRounds","PB_RocketAmmo",10,1); }
+			PB_SetMagUnloaded(false);
+			PB_SetMagEmpty(false);
 		}
 		Goto Ready3
 	Reload_Unloaded:
@@ -1687,7 +1709,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			A_ClearOverlays(-99,-99);
 			A_ClearOverlays(99,99);
 		}
-		TNT1 A 0 A_JumpIfInventory("RocketLauncherUnloaded", 1, "Ready3")
+		TNT1 A 0 A_JumpIf(PB_GetMagUnloaded, "Ready3")
 		TNT1 A 0 A_StartSound("weapons/rocket/handling", CHAN_AUTO, CHANF_OVERLAP)
 		TNT1 A 0 A_JumpIfInventory("RocketRounds",1,"Unload_Unchamber")
 	Unload_Normal:
@@ -1749,10 +1771,6 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		
 	RemoveBullets:
 		TNT1 A 0 {
-			A_Giveinventory("PB_RocketAmmo",1);
-		}
-		Loop
-	FInishUnload:
 			PB_UnloadMag("RocketRounds","PB_RocketAmmo",1,1,1);
 			PB_SetMagUnloaded(true);
 			PB_SetChamberEmpty(true);
