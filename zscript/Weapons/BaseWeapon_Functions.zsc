@@ -130,7 +130,9 @@ extend class PB_WeaponBase
 		A_Overlay(-777, "Melee_Equipment_Handler_Overlay");
 		A_Overlay(-778, "KickHandler_Overlay");
 		A_Overlay(-779, "Equipment_Toggle_Handler_Overlay");
+		invoker.WeaponScaleX = 1.0;
 		A_Overlay(-10, "FirstPersonLegsStand");
+		invoker.WeaponScaleX = PB_PixelRenderingFix ? 1.2 : 1.0;
 		
 		PB_SetUsingKick(false);
 		PB_SetUsingMelee(false);
