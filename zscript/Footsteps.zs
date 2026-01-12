@@ -42,7 +42,7 @@ class PB_Footsteps : Actor
 		double isCrouched = toFollow.GetCrouchFactor();
 		
 		//2) Only play footsteps when on ground, and if the player is moving fast enough.
-		if ((playerVel2D > 0.1) && (toFollow.pos.z - toFollow.floorz <= 0)) {			
+		if ((playerVel2D > 0.1) && (toFollow.pos.z - toFollow.floorz <= 0) && !toFollow.FindInventory("PlayerDashed")) {			
 			
 			sound stepsound;			
 			//current floor texture for the player:
