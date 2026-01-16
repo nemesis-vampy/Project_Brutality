@@ -5,13 +5,15 @@ class PB_WeaponBase : DoomWeapon
 	Actor laseractor;
 	Actor InvActor;
 	Vector3 invactorpos;
-	Statelabel UnloadedState;
-	property UnloadedState: UnloadedState;
-	string UnloadeRToken;//right unloaded
-	property UnloadeRToken: UnloadeRToken;
-	string UnloadeLToken;//left unloaded
-	property UnloadeLToken: UnloadeLToken;
+	
+	bool chamberEmpty;
+	bool leftChamberEmpty;
+	bool magEmpty;
+	bool leftMagEmpty;
+	bool magUnloaded;
+	bool leftMagUnloaded;
 	int integer;
+	
 	int maxOverheat;
 	property maxOverheat: maxOverheat;
 	
@@ -238,8 +240,6 @@ class PB_WeaponBase : DoomWeapon
 		Weapon.BobRangeY 0.5;
 		Weapon.BobSpeed 2.4;
 		Weapon.BobStyle "InverseSmooth";
-		PB_WeaponBase.UnloadeRToken "HasUnloaded";
-		PB_WeaponBase.UnloadeLToken "HasUnloaded";
 		PB_WeaponBase.UsesWheel false;
 		PB_WeaponBase.WheelInfo "";
 		PB_WeaponBase.TailSoundVolume 0.8;
@@ -395,6 +395,7 @@ class PB_WeaponBase : DoomWeapon
 				A_GunFlash("LedgeGrabFlash");
 				A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
 				SetPlayerProperty(0,1,PROP_TOTALLYFROZEN);
+				PB_SetReloading(false);
 				A_StartSound("ledgeclimb",5);
 			}
 			"####" ABC 1 {
