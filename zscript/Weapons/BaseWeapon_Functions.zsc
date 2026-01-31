@@ -1876,10 +1876,6 @@ extend class PB_WeaponBase
 			invoker.leftChamberEmpty = set;
 		else
 			invoker.chamberEmpty = set;
-		if(dual)
-			A_Log(set ? "left chamber emptied" : "left chamber filled");
-		else
-			A_Log(set ? "chamber emptied" : "chamber filled");
 	}
 	
 	action void PB_SetMagEmpty(bool set, bool dual = false)
@@ -1888,10 +1884,6 @@ extend class PB_WeaponBase
 			invoker.leftMagEmpty = set;
 		else
 			invoker.magEmpty = set;
-		if(dual)
-			A_Log(set ? "left mag emptied" : "left mag filled");
-		else
-			A_Log(set ? "mag emptied" : "mag filled");
 	}
 	
 	action void PB_SetMagUnloaded(bool set, bool dual = false)
@@ -1900,10 +1892,6 @@ extend class PB_WeaponBase
 			invoker.leftMagUnloaded = set;
 		else
 			invoker.magUnloaded = set;
-		if(dual)
-			A_Log(set ? "left mag unloaded" : "left mag loaded");
-		else
-			A_Log(set ? "mag unloaded" : "mag loaded");
 	}
 	
 	action bool PB_GetChamberEmpty(bool dual = false)

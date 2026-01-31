@@ -277,9 +277,11 @@ class PB_PowerLightAmp : PowerTorch
 //Soulsphere & Megasphere
 class PB_Soulsphere : PB_Inventory //replaces soulsphere
 {
+	int ownrhp;
+	
 	Default
 	{
-		Inventory.PickupMessage "";
+		Inventory.PickupMessage "Soulsphere";
 		Inventory.PickupSound "SSPH";
 		+FLOATBOB
 		floatbobstrength .4;
@@ -289,10 +291,20 @@ class PB_Soulsphere : PB_Inventory //replaces soulsphere
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("Blue",0.75,16);
-		owner.A_Log(String.Format(owner.health < 25 ? "Soulsphere (+%u much needed HP)" : "Soulsphere (+%u HP)",min(100, 200 - owner.health)),true);
 		owner.GiveBody(100,200);
 		if(pb_newmugshot) owner.A_SetMugshotState("SoulsphereGrin");
 		return true;
+	}
+	
+	override void Touch(actor toucher)
+	{
+		ownrhp = toucher.health;
+		super.Touch(toucher);
+	}
+	
+	override string PickupMessage()
+	{
+		return string.format(String.Format(ownrhp < 25 ? "Soulsphere (+%u much needed HP)" : "Soulsphere (+%u HP)",min(100, 200 - ownrhp)));
 	}
 	
 	override void PostBeginPlay()
@@ -348,10 +360,11 @@ class PB_PowerStrength : PowerStrength { Default { Powerup.Color "000000",0; } }
 
 class PB_Berserk : PB_Inventory //replaces Berserk
 {
+	int ownrhp;
+	
 	Default
 	{
 		-BRIGHT
-		Inventory.PickupMessage "";
 		Inventory.PickupSound "BERSPKUP";
 		//Scale .3;
 	}
@@ -365,13 +378,23 @@ class PB_Berserk : PB_Inventory //replaces Berserk
 			owner.A_SelectWeapon("PB_Fists");
 		}
 		owner.A_GiveInventory("PB_PowerStrength");
-		owner.A_Log(String.Format(owner.health < 25 ? "Berserk Pack (+%u much needed HP)" : "Berserk Pack (+%u HP)",max(0,100 - owner.health)),true);
 		owner.GiveBody(100,0);
 		owner.A_SetBlend("Red",0.75,16);
 		if(pb_newmugshot) owner.A_SetMugshotState("BerserkGrin");
 		return true;
 	}
 
+	override void Touch(actor toucher)
+	{
+		ownrhp = toucher.health;
+		super.Touch(toucher);
+	}
+	
+	override string PickupMessage()
+	{
+		return string.format(ownrhp < 25 ? "Berserk Pack (+%u much needed HP)" : "Berserk Pack (+%u HP)",max(0,100 - ownrhp));
+	}
+	
 	States
 	{
 	Spawn:

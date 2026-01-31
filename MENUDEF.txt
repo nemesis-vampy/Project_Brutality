@@ -975,21 +975,21 @@ OptionMenu "WeaponVisuals"
 	Slider		"Walk/Run View Bobbing",			"movebob",					0.0,	1.0,	0.1
 	Slider		"Still View Bobbing",				"stillbob",					0.0,	1.0,	0.1
 	Slider		"Walk/Run Weapon Bobbing",			"wbobspeed",				0.0,	2.0,	0.1
-	Option		"Still Weapon Bobbing",				"zm_stillbob",				"OnOff"
-	Slider		"Sprite speed to full bob",			"zm_fullbobspeed",			1,		15,		1,		0
+	Option		"Still Weapon Bobbing",				"pb_stillbob",				"OnOff"
+	Slider		"Sprite speed to full bob",			"pb_fullbobspeed",			1,		15,		1,		0
 	StaticText	""
 	StaticText	"--------- Sway ---------",			gold
-	Option		"Sway Enabled", 					"zm_yawsway",				"YesNo"
-	Slider		"Sway Speed",						"zm_yawswayspeed",			0,		4,		0.5,	1,	"zm_yawsway"
-	Slider		"Sway Range", 						"zm_yawswayrange",			0,		8,		0.1,	1,	"zm_yawsway"
-	Slider		"Sway Friction", 					"zm_yawswayfriction",		5,		14,		0.5,	1,	"zm_yawsway"
-	Option		"Sway Direction", 					"zm_yawswaydirection",		"SwayDirection",			"zm_yawsway"
-	Option		"Vertical Sway Type",				"zm_pitchswaytype",			"VSwayType",				"zm_yawsway"
+	Option		"Sway Enabled", 					"pb_yawsway",				"YesNo"
+	Slider		"Sway Speed",						"pb_yawswayspeed",			0,		4,		0.5,	1,	"pb_yawsway"
+	Slider		"Sway Range", 						"pb_yawswayrange",			0,		8,		0.1,	1,	"pb_yawsway"
+	Slider		"Sway Friction", 					"pb_yawswayfriction",		5,		14,		0.5,	1,	"pb_yawsway"
+	Option		"Sway Direction", 					"pb_yawswaydirection",		"SwayDirection",			"pb_yawsway"
+	Option		"Vertical Sway Type",				"pb_pitchswaytype",			"VSwayType",				"pb_yawsway"
 	StaticText	""
 	StaticText	"--------- Offset ---------",		gold
-	Slider		"Offset Speed",						"zm_offsetspeed",			50,		100,	1,		0
-	Slider		"Offset Range",						"zm_offsetmaxrange",		10,		50,		1,		0
-	Option		"Offset Direction",					"zm_offsetdirection",		"OffsetDirection"
+	Slider		"Offset Speed",						"pb_offsetspeed",			50,		100,	1,		0
+	Slider		"Offset Range",						"pb_offsetmaxrange",		10,		50,		1,		0
+	Option		"Offset Direction",					"pb_offsetdirection",		"OffsetDirection"
 }
 
 OptionValue "SwayDirection"
