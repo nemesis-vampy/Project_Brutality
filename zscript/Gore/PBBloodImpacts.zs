@@ -68,15 +68,14 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
     {
 		vector3 ofr = squibOfs;
 		let mo = Spawn(bloodActor, Vec3Offset(ofr.x, ofr.y, ofr.z), ALLOW_REPLACE);
-        if(bloodActor is "PB_BloodCloud") {
-			mo.Destroy();
-			let mo = PB_BloodCloud(Spawn(bloodActor, Vec3Offset(ofr.x, ofr.y, ofr.z), ALLOW_REPLACE));
+		PB_BloodCloud bc = PB_BloodCloud(mo);
+        if(bc) {
 			color bcol = 0xFFFF0000;
 			let col = uint(self.translation);
 			if(col == 524294) bcol = 0xFF00FF00;
 			if(col == 524290) bcol = 0xFF0000FF;
 			if(col == 524289) bcol = 0xFF006400;
-			mo.bcbuffer = bcol;
+			bc.bcbuffer = bcol;
 		}
 
         if(!mo) return null;

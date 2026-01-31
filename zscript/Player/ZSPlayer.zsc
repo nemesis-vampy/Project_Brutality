@@ -96,7 +96,7 @@ class PB_PlayerPrawn : PlayerPawnBase
 		Player.StartItem "LeftSMGAmmo",51;
 		Player.StartItem "XRifleAmmo",41;
 		Player.StartItem "LeftXRifleAmmo",41;
-		Player.StartItem "LMGAmmo",75;
+		Player.StartItem "LMGAmmo",100;
 		Player.StartItem "M2PlasmaAmmo",50;
 		Player.StartItem "LeftM2PlasmaAmmo",50;
 		Player.StartItem "MP40Ammo",32;
