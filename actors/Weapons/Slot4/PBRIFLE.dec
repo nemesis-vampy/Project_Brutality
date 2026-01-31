@@ -2258,6 +2258,8 @@ ACTOR PB_DMR : PB_Weapon
 	Reload:
 		TNT1 A 0 A_JumpIfInventory("DualWieldingDMRs", 1, "ReloadDualWield")
 		TNT1 A 0 {
+			A_ClearOverlays(-7,-3);
+			A_ClearOverlays(-80,-80);
 			if(CountInv("HDMRSniperMode") == 1) {return PB_NewCheckReload("ReloadUnloaded","","LoadChamber2","Ready3","Ready3",15,2);}
 			else {return PB_NewCheckReload("ReloadUnloaded","","LoadChamber2","Ready3","Ready3",31,1);}
 		}
