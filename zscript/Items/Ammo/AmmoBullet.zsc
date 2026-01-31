@@ -27,12 +27,32 @@ class PB_LowCalBox : PB_LowCalMag
 	}
 }
 
+class PB_LowCalRound : PB_LowCalMag
+{
+	Default
+	{
+		Inventory.Amount 1;
+		Inventory.PickupSound "weapons/casing";
+		PB_Ammo.ammotype "lowcalround";
+	}
+}
+
+class PB_MagnumRound : PB_LowCalMag
+{
+	Default
+	{
+		Inventory.Amount 1;
+		Inventory.PickupSound "weapons/casing";
+		PB_Ammo.ammotype "magnumround";
+	}
+}
+
 class PB_HighCalMag : PB_Ammo
 {
 	Default
 	{
 		//$Category Project Brutality - Ammunition
-		//$Sprite CLIPA0
+		//$Sprite CL1PA0
 		//Scale 0.15;
 		Tag "High Caliber Round";
 		Inventory.Amount 15;
@@ -49,10 +69,40 @@ class PB_HighCalBox : PB_HighCalMag
 	Default
 	{
 		//$Category Project Brutality - Ammunition
-		//$Sprite AMMOA0
+		//$Sprite AMM0A0
 		//Scale 0.15;
 		Inventory.Amount 60;
 		Inventory.PickupSound "CBOXPKUP";
 		PB_Ammo.ammotype "highcalbox";
+	}
+}
+
+class PB_HighCalRound : PB_HighCalMag
+{
+	Default
+	{
+		Inventory.Amount 1;
+		Inventory.PickupSound "weapons/casing";
+		PB_Ammo.ammotype "highcalround";
+	}
+}
+
+class PB_HigherCalRound : PB_HighCalMag
+{
+	Default
+	{
+		Inventory.Amount 2;
+		Inventory.PickupSound "weapons/casing";
+		PB_Ammo.ammotype "highercalround";
+	}
+}
+
+class PB_MissileRound : PB_HighCalMag
+{
+	Default
+	{
+		Inventory.Amount 2;
+		Inventory.PickupSound "weapons/casing";
+		PB_Ammo.ammotype "missileround";
 	}
 }

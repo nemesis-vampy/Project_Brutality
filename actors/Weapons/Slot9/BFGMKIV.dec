@@ -127,7 +127,6 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 					A_Overlay(-52,"DetonatorLayer");
 				}
 			}
-			TNT1 A 0 PB_ResetBarrelTokens
 			Goto SelectFirstPersonLegs
 		SelectContinue:
 			TNT1 A 0
@@ -262,10 +261,11 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			TNT1 A 0 A_StartSound("weapons/bfg_chargeloop", CHAN_BODY)
 			014G EFGHI 1 BRIGHT LIGHT("BARONBALL_X2")
 			TNT1 A 0 A_StartSound("weapons/bfg_chargestart", CHAN_5)
-			014G JKLMNOPQRSTUVWXYZ 1 BRIGHT LIGHT("BARONBALL_X2")
+			014G JKLMNOPQRSTUVWXYZ 1 BRIGHT LIGHT("BARONBALL_X2") A_GunFlash
 			
 			015G ABCDEFGH 1 BRIGHT LIGHT("BARONBALL_X3") {
 				PB_FireOffset;
+				A_GunFlash;
 			}
 			TNT1 A 0 {
 				A_SetBlend("GREEN",0.5,18);
@@ -277,6 +277,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 				A_FireCustomMissile("PB_SuperBFGBall");
 				A_TakeInventory("PB_Cell", 50);
 				A_ZoomFactor(0.92, ZOOM_INSTANT);
+				A_GunFlash;
 			}
 			TNT1 A 0 A_ZoomFactor(1.0)
 			015G JKLMNOPQRST 1 BRIGHT
@@ -358,6 +359,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			016G ABCDE 1 BRIGHT
 			016G FGHIJKLFGHIJK 1 BRIGHT {
 				PB_FireOffset;
+				A_GunFlash;
 			}
 			TNT1 A 0 {
 				A_SetBlend("GREEN",0.2,7);
@@ -368,6 +370,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			016G L 1 BRIGHT {
 				A_ZoomFactor(1.0);
 				PB_FireOffset;
+				A_GunFlash;
 			}
 		BeamLoop:
 			016G FGHIJKL 1 BRIGHT {
@@ -376,7 +379,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 				PB_FireAltBFGRail();  //function defined in BaseWeapon_Function.zsc to replace the rail and the projectilew
 				//A_RailAttack(0, 0, 0,"None", "Green", RGF_SILENT || RGF_NOPIERCING || RGF_FULLBRIGHT, 2.0, "NullPuff", 0, 0, 0, 0, 10.0, 1.0, "BFGLightningTrial_Small", -7,0,0);
 				A_TakeInventory("PB_Cell", 1);
-				
+				A_GunFlash;
 				if(CountInv("PB_Cell") < 1) {
 					return state("AltHoldStop");
 				}
@@ -400,17 +403,18 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 			TNT1 A 0 A_StartSound("weapons/bh_sec_charge1", CHAN_AUTO)
 			027G ABCDEFGH 1 BRIGHT PB_FireOffset
 			TNT1 A 0 A_StartSound("weapons/bh_sec_charge2", CHAN_BODY)
-			027G IJKLMNOPQRSTUVWXYZ 1 BRIGHT PB_FireOffset
-			028G ABCD 1 BRIGHT PB_FireOffset
+			027G IJKLMNOPQRSTUVWXYZ 1 BRIGHT {PB_FireOffset; A_GunFlash;}
+			028G ABCD 1 BRIGHT {PB_FireOffset; A_GunFlash;}
 			
 			028G E 1 BRIGHT {
 				A_StopSound(CHAN_BODY);
 				A_StartSound("weapons/bh_secondary", CHAN_WEAPON);
 				A_FireCustomMissile("BlackHole_GravityBomb",0,1,0,0);
 				A_TakeInventory("PB_Cell", 30);
+				A_GunFlash;
 			}
 			
-			028G FGHI 1 BRIGHT
+			028G FGHI 1 BRIGHT A_GunFlash
 			Goto Ready3
 		DetonatorLayer:
 			TNT1 A 1 {
@@ -643,6 +647,8 @@ Actor BFGBeamPuff : Actor
 	+FORCERADIUSDMG
 	-BLOODSPLATTER
 	+DontHurtSpecies
+	+SQUAREPIXELS
+	+FORCEXYBILLBOARD
 	Species "Marine"
 
 	states
@@ -878,6 +884,8 @@ Actor BFGDeathParticle
   +LowGravity
   +DontSplash
   +DoomBounce
+  +SQUAREPIXELS
+  +FORCEXYBILLBOARD
   BounceFactor 0.5
   RenderStyle Add
   Scale 0.04
@@ -901,7 +909,7 @@ Actor BFGDeathParticleFast: BFGDeathParticle
   Spawn:
   Death:
 	SPKG A 11 BRIGHT
-	SPKG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 Bright A_FadeOut(0.06)
+	SPKG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 Bright A_SetScale(scalex*0.94,scaley*0.94)
 	Stop
   }
 }
@@ -925,6 +933,8 @@ Actor BFGLightningTrial
 	+THRUSPECIES
 	+MTHRUSPECIES
 	+DONTHARMSPECIES
+	+SQUAREPIXELS
+	+FORCEXYBILLBOARD
 	States
 	{
 		Spawn:
@@ -1059,7 +1069,7 @@ Actor BFGBeam
 	}
 }
 
-Actor SuperBFGBall replaces BFGBall
+Actor SuperBFGBall
 {
 	Projectile 
 	Speed 24
@@ -1184,6 +1194,7 @@ Actor SuperBFGExtra : BFGExtra Replaces BFGExtra
 	+MTHRUSPECIES
 	+DONTHURTSPECIES
 	+SQUAREPIXELS
+	+FORCEXYBILLBOARD
   States
   {
   Spawn:
@@ -1238,7 +1249,7 @@ ACTOR GreenShockWave
 	Radius 32
 	Scale 2.25 
 	RenderStyle add
-	Alpha 0.9
+	Alpha 0.99
 	+DROPOFF 
 	+NOBLOCKMAP 
 	+NOGRAVITY
@@ -1250,6 +1261,7 @@ ACTOR GreenShockWave
 	+MTHRUSPECIES
 	+DONTHARMSPECIES
 	+SQUAREPIXELS
+	+FORCEXYBILLBOARD
 	States 
 	{ 
 	Spawn: 
@@ -1743,14 +1755,15 @@ ACTOR PurpleTrailSparks
 	Alpha 0.95
 	+NOINTERACTION
 	+NOGRAVITY
+	+SQUAREPIXELS
+	+FORCEXYBILLBOARD
 	//+CLIENTSIDEONLY
 	States
 	{
 	Spawn:
 	YA36 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
 	YA36 A 0 A_SetScale(ScaleX-0.00075)
-	YA36 A 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
-	YA36 A 1 bright A_FadeOut(0.05)
+	YA36 A 4 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
 	Loop
 	}
 }

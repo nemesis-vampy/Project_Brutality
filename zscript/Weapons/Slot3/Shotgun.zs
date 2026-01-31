@@ -12,7 +12,6 @@ Class PB_Shotgun : PB_WeaponBase
 		weapon.ammogive1 4;		
 		weapon.ammotype2 "ShotgunAmmo";
 		weapon.slotpriority 0.5;
-		PB_WeaponBase.unloadertoken "PBPumpShotgunHasUnloaded";
 		PB_WeaponBase.respectItem "RespectShotgun";
 		inventory.pickupsound "SHOTPICK";
 		inventory.pickupmessage "UAC GS-10 Shotgun (Slot 3)";
@@ -29,6 +28,7 @@ Class PB_Shotgun : PB_WeaponBase
 	}
 	
 	int ShellsMode;
+	int LastMode; //need this so the upgrade kicks out the right shells when switching
 	const Shell_Buck = 1;
 	const Shell_Slug = 2;
 	const Shell_Drag = 3;
@@ -74,14 +74,14 @@ Class PB_Shotgun : PB_WeaponBase
 				PB_SetShellSprite("SHTZ","SHZA","SHZB");
 				return A_DoPBWeaponAction(WRF_NOBOB);
 			}
-			SHTG A 1 {
-				PB_SetShellSprite("SHTG","SHTS","SHTD");
+			SH0G A 1 {
+				PB_SetShellSprite("SH0G","SHTS","SHTD");
 				return A_DoPBWeaponAction(WRF_NOBOB);
 			}
-			SHTG BCDEFGHIJ 1 A_DoPBWeaponAction(WRF_NOBOB);
+			SH0G BCDEFGHIJ 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SSHR H 1 A_DoPBWeaponAction(WRF_NOBOB);
 			TNT1 A 0 A_StartSound("weapons/sgmvpump",10,CHANF_OVERLAP);
-			SHTG L 5 A_DoPBWeaponAction(WRF_NOBOB);
+			SH0G L 5 A_DoPBWeaponAction(WRF_NOBOB);
 			SSHR I 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SSHR JK 1 {
 				PB_SetShellSprite("SSHR","SHTS","SHTD");
@@ -106,7 +106,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 A_StartSound("insertshell", 10,CHANF_OVERLAP);
 			SSHR EFG 1 A_DoPBWeaponAction(WRF_NOBOB);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagNotInserted", 1, "InsertMagBegin");
-			SHTG JIHGFEDCB 1 A_DoPBWeaponAction(WRF_NOBOB);
+			SH0G JIHGFEDCB 1 A_DoPBWeaponAction(WRF_NOBOB);
 			Goto Ready3;
 		
 		InsertMagBegin: // Straight Into Inserting The Mag After Chambering a shell. 
@@ -123,7 +123,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 A_StartSound("weapons/shotgunmag/magin", 3);
 			SHTM I 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SHTM JKLMNOPQR 1 A_DoPBWeaponAction(WRF_NOBOB);
-			SHTG EDCB 1 A_DoPBWeaponAction(WRF_NOBOB);
+			SH0G EDCB 1 A_DoPBWeaponAction(WRF_NOBOB);
 			TNT1 A 0 A_JumpIfInventory("PumpShotgunMagazine", 2, "Ready3");
 			Goto Ready3;
 		InsertMagShotgunRespectAlreadyRespected:
@@ -135,7 +135,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetInventory("Zoomed",0);
 				A_SetInventory("ADSmode",0);
 			}
-			SHTG BCDEFGH 1 A_DoPBWeaponAction(WRF_NOBOB);
+			SH0G BCDEFGH 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SHTM A 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SHTM BCDEFG 1 {
 				PB_SetShellSprite("SHTM","SHMS","SHMD");
@@ -155,7 +155,6 @@ Class PB_Shotgun : PB_WeaponBase
 			goto ready3;
 		
 		Deselect:
-			TNT1 A 0 PB_jumpIfHasBarrel("PlaceBarrel","PlaceFlameBarrel","PlaceIceBarrel");
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
@@ -196,10 +195,10 @@ Class PB_Shotgun : PB_WeaponBase
 				}
 			}
 		ReadyToFire:
-			SHTG A 1
+			SH0G A 1
 			{
 				PB_CoolDownBarrel(0,0,-4);
-				PB_SetShellSprite("SHTG","SHTS","SHTD");
+				PB_SetShellSprite("SH0G","SHTS","SHTD");
 				// This token is given upon picking up the magazine upgrade.
 				if (CountInv("PumpshotgunMagNotInserted") >= 1 ) 
 					return resolvestate("InsertMagShotgunRespectAlreadyRespected");  // Insert magazine upon picking it up
@@ -213,19 +212,7 @@ Class PB_Shotgun : PB_WeaponBase
 				return A_DoPBWeaponAction(WRF_ALLOWRELOAD, CheckUnloaded("PBPumpShotgunHasUnloaded"));	 
 			}
 			Loop;
-		
-		NoAmmo:
-			TNT1 A 0 {
-				A_StartSound("weapons/empty", CHAN_WEAPON);
-				A_SetInventory("Zoomed",0);
-				A_SetInventory("ADSmode", 0);
-				A_SetInventory("Reloading", 0);
-				A_ZoomFactor(1.0);
-			}
-			Goto Ready3;
-		
 		Fire:
-			TNT1 A 0 PB_jumpIfHasBarrel("ThrowBarrel","ThrowFlameBarrel","ThrowIceBarrel");
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
@@ -234,16 +221,17 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"Fire2");
-			SHTF A 0;
+			SH0F A 0;
 			SH1F A 0;
 			SH2F A 0;
-			SHTF A 1 BRIGHT 
+			SH0F A 1 BRIGHT 
 			{
 				PB_IncrementHeat(3);
-				PB_SetShellSprite("SHTF","SH1F","SH2F");
+				PB_SetShellSprite("SH0F","SH1F","SH2F");
 				A_SetInventory("CantDoAction",1);
 				PB_LowAmmoSoundWarning("shotgun");
-				A_TakeInventory("ShotgunAmmo", 1);
+				if(CountInv("PumpshotgunMagazine") == 1) PB_TakeAmmo("ShotgunAmmo", 1);
+				else PB_TakeAmmo("ShotgunAmmo", 1,0);
 				A_AlertMonsters();
 				A_fireprojectile("YellowFlareSpawn", 0, 0, 0, 0);
 				A_fireprojectile("ShakeYourAssDouble", 0, 0, 0, 0);
@@ -253,6 +241,8 @@ Class PB_Shotgun : PB_WeaponBase
                 A_QuakeEx(-3, 0, 0, 15, 0, 2, "", QF_RELATIVE | QF_WAVE | QF_SCALEDOWN | QF_SCALEUP | QF_FULLINTENSITY, 2, 0, 0, 0, 2, frandom(-0.5, 0.5), 2);
                 //A_QuakeEx(2, 2, 2, 10, 0, 2, "", QF_RELATIVE | QF_SCALEDOWN);
 				A_Overlay(-6, "ShotFlash",true);
+				A_OverlayFlags(-6,PSPF_RENDERSTYLE,true);
+				A_OverlayRenderStyle(-6,STYLE_Add);
 				//A_GunFlash();
 				PB_DynamicTail("shotgun", "shotgun");
 				switch(getshellsmode())
@@ -271,13 +261,13 @@ Class PB_Shotgun : PB_WeaponBase
 						break;
 				}
 			}
-			SHTF B 1 PB_SetShellSprite("SHTF","SH1F","SH2F");
-			SHTF C 1 {
+			SH0F B 1 PB_SetShellSprite("SH0F","SH1F","SH2F");
+			SH0F C 1 {
 				A_FireProjectile("ShotgunWad",random(-2,2),0,random(-2,2),-4,FPF_NOAUTOAIM,random(-2,2));
 				PB_WeaponRecoil(-1.24,+0.44);
 			}
-			SHTF G 1 PB_WeaponRecoil(-1.24,+0.44);
-			SHTF FED 1;
+			SH0F G 1 PB_WeaponRecoil(-1.24,+0.44);
+			SH0F FED 1;
 			
 		Pump:
 		Pump1:
@@ -287,13 +277,13 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagPump");
 			TNT1 A 0 A_JumpIf(CountInv("PB_PowerStrength") && Cvar.GetCvar("pb_SGAltBehavior",player).getbool(), "PumpFromHip");
-			SHTG BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			SH0G BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 		P1Begin:
 			SHTA K 0;
-			SHTF K 0;
-			SHTG K 1
+			SH0F K 0;
+			SH0G K 1
 			{
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+				PB_SetShellSprite("SH0G","SHTA","SH0F");
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 				A_StartSound("weapons/sgmvpump",30,CHANF_OVERLAP); 
 			}
@@ -308,13 +298,13 @@ Class PB_Shotgun : PB_WeaponBase
 				}
 			}
 		//P1C:
-			SHTG L 1
+			SH0G L 1
 			{
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
 			}
-			SHTG M 2;
-			SHTG L 1
+			SH0G M 2;
+			SH0G L 1
 			{
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch-0.1,SPF_INTERPOLATE);
@@ -322,31 +312,26 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
                 A_StartSound("weapons/sgpump",11,CHANF_OVERLAP); 
             }
-			TNT1 A 0 A_JumpIfInventory("PB_Shell", 1,"noChamberEmpty"); //Skip this frame if the chamber isn't empty
-			SSHR H 1 
+			SH0G K 1 
 			{
-				 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-				// A_StartSound("weapons/sgpump",11,CHANF_OVERLAP); 
-			// return resolvestate (2); // Skip the frame with shell showing
-			}
-			SHTG K 1 
-			{
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+				if(CountInv("ShotgunAmmo") < 1)
+					A_SetWeaponFrame(25);
+				else
+					PB_SetShellSprite("SH0G","SHTA","SH0F");
 				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 				//A_StartSound("weapons/sgpump", 10,CHANF_OVERLAP);
 			// return resolvestate(null);
 			}
-		noChamberEmpty:
-			SHTG JIHGFEDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G JIHGFEDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 		PumpEnd: // Pump End for mag & regular.
 			TNT1 A 0
 			{
 				A_SetRoll(0,SPF_INTERPOLATE);
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
-			SHTG A 1
+			SH0G A 1
 			{
-				PB_SetShellSprite("SHTG","SHTS","SHTD");
+				PB_SetShellSprite("SH0G","SHTS","SHTD");
 				A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 				A_Refire();
 				A_SetInventory("CantDoAction",0);
@@ -361,7 +346,7 @@ Class PB_Shotgun : PB_WeaponBase
 			Return resolveState(null);
 			}
 			TNT1 A 0 A_WeaponOffset(0,32);
-			SHTG BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			SHMG FGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			SHMA K 0;
 			SHMF K 0;
@@ -387,27 +372,24 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
 			}
-			SHTG M 2;
+			SH0G M 2;
 			SHMG L 1 
 			{
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch-0.1,SPF_INTERPOLATE);
 			}
-			TNT1 A 0 A_JumpIfInventory("PB_Shell", 1,2); //Skip this frame if the chamber isn't empty
-			SHMG N 1 
-			{
-				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-				A_StartSound("weapons/sgmvpump",32,CHANF_OVERLAP); 
-				//return resolvestate (2);
-			}
+			SHMG N 0;
 			SHMG K 1 
 			{
-				PB_SetShellSprite("SHMG","SHMA","SHMF");
+				if(CountInv("ShotgunAmmo") < 1)
+					A_SetWeaponFrame(13);
+				else
+					PB_SetShellSprite("SHMG","SHMA","SHMF");
 				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 				A_StartSound("weapons/sgpump", 11,CHANF_OVERLAP);
 			}	
 			SHMG JIHGF 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-			SHTG EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			Goto PumpEnd;
 		
 		PumpFromHip:
@@ -423,13 +405,12 @@ Class PB_Shotgun : PB_WeaponBase
 				}
 			}
 			TNT1 A 0 A_StartSound("weapons/sgpump",11,CHANF_OVERLAP);
-			SHTF GFEDC 1;
+			SH0F GFEDC 1;
 			TNT1 A 0 A_Refire();
 			goto Ready3;
 		
 		
 		AltFire:
-			TNT1 A 0 PB_jumpIfHasBarrel("PlaceBarrel","PlaceFlameBarrel","PlaceIceBarrel");
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
@@ -457,69 +438,51 @@ Class PB_Shotgun : PB_WeaponBase
 		
 		ReloadWithNoAmmoLeft:
 		Reload:
-			TNT1 A 0 PB_jumpIfHasBarrel("IdleBarrel","IdleFlameBarrel","IdleIceBarrel");
-			TNT1 A 0 {
-				A_SetInventory("Reloading", 0);
-				A_SetInventory("Zoomed",0);
-				A_WeaponOffset(0,32);
-				A_ZoomFactor(1.0);
-				A_SetInventory("PB_LockScreenTilt",1);
-			}
-			SHTG A 1 {
-				PB_SetShellSprite("SHTG","SHTS","SHTD");
-				PB_HandleCrosshair(69);
-				A_DoPBWeaponAction();
-			}
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine",1,"MagReload");
-			
-		ReloadActuallyBegin:
-			TNT1 A 0 PB_checkReload("DoEmptyReload","Ready3","NoAmmo",9,1);
-		ReloadNormally:	
-			SHTG BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready3","Ready3",9);
+			TNT1 A 0 A_WeaponOffset(0,32);
+			SH0G BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_SetInventory("PBPumpShotgunHasUnloaded", 0);
 		ShellChecker:
 			TNT1 A 0 A_JumpIf(CountInv("PB_Shell") < 1 || countinv("shotgunAmmo") >= 9,"ReloadFinished");
 			SSHR A 1 {
-				A_DoPBWeaponAction(WRF_NOBOB);
+				A_DoPBWeaponAction(WRF_NOSECONDARY);
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			}
-			TNT1 A 0 A_JumpIfInventory("PBPumpShotgunWasEmpty", 1, "ChamberInsertShell");
-			SSHR BCD 1 PB_SetShellSprite("SSHR","SHTS","SHTD");
-			TNT1 A 0 A_StartSound("insertshell", 10,CHANF_OVERLAP);
-			SSHR E 1 A_SetPitch(pitch-0.2,SPF_INTERPOLATE);
-			SSHR FG 1 {
-				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
-				A_DoPBWeaponAction(WRF_NOBOB);
-			}
+			TNT1 A 0 A_JumpIf(PB_GetChamberEmpty(), "ChamberInsertShell");
+			SSHR BC 1 PB_SetShellSprite("SSHR","SHTS","SHTD");
 			TNT1 A 0 {
+				A_StartSound("insertshell", 10,CHANF_OVERLAP);
 				A_Giveinventory("ShotgunAmmo",1);
 				A_Takeinventory("PB_Shell",1);
 			}
+			SSHR D 1 PB_SetShellSprite("SSHR","SHTS","SHTD");
+			SSHR E 1 A_SetPitch(pitch-0.2,SPF_INTERPOLATE);
+			SSHR FG 1 {
+				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
+				A_DoPBWeaponAction(WRF_NOSECONDARY);
+			}
 			TNT1 A 0 A_DoPBWeaponAction(WRF_NOBOB);
 			loop;
-		
-		DoEmptyReload:
-			TNT1 A 0 A_SetInventory("PBPumpShotgunWasEmpty", 1);	
-			goto ReloadNormally;
-		
 		ChamberInsertShell:
 			TNT1 A 0 A_SetInventory("PBPumpShotgunWasEmpty",0);
-			SSHR A 1 A_DoPBWeaponAction(WRF_NOBOB);
+			SSHR A 1 A_DoPBWeaponAction(WRF_NOSECONDARY);
 			SSHR H 2 A_StartSound("weapons/sgmvpump",10,CHANF_OVERLAP);
 			SSHR I 3 A_StartSound("insertshell",10,CHANF_OVERLAP);
-			SSHR J 1;
-			SSHR KLMNOPP 1 PB_SetShellSprite("SSHR","SHTS","SHTD");
+			SSHR JKLMNOPP 1 PB_SetShellSprite("SSHR","SHTS","SHTD");
 			TNT1 A 0 
 			{
 				A_StartSound("weapons/sgpump",10,CHANF_OVERLAP);
 				A_Giveinventory("ShotgunAmmo",1);
 				A_Takeinventory("PB_Shell",1);
+				PB_SetChamberEmpty(false);
+				PB_SetMagEmpty(false);
 			}
 			Goto ShellChecker;
 		
 		ReloadFinished:
 			SSHR A 1;
-			SHTG JIHGFEDCBA 1
+			SH0G JIHGFEDCBA 1
 			{
 				A_DoPBWeaponAction(WRF_NOBOB);
 				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
@@ -529,24 +492,24 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetInventory("Reloading",0);
 				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetRoll(0,SPF_INTERPOLATE);
+				PB_SetReloading(false);
 			}
 			Goto Ready3;
 		
 		MagReload:
-		BeginMagReload:
-			TNT1 A 0 PB_checkReload(null,"Ready3","NoAmmo",11,1);
-			SHTG BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
-			TNT1 A 0 A_JumpIfInventory("PBPumpShotgunHasUnloaded",1,"toinsert");
+			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready3","Ready3",11);
+			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"toinsert");
 			SHMG FGHI 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			Goto ActuallyBeginMagReload;
 		toinsert:
-			SHTG GH 1;
+			SH0G GH 1;
 			Goto InsertMag;
-		ActuallyBeginMagReload:	
-			TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",11,"Ready3");
+		ActuallyBeginMagReload:
 			SHTN ABCDEFG 1;
 			TNT1 A 0 A_StartSound("weapons/shotgunmag/magout", 10,CHANF_OVERLAP);
-			TNT1 A 0 A_JumpIf(CountInv("ShotgunAmmo") <= 1,"EmptyMagReload");
+			TNT1 A 0 PB_SetMagUnloaded(true);
+			TNT1 A 0 A_JumpIf(PB_GetMagEmpty(),"EmptyMagReload");
 			SHTM GFEDCB 1 PB_SetShellSprite("SHTM","SHMS","SHMD");
 			goto InsertMag;
 			
@@ -557,22 +520,21 @@ Class PB_Shotgun : PB_WeaponBase
 		InsertMag:
 			SHTM A 4;
 			SHTM BCDEFG 1 PB_SetShellSprite("SHTM","SHMS","SHMD");
-			SHTM H 1 A_StartSound("weapons/shotgunmag/magin", 10,CHANF_OVERLAP);
-			SHTM I 1;
-			SHTM JKLMN 1;
 			TNT1 A 0 {
-				if(CountInv("ShotgunAmmo") == 0){
+				if(PB_GetChamberEmpty())
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",10,1);
-					return ResolveState(null);
-				}
-				else{
+				else
 					PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",11,1);
-					return ResolveState("ReloadMagFinished");
-				}
+				PB_SetMagUnloaded(false);
+				PB_SetMagEmpty(false);
 				return ResolveState(null);
 			}
+			SHTM H 1 A_StartSound("weapons/shotgunmag/magin", 10,CHANF_OVERLAP);
+			SHTM I 1;
+			SHTM JKLM 1;
+			SHTM N 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_JumpIf(!PB_GetChamberEmpty(),"ReloadMagFinished");
 		LoadChamberMag:
-			SHMG J 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			SHMA K 0;
 			SHMF K 0;
 			SHMG N 1 
@@ -585,7 +547,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
 			}
-			SHTG M 2;
+			SH0G M 2;
 			SHMG L 1 
 			{
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
@@ -593,6 +555,7 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			SHMG K 1 
 			{
+				PB_SetChamberEmpty(false);
 				PB_SetShellSprite("SHMG","SHMA","SHMF");
 				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 				A_StartSound("weapons/sgpump", 10,CHANF_OVERLAP);
@@ -601,13 +564,14 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 A_JumpIf(PressingReload() && CountInv("PB_Shell"), "ActuallyBeginMagReload");
 		ReloadMagFinished:
 			SHTM OPQR 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-			SHTG EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0
 			{
 				A_SetInventory("Reloading",0);
 				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetInventory("PBPumpShotgunHasUnloaded",0);
 				A_SetRoll(0,SPF_INTERPOLATE);
+				PB_SetReloading(false);
 			}
 			TNT1 A 0 A_Refire();
 			Goto Ready3;
@@ -615,7 +579,6 @@ Class PB_Shotgun : PB_WeaponBase
 		
 		Weaponspecial:
 			TNT1 A 0 A_takeinventory("GoWeaponSpecialAbility",1);	//avoid infinite loops
-			TNT1 A 0 PB_jumpIfHasBarrel("IdleBarrel","IdleFlameBarrel","IdleIceBarrel");
 			TNT1 A 0 A_SetInventory("GoWeaponSpecialAbility",0);
 			TNT1 A 0 A_zoomfactor(1.0);
 			//TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Ready2");
@@ -642,7 +605,7 @@ Class PB_Shotgun : PB_WeaponBase
 			SHTZ M 1;
 			TNT1 A 0 A_StartSound("weapons/shotgun/attach", 10,CHANF_OVERLAP);
 			SHTZ NOP 1 PB_SetShellSprite("SHTZ","SHZA","SHZB");
-			SHTG A 1 PB_SetShellSprite("SHTG","SHTS","SHTD");
+			SH0G A 1 PB_SetShellSprite("SH0G","SHTS","SHTD");
 			TNT1 A 0 pb_postwheel();
 			goto ready3;
 		
@@ -652,71 +615,88 @@ Class PB_Shotgun : PB_WeaponBase
 			goto ready3;
 		
 		Unload:
-			SHTG A 1 {
-				A_ZoomFactor(1.0);
-				A_WeaponOffset(0,32);
-				A_SetInventory("Unloading",0);
-				A_SetInventory("ADSmode",0);
-				A_SetInventory("Zoomed",0);
-				A_SetInventory("PBPumpShotgunWasEmpty",1);
-				A_SetInventory("PB_LockScreenTilt",1);
-				}
-			TNT1 A 0 A_Jumpif(countinv(invoker.UnloaderToken) > 0 || countinv(invoker.ammotype2) < 1,"Ready3");
-			 //TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",1,1)
-			//Goto Ready3
-			SHTG BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
-			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine",1,"MagUnload");
-			SHTG FGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_WeaponOffset(0,32);
+			TNT1 A 0 A_JumpIf(CountInv("PumpshotgunMagazine") == 0 && PB_GetMagEmpty(),"Ready3");
+			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_JumpIf(CountInv("PumpshotgunMagazine") == 1 && !PB_GetMagUnloaded(),"MagUnload");
+			SH0G FGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			
 		ActuallyUnload:
 			TNT1 A 0 A_JumpIf(CountInv("ShotgunAmmo") <= 0,"FinishUnload");
 			TNT1 A 0 A_StartSound("weapons/sgmvpump");
-			SHTG K 1 
+			SH0G K 1 
 			{
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+				PB_SetShellSprite("SH0G","SHTA","SH0F");
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			}
-			SHTG L 1 {
+			SH0G L 1 {
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
 			}
-			SHTG M 1;
-			SHTG L 1 {
+			SH0G M 1;
+			SH0G L 1 {
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch-0.1,SPF_INTERPOLATE);
 			}
 			//TNT1 A 0 A_JumpIfInventory("PB_Shell", 1,3);
 			SSHR H 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);// So the chamber shows as being empty
 			TNT1 A 0; //{ return resolvestate (2); } 			 // Skip This Frame if the shotgun isn't loaded.
-			SHTG K 1 {
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+			SH0G K 1 {
+				if(CountInv("ShotgunAmmo") < 1)
+					A_SetWeaponFrame(25);
+				else
+					PB_SetShellSprite("SH0G","SHTA","SH0F");
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			}
-			SHTG J 1 {
+			SH0G J 1 {
 				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-				A_StartSound("weapons/sgmvpump", 10,CHANF_OVERLAP);
-				A_Takeinventory("ShotgunAmmo",1);
-				A_Giveinventory("PB_Shell",1);
+				A_Startsound("weapons/sgpump", 19,CHANF_OVERLAP);
+				switch(getshellsmode())
+				{
+					case Shell_Buck:	
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,CountInv("ShotgunAmmo") - 1,"PB_SingleShell");
+						break;
+					case Shell_Slug:
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,CountInv("ShotgunAmmo") - 1,"PB_SingleShellSlug");
+						break;
+					case Shell_Drag:
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,CountInv("ShotgunAmmo") - 1,"PB_SingleShellDragonsBreath");
+						break;
+				}
+				if(CountInv("ShotgunAmmo") < 1) {PB_SetChamberEmpty(true); PB_SetMagEmpty(true);}
 			}
 			goto ActuallyUnload;
 		
 		FinishUnload:
-			SHTG IHGFEDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G IHGFEDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0 {
 				A_SetRoll(0,SPF_INTERPOLATE);
-				A_SetInventory("PBPumpShotgunHasUnloaded", 1);
-				A_SetInventory("PB_LockScreenTilt",0);
-				A_SetInventory("Unloading",0);
+				PB_SetReloading(false);
 			}
 			Goto Ready3;
 		
-		MagUnload:	
+		MagUnload:
 			SHMG FGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			SHTN ABCDEFG 1;
-			TNT1 A 0 A_StartSound("weapons/shotgunmag/magout", 10,CHANF_OVERLAP);
+			TNT1 A 0 {
+				switch(getshellsmode())
+				{
+					case Shell_Buck:	
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,1,"PB_SingleShell");
+						break;
+					case Shell_Slug:
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,1,"PB_SingleShellSlug");
+						break;
+					case Shell_Drag:
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,1,"PB_SingleShellDragonsBreath");
+						break;
+				}
+				A_StartSound("weapons/shotgunmag/magout", 10,CHANF_OVERLAP);
+				PB_SetMagUnloaded(true);
+				PB_SetMagEmpty(true);
+			}
 			SHTN HIJKL 1;
-			TNT1 A 0 PB_UnloadMag("ShotgunAmmo","PB_Shell",1);
-			Goto FinishUnload;
+			Goto ActuallyUnload;
 			
 		
 		
@@ -774,7 +754,8 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_AlertMonsters();
 				 A_Fireprojectile("YellowFlareSpawn", 0, 0, 0, 0);
 				 PB_LowAmmoSoundWarning("shotgun");
-				 A_TakeInventory("ShotgunAmmo", 1);
+				if(CountInv("PumpshotgunMagazine") == 1) PB_TakeAmmo("ShotgunAmmo", 1);
+				else PB_TakeAmmo("ShotgunAmmo", 1,0);
 				 _SpawnMuzzleSparksSG(0,0,-4);
 				 _SpawnMuzzleSparksSG(0,0,-4);
 				 PB_GunSmoke_Sniper(1,0,0);
@@ -809,7 +790,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_Fireprojectile("ShotgunWad",random(-2,2),0,random(-2,2),-3,FPF_NOAUTOAIM,random(-2,2)); //Keeping the shotgun wad projectile
 				PB_WeaponRecoil(-0.3,-0.25);
 			}
-			TNT1 A 0 A_jumpif(CountInv("PB_PowerStrength") >=1,"BerserkAltPump1");
+			TNT1 A 0 A_JumpIf((CountInv("PB_PowerStrength") || CountInv("PumpshotgunMagazine")) && Cvar.GetCvar("pb_SGAltBehavior",player).getbool(), "BerserkAltPump1");
 			SHT8 GHI 1
 			{
 				PB_SetShellSprite("SHT8","SHT6","SHT4");
@@ -883,102 +864,97 @@ Class PB_Shotgun : PB_WeaponBase
 		ShotFlash:
 			TNT1 A 0 A_Jump(256, "Flash1", "Flash2", "Flash3");
 		Flash1:
-			SH10 AB 1 BRIGHT;
+			SH10 AB 1 BRIGHT A_GunFlash();
 			Stop;
 		Flash2:
-			SH10 CD 1 BRIGHT;
+			SH10 CD 1 BRIGHT A_GunFlash();
 			Stop;
 		Flash3:
-			SH10 EF 1 BRIGHT;
+			SH10 EF 1 BRIGHT A_GunFlash();
 			Stop;
 		
 		
 		FlashKicking:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelKicking","FlashBarrelKicking","FlashBarrelKicking");
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashKick");
-			SHTG CDFGHI 1;
-			SHTG J 2;
-			SHTG IHGEDB 1;
+			SH0G CDFGHI 1;
+			SH0G J 2;
+			SH0G IHGEDB 1;
 			Goto Ready3;
 		
 		MagFlashKick:
-			SHTG CD 1;
+			SH0G CD 1;
 			SHMG FGH 1;
 			SHMG I 1;
 			SHMG J 2;
 			SHMG IHG 1;
-			SHTG EDB 1;
+			SH0G EDB 1;
 			Goto Ready3;
 			
 		FlashAirKicking:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelAirKicking","FlashBarrelAirKicking","FlashBarrelAirKicking");	
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashAirKick");
-			SHTG CDFGHI 1;
-			SHTG J 4;
-			SHTG IHGEDBB 1;
+			SH0G CDFGHI 1;
+			SH0G J 4;
+			SH0G IHGEDBB 1;
 			Goto Ready3;
 		
 		MagFlashAirKick:
-			SHTG CD 1;
+			SH0G CD 1;
 			SHMG FGHI 1;
 			SHMG I 4;
 			SHMG IHG 1;
-			SHTG EDBB 1;
+			SH0G EDBB 1;
 			Goto Ready3;
 			
 		FlashSlideKicking:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelSlideKicking","FlashBarrelSlideKicking","FlashBarrelSlideKicking");
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashSlideKicking");
-			SHTG CDFGHIJJJJJJJJJJJJJIHGEDB 1;
+			SH0G CDFGHIJJJJJJJJJJJJJIHGEDB 1;
 			Goto Ready3;
 		
 		MagFlashSlideKicking:
-			SHTG CD 1;
+			SH0G CD 1;
 			SHMG FGHIJJJJJJJJJJJJJIHGE 1;
-			SHTG DC 1;
+			SH0G DC 1;
 			Goto Ready3;
 
 		FlashSlideKickingStop:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelSlideKickingStop","FlashBarrelSlideKickingStop","FlashBarrelSlideKickingStop");
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashSlideKickingStop");
-			SHTG JIHGEDB 1;
+			SH0G JIHGEDB 1;
 			Goto Ready3;
 		
 		MagFlashSlideKickingStop:
 			SHMG JIHGF 1;
-			SHTG DC 1;
+			SH0G DC 1;
 			Goto Ready3;
 			
 		FlashPunching:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelPunching","FlashBarrelPunching","FlashBarrelPunching");
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashPunch");
-			SHTG CDFGHI 1;
-			SHTG J 2;
-			SHTG IHGEDB 1;
+			SH0G CDFGHI 1;
+			SH0G J 2;
+			SH0G IHGEDB 1;
 			Stop;
 		MagFlashPunch:
-			SHTG CD 1;
+			SH0G CD 1;
 			SHMG FGH 1;
 			SHMG I 1;
 			SHMG J 2;
 			SHMG IHG 1;
-			SHTG EDB 1;
+			SH0G EDB 1;
 			Stop;
 		
 		//alternative ammo swap thing
 		//Start of transplant
 		AltTubeAmmoSwap:
+			TNT1 A 0 PB_SetReloading(true);
 			TNT1 A 0 A_Setinventory("CantWeaponSpecial", 1);
 			TNT1 A 0 A_JumpIfInventory("DragonBreathUpgrade",1,"AltMagAmmoSwap");
 			TNT1 A 0 {
-			 If((CountInv("PB_Shell") <=2) && (CountInv("ShotgunAmmo") <=2)) 
+			 If((CountInv("PB_Shell") < 1) && (CountInv("ShotgunAmmo") <=2)) 
 				{
-					A_Log("You Need At Least 2 Rounds of Ammo for Swap"); 
 					A_Setinventory("SelectShotgun_Buckshot", 0); 
 					A_Setinventory("SelectShotgun_Slugshot", 0); 
 					A_Setinventory("SelectShotgun_Dragonsbreath", 0);
@@ -989,11 +965,11 @@ Class PB_Shotgun : PB_WeaponBase
 				return resolvestate(null);
 			}
 			TNT1 A 0 A_SetInventory("SG_IsSwapping",1);
-			SHTG BCDEFGHI 1;
+			SH0G BCDEFGHI 1;
 			TNT1 A 0 A_JumpIf(CountInv("ShotgunAmmo") >= 1,"EmptyTube");
-			SHTG I 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-			SHTG Z 1;
-			SHTG L 1
+			SH0G I 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G Z 1;
+			SH0G L 1
 			{
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
@@ -1004,43 +980,53 @@ Class PB_Shotgun : PB_WeaponBase
 			//also a park token for excess ammo
 			TNT1 A 0 A_JumpIf(CountInv("ShotgunAmmo") == 1,"ClearChamberForTubeSwap");
 			TNT1 A 0 A_Startsound("weapons/sgmvpump");
-			SHTG K 1{
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+			SH0G K 1{
+				PB_SetShellSprite("SH0G","SHTA","SH0F");
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			}
-			SHTG L 1 {
+			SH0G L 1 {
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
 			}
-			SHTG M 1;
-			SHTG L 1 {
+			SH0G M 1;
+			SH0G L 1 {
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch-0.1,SPF_INTERPOLATE);
 			}
 			TNT1 A 0 A_JumpIfInventory("PB_Shell", 1,3);	//not sure how this is suppossed to work
 			SSHR H 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE); // So the chamber shows as being empty
 			//TNT1 A 0 { return resolvestate (2); } // Skip This Frame if the shotgun isn't loaded.
-			SHTG K 1 {
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+			SH0G K 1 {
+				PB_SetShellSprite("SH0G","SHTA","SH0F");
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			}
-			SHTG J 1 {
+			SH0G J 1 {
 				A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 				A_Startsound("weapons/sgpump", 19,CHANF_OVERLAP);
-				A_Takeinventory("ShotgunAmmo",1);
-				A_Giveinventory("PB_Shell",1);
+				switch(getshellsmode())
+				{
+					case Shell_Buck:	
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,CountInv("ShotgunAmmo") - 1,"PB_SingleShell");
+						break;
+					case Shell_Slug:
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,CountInv("ShotgunAmmo") - 1,"PB_SingleShellSlug");
+						break;
+					case Shell_Drag:
+						PB_UnloadMag("ShotgunAmmo","PB_Shell",1,1,1,CountInv("ShotgunAmmo") - 1,"PB_SingleShellDragonsBreath");
+						break;
+				}
 			}
 			SSHR A 0; //A_Refire
 			TNT1 A 0; //A_DoPBWeaponAction(WRF_NOBOB)
 			goto EmptyTube;
 		ClearChamberForTubeSwap:
-			SHTG I 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G I 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_WeaponOffset(0,32);
-			SHTG J 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			SH0G J 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			//TNT1 A 0 A_TakeInventory("ShotgunAmmo",1)
-			SHTG K 1 
+			SH0G K 1 
 			{
-				PB_SetShellSprite("SHTG","SHTA","SHTF");
+				PB_SetShellSprite("SH0G","SHTA","SH0F");
 				switch(getshellsmode())
 				{
 					case Shell_Buck: PB_SpawnCasing("ShotgunCasingRedLive",15,-5,26,0,3,3);	break;
@@ -1048,10 +1034,18 @@ Class PB_Shotgun : PB_WeaponBase
 					case Shell_Drag: PB_SpawnCasing("ShotgunCasingOrangeLive",15,-5,26,0,3,3);	break;
 				}
 				A_TakeInventory("ShotgunAmmo",1);
+				PB_SetChamberEmpty(true);
+				PB_SetMagUnloaded(true);
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 				A_Startsound("weapons/sgmvpump",19,CHANF_OVERLAP); 
 			}		
 		ClearedChamber:
+			SHTS KLMNOPP 0;
+			SHTD KLMNOPP 0;
+			SH0G L 1 {
+				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
+				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
+			}
 			TNT1 A 0 {
 				if (CountInv("SelectShotgun_Buckshot") >= 1)
 				{
@@ -1070,19 +1064,14 @@ Class PB_Shotgun : PB_WeaponBase
 				}	
 				pb_postwheel();
 			}
-			SHTS KLMNOPP 0;
-			SHTD KLMNOPP 0;
-			SHTG L 1 {
-				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
-				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
-			}
-			TNT1 A 0 A_JumpIfInventory("PB_Shell", 1, 1);
 			SSHR I 3 A_Startsound("insertshell",19,CHANF_OVERLAP) ;
 			SSHR JKLMNOPP 1 PB_SetShellSprite("SSHR","SHTS","SHTD");
 			TNT1 A 0 {
 				A_Startsound("weapons/sgpump",19,CHANF_OVERLAP);
 				A_Giveinventory("ShotgunAmmo",1);
 				A_Takeinventory("PB_Shell",1);
+				PB_SetChamberEmpty(false);
+				PB_SetMagUnloaded(false);
 				A_SetInventory("SG_IsSwapping",0);
 			}
 		LoadTube:
@@ -1098,41 +1087,40 @@ Class PB_Shotgun : PB_WeaponBase
 				A_Giveinventory("ShotgunAmmo",1);
 				A_Takeinventory("PB_Shell",1);
 			}
-			TNT1 A 0 pb_postwheel();
 			SSHR A 0 A_Refire();
 			TNT1 A 0 A_DoPBWeaponAction(WRF_NOBOB);
 			goto LoadTube;
 		TubeSwapFinal:
-			SHTG IHGFEDCB 1;
-			TNT1 A 0 pb_postwheel();
+			SH0G IHGFEDCB 1;
+			TNT1 A 0 PB_SetReloading(false);
 			goto Ready3;
 		
 		AltMagAmmoSwap:
 			TNT1 A 0
 			{
-				if(CountInv("PB_Shell")<=10)
+				if(CountInv("PB_Shell") < 1)
 				{
 					A_Setinventory("SelectShotgun_Slugshot", 0); 
 					A_Setinventory("SelectShotgun_Buckshot", 0); 
 					A_Setinventory("SelectShotgun_Dragonsbreath", 0); 
 					A_Setinventory("SelectShotgun_No", 0); 
-					A_Setinventory("CantWeaponSpecial",0); 
-					A_Log("You need at least 10 rounds for ammo type swap");
+					A_Setinventory("CantWeaponSpecial",0);
 					return resolvestate("Ready3");
 				}
 				return resolvestate(null);
 			}
-			SHTG BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
-			TNT1 A 0 A_JumpIfInventory("PBPumpShotgunHasUnloaded",1,"ToInsermagSwap");	//i hate offset jumps
+			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"ToInsermagSwap");	//i hate offset jumps
 			SHMG FGHI 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			Goto BeginMagAmmoSwap;
 		ToInsermagSwap:
-			SHTG GH 1;
+			SH0G GH 1;
 			Goto InsertMagAmmoSwap;
 		BeginMagAmmoSwap:	
 			SHTN ABCDEFG 1;
 			TNT1 A 0 A_Startsound("weapons/shotgunmag/magout", 19,CHANF_OVERLAP);
-			TNT1 A 0 A_JumpIf(CountInv("ShotgunAmmo") <= 1,"EmptyMagReloadSwap");
+			TNT1 A 0 PB_SetMagUnloaded(true);
+			TNT1 A 0 A_JumpIf(PB_GetMagEmpty(),"EmptyMagReloadSwap");
 			SHTM GFEDCB 1 PB_SetShellSprite("SHTM","SHMS","SHMD");
 			goto InsertMagAmmoSwap;
 		EmptyMagReloadSwap:
@@ -1157,21 +1145,9 @@ Class PB_Shotgun : PB_WeaponBase
 					PB_SetShellSprite("SHMD","SHMD","SHMD");
 				}
 			}
-			SHTM H 1 A_Startsound("weapons/shotgunmag/magin", 19,CHANF_OVERLAP);
-			SHTM I 1 A_Startsound("insertshell", 19,CHANF_OVERLAP);
-			SHTM JKLMN 1;
-			TNT1 A 0 A_JumpIf(CountInv("ShotgunAmmo")==0,"EmptyChamberSwap");
-			SHMG HIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
-			SHMA K 0;
-			SHMF K 0;
-			SHMG K 1
+			TNT1 A 0
 			{
-				switch(getshellsmode())
-				{
-					case Shell_Buck: PB_SpawnCasing("ShotgunCasingRedLive",28,-5,30,3,3,3);		break;
-					case Shell_Slug: PB_SpawnCasing("ShotgunCasingGreenLive",28,-5,30,3,3,3);	break;
-					case Shell_Drag: PB_SpawnCasing("ShotgunCasingOrangeLive",28,-5,30,3,3,3);	break;
-				}
+				invoker.lastMode = invoker.shellsMode;
 				if (CountInv("SelectShotgun_Buckshot") >= 1)
 				{
 					setShellsMode(Shell_Buck);
@@ -1184,7 +1160,24 @@ Class PB_Shotgun : PB_WeaponBase
 				{
 					setShellsMode(Shell_Drag);
 				}
-				PB_SetShellSprite("SHMG","SHMA","SHMF");
+				PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",10,1);
+				PB_SetMagUnloaded(false);
+				PB_SetMagEmpty(false);
+			}
+			SHTM H 1 A_Startsound("weapons/shotgunmag/magin", 19,CHANF_OVERLAP);
+			SHTM IJK 1;
+			SHTM LMN 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
+			TNT1 A 0 A_JumpIf(PB_GetChamberEmpty(),"EmptyChamberSwap");
+			SHMA K 0;
+			SHMF K 0;
+			SHMG K 1
+			{
+				switch(invoker.lastMode)
+				{
+					case Shell_Buck: PB_SpawnCasing("ShotgunCasingRedLive",28,-5,30,3,3,3); PB_SetShellSprite("SHMG","SHMG","SHMG");	break;
+					case Shell_Slug: PB_SpawnCasing("ShotgunCasingGreenLive",28,-5,30,3,3,3); PB_SetShellSprite("SHMA","SHMA","SHMA");	break;
+					case Shell_Drag: PB_SpawnCasing("ShotgunCasingOrangeLive",28,-5,30,3,3,3); PB_SetShellSprite("SHMF","SHMF","SHMF");	break;
+				}
 				A_TakeInventory("ShotgunAmmo",1);
 				A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 				A_Startsound("weapons/sgmvpump",19,CHANF_OVERLAP); 
@@ -1196,7 +1189,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetRoll(roll-0.4,SPF_INTERPOLATE);
 				A_SetPitch(pitch+0.1,SPF_INTERPOLATE);
 			}
-			SHTG M 2;
+			SH0G M 2;
 			SHMG L 1
 			{
 				A_SetRoll(roll+0.4,SPF_INTERPOLATE);
@@ -1210,11 +1203,10 @@ Class PB_Shotgun : PB_WeaponBase
 			}	
 			SHMG JI 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-			TNT1 A 0 PB_AmmoIntoMag("ShotgunAmmo","PB_Shell",10,1);
 		ReloadMagSwapFinished:
 			TNT1 A 0 pb_postwheel();
 			SHTM OPQR 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
-			SHTG EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
+			SH0G EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0
 			{
 				A_SetInventory("Reloading",0);
@@ -1224,6 +1216,7 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			TNT1 A 0 pb_postwheel();
 			TNT1 A 0 A_Refire();
+			TNT1 A 0 PB_SetReloading(false);
 			Goto Ready3;
 		
 	//End of transplant	

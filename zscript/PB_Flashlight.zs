@@ -131,16 +131,16 @@ class PB_FPP_Holder : Inventory
 	
 	const debuggerMode = 0;
 	
-	const flashlightChargeMax = 100.0;
+	const flashlightChargeMax = 90.0;
 	
 	//100 / 1.1111 = 90 seconds, not exact but you can't tell
-	const flashlightDrainTime = 1.1111 / float(ticrate); 
+	const flashlightDrainTime = 1.0 / float(ticrate); 
 	
 	//100 / 25.0 = 4 seconds
-	const flashlightChargeTime = 25.0 / float(ticrate);
+	const flashlightChargeTime = 3.0 / float(ticrate);
 	
 	//100 / 12.5 = 8 seconds
-	const flashlightChargeTimeSlow = 12.5 / float(ticrate);
+	const flashlightChargeTimeSlow = 1.5 / float(ticrate);
 	
 	double SimpleSpline(double value)
 	{

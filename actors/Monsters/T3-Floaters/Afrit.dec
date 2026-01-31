@@ -6,8 +6,8 @@ Actor PB_Afrit //replaces Cacodemon
   Health 450
   Speed 6
   FastSpeed 5
-  Radius 24
-  Height 63
+  Radius 31
+  Height 56
   PainChance 50
    PainChance "Avoid", 100
 	PainChance "Kick", 200
@@ -81,11 +81,8 @@ Actor PB_Afrit //replaces Cacodemon
 		Stop
    
   Spawn:
-	FRIT A 1 ACS_NamedExecuteAlways("MonsterPerformanceMode", 0, 0, 0, 0)//Check Effects
-	
-    FRIT A 0
-    FRIT AABB 4 Bright A_Look
-    Goto Spawn+3
+    FRIT AAABBBCCCDDD 4 Bright A_Look
+    Loop
   Idle:
     FRIT ABCD 4 Bright A_Look
     Loop

@@ -119,7 +119,6 @@ GameInfo
 	"TiltPlusPlusHandler",
 	"DEDashJumpHandler",
 	"SpeedoMeterHandler",
-	"WallSlideHandler",
 	//"PB_SpecialWheelHandler"
 	"gb_EventHandler",
 	"gb_PreviousWeaponEventHandler",
@@ -199,7 +198,7 @@ DoomEdNums
 	//Weapons
 	23027 = PB_QuickLauncherAmmo
 	23028 = PB_GrenadeAmmo
-	23029 = PB_LeechGrenadeAmmo
+	23029 = PB_LeechPickup
 	23030 = PB_ProxMineAmmo
 	23031 = PB_StunGrenadeAmmo
 	23032 = PB_Axe
@@ -274,12 +273,12 @@ DoomEdNums
 	23093 = PB_MechDemon
 	23094 = PB_Spectre
 	23095 = PB_VoidSpectre
-	23096 = PB_Arachnotron
+	23096 = PB_Arachnotron1
 	23097 = PB_EliteArachnotron
 	23098 = PB_InfernalArachnotron
 	23099 = PB_Arachnophyte
 	23100 = Aracnorb
-	23101 = PB_Mancubus
+	23101 = PB_Mancubus1
 	23102 = PB_Volcabus
 	23103 = PB_Daedabus
 	23104 = PB_Cacodemon
@@ -304,7 +303,7 @@ DoomEdNums
 // 	23124 = PB_Icevile
 // 	23125 = PB_FleshWizard
 	23126 = PB_Hellion
-	23127 = PB_Cyberdemon
+	23127 = PB_Cyberdemon1
 	23128 = PB_Annihilator
 	23129 = PB_Mastermind
 	23130 = PB_Demolisher

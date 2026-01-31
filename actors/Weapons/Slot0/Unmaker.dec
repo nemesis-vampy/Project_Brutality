@@ -10,7 +10,7 @@ Inventory.MaxAmount 1
 
 ACTOR UnmakerOverchargeCounter: Ammo
 {
-Inventory.MaxAmount 100
+Inventory.MaxAmount 600
 }
 
 ACTOR UnmakerSpawner: CustomInventory
@@ -68,7 +68,7 @@ ACTOR PB_Unmaker : PB_Weapon
 	+WEAPON.NOAUTOFIRE	
 	+WEAPON.AMMO_OPTIONAL
 	scale .5
-	Inventory.PickupMessage "Sinister Unmaker (Slot 0)"
+	Inventory.PickupMessage "What the fuck is this? (Slot 0)"
 	PB_WeaponBase.respectItem "RespectUnmaker"
 	States
 	{		
@@ -169,12 +169,12 @@ ACTOR PB_Unmaker : PB_Weapon
 		}
 		TNT1 A 0 {
 		A_ClearOverlays(5);
-		A_Overlay(9,"UnmakerOverchargeTimer");
+		A_Overlay(9,"UnmakerOverchargeTimer",true);
 		}
 		UNOG ABCDEFGHIJ 1 A_DoPBWeaponAction
 		TNT1 A 0 {
 		A_ClearOverlays(5);
-		A_Overlay(9,"UnmakerOverchargeTimer");
+		A_Overlay(9,"UnmakerOverchargeTimer",true);
 		}
 		UNOG KLMNOPQRST 1 A_DoPBWeaponAction
 		Goto ReadyToFire2+1
@@ -182,7 +182,6 @@ ACTOR PB_Unmaker : PB_Weapon
 
 	Select:
 		TNT1 A 0
-		TNT1 A 0 PB_ResetBarrelTokens
 		TNT1 A 0 {
 		A_WeaponOffset(0,32);
 		A_SetRoll(0);
@@ -209,7 +208,7 @@ WeaponSpecial:
 		return state ("");
 		}	
 		TNT1 A 0 {
-		if(CountInv("UnmakerOverchargeCounter")<100) { A_Print("Not enough souls, absorb them with the beam or orbs."); return state ("RunOut");} 
+		if(CountInv("UnmakerOverchargeCounter")<600) { A_Print("Not enough souls, absorb them with the beam or orbs."); return state ("RunOut");} 
 		return state ("");
 		}	
 		TNT1 A 0 A_Playsound("UNMSWTC")
@@ -272,7 +271,6 @@ SwitchToNormal:
 
 	UnmakerOverchargeTimer:
 		TNT1 A 1 A_TakeInventory("UnmakerOverchargeCounter",1)
-		TNT1 A 5
 		loop
 		
 	CoreIdle:
@@ -837,6 +835,7 @@ SwitchToNormal:
 		TNT1 A 0 A_ClearOverlays(5,7)
 		TNT1 A 0 A_JumpIfInventory("UnmakerFireSelected", 1, "OverchargeAltfire")
 			TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "Runout")
+		TNT1 A 0 A_StartSound("unmalt",4,CHANF_OVERLAP)
 		UNHR M 1 BRIGHT A_FireCustomMissile("UnmakerDoomSeeker", 0, 0, 0, -10, 0, 0)
 		TNT1 A 0 A_TakeInventory("PB_DTech", 4)
 		UNHR NN 1 BRIGHT
@@ -846,6 +845,7 @@ SwitchToNormal:
 		Goto StopDoomSeeker
 	Althold2:
 		TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "StopDoomSeeker")
+		TNT1 A 0 A_StartSound("unmalt",4,CHANF_OVERLAP)
 		UNHR M 1 BRIGHT A_FireCustomMissile("UnmakerDoomSeeker", 0, 0, 0, -10, 0, 0)
 		TNT1 A 0 A_TakeInventory("PB_DTech", 4)
 		UNHR NN 1 BRIGHT
@@ -855,6 +855,7 @@ SwitchToNormal:
 		Goto StopDoomSeeker
 	Althold3:
 		TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "StopDoomSeeker")
+		TNT1 A 0 A_StartSound("unmalt",4,CHANF_OVERLAP)
 		UNHR M 1 BRIGHT A_FireCustomMissile("UnmakerDoomSeeker", 0, 0, 0, -10, 0, 0)
 		TNT1 A 0 A_TakeInventory("PB_DTech", 4)
 		UNHR NN 1 BRIGHT
@@ -864,6 +865,7 @@ SwitchToNormal:
 		Goto StopDoomSeeker
 	Althold4:
 		TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "StopDoomSeeker")
+		TNT1 A 0 A_StartSound("unmalt",4,CHANF_OVERLAP)
 		UNHR M 1 BRIGHT A_FireCustomMissile("UnmakerDoomSeeker", 0, 0, 0, -10, 0, 0)
 		TNT1 A 0 A_TakeInventory("PB_DTech", 4)
 		UNHR NN 1 BRIGHT
@@ -873,6 +875,7 @@ SwitchToNormal:
 		Goto StopDoomSeeker
 	Althold5:
 		TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "StopDoomSeeker")
+		TNT1 A 0 A_StartSound("unmalt",4,CHANF_OVERLAP)
 		UNHR M 1 BRIGHT A_FireCustomMissile("UnmakerDoomSeeker", 0, 0, 0, -10, 0, 0)
 		TNT1 A 0 A_TakeInventory("PB_DTech", 4)
 		UNHR N 1 BRIGHT
@@ -1051,7 +1054,7 @@ Actor UnmakerLaser: FastProjectile
 	A_SpawnItemEx("DTechBurningPiece3", random (-45, 45), random (-45, 35), 0, 0, 0, 0, 0, 128, 150);
 	A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,180);
 	A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,180);
-	A_explode(20, 100);
+	A_explode(20, 100, 0);
 	}
 	//TNT1 AAA 0 A_SpawnItemEx("ObeliskTrailSpark", random(-8, 8), random(-8, 8), random(-2,2), 0, 0, 0, 0, 128, 0)
 	Stop
@@ -1097,7 +1100,6 @@ ACTOR UnmakerDoomSeeker
 	Height 4
 	Radius 4
 	DeathSound "unmbal"
-	SeeSound "unmalt"
 	//RenderStyle Add
 	DamageType "Fire"
 	Scale 0.24
@@ -1130,7 +1132,7 @@ ACTOR UnmakerDoomSeeker
 		TNT1 AA 0 A_CustomMissile ("PBExplosionparticles", 0, 0, random (0, 360), 2, random (40, 90))
 		EXPL AA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAA 0 A_CustomMissile ("FireworkSFXUnmaker", 2, 0, random (0, 360), 2, random (10, 80))
-		TNT1 A 0 A_explode(35, 80)
+		TNT1 A 0 A_explode(35, 80, 0)
 		TNT1 A 0 A_SpawnItemEx("ObeliskTrailSpark", random(-8, 8), random(-8, 8), random(-2,2), 0, 0, 0, 0, 128, 0)
 		TNT1 A 0 BRIGHT A_SpawnItem("RedLightningTrial",0)
 		HRX2 A 0 {
@@ -1181,7 +1183,7 @@ Actor OverchargeLaser : fastprojectile
 	//TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx("OverchargeGroundSpike",frandom(-15,15),frandom(-15,15),0,0,0,0,0,0,150)
 	TNT1 AA 0 A_SpawnItemEx("OverchargeGroundLump",frandom(-30,30),frandom(-30,30),0,0,0,0,0,0,150)
-	TNT1 A 0 A_explode(20, 100)
+	TNT1 A 0 A_explode(20, 100, 0)
 	Stop
 	Explode1:
 	TNT1 A 0{
@@ -1215,7 +1217,7 @@ Actor OverchargeLaser : fastprojectile
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx("OverchargeGroundSpikeG",frandom(-15,15),frandom(-15,15),0,0,0,0,0,0,150)
 	TNT1 AA 0 A_SpawnItemEx("OverchargeGroundLumpG",frandom(-30,30),frandom(-30,30),0,0,0,0,0,0,150)
-	TNT1 A 0 A_explode(20, 100)
+	TNT1 A 0 A_explode(20, 100, 0)
 	TNT1 A 0 A_Jump(256,"Explode1","Explode2",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 	Stop
 	Explode1:
@@ -1299,14 +1301,14 @@ states
 		UNOG U 1 BRIGHT A_SpriteOffset(0,40)
 		UNOG U 1 BRIGHT A_SpriteOffset(0,30)
 		UNOG U 1 BRIGHT A_SpriteOffset(0,20) 
-		TNT1 A 0 A_Explode(20,20)
+		TNT1 A 0 A_Explode(20,20,0)
 		UNOG U 3 BRIGHT A_SpriteOffset(0,15)
 		UNOG U 3 BRIGHT A_SpriteOffset(0,10)
 		UNOG U 4 BRIGHT A_SpriteOffset(0,7) 
-		TNT1 A 0 A_Explode(20,20)
+		TNT1 A 0 A_Explode(20,20,0)
 		UNOG U 60 BRIGHT A_SpriteOffset(0,5) 
 		TNT1 A 0 {
-		A_Explode(50,50);
+		A_Explode(50,50,0);
 		A_StartSound("FAREXPL", CHAN_AUTO|CHANF_OVERLAP);
 		Radius_Quake (3, 8, 0, 15, 0);
 		A_SpawnItem("ExcavatorExploFX");

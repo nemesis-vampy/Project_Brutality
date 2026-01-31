@@ -5,7 +5,7 @@ class PB_ArmorBonus : PB_Armor2
 	Default
 	{
 		//$Category Project Brutality - Health and Armor
-		//$Sprite BON2A0
+		//$Sprite B0N2A0
 		Tag "Armor Bonus";
 		Armor.SaveAmount 2;
 		Armor.MaxSaveAmount 500;
@@ -17,8 +17,8 @@ class PB_ArmorBonus : PB_Armor2
 	States
 	{
 		Spawn:
-			BON2 A 16 BRIGHT;
-			BON2 BCDEFGH 2 BRIGHT; 
+			B0N2 AAAAAAA 2;
+			B0N2 BCDEFGH 2; 
 			loop;
 	}
 }

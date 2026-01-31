@@ -65,6 +65,7 @@
 
 //Pinky
 #include BMAP/BruiserDemon.txt
+#include BMAP/VoidSpectre.txt
 
 //Caco
 #include BMAP/InfernalCacodemon.txt
@@ -108,6 +109,8 @@ brightmap sprite BAR1J0 { map "brightmaps/Decoration/BAR1J0.png" }
 brightmap sprite BAR1K0 { map "brightmaps/Decoration/BAR1K0.png" }
 brightmap sprite BAR1L0 { map "brightmaps/Decoration/BAR1L0.png" }
 brightmap sprite BAR1M0 { map "brightmaps/Decoration/BAR1M0.png" }
+brightmap sprite BBLAA0 { map "brightmaps/Decoration/BBLAA0.png" }
+brightmap sprite BBLAC0 { map "brightmaps/Decoration/BBLAC0.png" }
 //Bloody Barrel
 brightmap sprite BARBA0 { map "brightmaps/Decoration/BAR1A0.png" }
 brightmap sprite BARBB0 { map "brightmaps/Decoration/BAR1B0.png" }

@@ -1,11 +1,13 @@
 class PB_Rail : LineTracer
 {
-	int wallbangCount;
+	double lastDist;
+	int hitnum;
 	array<Actor> hitActors;
 	array<Double> hitX, hitY, hitZ;
 	
 	override ETraceStatus TraceCallback()
 	{
+		hitnum++;
 		if(results.HitType == TRACE_HitActor && results.HitActor.bSHOOTABLE)
 		{
 			hitActors.Push(results.HitActor);
@@ -16,15 +18,21 @@ class PB_Rail : LineTracer
 		}
 		if(results.HitType == TRACE_HitWall || results.HitType == TRACE_HitCeiling || results.HitType == TRACE_HitFloor)
 		{
-			if(wallbangCount > 0 && results.HitType == TRACE_HitWall)
+			return TRACE_Stop;
+			/*if(lastDist == 0)
 			{
-				wallbangCount--;
-				return TRACE_Skip;
+				lastDist = results.distance;
+				return 4;
+			}
+			else if(results.distance - lastDist < 64 && lastDist > 0)
+			{
+				lastDist = 0;
+				return 4;
 			}
 			else
 			{
-				return TRACE_Stop;
-			}
+				return TRACE_Abort;
+			}*/
 		}
 		return TRACE_Skip;
 	}
@@ -79,7 +87,7 @@ class PB_RailImpact : Actor
 		TNT1 A 2 A_SpawnItemEx("GaussCannonPuffSiege",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
 		TNT1 A 0;
 		TNT1 A 0 A_StopSound(6);
-		TNT1 A 0 A_Explode(120,15);
+		TNT1 A 0 A_Explode(120,15,0);
 		TNT1 A 0 A_SpawnItem("WhiteShockwave");
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);

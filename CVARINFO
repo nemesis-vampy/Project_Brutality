@@ -55,21 +55,20 @@ server int pb_ammo_filter = 0;
 server int pb_ammobox_filter = 0;
 server int pb_powerup_filter = 0;
 
+server bool pb_disable_decorations = false;
+server bool pb_decorative_flame_barrels = false;
+
 user bool pb_powerup_shaders = false;
 user float pb_nightvision_exposure = 1.0;
 
 server bool pb_experimental = false;
-user bool py_weaponwheel_freeze = true;
-user int py_weaponwheel_invert = 0;
-user bool py_weaponwheel_musicfade = false;
 user bool pb_toggle_aim_hold = true;
 
 server bool pb_performance_fire = false;
 user bool pb_exaggeratedrecoil = true;
 user float pb_exaggeratedrecoilmul = 0.2;
-user int pb_floorwallblooddrawdist = 800;
 
-server int PB_WeaponDrops = 1;
+server int pb_weapondrops = 1;
 server int pb_naillifetime = 5;
 
 //Weapon Keep CVars
@@ -98,7 +97,7 @@ user float cl_step_delaymul = 1.0;
 //Gameplay Option
 user int SingleDualFire = 0;
 
-server int nodoomguytalk = 0;
+server bool nodoomguytalk = false;
 server bool pb_disabledynamicavoid = false; //disables the more dynamic avoids on monsters
 
 //Weapon Recoil
@@ -199,151 +198,27 @@ server bool nashgore_splat = true;
 
 
 /////////////////////////////////
-//Hard-Coded Movement for Project Brutality
+//Movement/Bobbing Options
 server 	bool 	pb_hazardmovement 		= true;
-server	int		pb_movetype				= 0;
-server	float	pb_friction				= 1.6;
-server 	float	pb_maxgroundspeed		= 15.1;
-server 	float	pb_maxhopspeed			= 28;
-server	float	pb_walkspeed			= 0.5;
-server	float	pb_crouchspeed			= 0.5;
-server 	float	pb_strafemodifier		= 1.33;
-server	bool	pb_dropprevention		= false;
-
-server 	float 	pb_jumpheight			= 8.0;
-server	float	pb_setgravity			= 1.0;
-server 	bool 	pb_autojump 			= true;
-
-
-server 	int 	pb_doublejump 			= 2;
-server 	float 	pb_doublejumpheight 	= 1.0;
-server 	bool 	pb_wjdoublejumprenew	= false;
-
-
-server  bool 	pb_landing				= true;
-server	float	pb_landingsens			= 6.0;
-server	float	pb_landingspeed			= 0.25;
-server	float	pb_minlanding			= 0.5;
-
-server	bool	pb_dash					= true;
 user	bool	pb_dasheffect			= true;
-user	bool	pb_doubletap			= false;		
-user	int		pb_maxtaptime			= 10;
-server	float	pb_dashboost			= 15.0;
-server	float	pb_dashheight			= 0.6;
+user	bool	pb_bd_slide				= false;
 
-server	bool	pb_airdash				= false;
-server	float	pb_adashboost			= 10;
-server	float	pb_adashfriction		= 1;
-
-server	bool	pb_wjump				= false;
-server	float	pb_wjumpboost			= 1.5;
-server	float	pb_multipledashes		= 0.0;
-server	float	pb_wjumpheight			= 0.75;
-
-server	bool	pb_wslide				= false;
-server	float	pb_wslidevelz			= 0.9;
-
-
-server	bool	pb_crouchslide			= true;
-server 	int 	pb_cslidetype			= 0;
-server 	float 	pb_cslidestrength		= 1.5;
-server 	int 	pb_cslideduration		= 10;
-server 	float 	pb_qslideaccel			= 6.0;
-server 	int 	pb_qslideduration		= 8;
-
-//Ledge Grabbing
-server	bool	pb_ledgegrab			= true;
-
-/////////////////////////////////
-//General
-
-server	int		zm_movetype				= 0;
-server	float	zm_friction				= 8.0;
-server 	float	zm_maxgroundspeed		= 12;
-server 	float	zm_maxhopspeed			= 28;
-server	float	zm_walkspeed			= 0.7;
-server	float	zm_crouchspeed			= 0.7;
-server 	float	zm_strafemodifier		= 1.0;
-server	bool	zm_dropprevention		= false;
-
-////////////////
-//Jumping
-server 	float 	zm_jumpheight			= 5.5;
-server	float	zm_setgravity			= 0.56;
-server 	float 	pk_bhopjumpheight		= 0.85;
-server 	bool 	zm_autojump 			= true;
-
-//Double Jump
-server 	int 	zm_doublejump 			= 0;
-server 	float 	zm_doublejumpheight 	= 1.2;
-server 	bool 	zm_wjdoublejumprenew	= false;
-
-//Ramp Jump
-server 	bool 	zm_rampjump				= false;
-server 	float 	zm_rjumpmulti			= 1.0;
-
-
-
-//Jump Landing
-server  bool 	zm_landing				= false;
-server	float	zm_landingsens			= 6.0;
-server	float	zm_landingspeed			= 0.25;
-server	float	zm_minlanding			= 0.5;
-
-////////////////
-
-//Dashing - WallJumping - WallSliding
-server	bool	zm_dash					= false;
-user	bool	zm_doubletap			= true;		
-user	int		zm_maxtaptime			= 10;
-server	float	zm_dashboost			= 1.5;
-server	float	zm_dashheight			= 0.75;
-
-server	bool	zm_airdash				= false;
-server	float	zm_adashboost			= 10;
-server	float	zm_adashfriction		= 1;
-
-server	bool	zm_wjump				= false;
-server	float	zm_wjumpboost			= 1.5;
-server	float	zm_multipledashes		= 0.0;
-server	float	zm_wjumpheight			= 0.75;
-
-server	bool	zm_wslide				= false;
-server	float	zm_wslidevelz			= 0.9;
-
-//CrouchSliding
-server	bool	zm_crouchslide			= false;
-server 	int 	zm_cslidetype			= 0;
-server 	float 	zm_cslidestrength		= 1.5;
-server 	int 	zm_cslideduration		= 13;
-server 	float 	zm_qslideaccel			= 6.0;
-server 	int 	zm_qslideduration		= 8;
-
-//Ledge Grabbing
-server	bool	zm_ledgegrab			= false;
-
-
-////////////////
 //Bobbing
-
-user	bool	zm_stillbob				= false;
-user	int		zm_fullbobspeed			= 8;
+user	bool	pb_stillbob				= false;
+user	int		pb_fullbobspeed			= 8;
 
 //Sway
-user	bool	zm_yawsway				= true;
-user 	float	zm_yawswayspeed			= 2;
-user 	float	zm_yawswayrange			= 2;
-user 	float	zm_yawswayfriction		= 10;
-user	bool	zm_yawswaydirection		= false;
-
-user	float	zm_pitchswaytype		= 0;
-
+user	bool	pb_yawsway				= true;
+user 	float	pb_yawswayspeed			= 2;
+user 	float	pb_yawswayrange			= 2;
+user 	float	pb_yawswayfriction		= 10;
+user	bool	pb_yawswaydirection		= false;
+user	float	pb_pitchswaytype		= 0;
 
 //Y Offset
-user 	int		zm_offsetspeed			= 75;
-user 	int		zm_offsetmaxrange		= 30;
-user 	bool	zm_offsetdirection		= false;
+user 	int		pb_offsetspeed			= 75;
+user 	int		pb_offsetmaxrange		= 30;
+user 	bool	pb_offsetdirection		= false;
 
 ////////////////
 //Other
@@ -463,7 +338,7 @@ user float gb_mouse_sensitivity_y = 1.0;
 
 user bool gb_zabor_enabled = true;
 
-user bool gb_colored_ui   	= true;
+user bool gb_colored_ui   	= false;
 
 // Custom weapon order storage /////////////////////////////////////////////////////////////////////
 

@@ -54,7 +54,7 @@ class PB_PlayerPrawn : PlayerPawnBase
 		Player.GruntSpeed 24;
 		Player.DisplayName "Project Brutality";
 		Player.CrouchSprite "PLYC";
-		Player.ViewBob 0.0;
+		//Player.ViewBob 0.0;
 
 		Player.WeaponSlot 1,"PB_Chainsaw","PB_Axe","PB_Fists";
 		Player.WeaponSlot 2,"PB_Pistol","PB_Revolver","PB_MP40","PB_SMG","PB_Deagle";
@@ -249,10 +249,11 @@ class PB_PlayerPrawn : PlayerPawnBase
 		PLAY D 4;
 		goto StandStillLoop;
 	Missile:
-		PLAY E 6 BRIGHT;
+		PLAY E 12;
 		goto Spawn;
 	Melee:
-		PLAY F 6;
+		PLAY F 2 BRIGHT;
+		PLAY E 4;
 		goto Missile;
 	Pain:
 		PLAY G 4 A_Pain;

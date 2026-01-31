@@ -23,7 +23,7 @@ ACTOR ThrownBarrel {
 				"####" A 1 A_Setroll(roll+22.5)
 				Loop
 			Death:
-				"####" "#" 0 A_SpawnItemEx ("BarrelBlast2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+				"####" "#" 0 A_SpawnItemEx ("BarrelBlast",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				Stop	}}
 				
 ACTOR ThrownIceBarrel : ThrownBarrel {
@@ -36,7 +36,7 @@ ACTOR ThrownIceBarrel : ThrownBarrel {
 				BIR1 A 0
 				Goto Spin
 			Death:
-				"####" "#" 0 A_SpawnItemEx ("IceBarrelBlast2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+				"####" "#" 0 A_SpawnItemEx ("IceBarrelBlast",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				Stop	}}
 				
 ACTOR ThrownFlameBarrel : ThrownBarrel {
@@ -60,7 +60,7 @@ ACTOR ThrownFlameBarrel : ThrownBarrel {
 				"####" A 1 BRIGHT A_Setroll(roll+22.5)
 				Loop
 			Death:
-				"####" "#" 0 A_SpawnItemEx ("FlameBarrelBlast2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+				"####" "#" 0 A_SpawnItemEx ("FlameBarrelBlast",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				Stop	}}
 
 				

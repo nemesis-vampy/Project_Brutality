@@ -60,7 +60,7 @@ Class PB_ZombieSpawner_T2 : PB_MonsterSpawner
 		dropitem "PB_ZombieScientist",255,1;
 		dropitem "PB_ZombieScientistChainsaw",255,1;
 		dropitem "PB_ZombieMan",255,1;
-		dropitem "PB_CarbineZombieman",255,2;
+		dropitem "PB_CarbineZombieman",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)
@@ -88,12 +88,14 @@ Class PB_ZombieSpawner_T3 : PB_MonsterSpawner
 	{
 		PBRandomSpawner.Fallback "PB_ZombieSpawner_T2";
 		PBRandomSpawner.SpawnOverride "pb_zombieman_override";
-		dropitem "PB_HelmetZombieman",255,2;
-		dropitem "PB_PistolZombieman2",255,2;
+		dropitem "PB_PistolZombieman1",255,1;
+		dropitem "PB_HelmetZombieman",255,1;
+		dropitem "PB_PistolZombieman2",255,1;
 		dropitem "PB_ZombieScientist",255,1;
 		dropitem "PB_ZombieScientistChainsaw",255,1;
-		dropitem "PB_CarbineZombieman",255,2;
-		dropitem "PB_ZSpecOps",255,3;
+		dropitem "PB_ZombieMan",255,1;
+		dropitem "PB_CarbineZombieman",255,1;
+		dropitem "PB_ZSpecOps",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)
@@ -123,13 +125,15 @@ Class PB_ZombieSpawner_T4 : PB_MonsterSpawner
 	{
 		PBRandomSpawner.Fallback "PB_ZombieSpawner_T3";
 		PBRandomSpawner.SpawnOverride "pb_zombieman_override";
-		dropitem "PB_HelmetZombieman",255,2;
-		dropitem "PB_PistolZombieman2",255,2;
+		dropitem "PB_PistolZombieman1",255,1;
+		dropitem "PB_HelmetZombieman",255,1;
+		dropitem "PB_PistolZombieman2",255,1;
 		dropitem "PB_ZombieScientist",255,1;
 		dropitem "PB_ZombieScientistChainsaw",255,1;
-		dropitem "PB_CarbineZombieman",255,2;
-		dropitem "PB_ZSpecOps",255,3;
-		dropitem "PB_PlasmaZombie",255,4;
+		dropitem "PB_ZombieMan",255,1;
+		dropitem "PB_CarbineZombieman",255,1;
+		dropitem "PB_ZSpecOps",255,1;
+		dropitem "PB_PlasmaZombie",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)

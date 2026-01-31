@@ -18,7 +18,6 @@ ACTOR DyingBruiser1
 	+FLOORCLIP
 	+NOPAIN
 	+DONTSPLASH
-	Scale 1.1
 	States
 	{
 	Spawn:
@@ -177,7 +176,6 @@ ACTOR DyingBruiser2
 	+FLOORCLIP
 	+NOPAIN
 	+DONTSPLASH
-	Scale 1.1
 	States
 	{
 	Spawn:

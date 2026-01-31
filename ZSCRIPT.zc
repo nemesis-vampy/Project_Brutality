@@ -201,6 +201,9 @@ const MAXITERATIONS = 32676;
 #include "zscript/Monsters/PB_SlowEventHandler.zc"
 #include "zscript/Monsters/PB_FlameEventHandler.zc"
 
+#include "zscript/Monsters/ArchViles/PB_Vile.zsc"
+#include "zscript/Monsters/Revenants/PB_Rev.zsc"
+
 //Effects
 #include "zscript/Effects/Casings.txt"
 #include "zscript/Effects/EmptyMag.txt"
@@ -229,6 +232,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Weapons/Projectiles/BulletDef.EnemyProjectiles.zsc"
 #include "zscript/Weapons/Projectiles/RailGunPj.zs"
 #include "zscript/Weapons/Projectiles/DragonsBreath.zs"
+#include "zscript/Weapons/Projectiles/Leech.zsc"
 #include "zscript/Weapons/Projectiles/Shrapnel.zsc"
 #include "zscript/Weapons/ProxMine.zsc"
 #include "zscript/Weapons/ThrownGrenades.zs"
@@ -294,6 +298,12 @@ const MAXITERATIONS = 32676;
 #include "zscript/Spawner/Ammo/PB_ShellBoxSpawner.zc"
 #include "zscript/Spawner/Ammo/PB_RocketSpawner.zc"
 #include "zscript/Spawner/Ammo/PB_RocketBoxSpawner.zc"
+
+#include "zscript/Spawner/Decorations/PBDeadCacoDemonSpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadDemonSpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadImpSpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadShotgunGuySpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadZombiemanSpawner.zc"
 
 //PBVP
 #include "zscript/PBVP/PBVP.zc"

@@ -1,5 +1,7 @@
 Class PB_RiotShieldGuy : PB_ShotgunGuy
 {
+	actor shieldActor;
+	
 	Default
 	{
 		//$Title Riot Shield Sergeant
@@ -19,6 +21,7 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 	{
 		Super.PostBeginPlay(); // call the super function for virtual functions so we don't break shit if GZdoom update.
 		HitBoxSpawned = False;
+		ShieldActor = Spawn("RiotShieldPhysics");
 	}
 		
 	void HitboxerHandlerRiot()
@@ -52,6 +55,19 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 			//Handle Hitbox system when monster is not shielded
 			//HitboxerHandlerRiot();
 		}
+		
+		if(ShieldActor)
+		{
+			ShieldActor.SetOrigin((Vec2Angle(20,angle),pos.z),false);
+		}
+	}
+	
+	override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
+	{
+		if(ShieldActor) {
+			ShieldActor.Destroy();
+		}
+		Super.Die(source,inflictor,dmgflags,MeansOfDeath);
 	}
 	
 	States
@@ -87,9 +103,6 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 				A_GiveInventory("TypeSergeant", 1);
 			}
 		Stand:
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
-			RPSZ A 8 A_Look();
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ A 8 A_Look();
 			Loop;
 		See:
@@ -98,23 +111,19 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 				EnemyLastSighted = Level.MapTime;
 			}
 		SeeContinue:
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ A 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ AA 1 A_SmartChase(null, null, CHF_DONTTURN);
 			RPSZ A 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ AA 1 A_SmartChase(null, null, CHF_DONTTURN);
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ B 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ BB 1 A_SmartChase(null, null, CHF_DONTTURN);
 			RPSZ B 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ BB 1 A_SmartChase(null, null, CHF_DONTTURN);
 			TNT1 A 0 A_StartSound("humans/step");
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ C 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ CC 1 A_SmartChase(null, null, CHF_DONTTURN);
 			RPSZ C 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ CC 1 A_SmartChase(null, null, CHF_DONTTURN);
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ D 1 A_SmartChase("Missile", "Melee", 0);
 			RPSZ DD 1 A_SmartChase(null, null, CHF_DONTTURN);
 			RPSZ D 1 A_SmartChase("Missile", "Melee", 0);
@@ -127,7 +136,6 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 			TNT1 A 0 A_TakeInventory("Wandering", 71);
 			TNT1 A 0 A_Jump(200, 2);
 			TNT1 A 0 A_StartSound("monsters/zombie/searching", CHAN_AUTO);
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ AAAA 2 A_Look();
 			Goto See;
 		
@@ -137,8 +145,8 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 		////////////////
 		Melee:
 			TNT1 A 0 A_KillChildren("DestroyShield", 0 , "RiotShieldPhysics");
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
-			RHGM A 8 A_FaceTarget();
+			RHGM A 4 A_FaceTarget();
+			RHGM A 4;
 			TNT1 A 0 {
 				A_StartSound("skeleton/swing");
 				A_CustomMeleeAttack(10, "AxeHit", "", "Normal");
@@ -153,28 +161,10 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 			TNT1 A 0 A_CombatDialogueHandler();
 			Goto MissileContinue;
 		Missile:
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer",1, "DialogueCheck");
 			
 		MissileContinue:
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ E 4 A_FaceTarget();
-			RPSZ F 4 BRIGHT {
-				A_StartSound("weapons/pistol");
-				PB_DynamicTailMonster("pistol", "pistol");
-				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
-				A_SpawnProjectile("OrangeLensFlareAlt", 34, 10, 15, 0);
-				//A_SpawnProjectile("PB_PistolBullet", 28, 0, random(-12, 12), 0);
-				A_SpawnItemEx("PB_PistolBullet", 50, 0, 28, 1, 0, 0, random(-12, 12), SXF_MULTIPLYSPEED|SXF_NOCHECKPOSITION|SXF_SETMASTER );
-			}
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
-			RPSZ E 4 {
-				A_FaceTarget();
-				A_GiveInventory("ZombieManAmmo", 1);
-				return A_JumpIfInventory("ZombieManAmmo", 15, "Reload");
-			}
-			RPSZ E 4 A_FaceTarget();
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ F 4 BRIGHT {
 				A_StartSound("weapons/pistol");
 				PB_DynamicTailMonster("pistol", "pistol");
@@ -188,7 +178,7 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 				A_GiveInventory("ZombieManAmmo", 1);
 				return A_JumpIfInventory("ZombieManAmmo", 15, "Reload");
 			}
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
+			RPSZ E 4 A_FaceTarget();
 			RPSZ F 4 BRIGHT {
 				A_StartSound("weapons/pistol");
 				PB_DynamicTailMonster("pistol", "pistol");
@@ -197,7 +187,19 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 				//A_SpawnProjectile("PB_PistolBullet", 28, 0, random(-12, 12), 0);
 				A_SpawnItemEx("PB_PistolBullet", 50, 0, 28, 1, 0, 0, random(-12, 12), SXF_MULTIPLYSPEED|SXF_NOCHECKPOSITION|SXF_SETMASTER );
 			}
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
+			RPSZ E 4 {
+				A_FaceTarget();
+				A_GiveInventory("ZombieManAmmo", 1);
+				return A_JumpIfInventory("ZombieManAmmo", 15, "Reload");
+			}
+			RPSZ F 4 BRIGHT {
+				A_StartSound("weapons/pistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 10, 15, 0);
+				//A_SpawnProjectile("PB_PistolBullet", 28, 0, random(-12, 12), 0);
+				A_SpawnItemEx("PB_PistolBullet", 50, 0, 28, 1, 0, 0, random(-12, 12), SXF_MULTIPLYSPEED|SXF_NOCHECKPOSITION|SXF_SETMASTER );
+			}
 			RPSZ E 4 {
 				A_FaceTarget();
 				A_GiveInventory("ZombieManAmmo", 1);
@@ -216,7 +218,6 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 			}
 			RSP6 ABC 6;
 			TNT1 A 0 A_StartSound("PSRLFIN",3);
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ A 8;
 			Goto See;
 			
@@ -279,14 +280,10 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 			TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Downed");
 			TNT1 A 0 A_TakeInventory("RiotShieldStop", 1);
 			RHGM C 1 A_FaceTarget();
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ D 6 A_Pain();
 		DeployShield:
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ E 8 A_FaceTarget();
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ E 8 A_FaceTarget();
-			TNT1 A 0 A_SpawnItemEx("RiotShieldPhysics", 20, 0, 5, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			RPSZ E 8;
 			Goto See;
 			TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer",1, "See");
@@ -351,5 +348,50 @@ Class PB_RiotShieldGuy : PB_ShotgunGuy
 		TNT1 A 0 A_GiveToTarget("RiotSergeantFatality1", 1);
 		Stop;
 			
+	}
+}
+
+
+class RiotShieldPhysics : Actor
+{
+	Default
+	{
+		Radius 20;
+		Height 44;
+		PainChance 255;
+		+NODAMAGE
+		+NOGRAVITY
+		+SHOOTABLE
+		+NOTELEPORT
+		+NODAMAGETHRUST
+		+DONTRIP
+		+NOBLOOD
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 1;
+			Loop;
+		Pain:
+			TNT1 A 1 A_PlaySound ("barrel/pain");
+			Goto Spawn;
+		Pain.DestroyShield:
+			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
+			Stop;
+		Pain.Kick:
+		Pain.ExtremePunches:
+		Pain.Fatality:
+			TNT1 A 1 A_DamageMaster(1, "DestroyShield");
+			Stop;
+		Pain.Plasma:
+		Pain.Greenfire:
+				TNT1 A 0 A_Playsound("Sparks/Spawn");
+				TNT1 AA 1 BRIGHT A_SpawnItem("BlueFlare",0,43);
+				TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 30, 0, random (0, 360), 0, random (0, 360));
+				TNT1 AAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 0, random (0, 360));
+				TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 0, random (0, 360));
+				TNT1 AAA 2 BRIGHT A_SpawnItem("BlueFlare",0,43);
+				Stop;
+
 	}
 }

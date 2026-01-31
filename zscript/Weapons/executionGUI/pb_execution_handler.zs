@@ -41,7 +41,7 @@ class pb_ExecutionHandler : EventHandler
   {
     _projection  	= 	new("pb_ProjScreen");
     _isInitialized 	= 	true;
-	ExecutionIcon 	=	texman.checkfortexture("GRAPHICS/HUD/Icons/1KILLS.png");
+	ExecutionIcon 	=	texman.checkfortexture("GRAPHICS/HUD/Icons/Execution.png");
 	AxeIcon			=	texman.checkfortexture("GRAPHICS/HUD/Icons/AxeCount.png");
 	_Enabled		=	Cvar.getcvar("pb_execution_box",players[consolePlayer]);
 	_IndicatorType	=	Cvar.getcvar("pb_execution_indicatorType",players[consolePlayer]);
@@ -109,7 +109,7 @@ class pb_ExecutionHandler : EventHandler
 		if(null != player.FindInventory("PB_PowerStrength") && (targetCurrentHealth <= targetMaxHealth*0.25 || targetCurrentHealth <= 150)) 
 			return true;
 		
-		if(targetCurrentHealth < targetMaxHealth*0.20 || targetCurrentHealth <= 60) 
+		if(targetCurrentHealth < targetMaxHealth*0.20 || targetCurrentHealth <= 54) 
 			return true;
 		
 		return false;

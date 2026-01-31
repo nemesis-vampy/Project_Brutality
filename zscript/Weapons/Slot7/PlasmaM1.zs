@@ -3,19 +3,18 @@ Class PB_M1Plasma : PB_WeaponBase
 	default
 	{
 		//$Category Project Brutality - Weapons
-		//$Sprite PLASA0
+		//$Sprite PL4SA0
 		weapon.slotnumber 7;							
 		weapon.ammotype1 "PB_Cell";	
 		Weapon.AmmoGive1 60;		
 		weapon.ammotype2 "PlasmaAmmo";
 		PB_WeaponBase.AmmoTypeLeft "LeftPlasmaAmmo";
-		Inventory.MaxAmount 3;
-		PB_WeaponBase.unloadertoken "PlasmaRifleHasUnloaded";
+		Inventory.MaxAmount 2;
 		PB_WeaponBase.respectItem "RespectPlasmaGun";	
 		PB_WeaponBase.DualWieldToken "DualWieldingPlasma";	
 		inventory.pickupmessage "UAC-M1 Plasma Rifle (Slot 7)";
 		Inventory.PickupSound "7LSPICK";
-		Inventory.AltHUDIcon "PLASA0";
+		Inventory.AltHUDIcon "PL4SA0";
 		Tag "UAC-M1 Plasma Rifle";
 		Scale 0.51;
 		FloatBobStrength 0.5;
@@ -28,7 +27,7 @@ Class PB_M1Plasma : PB_WeaponBase
 	{
 		Spawn:
 			VLAS A 0 NoDelay;
-			PLAS A 10 A_PbvpFramework("VLAS");
+			PL4S A 10 A_PbvpFramework("VLAS");
 			"####" "#" 0 A_PbvpInterpolate();
 			loop;
 		
@@ -127,13 +126,13 @@ Class PB_M1Plasma : PB_WeaponBase
 			
 		
 		Deselect:
-			TNT1 A 0 PB_jumpIfHasBarrel("PlaceBarrel","PlaceFlameBarrel","PlaceIceBarrel");
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_Setinventory("Unloading",0);
 			TNT1 A 0 A_Setinventory("HasPlasmaWeapon",0);
 			TNT1 A 0 A_SetInventory("PlasmaGunSelected",0);
 			TNT1 A 0 A_Zoomfactor(1.0);
 			TNT1 A 0 A_StopSound(6);
+			TNT1 A 0 A_StopSound(26);
 			TNT1 A 0 A_startsound("PLSOFF", 4);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma",1,"DeselectDualWield");
 			PLSD DCBA 1;
@@ -149,15 +148,17 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 A_startsound("PLSIDLE",6,CHANF_LOOPING);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "ReadyDualWield");
 		ReadyToFire:
-			PLSG A 0 A_Overlay(60, "AmmoCounter");
+			P1SG A 0 A_Overlay(60, "AmmoCounter");
 			4LSG B 0 A_DoPBWeaponAction();
-			4LSG BCDEFGHI 2 A_DoPBWeaponAction();
+			4LSG BBCCDDEEFFGGHHII 1 A_DoPBWeaponAction();
 			//TNT1 A 0 A_SelectWeapon("PB_Pulsecannon")
 			Loop;
 		GunEmpty:
-			P1R0 A 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD, PBWEAP_UNLOADED);
+			4LSG J 1 {
+				A_ClearOverlays(60,61);
+				return A_DoPBWeaponAction(WRF_ALLOWRELOAD, PBWEAP_UNLOADED);
+			}
 			Loop;
-		
 		////////////////////////////////////////////////////////////////////////
 		// Main Attacks states
 		////////////////////////////////////////////////////////////////////////
@@ -187,29 +188,28 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 1 {
 				A_OverlayPivotAlign(PSP_WEAPON,PSPA_CENTER,PSPA_TOP);
 				A_OverlayPivotAlign(60,PSPA_CENTER,PSPA_TOP);
-				A_OverlayScale(PSP_WEAPON,1.05,1.05,WOF_INTERPOLATE);
-				A_OverlayScale(60,1.05,1.05,WOF_INTERPOLATE);
 				A_OverlayOffset(PSP_WEAPON,0,32);
 				A_OverlayOffset(60,0,2,WOF_KEEPX|WOF_ADD);
 			}
 			TNT1 A 1 {
-				A_OverlayScale(PSP_WEAPON,1.00,1.00,WOF_INTERPOLATE);
-				A_OverlayScale(60,1.00,1.00,WOF_INTERPOLATE);
+				A_OverlayScale(PSP_WEAPON,1.05,1.05,WOF_INTERPOLATE);
+				A_OverlayScale(60,1.05,1.05,WOF_INTERPOLATE);
 				A_OverlayOffset(PSP_WEAPON,0,32);
 				A_OverlayOffset(60,0,-1,WOF_KEEPX|WOF_ADD);
 			}
 			TNT1 A 0 {
+				A_OverlayScale(PSP_WEAPON,1.00,1.00,WOF_INTERPOLATE);
+				A_OverlayScale(60,1.00,1.00,WOF_INTERPOLATE);
 				A_OverlayOffset(60,0,-1,WOF_KEEPX|WOF_ADD);
 			}
 			stop;
 		
 		MuzzleFlashCenter:
-			PLSF D 1 BRIGHT A_SetWeaponFrame(3 + random(0, 2));
-			PLSF G 1 BRIGHT A_SetWeaponFrame(6 + random(0, 2));
+			P1SF D 1 BRIGHT {A_SetWeaponFrame(3 + random(0, 2)); A_GunFlash();}
+			P1SF G 1 BRIGHT {A_SetWeaponFrame(6 + random(0, 2)); A_GunFlash();}
 			stop;
 		
 		Fire:
-			TNT1 A 0 PB_jumpIfHasBarrel("ThrowBarrel","ThrowFlameBarrel","ThrowIceBarrel");
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
@@ -217,8 +217,8 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_Setinventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FireDualWield");
-			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
-			PLSF A 1 BRIGHT {	
+			TNT1 A 0 PB_jumpIfNoAmmo();
+			P1SF A 1 BRIGHT {	
 				A_Overlay(-5,"FireRecoil");
 				PB_FireOffset();
 				A_AlertMonsters();
@@ -228,19 +228,20 @@ Class PB_M1Plasma : PB_WeaponBase
 				PB_GunSmoke(0,0,0);
                 PB_MuzzleFlashEffects(0, 0, 0, "1265ff");
 				PB_LowAmmoSoundWarning("hdmr");
-				A_Takeinventory("PlasmaAmmo",1);
+				PB_TakeAmmo("PlasmaAmmo",1,0);
 				A_ZoomFactor(.98);
-				A_GunFlash();
 				PB_WeaponRecoil(-0.24,+0.06);
 				A_Overlay(60, "AmmoCounterTens.Firing");
 				A_Overlay(-3,"MuzzleFlashCenter");
+				A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
+				A_OverlayRenderStyle(-3,STYLE_Add);
 				}
-			PLSF B 1 bright {
+			P1SF B 1 bright {
 				A_ZoomFactor(.99);
 				PB_FireOffset();
 				PB_WeaponRecoil(-0.24,+0.06);
 				}
-			PLSF C 1 { 
+			P1SF C 1 { 
 				A_ZoomFactor(1.0);
 				PB_FireOffset();
 				PB_WeaponRecoil(-0.24,+0.06);
@@ -249,8 +250,8 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 A_StartSound("weapons/plasma/startup", 15,CHANF_OVERLAP);
 			TNT1 A 0 A_Setinventory("PB_LockScreenTilt",1);
 			TNT1 A 0 A_StartSound("PLSCOOL",CHAN_VOICE);
-			PLSG BCDEEEEEEEEEEE 1 A_FireProjectile("SmokeSpawner",0,0,0,5);
-			PLSG DCB 1 A_SetRoll(roll-0.5);
+			P1SG BCDEEEEEEEEEEE 1 A_FireProjectile("SmokeSpawner",0,0,0,5);
+			P1SG DCB 1 A_SetRoll(roll-0.5);
 			TNT1 A 0 A_Setinventory("PB_LockScreenTilt",0);
 			Goto Ready3;
 		
@@ -277,8 +278,11 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_OverlayOffset(PSP_WEAPON,0,32);
 			}
 			stop;
+		AltHoldFlash:
+			PLSM ABCD 1 BRIGHT A_GunFlash();
+			stop;
 		AltFire:
-			TNT1 A 0 PB_jumpIfHasBarrel("PlaceBarrel","PlaceFlameBarrel","PlaceIceBarrel");
+			TNT1 A 0 PB_jumpIfNoAmmo(min:20);
 			PLHE A 1 A_ClearOverlays(60, 65);
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
@@ -286,14 +290,13 @@ Class PB_M1Plasma : PB_WeaponBase
 				PB_HandleCrosshair(76);
 				A_Setinventory("PB_LockScreenTilt",0);
 			}
-			TNT1 A 0 PB_jumpIfNoAmmo("Reload",20);
 			TNT1 A 0 {
 				A_StopSound(6);
 				A_AlertMonsters();
 				A_StartSound("ULTCHAR", CHAN_AUTO, CHANF_OVERLAP);
 			}
 			
-			PLHE ABCD 1;
+			PLHE ABCD 1 A_GunFlash2();
 			PLHE E 1 BRIGHT {
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
 				A_StartSound("PLSC_1",CHAN_AUTO, CHANF_OVERLAP);
@@ -303,20 +306,28 @@ Class PB_M1Plasma : PB_WeaponBase
 			PLHE F 2 BRIGHT {
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
 				A_StartSound("PLSC_2",CHAN_AUTO, CHANF_OVERLAP);
+				A_GunFlash2();
 			}
 			//TNT1 A 0 A_Takeinventory("PlasmaAmmo",5);
 			PLHE G 3 BRIGHT {
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
 				A_StartSound("PLSC_3",CHAN_AUTO, CHANF_OVERLAP);
+				A_GunFlash2();
 			}
 			//TNT1 A 0 A_Takeinventory("PlasmaAmmo",5);
 			PLHE H 3 BRIGHT {
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
 				A_StartSound("PLSC_4",CHAN_AUTO, CHANF_OVERLAP);
+				A_GunFlash2();
 			}
 			//TNT1 A 0 A_Takeinventory("PlasmaAmmo",5);
 			PLHE IJK 1 BRIGHT A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
-			TNT1 A 0 A_ClearOverlays(60, 65);
+			TNT1 A 0 {
+				A_ClearOverlays(60, 65);
+				A_Overlay(-3,"AltHoldFlash");
+				A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
+				A_OverlayRenderStyle(-3,STYLE_Add);
+			}
 			PLSA ABCD 1 BRIGHT {
 				A_FireProjectile("BlueFlareSpawn",0,0,0,0);
 				A_FireProjectile("RailGunTrailSpark_Fast", random(-2,2), 0, random(-2,2), -15, 0, random(-2,2));
@@ -325,7 +336,12 @@ Class PB_M1Plasma : PB_WeaponBase
 				return resolvestate(null);
 				}
 		AltHold:
-			TNT1 A 0 A_StartSound("PLSFULL",1,CHANF_LOOPING);
+			TNT1 A 0 {
+				A_StartSound("PLSFULL",1,CHANF_LOOPING);
+				A_Overlay(-3,"AltHoldFlash");
+				A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
+				A_OverlayRenderStyle(-3,STYLE_Add);
+			}
 			PLSA ABCD 1 BRIGHT {
 				if(JustReleased(BT_ALTATTACK)){return resolvestate("AltBlast");}
 				A_SpawnItem("PlasmaGauntlet", 0, 1, 0, 0);
@@ -340,7 +356,7 @@ Class PB_M1Plasma : PB_WeaponBase
 				}
 		AltBlast:
 			TNT1 A 0 A_ReFire();
-			PLSG I 1 BRIGHT {
+			P1SG I 1 BRIGHT {
 				A_Overlay(-5,"AltFireRecoil");
 				A_StopSound(CHAN_6);
 				A_StartSound("PLSULT", CHAN_WEAPON);
@@ -356,29 +372,30 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_FireProjectile("GunFireSmokeBig", 0, 0, 0, 0, 0, 0);
 			}
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_FireProjectile("RailGunTrailSpark_Fast", random(-32,32), 0, random(-35,35), 0, 0, random(-12,12));
-			TNT1 A 0 A_GunFlash();
 		CoolAfterAltFire:
-			TNT1 A 0 PB_WeaponRecoilBasic(-1.15); //A_SetPitch(Pitch - 1.15)
-			TNT1 A 0 A_Takeinventory("PlasmaAmmo",20);
-			PLSG J 1 {
+			TNT1 A 0 {
+				PB_WeaponRecoilBasic(-1.15); //A_SetPitch(Pitch - 1.15)
+				PB_TakeAmmo("PlasmaAmmo",20,0);
+			}
+			P1SG J 1 {
 				A_ZoomFactor(0.90);
 				PB_WeaponRecoil(-2.4,-1.6);
 				}
-			PLSG K 1 {
+			P1SG K 1 {
 				A_ZoomFactor(0.95);
 				PB_WeaponRecoil(-2.4,-1.6);
 				}
-			PLSG L 1 {
+			P1SG L 1 {
 				A_ZoomFactor(0.975);
 				PB_WeaponRecoil(-2.4,-1.6);
 				}
-			PLSG K 1 A_ZoomFactor(0.99);
-			PLSG J 1 A_ZoomFactor(1.0);
+			P1SG K 1 A_ZoomFactor(0.99);
+			P1SG J 1 A_ZoomFactor(1.0);
 			PLSU BCDE 1;
 			TNT1 A 0 A_StartSound("PLSCOOL",CHAN_VOICE);
 			PLSU FFFFFFFFF 2 A_FireProjectile("SmokeSpawner",0,0,0,5);
-			PLSG DCB 1;
-			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
+			P1SG DCB 1;
+			TNT1 A 0 PB_jumpIfNoAmmo();
 			TNT1 A 0 A_StartSound("BEPBEP");
 			Goto Ready3;
 		
@@ -415,7 +432,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		////////////////////////////////////////////////////////////////////////
 		
 		WeaponSpecial:
-			TNT1 A 0 PB_jumpIfHasBarrel("IdleBarrel","IdleFlameBarrel","IdleIceBarrel");
 			TNT1 A 0 {
 				A_Setinventory("GoWeaponSpecialAbility",0);
 				A_Setinventory("PB_LockScreenTilt",1);
@@ -441,10 +457,18 @@ Class PB_M1Plasma : PB_WeaponBase
 						
 						A_SetAkimbo(True);
 						A_SetInventory(invoker.DualWieldToken,1); 
+						if(PB_GetMagUnloaded())
+							A_Overlay(2,"OverlayGunEmpty");
 						return resolvestate(null);
 					}
-				P2R0 ABCD 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
-				P2R0 EGH 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
+				P2R0 ABC 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
+				P2R0 DEFG 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
+				P2R0 H 1 {
+					if(PB_GetMagUnloaded(true))
+						A_Overlay(10,"LeftGunEmpty");
+					if(PB_GetMagUnloaded())
+						A_Overlay(11,"RightGunEmpty");
+				}
 				Goto ReadyDualWield;
 		StopDualWield:
 			TNT1 A 0 {
@@ -454,273 +478,338 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_ClearOverlays(60,65);
 			}
 		SwitchFromDualWield:
-				P2R0 HGE 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
-				P2R0 DCBA 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
+				TNT1 A 0 {
+					if(PB_GetMagUnloaded(true))
+						A_Overlay(10,"LeftGunEmpty");
+					if(PB_GetMagUnloaded())
+						A_Overlay(11,"RightGunEmpty");
+				}
+				P2R0 HGF 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
+				P2R0 EDCB 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
+				P2R0 A 1 {
+					if(PB_GetMagUnloaded())
+						A_Overlay(2,"OverlayGunEmpty");
+				}
 				Goto Ready3;
-		
+		OverlayGunEmpty:
+			4LSG J 1;
+			Stop;
+		LeftGunEmpty:
+			DPR3 I 1;
+			Stop;
+		RightGunEmpty:
+			DPR4 I 1;
+			Stop;
 		////////////////////////////////////////////////////////////////////////
 		// Reload / Unload
 		////////////////////////////////////////////////////////////////////////
 		
 		Reload:
-			TNT1 A 0 PB_jumpIfHasBarrel("IdleBarrel","IdleFlameBarrel","IdleIceBarrel");
 			TNT1 A 0 A_ClearReFire();
-			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "ReloadDualWield");
-			TNT1 A 0 PB_checkReload(null,"Ready","Ready3",60,1);
+			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield");
+			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready","Ready3",60);
 			TNT1 A 0 {
-				A_SetCrosshair(-1);
-				A_SetInventory("RespectPlasmaGun",1);
-				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
-				A_ClearOverlays(10,65);
+				A_ClearOverlays(2,2);
+				A_ClearOverlays(60,65);
+				if(PB_GetMagUnloaded())
+					A_Overlay(2,"OverlayGunEmpty");
 			}
 			P1R0 ABCDE 1 A_SetRoll(roll-0.2);
 			P1R0 FGHIJ 1 A_SetRoll(roll+0.2);
-			P1R0 J 1 Offset(1,32);
-			P1R0 J 1 Offset(2,34);
-			P1R0 J 1 Offset(3, 36);
-			P1R0 J 1 Offset(3, 38);
-			P1R0 J 5 Offset(4, 40);
-			TNT1 A 0 A_JumpIfInventory("PlasmaRifleHasUnloaded",1,"ReloadUnload");
-			P1R0 M 1 Offset(4, 38);
-			P1R0 M 1 Offset(3, 36);
-			P1R0 R 1 Offset(1, 34);
-			P1R0 R 1 Offset(0, 32);
+			P1R0 J 1 A_WeaponOffset(1,32);
+			P1R0 J 1 A_WeaponOffset(2,34);
+			P1R0 J 1 A_WeaponOffset(3, 36);
+			P1R0 J 1 A_WeaponOffset(3, 38);
+			P1R0 J 5 A_WeaponOffset(4, 40);
+			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"ReloadUnload");
+			P1R0 M 1 A_WeaponOffset(4, 38);
+			P1R0 M 1 A_WeaponOffset(3, 36);
+			P1R0 R 1 A_WeaponOffset(1, 34);
+			P1R0 R 1 A_WeaponOffset(0, 32);
 			P1R0 RQ 1 A_SetRoll(roll-0.4);
 			TNT1 A 0 A_StartSound("weapons/plasma/cellout",18,CHANF_OVERLAP);
 			P1R0 PO 1 A_SetRoll(roll-0.4);
-			P1R0 NMLK 1 A_SetRoll(roll-0.4);
-			TNT1 A 0 A_JumpIfInventory("PlasmaAmmo",1,2);
-			TNT1 A 0 PB_SpawnCasing("EmptyCell",29,random(10,12),20,0,random(-4,-2),2);
-			P1R0 K 10;
+			P1R0 NML 1 A_SetRoll(roll-0.4);
+			TNT1 A 0 {
+				if(PB_GetMagEmpty())
+					PB_SpawnCasing("EmptyCell",29,random(10,12),20,0,random(-4,-2),2);
+				PB_SetMagUnloaded(true);
+				PB_SetChamberEmpty(true);
+			}
+			P1R0 K 11 A_SetRoll(roll-0.4);
 			P1R0 LLLL 1 A_SetRoll(roll+0.4);
 		FinishingReload:
-			TNT1 A 0 A_StartSound("weapons/plasma/cellin",17,CHANF_OVERLAP);
-			TNT1 A 0 PB_AmmoIntoMag("PlasmaAmmo","PB_Cell",60,1);
-			TNT1 A 0 A_setinventory("PlasmaRifleHasUnloaded",0);
+			TNT1 A 0 {
+				A_StartSound("weapons/plasma/cellin",17,CHANF_OVERLAP);
+				PB_AmmoIntoMag("PlasmaAmmo","PB_Cell",60,1);
+				PB_SetMagEmpty(false);
+				PB_SetChamberEmpty(false);
+				PB_SetMagUnloaded(false);
+			}
 			P1R0 MNOP 1 A_SetRoll(roll+0.4);
 			P1R0 QRSSSSTUV 1;
 			P1R0 WXYZ 1 A_SetRoll(roll-0.2);
 			P1R1 ABCD 1 A_SetRoll(roll+0.2);
+			TNT1 A 0 PB_SetReloading(false);
 			Goto ready3;
-
 		ReloadUnload:
-			P1R0 KK 1 Offset(4, 38) A_SetRoll(roll-0.2);
-			P1R0 KK 1 Offset(3, 36) A_SetRoll(roll-0.2);
-			P1R0 LL 1 Offset(1, 34) A_SetRoll(roll-0.2);
-			P1R0 LL 1 Offset(0, 32) A_SetRoll(roll-0.2);
+			P1R0 KK 1 {
+				A_WeaponOffset(4, 38);
+				A_SetRoll(roll-0.2);
+			}
+			P1R0 KK 1 {
+				A_WeaponOffset(3, 36);
+				A_SetRoll(roll-0.2);
+			}
+			P1R0 LL 1 {
+				A_WeaponOffset(1, 34);
+				A_SetRoll(roll-0.2);
+			}
+			P1R0 LL 1 {
+				A_WeaponOffset(0, 32);
+				A_SetRoll(roll-0.2);
+			}
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma",1,"ReloadDualUnloadContinue");
 			Goto FinishingReload;
-			
-			
 		ReloadDualWield:
+			TNT1 A 0 PB_NewCheckReload(null,null,null,"ReloadLeftOnly","Ready3",60);
 			TNT1 A 0 {
-				if(CountInv("PlasmaAmmo") >= 60 && CountInv("LeftPlasmaAmmo") >= 60) 
-					return resolvestate("ReadyDualWield");
-				return resolvestate(null);
-			}
-			TNT1 A 0 A_jumpif(countinv("PB_Cell") < 1,"ReadyDualWield");
-			TNT1 A 0 {
-				A_SetCrosshair(-1);
-				A_SetInventory("RespectPlasmaGun",1);
-				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
-				A_ClearOverlays(10,65);
+				A_ClearOverlays(10,11);
+				A_ClearOverlays(60,64);
 			}
-			TNT1 A 0 A_JumpIf(CountInv("PlasmaAmmo") >= 60,"ReloadLeftOnly");
 		//Reload Right
+			TNT1 A 0 {
+				if(PB_GetMagUnloaded(true))
+					A_Overlay(10,"LeftGunEmpty");
+				if(PB_GetMagUnloaded())
+					A_Overlay(11,"RightGunEmpty");
+			}
 			P2R1 ABC 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
 			P2R1 DEF 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P1R0 J 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P1R0 J 1;
-			P1R0 J 1 Offset(1,32);
-			P1R0 J 1 Offset(2,34);
-			P1R0 J 1 Offset(3, 36);
-			P1R0 J 1 Offset(3, 38);
-			P1R0 J 5 Offset(4, 40);
-			TNT1 A 0 A_JumpIfInventory("PlasmaRifleHasUnloaded",1,"ReloadUnload");
-			P1R0 M 1 Offset(4, 38);
-			P1R0 M 1 Offset(3, 36);
-			P1R0 R 1 Offset(1, 34);
-			P1R0 R 1 Offset(0, 32);
+			P1R0 J 1 A_WeaponOffset(1,32);
+			P1R0 J 1 A_WeaponOffset(2,34);
+			P1R0 J 1 A_WeaponOffset(3, 36);
+			P1R0 J 1 A_WeaponOffset(3, 38);
+			P1R0 J 5 A_WeaponOffset(4, 40);
+			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"ReloadUnload");
+			P1R0 M 1 A_WeaponOffset(4, 38);
+			P1R0 M 1 A_WeaponOffset(3, 36);
+			P1R0 R 1 A_WeaponOffset(1, 34);
+			P1R0 R 1 A_WeaponOffset(0, 32);
 			P1R0 RQ 1 A_SetRoll(roll-0.4);
 			TNT1 A 0 A_StartSound("weapons/plasma/cellout",17,CHANF_OVERLAP);
 			P1R0 PO 1 A_SetRoll(roll-0.4);
-			P1R0 NMLK 1 A_SetRoll(roll-0.4);
-			TNT1 A 0 A_JumpIfInventory("PlasmaAmmo",1,2);
-			TNT1 A 0 PB_SpawnCasing("EmptyCell",29,random(10,12),20,0,random(-4,-2),2);
-			P1R0 K 10;
+			P1R0 NML 1 A_SetRoll(roll-0.4);
+			TNT1 A 0 {
+				if(PB_GetMagEmpty())
+					PB_SpawnCasing("EmptyCell",29,random(10,12),20,0,random(-4,-2),2);
+				PB_SetMagUnloaded(true);
+				PB_SetChamberEmpty(true);
+			}
+			P1R0 K 11 A_SetRoll(roll-0.4);
 			P1R0 LLLL 1 A_SetRoll(roll+0.4);
 		ReloadDualUnloadContinue:
-			TNT1 A 0 A_StartSound("weapons/plasma/cellin",19,CHANF_OVERLAP);
-			TNT1 A 0 PB_AmmoIntoMag("PlasmaAmmo","PB_Cell",60,1);
+			TNT1 A 0 {
+				A_StartSound("weapons/plasma/cellin",19,CHANF_OVERLAP);
+				PB_AmmoIntoMag("PlasmaAmmo","PB_Cell",60,1);
+				PB_SetMagEmpty(false);
+				PB_SetChamberEmpty(false);
+				PB_SetMagUnloaded(false);
+			}
 			P1R0 MNOP 1 A_SetRoll(roll+0.4);
 			P1R0 QRSSSS 1;
-			TNT1 A 0 A_JumpIfInventory("LeftPlasmaAmmo",60,"ReloadRightOnlyDone");
+			TNT1 A 0 PB_NewCheckReload(null,null,null,"ReloadRightOnlyDone","ReloadRightOnlyDone",60,1,true);
 			P1R0 TUVWXYZ 1; 
-			PLSS DCBA 1;
+			P1SS DCBA 1;
+			TNT1 A 3;
 			Goto ReloadLeft;
-			
+		ReloadRightOnlyDone:
+			P2R1 GHIJK 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
+			P2R1 LMNO 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
+			TNT1 A 0 PB_SetReloading(false);
+			Goto Ready3;
 		ReloadLeftOnly:
-			TNT1 A 0 A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
+			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready","Ready3",60,1,true);
+			TNT1 A 0 {
+				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
+				A_ClearOverlays(10,11);
+				A_ClearOverlays(60,64);
+			}
+			TNT1 A 0 {
+				if(PB_GetMagUnloaded(true))
+					A_Overlay(10,"LeftGunEmpty");
+			}
 			P2R1 A 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
 			P2R2 AB 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
 			P2R2 CDE 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
 			P1R3 D 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
 			P1R3 E 1;
 			Goto ReloadLeftContinue;
-			
-		ReloadRightOnlyDone:
-			TNT1 A 0 A_setinventory("PlasmaRifleHasUnloaded",0);
-			TNT1 A 0 A_WeaponOffset(0,32);
-			P2R1 GHIJK 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
-			P2R1 LMNO 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
-			Goto Ready3;
-		
 		ReloadLeft:
-			P1R3 W 1;
+			P1R3 VU 1;
 			TNT1 A 0 A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
-			P1R3 XYZ 1;
-			P1R3 ABCDE 1;
-		ReloadLeftContinue:	
-			P1R3 E 1 Offset(-1,32);
-			P1R3 E 1 Offset(-2,34);
-			P1R3 E 1 Offset(-3, 36);
-			P1R3 E 1 Offset(-3, 38);
-			P1R3 E 5 Offset(-4, 40);
-			TNT1 A 0 A_JumpIfInventory("PlasmaRifleHasUnloaded",1,"ReloadFromUnloadedLeft");
-			P1R3 H 1 Offset(-4, 38);
-			P1R3 H 1 Offset(-3, 36);
-			P1R3 M 1 Offset(-1, 34);
-			P1R3 M 1 Offset(0, 32);
+			P1R3 TSRQPO 1;
+		ReloadLeftContinue:
+			P1R3 E 1 A_WeaponOffset(-1,32);
+			P1R3 E 1 A_WeaponOffset(-2,34);
+			P1R3 E 1 A_WeaponOffset(-3, 36);
+			P1R3 E 1 A_WeaponOffset(-3, 38);
+			P1R3 E 5 A_WeaponOffset(-4, 40);
+			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(true),"ReloadFromUnloadedLeft");
+			P1R3 H 1 A_WeaponOffset(-4, 38);
+			P1R3 H 1 A_WeaponOffset(-3, 36);
+			P1R3 M 1 A_WeaponOffset(-1, 34);
+			P1R3 M 1 A_WeaponOffset(0, 32);
 			P1R3 ML 1 A_SetRoll(roll-0.4);
 			TNT1 A 0 A_StartSound("weapons/plasma/cellout",18,CHANF_OVERLAP);
 			P1R3 KJ 1 A_SetRoll(roll-0.4);
-			P1R3 IHGF 1 A_SetRoll(roll-0.4);
-			TNT1 A 0 A_JumpIfInventory("LeftPlasmaAmmo",1,2);
-			TNT1 A 0 PB_SpawnCasing("EmptyCell",29,random(-12,-10),20,0,random(2,4),2);
-			P1R3 F 10;
+			P1R3 IHG 1 A_SetRoll(roll-0.4);
+			TNT1 A 0 {
+				if(PB_GetMagEmpty(true))
+					PB_SpawnCasing("EmptyCell",29,random(-12,-10),20,0,random(2,4),2);
+				PB_SetMagUnloaded(true,true);
+				PB_SetChamberEmpty(true,true);
+			}
+			P1R3 F 11 A_SetRoll(roll-0.4);
 			P1R3 GGGG 1 A_SetRoll(roll+0.4);
 		ReloadDualUnloadLeftContinue:
-			TNT1 A 0 A_StartSound("weapons/plasma/cellin",21,CHANF_OVERLAP);
-			TNT1 A 0 PB_AmmoIntoMag("LeftPlasmaAmmo","PB_Cell",60,1);
-			TNT1 A 0 A_setinventory("PlasmaRifleHasUnloaded",0);
+			TNT1 A 0 {
+				A_StartSound("weapons/plasma/cellin",21,CHANF_OVERLAP);
+				PB_AmmoIntoMag("LeftPlasmaAmmo","PB_Cell",60,1);
+				PB_SetMagEmpty(false,true);
+				PB_SetMagUnloaded(false,true);
+				PB_SetChamberEmpty(false,true);
+			}
 			P1R3 HIJK 1 A_SetRoll(roll+0.4);
 			P1R3 LMNNNN 1;
 			Goto FinishDualReload;
-		
 		ReloadFromUnloadedLeft:
-			P1R3 FF 1 Offset(-4, 38) A_SetRoll(roll+0.2);
-			P1R3 FF 1 Offset(-3, 36) A_SetRoll(roll+0.2);
-			P1R3 GG 1 Offset(-1, 34) A_SetRoll(roll+0.2);
-			P1R3 GG 1 Offset(-0, 32) A_SetRoll(roll+0.2);
+			P1R3 FF 1 {
+				A_WeaponOffset(-4, 38);
+				A_SetRoll(roll+0.2);
+			}
+			P1R3 FF 1 {
+				A_WeaponOffset(-3, 36);
+				A_SetRoll(roll+0.2);
+			}
+			P1R3 GG 1 {
+				A_WeaponOffset(-1, 34);
+				A_SetRoll(roll+0.2);
+			}
+			P1R3 GG 1 {
+				A_WeaponOffset(0, 32);
+				A_SetRoll(roll+0.2);
+			}
 			Goto ReloadDualUnloadLeftContinue;
-		
 		FinishDualReload:
-			TNT1 A 0 A_setinventory("PlasmaRifleHasUnloaded",0);
-			TNT1 A 0 A_WeaponOffset(0,32);
 			P2R2 FGHIJ 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
 			P2R2 KLM 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P2R1 O 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
+			TNT1 A 0 PB_SetReloading(false);
 			Goto Ready3;
-			
-		
 		Unload:
-			TNT1 A 0 A_setinventory("Unloading",0);
-			TNT1 A 0 A_Jumpif(countinv(invoker.UnloaderToken) > 0 || countinv(invoker.ammotype2) < 1,"Ready3");	
-			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma",1,"UnloadDualWield");
 			TNT1 A 0 {
 				A_ClearOverlays(10,65);
 				A_StopSound(6);
-				A_ZoomFactor(1.0);
-				A_SetInventory("Unloading",0);
-				A_SetInventory("ADSmode",0);
-				A_SetInventory("Zoomed",0);
 			}
-			TNT1 A 0 A_jumpif(countinv("PlasmaAmmo") < 1,"GunEmpty");
+			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma",1,"UnloadDualWield");
 			P1R0 ABCDE 1 A_SetRoll(roll-0.2);
 			P1R0 FGHIJ 1 A_SetRoll(roll+0.2);
-			P1R0 J 1 Offset(1,32);
-			P1R0 J 1 Offset(2,34);
-			P1R0 J 1 Offset(3, 36);
-			P1R0 J 1 Offset(3, 38);
-			P1R0 J 5 Offset(4, 40);
-			P1R0 M 1 Offset(4, 38);
-			P1R0 M 1 Offset(3, 36);
-			P1R0 R 1 Offset(1, 34);
-			P1R0 R 1 Offset(0, 32);
+			P1R0 J 1 A_WeaponOffset(1,32);
+			P1R0 J 1 A_WeaponOffset(2,34);
+			P1R0 J 1 A_WeaponOffset(3, 36);
+			P1R0 J 1 A_WeaponOffset(3, 38);
+			P1R0 J 5 A_WeaponOffset(4, 40);
+			P1R0 M 1 A_WeaponOffset(4, 38);
+			P1R0 M 1 A_WeaponOffset(3, 36);
+			P1R0 R 1 A_WeaponOffset(1, 34);
+			P1R0 R 1 A_WeaponOffset(0, 32);
 			P1R0 RQ 1;
-			TNT1 A 0 A_StartSound("weapons/plasma/cellout",22,CHANF_OVERLAP);
-			TNT1 A 0 PB_UnloadMag("PlasmaAmmo","PB_Cell",1);
+			TNT1 A 0 {
+				A_StartSound("weapons/plasma/cellout",22,CHANF_OVERLAP);
+				PB_UnloadMag("PlasmaAmmo","PB_Cell",1);
+				PB_SetMagUnloaded(true);
+				PB_SetChamberEmpty(true);
+				PB_SetMagEmpty(true);
+			}
 			P1R0 PO 1;
 			P1R0 NMLK 1; 
 			P1R0 K 3;
-			P1R0 JIHGFEDCBA 1;
-		FInishUnload:
-			TNT1 A 0 A_SetInventory("PlasmaRifleHasUnloaded", 1);
-			TNT1 A 0 A_SetInventory("Unloading",0);
+			P1R0 JIHGFEDCB 1;
+			4LSG J 1;
+			TNT1 A 0 PB_SetReloading(false);
 			Goto GunEmpty;
 		
 		FInishUnloadDualWield:
-			TNT1 A 0 A_SetInventory("PlasmaRifleHasUnloaded", 1);
-			TNT1 A 0 A_SetInventory("Unloading",0);
 			P1R3 D 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P2R2 EDC 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P2R2 BA 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
-			P2R1 A 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
+			P2R1 A 1 {
+				A_Setroll(roll+0.4, SPF_INTERPOLATE);
+				A_Overlay(10,"LeftGunEmpty");
+				A_Overlay(11,"RightGunEmpty");
+			}
+			TNT1 A 0 PB_SetReloading(false);
 			Goto ReadyDualWield;
 			
 		UnloadFinishedRightOnly:
-			TNT1 A 0 A_SetInventory("PlasmaRifleHasUnloaded", 1);
 			TNT1 A 0 A_SetInventory("Unloading",0);
 			P1R0 J 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
 			P2R1 FED 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
 			P2R1 CBA 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
+			TNT1 A 0 PB_SetReloading(false);
 			Goto ReadyDualWield;
 		
 		UnloadDualWield:
-			TNT1 A 0 A_Jumpif(countinv(invoker.UnloaderToken) > 0 || countinv(invoker.ammotype2) < 1,"Ready3");	
 			TNT1 A 0 {
-				A_ClearOverlays(10,65);
-				A_StopSound(6);
-				A_ZoomFactor(1.0);
-				A_SetInventory("Unloading",0);
-				A_SetInventory("ADSmode",0);
-				A_SetInventory("Zoomed",0);
-			}
-			TNT1 A 0 {
-				if(CountInv("PlasmaAmmo") <= 0 && CountInv("LeftPlasmaAmmo") <= 0) 
+				if(PB_GetMagEmpty() && PB_GetMagEmpty(true)) 
 					return resolvestate("ReadyDualWield");
-				else if(CountInv("PlasmaAmmo") <= 0 && CountInv("LeftPlasmaAmmo") != 0)
+				else if(PB_GetMagEmpty() && !PB_GetMagEmpty(true))
 					return resolvestate("UnloadLeftOnly");
+				if(PB_GetMagUnloaded(true))
+					A_Overlay(10,"LeftGunEmpty");
 				return resolvestate(null);
 			}
 			P2R1 ABC 1 A_Setroll(roll+0.4, SPF_INTERPOLATE);
 			P2R1 DEF 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P1R0 J 1 A_Setroll(roll-0.3, SPF_INTERPOLATE);
 			P1R0 J 1;
-			P1R0 J 1 Offset(1,32);
-			P1R0 J 1 Offset(2,34);
-			P1R0 J 1 Offset(3, 36);
-			P1R0 J 1 Offset(3, 38);
-			P1R0 J 5 Offset(4, 40);
-			P1R0 M 1 Offset(4, 38);
-			P1R0 M 1 Offset(3, 36);
-			P1R0 R 1 Offset(1, 34);
-			P1R0 R 1 Offset(0, 32);
+			P1R0 J 1 A_WeaponOffset(1,32);
+			P1R0 J 1 A_WeaponOffset(2,34);
+			P1R0 J 1 A_WeaponOffset(3, 36);
+			P1R0 J 1 A_WeaponOffset(3, 38);
+			P1R0 J 5 A_WeaponOffset(4, 40);
+			P1R0 M 1 A_WeaponOffset(4, 38);
+			P1R0 M 1 A_WeaponOffset(3, 36);
+			P1R0 R 1 A_WeaponOffset(1, 34);
+			P1R0 R 1 A_WeaponOffset(0, 32);
 			P1R0 RQ 1;
-			TNT1 A 0 A_StartSound("weapons/plasma/cellout",32,CHANF_OVERLAP);
-			TNT1 A 0 PB_UnloadMag("PlasmaAmmo","PB_Cell",1);
+			TNT1 A 0 {
+				A_StartSound("weapons/plasma/cellout",32,CHANF_OVERLAP);
+				PB_UnloadMag("PlasmaAmmo","PB_Cell",1);
+				PB_SetMagUnloaded(true);
+				PB_SetChamberEmpty(true);
+				PB_SetMagEmpty(true);
+			}
 			P1R0 PO 1;
 			P1R0 NMLK 1; 
 			P1R0 K 3;
-			TNT1 A 0 A_JumpIf(CountInv("LeftPlasmaAmmo") < 1, "UnloadLeft");
+			TNT1 A 0 A_JumpIf(PB_GetMagEmpty(true) || PB_GetMagUnloaded(true), "UnloadFinishedRightOnly");
 			P1R0 JIHGFF 1;
-			PLSS DCBA 1;
+			P1SS DCBA 1;
+			TNT1 A 3;
 			Goto UnloadLeft;
 			
 		UnloadLeftOnly:
-			P2R1 A 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
+			P2R1 A 1 {
+				A_Setroll(roll-0.4, SPF_INTERPOLATE);
+				if(PB_GetMagUnloaded())
+					A_Overlay(11,"RightGunEmpty");
+			}
 			P2R2 AB 1 A_Setroll(roll-0.4, SPF_INTERPOLATE);
 			P2R2 CDE 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
 			P1R3 D 1 A_Setroll(roll+0.3, SPF_INTERPOLATE);
@@ -728,22 +817,27 @@ Class PB_M1Plasma : PB_WeaponBase
 			Goto UnloadLeftContinue;
 			
 		UnloadLeft:
-			TNT1 A 0 A_jumpif(countinv("LeftPlasmaAmmo") < 1,"UnloadFinishedRightOnly");
-			P1R3 WXYZU 1 A_SetRoll(roll+0.2);
-			P1R3 ABCDE 1 A_SetRoll(roll-0.2);
+			P1R3 VUTS 1 A_SetRoll(roll+0.2);
+			P1R3 RQPO 1 A_SetRoll(roll-0.2);
+			P1R3 E 1;
 		UnloadLeftContinue:
-			P1R3 E 1 Offset(-1,32);
-			P1R3 E 1 Offset(-2,34);
-			P1R3 E 1 Offset(-3, 36);
-			P1R3 E 1 Offset(-3, 38);
-			P1R3 E 5 Offset(-4, 40);
-			P1R3 H 1 Offset(-4, 38);
-			P1R3 H 1 Offset(-3, 36);
-			P1R3 M 1 Offset(-1, 34);
-			P1R3 M 1 Offset(-0, 32);
+			P1R3 E 1 A_WeaponOffset(-1,32);
+			P1R3 E 1 A_WeaponOffset(-2,34);
+			P1R3 E 1 A_WeaponOffset(-3, 36);
+			P1R3 E 1 A_WeaponOffset(-3, 38);
+			P1R3 E 5 A_WeaponOffset(-4, 40);
+			P1R3 H 1 A_WeaponOffset(-4, 38);
+			P1R3 H 1 A_WeaponOffset(-3, 36);
+			P1R3 M 1 A_WeaponOffset(-1, 34);
+			P1R3 M 1 A_WeaponOffset(-0, 32);
 			P1R3 LK 1 ;
-			TNT1 A 0 A_StartSound("weapons/plasma/cellout",42,CHANF_OVERLAP);
-			TNT1 A 0 PB_UnloadMag("LeftPlasmaAmmo","PB_Cell",1);
+			TNT1 A 0 {
+				A_StartSound("weapons/plasma/cellout",42,CHANF_OVERLAP);
+				PB_UnloadMag("LeftPlasmaAmmo","PB_Cell",1);
+				PB_SetMagUnloaded(true,true);
+				PB_SetChamberEmpty(true,true);
+				PB_SetMagEmpty(true,true);
+			}
 			P1R3 JI 1 ;
 			P1R3 HGFE 1;
 			P1R3 E 3;
@@ -771,7 +865,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 {
 					//set the overlays for the sides and other things needed, like
 					A_SetRoll(0);
-					PB_HandleCrosshair(42);
+					PB_HandleCrosshair(76);
 					A_SetInventory("PB_LockScreenTilt",0);
 					A_SetFiringRightWeapon(False);
 					A_SetFiringLeftWeapon(False);
@@ -779,8 +873,10 @@ Class PB_M1Plasma : PB_WeaponBase
 						A_GiveInventory("DualFiring",1);
 					A_overlay(10,"IdleLeft_Overlay",false);
 					A_overlay(11,"IdleRight_Overlay",false);
-					A_Overlay(60, "AmmoCounterLeftDW");
-					A_Overlay(63, "AmmoCounterRightDW");
+					if(!PB_GetMagUnloaded(true))
+						A_Overlay(60, "AmmoCounterLeftDW");
+					if(!PB_GetMagUnloaded())
+						A_Overlay(63, "AmmoCounterRightDW");
 					A_startsound("PLSIDLE",6,CHANF_LOOPING);
 				}
 		ReadyToFireDualWield:
@@ -804,16 +900,21 @@ Class PB_M1Plasma : PB_WeaponBase
 			Loop;
 		
 		IdleLeft_Overlay:
-			DPR3 ABCDEFGH 2 {
+			DPR3 AABBCCDDEEFFGGHH 1 {
+				if(PB_GetMagUnloaded(true))
+				{
+					A_ClearOverlays(60,61);
+					A_SetWeaponFrame(8);
+				}
 				if(CountInv("LeftPlasmaAmmo")<=0 && CountInv("PlasmaAmmo")>0)
 					A_GiveInventory("DualFiring",1);
 					
 				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
 				if((PressingAltFire() || JustPressed(BT_ALTATTACK)) && firemodecvar == 2)
 				{
-						if(CountInv("LeftPlasmaAmmo") > 0)
+						if(CountInv("LeftPlasmaAmmo") > 0 && !PB_GetChamberEmpty(true))
 							return resolvestate("FireLeft_Overlay");
-						else 
+						else  if(JustPressed(BT_ALTATTACK))
 						{
 							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
 							return resolvestate(null);
@@ -823,9 +924,9 @@ Class PB_M1Plasma : PB_WeaponBase
 				{
 					if((PressingFire() || JustPressed(BT_ATTACK)) && firemodecvar < 2)
 					{
-						if(CountInv("LeftPlasmaAmmo") > 0)
+						if(CountInv("LeftPlasmaAmmo") > 0 && !PB_GetChamberEmpty(true))
 							return resolvestate("FireLeft_Overlay");
-						else 
+						else if(JustPressed(BT_ATTACK))
 						{
 							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
 							return resolvestate(null);
@@ -837,7 +938,12 @@ Class PB_M1Plasma : PB_WeaponBase
 			Loop;
 			
 		IdleRight_Overlay:
-			DPR4 ABCDEFGH 2 {
+			DPR4 AABBCCDDEEFFGGHH 1 {
+				if(PB_GetMagUnloaded())
+				{
+					A_ClearOverlays(63,64);
+					A_SetWeaponFrame(8);
+				}
 				if(CountInv("LeftPlasmaAmmo")<=0 && CountInv("PlasmaAmmo")>0)
 					A_GiveInventory("DualFiring",1);
 				
@@ -847,9 +953,9 @@ Class PB_M1Plasma : PB_WeaponBase
 				{
 					if((PressingFire() || JustPressed(BT_ATTACK)) && firemodecvar==0)
 					{
-						if(CountInv("PlasmaAmmo") > 0)
+						if(CountInv("PlasmaAmmo") > 0 && !PB_GetChamberEmpty())
 							return resolvestate("FireRight_Overlay");
-						else 
+						else  if(JustPressed(BT_ATTACK))
 						{
 							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
 							return resolvestate(null);
@@ -857,18 +963,18 @@ Class PB_M1Plasma : PB_WeaponBase
 					}
 				}
 				if((PressingAltfire() || JustPressed(BT_ALTATTACK)) && firemodecvar==1){
-					if(CountInv("PlasmaAmmo") > 0)
+					if(CountInv("PlasmaAmmo") > 0 && !PB_GetChamberEmpty())
 						return resolvestate("FireRight_Overlay");
-					else 
+					else  if(JustPressed(BT_ALTATTACK))
 					{
 						A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
 						return resolvestate(null);
 					}
 				}
 				if((Pressingfire() || JustPressed(BT_ATTACK)) && firemodecvar==2){
-					if(CountInv("PlasmaAmmo") > 0)
+					if(CountInv("PlasmaAmmo") > 0 && !PB_GetChamberEmpty())
 						return resolvestate("FireRight_Overlay");
-					else 
+					else  if(JustPressed(BT_ATTACK))
 					{
 						A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
 						return resolvestate(null);
@@ -879,8 +985,8 @@ Class PB_M1Plasma : PB_WeaponBase
 			Loop;
 		
 		MuzzleFlashDual:
-			DPR1 D 1 BRIGHT A_SetWeaponFrame(3 + random(0, 2));
-			DPR1 G 1 BRIGHT A_SetWeaponFrame(6 + random(0, 2));
+			DPR1 D 1 BRIGHT {A_SetWeaponFrame(3 + random(0, 2)); A_GunFlash();}
+			DPR1 G 1 BRIGHT {A_SetWeaponFrame(6 + random(0, 2)); A_GunFlash();}
 			stop;
 		
 		FireLeft_Overlay:
@@ -893,10 +999,11 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_ZoomFactor(0.99);
 					PB_LowAmmoSoundWarning("hdmr");
 					A_Takeinventory("LeftPlasmaAmmo",1);
-					A_GunFlash();
 					PB_WeaponRecoil(-1.4,+0.8);
 					A_Overlay(60,"AmmoCounterLeftDW.Firing");
 					A_Overlay(-4,"MuzzleFlashDual");
+					A_OverlayFlags(-4,PSPF_RENDERSTYLE,true);
+					A_OverlayRenderStyle(-4,STYLE_Add);
 					A_OverlayFlags(-4,PSPF_FLIP|PSPF_MIRROR,1);
 				}
 			DPR2 B 1 BRIGHT {
@@ -906,7 +1013,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					PB_WeaponRecoil(-1.4,+0.8);
 				}
 			DPR2 C 1 A_ZoomFactor(1.0);
-			PLSG A 0 A_Overlay(60, "AmmoCounterLeftDW");
+			P1SG A 0 A_Overlay(60, "AmmoCounterLeftDW");
 			TNT1 A 0 {
 				if(CountInv("LeftPlasmaAmmo")<=0)
 					A_GiveInventory("DualFireReload",1);
@@ -924,10 +1031,11 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_ZoomFactor(0.98);
 					PB_LowAmmoSoundWarning("hdmr");
 					A_Takeinventory("PlasmaAmmo",1);
-					A_GunFlash();
 					PB_WeaponRecoil(-1.4,-0.8);
 					A_Overlay(63,"AmmoCounterRightDW.Firing");
 					A_Overlay(-5,"MuzzleFlashDual");
+					A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+					A_OverlayRenderStyle(-5,STYLE_Add);
 				}
 			DPR1 B 1 BRIGHT {
 					A_ZoomFactor(0.99);
@@ -936,7 +1044,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					PB_WeaponRecoil(-1.4,-0.8);
 				}
 			DPR1 C 1 A_ZoomFactor(1.0);
-			PLSG A 0 A_Overlay(63, "AmmoCounterRightDW");
+			P1SG A 0 A_Overlay(63, "AmmoCounterRightDW");
 			TNT1 A 0 {
 				if(CountInv("PlasmaAmmo")<=0)
 					A_GiveInventory("DualFireReload",1);
@@ -948,47 +1056,42 @@ Class PB_M1Plasma : PB_WeaponBase
 		//	kick flashes
 		////////////////////////////////////////////////////////////////////////
 		FlashKicking:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelKicking","FlashBarrelKicking","FlashBarrelKicking");
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FlashKickingDualWield");
-			PLSG WXYZ 1;
+			P1SG WXYZ 1;
 			P1R2 CDEEDC 1;
-			PLSG ZYXW 1;
-			PLSG AA 1 ;
+			P1SG ZYXW 1;
+			P1SG AA 1 ;
 			Goto Ready3;
 		FlashAirKicking:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelAirKicking","FlashBarrelAirKicking","FlashBarrelAirKicking");
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FlashAirKickingDualWield");
-			PLSG WXYZ 1;
+			P1SG WXYZ 1;
 			P1R2 BCDEEDCB 1;
-			PLSG ZYXW 1;
-			PLSG AA 1 ;
+			P1SG ZYXW 1;
+			P1SG AA 1 ;
 			Goto Ready3;
 		FlashSlideKicking:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelSlideKicking","FlashBarrelSlideKicking","FlashBarrelSlideKicking");
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FlashSlideKickingDualWield");
-			PLSG WXYZ 1;
+			P1SG WXYZ 1;
 			P1R2 ABCDEFGHHHIJKLMNEDCB 1;
-			PLSG ZYXW 1;
+			P1SG ZYXW 1;
 			Goto Ready3;
 		FlashSlideKickingStop:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelSlideKickingStop","FlashBarrelSlideKickingStop","FlashBarrelSlideKicking");
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FlashSlideKickingStopDualWield");
 			P1R2 DCB 1;
-			PLSG ZYXW 1; 
+			P1SG ZYXW 1; 
 			Goto Ready3;
 		FlashPunching:
-			TNT1 A 0 PB_jumpIfHasBarrel("FlashBarrelPunching","FlashBarrelPunching","FlashBarrelPunching");
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_ClearReFire();
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FlashPunchingDualWield");
-			PLSG WXYZ 1;
+			P1SG WXYZ 1;
 			P1R2 CDEEDC 1;
-			PLSG ZYXW 1;
-			PLSG AA 1;
+			P1SG ZYXW 1;
+			P1SG AA 1;
 			Stop;
 		FlashPunchingDualWield:
 			TNT1 A 15;
@@ -1128,7 +1231,7 @@ Class PlasmaAmmo : PB_WeaponAmmo
 		Ammo.BackpackAmount 0;
 		Ammo.BackpackMaxAmount 60;
 		+INVENTORY.IGNORESKILL;
-		Inventory.Icon "PLASA0";
+		Inventory.Icon "PL4SA0";
 	}
 }
 
@@ -1141,7 +1244,7 @@ Class LeftPlasmaAmmo : PB_WeaponAmmo
 		Ammo.BackpackAmount 0;
 		Ammo.BackpackMaxAmount 60;
 		+INVENTORY.IGNORESKILL;
-		Inventory.Icon "PLASA0";
+		Inventory.Icon "PL4SA0";
 	}
 }
 
@@ -1203,7 +1306,7 @@ Class PlasmaGauntlet : Actor
 	}
 }
 
-Class Plasma_Ball : PB_ProjectileAlt Replaces PlasmaBall
+Class Plasma_Ball : PB_ProjectileAlt
 {
 	default
 	{
@@ -1232,7 +1335,7 @@ Class Plasma_Ball : PB_ProjectileAlt Replaces PlasmaBall
 		
 		renderstyle "Add";
 		Scale 0.19;
-		DeathSound "weapons/plasmax";
+		DeathSound "weapons/plasma/explode";
 		//SeeSound "PLSM9";
 		SeeSound "None";
 		Obituary "$OB_MPPLASMARIFLE";

@@ -106,7 +106,7 @@ class PB_ThrownGrenade : Actor
 		roll += frandom(-4.2, 4.2);
 		GrenadeBounceSmoke();
 		
-		if((pb_grenadeimpact == 2 || pb_grenadeimpact == 1 && bounceMobj) && target && target.Player)
+		if((pb_grenadeimpact == 2 || pb_grenadeimpact == 1 && bounceMobj && bounceMobj.bISMONSTER) && target && target.Player)
 			SetStateLabel("Explode");
 			
 		return Super.SpecialBounceHit(bounceMobj, bounceLine, bouncePlane);
@@ -503,7 +503,7 @@ class PB_StunGrenadeExplosion : Actor
 		TNT1 A 0 {
 			A_SpawnItemEx("LightningGunPuff_Bigger");
 			A_SpawnItemEx("BlueFlare");
-			A_Explode(expDmg,expRad,0,false,expRad,damagetype:expType);
+			A_Explode(expDmg,expRad,XF_THRUSTLESS,false,expRad,damagetype:expType);
 			A_StartSound("STNBOEX");
 			for(int i = 0; i < 10; i++)
 			{

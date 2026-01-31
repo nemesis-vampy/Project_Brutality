@@ -23,7 +23,7 @@ ACTOR PB_MG42 : PB_Weapon
 	Weapon.AmmoType "PB_HighCalMag"
 	Weapon.AmmoGive 30
 	Weapon.AmmoUse 0
-	Inventory.PickupMessage "MG-42 (Slot 5)"
+	Inventory.PickupMessage "Maschinengewehr 42 (Slot 5)"
 	Inventory.PickupSound "weapons/MG42/Pickup"
 	Obituary "%o tasted the power of %k's MG42"
 	+WEAPON.NOAUTOAIM
@@ -32,7 +32,7 @@ ACTOR PB_MG42 : PB_Weapon
 	+WEAPON.NOALERT
 	+dontgib
 	Scale 0.28
-	Tag "MG-42"
+	Tag "Maschinengewehr 42"
 	Inventory.AltHUDIcon "HBUSD0"
 	PB_WeaponBase.respectItem "MG42Respected"
 	//FloatBobStrength 0.5
@@ -76,8 +76,6 @@ ACTOR PB_MG42 : PB_Weapon
 			PB_HandleCrosshair(50);
 			A_SetInventory("PB_LockScreenTilt",0);
 		}
-		
-		TNT1 A 0 PB_ResetBarrelTokens
 		
 		Goto SelectFirstPersonLegs
 		SelectContinue:
@@ -172,7 +170,7 @@ ACTOR PB_MG42 : PB_Weapon
 		}
 		MGSE FE 1 
 		TNT1 A 0 {
-		A_GunFlash("SelectBelt");
+		A_Overlay(999,"SelectBelt");
 		}
 		MGSE DCB 1
 
@@ -284,35 +282,17 @@ ACTOR PB_MG42 : PB_Weapon
 			A_SetInventory("MG42BarrelOverheat", 0);
 			}
 		Goto Ready3
-	Fire:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "ThrowIceBarrel")
-		TNT1 A 0 A_JumpIfInventory("MG42HasOverheated",1,"BarrelChange")
-		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
-		TNT1 A 0 {
-		if (CountInv("PB_HighCalMag") >= 1 && PB_GetOverheat < 500) {
-			return state ("ActualFire");
-			}
-		else if (PB_GetOverheat == 500) {
-			return state ("Overheat");
-			}
-		else {
-			return state ("");
-			}
-		}
-		Goto EmptyFire
 	
 	MuzzleFlash:
 		TNT1 A 0 A_Jump(128, "Flash1", "Flash2", "Flash3")
 	Flash3:
-		MGMZ EF 1 BRIGHT
+		MGMZ EF 1 BRIGHT A_GunFlash
 		Stop
 	Flash2:
-		MGMZ CD 1 BRIGHT
+		MGMZ CD 1 BRIGHT A_GunFlash
 		Stop
 	Flash1:
-		MGMZ AB 1 BRIGHT
+		MGMZ AB 1 BRIGHT A_GunFlash
 		Stop
 	
 	BeltFlash:
@@ -323,11 +303,26 @@ ACTOR PB_MG42 : PB_Weapon
 		TNT1 A 0
 		"####" ABCD 1
 		Stop
-	ActualFire:
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("MG42HasOverheated",1,"BarrelChange")
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
+		TNT1 A 0 {
+		if (CountInv("PB_HighCalMag") >= 1 && PB_GetOverheat < 500) {
+			return state ("");
+			}
+		else if (PB_GetOverheat == 500) {
+			return state ("Overheat");
+			}
+		else {
+			return state ("EmptyFire");
+			}
+		}
 		TNT1 A 0 {
 			PB_IncrementHeat;
 		A_ClearOverlays(3, 6);
 		A_Overlay(-3, "MuzzleFlash");
+		A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
+		A_OverlayRenderStyle(-3,STYLE_Add);
 		A_Overlay(5, "BeltFlash");
 		if(CountInv("MG42BarrelOverheat") >= 1) {
 			PB_ModifyOverheat(15);
@@ -484,19 +479,19 @@ ACTOR PB_MG42 : PB_Weapon
 	MuzzleFlashZoom:
 		TNT1 A 0 A_Jump(128, "MuzzleZoom1", "MuzzleZoom2", "MuzzleZoom3")
 	MuzzleZoom1:
-		MGZM A 1 BRIGHT
+		MGZM A 1 BRIGHT A_GunFlash
 		Stop
 	MuzzleZoom2:
-		MGZM B 2 BRIGHT
+		MGZM B 1 BRIGHT A_GunFlash
 		Stop
 	MuzzleZoom3:
-		MGZM C 1 BRIGHT
+		MGZM C 1 BRIGHT A_GunFlash
 		Stop
 	Fire2:
 		TNT1 A 0 A_JumpIfInventory("MG42HasOverheated",1,"UnzoomBarrelChange")
 		TNT1 A 0 {
 		if (CountInv("PB_HighCalMag") >= 1 && PB_GetOverheat < 500) {
-			return state ("ActualFire2");
+			return state ("");
 			}
 		else if (PB_GetOverheat == 500) {
 			return state ("UnzoomOverheat");
@@ -504,13 +499,13 @@ ACTOR PB_MG42 : PB_Weapon
 		else {
 			return state ("Unzoom");
 			}	
-		}	
-		Goto Ready2
-	ActualFire2:
+		}
 		TNT1 A 0 {
 			PB_IncrementHeat;
 		A_ClearOverlays(3, 4);
 		A_Overlay(-3, "MuzzleFlashZoom");
+		A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
+		A_OverlayRenderStyle(-3,STYLE_Add);
 		A_Overlay(5, "BeltFlashZoomFire");
 		if(CountInv("MG42BarrelOverheat") >= 1) {
 			PB_ModifyOverheat(15);
@@ -691,7 +686,7 @@ ACTOR PB_MG42 : PB_Weapon
 			A_ClearOverlays(10,11);
 		}
 		TNT1 A 0 {
-			A_GunFlash("DeselectFlash");
+			A_Overlay(999,"DeselectFlash");
 			A_Setinventory("Zoomed",0);
 			A_Setinventory("ADSmode",0);
 			A_ZoomFactor(1.0);

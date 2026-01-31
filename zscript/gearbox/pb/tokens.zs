@@ -565,11 +565,11 @@ Class PB_MinigunWheel : wheelinfocontainer
 		if(!spw || !requester)
 			return;
 			
-		vector2 iconScale = (0.8, 0.8);
+		vector2 iconScale = (0.65, 0.65);
 			
 		PB_SpecialWheel_Mode minigun_chaingun = new ("PB_SpecialWheel_Mode");
 		minigun_chaingun.img = "graphics/pywheel/Minigun_1.png";
-		minigun_chaingun.Alias = "Chaingun Mode";
+		minigun_chaingun.Alias = "525 RPM Mode";
 		minigun_chaingun.tokentogive = "SelectMinigun_Chaingun";
 		minigun_chaingun.scalex = iconscale.x;
 		minigun_chaingun.scaley = iconscale.y;
@@ -578,7 +578,7 @@ Class PB_MinigunWheel : wheelinfocontainer
 
 		PB_SpecialWheel_Mode minigun_gatling = new ("PB_SpecialWheel_Mode");
 		minigun_gatling.img = "graphics/pywheel/Minigun_2.png";
-		minigun_gatling.Alias = "Gatling Mode";
+		minigun_gatling.Alias = "1050-2100 RPM Mode";
 		minigun_gatling.tokentogive = "SelectMinigun_Gatling";
 		minigun_gatling.scalex = iconscale.x;
 		minigun_gatling.scaley = iconscale.y;
@@ -590,7 +590,7 @@ Class PB_MinigunWheel : wheelinfocontainer
 		{
 			PB_SpecialWheel_Mode minigun_triple = new ("PB_SpecialWheel_Mode");
 			minigun_triple.img = "graphics/pywheel/Minigun_3.png";
-			minigun_triple.Alias = "Death Dealer Mode";
+			minigun_triple.Alias = "6300 RPM Mode";
 			minigun_triple.tokentogive = "SelectMinigun_Triple";
 			minigun_triple.scalex = iconscale.x;
 			minigun_triple.scaley = iconscale.y;
@@ -732,54 +732,20 @@ class equipmentCard
 {
 	//this function fills the respective arrays to correctly display the equipments in the wheel
  	//if any new equipment is added, create a new class inheriting from this class for the handler to catch it
-	virtual void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
+	virtual void InfoFiller(out array<string> tags,out array<string> tokens,out array<string> ownedtokens,out array<string> ammotypes,out array<string>img,out array<double>sx,out array<double>sy)
 	{
 		return;
 	}
 }
 
-class ProxMinCard : equipmentCard
-{
-	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
-	{
-		tags.push("Proximity Mine");
-		tokens.push("WW_ProximityMineSelected");
-		img.push("graphics/pywheel/Equip_Mine.png");
-		sx.push(1.3);
-		sy.push(1.3);
-	}
-}
-
-Class StunGrenCard : equipmentCard
-{
-	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
-	{
-		tags.push("Stun Grenade");
-		tokens.push("WW_StunGrenadeSelected");
-		img.push("graphics/pywheel/Equip_Stun.png");
-		sx.push(1.3);
-		sy.push(1.3);
-	}
-}
-
-Class LeechCard : equipmentCard
-{
-	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
-	{
-		tags.push("Leech");
-		tokens.push("WW_LeechSelected");
-		img.push("graphics/pywheel/Equip_Leech.png");
-		sx.push(1.3);
-		sy.push(1.3);
-	}
-}
-
 class FragGrenCard : equipmentCard
 {
-	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
+	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string> ownedtokens,out array<string> ammotypes,out array<string>img,out array<double>sx,out array<double>sy)
 	{
 		tags.push("Frag Grenade");
 		tokens.push("WW_FragGrenadeSelected");
+		ownedtokens.push("PB_GrenadeToken");
+		ammotypes.push("PB_GrenadeAmmo");
 		img.push("graphics/pywheel/Equip_Frag.png");
 		sx.push(1.3);
 		sy.push(1.3);
@@ -788,11 +754,55 @@ class FragGrenCard : equipmentCard
 
 class ShouldCanCard : equipmentCard
 {
-	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string>img,out array<double>sx,out array<double>sy)
+	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string> ownedtokens,out array<string> ammotypes,out array<string>img,out array<double>sx,out array<double>sy)
 	{
 		tags.push("Quick Launcher");
 		tokens.push("WW_RevGunSelected");
+		ownedtokens.push("PB_QuickLauncherToken");
+		ammotypes.push("PB_QuickLauncherAmmo");
 		img.push("graphics/pywheel/Equip_RevGun.png");
+		sx.push(1.3);
+		sy.push(1.3);
+	}
+}
+
+class ProxMinCard : equipmentCard
+{
+	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string> ownedtokens,out array<string> ammotypes,out array<string>img,out array<double>sx,out array<double>sy)
+	{
+		tags.push("Proximity Mine");
+		tokens.push("WW_ProximityMineSelected");
+		ownedtokens.push("PB_ProxMineToken");
+		ammotypes.push("PB_ProxMineAmmo");
+		img.push("graphics/pywheel/Equip_Mine.png");
+		sx.push(1.3);
+		sy.push(1.3);
+	}
+}
+
+Class StunGrenCard : equipmentCard
+{
+	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string> ownedtokens,out array<string> ammotypes,out array<string>img,out array<double>sx,out array<double>sy)
+	{
+		tags.push("Stun Grenade");
+		tokens.push("WW_StunGrenadeSelected");
+		ownedtokens.push("PB_StunGrenadeToken");
+		ammotypes.push("PB_StunGrenadeAmmo");
+		img.push("graphics/pywheel/Equip_Stun.png");
+		sx.push(1.3);
+		sy.push(1.3);
+	}
+}
+
+Class LeechCard : equipmentCard
+{
+	override void InfoFiller(out array<string> tags,out array<string> tokens,out array<string> ownedtokens,out array<string> ammotypes,out array<string>img,out array<double>sx,out array<double>sy)
+	{
+		tags.push("Leech");
+		tokens.push("WW_LeechSelected");
+		ownedtokens.push("PB_LeechToken");
+		ammotypes.push("PB_DTech");
+		img.push("graphics/pywheel/Equip_Leech.png");
 		sx.push(1.3);
 		sy.push(1.3);
 	}

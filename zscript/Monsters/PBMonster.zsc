@@ -1320,7 +1320,7 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 
 
 
-	void A_DropAdjust2(class<Actor> missiletype,class<Actor> missiletype2, double offX, double offY, double offZ, double speedmult=1.0, int minRange=0, int maxRange=1000,bool shootDownward=false,bool highRiders = false,bool highRiders2 = false, statelabel stateFallback = "null", bool forceMinAngle = false)
+	void A_DropAdjust2(class<Actor> missiletype,class<Actor> missiletype2, double offX, double offY, double offZ, double speedmult=1.0, int minRange=0, int maxRange=1000,bool shootDownward=false,bool highRiders = false,bool highRiders2 = false, statelabel stateFallback = "null", bool forceMinAngle = false, bool noPrediction=false)
 	{
 		Actor target = self.target;
 		if (!target) return;
@@ -1405,6 +1405,7 @@ bool CanReachTarget(class<Actor> missileType, double offsetX = 1, double offsetY
 
 		// Combine with the current angle to get the final PredAngle.
 		double FinalPredAngle = self.angle + finalDiff;
+		if(noPrediction) FinalPredAngle = self.angle;
 
 		// If ceiling is too low or the target is out-of-range, use the alternate projectile.
 		if (ceil < 80 || (tarDist > maxRange || tarDist < minRange))

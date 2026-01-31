@@ -146,7 +146,7 @@ Class FireworkSFXUnmaker : FireworkSFXType1
 	void SpawnObeliskSpark()
 	{
 		FSpawnParticleParams PUFSPRK;
-		PUFSPRK.Texture = TexMan.CheckForTexture("YAE4A0");
+		PUFSPRK.Texture = TexMan.CheckForTexture("YAE4B0",STYLE_Normal);
 		PUFSPRK.Color1 = "FFFFFF";
 		PUFSPRK.Style = STYLE_Add;
 		PUFSPRK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
@@ -190,7 +190,7 @@ Class TinyBurningPiece : Actor
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "StopBurning");
 			TNT1 A 0 SpawnParticleSlow();
 			CFCF ABCD 1;
-			TNT1 A 0 A_Explode(2, 60);
+			TNT1 A 0 A_Explode(2, 60, 0);
 			CFCF EFGHIJKL 1;
 			TNT1 A 0 A_Jump(24, "StopBurning");
 			loop;
@@ -254,7 +254,7 @@ Class DTechBurningPiece : TinyBurningPiece
 {
 	default
 	{
-		renderstyle "translucent";
+		renderstyle "normal";
 		scale 0.4;
 		+BRIGHT
 	}
@@ -263,7 +263,7 @@ Class DTechBurningPiece : TinyBurningPiece
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "StopBurning");
 			TNT1 A 0 A_Explode(5, 35, 0);
-			TNT1 A 0 SpawnParticleSlow("YAE4A0");
+			TNT1 A 0 SpawnParticleDTech();
 			DFIR ABCDEFGHIJKLMNOP 2;
 			TNT1 A 0 A_Jump(50, "StopBurning");
 			Loop;
@@ -272,6 +272,24 @@ Class DTechBurningPiece : TinyBurningPiece
 			DFIR B 2 A_SetScale(0.04);
 			DFIR C 2 A_SetScale(0.02);
 			Stop;
+	}
+	
+	void SpawnParticleDTech(string tx = "YAE4B0") //idk what is "ExplosionParticleVerySlow"
+	{
+		FSpawnParticleParams SPRKSL;
+		SPRKSL.Texture = TexMan.CheckForTexture(tx);
+		SPRKSL.Color1 = "FFFFFF";
+		SPRKSL.Style = STYLE_Normal;
+		SPRKSL.Flags = SPF_ROLL|SPF_FULLBRIGHT;
+		SPRKSL.Vel = (frandom(-1.1,1.1),frandom(-1.1,1.1),frandom(0.5,1.25));
+		SPRKSL.Startroll = randompick(0,90,180,270,360);
+		SPRKSL.RollVel = 0;
+		SPRKSL.StartAlpha = 1.0;
+		SPRKSL.Size = random(7,12);
+		SPRKSL.SizeStep = -0.5;
+		SPRKSL.Lifetime = random(28,42); 
+		SPRKSL.Pos = pos;
+		Level.SpawnParticle(SPRKSL);
 	}
 }
 
@@ -294,9 +312,9 @@ class DTechBurningPiece3 : DTechBurningPiece
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "StopBurning");
 			DFIR ABCDEFGH 2;
-			TNT1 A 0 SpawnParticleSlow("YAE4A0");
+			TNT1 A 0 SpawnParticleDTech();
 			DFIR IJKLMNOP 2;
-			TNT1 A 0 SpawnParticleSlow("YAE4A0");
+			TNT1 A 0 SpawnParticleDTech();
 			TNT1 A 0 A_Jump(50, "StopBurning");
 			Loop;
 		StopBurning:
@@ -379,7 +397,7 @@ Class FT_GroundFireSpawner : TinyBurningPiece2{
 			TNT1 A 2 A_SpawnItemEx("FT_GroundFire", random(-24,24), random(-8,8), random(1,4));
 			TNT1 A 0 {
 				A_SpawnItemEx("FT_GroundFire2", random(-42,42), random(-28,28), random(0,6));
-				A_Explode(12, 36, 0, 0, 36);
+				A_Explode(12, 36, XF_HURTSOURCE, 0, 36);
 				SpawnParticleFast();
 				if(!pb_performance_fire && waterlevel < 1 && random(0,1) == 1)
 					SpawnSmokeMed();
@@ -455,7 +473,7 @@ Class FT_GroundFireSpawnerPerf : FT_GroundFireSpawner{
 			TNT1 A 1 NODELAY A_StartSound("props/torchfire", CHAN_BODY, CHANF_NOSTOP);
 			TNT1 A 1 A_SpawnItemEx("FT_GroundFire", random(-24,24), random(-7,7), random(1,2));
 			TNT1 A 1 A_SpawnItemEx("FT_GroundFire2", random(-24,24), random(-7,7), random(1,2));
-			TNT1 A 0 A_Explode(10, 36, 0, 0, 36);
+			TNT1 A 0 A_Explode(10, 36, XF_HURTSOURCE, 0, 36);
 			TNT1 A 0 A_Jump(7, "StopBurning");
 			Loop;
 	}
@@ -511,7 +529,7 @@ Class FT_GroundFire2 : FT_GroundFire{
 			Stop;
 	}
 }
-Class PBArchvileFire : Actor Replaces ArchvileFire{
+Class PBArchvileFire : Actor {
 	Default{
 		Scale 0.7;
 		RenderStyle "Add";
@@ -527,13 +545,25 @@ Class PBArchvileFire : Actor Replaces ArchvileFire{
 	}
 	States{
 	Spawn:
-		TNT1 A 1 A_StartFire;
+		TNT1 A 1 {
+			A_StartSound("pb/monsters/vile/firestart");
+			A_Fire();
+		}
 		INFE ABCDEF 1 A_Fire;
-		INFE G 1 A_FireCrackle;
+		INFE G 1 {
+			A_StartSound("pb/monsters/vile/firecrackle");
+			A_Fire();
+		}
 		INFE HIJKLM 1 A_Fire;
-		INFE N 1 A_FireCrackle;
+		INFE N 1 {
+			A_StartSound("pb/monsters/vile/firecrackle");
+			A_Fire();
+		}
 		INFE OPQRS 1 A_Fire;
-		INFE T 1 A_FireCrackle;
+		INFE T 1 {
+			A_StartSound("pb/monsters/vile/firecrackle");
+			A_Fire();
+		}
 		TNT1 A 2;
 		Stop;
 	}

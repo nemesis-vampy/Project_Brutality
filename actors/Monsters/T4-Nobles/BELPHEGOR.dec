@@ -487,7 +487,6 @@ Actor DeadBelphegor1 : PB_GoreSpawnActor
 {
     Radius 12
     Height 18
-    Scale 1.2
     +SHOOTABLE
     -SOLID
     +NOTELEPORT
@@ -540,7 +539,6 @@ Actor FatalizedBelphegor : DeadBelphegor1
 {
     Radius 12
     Height 18
-    Scale 1.2
     +SHOOTABLE
     -SOLID
     +NOTELEPORT

@@ -703,7 +703,6 @@ Actor Vanilla_Volcabus : PB_Volcabus //replaces Fatso
 
 ACTOR DyingVolcabus
 {
-	Scale 1.08
     Radius 32
     Height 35
     Speed 0

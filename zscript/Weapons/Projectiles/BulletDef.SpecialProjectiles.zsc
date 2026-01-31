@@ -418,6 +418,7 @@ class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 
 class PB_MicroMissileProjectile : PB_ProjectileAlt
 {
+	double weavenum;
 	Default
 	{
 		Radius 6;
@@ -429,6 +430,7 @@ class PB_MicroMissileProjectile : PB_ProjectileAlt
 		Decal "Scorch";
 		SeeSound "weapons/RLL";
 		Obituary "$OB_MPROCKET";
+		RenderStyle "Normal";
 		-NOGRAVITY;
 		
 		PB_Projectile.BaseDamage 35;
@@ -439,18 +441,12 @@ class PB_MicroMissileProjectile : PB_ProjectileAlt
 	States
 	{
 		Spawn:
-			MICR A 1 BRIGHT;
-			MICR A 1 BRIGHT A_StartSound("weapons/rocketloop",105,CHANF_LOOP);
+			MICR A 0 NoDelay A_StartSound("weapons/rocketloop",105,CHANF_LOOP);
 		Fly:
-			MICR AAAABBBBCCCCAAAABBBBCCCC 1 Bright Light("ROCKET")
+			MICR ABC 1 Bright Light("PB_ROCKET")
 			{
-				if(waterlevel < 1)
-					A_SpawnItemEx("RocketTrailSparks",-10,0,0,-5,0,0);
-			}
-		Fly2: //for makin it fly off in different directions
-			MICR AAABBBCCC 1 Bright Light("ROCKET")
-			{
-				A_Weave(3,3,frandom(-5,5),frandom(-5,5));
+				if(weavenum < 10) weavenum += 0.2;
+				if(weavenum > 5) A_Weave(3,3,random(-(weavenum - 5),(weavenum - 5)),random(-(weavenum - 5),(weavenum - 5)));
 				if(waterlevel < 1)
 					A_SpawnItemEx("RocketTrailSparks",-10,0,0,-5,0,0);
 			}

@@ -3,6 +3,7 @@ Class PBShotgunGuySpawner : PB_SpawnerBase
 	States
 	{
 		Death:
+		ChaoticRandom:
 		Tier4:
 			TNT1 A 0 PB_SpawnerSpawn("PB_ShotGuySpawner_T4");
 			Stop;
@@ -43,8 +44,8 @@ Class PB_ShotGuySpawner_T2 : PB_MonsterSpawner
 		PBRandomSpawner.SpawnOverride "pb_sergeant_override";
 		dropitem "PB_ShotgunGuy",255,1;
 		dropitem "PB_ShotgunGuyHelmet",255,1;
-		dropitem "PB_RiotShieldGuy",255,2;
-		dropitem "ASGGuy",255,2;
+		dropitem "PB_RiotShieldGuy",255,1;
+		dropitem "ASGGuy",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)
@@ -65,11 +66,12 @@ Class PB_ShotGuySpawner_T3 : PB_MonsterSpawner
 	{
 		PBRandomSpawner.Fallback "PB_ShotGuySpawner_T2";
 		PBRandomSpawner.SpawnOverride "pb_sergeant_override";
-		dropitem "PB_ShotgunGuyHelmet",255,2;
-		dropitem "PB_RiotShieldGuy",255,2;
-		dropitem "ASGGuy",255,2;
-		dropitem "PB_PyroSergeant",255,3;
-		dropitem "PB_QSGZombie",255,3;
+		dropitem "PB_ShotgunGuy",255,1;
+		dropitem "PB_ShotgunGuyHelmet",255,1;
+		dropitem "PB_RiotShieldGuy",255,1;
+		dropitem "ASGGuy",255,1;
+		dropitem "PB_PyroSergeant",255,1;
+		dropitem "PB_QSGZombie",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)
@@ -94,12 +96,13 @@ Class PB_ShotGuySpawner_T4 : PB_MonsterSpawner
 	{
 		PBRandomSpawner.Fallback "PB_ShotGuySpawner_T3";
 		PBRandomSpawner.SpawnOverride "pb_sergeant_override";
-		dropitem "PB_ShotgunGuyHelmet",255,2;
-		dropitem "PB_RiotShieldGuy",255,2;
-		dropitem "ASGGuy",255,2;
-		dropitem "PB_PyroSergeant",255,3;
-		dropitem "PB_QSGZombie",255,3;
-		dropitem "PB_RocketZombie",255,4;
+		dropitem "PB_ShotgunGuy",255,1;
+		dropitem "PB_ShotgunGuyHelmet",255,1;
+		dropitem "PB_RiotShieldGuy",255,1;
+		dropitem "ASGGuy",255,1;
+		dropitem "PB_PyroSergeant",255,1;
+		dropitem "PB_QSGZombie",255,1;
+		dropitem "PB_RocketZombie",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)

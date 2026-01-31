@@ -11,7 +11,7 @@ ACTOR PB_EliteArachnotron: Arachnotron //replaces Arachnotron
 	Tag "Elite Arachnotron"
 	Health 750
 	Scale 1
-	Radius 60
+	Radius 64
 	Height 64
 	SpawnID 1620
 	+DONTHARMCLASS
@@ -375,7 +375,6 @@ Actor DeadSpiderDark: CurbstompedMarine
 {
     Radius 20
     Height 12
-    Scale 1.3
     +SHOOTABLE
     +NOTELEPORT
     +MOVEWITHSECTOR
@@ -455,7 +454,6 @@ ACTOR ArachnoTurretFrame2
 	Radius 32
 	Height 60
 	Health 20
-	Scale 1.3
 	DamageFactor "Fatality", 2.0
 	+SHOOTABLE
     -SOLID

@@ -70,7 +70,7 @@ ACTOR PB_VoidSpectre: PB_Demon //Replaces Spectre
 	GibHealth 35
 	Health 400
 	Scale 1
-	Radius 22
+	Radius 30
 	Height 56
 	Mass 400
 	 Speed 15
@@ -85,11 +85,11 @@ ACTOR PB_VoidSpectre: PB_Demon //Replaces Spectre
 	damagefactor "Shrapnel", 0.3
 	damagefactor "SSG", 9.0
 	+FLOORCLIP 
-	SeeSound "demon/sight"
-	AttackSound "demon/melee"
-	PainSound "demon/pain"
-	DeathSound "demon/death"
-	ActiveSound "demon/active"
+	SeeSound "pb/demon/sight"
+	AttackSound "pb/demon/melee"
+	PainSound "pb/demon/pain"
+	DeathSound "pb/demon/death"
+	ActiveSound "pb/demon/active"
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	BloodColor "Green"
 	DamageType Eat
@@ -714,7 +714,6 @@ Actor DeadVoidSpectre: CurbstompedMarine
 {
 	Radius 18
 	Height 12
-	Scale 1.1
 	+SHOOTABLE
 	+NOTELEPORT
 	+MOVEWITHSECTOR

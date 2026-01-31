@@ -67,11 +67,11 @@ class PB_PermaDTechLarge : PB_DTechLarge
 }
 
 // Leech Grenade
-Class PB_LeechGrenadeAmmo : PB_Ammo 
+Class PB_LeechPickup : PB_Ammo 
 {
 	Default
 	{
-		//$Title Leech Grenade
+		//$Title Leech
 		//$Category Project Brutality - Weapons/Equipment
 		Scale 0.35;
 		Tag "Leech Grenade";
@@ -83,4 +83,13 @@ Class PB_LeechGrenadeAmmo : PB_Ammo
 	{
 		return "What the hell is this thing..?";
 	}
+	
+	override void AttachToOwner(actor other)
+	{
+		other.GiveInventory("PB_LeechToken",1);
+		other.GiveInventory("PB_DTech",20);
+		Super.AttachToOwner(other);
+	}
 }
+
+class PB_LeechToken : PB_EquipToken {}

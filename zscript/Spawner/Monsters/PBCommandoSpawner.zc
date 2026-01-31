@@ -59,8 +59,9 @@ Class PB_ChainGuySpawner_T3 : PB_MonsterSpawner
 	{
 		PBRandomSpawner.Fallback "PB_ChainGuySpawner_T2";
 		PBRandomSpawner.SpawnOverride "pb_chaingunner_override";
-		dropitem "PB_HelmetCommando",255,2;
-		dropitem "PB_NailgunMajor",255,3;
+		dropitem "PB_HelmetCommando",255,1;
+		dropitem "PB_Commando",255,1;
+		dropitem "PB_NailgunMajor",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)
@@ -79,9 +80,10 @@ Class PB_ChainGuySpawner_T4 : PB_MonsterSpawner
 	{
 		PBRandomSpawner.Fallback "PB_ChainGuySpawner_T3";
 		PBRandomSpawner.SpawnOverride "pb_chaingunner_override";
-		dropitem "PB_HelmetCommando",255,2;
-		dropitem "PB_NailgunMajor",255,3;
-		dropitem "PB_DemonTechZombie",255,4;
+		dropitem "PB_HelmetCommando",255,1;
+		dropitem "PB_Commando",255,1;
+		dropitem "PB_NailgunMajor",255,1;
+		dropitem "PB_DemonTechZombie",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)

@@ -11,7 +11,7 @@ ACTOR PB_InfernalArachnotron: Arachnotron //replaces Arachnotron
 	Tag "Infernal Arachnotron"
 	Health 550
 	Scale 1
-	Radius 60
+	Radius 64
 	Height 64
 	SpawnID 1610
 	Species "Arachnotron"

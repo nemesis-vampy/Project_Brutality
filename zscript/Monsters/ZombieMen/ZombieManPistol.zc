@@ -458,17 +458,17 @@ Class PB_PistolZombieman1: PB_Zombieman //Replaces ZombieMan
 		DiveLeft:
 			PSPO A 1 A_FaceTarget();
 			PSPO A 1 A_SetAngle(angle+90, SPF_INTERPOLATE);
-			//POSS A 1 A_SetAngle(angle*256/360+192, SPF_INTERPOLATE);
+			//POS1 A 1 A_SetAngle(angle*256/360+192, SPF_INTERPOLATE);
 			Goto DivingBegin;
 		DiveRight:
 			PSPO A 1 A_FaceTarget();
 			PSPO A 1 A_SetAngle(angle-90, SPF_INTERPOLATE);
-		//	POSS A 1 A_SetAngle(angle*256/360+64, SPF_INTERPOLATE);
+		//	POS1 A 1 A_SetAngle(angle*256/360+64, SPF_INTERPOLATE);
 			Goto DivingBegin;
 		DiveBack:
 			PSPO A 1 A_FaceTarget();
 			PSPO A 1 A_SetAngle(angle-180, SPF_INTERPOLATE);
-			//POSS A 1 A_SetAngle(angle*256/360+128, SPF_INTERPOLATE);
+			//POS1 A 1 A_SetAngle(angle*256/360+128, SPF_INTERPOLATE);
 			Goto DivingBegin;
 		DiveFront:
 			PSPO A 1 A_FaceTarget();

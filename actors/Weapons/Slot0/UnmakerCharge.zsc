@@ -5,8 +5,8 @@ class UnmakerStuff : EventHandler
 		actor t = e.Thing;
 		if(e.Inflictor&&t.bISMONSTER&&t.health <=0&&e.DamageSource)
 		{
-			if((e.Inflictor is "UnmakerDoomSeeker")&&e.DamageSource.CountInv("UnmakerOverchargeCounter")<100)
-				e.DamageSource.GiveInventory("UnmakerOverchargeCounter",2);
+			if((e.Inflictor is "UnmakerDoomSeeker")&&e.DamageSource.CountInv("UnmakerOverchargeCounter")<600)
+				e.DamageSource.GiveInventory("UnmakerOverchargeCounter",12);
 		}
 	}
 }

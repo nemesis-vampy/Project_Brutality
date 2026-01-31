@@ -88,19 +88,18 @@ weapons/flamethrower/respect2 			"sounds/combat/weapons/flamethrower/FT_Select2.
 weapons/flamethrower/respect3 			"sounds/combat/weapons/flamethrower/FT_Select3.ogg"
 weapons/flamethrower/respect4 			"sounds/combat/weapons/flamethrower/FT_Select4.ogg"
 weapons/flamethrower/respect5 			"sounds/combat/weapons/flamethrower/FT_Click1.wav"
-weapons/flamethrower/respect6 			"sounds/combat/weapons/flamethrower/FT_Select5.wav"
+weapons/flamethrower/respect6 			"sounds/combat/weapons/flamethrower/FT_Select5.ogg"
 weapons/flamethrower/hiss1 				"sounds/combat/weapons/flamethrower/FlamerHiss1.ogg"
 weapons/flamethrower/hiss2 				"sounds/combat/weapons/flamethrower/FlamerHiss2.wav"
-weapons/flamethrower/click 				"sounds/combat/weapons/flamethrower/FT_lighthiss.ogg"
+weapons/flamethrower/click 				"sounds/combat/weapons/flamethrower/FT_Click2.wav"
 weapons/flamethrower/idle 				FLMRIDL
-weapons/flamethrower/lighthiss 			"sounds/combat/weapons/flamethrower/FT_Click2.wav"
-weapons/flamethrower/lighthiss 			"sounds/combat/weapons/flamethrower/FT_Click2.wav"
+weapons/flamethrower/lighthiss 			"sounds/combat/weapons/flamethrower/FT_lighthiss.ogg"
 weapons/flamethrower/misc1 				"sounds/combat/weapons/flamethrower/FT_Reload4.wav"
 
 $random weapons/flamethrower/torchobject		{ weapons/flamethrower/torchobject1 weapons/flamethrower/torchobject2 weapons/flamethrower/torchobject3 }	
-weapons/flamethrower/torchobject1 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT1.wav"
-weapons/flamethrower/torchobject2 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT2.wav"
-weapons/flamethrower/torchobject3 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT3.wav"
+weapons/flamethrower/torchobject1 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT1.ogg"
+weapons/flamethrower/torchobject2 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT2.ogg"
+weapons/flamethrower/torchobject3 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT3.ogg"
 
 		
 $random weapons/flamethrower/dryhiss		{ dryhiss1 dryhiss2 dryhiss3 dryhiss4 dryhiss5 }	
@@ -200,12 +199,12 @@ DSSAWZIP DSSAWZIP
 
 //Slot 2 PISTOLS
 //PISTOL
-$random weapons/pistol {2PFIRE1 2PFIRE2 2PFIRE3}
+$random weapons/firepistol {2PFIRE1 2PFIRE2 2PFIRE3}
 2PFIRE1 2XPFIRE1
 2PFIRE2 2XPFIRE2
 2PFIRE3 2XPFIRE3
-$volume weapons/pistol 0.8
-$rolloff weapons/pistol 100 2200
+$volume weapons/firepistol 0.8
+$rolloff weapons/firepistol 100 2200
 $random weapons/smcasebounce { brc1 brc2 brc3 brc4 brc5 }
 brc1 brass_c1
 brc2 brass_c2
@@ -689,12 +688,12 @@ SiphonActive SIPHON1
 $random SiphonGrowl { SIPHON2 SIPHON3 }
 SIPHON2 SIPHON2
 SIPHON3 SIPHON3
-$random weapons/plasmax { PEXPLO1 PEXPLO2 PEXPLO3 PEXPLO4}
+$random weapons/plasma/explode { PEXPLO1 PEXPLO2 PEXPLO3 PEXPLO4}
 PEXPLO1 PEXPLO1
 PEXPLO2 PEXPLO2
 PEXPLO3 PEXPLO3
 PEXPLO4 PEXPLO4
-$rolloff weapons/plasmax  300 1600
+$rolloff weapons/plasma/explode  300 1600
 PLSM9 PLSM9
 PLSTHRW PLSTHRW
 BEP BEP

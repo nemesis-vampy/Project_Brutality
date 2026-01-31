@@ -14,11 +14,11 @@ ACTOR PoorPinkyLostHisArm: PB_GoreSpawnActor
 	+FLOORCLIP
 	-NOBLOOD
 	+SOLID
-	SeeSound "demon/sight"
-	AttackSound "demon/melee"
-	PainSound "demon/pain"
-	DeathSound "demon/death"
-	ActiveSound "demon/active"
+	SeeSound "pb/monsters/demon/sight"
+	AttackSound "pb/monsters/demon/melee"
+	PainSound "pb/monsters/demon/pain"
+	DeathSound "pb/monsters/demon/death"
+	ActiveSound "pb/monsters/demon/active"
 	damagefactor "Kick", 0.7
 	damagefactor "Fatality", 0.7
 	damagefactor "SuperPunch", 0.7

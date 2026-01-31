@@ -25,7 +25,7 @@ class PB_Invul : PB_Inventory //replaces invulnerabilitysphere
 	States
 	{
 	Spawn:
-		PINV ABCDEFGHIJ 3;
+		P1NV ABCDEFGHIJ 3;
 		loop;
 	}
 }
@@ -41,7 +41,6 @@ class PB_PowerInvul : PowerInvulnerable
 		Super.InitEffect();
 		if(!Owner) return;
 		owner.bNOBLOOD = true;
-		owner.A_AttachLightDef("InvulnLight","InvulLight");
 	}
 	
 	override void DoEffect()
@@ -66,7 +65,6 @@ class PB_PowerInvul : PowerInvulnerable
 		Shader.SetEnabled(Owner.Player,"Invulnerability",false);
 		EndBlend("DarkGreen");
 		owner.bNOBLOOD = false;
-		owner.A_RemoveLight("InvulnLight");
 	}
 }
 
@@ -95,7 +93,7 @@ class PB_RadSuit : PB_Inventory //replaces radsuit
 	States
 	{
 	Spawn:
-		SUIT A -1;
+		SU1T A -1;
 		stop;
 	}
 }
@@ -115,16 +113,17 @@ class PB_PowerIronFeet : PowerIronFeet
 	{
 		If (Passive)
 		{
-			If (DamageType == 'Ice' || DamageType == 'Fire' || DamageType == 'Flames' || DamageType == 'Flame' || DamageType == 'Burn' || DamageType == 'Electric')
+			If (DamageType == 'Electric')
 			{
 				NewDamage = Damage * 0.75;
 				//console.printf ("PB_Radsuit: Took %d %s damage from %s, reduced it to %d damage",damage,damageType,inflictor.getclassname(),newdamage);
 				Return;
 			}
-			If (DamageType == 'PoisonCloud' || DamageType == 'Poison' && Source ||
+			If (DamageType == 'Ice' || DamageType == 'Fire' || DamageType == 'Flames' || DamageType == 'Flame' || DamageType == 'Burn' || DamageType == 'PoisonCloud' || DamageType == 'Poison' ||
 			DamageType == 'Disintegrate') //The Daedabus uses fucking disintegrating damage for some stupid reason.
 			{
 				NewDamage = Damage * 0;
+				owner.player.poisoncount = 0;
 				//console.printf ("PB_Radsuit: Took %d %s damage, reduced it to %d damage",damage,damageType,newdamage);
 				Return;
 			}
@@ -174,7 +173,7 @@ class PB_BlurSphere : PB_Inventory //replaces blursphere
 	States
 	{
 	Spawn:
-		PINS ABCBJBABCJBCDEFGHIBJ 3;
+		PIN5 ABCBJBABCJBCDEFGHIBJ 3;
 		loop;
 	}
 }
@@ -188,7 +187,7 @@ class PB_PowerInvis : PowerInvisibility
 	override void DoEffect()
 	{
 		Super.DoEffect();
-		Owner.A_SetRenderStyle(.8, STYLE_Subtract);
+		Owner.A_SetRenderStyle(.5, STYLE_Subtract);
 		PowerupTimer("Red", "Blue");
 	}
 	
@@ -221,7 +220,7 @@ class PB_Infrared : PB_Inventory //replaces infrared
 	States
 	{
 	Spawn:
-		PVIS A -1;
+		PV1S A -1;
 		stop;
 	}
 }
@@ -305,7 +304,7 @@ class PB_Soulsphere : PB_Inventory //replaces soulsphere
 	States
 	{
 	Spawn:
-		SOUL ABCDEFGHIJ 3;
+		SOU1 ABCDEFGHIJ 3;
 		loop;
 	}
 }
@@ -339,7 +338,7 @@ class PB_Megasphere : PB_Inventory //replaces megasphere
 	States
 	{
 	Spawn:
-		MEGA ABCDEFGHIJ 3;
+		MEG4 ABCDEFGHIJ 3;
 		loop;
 	}
 }
@@ -376,7 +375,7 @@ class PB_Berserk : PB_Inventory //replaces Berserk
 	States
 	{
 	Spawn:
-		PSTR A -1;
+		PST1 A -1;
 		stop;
 	}
 }
@@ -392,7 +391,7 @@ class PB_AllMap : AllMap //replaces AllMap
 	States
 	{
 	Spawn:
-		PMAP AFFAAAFFAFAFAFBCDEF 2 BRIGHT;
+		PMA1 AFFAAAFFAFAFAFBCDEF 2 BRIGHT;
 		loop;
 	}
 }
@@ -480,6 +479,7 @@ class PB_Haste : PB_Inventory
 		//$Category Powerups
 		Inventory.PickupMessage "Haste";
 		Inventory.PickupSound "DEM";
+		renderstyle "add";
 		-COUNTITEM
 		+FLOATBOB
 		floatbobstrength .4;

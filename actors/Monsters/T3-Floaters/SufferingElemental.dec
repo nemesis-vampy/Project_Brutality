@@ -15,13 +15,14 @@ ACTOR PB_SufferingElemental : PB_Elemental //Replaces PainElemental
 	Monster
 	+FLOAT 
 	+NOGRAVITY
+	+FORCEXYBILLBOARD
 	+MissileMore
-	SeeSound "pain/sight"
+	SeeSound "pb/pain/sight"
 	damagefactor "Avoid", 0.0
 	damagefactor "killme", 0.0
 	damagefactor "GibRemoving", 0.0
-	PainSound "pain/pain"
-	DeathSound "pain/death"
+	PainSound "pb/pain/pain"
+	DeathSound "pb/pain/death"
 	ActiveSound "pain/active"
 	PB_Elemental.LSType "PB_Phantasm"
 	BloodColor "Green"
