@@ -507,7 +507,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		Reload:
 			TNT1 A 0 A_ClearReFire();
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield");
-			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready","Ready3",60);
+			TNT1 A 0 PB_CheckReload(null,null,null,"Ready","Ready3",60);
 			TNT1 A 0 {
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
 				A_ClearOverlays(2,2);
@@ -573,7 +573,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma",1,"ReloadDualUnloadContinue");
 			Goto FinishingReload;
 		ReloadDualWield:
-			TNT1 A 0 PB_NewCheckReload(null,null,null,"ReloadLeftOnly","Ready3",60);
+			TNT1 A 0 PB_CheckReload(null,null,null,"ReloadLeftOnly","Ready3",60);
 			TNT1 A 0 {
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
 				A_ClearOverlays(10,11);
@@ -622,7 +622,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			}
 			P1R0 MNOP 1 A_SetRoll(roll+0.4);
 			P1R0 QRSSSS 1;
-			TNT1 A 0 PB_NewCheckReload(null,null,null,"ReloadRightOnlyDone","ReloadRightOnlyDone",60,1,true);
+			TNT1 A 0 PB_CheckReload(null,null,null,"ReloadRightOnlyDone","ReloadRightOnlyDone",60,1,true);
 			P1R0 TUVWXYZ 1; 
 			P1SS DCBA 1;
 			TNT1 A 3;
@@ -633,7 +633,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 PB_SetReloading(false);
 			Goto Ready3;
 		ReloadLeftOnly:
-			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready","Ready3",60,1,true);
+			TNT1 A 0 PB_CheckReload(null,null,null,"Ready","Ready3",60,1,true);
 			TNT1 A 0 {
 				A_StartSound("PLSM2RL",26,CHANF_OVERLAP);
 				A_ClearOverlays(10,11);

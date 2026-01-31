@@ -1459,7 +1459,7 @@ ACTOR PB_QuadSG : PB_Weapon
 	DualFireReload:
 		TNT1 A 0 A_SetInventory("DualFiring",0)
 		TNT1 A 0 A_SetInventory("DualFireReload",0)
-		TNT1 A 0 PB_NewCheckReload("","","","ReloadAkimboOnlyLeftBegin","Ready3",4)
+		TNT1 A 0 PB_CheckReload("","","","ReloadAkimboOnlyLeftBegin","Ready3",4)
 		TNT1 A 0 A_ClearOverlays(10, 14)
 	ReloadAkimboRight:
 		QAKS NOPQR 1
@@ -1582,7 +1582,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 PB_SetReloading(false)
 		Goto RealReady
 	ReloadAkimboOnlyLeftBegin:
-		TNT1 A 0 PB_NewCheckReload("","","","Ready3","Ready3",4,1,true)
+		TNT1 A 0 PB_CheckReload("","","","Ready3","Ready3",4,1,true)
 		TNT1 A 0 A_ClearOverlays(10, 14)
 		QAKS NOPQR 1
 		TNT1 A 6
@@ -1705,7 +1705,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		stop
 	Reload:
 		TNT1 A 0 A_JumpIfInventory("QuadAkimboMode", 1, "DualFireReload")
-		TNT1 A 0 PB_NewCheckReload("","","","Ready3","Ready3",4)
+		TNT1 A 0 PB_CheckReload("","","","Ready3","Ready3",4)
 		QSSG CDEFIJKLM 1
 		QSSG NOPQ 1
 		TNT1 A 0 A_PlaySound("QSGOPN", 8)

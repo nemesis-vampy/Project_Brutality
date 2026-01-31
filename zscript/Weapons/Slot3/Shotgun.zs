@@ -439,7 +439,7 @@ Class PB_Shotgun : PB_WeaponBase
 		ReloadWithNoAmmoLeft:
 		Reload:
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine",1,"MagReload");
-			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready3","Ready3",9);
+			TNT1 A 0 PB_CheckReload(null,null,null,"Ready3","Ready3",9);
 			TNT1 A 0 A_WeaponOffset(0,32);
 			SH0G BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_SetInventory("PBPumpShotgunHasUnloaded", 0);
@@ -497,7 +497,7 @@ Class PB_Shotgun : PB_WeaponBase
 			Goto Ready3;
 		
 		MagReload:
-			TNT1 A 0 PB_NewCheckReload(null,null,null,"Ready3","Ready3",11);
+			TNT1 A 0 PB_CheckReload(null,null,null,"Ready3","Ready3",11);
 			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"toinsert");
 			SHMG FGHI 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);

@@ -143,13 +143,13 @@ extend class PB_WeaponBase
 	
 	//put this in the beggining of the reload state
 	//	-emptyReload is meant for guns that have different reloads when its empty, if its not the case just pass null (without "")
-	//	-fullAlready is the state it jumps if its already full, usually just ready3
-	//	-noAmmo is the state to jump if theres no reserve ammo
+	//	-fullAlready is the state it jumps if its already full, usually just ready3. for dual weapons, the right weapon should use this to skip its reload and go to the left weapon.
+	//	-noAmmo is the state to jump if theres no reserve ammo. this should usually be ready3
 	//	-full is the amount considered for the gun to be full
 	//	-equal is the equivalence between the ammo reserve and a single bullet/shell/whateverammouses loaded
 
 	//check for ammo in the gun, do necessary functions
-	action state PB_newCheckReload(statelabel unloadedReload,statelabel emptyReload,statelabel loadChamber,statelabel fullAlready,statelabel noAmmo,int full,int equal = 1,bool dual = false)
+	action state PB_CheckReload(statelabel unloadedReload,statelabel emptyReload,statelabel loadChamber,statelabel fullAlready,statelabel noAmmo,int full,int equal = 1,bool dual = false)
 	{
 		int amount1 = countinv(invoker.ammotype1); //reserve
 		int amount2 = dual ? countinv(invoker.ammotypeleft) : countinv(invoker.ammotype2); //to be loaded
@@ -172,10 +172,10 @@ extend class PB_WeaponBase
 			else if(unloadedReload && PB_GetMagUnloaded(dual)) //if the mag was unloaded
 				return resolvestate(unloadedReload);
 			
-			else if(loadChamber && PB_GetChamberEmpty(dual) && !PB_GetMagEmpty(dual) && !PB_GetMagUnloaded(dual)) //if the chamber was empty
+			else if(loadChamber && PB_GetChamberEmpty(dual) && !PB_GetMagEmpty(dual) && !PB_GetMagUnloaded(dual)) //if the chamber was empty and the mag has ammo
 				return resolvestate(loadChamber);
 			
-			else if(emptyReload && PB_GetChamberEmpty(dual)) //if the chamber was empty
+			else if(emptyReload && PB_GetChamberEmpty(dual)) //if the chamber was empty and the mag is empty
 				return resolvestate(emptyReload);
 		}
 		return resolvestate(null);

@@ -255,7 +255,7 @@ Class PB_Revolver : PB_WeaponBase
 			Goto Ready3;
 		Reload:
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield");
-			TNT1 A 0 PB_NewCheckReload("ReloadUnloaded",null,null,"Ready3","Ready3",6,2);
+			TNT1 A 0 PB_CheckReload("ReloadUnloaded",null,null,"Ready3","Ready3",6,2);
 			TNT1 A 0 A_StartSound("Ironsights");
 			R6V1 ABCDDE 1 A_SetRoll(roll+0.2, SPF_INTERPOLATE);
 			TNT1 A 0 A_StartSound("Weapons/Revolver/Open",10,CHANF_OVERLAP);
@@ -299,7 +299,7 @@ Class PB_Revolver : PB_WeaponBase
 			Goto Ready3;
 		ReloadDualWield:
 			TNT1 A 0 A_ClearOverlays(10,11);
-			TNT1 A 0 PB_NewCheckReload("ReloadUnloadedRight",null,null,"ReloadLeftOnly","Ready3",6,2);
+			TNT1 A 0 PB_CheckReload("ReloadUnloadedRight",null,null,"ReloadLeftOnly","Ready3",6,2);
 			42V1 ABC 1 A_SetRoll(roll-0.3, SPF_INTERPOLATE);
 			TNT1 A 0 A_Startsound("Weapons/Revolver/Open", 10,CHANF_OVERLAP);
 			42V1 DEF 1 A_SetRoll(roll+0.3, SPF_INTERPOLATE);
@@ -337,7 +337,7 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(true), "ReloadUnloadedLeft");
 			Goto ReloadLeft;
 		ReloadLeftOnly:
-			TNT1 A 0 PB_NewCheckReload("ReloadUnloadedLeft",null,null,"Ready3","Ready3",6,2,true);
+			TNT1 A 0 PB_CheckReload("ReloadUnloadedLeft",null,null,"Ready3","Ready3",6,2,true);
 			40V1 EFGHI 1;
 		ReloadLeft:
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(true),"ReloadEmptyLeft");
@@ -888,7 +888,7 @@ Class PB_Revolver : PB_WeaponBase
 		
 		FlashPunching:
 			TNT1 A 0 A_JumpIF(A_CheckAkimbo(), "DualFlashPunching");
-			R0V1 ABCDEFGHHIJKLMN 1;
+			R0V1 ABCDEFGHIJKLMN 1;
 			Stop;
 		FlashSlideKicking:
 			TNT1 A 0 A_JumpIF(A_CheckAkimbo(), "DualFlashSlideKicking");

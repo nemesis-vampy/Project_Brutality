@@ -211,7 +211,7 @@ Class PB_SuperGL : PB_Weapon
 		//
 		
 		Reload:
-			TNT1 A 0 PB_NewCheckReload("ReloadUnloaded",null,"StartRechamber","Ready","Ready",7,1);
+			TNT1 A 0 PB_CheckReload("ReloadUnloaded",null,"StartRechamber","Ready","Ready",7,1);
 			TNT1 A 0 A_StartSound("Ironsights",15);
 			SL03 ABCDEFGHIJ 1 {
 				A_SetRoll(roll-0.5,SPF_INTERPOLATE);

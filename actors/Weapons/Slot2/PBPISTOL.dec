@@ -1704,7 +1704,7 @@ ACTOR PB_Pistol : PB_Weapon
 		
 	Reload:
 		TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield")
-		TNT1 A 0 PB_NewCheckReload("","","LoadChamber","Ready3","Ready3",16,1)
+		TNT1 A 0 PB_CheckReload("","","LoadChamber","Ready3","Ready3",16,1)
 		D5GD ABCDEFGHIJKLMNOPQRSTUVWXY 0
 		D5GB ABCD 1 {
 			if (CountInv("SilencerEquipped") == 1 ) {
@@ -1811,7 +1811,7 @@ ACTOR PB_Pistol : PB_Weapon
 		Goto Ready3
 	ReloadDualWield:
 		TNT1 A 0 A_ClearOverlays(10,11)
-		TNT1 A 0 PB_NewCheckReload("","","","ReloadLeftOnly","Ready3",16,1)
+		TNT1 A 0 PB_CheckReload("","","","ReloadLeftOnly","Ready3",16,1)
 		TNT1 A 0 A_JumpIfInventory("SecondaryPistolAmmo",16,"ReloadRightOnly")
 		TNT1 A 0 A_JumpIf(CountInv("PB_LowCalMag") < 1,"NoAmmo")
 		TNT1 A 0 A_JumpIf(PB_GetMagUnloaded || PB_GetMagUnloaded(true),"ReloadDualWieldUnloaded")
@@ -1874,7 +1874,7 @@ ACTOR PB_Pistol : PB_Weapon
 		}
 	Goto ReloadDualWieldUnloaded
 	ReloadLeftOnly:
-		TNT1 A 0 PB_NewCheckReload("","","","ReloadRightOnly","Ready3",16,1,true)
+		TNT1 A 0 PB_CheckReload("","","","ReloadRightOnly","Ready3",16,1,true)
 		D6GY ABCDEFGHIJKLMZ 0
 		TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(true) && !PB_GetMagUnloaded,"ReloadLeftOnlyUnloaded")
 		TNT1 A 0 A_PlaySoundEx("PSRLOUT", "Auto")

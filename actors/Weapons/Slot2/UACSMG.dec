@@ -1327,7 +1327,7 @@ ACTOR PB_SMG : PB_Weapon
 		
 	Reload:
 		TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield")
-		TNT1 A 0 PB_NewCheckReload("ReloadUnloaded","BoltPull","Rechamber","Ready3","Ready3",36,1)
+		TNT1 A 0 PB_CheckReload("ReloadUnloaded","BoltPull","Rechamber","Ready3","Ready3",36,1)
 		TNT1 A 0 {
 			if(CountInv("SilencedSMG") >= 1) {
 				A_Overlay(-2, "ReloadSilencer");
@@ -1575,12 +1575,12 @@ ACTOR PB_SMG : PB_Weapon
 		A4FP KLLLLOP 1
 		Goto Reload2DW
 	ReloadDualWield:
-		TNT1 A 0 PB_NewCheckReload("","","","ReloadLeftGunOnly","Ready3",36,1)
+		TNT1 A 0 PB_CheckReload("","","","ReloadLeftGunOnly","Ready3",36,1)
 		TNT1 A 6 {
 			A_Overlay(10, "StopDualWield_Left", false);
 			A_Overlay(11, "StopDualWield_Right", false);
 		}
-		TNT1 A 0 PB_NewCheckReload("ReloadUnloaded","BoltPullRight","RechamberRight","ReloadLeftGunOnly","Ready3",36,1)
+		TNT1 A 0 PB_CheckReload("ReloadUnloaded","BoltPullRight","RechamberRight","ReloadLeftGunOnly","Ready3",36,1)
 		TNT1 A 0 {
 			if(CountInv("SilencedSMG") >= 1) {
 				A_Overlay(-2, "ReloadSilencer");
@@ -1747,13 +1747,13 @@ ACTOR PB_SMG : PB_Weapon
 		A4FS ABBBCDDDDEF 1
 		Stop
 	ReloadLeftGunOnly:
-		TNT1 A 0 PB_NewCheckReload("","","","Ready3","Ready3",36,1,true)
+		TNT1 A 0 PB_CheckReload("","","","Ready3","Ready3",36,1,true)
 		TNT1 A 3 {
 			A_Overlay(10, "StopDualWield_Left", false);
 			A_Overlay(11, "StopDualWield_Right", false);
 		}
 	ReloadLeftGun:
-		TNT1 A 0 PB_NewCheckReload("ReloadLeftUnloaded","BoltPullLeft","RechamberLeft","Ready3","Ready3",36,1,true)
+		TNT1 A 0 PB_CheckReload("ReloadLeftUnloaded","BoltPullLeft","RechamberLeft","Ready3","Ready3",36,1,true)
 		TNT1 A 3
 		TNT1 A 0 A_PlaySoundEx("weapons/smg_up", "Auto")
 		TNT1 A 0 {

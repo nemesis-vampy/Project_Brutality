@@ -631,7 +631,7 @@ ACTOR PB_MP40 : PB_Weapon
 			Goto Ready3
 		Reload:
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo, "ReloadDualWield")
-			TNT1 A 0 PB_NewCheckReload("ReloadUnloaded","ReloadEmpty","Rechamber","Ready3","Ready3",32)
+			TNT1 A 0 PB_CheckReload("ReloadUnloaded","ReloadEmpty","Rechamber","Ready3","Ready3",32)
 			MPR1 ABC 1
 			TNT1 A 0 A_PlaySoundEx("weapons/MP40_up", "Auto")
 			MPR1 DEFG 1
@@ -718,7 +718,7 @@ ACTOR PB_MP40 : PB_Weapon
 			goto Ready3
 		
 		ReloadLeftGunOnly:
-			TNT1 A 0 PB_NewCheckReload("ReloadLeftUnloadedAlone","","StartRechamberLeft","Ready3","Ready3",32,1,true)
+			TNT1 A 0 PB_CheckReload("ReloadLeftUnloadedAlone","","StartRechamberLeft","Ready3","Ready3",32,1,true)
 			M2R1 A 1 A_PlaySoundEx("weapons/MP40_up", "Auto")
 			M2R4 A 0 A_JumpIf(PB_GetMagEmpty(true), 2)
 			M2R2 A 0	
@@ -733,7 +733,7 @@ ACTOR PB_MP40 : PB_Weapon
 			M2U2 MNOPQR 1
 			Goto ReloadLeftGunInsert
 		ReloadDualWield:
-			TNT1 A 0 PB_NewCheckReload("ReloadRightUnloaded","ReloadRightEmpty","StartRechamberRight","ReloadLeftGunOnly","Ready3",32)
+			TNT1 A 0 PB_CheckReload("ReloadRightUnloaded","ReloadRightEmpty","StartRechamberRight","ReloadLeftGunOnly","Ready3",32)
 			M2R1 A 1 A_PlaySoundEx("weapons/MP40_up", "Auto")
 			M2R1 BCDE 1
 			Goto ReloadRight

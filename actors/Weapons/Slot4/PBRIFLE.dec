@@ -2260,8 +2260,8 @@ ACTOR PB_DMR : PB_Weapon
 		TNT1 A 0 {
 			A_ClearOverlays(-7,-3);
 			A_ClearOverlays(-80,-80);
-			if(CountInv("HDMRSniperMode") == 1) {return PB_NewCheckReload("ReloadUnloaded","","LoadChamber2","Ready3","Ready3",15,2);}
-			else {return PB_NewCheckReload("ReloadUnloaded","","LoadChamber2","Ready3","Ready3",31,1);}
+			if(CountInv("HDMRSniperMode") == 1) {return PB_CheckReload("ReloadUnloaded","","LoadChamber2","Ready3","Ready3",15,2);}
+			else {return PB_CheckReload("ReloadUnloaded","","LoadChamber2","Ready3","Ready3",31,1);}
 		}
 		TNT1 A 0 A_PlaySoundEx("Ironsights", "Auto")
 		
@@ -2390,8 +2390,8 @@ ACTOR PB_DMR : PB_Weapon
 		Goto ContinueReloadLeft
 	ReloadDualWield:
 		TNT1 A 0 {
-			if(CountInv("HDMRSniperMode") == 1) {return PB_NewCheckReload("ReloadRightUnloaded","","LoadChamber2","SkipRightReload","Ready3",15,2);}
-			else {return PB_NewCheckReload("ReloadRightUnloaded","","LoadChamber2","SkipRightReload","Ready3",31,1);}
+			if(CountInv("HDMRSniperMode") == 1) {return PB_CheckReload("ReloadRightUnloaded","","LoadChamber2","SkipRightReload","Ready3",15,2);}
+			else {return PB_CheckReload("ReloadRightUnloaded","","LoadChamber2","SkipRightReload","Ready3",31,1);}
 		}
 		TNT1 A 0 A_PlaySoundEx("Ironsights", "Auto")
 		
@@ -2478,8 +2478,8 @@ ACTOR PB_DMR : PB_Weapon
 	ReloadLeft:
 		TNT1 A 3
 		TNT1 A 0 {
-			if(CountInv("HDMRSniperMode") == 1) {return PB_NewCheckReload("ReloadLeftUnloaded","","","SkipLeftReload","Ready3",15,2,true);}
-			else {return PB_NewCheckReload("ReloadLeftUnloaded","","","SkipLeftReload","Ready3",31,1,true);}
+			if(CountInv("HDMRSniperMode") == 1) {return PB_CheckReload("ReloadLeftUnloaded","","","SkipLeftReload","Ready3",15,2,true);}
+			else {return PB_CheckReload("ReloadLeftUnloaded","","","SkipLeftReload","Ready3",31,1,true);}
 		}
 		R3F2 BCDEFGHIJKLM 1 {
 			if(CountInv("DMRUpgraded") == 1) {A_SetWeaponSprite("H8F2");}

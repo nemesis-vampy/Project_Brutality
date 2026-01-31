@@ -506,7 +506,7 @@ Actor PB_CryoRifle: PB_Weapon
 				}
 				Goto Ready3
 			Reload:
-				TNT1 A 0 PB_NewCheckReload("ReloadUnloaded","","","Ready3","Ready3",60,1)
+				TNT1 A 0 PB_CheckReload("ReloadUnloaded","","","Ready3","Ready3",60,1)
 				FR94 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
 				FR95 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
 				FR96 ABCDEFGHIJKLMN 0

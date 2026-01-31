@@ -89,7 +89,7 @@ class PB_Deagle : PB_WeaponBase
 			D4E0 DCBA 1 PB_SetSpriteIfUnload("D4U0");
 			TNT1 A 0 A_lower(120);
 			wait;
-		
+		Ready3:
 		Ready:
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 PB_HandleCrosshair(42);
@@ -247,7 +247,7 @@ class PB_Deagle : PB_WeaponBase
 		
 		Reload:
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(),"ReloadDualWield");
-			TNT1 A 0 PB_NewCheckReload(null,"EmptyReload","Rechamber","Ready","Ready",8,2);
+			TNT1 A 0 PB_CheckReload(null,"EmptyReload","Rechamber","Ready","Ready",8,2);
 			TNT1 A 0 A_Startsound("Ironsights",16,CHANF_OVERLAP);
 			D0E0 ABCDEFGHIJKLMN 1;
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"ContinueReload");
@@ -336,7 +336,7 @@ class PB_Deagle : PB_WeaponBase
 			DR42 STUV 1 PB_SetDualSpriteIfUnload("DR14","DR20","DR00");
 			
 		ReloadDualWield:
-			TNT1 A 0 PB_NewCheckReload(null,null,"StartRechamberRight","StartReloadLeft","Ready",8,2);
+			TNT1 A 0 PB_CheckReload(null,null,"StartRechamberRight","StartReloadLeft","Ready",8,2);
 			TNT1 A 0 A_JumpIf(countinv(invoker.ammotypeleft) == 8 || ((PB_GetMagUnloaded(true) || PB_GetChamberEmpty(true) && !PB_GetMagEmpty(true)) && countinv(invoker.ammotype2) < 8),"StartReloadRight");
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"StartReloadLeft");
 			TNT1 A 0 {
@@ -477,7 +477,7 @@ class PB_Deagle : PB_WeaponBase
 			TNT1 A 4;
 			Goto ReloadLeft;
 		StartReloadLeft:
-			TNT1 A 0 PB_NewCheckReload(null,null,"StartRechamberLeft","Ready","Ready",8,2,true);
+			TNT1 A 0 PB_CheckReload(null,null,"StartRechamberLeft","Ready","Ready",8,2,true);
 			TNT1 A 0 {
 				A_Overlay(10,"DeselectRight_Overlay");
 				A_Overlay(11,"StartReloadLeft_Overlay");
