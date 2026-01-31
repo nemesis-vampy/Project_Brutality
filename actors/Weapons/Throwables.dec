@@ -825,13 +825,6 @@ ACTOR RevenantBalls66: RevenantBalls
 {
 	Damage 10
 	Speed 20
-	States
-	{
-	Spawn:
-	TNT1 A 0
-	TNT1 A 0 ThrustThingZ(0,random(20, 0),0,1)
-	Goto Spawn1
-	}
 }
 
 ACTOR RevenantMissileFriendAttackSummon

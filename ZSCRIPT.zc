@@ -238,7 +238,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Weapons/ThrownGrenades.zs"
 #include "zscript/Weapons/Keepweapmanager.zsc"
 
-#include "actors/Weapons/Slot0/UnmakerCharge.zsc"
+#include "actors/Weapons/Slot9/UnmakerCharge.zsc"
 #include "zscript/Weapons/Slot2/Revolver.zs"
 #include "zscript/Weapons/Slot2/Deagle.zs"
 #include "zscript/Weapons/Slot3/Shotgun.zs"
