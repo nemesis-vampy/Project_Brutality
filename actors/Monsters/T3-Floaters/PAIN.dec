@@ -18,11 +18,11 @@ ACTOR PB_PainElemental : PB_Elemental{//Replaces PainElemental
 	+FLOAT 
 	+NOGRAVITY
 	+FORCEXYBILLBOARD
-	SeeSound "pb/pain/sight"
+	SeeSound "pb/monsters/pain/sight"
 	damagefactor "Avoid", 0.0
 	damagefactor "GibRemoving", 0.0
-	PainSound "pb/pain/pain"
-	DeathSound "pb/pain/death"
+	PainSound "pb/monsters/pain/pain"
+	DeathSound "pb/monsters/pain/death"
 	ActiveSound "pain/active"
 	PB_Elemental.LSType "PB_LostSoul"
 	damagefactor "TeleportRemover", 0.0
