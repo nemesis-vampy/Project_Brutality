@@ -130,6 +130,10 @@ class PB_PlayerPrawn : PlayerPawnBase
 			v.angle = angle; v.player = player;
 			Destroy(); return;
 		}
+		if(level.info.mapname == "TITLEMAP")
+		{
+			player.SetFOV(90);
+		}
 	}
 
 	override int DamageMobj(actor inflictor,actor source,int damage,name mod,int flags,double angle)
