@@ -9,7 +9,7 @@ Class PB_Shotgun : PB_WeaponBase
 		Weapon.SelectionOrder 1300;
 		weapon.slotnumber 3;							
 		weapon.ammotype1 "PB_Shell";
-		weapon.ammogive1 4;		
+		weapon.ammogive1 8;		
 		weapon.ammotype2 "ShotgunAmmo";
 		weapon.slotpriority 0.5;
 		PB_WeaponBase.respectItem "RespectShotgun";
