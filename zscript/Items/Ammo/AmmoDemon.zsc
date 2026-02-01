@@ -94,6 +94,10 @@ Class PB_LeechPickup : PB_Ammo
 			other.GiveInventory("PB_DTech",20);
 			Super.AttachToOwner(other);
 		}
+		else
+		{
+			Destroy();
+		}
 	}
 }
 
