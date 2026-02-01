@@ -1494,7 +1494,6 @@ Class PB_SGMagazine: PB_UpgradeItem
 					sgam.maxamount = 11;
 					sgam.backpackmaxamount = 11;
 				}
-				A_GiveInventory("PB_Shell", 20);
 				A_GiveInventory("ShotgunAmmo", 10);
 				if(CountInv("PumpShotgunMagazine") == 0) {A_GiveInventory("PumpshotgunMagNotInserted", 1);}
 				A_GiveInventory("PumpshotgunMagazine", 1);
