@@ -77,6 +77,8 @@ Class PB_LeechPickup : PB_Ammo
 		Tag "Leech Grenade";
 		Inventory.PickupSound "SiphonGrowl";
 		PB_Ammo.AmmoType "leechnade";
+		Inventory.Amount 1;
+		Ammo.BackpackAmount 0;
 	}
 	
 	override string PickupMessage()
@@ -86,9 +88,12 @@ Class PB_LeechPickup : PB_Ammo
 	
 	override void AttachToOwner(actor other)
 	{
-		other.GiveInventory("PB_LeechToken",1);
-		other.GiveInventory("PB_DTech",20);
-		Super.AttachToOwner(other);
+		if(amount > 0)
+		{
+			other.GiveInventory("PB_LeechToken",1);
+			other.GiveInventory("PB_DTech",20);
+			Super.AttachToOwner(other);
+		}
 	}
 }
 
