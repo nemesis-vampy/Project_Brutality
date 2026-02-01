@@ -507,7 +507,7 @@ class PB_EventHandler : EventHandler
 			case 'Cyberdemon':				e.replacement = pb_vanillamonster_override ? 'Cyberdemon' : 'PBCyberDemonSpawner';													break;
 			case 'SpiderMastermind':		e.replacement = pb_vanillamonster_override ? 'SpiderMastermind' : 'PBSpiderMasterMindSpawner';										break;
 			case 'WolfensteinSS':			e.replacement = pb_vanillamonster_override || pb_vanillawolfss_override ? 'WolfensteinSS' : 'EvilNaziSpawner';	WSuSinMap = true;	break;
-			case 'BossBrain':				e.replacement = pb_vanillamonster_override ? 'BossBrain' : 'PB_BossBrain';															break;
+			case 'BossBrain':				e.replacement = pb_vanillamonster_override || pb_vanillabossbrain_override ? 'BossBrain' : 'PB_BossBrain';							break;
 			case 'BossEye':					e.replacement = 'BossEye'; IoSEyeinMap = true;																						break;
 			case 'BossTarget':				e.replacement = 'BossTarget'; IoSTarginMap = true;																					break;
 

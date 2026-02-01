@@ -1,6 +1,7 @@
 //Monster Spawner Overrides
 server bool pb_vanillamonster_override = false;
 server bool pb_vanillawolfss_override = false;
+server bool pb_vanillabossbrain_override = false;
 
 server string pb_zombieman_override = "Disabled";
 server string pb_sergeant_override = "Disabled";

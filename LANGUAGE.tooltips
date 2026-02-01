@@ -29,8 +29,11 @@ TIP_NOPAINEFFECT = "Disables the screen scratches, bullet holes, and cracks.";
 TIP_PB_TRACERLIGHT = "Enables GL light emitted from tracers.";
 TIP_PB_VANILLAMONSTER_OVERRIDE = "Disable PB's Monsters, for those that are running custom enemy packs specifically.";
 TIP_PB_VANILLAWOLFSS_OVERRIDE = "Replace nazis with vanilla Wolfenstein SS, for maps that use them to make custom enemies in DeHackEd.";
+TIP_PB_VANILLABOSSBRAIN_OVERRIDE = "Disable PB's custom Final Boss, for maps that use it in DeHackEd.";
+
 TIP_PB_POWERUP_SHADERS = "Use shaders for prettier powerup effects.";
 TIP_PB_NIGHTVISION_EXPOSURE = "Brightness of the night vision effect. Values above 0 will be automatically dimmed in bright sectors.";
+
 TIP_V5_MODELS = "Replaces Pickups/Casings/Decor with Voxel-Style PolyMesh Models.\nModels may cause performance issues.\nYou can switch this feature On or Off at any time.";
 TIP_V5_CULL = "Models will only render in when inside the set culling distance";
 TIP_V5_QUAKE3 = "Makes Weapons, Keys, and small pickups float and spin a la Quake 3";
@@ -38,19 +41,19 @@ TIP_V5_QUAKE3 = "Makes Weapons, Keys, and small pickups float and spin a la Quak
 TIP_MOVEBOB = "Adjust view bobbing's intensity when moving";
 TIP_STILLBOB = "Adjust view bobbing's intensity when not moving";
 TIP_WBOBSPEED = "Adjust weapon bobbing's intensity when moving";
-TIP_ZM_STILLBOB = "Turn on/off the weapon bobbing when standing still";
-TIP_ZM_FULLBOBSPEED = "How fast weapon sprites transition to their maximum bobbing range";
+TIP_PB_STILLBOB = "Turn on/off the weapon bobbing when standing still";
+TIP_PB_FULLBOBSPEED = "How fast weapon sprites transition to their maximum bobbing range";
 
-TIP_ZM_YAWSWAY = "Allow weapons to sway according to your mouse yaw";
-TIP_ZM_YAWSWAYSPEED = "How fast weapons sway";
-TIP_ZM_YAWSWAYRANGE = "Maximum Distance weapons can sway";
-TIP_ZM_YAWSWAYFRICTION = "How fast sprites will tend to realign to the center";
-TIP_ZM_YAWSWAYDIRECTION = "Set wherever weapons sway in the direction you turn or the opposite";
-TIP_ZM_PITCHSWAYTYPE = "Set wherever weapons sway in the direction you turn or the opposite";
+TIP_PB_YAWSWAY = "Allow weapons to sway according to your mouse yaw";
+TIP_PB_YAWSWAYSPEED = "How fast weapons sway";
+TIP_PB_YAWSWAYRANGE = "Maximum Distance weapons can sway";
+TIP_PB_YAWSWAYFRICTION = "How fast sprites will tend to realign to the center";
+TIP_PB_YAWSWAYDIRECTION = "Set wherever weapons sway in the direction you turn or the opposite";
+TIP_PB_PITCHSWAYTYPE = "Set wherever weapons sway in the direction you turn or the opposite";
 
-TIP_ZM_OFFSETSPEED = "How fast weapons raise and fall depending on your vertical velocity";
-TIP_ZM_OFFSETMAXRANGE = "Maximum Height weapons can fall";
-TIP_ZM_OFFSETDIRECTION = "Set Wherever the sprites are offset according to your vertical direction";
+TIP_PB_OFFSETSPEED = "How fast weapons raise and fall depending on your vertical velocity";
+TIP_PB_OFFSETMAXRANGE = "Maximum Height weapons can fall";
+TIP_PB_OFFSETDIRECTION = "Set Wherever the sprites are offset according to your vertical direction";
 
 TIP_PB_USEMODERNBLOOD = "Use modern blood impact effects.";
 TIP_NASHGORE_BLOODMULT = "Blood amount multiplier. May cause performance issues at higher values.";
