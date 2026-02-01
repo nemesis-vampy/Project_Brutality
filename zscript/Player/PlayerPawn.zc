@@ -752,25 +752,6 @@ class PlayerPawnBase : PlayerPawn
 		return (SpeedOrAccel ? ZMoveFactor : ActualSpeed) * (Straferunning ? pb_strafemodifier : 1);
 	}
 	
-	void DropPrevention()
-	{
-		let player = self.player;
-		UserCmd cmd = Player.cmd;
-		
-		Bool GuardRail = ((!cmd.sidemove && !cmd.forwardmove && Vel.XY.Length()) ||
-						 !CheckRunning())
-						 && Player.OnGround && !Pain;
-		
-		if(GuardRail)
-		{
-			Float GuardAngle = VectorAngle(Vel.X, Vel.Y);
-			Float GuardX = Pos.X + Radius * cos(GuardAngle);
-			Float GuardY = Pos.Y + Radius * sin(GuardAngle);
-			Bool FallDanger = Pos.Z - GetZAt(GuardX, GuardY, 0, GZF_ABSOLUTEPOS|GZF_ABSOLUTEANG) > Height;
-			if(FallDanger) { Vel.XY *= 0.5f; }
-		}
-	}
-
     bool CheckRunning() {
         return (player.cmd.buttons & BT_RUN);
     }
@@ -816,7 +797,6 @@ class PlayerPawnBase : PlayerPawn
 		else
 		{
 			DoomGroundMove();
-			if(pb_dropprevention) { DropPrevention(); }
 		}
 	}
 	
