@@ -133,7 +133,8 @@ Class PB_ShotgunGuyDrop2 : PB_MonsterDropBase
 {
 	default
 	{
-		PB_MonsterDropBase.drops "PB_Shotgun", "PB_Pistol", "PB_LowCalMag";
+		PB_MonsterDropBase.drops "PB_Shotgun", "PB_Revolver", "PB_LowCalMag";
+		PB_MonsterDropBase.filter "pb_shotgun_filter", DisablePB_Revolver;
 	}
 }
 

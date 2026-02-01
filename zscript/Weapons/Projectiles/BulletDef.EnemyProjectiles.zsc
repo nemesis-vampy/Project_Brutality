@@ -28,6 +28,24 @@ class PB_PistolBullet : PB_EnemyProjectileDef
 	}
 }
 
+class PB_MagnumBullet : PB_EnemyProjectileDef
+{
+	Default
+	{
+		PB_Projectile.BaseDamage 12;
+		PB_Projectile.RipperCount 3;
+	}
+	
+	override int SpecialMissileHit(Actor victim)
+	{
+		if(victim.master && victim.master == target)
+		{
+			return MHIT_PASS;
+		}
+		return super.SpecialMissileHit(victim);
+	}
+}
+
 class PB_ShotPellet12 : PB_EnemyProjectileDef
 {
 	Default
