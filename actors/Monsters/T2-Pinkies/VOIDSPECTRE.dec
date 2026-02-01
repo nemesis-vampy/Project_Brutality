@@ -85,11 +85,11 @@ ACTOR PB_VoidSpectre: PB_Demon //Replaces Spectre
 	damagefactor "Shrapnel", 0.3
 	damagefactor "SSG", 9.0
 	+FLOORCLIP 
-	SeeSound "pb/demon/sight"
-	AttackSound "pb/demon/melee"
-	PainSound "pb/demon/pain"
-	DeathSound "pb/demon/death"
-	ActiveSound "pb/demon/active"
+	SeeSound "pb/monsters/demon/sight"
+	AttackSound "pb/monsters/demon/melee"
+	PainSound "pb/monsters/demon/pain"
+	DeathSound "pb/monsters/demon/death"
+	ActiveSound "pb/monsters/demon/active"
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	BloodColor "Green"
 	DamageType Eat

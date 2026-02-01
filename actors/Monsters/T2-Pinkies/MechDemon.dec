@@ -42,11 +42,11 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 	damagefactor "Shrapnel", 0.3
 	+FLOORCLIP 
 	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
-	SeeSound "pb/demon/sight"
-	AttackSound "pb/demon/melee"
-	PainSound "pb/demon/pain"
-	DeathSound "pb/demon/death"
-	ActiveSound "pb/demon/active"
+	SeeSound "pb/monsters/demon/sight"
+	AttackSound "pb/monsters/demon/melee"
+	PainSound "pb/monsters/demon/pain"
+	DeathSound "pb/monsters/demon/death"
+	ActiveSound "pb/monsters/demon/active"
 	DamageType Eat
 	MaxStepHeight 32
 	MaxDropOffHeight 32

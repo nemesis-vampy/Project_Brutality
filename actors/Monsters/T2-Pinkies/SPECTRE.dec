@@ -22,11 +22,11 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	damagefactor "Shrapnel", 0.3
 	damagefactor "SSG", 5.0
 	+FLOORCLIP 
-	SeeSound "pb/demon/sight"
-	AttackSound "pb/demon/melee"
-	PainSound "pb/demon/pain"
-	DeathSound "pb/demon/death"
-	ActiveSound "pb/demon/active"
+	SeeSound "pb/monsters/demon/sight"
+	AttackSound "pb/monsters/demon/melee"
+	PainSound "pb/monsters/demon/pain"
+	DeathSound "pb/monsters/demon/death"
+	ActiveSound "pb/monsters/demon/active"
 	DamageType Eat
 	MaxStepHeight 48
 	MaxDropOffHeight 48
