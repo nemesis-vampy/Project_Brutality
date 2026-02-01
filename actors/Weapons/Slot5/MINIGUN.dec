@@ -201,8 +201,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 				if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 				A_Overlay(3,"AmmoMeterOverlay");
 				A_Overlay(9,"Glow");
-				A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(9,STYLE_Add);
 				A_TakeInventory("Overheating", 1);
 				return A_DoPBWeaponAction;
 				}
@@ -217,8 +215,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 				if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 				A_Overlay(3,"AmmoMeterOverlay");
 				A_Overlay(9,"Glow");
-				A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(9,STYLE_Add);
 				A_TakeInventory("Overheating", 1);
 				return A_DoPBWeaponAction;
 				}
@@ -266,7 +262,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_StopSound(1);
 			A_Print("$PB_MINIGUN_CHAINGUN");
 			A_SetInventory("Spin",0);
-			A_SetInventory("Overheating", 0);
 			A_SetInventory("ChainGunMode",1);
 			A_StartSound("weapons/minigun/respect3", CHAN_AUTO);
 		}
@@ -277,7 +272,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_StopSound(1);
 			A_SetInventory("Spin",0);
 			A_SetInventory("TripleBarrelMode",0);
-			A_SetInventory("Overheating", 0);
 			A_SetInventory("ChainGunMode",1);
 			A_StartSound("8HAINSW3", CHAN_AUTO);
 			A_Print("$PB_MINIGUN_CHAINGUN");
@@ -330,7 +324,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_StopSound(5);
 			A_StopSound(1);
 			A_SetInventory("Spin",0);
-			A_SetInventory("Overheating", 0);
 			A_SetInventory("ChainGunMode",0);
 			A_StartSound("weapons/minigun/respect3", CHAN_AUTO);
 		}
@@ -343,7 +336,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_SetInventory("Spin",0);
 			A_SetInventory("TripleBarrelMode",0);
 			A_SetInventory("ChainGunMode",0);
-			A_SetInventory("Overheating", 0);
 			A_StartSound("8HAINSW3", CHAN_AUTO);
 		}
 		8HAF ABCDE 1 {
@@ -460,8 +452,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 {
 		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		TNT1 A 0 PB_WeapTokenSwitch("MinigunSelected")
 		TNT1 A 0 A_Setinventory("RandomHeadExploder",1)
@@ -515,8 +505,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			PB_FireOffset;
@@ -533,8 +521,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_OverlayFlags(-3,PSPF_FLIP|PSPF_MIRROR,true);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
 		CHAF C 1 BRIGHT {
@@ -549,8 +535,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			//PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_FireOffset;
@@ -566,8 +550,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_OverlayFlags(-3,PSPF_FLIP|PSPF_MIRROR,true);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
 		CHAF E 1 BRIGHT {
@@ -582,8 +564,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			PB_FireOffset;
@@ -599,8 +579,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_OverlayFlags(-3,PSPF_FLIP|PSPF_MIRROR,true);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
 		CHAF G 1 BRIGHT {
@@ -615,8 +593,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			//PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_FireOffset;
@@ -632,8 +608,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_OverlayFlags(-3,PSPF_FLIP|PSPF_MIRROR,true);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
 		TNT1 A 0 PB_ReFire
@@ -646,8 +620,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		CHAG ABCD 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
@@ -656,8 +628,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		CHAG EEFFGGHH 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
@@ -666,8 +636,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		CHAG AAABBBCCCDDD 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
@@ -676,8 +644,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		CHAG EEEEFFFFGGGGHHHH 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
@@ -709,8 +675,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 
 			A_Giveinventory("OverHeating",1);
@@ -723,16 +687,12 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_WeaponRecoil(-0.4,frandom(1.2, -1.2));
 			}
 		CHAG CD 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		//CHAG C 1
 		CHAF E 1 BRIGHT {
@@ -749,8 +709,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 
@@ -764,21 +722,15 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			PB_WeaponRecoil(-0.4,frandom(1.2, -1.2));
 			}
 		CHAG GH 1 {
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 		}
 		CHAG ABCDEFGH 1 {
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
@@ -800,11 +752,6 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			if (CountInv("MinigunUpgraded") == 1) {A_Overlay(4,"AmmoBeltAnimation");}
 			else {A_Overlay(4,"AmmoBeltAnimation");}
 			}
-		TNT1 A 0 {
-			A_Overlay(999,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
-		}
 		CHAF A 1 BRIGHT {
 			PB_FireOffset;
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
@@ -820,6 +767,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
 		CHAF B 1 BRIGHT {
@@ -836,6 +784,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayFlags(-3,PSPF_FLIP|PSPF_MIRROR,true);
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
 		CHAF C 1 BRIGHT {
@@ -852,6 +801,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			//PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			}
 		CHAF D 1 BRIGHT {
 			PB_FireOffset;
@@ -869,6 +819,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
 		CHAF E 1 BRIGHT {
@@ -884,6 +835,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
 		CHAF F 1 BRIGHT {
@@ -901,6 +853,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			//PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			}
 		CHAF G 1 BRIGHT {
 			PB_FireOffset;
@@ -918,6 +871,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			//PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			//PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
 		CHAF H 1 BRIGHT {
@@ -936,6 +890,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			}
 		TNT1 A 0 PB_ReFire
 		TNT1 A 0 {
@@ -944,50 +899,37 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_StopSound(1);
 			A_StartSound("CHAINSTO", CHAN_5);
 			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		CHAG ABCD 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
-		}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		CHAG EEFFGGHH 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
-		}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		CHAG AAABBBCCCDDD 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
-		}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		CHAG EEEEFFFFGGGGHHHH 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
 		}
 		goto RealReady
@@ -1004,7 +946,6 @@ Fire_Chaingun:
 			else {A_Overlay(4,"AmmoBeltChaingun");}
 			//A_ZoomFactor(0.980);
 			}
-		TNT1 A 0 A_Overlay(999,"Glow")
 		CHAF A 1 BRIGHT {
 			PB_FireOffset;
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
@@ -1021,6 +962,7 @@ Fire_Chaingun:
 			PB_SpawnCasing("PB_EmptyBrass", 19,-13,24,0,-frandom(3,6),frandom(-1,1), false);
 
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			}
 		CHAF B 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
@@ -1030,11 +972,12 @@ Fire_Chaingun:
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			PB_WeaponRecoil(-0.4,frandom(1.2, -1.2));
+			A_Overlay(9,"Glow");
 			}
-		TNT1 A 0 A_Overlay(999,"Glow")
 		CHAG CD 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
+			A_Overlay(9,"Glow");
 		}
 		//CHAG C 1
 		CHAF E 1 BRIGHT {
@@ -1054,8 +997,8 @@ Fire_Chaingun:
 			PB_SpawnCasing("LMGBeltLink", 19,-13,24,0,-frandom(1,2),frandom(-3,3), false);
 
 			A_Giveinventory("OverHeating",1);
+			A_Overlay(9,"Glow");
 			}
-		TNT1 A 0 A_Overlay(999,"Glow")
 		CHAF F 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -1064,10 +1007,12 @@ Fire_Chaingun:
 			A_OverlayFlags(-3,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-3,STYLE_Add);
 			PB_WeaponRecoil(-0.4,frandom(1.2, -1.2));
+			A_Overlay(9,"Glow");
 			}
 		CHAG GH 1 {
 			A_Overlay(3,"AmmoMeterOverlay");
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
+			A_Overlay(9,"Glow");
 			}
 		TNT1 A 0 PB_ReFire("Fire_Chaingun")
 	Chaingun_End:
@@ -1075,63 +1020,45 @@ Fire_Chaingun:
 		TNT1 A 0 {
 			A_ClearOverlays(4,4);
 			A_StartSound("weapons/minigun/chaingunmode/spindown", CHAN_5);
-			A_Overlay(9,"Glow");
-			A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-			A_OverlayRenderStyle(9,STYLE_Add);
 		}
 		CHAG AABB 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(4,"AmmoBeltIdle");
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
 			}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
-		}
 		CHAG CCDD 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(4,"AmmoBeltIdle");
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
 			}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
-		}
 		CHAG EEFFF 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(4,"AmmoBeltIdle");
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
 			}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
-		}
 		CHAG GGGH 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(4,"AmmoBeltIdle");
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
 			}
-		TNT1 A 0 {
-		A_Overlay(9,"Glow");
-		A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
-		A_OverlayRenderStyle(9,STYLE_Add);
-		}
 		CHAG HH 1 {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(4,"AmmoBeltIdle");
 			A_FireCustomMissile("SmokeSpawner11",0,0,0,0);
+			A_Overlay(9,"Glow");
 			return A_DoPBWeaponAction;
 		}
 		goto RealReady
@@ -1573,7 +1500,10 @@ Fire_Chaingun:
 			Loop
 		
 		Glow:
-			TNT1 A 0
+			TNT1 A 0 {
+				A_OverlayFlags(9,PSPF_RENDERSTYLE,true);
+				A_OverlayRenderStyle(9,STYLE_Add);
+			}
 			TNT1 A 0 A_JumpIfInventory("OverHeating",90,"Glow6")
 			TNT1 A 0 A_JumpIfInventory("OverHeating",75,"Glow5")
 			TNT1 A 0 A_JumpIfInventory("OverHeating",60,"Glow4")
