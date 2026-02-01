@@ -490,7 +490,7 @@ class PlayerPawnBase : PlayerPawn
 			if(!CheckNotPredicting())
 				return;
 			//Crouchsliding
-			if(pb_crouchslide) { CSlideInitiator(); }
+			CSlideInitiator();
 			
 			/////////////////////////////////////////
 			//Gravity
@@ -510,7 +510,7 @@ class PlayerPawnBase : PlayerPawn
 			{
 				DoomWaterMove();
 				
-				if(pb_ledgegrab && CheckNotPredicting()) 
+				if(CheckNotPredicting()) 
 				{ 
 					LedgeGrabInitiator(); 
 				}
@@ -693,8 +693,7 @@ class PlayerPawnBase : PlayerPawn
 					JumpSoundCooler = 4;
 				}
 				
-				//if autojump is off set BlockJump true until jump key is unpressed
-				BlockJump = pb_autojump ? False : True;
+				BlockJump = False;
 				BlockDoubleJump = True;
 			}
 			else if(!Player.OnGround && CanDoubleJump && !BlockDoubleJump)
@@ -812,7 +811,7 @@ class PlayerPawnBase : PlayerPawn
 		if(!Player.OnGround)
 		{
 			DoomAirMove();
-			if(pb_ledgegrab) { LedgeGrabInitiator(); }
+			LedgeGrabInitiator();
 		}
 		else
 		{
