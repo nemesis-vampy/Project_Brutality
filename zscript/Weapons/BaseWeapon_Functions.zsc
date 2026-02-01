@@ -389,7 +389,7 @@ extend class PB_WeaponBase
 			}
 			
 			//console.printf("taking: \cg"..oldweap.."\c-");
-			A_takeinventory(oldweap,3);
+			A_setinventory(oldweap,0);
 		}
 	}
 	
