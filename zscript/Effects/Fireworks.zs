@@ -190,7 +190,6 @@ Class TinyBurningPiece : Actor
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "StopBurning");
 			TNT1 A 0 SpawnParticleSlow();
 			CFCF ABCD 1;
-			TNT1 A 0 A_Explode(2, 60, 0);
 			CFCF EFGHIJKL 1;
 			TNT1 A 0 A_Jump(24, "StopBurning");
 			loop;
@@ -333,7 +332,7 @@ class DTechBurningPiece3 : DTechBurningPiece
 }
 
 
-Class DragonsBreathPiece1: TinyBurningPiece2
+Class DragonsBreathPiece : TinyBurningPiece2
 {
 	default
 	{
@@ -353,9 +352,9 @@ Class DragonsBreathPiece1: TinyBurningPiece2
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "StopBurning");
 			TNT1 AAA 0 SpawnParticleSlow();
 			CFCF ABC 1 ;
-			CFCF D 1 A_Explode(3, distnc, 0);
+			CFCF D 1 A_Explode(6, distnc);
 			CFCF EFGHIJK 1 ;
-			CFCF L 1 A_Explode(3, distnc, 0);
+			CFCF L 1 A_Explode(3, distnc);
 			TNT1 A 0 A_Jump(24, "StopBurning");
 			Loop;
 		StopBurning:
@@ -369,13 +368,6 @@ Class DragonsBreathPiece1: TinyBurningPiece2
 		super.beginplay();
 	}
 }
-
-//they are the same just with some variations, but if i just delete this the mod will break probably 
-Class DragonsBreathPiece2 : DragonsBreathPiece1
-{}
-
-Class DragonsBreathPiece3 : DragonsBreathPiece1
-{}
 
 //
 //	flamethrower
@@ -473,7 +465,7 @@ Class FT_GroundFireSpawnerPerf : FT_GroundFireSpawner{
 			TNT1 A 1 NODELAY A_StartSound("props/torchfire", CHAN_BODY, CHANF_NOSTOP);
 			TNT1 A 1 A_SpawnItemEx("FT_GroundFire", random(-24,24), random(-7,7), random(1,2));
 			TNT1 A 1 A_SpawnItemEx("FT_GroundFire2", random(-24,24), random(-7,7), random(1,2));
-			TNT1 A 0 A_Explode(10, 36, XF_HURTSOURCE, 0, 36);
+			TNT1 A 0 A_Explode(12, 36, XF_HURTSOURCE, 0, 36);
 			TNT1 A 0 A_Jump(7, "StopBurning");
 			Loop;
 	}
