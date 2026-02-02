@@ -34,6 +34,7 @@ class PB_MagnumBullet : PB_EnemyProjectileDef
 	{
 		PB_Projectile.BaseDamage 12;
 		PB_Projectile.RipperCount 3;
+		+PB_Projectile.WHIZCRACK;
 	}
 	
 	override int SpecialMissileHit(Actor victim)

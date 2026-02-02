@@ -371,12 +371,12 @@ class RiotShieldPhysics : Actor
 		Radius 20;
 		Height 44;
 		PainChance 256;
+		RipLevelMin 1;
 		+NODAMAGE
 		+NOGRAVITY
 		+SHOOTABLE
 		+NOTELEPORT
 		+NODAMAGETHRUST
-		+DONTRIP
 		+NOBLOOD
 	}
 	States
