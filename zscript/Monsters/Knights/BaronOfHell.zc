@@ -460,7 +460,7 @@ class PB_Baron1 : PB_Monster
 //			Goto See;
 			
         BaronMeteorAttack:
-            BOS1 P 4 {A_FaceTarget(); A_StartSound("pb/monsters/baron/charge1",33);}
+            BOS1 P 4 {A_FaceTarget(); A_StartSound("pb/monsters/baron/charge1",33);A_StartSound("pb/monsters/baron/charge1",33);A_StartSound("pb/monsters/baron/charge1",33);}
             TNT1 A 0 bright GoreEffects(1,"SmallGreenFlameTrails", 78, 0, random (0, 360), 2, random (70, 110));
             TNT1 A 0 GoreEffects(1,"BallGettingReadyGreen", 79, 0, random (0, 140), 2, random (0, 160));
             BOS1 P 4 A_FaceTarget();
@@ -1076,7 +1076,7 @@ class Baron_Slash: PB_GreenPlasmaBall
         +FORCEXYBILLBOARD;
         +THRUGHOST;
 		+RIPPER;
-        DamageFunction (random(22,29));
+        DamageFunction 18;
         RenderStyle "Add";
         DeathSound "BaronBurn";
         Decal "Scorch";
@@ -1106,8 +1106,8 @@ class Baron_Slash: PB_GreenPlasmaBall
         super.PostBeginPlay();
         ripdepth = 900;
 		bExploded = false;
-		sideDamage = random(17,26);
-		Projectile_damage = random(17, 26);
+		sideDamage = 18;
+		Projectile_damage = 18;
     }
     
 	
