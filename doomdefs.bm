@@ -53,7 +53,6 @@
 #include BMAP/AssaultZombie.txt
 #include BMAP/AutoShotgunGuy.txt
 #include BMAP/PistolZombie.txt
-#include BMAP/RiotShieldGuy.txt
 #include BMAP/ShotgunGuy.txt
 #include BMAP/Zombieman.txt
 #include BMAP/ZombieScientist.txt
