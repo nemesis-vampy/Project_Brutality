@@ -131,7 +131,7 @@ extend class PB_WeaponBase
 		A_Overlay(-778, "KickHandler_Overlay");
 		A_Overlay(-779, "Equipment_Toggle_Handler_Overlay");
 		invoker.WeaponScaleX = 1.0;
-		A_Overlay(-10, "FirstPersonLegsStand");
+		A_Overlay(-1000, "FirstPersonLegsStand");
 		invoker.WeaponScaleX = PB_PixelRenderingFix ? 1.2 : 1.0;
 		
 		PB_SetUsingKick(false);
@@ -1621,8 +1621,8 @@ extend class PB_WeaponBase
 		}
 	}
 	
-	action state PB_Execute() {
-		if(CountInv("GrabbedBarrel") >= 1 || CountInv("GrabbedFlameBarrel") >= 1 || CountInv("GrabbedIceBarrel") >= 1) { return null; }
+	action void PB_Execute() {
+		if(CountInv("GrabbedBarrel") >= 1 || CountInv("GrabbedFlameBarrel") >= 1 || CountInv("GrabbedIceBarrel") >= 1) { return; }
 	
 //		 CVar experimental_settings = CVar.FindCVar('pb_experimental');
 		
@@ -1678,13 +1678,14 @@ extend class PB_WeaponBase
 							
 							StateLabel st = PB_ExecutionHandlerString(monster);
 							monster.A_Die("Execution");
-							return ResolveState(st);
+							A_Overlay(PSP_WEAPON,st);
+							A_OverlayOffset(PSP_WEAPON,0,32);
+							A_ClearOverlays(-998,-997);
 						}
 					}
 				}
 // 			}
 		}
-		return null;
 	}
 	
 	action bool actorCanBeExecuted(Actor monster) {

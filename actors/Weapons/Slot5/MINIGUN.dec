@@ -1421,7 +1421,7 @@ Fire_Chaingun:
 				if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSpriteEx("MG33");}
 				if (CountInv("TripleBarrelMode") == 1) {A_SetWeaponSpriteEx("MG35");}
 			}
-		Stop
+		Goto Ready3
 		
 	FlashAirKicking:
 		TNT1 A 0 {

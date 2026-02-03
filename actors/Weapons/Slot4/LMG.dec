@@ -235,9 +235,6 @@ ACTOR PB_LMG : PB_Weapon
 			LOOP*/
 		FlashPunching:
 			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0)
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelPunching")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelPunching")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelPunching")
 			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles", 1, "FlashPunchingMissile")
 			LQB6 AB 0
 			LQB5 AB 0
@@ -256,7 +253,7 @@ ACTOR PB_LMG : PB_Weapon
 				if(CountInv("LMGAmmo") == 4) {A_SetFlashWeaponSprite("LQB4");}
 				if(CountInv("LMGAmmo") < 4) {A_SetFlashWeaponSprite("LQB3");}
 			}
-			Stop
+			Goto Ready3
 		FlashPunchingMissile:
 			LQM5 AB 0
 			LQM4 AB 0
@@ -272,11 +269,8 @@ ACTOR PB_LMG : PB_Weapon
 				if(CountInv("LMGAmmo") == 12 || CountInv("LMGAmmo") <= 14) {A_SetFlashWeaponSprite("LQM4");}
 				if(CountInv("LMGAmmo") < 12) {A_SetFlashWeaponSprite("LQM3");}
 			}
-			Stop
+			Goto Ready3
 		FlashKicking:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelKicking")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelKicking")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelKicking")
 			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles", 1, "FlashKickingMissile")
 			LKB7 A 0 A_JumpIfInventory("LMGAmmo",7,5)
 			LKB6 A 0 A_JumpIfInventory("LMGAmmo",6,4)
@@ -286,9 +280,6 @@ ACTOR PB_LMG : PB_Weapon
 			"####" ABCDEFGHGFEDCBA 1
 			Goto Ready3
 		FlashAirKicking:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelAirKicking")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelAirKicking")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelAirKicking")	
 			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles", 1, "FlashAirKickingMissile")
 			LKB7 A 0 A_JumpIfInventory("LMGAmmo",7,5)
 			LKB6 A 0 A_JumpIfInventory("LMGAmmo",6,4)
@@ -312,9 +303,6 @@ ACTOR PB_LMG : PB_Weapon
 			"####" ABCDEFGHHGFEDCBA 1
 			Goto Ready3
 		FlashSlideKicking:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKicking")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKicking")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKicking")
 			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles", 1, "FlashSlideKickingMissile")
 			LKB7 A 0 A_JumpIfInventory("LMGAmmo",7,5)
 			LKB6 A 0 A_JumpIfInventory("LMGAmmo",6,4)
@@ -331,9 +319,6 @@ ACTOR PB_LMG : PB_Weapon
 			"####" ABCDEFGHHHHHHHHHHHHHGFEDCBA 1
 			Goto Ready3
 		FlashSlideKickingStop:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKickingStop")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKickingStop")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKickingStop")
 			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles", 1, "FlashSlideKickingMissileStop")
 			LKB7 A 0 A_JumpIfInventory("LMGAmmo",7,5)
 			LKB6 A 0 A_JumpIfInventory("LMGAmmo",6,4)
@@ -557,9 +542,6 @@ ACTOR PB_LMG : PB_Weapon
 			Stop
 		AltFire:
 			TNT1 A 0 A_Setinventory("CantWeaponSpecial",0)
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 			TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Unzoom")
 			TNT1 A 0 A_SetInventory("Zoomed", 1)
 			TNT1 A 0 A_SetCrosshair(-1)
@@ -1781,9 +1763,6 @@ ACTOR PB_LMG : PB_Weapon
 			Goto ReloadLidClosing
 		
 		Deselect:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 			TNT1 A 0 //A_SetCrosshair(0)
 			TNT1 A 0 A_Setinventory("RandomHeadExploder",0)
 			TNT1 A 0 A_Setinventory("Unloading",0)

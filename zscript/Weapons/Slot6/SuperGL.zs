@@ -494,7 +494,7 @@ Class PB_SuperGL : PB_Weapon
 	
 		FlashPunching:
 			S030 ABCDEFGHHIJKLM 1 SGL_ChangeModeSprite("S030","S031","S032","S033","S034",layer:OverlayID());
-			Stop;
+			Goto Ready3;
 		
 		LoadSprites:
 			S001 ABCDEFGHI 0;

@@ -1235,9 +1235,6 @@ ACTOR PB_DMR : PB_Weapon
 		Loop
 		
 	Deselect:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
@@ -1297,9 +1294,6 @@ ACTOR PB_DMR : PB_Weapon
 		Wait
 		
 	WeaponSpecial:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
 		TNT1 A 0 {
 			A_Takeinventory("GoWeaponSpecialAbility",1);
 			A_Takeinventory("Zoomed",1);
@@ -1584,12 +1578,6 @@ ACTOR PB_DMR : PB_Weapon
 			A_TakeInventory("PB_LockScreenTilt",1);
 			A_ZoomFactor(1);
 		}
-		TNT1 A 0 A_TakeInventory("HasBarrel",1)
-		TNT1 A 0 A_TakeInventory("HasIceBarrel",1)
-		TNT1 A 0 A_TakeInventory("HasFlameBarrel",1)
-		TNT1 A 0 A_TakeInventory("GrabbedBarrel",1)
-		TNT1 A 0 A_TakeInventory("GrabbedIceBarrel",1)
-		TNT1 A 0 A_TakeInventory("GrabbedFlameBarrel",1)
 		Goto SelectFirstPersonLegs
 		SelectContinue:
 		TNT1 A 1 ACS_NamedExecuteAlways("ToggleCarbineUpgraded",0) //For people who want this weapon to replace another
@@ -2158,9 +2146,6 @@ ACTOR PB_DMR : PB_Weapon
 		Goto Ready3
 	
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 		TNT1 A 0 {
 			A_GunFlash("LightDone",GFF_NOEXTCHANGE);
 			A_WeaponOffset(0,32);
@@ -2764,9 +2749,6 @@ ACTOR PB_DMR : PB_Weapon
 
 			
 	FlashKicking:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelKicking")
 		TNT1 A 0 A_ClearOverlays(10,11)
 		TNT1 A 0 A_JumpIfInventory("DualWieldingDMRs", 1, "FlashKicking2")
 		H1F0 ABCDEFGGHIJKLM 0 // HDMR - Normal Mode
@@ -2810,9 +2792,6 @@ ACTOR PB_DMR : PB_Weapon
 		Goto Ready3
 		
 	FlashAirKicking:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelAirKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelAirKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelAirKicking")	
 		TNT1 A 0 A_ClearOverlays(10,11)
 		TNT1 A 0 A_JumpIfInventory("DualWieldingDMRs", 1, "FlashAirKicking2")
 		H1F0 ABCDEFGGHIJKLM 0 // HDMR - Normal Mode
@@ -2852,9 +2831,6 @@ ACTOR PB_DMR : PB_Weapon
 		Goto Ready3
 		
 	FlashSlideKicking:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKicking")
 		TNT1 A 0 A_ClearOverlays(10,11)
 		TNT1 A 0 A_JumpIfInventory("DualWieldingDMRs",1,"FlashSlideKicking2")
 		H1F1 ABCDEFGHIJKLMNOPQRSTUVWX 0
@@ -2891,9 +2867,6 @@ ACTOR PB_DMR : PB_Weapon
 		Goto Ready3
 		
 	FlashSlideKickingStop:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKickingStop")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKickingStop")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKickingStop")
 		TNT1 A 0 A_ClearOverlays(10,11)
 		TNT1 A 0 A_JumpIfInventory("DualWieldingDMRs", 1, "FlashSlideKickingStop2")
 		R4F3 RSTUVWX 1 {
@@ -2934,9 +2907,6 @@ ACTOR PB_DMR : PB_Weapon
 		Goto Ready3
 		
 	FlashPunching:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelPunching")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelPunching")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelPunching")
 		TNT1 A 0 A_ClearOverlays(10,11)
 		TNT1 A 0 A_JumpIfInventory("DualWieldingDMRs", 1, "FlashPunching2")
 		H1F2 ABCDEFGHIJKLMN 0 
@@ -2951,11 +2921,11 @@ ACTOR PB_DMR : PB_Weapon
 				}
 			}
 		}
-		Stop
+		Goto Ready3
 		
 	FlashPunching2:
 		TNT1 AAAAAAAAAAAAAA 1
-		Stop
+		Goto Ready3
 	}
 }
 

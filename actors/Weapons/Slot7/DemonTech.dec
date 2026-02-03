@@ -199,9 +199,6 @@ ACTOR PB_Demontech : PB_Weapon
 			Goto ReadyToFire1
 			
 		Deselect:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
@@ -620,14 +617,9 @@ ACTOR PB_Demontech : PB_Weapon
 		D7T2 QRST 1 {if(CountInv("FireModeAcidGun") == 1) {A_SetWeaponSprite("D7T3");}}
 		Goto Ready3
 	FlashPunching:
-		TNT1 A 0 A_JumpIf(PB_GetMagUnloaded,"FlashPunchingUnloaded") //[nv] i'm too lazy to animate this right now, yell at me to do it if you read this later
-		TNT1 A 0 A_TakeInventory("CausticCharge",20)
 		D7T5 A 0
 		D7T4 ABCDEFFFFFFGHI 1 {if(CountInv("FireModeAcidGun") == 1) {A_SetWeaponSpriteEx("D7T5");}}
-		Stop
-	FlashPunchingUnloaded:
-		D5T0 ZZZZZZZZZZZZZZ 1 {if(CountInv("FireModeAcidGun") == 1) {A_SetWeaponSpriteEx("D5T1");}}
-		Stop
+		Goto Ready3
 	}
 }
 

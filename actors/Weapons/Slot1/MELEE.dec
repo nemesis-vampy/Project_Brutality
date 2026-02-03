@@ -190,9 +190,6 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		Goto ReadyFists
 
 	Reload:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
 		TNT1 A 0 A_TakeInventory("Punching", 1)
 		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"KillLS")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
@@ -298,7 +295,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 			}
 		}
 		TNTT A 0 A_JumpIfInventory("Kicking", 1, "Ready3")
-		TNT1 A 0 A_Overlay(-10, "FirstPersonLegsStand")
+		TNT1 A 0 A_Overlay(-1000, "FirstPersonLegsStand")
 	Ready3:
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 0 {
@@ -370,9 +367,6 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		loop
 		
 	Deselect:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
@@ -432,18 +426,11 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 	
 	//Who needs multiple states for the same conditions anyway, its almost 2020!
 	Fire: //Left Handed Punches
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "ThrowIceBarrel")
 		TNT1 A 0 {
 // 			A_GiveInventory("PB_LockScreenTilt",1);
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			A_SetCrosshair(-1);
-			if(CountInv("NoFatality") == 0) {
-				return PB_Execute();
-			}
-			return state("");
+			A_SetCrosshair(-1);PB_Execute();
 		}
 		
 		//Combo Checker
@@ -782,17 +769,10 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		Goto ReadyFists
 		
 	AltFire: //Right Handed Punches
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			A_SetCrosshair(-1);
-			if(CountInv("NoFatality") == 0) {
-				return PB_Execute();
-			}
-			return state("");
+			A_SetCrosshair(-1);PB_Execute();
 		}
 		
 		
@@ -1448,13 +1428,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 1
 		Stop
 	FlashAirKicking:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelAirKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelAirKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelAirKicking")	
 	FlashKicking:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelKicking")
 		P8NA A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1, 4)
 		P7NA A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1, 3)
 		P6NA A 0 A_JumpIfInventory("PowerBloodOnVisor",1, 2)
@@ -1468,21 +1442,15 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		Goto Ready3
 		
 	FlashPunching:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelPunching")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelPunching")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelPunching")
 		PUNS I 1
 		TNT1 A 10
 		PUNS JIH 1
-		Stop
+		Goto Ready3
 	
 		
 		
 		
 	FlashSlideKicking:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKicking")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKicking")
 		P4NS A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1, 4)
 		P3NS A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1, 3)
 		P2NS A 0 A_JumpIfInventory("PowerBloodOnVisor",1, 2)
@@ -1490,9 +1458,6 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		"####" ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_DoPBWeaponAction(WRF_ALLOWRELOAD|WRF_NOFIRE)
 		Goto Ready3
 	FlashSlideKickingStop:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKickingStop")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKickingStop")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKickingStop")
 		P4NS A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1, 4)
 		P3NS A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1, 3)
 		P2NS A 0 A_JumpIfInventory("PowerBloodOnVisor",1, 2)

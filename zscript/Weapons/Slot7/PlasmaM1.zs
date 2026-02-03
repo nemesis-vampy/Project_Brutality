@@ -1092,10 +1092,10 @@ Class PB_M1Plasma : PB_WeaponBase
 			P1R2 CDEEDC 1;
 			P1SG ZYXW 1;
 			P1SG AA 1;
-			Stop;
+			Goto Ready3;
 		FlashPunchingDualWield:
 			TNT1 A 15;
-			Stop;
+			Goto Ready3;
 			
 		FlashKickingDualWield:
 			P3R0 ABCDEF 1;
