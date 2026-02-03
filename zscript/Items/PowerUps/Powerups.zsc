@@ -173,7 +173,7 @@ class PB_BlurSphere : PB_Inventory //replaces blursphere
 	States
 	{
 	Spawn:
-		PIN5 ABCBJBABCJBCDEFGHIBJ 3;
+		P1N5 ABCBJBABCJBCDEFGHIBJ 3;
 		loop;
 	}
 }

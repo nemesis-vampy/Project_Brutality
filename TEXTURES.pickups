@@ -762,7 +762,7 @@ Sprite "P1NVJ0", 115, 115
 	Patch "INVS10", 0, 0
 }
 
-Sprite "PIN5A0", 115, 115
+Sprite "P1N5A0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -770,7 +770,7 @@ Sprite "PIN5A0", 115, 115
 	Patch "BLS1", 0, 0
 }
 
-Sprite "PIN5B0", 115, 115
+Sprite "P1N5B0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -778,7 +778,7 @@ Sprite "PIN5B0", 115, 115
 	Patch "BLS2", 0, 0
 }
 
-Sprite "PIN5C0", 115, 115
+Sprite "P1N5C0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -786,7 +786,7 @@ Sprite "PIN5C0", 115, 115
 	Patch "BLS3", 0, 0
 }
 
-Sprite "PIN5D0", 115, 115
+Sprite "P1N5D0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -794,7 +794,7 @@ Sprite "PIN5D0", 115, 115
 	Patch "BLS4", 0, 0
 }
 
-Sprite "PIN5E0", 115, 115
+Sprite "P1N5E0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -802,7 +802,7 @@ Sprite "PIN5E0", 115, 115
 	Patch "BLS5", 0, 0
 }
 
-Sprite "PIN5F0", 115, 115
+Sprite "P1N5F0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -810,7 +810,7 @@ Sprite "PIN5F0", 115, 115
 	Patch "BLS6", 0, 0
 }
 
-Sprite "PIN5G0", 115, 115
+Sprite "P1N5G0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -818,7 +818,7 @@ Sprite "PIN5G0", 115, 115
 	Patch "BLS7", 0, 0
 }
 
-Sprite "PIN5H0", 115, 115
+Sprite "P1N5H0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -826,7 +826,7 @@ Sprite "PIN5H0", 115, 115
 	Patch "BLS8", 0, 0
 }
 
-Sprite "PIN5I0", 115, 115
+Sprite "P1N5I0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
@@ -834,7 +834,7 @@ Sprite "PIN5I0", 115, 115
 	Patch "BLS9", 0, 0
 }
 
-Sprite "PIN5J0", 115, 115
+Sprite "P1N5J0", 115, 115
 {
 	XScale 3.800
 	YScale 3.800
