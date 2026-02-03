@@ -688,7 +688,7 @@ class PB_WeaponBase : DoomWeapon
 				invoker.WeaponScaleX = PB_PixelRenderingFix ? 1.2 : 1.0;
 				A_ClearReFire();
 			}
-			TNT1 A 0 A_JumpIfInventory("SawSelected", 1, "OnLoop");
+			TNT1 A 0 A_JumpIfInventory("SawSelected", 1, "Reselect");
 			TNT1 AAAA 0 A_Jump(256, "SelectAnimation");
 			TNT1 AAAA 1 A_Jump(256, "Ready");
 			Loop;
