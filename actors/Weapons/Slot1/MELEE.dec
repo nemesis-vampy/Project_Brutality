@@ -1130,7 +1130,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 A_SetInventory("Kicking", 1)
 		TNT1 A 0 {
 			A_SetRoll(0);
-			A_Overlay(-10, "FirstPersonLegsKickLeft");
+			A_Overlay(-1000, "FirstPersonLegsKickLeft");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 			A_OverlayFlags(PSP_WEAPON,PSPF_PLAYERTRANSLATED, true);
 		}
@@ -1164,7 +1164,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 A_SetInventory("Kicking", 1)
 		TNT1 A 0 {
 			A_SetRoll(0);
-			A_Overlay(-10, "FirstPersonLegsKickRight");
+			A_Overlay(-1000, "FirstPersonLegsKickRight");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 			A_OverlayFlags(PSP_WEAPON,PSPF_PLAYERTRANSLATED, true);
 		}
@@ -1198,7 +1198,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 A_SetInventory("Kicking", 1)
 		TNT1 A 0 {
 			A_SetRoll(0);
-			A_Overlay(-10, "FirstPersonLegsKickLeft");
+			A_Overlay(-1000, "FirstPersonLegsKickLeft");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 			A_OverlayFlags(PSP_WEAPON,PSPF_PLAYERTRANSLATED, true);
 		}
@@ -1234,7 +1234,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 A_SetInventory("Kicking", 1)
 		TNT1 A 0 {
 			A_SetRoll(0);
-			A_Overlay(-10, "FirstPersonLegsKickRight");
+			A_Overlay(-1000, "FirstPersonLegsKickRight");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 			A_OverlayFlags(PSP_WEAPON,PSPF_PLAYERTRANSLATED, true);
 		}
@@ -1271,7 +1271,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 {
 			A_SetInventory("Kicking",1);
 			//A_Giveinventory("PB_LockScreenTilt",1);
-			A_Overlay(-10, "FirstPersonLegsKickRight");
+			A_Overlay(-1000, "FirstPersonLegsKickRight");
 			A_SetInventory("Zoomed",0);
 			A_SetInventory("ADSmode",0);
 			A_ZoomFactor(1.0);
@@ -1355,7 +1355,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		}
 		TNT1 A 0 {
 			A_OverlayFlags(-8,PSPF_PLAYERTRANSLATED, false);
-			A_Overlay(-10, "FirstPersonLegsStand");
+			A_Overlay(-1000, "FirstPersonLegsStand");
 			SetPlayerProperty(0,0,0);
 		//	A_Takeinventory("PB_LockScreenTilt",1);
 			A_SetInventory("Kicking",0);
@@ -1401,7 +1401,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 			A_SetInventory("PB_LockScreenTilt",0);
 			A_OverlayFlags(-8,PSPF_PLAYERTRANSLATED, false);
 			PB_SetUsingKick(false);
-			A_Overlay(-10, "FirstPersonLegsStand");
+			A_Overlay(-1000, "FirstPersonLegsStand");
 			A_SetInventory("Kicking",0);
 		}
 		Goto ReadyFists
@@ -1416,7 +1416,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		{
 // 			A_OverlayOffset(3, 0, 0);
 			if (PB_MeleeKickInterruptCheck()) { 
-				A_Overlay(-10, "FirstPersonLegsStand");
+				A_Overlay(-1000, "FirstPersonLegsStand");
 				A_SetInventory("Kicking",0);
 				PB_SetUsingKick(false);
 				return state("FlashInterrupt"); 
