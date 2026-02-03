@@ -62,7 +62,7 @@ extend class PB_WeaponBase
 					A_overlayAlpha(overlayID() + 4,clamp(invoker.curBlood.z,0.0,0.9));
 					*/
 				}
-				if(invoker.leftHandMelee)
+				if(invoker.leftHandMelee || findinventory("GrabbedBarrel") || findinventory("GrabbedFlameBarrel") || findinventory("GrabbedIceBarrel"))
 				{
 					A_OverlayFlags(-998,PSPF_FLIP|PSPF_MIRROR,true);
 					A_OverlayFlags(-997,PSPF_FLIP|PSPF_MIRROR,true);
