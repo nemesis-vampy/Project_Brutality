@@ -945,7 +945,7 @@ weapons/CryoRifle/flak2		"sounds/Combat/Weapons/CryoRifle/FZR_FLAK2.ogg"
 $random weapons/CryoRifle/freezeobject { weapons/CryoRifle/freezeobject1  weapons/CryoRifle/freezeobject2 }
 weapons/CryoRifle/freezeobject1		"sounds/Combat/Weapons/CryoRifle/FZR_FREEZEOBJECT1.ogg"
 weapons/CryoRifle/freezeobject2		"sounds/Combat/Weapons/CryoRifle/FZR_FREEZEOBJECT2.ogg"
-
+$attenuation weapons/CryoRifle/freezeobject 0.5
 
 
 //Slot 9 - BFGs
