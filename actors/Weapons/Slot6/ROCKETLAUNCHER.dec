@@ -1793,9 +1793,9 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 		Goto Ready3
 		
 	Spawn:
-		VKTL Z 0 NoDelay
-		RKTL Z 10 A_PbvpFramework("VKTL")
-		"####" "#" 0 A_PbvpInterpolate()
+		//VKTL Z 0 NoDelay
+		RKTL Z 10 //A_PbvpFramework("VKTL")
+		//"####" "#" 0 A_PbvpInterpolate()
 		LOOP
 	FlashPunching:
 		TNT1 A 0 {
