@@ -148,7 +148,7 @@ OptionMenu "PB_HUDOptions"
 	StaticText	""
 	StaticText	"--------- ZDoom HUD Scaling ---------", gold
 	Option		"$SCALEMNU_HUD_OLDSCALE",		"hud_oldscale",					"YesNo"
-	Slider		"$SCALEMNU_HUD_SCALEFACTOR",	"hud_scalefactor",				0.0, 1.0, 0.025, 3,	"hud_oldscale",	1
+	Slider		"$SCALEMNU_HUD_SCALEFACTOR",	"hud_scalefactor",				0.0, 1.0, 0.01, 3,	"hud_oldscale",	1
 }
 
 OptionValue "Speedometer"

@@ -5,7 +5,8 @@
 TIP_PB_FORCESPMOVEMENT = "Multiplayer movement is 33% slower than singleplayer.";
 TIP_PB_MPCALLSIGN = "Callsigns are three letter, uppercase names that appear instead of your full nickname.";
 TIP_PB_USELOWRESHUDFONT = "Better on low resolution displays.";
-TIP_HUD_OLDSCALE = "Disable if your HUD is too big or too small. Also allows finer scaling.\nSet to 0.98 for smoother swaying.";
+TIP_HUD_OLDSCALE = "Disable if your HUD is too big or too small. Also allows finer scaling.";
+TIP_HUD_SCALEFACTOR = "Set to 0.99 for smoother swaying.";
 TIP_LEVELSTOPLAY = "How long the mapset you're playing is, so that PB can scale spawning across it.";
 TIP_PB_WEAPON_CROSSHAIRS = "Unique crosshair for each weapon (overrides custom crosshair setting)";
 TIP_SINGLEDUALFIRE = "Single Button - Primary fire button fires both weapons, similar to BDv21.\nDefault - Primary fire: Fire left weapon, Alt-fire: Fire right weapon.\nInverted - Primary fire: Fire right weapon, Alt-fire: Fire left weapon.";
