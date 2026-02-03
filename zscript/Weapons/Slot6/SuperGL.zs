@@ -172,6 +172,7 @@ Class PB_SuperGL : PB_Weapon
 				PB_SpawnCasing("EmptyGrenadeBrass", 30, 0, 34, -frandom(1, 3), -frandom(2, 4), 5);
 				A_ZoomFactor(0.99);
 				PB_WeaponRecoil(-3.2,+1.61);
+				A_GunFlash();
 			}
 			SL60 C 1 {
 				A_Overlay(-6, "MuzzleSparks", true);
@@ -179,6 +180,7 @@ Class PB_SuperGL : PB_Weapon
 				if(PB_GetMagUnloaded()) {A_SetWeaponSprite("S002");}
 				A_ZoomFactor(1.0);
 				PB_WeaponRecoil(-3.2,+1.61);
+				A_GunFlash();
 			}
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"CycleUnloaded");
 			Goto CyclingAnimation;

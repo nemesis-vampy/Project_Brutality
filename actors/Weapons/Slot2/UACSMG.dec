@@ -456,7 +456,14 @@ ACTOR PB_SMG : PB_Weapon
 			return state("");
 		}
 		Loop
-		
+	LeftFlash:
+		A2FM B 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A2SM");
+			}
+			A_GunFlash;
+		}
+		STOP
 	FireLeft_Overlay:
 		A2S1 DEF 0
 		A2FU A 0
@@ -492,7 +499,9 @@ ACTOR PB_SMG : PB_Weapon
 			PB_LowAmmoSoundWarning("smg", "LeftSMGAmmo");
 			PB_TakeAmmo("LeftSMGAmmo",1,1,0,true);
 			A_ZoomFactor(0.985);
-			A_GunFlash;
+			A_Overlay(-5, "LeftFlash", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 			PB_WeaponRecoil(-1.1,+0.76);
 			}
 		A2F1 E 1 {
@@ -523,7 +532,15 @@ ACTOR PB_SMG : PB_Weapon
 			}
 		}
 		Goto IdleLeft_Overlay
-		
+	RightFlash:
+		A2SM A 0
+		A2FM A 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A2SM");
+			}
+			A_GunFlash;
+		}
+		STOP
 	FireRight_Overlay:
 		A2S1 ABC 0
 		A2F1 A 1 {
@@ -556,7 +573,9 @@ ACTOR PB_SMG : PB_Weapon
 			PB_LowAmmoSoundWarning("smg");
 			PB_TakeAmmo("SMGAmmo",1);
 			A_ZoomFactor(0.985);
-			A_GunFlash;
+			A_Overlay(-6, "RightFlash", true);
+			A_OverlayFlags(-6,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-6,STYLE_Add);
 			PB_WeaponRecoil(-1.1,-0.76);
 			}
 		A2F1 B 1 {
@@ -1055,7 +1074,6 @@ ACTOR PB_SMG : PB_Weapon
                 PB_MuzzleFlashEffects(0, 0, 4, "FF9D2E", true, false);
 				A_SetWeaponSprite("A1S1");
 				if(PB_GetMagUnloaded) {A_SetWeaponSprite("A1S2");}
-				A_GunFlash;
 			}
 			else
 			{
@@ -1107,11 +1125,9 @@ ACTOR PB_SMG : PB_Weapon
 			if(CountInv("SilencedSMG") >= 1) {
 				A_SetWeaponSprite("A1S1");
 			}
-			else {
-				A_Overlay(-5, "GunFlash1", true);
-				A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(-5,STYLE_Add);
-			}
+			A_Overlay(-5, "GunFlash1", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 		}
 		Goto ActualFire
 	Flash_Variant2:
@@ -1119,11 +1135,9 @@ ACTOR PB_SMG : PB_Weapon
 			if(CountInv("SilencedSMG") >= 1) {
 				A_SetWeaponSprite("A1S1");
 			}
-			else {
-				A_Overlay(-5, "GunFlash2", true);
-				A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(-5,STYLE_Add);
-			}
+			A_Overlay(-5, "GunFlash2", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 		}
 		Goto ActualFire
 	Flash_Variant3:
@@ -1131,11 +1145,9 @@ ACTOR PB_SMG : PB_Weapon
 			if(CountInv("SilencedSMG") >= 1) {
 				A_SetWeaponSprite("A1S1");
 			}
-			else {
-				A_Overlay(-5, "GunFlash3", true);
-				A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(-5,STYLE_Add);
-			}
+			A_Overlay(-5, "GunFlash3", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 		}
 		Goto ActualFire
 	Flash_Variant4:
@@ -1143,11 +1155,9 @@ ACTOR PB_SMG : PB_Weapon
 			if(CountInv("SilencedSMG") >= 1) {
 				A_SetWeaponSprite("A1S1");
 			}
-			else {
-				A_Overlay(-5, "GunFlash4", true);
-				A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(-5,STYLE_Add);
-			}
+			A_Overlay(-5, "GunFlash4", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 		}
 		Goto ActualFire
 	Flash_Variant5:
@@ -1155,27 +1165,51 @@ ACTOR PB_SMG : PB_Weapon
 			if(CountInv("SilencedSMG") >= 1) {
 				A_SetWeaponSprite("A1S1");
 			}
-			else {
-				A_Overlay(-5, "GunFlash5", true);
-				A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(-5,STYLE_Add);
-			}
+			A_Overlay(-5, "GunFlash5", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 		}
 		Goto ActualFire
 	GunFlash1:
-		A1FM F 1 Bright A_GunFlash
+		A1SM F 0
+		A1FM F 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A1SM");
+			}
+			A_GunFlash;
+		}
 		STOP
 	GunFlash2:
-		A1FM I 1 Bright A_GunFlash
+		A1FM I 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A1SM");
+			}
+			A_GunFlash;
+		}
 		STOP
 	GunFlash3:
-		A1FM J 1 Bright A_GunFlash
+		A1FM J 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A1SM");
+			}
+			A_GunFlash;
+		}
 		STOP
 	GunFlash4:
-		A1FM K 1 Bright A_GunFlash
+		A1FM K 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A1SM");
+			}
+			A_GunFlash;
+		}
 		STOP
 	GunFlash5:
-		A1FM L 1 Bright A_GunFlash
+		A1FM L 1 Bright {
+			if(CountInv("SilencedSMG") >= 1) {
+				A_SetWeaponSpriteEx("A1SM");
+			}
+			A_GunFlash;
+		}
 		STOP
 
 	CacheFire:
@@ -1238,6 +1272,7 @@ ACTOR PB_SMG : PB_Weapon
 			A_ZoomFactor(1.19);
 			PB_WeaponRecoil(-0.2,+0.18);
 			A_SetInventory("SMGAlternateADSFire", randompick(0, 1));
+			A_GunFlash;
 			}
 		A1F3 H 1 {
 			A_ZoomFactor(1.195);

@@ -505,6 +505,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			N2N0 B 1 {
 				A_ZoomFactor(1.0);
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N2");}
+				A_GunFlash;
 				}
 			//TNT1 A 0 PB_ReFire("Hold")
 			//TNT1 A 0 A_StartSound("weapons/nailgun/fireStop",CHAN_WEAPON)
@@ -534,6 +535,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			N2N0 H 1 {
 				A_ZoomFactor(1.0);
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N2");}
+				A_GunFlash;
 				}
 			TNT1 A 0 PB_ReFire("Hold")
 			TNT1 A 0 A_StartSound("weapons/nailgun/fireStop",CHAN_WEAPON)
@@ -582,10 +584,12 @@ ACTOR PB_Nailgun : PB_Weapon
 			N2N1 B 1 {
 				if (PB_GetOverheat >= 450) {A_SetWeaponSprite("N9N0");}
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N1");}
+				A_GunFlash;
 				}
 			N2N1 C 1 {
 				if (PB_GetOverheat >= 450) {A_SetWeaponSprite("N9N0");}
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N1");}
+				A_GunFlash;
 			}
 			//TNT1 A 0 PB_ReFire("Hold")
 			//TNT1 A 0 A_StartSound("weapons/nailgun/fireStop",CHAN_WEAPON)
@@ -622,10 +626,12 @@ ACTOR PB_Nailgun : PB_Weapon
 			N2N1 E 1 {
 				if (PB_GetOverheat >= 450) {A_SetWeaponSprite("N9N0");}
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N1");}
+				A_GunFlash;
 				}
 			N2N1 F 1 {
 				if (PB_GetOverheat >= 450) {A_SetWeaponSprite("N9N0");}
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N1");}
+				A_GunFlash;
 				}
 			TNT1 A 0 PB_ReFire("Hold")
 			TNT1 A 0 A_StartSound("weapons/nailgun/fireStop",CHAN_WEAPON)
@@ -652,6 +658,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			TNT1 A 0 A_StartSound("weapons/nailgun/inspect4", CHAN_AUTO)
 			N5N0 EFGHIJKLMNOPQRSTUV 1 {
 				if (PB_GetOverheat >= 600) {A_SetWeaponSprite("N9N3");}
+				A_GunFlash2;
 				}
 			TNT1 A 0 A_FireBullets(0, 0, 1, 25, "shotpuff", 0, 250)
 			TNT1 AAAAAAAAAAAAAAAAAAAA 0
@@ -758,7 +765,7 @@ ACTOR PB_Nailgun : PB_Weapon
 			TNT1 A 0 PB_JumpIfNoAmmo
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded,"AltfireJavelinUnloaded")
 			TNT1 A 0 A_StartSound("weapons/nailgun/javelincharge", CHAN_WEAPON)
-			J3N0 ABCDEFABCDEFGHIJKLMKLMNOPNOPQRSTU 1
+			J3N0 ABCDEFABCDEFGHIJKLMKLMNOPNOPQRSTU 1 A_GunFlash2
 			J3N0 V 1 {
 				A_FireCustomMissile("PB_JavelinProjectile_Hot", 0, 0, 0, 0, 0, 0);
 				//A_FireCustomMissile("GunFireSmoke", 0, 0, 0, -8, 0, 0);

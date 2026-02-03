@@ -361,7 +361,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-6,"RightFlash", true);
 			A_OverlayFlags(-6,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-6,STYLE_Add);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -454,7 +453,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_OverlayFlags(-6,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-6,STYLE_Add);
 			
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -493,7 +491,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-6,"RightFlash", true);
 			A_OverlayFlags(-6,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-6,STYLE_Add);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -532,7 +529,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-6,"RightFlash", true);
 			A_OverlayFlags(-6,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-6,STYLE_Add);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -626,7 +622,6 @@ ACTOR PB_Pistol : PB_Weapon
 			PB_TakeAmmo("SecondaryPistolAmmo",1,1,0,true);
 			A_ZoomFactor(0.985);
 			A_SetFiringLeftWeapon(True);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -716,7 +711,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-5, "LeftFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-5,STYLE_Add);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -756,7 +750,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-5, "LeftFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-5,STYLE_Add);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -796,7 +789,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-5, "LeftFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-5,STYLE_Add);
-			A_GunFlash;
 			
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_StartSound("weapons/suppressedpistol", CHAN_Weapon, CHANF_DEFAULT, 1.0);
@@ -870,81 +862,88 @@ ACTOR PB_Pistol : PB_Weapon
 		Goto IdleLeft_Overlay
 	
 	GunFlash:
-		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, "GunFlashSilenced")
 		TNT1 A 0 A_Jump(256, "Flash1", "Flash2", "Flash3", "Flash4", "Flash5", "Flash6", "Flash7", "Flash8")
-		TNT1 A 1
-		Stop
 	Flash1:
-		DEGM A 1 Bright
+		DEGM A 1 Bright A_GunFlash
 		STOP
 	Flash2:
-		DEGM B 1 Bright
+		DEGM B 1 Bright A_GunFlash
 		STOP
 	Flash3:
-		DEGM C 1 Bright
+		DEGM C 1 Bright A_GunFlash
 		STOP
 	Flash4:
-		DEGM D 1 Bright
+		DEGM D 1 Bright A_GunFlash
 		STOP
 	Flash5:
-		DEGM E 1 Bright
+		DEGM E 1 Bright A_GunFlash
 		STOP
 	Flash6:
-		DEGM F 1 Bright
+		DEGM F 1 Bright A_GunFlash
 		STOP
 	Flash7:
-		DEGM G 1 Bright
+		DEGM G 1 Bright A_GunFlash
 		STOP
 	Flash8:
-		DEGM H 1 Bright
+		DEGM H 1 Bright A_GunFlash
 		STOP
+	GunFlashSilenced:
+		D3GM A 1 Bright A_GunFlash
+		Stop
 	GunFlash2:
-		D7GM A 1 Bright
+		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, "GunFlash2Silenced")
+		D7GM A 1 Bright A_GunFlash
+		Stop
+	GunFlash2Silenced:
+		D8GM A 1 Bright A_GunFlash
 		Stop
 	
 	LeftFlash:
-		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, "LeftFlashSilenced")
 		TNT1 A 0 A_Jump(256, "LeftFlash1", "LeftFlash2")
-		TNT1 A 1
-		Stop
 	LeftFlash1:
-		D2LM A 1 Bright
+		D2LM A 1 Bright A_GunFlash
 		TNT1 A 0 A_Jump(256, "LeftBigFlash1", "LeftBigFlash2", "LeftBigFlash3")
 		Stop
 	LeftFlash2:
-		D2LM C 1 Bright
+		D2LM C 1 Bright A_GunFlash
 		TNT1 A 0 A_Jump(256, "LeftBigFlash1", "LeftBigFlash2", "LeftBigFlash3")
 		Stop
 	LeftBigFlash1:
-		D2LM B 1 bright
+		D2LM B 1 bright A_GunFlash
 		Stop
 	LeftBigFlash2:
-		D2LM D 1 bright
+		D2LM D 1 bright A_GunFlash
 		Stop
 	LeftBigFlash3:
-		D2LM E 1 bright
+		D2LM E 1 bright A_GunFlash
+		Stop
+	LeftFlashSilenced:
+		DL3M AB 1 Bright A_GunFlash
 		Stop
 	RightFlash:
-		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("SilencerEquipped", 1, "RightFlashSilenced")
 		TNT1 A 0 A_Jump(256, "RightFlash1", "RightFlash2")
-		TNT1 A 1
-		Stop
 	RightFlash1:
-		D2RM A 1 Bright
+		D2RM A 1 Bright A_GunFlash
 		TNT1 A 0 A_Jump(256, "RightBigFlash1", "RightBigFlash2", "RightBigFlash3")
 		Stop
 	RightFlash2:
-		D2RM C 1 Bright
+		D2RM C 1 Bright A_GunFlash
 		TNT1 A 0 A_Jump(256, "RightBigFlash1", "RightBigFlash2", "RightBigFlash3")
 		Stop
 	RightBigFlash1:
-		D2RM B 1 bright
+		D2RM B 1 bright A_GunFlash
 		Stop
 	RightBigFlash2:
-		D2RM D 1 bright
+		D2RM D 1 bright A_GunFlash
 		Stop
 	RightBigFlash3:
-		D2RM E 1 bright
+		D2RM E 1 bright A_GunFlash
+		Stop
+	RightFlashSilenced:
+		DR3M AB 1 Bright A_GunFlash
 		Stop
 		
 	WeaponSpecial:
@@ -1163,7 +1162,6 @@ ACTOR PB_Pistol : PB_Weapon
 		DEGF A 1 BRIGHT { 
 			PB_IncrementHeat;
 			// Fire as suppressor if equipped
-			A_GunFlash;
 			A_OverlayOffset(PSP_WEAPON, 0, 33.5);
 			A_Overlay(-5, "GunFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
@@ -1259,7 +1257,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-5, "GunFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-5,STYLE_Add);
-			A_GunFlash;
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_SetWeaponSprite("D3GF");
 				//A_FireBullets (0.1, 0.1, -1, 15, "HitPuff", FBF_NORANDOM,8192,"Tracer", -2,0);
@@ -1307,7 +1304,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-5, "GunFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-5,STYLE_Add);
-			A_GunFlash;
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_SetWeaponSprite("D3GF");
 				//A_FireBullets (0.1, 0.1, -1, 15, "HitPuff", FBF_NORANDOM,8192,"Tracer", -2,0);
@@ -1355,7 +1351,6 @@ ACTOR PB_Pistol : PB_Weapon
 			A_Overlay(-5, "GunFlash", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderStyle(-5,STYLE_Add);
-			A_GunFlash;
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_SetWeaponSprite("D3GF");
 				//A_FireBullets (0.1, 0.1, -1, 15, "HitPuff", FBF_NORANDOM,8192,"Tracer", -2,0);
@@ -1450,9 +1445,6 @@ ACTOR PB_Pistol : PB_Weapon
 				PB_DynamicTail("pistol_sup", "pistol_sup");
 			}
 			else {
-				A_Overlay(-5, "GunFlash2", true);
-				A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
-				A_OverlayRenderStyle(-5,STYLE_Add);
 				PB_FireBullets("PB_45ACPHP",1,0.1,0,0,0.1);
 				A_ZoomFactor(1.24);
 				A_AlertMonsters;
@@ -1466,6 +1458,9 @@ ACTOR PB_Pistol : PB_Weapon
 				PB_DynamicTail("pistol", "pistol");
 				A_FireCustomMissile("YellowFlareSpawn",0,0,0,0);
 			}
+			A_Overlay(-5, "GunFlash2", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 			PB_WeaponRecoil(-0.18,-0.08);
 		}
 		D7GG H 1 {
@@ -1538,6 +1533,9 @@ ACTOR PB_Pistol : PB_Weapon
 				PB_DynamicTail("pistol", "pistol");
 				A_FireCustomMissile("YellowFlareSpawn",0,0,0,0);
 			}
+			A_Overlay(-5, "GunFlash2", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 			PB_WeaponRecoil(-0.44,-0.24);
 		}
 		D7GG HI 1 {
@@ -1580,6 +1578,9 @@ ACTOR PB_Pistol : PB_Weapon
 				PB_DynamicTail("pistol", "pistol");
 				A_FireCustomMissile("YellowFlareSpawn",0,0,0,0);
 			}
+			A_Overlay(-5, "GunFlash2", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
             PB_WeaponRecoil(-0.44,-0.24);
 		}
         D7GG HI 1 {
@@ -1622,6 +1623,9 @@ ACTOR PB_Pistol : PB_Weapon
 				PB_DynamicTail("pistol", "pistol");
 				A_FireCustomMissile("YellowFlareSpawn",0,0,0,0);
 			}
+			A_Overlay(-5, "GunFlash2", true);
+			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderStyle(-5,STYLE_Add);
 			PB_WeaponRecoil(-0.44,-0.24);
 		}
 		D7GG HI 1 {
@@ -1660,7 +1664,6 @@ ACTOR PB_Pistol : PB_Weapon
 	AltFire:
 		D8GG ABC 0 
 		TNT1 A 0 {
-			A_GunFlash("LightDone",GFF_NOEXTCHANGE);
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
 			A_SetCrosshair(-1);
@@ -1684,7 +1687,6 @@ ACTOR PB_Pistol : PB_Weapon
 		Goto Ready2
 	Zoomout:
 		TNT1 A 0 {	
-			A_GunFlash("LightDone",GFF_NOEXTCHANGE);
 			A_SetInventory("Zoomed",0);
 			A_SetInventory("ADSmode",0);
 			A_ZoomFactor(1.0);
