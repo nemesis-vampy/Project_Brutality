@@ -12,7 +12,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		Inventory.MaxAmount 2;
 		PB_WeaponBase.respectItem "RespectPlasmaGun";	
 		PB_WeaponBase.DualWieldToken "DualWieldingPlasma";	
-		inventory.pickupmessage "UAC-M1 Plasma Rifle (Slot 7)";
+		inventory.pickupmessage "Plasma Rifle (Slot 7)";
 		Inventory.PickupSound "7LSPICK";
 		Inventory.AltHUDIcon "PL4SA0";
 		Tag "UAC-M1 Plasma Rifle";

@@ -14,8 +14,8 @@ Class PB_Shotgun : PB_WeaponBase
 		weapon.slotpriority 0.5;
 		PB_WeaponBase.respectItem "RespectShotgun";
 		inventory.pickupsound "SHOTPICK";
-		inventory.pickupmessage "UAC GS-10 Shotgun (Slot 3)";
-		Tag "UAC GS-10 Shotgun";
+		inventory.pickupmessage "Pump Shotgun (Slot 3)";
+		Tag "UAC-GS10 Pump Shotgun";
 		Scale 0.45;
 		FloatBobStrength 0.5;
 		Inventory.AltHUDIcon "SHTCA0";					
@@ -1465,7 +1465,7 @@ Class PB_SGMagazine: PB_UpgradeItem
 		-INVENTORY.ALWAYSPICKUP
 		-COUNTITEM
 		Inventory.Pickupsound "SHOTPICK";
-		Inventory.PickupMessage "UAC GS-10 Shotgun Magazine and Dragon's Breath Shells (Slot 3, Upgrade)";
+		Inventory.PickupMessage "Pump Shotgun Magazine (Slot 3, Upgrade)";
 		Tag "Pump Shotgun Magazine";
 		Scale 0.45;
 		FloatBobStrength 0.5;

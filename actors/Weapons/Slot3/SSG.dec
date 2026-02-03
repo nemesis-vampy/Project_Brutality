@@ -75,10 +75,10 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 	+FLOORCLIP
 	+DONTGIB
 	+WEAPON.NOAUTOAIM
-	Tag "Sawed-Off Shotgun"
+	Tag "Sawn-Off Double-Barrel Shotgun"
 	+WEAPON.NOAUTOFIRE
 	Inventory.MaxAmount 2
-	Inventory.PickupMessage "Sawed-Off Shotgun (Slot 3)"
+	Inventory.PickupMessage "Double-Barrel Shotgun (Slot 3)"
 	Obituary "%o was splattered by %k's SSG"
 	Inventory.PickupSound "CLIPINQS"
 	Scale 0.5

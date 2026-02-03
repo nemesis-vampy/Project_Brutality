@@ -43,9 +43,9 @@ Actor PB_CryoRifle: PB_Weapon
 // 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	DamageType "Ice"
-	Inventory.PickupMessage "TeiTenga Arms Cryo Rifle (Slot 8)"
+	Inventory.PickupMessage "Cryo Rifle (Slot 8)"
 	Obituary "%o was iced by %k"
-	Tag "TeiTenga Arms Cryo Rifle"
+	Tag "UAC-M20 Cryogenic Dispersion Rifle"
 	Scale 0.48
 	PB_WeaponBase.respectItem "RespectCryoRifle"
 	PB_WeaponBase.OffsetRecoilX 1.5

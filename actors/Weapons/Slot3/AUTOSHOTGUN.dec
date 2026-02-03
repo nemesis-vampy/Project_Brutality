@@ -40,8 +40,8 @@ Actor PB_AutoshotgunUpgrade: PB_UpgradeItem{
 	-COUNTITEM
 	+DONTGIB
 	Inventory.Pickupsound "H4SGCOCK"
-	Inventory.PickupMessage "UAC AS-16 Auto-Shotgun Drum Magazine (Slot 3, Upgrade)"
-	Tag "Auto Shotgun Drum Magazine"
+	Inventory.PickupMessage "Assault Shotgun Magazine (Slot 3, Upgrade)"
+	Tag "Assault Shotgun Magazine"
 	Scale 0.52
 	FloatBobStrength 0.5
 	States{
@@ -86,13 +86,13 @@ ACTOR PB_Autoshotgun : PB_Weapon{
 	Weapon.AmmoType2 "AutoShotgunAmmo"
 	weapon.slotpriority 0.75
 	PB_WeaponBase.AmmoTypeLeft "LeftASGAmmo"
-	Inventory.PickupMessage "UAC AS-16 \"Party Crasher\" Auto-Shotgun (Slot 3)"
+	Inventory.PickupMessage "Assault Shotgun (Slot 3)"
 	Inventory.PickupSound "weapons/sgpump"
 	Inventory.Amount 1
 	Inventory.MaxAmount 2
 	Obituary "$OB_MPSHOTGUN"
 	AttackSound "None"
-	Tag "UAC AS-16 Auto-Shotgun"
+	Tag "UAC-AS16 Party Crasher Assault Shotgun"
 	+WEAPON.NOALERT
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE

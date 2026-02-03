@@ -209,7 +209,7 @@ ACTOR PB_LMG : PB_Weapon
 	//+POWERED_UP
 	+WEAPON.NOALERT
 	Inventory.PickupSound "LMGPKP"
-	Inventory.PickupMessage "UAC-349 Light Machine Gun (Slot 4, Upgrade)"
+	Inventory.PickupMessage "Light Machine Gun (Slot 4, Upgrade)"
 	Tag "UAC-349 Light Machine Gun"
 	Obituary "%o became a leaking piece of meat by %k's light machine gun"
 	AttackSound "none"

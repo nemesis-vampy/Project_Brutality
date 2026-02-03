@@ -13,7 +13,7 @@ class PB_Deagle : PB_WeaponBase
 		PB_WeaponBase.respectItem "RespectDeagle";
 		PB_WeaponBase.DualWieldToken "DualWieldingDeagles";	
 		Inventory.PickupSound "weapons/deagle/equip";
-		inventory.pickupmessage "UAC-H54 Martian Raptor .50 (Slot 2, Upgrade)";
+		inventory.pickupmessage "Martian Raptor Automag (Slot 2, Upgrade)";
 		Obituary "%o was popped by %k's .50 Caliber Hand Cannon.";
 		Inventory.AltHUDIcon "D4E0Z0";
 		PB_WeaponBase.TailPitch 0.6;
@@ -21,7 +21,7 @@ class PB_Deagle : PB_WeaponBase
 		+weapon.noalert;
 		+weapon.noautofire;
 		Scale 0.48;
-		Tag "UAC-H54 Martian Raptor .50";
+		Tag "UAC-H54 Martian Raptor .50 Automag";
 		FloatBobStrength 0.5;
 	}
 	

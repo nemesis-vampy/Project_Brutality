@@ -119,7 +119,7 @@ ACTOR PB_SMG : PB_Weapon
 	+DONTGIB
 	Obituary "%o was shot down by %k's UAC-17 Compact Submachine Gun."
 	Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "UAC-17 Compact Submachine Gun (Slot 2, Upgrade)"
+	Inventory.Pickupmessage "Submachine Gun (Slot 2, Upgrade)"
 	Tag "UAC-17 Compact Submachine Gun"
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOALERT

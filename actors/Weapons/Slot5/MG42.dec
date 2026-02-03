@@ -23,7 +23,7 @@ ACTOR PB_MG42 : PB_Weapon
 	Weapon.AmmoType "PB_HighCalMag"
 	Weapon.AmmoGive 30
 	Weapon.AmmoUse 0
-	Inventory.PickupMessage "Maschinengewehr 42 (Slot 5)"
+	Inventory.PickupMessage "MG 42 (Slot 5)"
 	Inventory.PickupSound "weapons/MG42/Pickup"
 	Obituary "%o tasted the power of %k's MG42"
 	+WEAPON.NOAUTOAIM
