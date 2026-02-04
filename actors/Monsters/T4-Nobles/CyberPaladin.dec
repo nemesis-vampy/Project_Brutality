@@ -730,6 +730,8 @@ ACTOR PB_CyberPaladin //Replaces HellKnight
 	} 
 }
 
+ACTOR PaladinGrenadeFlare : RedFlare {Scale 0.2}
+
 ACTOR PaladinGrenade
 {
 	Radius 8
@@ -754,7 +756,7 @@ ACTOR PaladinGrenade
 	States
 	{
 	Spawn:
-		SGRN A 1 Bright
+		SGRN A 1 Bright A_SpawnitemEx("PaladinGrenadeFlare")
 		Loop
 	Death:
 		TNT1 A 0 A_ChangeFlag ("NoGravity", 1)
