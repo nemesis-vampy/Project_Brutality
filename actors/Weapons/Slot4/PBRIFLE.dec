@@ -1241,6 +1241,8 @@ ACTOR PB_DMR : PB_Weapon
 			PB_HandleCrosshair(55);
 			A_TakeInventory("PB_LockScreenTilt",1);
 			A_ClearOverlays(10,11);
+			A_ClearOverlays(-7,-3);
+			A_ClearOverlays(-80,-80);
 			A_TakeInventory("SniperFiringCooldown",1);
 		}
 		TNT1 A 0 {	
