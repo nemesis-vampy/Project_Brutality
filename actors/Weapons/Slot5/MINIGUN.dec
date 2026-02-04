@@ -476,6 +476,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		Stop
 		
 	Altfire:
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"ReadyToFire")
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
@@ -523,6 +524,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown2")
 		CHAF C 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -552,6 +554,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown2")
 		CHAF E 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -581,6 +584,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown2")
 		CHAF G 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -610,7 +614,9 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.6,frandom(1.6, -1.6));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown2")
 		TNT1 A 0 PB_ReFire
+	SpinDown2:
 		TNT1 A 0 {
 			A_ClearOverlays(4,4);
 			A_StopSound(5);
@@ -653,6 +659,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 		
 		
 	Altfire_Chaingun:
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"ReadyToFire")
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
@@ -694,6 +701,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
 		}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"Chaingun_End")
 		//CHAG C 1
 		CHAF E 1 BRIGHT {
 			PB_FireOffset;
@@ -735,6 +743,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHG");}
 			if (CountInv("PB_HighCalMag") > 0 ) { A_Overlay(4,"AmmoBeltIdle"); }
 		}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"Chaingun_End")
 		TNT1 A 0 PB_ReFire("Altfire_Chaingun")
 	Goto Chaingun_End
 	Fire:
@@ -770,6 +779,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF B 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -787,6 +797,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF C 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -803,6 +814,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Giveinventory("OverHeating",1);
 			A_Overlay(9,"Glow");
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF D 1 BRIGHT {
 			PB_FireOffset;
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
@@ -822,6 +834,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF E 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -838,6 +851,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF F 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -855,6 +869,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Giveinventory("OverHeating",1);
 			A_Overlay(9,"Glow");
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF G 1 BRIGHT {
 			PB_FireOffset;
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
@@ -874,6 +889,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			PB_WeaponRecoil(-0.8,frandom(2.4, -2.4));
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"SpinDown")
 		CHAF H 1 BRIGHT {
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
 			A_Overlay(3,"AmmoMeterOverlay");
@@ -893,6 +909,7 @@ ACTOR PB_Minigun : PB_Weapon //Replaces Chaingun
 			A_Overlay(9,"Glow");
 			}
 		TNT1 A 0 PB_ReFire
+	SpinDown:
 		TNT1 A 0 {
 			A_ClearOverlays(4,4);
 			A_StopSound(5);
@@ -946,6 +963,7 @@ Fire_Chaingun:
 			else {A_Overlay(4,"AmmoBeltChaingun");}
 			//A_ZoomFactor(0.980);
 			}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"Chaingun_End")
 		CHAF A 1 BRIGHT {
 			PB_FireOffset;
 			if (CountInv("MinigunUpgraded") == 1) {A_SetWeaponSprite("UCHF");}
@@ -979,6 +997,7 @@ Fire_Chaingun:
 			A_Overlay(3,"AmmoMeterOverlay");
 			A_Overlay(9,"Glow");
 		}
+		TNT1 A 0 A_JumpIf(CountInv("PB_HighCalMag") < 1,"Chaingun_End")
 		//CHAG C 1
 		CHAF E 1 BRIGHT {
 			PB_FireOffset;
