@@ -195,11 +195,11 @@ ACTOR PB_Railgun : PB_Weapon
 				}
 			}
 			TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "ReadyToFire_Scoped")
-			TNT1 A 0 A_JumpIfInventory("RailgunLaserMode", 1, "ReadyToFire_Red")
 			TNT1 A 0 {
 				A_Setinventory("PB_LockScreenTilt",0);
 				PB_HandleCrosshair(77);
 			}
+			TNT1 A 0 A_JumpIfInventory("RailgunLaserMode", 1, "ReadyToFire_Red")
 		ReadyToFire_Blue:
 			R006 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
 			{
