@@ -103,7 +103,7 @@ ACTOR PB_BeamRev : PB_Revenant //Replaces Revenant
 		TNT1 A 0 
 		R4SK G 1 A_FaceTarget
 		TNT1 A 0 
-		R4SK G 6 A_SkelWhoosh
+		R4SK G 6 {A_FaceTarget; A_StartSound("pb/monsters/skeleton/swing");}
 		TNT1 A 0 
 		R4SK H 6 A_FaceTarget
 		TNT1 A 0 

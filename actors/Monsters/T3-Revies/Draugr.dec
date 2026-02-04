@@ -128,7 +128,7 @@ ACTOR PB_Draugr : PB_Revenant //Replaces Revenant
 		TNT1 A 0 
 		SKE2 J 1 A_FaceTarget
 		TNT1 A 0 
-		SKE2 J 6 A_SkelWhoosh
+		SKE2 J 6 {A_FaceTarget; A_StartSound("pb/monsters/skeleton/swing");}
 		TNT1 A 0 
 		SKE2 K 6 A_FaceTarget
 		TNT1 A 0 

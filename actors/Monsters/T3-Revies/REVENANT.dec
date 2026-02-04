@@ -204,7 +204,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 
 		SKE1 G 1 A_FaceTarget
 		TNT1 A 0 
-		SKE1 G 6 A_SkelWhoosh
+		SKE1 G 6 {A_FaceTarget; A_StartSound("pb/monsters/skeleton/swing");}
 		TNT1 A 0 
 		SKE1 H 6 A_FaceTarget
 		TNT1 A 0 
