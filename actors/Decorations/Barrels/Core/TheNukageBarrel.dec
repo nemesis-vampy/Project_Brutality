@@ -707,19 +707,24 @@ ACTOR PB_NukageBarrel : SwitchableDecoration
 			
 			Death.Plasma:	
 			Death.BFG:
+			Death.Electric:
 				"####" "#" 0 A_Changeflag ("Shootable", false)
-				TNT1 A 0 A_SpawnItemEx ("PB_StunGrenadeExplosion",0,0,10,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				"####" "#" 0 A_JumpIfInventory("DrainedBarrel",1,"EmptyDeath")
 				"####" "#" 0 A_JumpIfInventory("BarrelIsFrozen",1,"IceDeathPlasma")
 				"####" "#" 0 A_JumpIfInventory("BarrelIsFlaming",1,"FlameDeathPlasma")
-				BBLA AAABC 3 BRIGHT 
+				BBLA AAABC 3 
+				"####" "#" 0 A_SpawnItemEx ("PB_StunGrenadeExplosion",0,0,10,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				"####" "#" 0 A_SpawnItemEx ("BarrelBlast",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				Goto SpawnRemains
 			IceDeathPlasma:
+				BBLA DDDEF 3
+				"####" "#" 0 A_SpawnItemEx ("PB_StunGrenadeExplosion",0,0,10,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				"####" "#" 0 A_SpawnItemEx ("IceBarrelBlast",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_SETMASTER,0)
 				Goto SpawnRemains
 			FlameDeathPlasma:
+				BFEX AAABC 3
 				"####" "#" 0 A_RemoveChildren(TRUE,RMVF_MISC)
+				"####" "#" 0 A_SpawnItemEx ("PB_StunGrenadeExplosion",0,0,10,0,0,0,0,SXF_NOCHECKPOSITION,0)
 				"####" "#" 0 A_SpawnItemEx ("FlameBarrelBlast",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_SETMASTER,0)
 				Goto SpawnRemains
 
