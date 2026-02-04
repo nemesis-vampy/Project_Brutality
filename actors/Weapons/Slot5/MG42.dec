@@ -52,11 +52,12 @@ ACTOR PB_MG42 : PB_Weapon
 		TNT1 A 1
 		Goto Ready
 	Cooling:
-		TNT1 A 4 PB_ModifyOverheat(-5)
-		TNT1 A 0 {
+		TNT1 A 8
+		TNT1 A 4 {
+			PB_ModifyOverheat(-5);
 			if(PB_GetOverheat < 300) {A_SetInventory("MG42HasOverheated", 0);}
-			}
-		Loop
+		}
+		Wait
 	Spawn: 
 		HBUS D 1
 		Loop
@@ -328,7 +329,10 @@ ACTOR PB_MG42 : PB_Weapon
 		A_StartSound("MG42FIR", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		PB_DynamicTail("lmg", "lmg");
 		//A_FireBullets(5, 6, 1, 28, "MachineGunBulletPuff", 1);
-		if(PB_GetOverheat > 300) {
+		if(CountInv("MG42BarrelOverheat") >= 1) {
+			PB_FireBullets("PB_792x57mm", 1, 7, 0, 0, 7);
+		}
+		else if(PB_GetOverheat > 300) {
 			PB_FireBullets("PB_792x57mm", 1, 1.0 + (PB_GetOverheat / 100), 0, 0, 1.0 + (PB_GetOverheat / 100));
 		} 
 		else {
@@ -508,7 +512,10 @@ ACTOR PB_MG42 : PB_Weapon
 		A_StartSound("MG42FIR", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		PB_DynamicTail("lmg", "lmg");
 		//A_FireBullets(5, 5, 1, 28, "MachineGunBulletPuff", 1);
-		if(PB_GetOverheat > 300) {
+		if(CountInv("MG42BarrelOverheat") >= 1) {
+			PB_FireBullets("PB_792x57mm", 1, 7, 0, 0, 7);
+		}
+		else if(PB_GetOverheat > 300) {
 			PB_FireBullets("PB_792x57mm", 1, 1.0 + (PB_GetOverheat / 100), 0, 0, 1.0 + (PB_GetOverheat / 100));
 		} 
 		else {
