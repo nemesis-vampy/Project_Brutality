@@ -1291,7 +1291,7 @@ class Shield : Actor
 
         if (ownerActor)
         {
-            SetOrigin(ownerActor.Pos, false);
+            SetOrigin(ownerActor.Pos, true);
         }
         else
         {
