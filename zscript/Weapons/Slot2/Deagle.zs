@@ -21,7 +21,7 @@ class PB_Deagle : PB_WeaponBase
 		+weapon.noalert;
 		+weapon.noautofire;
 		Scale 0.48;
-		Tag "UAC-H54 Martian Raptor .50 Automag";
+		Tag "UAC-H54 Martian Raptor .50 AE Automag";
 		FloatBobStrength 0.5;
 	}
 	
