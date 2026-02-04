@@ -168,7 +168,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Monsters/Dead.zc"
 
 #include "zscript/Monsters/Special/BossBrain.zc"
-#include "zscript/Monsters/Special/CyberDemon.zc"
+#include "zscript/Monsters/CyberDemons/CyberDemon.zc"
 #include "zscript/Monsters/Knights/BaronOfHell.zc"
 #include "zscript/Monsters/Mancubi/Mancubus.zc"
 #include "zscript/Monsters/Arachnotrons/Arachnotron.zc"
