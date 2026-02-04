@@ -69,7 +69,7 @@ server bool pb_performance_fire = false;
 user bool pb_exaggeratedrecoil = true;
 user float pb_exaggeratedrecoilmul = 0.2;
 
-server int pb_weapondrops = 1;
+server int pb_weapondrops = 0;
 server int pb_naillifetime = 5;
 
 //Weapon Keep CVars
