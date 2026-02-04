@@ -2592,6 +2592,14 @@ action int getReadyFlags(int weapflags, bool noReload)
 		}
 	}
 	
+	action void A_LegOverlay(int layer, statelabel st)
+	{
+		invoker.WeaponScaleX = 1.0;
+		A_Overlay(layer, st);
+		invoker.WeaponScaleX = PB_PixelRenderingFix ? 1.2 : 1.0;
+	}
+	
+	
 	action void A_SetOverlaySprite(int layer, String str)
 		{
 					let psp = player.GetPSprite(layer);
