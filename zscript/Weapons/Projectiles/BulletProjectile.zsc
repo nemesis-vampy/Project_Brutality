@@ -279,6 +279,8 @@ class PB_Projectile : FastProjectile abstract
         INTERNAL_SpecLineTracer trac = INTERNAL_SpecLineTracer.Predict(self, vel.Unit(), dist, 0, 0x01000000, ignore: BlockingMobj);
         TraceResults specHit = trac.results;
         SetOrigin(specHit.HitPos, true);
+		
+		distanceTraveled = Level.Vec3Diff( pos, startPos ).Length();
 
         if(bRANGED)
         {
