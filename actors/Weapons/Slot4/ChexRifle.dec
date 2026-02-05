@@ -381,6 +381,7 @@ ACTOR PB_ChexRifle : PB_Weapon
 			PB_AmmoIntoMag("ChexRifleAmmo","PB_Cell",42,1);
 			PB_SetMagEmpty(false);
 			PB_SetMagUnloaded(false);
+			PB_SetChamberEmpty(false);
 		}
 		CXR2 TUVWXYZ 1 A_SETROLL(ROLL-0.4, SPF_INTERPOLATE)
 		CXR3 ABCDEFG 1 A_SetRoll (roll+0.4, SPF_INTERPOLATE)

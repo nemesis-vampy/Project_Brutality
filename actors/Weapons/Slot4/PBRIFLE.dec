@@ -1510,7 +1510,7 @@ ACTOR PB_DMR : PB_Weapon
 		
 		TNT1 A 0 {
 			A_setAkimbo(true);
-			PB_SetChamberEmpty(false); //stupid hack
+			if(CountInv("DMRAmmo") > 0) {PB_SetChamberEmpty(false);} //stupid hack
 		}
 		R1F0 ABCD 1 {
 			A_Setroll(roll-0.5, SPF_INTERPOLATE);
@@ -2465,8 +2465,8 @@ ACTOR PB_DMR : PB_Weapon
 	ReloadLeft:
 		TNT1 A 3
 		TNT1 A 0 {
-			if(CountInv("HDMRSniperMode") == 1) {return PB_CheckReload("ReloadLeftUnloaded","","","SkipLeftReload","Ready3",15,2,true);}
-			else {return PB_CheckReload("ReloadLeftUnloaded","","","SkipLeftReload","Ready3",31,1,true);}
+			if(CountInv("HDMRSniperMode") == 1) {return PB_CheckReload("ReloadLeftUnloaded","","","SkipLeftReload","SkipLeftReload",15,2,true);}
+			else {return PB_CheckReload("ReloadLeftUnloaded","","","SkipLeftReload","SkipLeftReload",31,1,true);}
 		}
 		R3F2 BCDEFGHIJKLM 1 {
 			if(CountInv("DMRUpgraded") == 1) {A_SetWeaponSprite("H8F2");}
@@ -2916,10 +2916,10 @@ ACTOR PB_DMR : PB_Weapon
 		R4F2 ABCDEFGHIJKLMN 1 {
 			if (CountInv("DMRUpgraded") == 1) {
 				if(CountInv("HDMRSniperMode") == 1) {
-					A_SetFlashWeaponSprite("H6F2");
+					A_SetWeaponSprite("H6F2");
 				}
 				else {
-					A_SetFlashWeaponSprite("H1F2");
+					A_SetWeaponSprite("H1F2");
 				}
 			}
 		}

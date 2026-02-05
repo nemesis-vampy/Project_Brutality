@@ -277,7 +277,7 @@ ACTOR PB_Pistol : PB_Weapon
 					if(CountInv("SecondaryPistolAmmo") > 0){
 						return state("FireLeft_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ALTATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -287,7 +287,7 @@ ACTOR PB_Pistol : PB_Weapon
 					if(CountInv("SecondaryPistolAmmo") > 0){
 						return state("FireLeft_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -313,7 +313,7 @@ ACTOR PB_Pistol : PB_Weapon
 					if(CountInv("PrimaryPistolAmmo") > 0){
 						return state("FireRight_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -323,7 +323,7 @@ ACTOR PB_Pistol : PB_Weapon
 				if(CountInv("PrimaryPistolAmmo") > 0){
 					return state("FireRight_Overlay");
 				}
-				else {
+				else if(JustPressed(BT_ALTATTACK)) {
 					A_PlaySoundEx("weapons/empty", "Auto");
 					return state("");
 				}
@@ -332,7 +332,7 @@ ACTOR PB_Pistol : PB_Weapon
 					if(CountInv("PrimaryPistolAmmo") > 0){
 						return state("FireRight_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}

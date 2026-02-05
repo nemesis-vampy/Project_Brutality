@@ -537,7 +537,7 @@ ACTOR PB_QuadSG : PB_Weapon
 					if(CountInv("LeftQSSGAmmoCounter") > 0){
 						return state("FireLeft_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ALTATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -547,7 +547,7 @@ ACTOR PB_QuadSG : PB_Weapon
 					if(CountInv("LeftQSSGAmmoCounter") > 0){
 						return state("FireLeft_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -565,7 +565,7 @@ ACTOR PB_QuadSG : PB_Weapon
 					if(CountInv("QSSGAmmoCounter") > 0){
 						return state("FireRight_Overlay");
 				}
-				else {
+				else if(JustPressed(BT_ATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -575,7 +575,7 @@ ACTOR PB_QuadSG : PB_Weapon
 					if(CountInv("QSSGAmmoCounter") > 0){
 						return state("FireRight_Overlay");
 					}
-					else {
+					else if(JustPressed(BT_ATTACK)) {
 						A_PlaySoundEx("weapons/empty", "Auto");
 						return state("");
 					}
@@ -589,7 +589,7 @@ ACTOR PB_QuadSG : PB_Weapon
 					A_Overlay(10, "FireLeft_Overlay", false);
 					return state("FireRight_Overlay");
 				}
-				else {
+				else if(JustPressed(BT_ALTATTACK)) {
 					A_PlaySoundEx("weapons/empty", "Auto");
 					return state("");
 				}

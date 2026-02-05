@@ -998,7 +998,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_AlertMonsters();
 					A_ZoomFactor(0.99);
 					PB_LowAmmoSoundWarning("hdmr");
-					A_Takeinventory("LeftPlasmaAmmo",1);
+					PB_TakeAmmo("LeftPlasmaAmmo",1,0,0,true);
 					PB_WeaponRecoil(-1.4,+0.8);
 					A_Overlay(60,"AmmoCounterLeftDW.Firing");
 					A_Overlay(-4,"MuzzleFlashDual");
@@ -1030,7 +1030,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_AlertMonsters();
 					A_ZoomFactor(0.98);
 					PB_LowAmmoSoundWarning("hdmr");
-					A_Takeinventory("PlasmaAmmo",1);
+					PB_TakeAmmo("PlasmaAmmo",1,0);
 					PB_WeaponRecoil(-1.4,-0.8);
 					A_Overlay(63,"AmmoCounterRightDW.Firing");
 					A_Overlay(-5,"MuzzleFlashDual");

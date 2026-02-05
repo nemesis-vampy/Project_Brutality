@@ -455,7 +455,10 @@ SwitchToNormal:
 		Wait
 
 	Fire:
-		TNT1 A 0 A_ClearOverlays(5,7)
+		TNT1 A 0 {
+			A_ClearOverlays(5,7);
+			PB_HandleCrosshair(72);
+		}
 		TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "Runout")
 		TNT1 A 0 A_JumpIfInventory("UnmakerFireSelected", 1, "OverchargeFire")
 	Hold:	
@@ -803,7 +806,10 @@ SwitchToNormal:
 		Goto Ready3
 		
 	Altfire:
-		TNT1 A 0 A_ClearOverlays(5,7)
+		TNT1 A 0 {
+			A_ClearOverlays(5,7);
+			PB_HandleCrosshair(72);
+		}
 		TNT1 A 0 A_JumpIfInventory("UnmakerFireSelected", 1, "OverchargeAltfire")
 		TNT1 A 0 A_JumpIf(CountInv("PB_DTech") < 1, "Runout")
 		TNT1 A 0 A_ClearOverlays(5,7)

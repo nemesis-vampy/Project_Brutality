@@ -194,6 +194,7 @@ Class PB_Shotgun : PB_WeaponBase
 					A_Setinventory("CantWeaponSpecial",0);
 				}
 			}
+			TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Ready2");
 		ReadyToFire:
 			SH0G A 1
 			{
