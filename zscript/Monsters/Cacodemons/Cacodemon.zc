@@ -1903,7 +1903,10 @@ class PB_SpecialCacoDemonBall1 : PB_CacodemonBall
 
 class PB_SpecialCacoDemonBall2 : PB_SpecialCacoDemonBall1
 {
-	
+	Default
+	{
+		WeaveIndexZ 31;
+	}
 	States {
 		Spawn:
 			0CB0 A 1 BRIGHT {
