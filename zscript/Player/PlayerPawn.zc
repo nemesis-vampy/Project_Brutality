@@ -1378,8 +1378,8 @@ class PlayerPawnBase : PlayerPawn
 		// and non-bobbing frames by modifying reducing the range.
 		// am_prevWeapBobDamp and am_weapBobDamp are calculated in
 		// PlayerThink(), then lerp'd here:
-		RangeX = PB_Math.LinearMap(FindInventory("PlayerDashed") ? self.vel.xy.Length() * 0.3 : self.vel.xy.Length(), 0, 15, 0, am_weapBobRangeHorz);
-		RangeY = PB_Math.LinearMap(FindInventory("PlayerDashed") ? self.vel.xy.Length() * 0.3 : self.vel.xy.Length(), 0, 15, 0, am_weapBobRangeVert);
+		RangeX = PB_Math.LinearMap(FindBehavior("PlayerDashed") ? self.vel.xy.Length() * 0.3 : self.vel.xy.Length(), 0, 15, 0, am_weapBobRangeHorz);
+		RangeY = PB_Math.LinearMap(FindBehavior("PlayerDashed") ? self.vel.xy.Length() * 0.3 : self.vel.xy.Length(), 0, 15, 0, am_weapBobRangeVert);
 		// deeper downward movement when underwater:
 		if (waterlevel) RangeY *= 1.8;
 		// multiply by weapon-specific bobranges:
@@ -1950,7 +1950,7 @@ class DEDashJump : Inventory
                 PB_HelpNotificationsHandler.PB_SendTipArray(pbDashTips, "pb_helpflags", 1 << 1);
             }
 
-			owner.A_GiveInventory("PlayerDashed",1);
+			owner.AddBehavior("PlayerDashed");
 			owner.A_QuakeEx( 2, 2, 2, dashTics, 0, 1, "", QF_SCALEDOWN, rollintensity: 0.2 );	
 			
 			Actor pCollide = Spawn( "DashCollisionChecker", owner.Pos );
@@ -1972,7 +1972,7 @@ class DEDashJump : Inventory
 		{
 			owner.vel.xy *= 0;
 			dashTics = 0;
-			owner.TakeInventory("PlayerDashed",1);
+			owner.RemoveBehavior("PlayerDashed");
 			TakeInventory( "EvadeCheck", 2 );
 			TakeInventory( "EvadeHold", 2 );
 		}
@@ -1985,7 +1985,7 @@ class DEDashJump : Inventory
 			if( dashTics == 3 )
 			{
 				dashSpeed *= 0.4;
-				owner.A_TakeInventory("PlayerDashed",1);
+				owner.RemoveBehavior("PlayerDashed");
 			}
 			owner.VelFromAngle( DashSpeed * 0.5, DashDir );
 							
@@ -2073,3 +2073,5 @@ class DashCollisionChecker : Actor
 		}
 	}
 }
+
+class PlayerDashed : Behavior {}
