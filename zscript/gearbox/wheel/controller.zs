@@ -47,7 +47,7 @@ class gb_WheelController
   }
 
   play
-  void process() unsafe(const)
+  void process() const
   {
     if (!mOptions.isMouseInWheel()) return;
 

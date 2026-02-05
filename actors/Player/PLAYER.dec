@@ -28,6 +28,11 @@ Actor CanSlideKick : Inventory
 inventory.maxamount 1
 }
 
+Actor PlayerDashed : Inventory
+{
+inventory.maxamount 1
+}
+
 Actor FPSLegChecker : Inventory
 {
 inventory.maxamount 1

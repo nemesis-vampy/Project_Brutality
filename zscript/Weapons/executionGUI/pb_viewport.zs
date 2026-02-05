@@ -28,7 +28,7 @@ struct pb_Viewport {
 	private double					scale_f;
 	private vector2					scene_to_viewport;
 	
-	ui void FromHud () unsafe(const) {
+	ui void FromHud () const {
 		scene_aspect = Screen.GetAspectRatio();
 		
 		vector2 hud_origin;

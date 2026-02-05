@@ -141,7 +141,7 @@ class Z_TiltMe : CustomInventory
 		}
 
 		// tilt!
-		if (Owner.FindBehavior("PlayerDashed")) {
+		if (Owner.CheckInventory("PlayerDashed",1)) {
 			lastRoll += (5*strafeInput);
 		}
 		else {

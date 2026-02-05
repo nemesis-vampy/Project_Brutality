@@ -154,7 +154,7 @@ class gb_VmAbortHandler : EventHandler
   }
 
   private play
-  void rememberSystemTime(int value) unsafe(const)
+  void rememberSystemTime(int value) const
   {
     mSystemTime = value;
   }
