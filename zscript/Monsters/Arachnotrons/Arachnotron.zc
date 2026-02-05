@@ -144,38 +144,40 @@ Class PB_Arachnotron1 : PB_Monster
 		Goto See;
 
 	StartPlasmaBallAttack:
-		BSP1 G 5 {A_StartSound("arachnotron/charge1",0);A_StartSound("arachnotron/charge1",0);}
+		BSP1 G 9 {A_StartSound("arachnotron/charge1",0);A_StartSound("arachnotron/charge1",0);}
 	PlasmaBallAttack:
-		BSP1 G 10;
-		BSP1 H 2 BRIGHT 			
-			{ 
-				if (plasmaBallCounter <= 14 && HasClearShotIgnoringShield(self,target) )
+		BSP1 G 6;
+		BSP1 H 2 BRIGHT {
+			A_FaceTarget();
+			A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
+			plasmaBallCounter++;
+		}
+		TNT1 A 0
+		{ 
+			if (plasmaBallCounter <= 14 && HasClearShotIgnoringShield(self,target) )
+			{
+			//	bool collisionCheck = CanReachTarget("ArachnoPlasma_Ball",30,0,25, tolerance:1, debug : true);
+				
+				int ArtyChance = 92 ; //92
+				double chance = random(0, 100);
+				if (chance > ArtyChance)
 				{
-					A_FaceTarget();
-					A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
-					plasmaBallCounter++;
-				//	bool collisionCheck = CanReachTarget("ArachnoPlasma_Ball",30,0,25, tolerance:1, debug : true);
-					
-					int ArtyChance = 92 ; //92
-					double chance = random(0, 100);
-					if (chance > ArtyChance)
-					{
-						artyCounter = 0;
-						return ResolveState("Arty");
-					}
-					else
-						return ResolveState("PlasmaBallAttack");
+					artyCounter = 0;
+					return ResolveState("Arty");
 				}
-				else if (plasmaBallCounter > 14 && HasClearShotIgnoringShield(self,target))
-				{
-					return ResolveState("RailGun");
-				}
-				else if (plasmaBallCounter <= 14 && !HasClearShotIgnoringShield(self,target) )
-				{
-					return ResolveState("RailGun");
-				}
-				return ResolveState(null);
+				else
+					return ResolveState("PlasmaBallAttack");
 			}
+			else if (plasmaBallCounter > 14 && HasClearShotIgnoringShield(self,target))
+			{
+				return ResolveState("RailGun");
+			}
+			else if (plasmaBallCounter <= 14 && !HasClearShotIgnoringShield(self,target) )
+			{
+				return ResolveState("RailGun");
+			}
+			return ResolveState(null);
+		}
 		Goto See;
 	
 	Arty:
@@ -248,16 +250,19 @@ Class PB_Arachnotron1 : PB_Monster
 			}
 		GoTo See;
 	ClassicPlasma:
-		BSP1 G 5 {A_StartSound("arachnotron/charge1",0);A_StartSound("arachnotron/charge1",0);}
+		BSP1 G 7 {A_StartSound("arachnotron/charge1",0);A_StartSound("arachnotron/charge1",0);}
 	ClassicPlasmaLoop:
-		BSP1 G 8;
-		BSP1 H 2 BRIGHT 			
+		BSP1 G 6;
+		BSP1 H 2 BRIGHT {
+			A_FaceTarget();
+			A_SpawnProjectile("ArachnoPlasma_Ball", 25, 0, 0, 0);
+			plasmaBallCounter++;
+		}
+		TNT1 A 0
 		{
 			if (plasmaBallCounter <= 10)
 			{
-				A_FaceTarget();
-				A_SpawnProjectile("ArachnoPlasma_Ball", 25, 0, 0, 0);
-				plasmaBallCounter++;
+				A_SpidRefire();
 			}					
 			else
 			{
@@ -265,7 +270,6 @@ Class PB_Arachnotron1 : PB_Monster
 			}
 			return ResolveState(null);
 		}
-		TNT1 A 0 A_SpidRefire();
 		Loop;
 	
 	Pain:
