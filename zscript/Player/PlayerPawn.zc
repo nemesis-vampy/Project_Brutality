@@ -471,8 +471,12 @@ class PlayerPawnBase : PlayerPawn
 		}
 		else
 		{	
-			ViewAngleDelta = cmd.Yaw * (360.0 / 65536.0); //needed for two other things
-			ViewPitchDelta = cmd.Pitch * (90.0 / 65536.0);
+			if(!FindInventory("PlayerWheelOpen") || CVar.GetCVar("gb_time_freeze",player).GetInt() != 1)
+			{
+				ViewAngleDelta = cmd.Yaw * (360.0 / 65536.0); //needed for two other things
+				ViewPitchDelta = cmd.Pitch * (90.0 / 65536.0);
+				if(FindInventory("PlayerWheelOpen")) {ViewAngleDelta = 0; ViewPitchDelta = 0;}
+			}
 			
 			if(Player.TurnTicks) //moved here to save many doubled lines
 			{
@@ -1350,6 +1354,7 @@ class PlayerPawnBase : PlayerPawn
 	
 	Override Vector2 BobWeapon(double ticfrac)
 	{
+		if(FindInventory("PlayerWheelOpen") && CVar.GetCVar("gb_time_freeze",player).GetInt() == 1) return FinalBob;
 		if(multiplayer)
 			return Super.BobWeapon(ticfrac);
 
@@ -1528,7 +1533,7 @@ class PlayerPawnBase : PlayerPawn
 			
 			//////////////////////////////
 			//Yaw Weapon Sway
-			if(CVar.GetCVar("pb_yawsway", Player).GetBool() && !FindInventory("PlayerWheelOpen"))
+			if(CVar.GetCVar("pb_yawsway", Player).GetBool())
 			{
 				Double SwayRange = CVar.GetCVar("pb_yawswayrange", Player).GetFloat() * 10;
 				Double SwayFrictionMulti = CVar.GetCVar("pb_yawswayfriction", Player).GetFloat() / 10;
