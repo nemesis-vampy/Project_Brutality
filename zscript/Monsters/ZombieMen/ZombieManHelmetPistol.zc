@@ -179,7 +179,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
 				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
@@ -196,7 +196,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
 				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
@@ -205,7 +205,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
 				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
@@ -222,7 +222,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
@@ -231,7 +231,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
@@ -240,7 +240,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
@@ -259,7 +259,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 34, 4) ;
 				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 			}
 			9OS2 K 6 A_FaceTarget();
@@ -268,7 +268,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
 				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 			}
 			9OS2 K 6 A_FaceTarget();
@@ -277,7 +277,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
 				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
-				A_StartSound("weapons/pistol");
+				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 			}
 			9OS2 K 4  {
