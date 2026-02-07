@@ -2278,7 +2278,7 @@ extend class PB_WeaponBase
 			pl_ws.Frame = a;
 		}
 	}
-
+/*
 	action void A_DecideSpawnLaserPuff()
 	{
 			if (CountInv("LaserSightActivated")==1 && CountInv("KeepLaserDeactivated") != 1)
@@ -2289,7 +2289,7 @@ extend class PB_WeaponBase
 			{
 				invoker.A_DestroyLaserPuff();
 			}
-	}
+	}*/
 	action void A_DestroyLaserPuff()
 	{
 		if (invoker.laseractor) invoker.laseractor.Destroy();
