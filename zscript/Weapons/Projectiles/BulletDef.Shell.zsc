@@ -58,6 +58,7 @@ class PB_10GAPellet_LP : PB_10GAPellet
 		PB_Projectile.BaseDamage 35;
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
+		RipperLevel 1;
 		Damagetype "SSG";
 		+PB_Projectile.RANGED;
 		PB_Projectile.ProjectileRange 220;
@@ -85,6 +86,7 @@ class PB_8GAPellet_LP : PB_8GAPellet
 		PB_Projectile.BaseDamage 50;
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
+		RipperLevel 1;
 		Damagetype "SSG";
 		+PB_Projectile.RANGED;
 		PB_Projectile.ProjectileRange 220;
