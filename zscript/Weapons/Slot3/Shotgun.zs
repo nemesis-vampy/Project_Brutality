@@ -233,6 +233,7 @@ Class PB_Shotgun : PB_WeaponBase
 				PB_LowAmmoSoundWarning("shotgun");
 				if(CountInv("PumpshotgunMagazine") == 1) PB_TakeAmmo("ShotgunAmmo", 1);
 				else PB_TakeAmmo("ShotgunAmmo", 1,0);
+				PB_SetChamberEmpty(true);
 				A_AlertMonsters();
 				A_fireprojectile("YellowFlareSpawn", 0, 0, 0, 0);
 				A_fireprojectile("ShakeYourAssDouble", 0, 0, 0, 0);
@@ -275,6 +276,8 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_WeaponOffset(0,32);
+				PB_HandleCrosshair(69);
+				PB_SetReloading(true);
 			}
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagPump");
 			TNT1 A 0 A_JumpIf(CountInv("PB_PowerStrength") && Cvar.GetCvar("pb_SGAltBehavior",player).getbool(), "PumpFromHip");
@@ -297,6 +300,7 @@ Class PB_Shotgun : PB_WeaponBase
 					case 2:	PB_SpawnCasing("ShotgunCasing2",15,-5,26,0,3,3);	break;
 					case 3:	PB_SpawnCasing("ShotgunCasing3",15,-5,26,0,3,3);	break;
 				}
+				if(!PB_GetMagEmpty()) {PB_SetChamberEmpty(false);}
 			}
 		//P1C:
 			SH0G L 1
@@ -336,10 +340,17 @@ Class PB_Shotgun : PB_WeaponBase
 				A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 				A_Refire();
 				A_SetInventory("CantDoAction",0);
+				PB_SetReloading(false);
 				//return resolvestate(null);
 			}
 			Goto Ready3;
-		
+		MagPumpFromReady:
+			TNT1 A 0 {
+			PB_HandleCrosshair(69);
+			if(Cvar.GetCvar("pb_SGAltBehavior",player).getbool())
+				Return resolveState("PumpFromHipFromReady");
+			Return resolveState(null);
+			}
 		MagPump:
 			TNT1 A 0 {
 			if(Cvar.GetCvar("pb_SGAltBehavior",player).getbool())
@@ -366,6 +377,7 @@ Class PB_Shotgun : PB_WeaponBase
 					case Shell_Slug: PB_SpawnCasing("ShotgunCasing2",25,-5,19,0,3,3);	break;
 					case Shell_Drag: PB_SpawnCasing("ShotgunCasing3",25,-5,19,0,3,3);	break;
 				}
+				if(!PB_GetMagEmpty()) {PB_SetChamberEmpty(false);}
 			}
 		MagP1C:	
 			SHMG L 1
@@ -392,10 +404,11 @@ Class PB_Shotgun : PB_WeaponBase
 			SHMG JIHGF 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			SH0G EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			Goto PumpEnd;
-		
+		PumpFromHipFromReady:
+			SH0F CDEF 1;
 		PumpFromHip:
 			TNT1 A 0 A_StartSound("weapons/sgmvpump",11,CHANF_OVERLAP);
-			SHSP ABCCBA 1;
+			SHSP ABC 1;
 			TNT1 A 0
 			{
 				switch(getshellsmode())
@@ -404,7 +417,9 @@ Class PB_Shotgun : PB_WeaponBase
 					case Shell_Slug: PB_SpawnCasing("ShotgunCasing2",21,3,24,0,3,3);	break;
 					case Shell_Drag: PB_SpawnCasing("ShotgunCasing3",21,3,24,0,3,3);	break;
 				}
+				if(!PB_GetMagEmpty()) {PB_SetChamberEmpty(false);}
 			}
+			SHSP CBA 1;
 			TNT1 A 0 A_StartSound("weapons/sgpump",11,CHANF_OVERLAP);
 			SH0F GFEDC 1;
 			TNT1 A 0 A_Refire();
@@ -440,7 +455,7 @@ Class PB_Shotgun : PB_WeaponBase
 		ReloadWithNoAmmoLeft:
 		Reload:
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine",1,"MagReload");
-			TNT1 A 0 PB_CheckReload(null,null,null,"Ready3","Ready3",9);
+			TNT1 A 0 PB_CheckReload(null,null,"Pump","Ready3","Ready3",9);
 			TNT1 A 0 A_WeaponOffset(0,32);
 			SH0G BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_SetInventory("PBPumpShotgunHasUnloaded", 0);
@@ -498,7 +513,7 @@ Class PB_Shotgun : PB_WeaponBase
 			Goto Ready3;
 		
 		MagReload:
-			TNT1 A 0 PB_CheckReload(null,null,null,"Ready3","Ready3",11);
+			TNT1 A 0 PB_CheckReload(null,null,"MagPumpFromReady","Ready3","Ready3",11);
 			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(),"toinsert");
 			SHMG FGHI 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
