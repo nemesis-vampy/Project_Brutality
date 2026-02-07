@@ -200,7 +200,7 @@ ACTOR PB_Autoshotgun : PB_Weapon{
 			AU02 EFG 0
 			AU01 EFG 0
 			AU10 ABCD 1 //{if (CountInv("AutoshotgunDrumMag") == 1 ) { A_SetWeaponSprite("AU10");}}
-			AU2M EFGH 1 {
+			AU2M EFG 1 {
 				if (CountInv("AutoShotgunAmmo") == 24 ) { A_SetWeaponSprite("AU24");}
 				if (CountInv("AutoShotgunAmmo") == 23 ) { A_SetWeaponSprite("AU23");}
 				if (CountInv("AutoShotgunAmmo") == 2 )	{ A_SetWeaponSprite("AU02");}
