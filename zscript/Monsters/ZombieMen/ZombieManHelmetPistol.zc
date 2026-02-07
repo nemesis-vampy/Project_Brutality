@@ -433,7 +433,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				//bMISSILEMORE = true;
 				//bMISSILEEVENMORE = true;
 				MissileChanceMult = 0.0625;
-				A_StartSound("grunt/sight");
+				A_StartSound("pb/monsters/grunt/sight");
 				A_FaceTarget();
 				A_GiveInventory("Enraged", 1);
 				}

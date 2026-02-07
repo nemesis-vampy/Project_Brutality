@@ -518,7 +518,7 @@ Class PB_ShotgunGuyHelmet : PB_ShotgunGuy
 				//bMISSILEMORE = True;
 				//bMISSILEEVENMORE = True;
 				MissileChanceMult = 0.0625; // Same as the above flags.
-				A_StartSound("grunt/sight");
+				A_StartSound("pb/monsters/grunt/sight");
 				A_FaceTarget();
 				A_GiveInventory("Enraged", 1);
 				}
