@@ -256,7 +256,7 @@ Class PB_SMGWheel : wheelinfocontainer
 		if(!spw || !requester)
 			return;
 			
-		vector2 iconScale = (0.5, 0.5);
+		vector2 iconScale = (0.75, 0.75);
 			
 		if(!requester.FindInventory("DualWieldingSMGs")) 
 		{
@@ -280,27 +280,27 @@ Class PB_SMGWheel : wheelinfocontainer
 			
 			spw.Push(smg_dualwield);
 		}
-		if(!requester.FindInventory("LaserSightActivated")) 
+		if(!requester.FindInventory("PB_SMGBurstFire")) 
 		{
-			PB_SpecialWheel_Mode smg_laser = new ("PB_SpecialWheel_Mode");
-			smg_laser.img = "graphics/pywheel/SMG/SMG_LASER.png";
-			smg_laser.Alias = "Activate Laser Sight";
-			smg_laser.tokentogive = "SelectLaserSight";
-			smg_laser.scalex = iconscale.x;
-			smg_laser.scaley = iconscale.y;
+			PB_SpecialWheel_Mode smg_burst = new ("PB_SpecialWheel_Mode");
+			smg_burst.img = "graphics/pywheel/SMG/SMG_BURST.png";
+			smg_burst.Alias = "Burst Mode";
+			smg_burst.tokentogive = "SelectBurstFireSMG";
+			smg_burst.scalex = iconscale.x;
+			smg_burst.scaley = iconscale.y;
 			
-			spw.Push(smg_laser);
+			spw.Push(smg_burst);
 		}
 		else 
 		{
-			PB_SpecialWheel_Mode smg_laser = new ("PB_SpecialWheel_Mode");
-			smg_laser.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLA0.png";
-			smg_laser.Alias = "Deactivate Laser Sight";
-			smg_laser.tokentogive = "SelectLaserSight";
-			smg_laser.scalex = iconscale.x;
-			smg_laser.scaley = iconscale.y;
+			PB_SpecialWheel_Mode smg_auto = new ("PB_SpecialWheel_Mode");
+			smg_auto.img = "graphics/pywheel/SMG/SMG_FULLAUTO.png";
+			smg_auto.Alias = "Full-Auto Mode";
+			smg_auto.tokentogive = "SelectBurstFireSMG";
+			smg_auto.scalex = iconscale.x;
+			smg_auto.scaley = iconscale.y;
 			
-			spw.Push(smg_laser);
+			spw.Push(smg_auto);
 		}
 		if(!requester.FindInventory("SilencedSMG")) 
 		{
