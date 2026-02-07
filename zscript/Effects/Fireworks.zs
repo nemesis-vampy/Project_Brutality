@@ -387,9 +387,12 @@ Class FT_GroundFireSpawner : TinyBurningPiece2{
 			TNT1 A 0 NODELAY A_jumpif(waterlevel > 0,"StopBurning");
 			TNT1 A 2 A_StartSound("props/torchfire", CHAN_BODY, CHANF_NOSTOP);
 			TNT1 A 2 A_SpawnItemEx("FT_GroundFire", random(-24,24), random(-8,8), random(1,4));
+			TNT1 A 0 A_Jump(7, "StopBurning");
+			TNT1 A 2 A_StartSound("props/torchfire", CHAN_BODY, CHANF_NOSTOP);
+			TNT1 A 2 A_SpawnItemEx("FT_GroundFire", random(-24,24), random(-8,8), random(1,4));
 			TNT1 A 0 {
 				A_SpawnItemEx("FT_GroundFire2", random(-42,42), random(-28,28), random(0,6));
-				A_Explode(12, 36, XF_HURTSOURCE, 0, 36);
+				A_Explode(6, 36, XF_HURTSOURCE, 0, 36);
 				SpawnParticleFast();
 				if(!pb_performance_fire && waterlevel < 1 && random(0,1) == 1)
 					SpawnSmokeMed();
@@ -456,19 +459,6 @@ Class FT_GroundFireSpawner : TinyBurningPiece2{
 		Level.SpawnParticle(SMKBCK);
 	}
 	
-}
-
-
-Class FT_GroundFireSpawnerPerf : FT_GroundFireSpawner{
-	States{
-		Spawn:
-			TNT1 A 1 NODELAY A_StartSound("props/torchfire", CHAN_BODY, CHANF_NOSTOP);
-			TNT1 A 1 A_SpawnItemEx("FT_GroundFire", random(-24,24), random(-7,7), random(1,2));
-			TNT1 A 1 A_SpawnItemEx("FT_GroundFire2", random(-24,24), random(-7,7), random(1,2));
-			TNT1 A 0 A_Explode(12, 36, XF_HURTSOURCE, 0, 36);
-			TNT1 A 0 A_Jump(7, "StopBurning");
-			Loop;
-	}
 }
 
 Class FT_GroundFire : Actor{
