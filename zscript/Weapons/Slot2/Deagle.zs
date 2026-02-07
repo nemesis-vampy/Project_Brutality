@@ -656,7 +656,7 @@ class PB_Deagle : PB_WeaponBase
 				 A_WeaponOffset(0,32);
 				 A_StartSound("IronSights", 13,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
-				 A_ZoomFactor(1.3);
+				 A_ZoomFactor(1.2);
 				 A_SetCrosshair(-1);
 			}
 			D3E1 ABCDE 1;
@@ -722,15 +722,16 @@ class PB_Deagle : PB_WeaponBase
 					A_FireProjectile("YellowFlareSpawn",0,0,0,0);
 					PB_SpawnCasing("EmptyBrassDeagle",26,0,38,-frandom(1, 2),Frandom(2,6),Frandom(3,6));
 					PB_TakeAmmo("DeagleAmmo",1);
-					A_ZoomFactor(1.19);
+					A_ZoomFactor(1.15);
 					PB_WeaponRecoil(-0.90,-0.25);
 					A_Overlay(-5, "MuzzleFlash2", true);
 					A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 					A_OverlayRenderStyle(-5,STYLE_Add);
 				}
 			D3E0 C 1 BRIGHT PB_WeaponRecoil(-0.90,-0.25);
-			D3E0 DEF 1 A_ZoomFactor(1.2);
-			D3E0 GH 1 A_ZoomFactor(1.18);
+			D3E0 D 1 A_ZoomFactor(1.18);
+			D3E0 E 1 A_ZoomFactor(1.2);
+			D3E0 FGH 1;
 			D3E0 AAAAA 1 {
 				A_SetInventory("CantDoAction",0);
 				 
@@ -791,23 +792,7 @@ class PB_Deagle : PB_WeaponBase
 					A_overlay(11,"IdleRight_Overlay",false);
 				}
 		ReadyToFireDualWield:
-			TNT1 A 1 {
-				if(CountInv("PB_LowCalMag")>0)
-				{
-					if(CountInv("LeftDeagleAmmo")<=0 || CountInv("DeagleAmmo")<=0 || PB_GetChamberEmpty() || PB_GetChamberEmpty(true))
-					{
-						if((CountInv("LeftDeagleAmmo")<=0 || PB_GetChamberEmpty(true)) && (CountInv("DeagleAmmo")<=0 || PB_GetChamberEmpty()))
-							A_SetInventory("DualFireReload",2);
-						else
-							A_SetInventory("DualFireReload",1);
-					}
-				}
-				
-				if(!PB_CanDualWield())
-					return resolvestate("StopDualWield");
-				
-				return A_DoPBWeaponAction(WRF_ALLOWRELOAD|WRF_NOFIRE);
-			}
+			TNT1 A 1 A_DoPBDualAction();
 			Loop;
 		
 		IdleLeft_Overlay:
@@ -815,8 +800,8 @@ class PB_Deagle : PB_WeaponBase
 				PB_CoolDownBarrel(15, 0, 6);
 				if(PB_GetChamberEmpty(true))
 					A_SetWeaponFrame(9);	//A0B1C2D3E4F5G6H7I8J9
-					
-				if(CountInv("LeftDeagleAmmo")<=0 && CountInv("DeagleAmmo")>0)
+				return A_DoPBLeftAction();
+				/*if(CountInv("LeftDeagleAmmo")<=0 && CountInv("DeagleAmmo")>0)
 					A_GiveInventory("DualFiring",1);
 				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
 				if((PressingAltFire() || JustPressed(BT_ALTATTACK)) && !A_IsFiringLeftWeapon() && firemodecvar == 2)
@@ -842,7 +827,7 @@ class PB_Deagle : PB_WeaponBase
 						}
 					}
 				}
-				return resolvestate(null);
+				return resolvestate(null);*/
 			}
 			Loop;
 			
@@ -851,8 +836,8 @@ class PB_Deagle : PB_WeaponBase
 				PB_CoolDownBarrel(-15, 0, 6);
 				if(PB_GetChamberEmpty())
 					A_SetWeaponFrame(9);	//A0B1C2D3E4F5G6H7I8J9
-				
-				if(CountInv("LeftDeagleAmmo")>0 && CountInv("DeagleAmmo")<=0)
+				return A_DoPBRightAction();
+				/*if(CountInv("LeftDeagleAmmo")>0 && CountInv("DeagleAmmo")<=0)
 					A_TakeInventory("DualFiring",1);
 				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
 				if(CountInv("DualFiring")==1 || (CountInv("DualFiring")==1 && CountInv("LeftDeagleAmmo")<=0))
@@ -886,7 +871,7 @@ class PB_Deagle : PB_WeaponBase
 						return resolvestate(null);
 					}
 				}
-				return resolvestate(null);
+				return resolvestate(null);*/
 			}
 			Loop;
 		

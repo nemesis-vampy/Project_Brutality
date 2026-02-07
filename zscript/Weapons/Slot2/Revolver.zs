@@ -518,7 +518,7 @@ Class PB_Revolver : PB_WeaponBase
 				 A_WeaponOffset(0,32);
 				 A_StartSound("IronSights", 10,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
-				 A_ZoomFactor(1.3);
+				 A_ZoomFactor(1.2);
 				 A_SetCrosshair(-1);
 			}
 			R4V2 ABCDE 1;
@@ -581,19 +581,19 @@ Class PB_Revolver : PB_WeaponBase
 					A_Fireprojectile("YellowFlareSpawn",0,0,0,0);
 					PB_LowAmmoSoundWarning("revoPB_TakeAmmolver");
 					PB_TakeAmmo("RevolverAmmo",1,0);
-					A_ZoomFactor(1.25);
+					A_ZoomFactor(1.15);
 					A_GunFlash();
 					PB_WeaponRecoil(-1.15,-0.26);
 					A_SetInventory("CantDoAction",1);
 				}
 		Fire2Continue:
 			R4V3 B 1 BRIGHT {
-					A_ZoomFactor(1.28);
+					A_ZoomFactor(1.18);
 					A_GunFlash();
 					PB_WeaponRecoil(-1.15,-0.26);
 				}
 			R4V3 C 1 {
-					A_ZoomFactor(1.3);
+					A_ZoomFactor(1.2);
 					PB_WeaponRecoil(-1.15,-0.26);
 				}
 			R4V3 DEFGH 1 {
