@@ -374,8 +374,7 @@ class PB_Berserk : PB_Inventory //replaces Berserk
 		if(owner.CountInv("PB_PowerStrength") == 0) {
 			array<int> speckeys;
 			Bindings.GetAllKeysForCommand(speckeys,"+pb_specialwheel");
-			owner.A_Print("Press "..Bindings.NameAllKeys(speckeys).." to swap modes");
-			owner.A_SelectWeapon("PB_Fists");
+			owner.A_Print("Press "..Bindings.NameAllKeys(speckeys).." with fists to swap modes");
 		}
 		owner.A_GiveInventory("PB_PowerStrength");
 		owner.GiveBody(100,0);
