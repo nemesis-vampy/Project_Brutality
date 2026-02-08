@@ -2378,7 +2378,14 @@ extend class PB_WeaponBase
 		  InStateSequence(PSPState,invoker.ResolveState("JavelinReady3"))|| //Nailgun Gavelin Mode
 			InStateSequence(PSPState,invoker.ResolveState("ReadyToFire2"))|| //Hell Rifle Green mode
 			InStateSequence(PSPState,invoker.ResolveState("ReadyMissile"))|| //LMG Micro Missile mode
-			InStateSequence(PSPState,invoker.ResolveState("ReadyToFire_Red"))) 
+			InStateSequence(PSPState,invoker.ResolveState("ReadyToFire_Red"))||
+			InStateSequence(PSPState,invoker.ResolveState("WeaponRespect"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashKicking"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashAirKicking"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingStop"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashBarrelKicking"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashBarrelAirKicking"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashBarrelSlideKickingStop")))
 		 ||
 		(InStateSequence(invoker.owner.player.GetPSprite(10).Curstate,invoker.ResolveState("IdleLeft_Overlay")) && 
 		 InStateSequence(invoker.owner.player.GetPSprite(11).Curstate,invoker.ResolveState("IdleRight_Overlay")) && 
