@@ -925,16 +925,10 @@ Class PB_Shotgun : PB_WeaponBase
 			
 		FlashSlideKicking:
 			TNT1 A 0 A_WeaponOffset(0,32);
-			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashSlideKicking");
-			SH0G CDFGHIJJJJJJJJJJJJJIHGEDB 1;
-			Goto Ready3;
-		
-		MagFlashSlideKicking:
 			SH0G CD 1;
-			SHMG FGHIJJJJJJJJJJJJJIHGE 1;
-			SH0G DC 1;
+			SH0G FGHIJJJJJJJJJJJJJIHGE 1 {if(CountInv("PumpshotgunMagazine") == 1) A_SetWeaponSprite("SHMG");}
+			SH0G DB 1;
 			Goto Ready3;
-
 		FlashSlideKickingStop:
 			TNT1 A 0 A_WeaponOffset(0,32);
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagFlashSlideKickingStop");
@@ -942,8 +936,8 @@ Class PB_Shotgun : PB_WeaponBase
 			Goto Ready3;
 		
 		MagFlashSlideKickingStop:
-			SHMG JIHGF 1;
-			SH0G DC 1;
+			SHMG JIHGE 1;
+			SH0G DB 1;
 			Goto Ready3;
 			
 		FlashPunching:
