@@ -3273,7 +3273,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 		
 		if(t.hitactor)
 		{
-			t.hitactor.damagemobj(p ? p : self, self, overcharge ? 25 : 15,overcharge ? "ExplosiveImpact" : "Fire");
+			t.hitactor.damagemobj(p ? p : self, self, overcharge ? 66 : 33,overcharge ? "ExplosiveImpact" : "Fire");
 			if(t.hitactor.bISMONSTER&&t.hitactor.health <=0&&CountInv("UnmakerOverchargeCounter")<50)
 				GiveInventory("UnmakerOverchargeCounter",1);
 		}
