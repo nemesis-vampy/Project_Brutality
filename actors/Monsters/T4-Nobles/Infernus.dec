@@ -3,7 +3,7 @@ Actor PB_Infernus : PB_Baron //Replaces BaronofHell
 	//$Title Infernus
 	//$Category Project Brutality - Monsters/Hell Nobles
 	//$Sprite BRUSB1
-  Health 1500
+  Health 1275
   Mass 2000
   Speed 9
   SpawnID 2270
