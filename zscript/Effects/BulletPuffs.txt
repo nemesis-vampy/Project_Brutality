@@ -345,7 +345,7 @@ Class RailgunAOEPuff : Actor
 	states
 	{
 		spawn:
-			TNT1 A 0 nodelay A_Explode(dmg == 0 ? 128 : dmg,rad == 0 ? 128 : rad,0,0,96); //this function is literally copypasted from SP_GaussTrailSiegeAOE, shouldnt behave different
+			TNT1 A 0 nodelay A_Explode(dmg,rad,0,0,96); //this function is literally copypasted from SP_GaussTrailSiegeAOE, shouldnt behave different
 			TNT1 A 1;
 			stop;
 	}
