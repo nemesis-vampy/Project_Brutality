@@ -792,7 +792,7 @@ class PB_Deagle : PB_WeaponBase
 					A_overlay(11,"IdleRight_Overlay",false);
 				}
 		ReadyToFireDualWield:
-			TNT1 A 1 A_DoPBDualAction();
+			TNT1 A 1 A_DoPBDualAction(2);
 			Loop;
 		
 		IdleLeft_Overlay:
