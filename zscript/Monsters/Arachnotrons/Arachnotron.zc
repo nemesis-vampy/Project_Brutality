@@ -11,8 +11,7 @@ Class PB_Arachnotron1 : PB_Monster
 		artyCounter = 0;
 		plasmaBallCounter = 0;
 		
-		if(!pb_NoBuffArachnotron)
-			canSuppress = true;
+		canSuppress = true;
 		suppressiveOffZ = 25;
         suppressiveOffXY = 0;
         suppressiveMissile = "ArachnoRailGun";
@@ -123,7 +122,6 @@ Class PB_Arachnotron1 : PB_Monster
 
 	Missile:
 		BSP1 A 2 BRIGHT A_FaceTarget();
-		TNT1 A 0 A_JumpIf(pb_NoBuffArachnotron,"ClassicPlasma");
 		TNT1 A 0 {
 			int toJump = random(0,3);
 			if (toJump > 1 && FirstTime)

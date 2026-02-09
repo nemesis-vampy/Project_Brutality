@@ -106,9 +106,6 @@ class PB_ThrownGrenade : Actor
 		roll += frandom(-4.2, 4.2);
 		GrenadeBounceSmoke();
 		
-		if((pb_grenadeimpact == 2 || pb_grenadeimpact == 1 && bounceMobj && bounceMobj.bISMONSTER) && target && target.Player)
-			SetStateLabel("Explode");
-			
 		return Super.SpecialBounceHit(bounceMobj, bounceLine, bouncePlane);
 	}
 

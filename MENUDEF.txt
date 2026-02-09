@@ -331,20 +331,11 @@ OptionMenu "PB_GameplayOptions"
 	Option	"Disable Auto-Doomguy Talk",				"nodoomguytalk",					"YesNo"
 	Slider	"Nail Despawn Time",						"pb_naillifetime",					0, 60, 1, 0
 	StaticText	""
-	Option	"Buff Vanilla Cacodemon",					"pb_NoBuffCaco",					"NoYes"
-	Option	"Buff Vanilla Arachnotron",					"pb_NoBuffArachnotron",				"NoYes"
-	Option	"Buff Vanilla Baron of Hell",				"pb_NoBuffBaron",					"NoYes"
-	Option	"Buff Vanilla Mancubus",					"pb_NoBuffFatso",					"NoYes"
-	Option	"Disable Dynamic Avoids",					"pb_disabledynamicavoid",			"YesNo"
-	StaticText	""
 	Option	"Disable Decorations",						"pb_disable_decorations",			"YesNo"
 	Option	"Decorative Burning Barrels",				"pb_decorative_flame_barrels",		"OnOff",	"pb_disable_decorations", 0, 1
 	StaticText	""
 	StaticText	"--------- Experimental Mutators ---------",	gold
-	Option	"Alternate Shotgun Behavior",				"pb_SGAltBehavior",					"OnOff"
-	Option	"Hand Grenade Detonation",					"pb_grenadeimpact",					"GrenadeBounceStyle"
 	Option	"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
-	Option	"Monster Drops",							"PB_WeaponDrops",					"MonsterDrops"
 }
 
 OptionValue "AimingStyle" 

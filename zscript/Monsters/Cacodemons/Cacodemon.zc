@@ -11,8 +11,7 @@ Class PB_Cacodemon : PB_Monster
 	override void BeginPlay()
 	{
 		Super.BeginPlay();
-		if(!pb_NoBuffCaco)
-			canSuppress = true;
+		canSuppress = true;
 		suppressiveOffZ = self.height * 0.5;
 		suppressiveOffXY = 0;
 		suppressiveMissile = "PB_Cacodemonball2";
@@ -179,7 +178,7 @@ Class PB_Cacodemon : PB_Monster
 				else if (jawDetached)
 					return ResolveState("Missile_NoJaw");
 				// Using the canSuppress variable to temporarily turn off Special attack Cacocola Classic.
-				else if (!pb_NoBuffCaco && random(0,100) > 50)
+				else if (random(0,100) > 50)
 					return ResolveState("Missile_Special");
 				return ResolveState(null);
 			}
@@ -189,10 +188,7 @@ Class PB_Cacodemon : PB_Monster
 		//	HEA1 D 5 BRIGHT A_HeadAttack(); 
 			HEA1 D 5 {
 				// Different attack based on the canSuppress variable. Base Caco will act more vanilla.
-				if (!pb_NoBuffCaco)
-					A_DropAdjust2("PB_CacodemonBall","PB_CacodemonBall", 0, 0, 32, minRange: 0, maxRange: 1000, shootDownward: false);
-				else
-					A_SpawnProjectile("PB_CacodemonBall");
+				A_DropAdjust2("PB_CacodemonBall","PB_CacodemonBall", 0, 0, 32, minRange: 0, maxRange: 1000, shootDownward: false);
 			}
 			HEA1 CCBBAE 1;
 			Goto See;

@@ -280,7 +280,7 @@ Class PB_Shotgun : PB_WeaponBase
 				PB_SetReloading(true);
 			}
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagPump");
-			TNT1 A 0 A_JumpIf(CountInv("PB_PowerStrength") && Cvar.GetCvar("pb_SGAltBehavior",player).getbool(), "PumpFromHip");
+			TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,"PumpFromHip");
 			SH0G BCDEFGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 		P1Begin:
 			SHTA K 0;
@@ -345,18 +345,10 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			Goto Ready3;
 		MagPumpFromReady:
-			TNT1 A 0 {
-			PB_HandleCrosshair(69);
-			if(Cvar.GetCvar("pb_SGAltBehavior",player).getbool())
-				Return resolveState("PumpFromHipFromReady");
-			Return resolveState(null);
-			}
+			TNT1 A 0 PB_HandleCrosshair(69);
+			Goto PumpFromHipFromReady;
 		MagPump:
-			TNT1 A 0 {
-			if(Cvar.GetCvar("pb_SGAltBehavior",player).getbool())
-				Return resolveState("PumpFromHip");
-			Return resolveState(null);
-			}
+			Goto PumpFromHip;
 			TNT1 A 0 A_WeaponOffset(0,32);
 			SH0G BCDE 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
 			SHMG FGHIJ 1 A_SetRoll(roll-0.1,SPF_INTERPOLATE);
@@ -603,7 +595,7 @@ Class PB_Shotgun : PB_WeaponBase
 			goto HandleUpgradeSpecial;
 		HandleUpgradeSpecial:
 			TNT1 A 0 pb_handlewheel();
-			TNT1 A 0 A_jumpif(Cvar.GetCvar("pb_SGAltBehavior",player).getbool(),"AltTubeAmmoSwap");
+			Goto AltTubeAmmoSwap;
 			SHTZ PON 1 PB_SetShellSprite("SHTZ","SHZA","SHZB");
 			SHTZ M 1;
 			TNT1 A 0 A_StartSound("weapons/shotgun/detach", 10,CHANF_OVERLAP);
@@ -806,7 +798,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_Fireprojectile("ShotgunWad",random(-2,2),0,random(-2,2),-3,FPF_NOAUTOAIM,random(-2,2)); //Keeping the shotgun wad projectile
 				PB_WeaponRecoil(-0.3,-0.25);
 			}
-			TNT1 A 0 A_JumpIf((CountInv("PB_PowerStrength") || CountInv("PumpshotgunMagazine")) && Cvar.GetCvar("pb_SGAltBehavior",player).getbool(), "BerserkAltPump1");
+			TNT1 A 0 A_JumpIf((CountInv("PB_PowerStrength") || CountInv("PumpshotgunMagazine")), "BerserkAltPump1");
 			SHT8 GHI 1
 			{
 				PB_SetShellSprite("SHT8","SHT6","SHT4");

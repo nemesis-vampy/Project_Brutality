@@ -89,8 +89,6 @@ class PB_Mancubus1 : PB_Monster
         suppressiveMissile = "MancubusFlame";
 		suppressLimit = 1;
 		suppressLimit2 = 1;
-        if (pb_NoBuffFatso)
-            canSuppress = false;
 	}
 
     States 
@@ -230,19 +228,12 @@ class PB_Mancubus1 : PB_Monster
 		Goto See;
 
     Missile:
-		//TNT1 A 0 A_JumpIf(!pb_NoBuffFatso && random(0, 99) < 60, "Flamethrower");
         TNT1 A 0
         {
-            // Handling the CVAR check and jump logic for the Buff Fatso. CVAR = 0 means Buff variant is enabled.
-            // If it isn't, it'll fall-through to a more classic Attack type.
-            if (!pb_NoBuffFatso)
-            {
-                if (random(0, 2) == 0)
-                    return ResolveState("Flamethrower");
-                else
-                    return ResolveState("BigFireBallAttack");
-            }
-            return ResolveState(null);
+            if (random(0, 2) == 0)
+                return ResolveState("Flamethrower");
+            else
+                return ResolveState("BigFireBallAttack");
         }
 
     ClassicFatFire:

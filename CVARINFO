@@ -69,7 +69,6 @@ server bool pb_performance_fire = false;
 user bool pb_exaggeratedrecoil = true;
 user float pb_exaggeratedrecoilmul = 0.2;
 
-server int pb_weapondrops = 0;
 server int pb_naillifetime = 5;
 
 //Weapon Keep CVars
@@ -85,7 +84,6 @@ user bool pb_execution_box = true;
 user int pb_execution_indicatorType	= 4;
 
 server bool pb_cyberdemondeath = false;
-server int pb_grenadeimpact = 0;
 
 // CVar Info
 server float fs_volume_mul = 1.0;
@@ -99,7 +97,6 @@ user float cl_step_delaymul = 1.0;
 user int SingleDualFire = 0;
 
 server bool nodoomguytalk = false;
-server bool pb_disabledynamicavoid = false; //disables the more dynamic avoids on monsters
 
 //Weapon Recoil
 server float pb_weapon_recoil_mod_vertical = 1.0;
@@ -119,18 +116,12 @@ user int PB_HatExtravaganza = 0;
 //Global Spawn balance. Do NOT touch.
 server int SpawnBalance=671;
 
-server bool pb_NoBuffCaco = false;
-server bool pb_NoBuffArachnotron = false;
-server bool pb_NoBuffBaron = false;
-server bool pb_NoBuffFatso = false;
-
 // Should Collected Weapons Stay?
 User bool PlayerCatchup = false;
 
 server bool PB_MG42WolfSpawner = false;
 server bool pb_NoUpgrades = false;
 user bool pb_qsgquadload = false;
-user bool pb_SGAltBehavior = false;
 
 server bool pb_SSGRandomSpawn = false;
 
