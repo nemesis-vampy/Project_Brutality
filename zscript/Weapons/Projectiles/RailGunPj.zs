@@ -61,7 +61,7 @@ class PB_RailDamage: PB_Projectile
 {
 	Default
 	{
-		PB_Projectile.BaseDamage 300;
+		PB_Projectile.BaseDamage 512;
 		PB_Projectile.RipperCount 1;
 		PB_Projectile.PenetrationCount 0;
 		Obituary "%o was railed by %k.";
