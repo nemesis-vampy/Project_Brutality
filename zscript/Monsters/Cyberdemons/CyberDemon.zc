@@ -239,7 +239,7 @@ class PB_Cyberdemon1 : PB_Monster
             TNT1 A 0;
             TNT1 A 0;
             CYMA D 6 A_FaceTarget;
-            TNT1 A 0 A_StartSound ("CYB1LZR");
+            TNT1 A 0 A_StartSound ("CYBRLZR");
             TNT1 A 0 A_JumpIfCloser(180, "Stomp");
             TNT1 A 0;
             CYMA E 7 A_FaceTarget;
