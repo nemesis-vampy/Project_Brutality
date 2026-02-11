@@ -114,7 +114,7 @@ Class PB_ShotgunGuyDrop2 : PB_MonsterDropBase
 	default
 	{
 		PB_MonsterDropBase.drops "PB_Revolver", "PB_LowCalMag";
-		PB_MonsterDropBase.filter "pb_shotgun_filter", DisablePB_Revolver;
+		PB_MonsterDropBase.filter "pb_pistol_filter", DisablePB_Revolver;
 	}
 }
 
@@ -183,7 +183,7 @@ Class PB_PyroGuyDrop : PB_MonsterDropBase
 	default
 	{
 		PB_MonsterDropBase.drops "PB_Flamethrower", "PB_Fuel";
-		PB_MonsterDropBase.filter "pb_shotgun_filter", DisablePB_Flamethrower;
+		PB_MonsterDropBase.filter "pb_chainsaw_filter", DisablePB_Flamethrower;
 	}
 }
 
@@ -192,7 +192,7 @@ Class PB_ZSpecSMGDrop : PB_MonsterDropBase
 	default
 	{
 		PB_MonsterDropBase.drops "PB_SMG", "PB_LowCalMag";
-		PB_MonsterDropBase.filter "pb_shotgun_filter", DisablePB_SMG;
+		PB_MonsterDropBase.filter "pb_pistol_filter", DisablePB_SMG;
 	}
 }
 
@@ -200,7 +200,7 @@ Class PB_ScientistAxeDrop : PB_MonsterDropBase
 {
 	default
 	{
-		PB_MonsterDropBase.drops "PB_Axe", "PB_Axe";
+		PB_MonsterDropBase.drops "PB_Axe", "";
 		PB_MonsterDropBase.filter "pb_chainsaw_filter", DisablePB_Axe;
 	}
 }
