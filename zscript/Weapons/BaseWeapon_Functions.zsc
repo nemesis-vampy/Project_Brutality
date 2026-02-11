@@ -2385,6 +2385,9 @@ extend class PB_WeaponBase
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingStop"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingMissileStop"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingStopDrumMag"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashKickingDual"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashAirKickingDual"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingStopDual"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashBarrelKicking"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashBarrelAirKicking"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashBarrelSlideKickingStop")))
@@ -2406,6 +2409,7 @@ extend class PB_WeaponBase
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingDrumMag"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingMissile"))||
 			InStateSequence(PSPState,invoker.ResolveState("DualFlashSlideKicking"))||
+			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingDual"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingAkimbo"))||
 			InStateSequence(PSPState,invoker.ResolveState("FlashSlideKickingDualWield"))||
 			InStateSequence(PSPState,invoker.ResolveState("DualWieldFlashSlideKicking"))
