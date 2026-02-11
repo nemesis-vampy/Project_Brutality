@@ -203,14 +203,7 @@ Class PB_Shotgun : PB_WeaponBase
 				// This token is given upon picking up the magazine upgrade.
 				if (CountInv("PumpshotgunMagNotInserted") >= 1 ) 
 					return resolvestate("InsertMagShotgunRespectAlreadyRespected");  // Insert magazine upon picking it up
-				
-				if (PressingFire() && PressingAltfire() && CountInv("ShotgunAmmo") > 0)
-						return resolvestate("Fire");
-				
-				if (PressingFire() && CountInv("ShotgunAmmo") > 0)
-						return resolvestate("Fire");
-				
-				return A_DoPBWeaponAction(WRF_ALLOWRELOAD, CheckUnloaded("PBPumpShotgunHasUnloaded"));	 
+				return A_DoPBWeaponAction(WRF_ALLOWRELOAD);	 
 			}
 			Loop;
 		Fire:
@@ -220,7 +213,7 @@ Class PB_Shotgun : PB_WeaponBase
 				PB_HandleCrosshair(69);
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
-			TNT1 A 0 PB_jumpIfNoAmmo("Reload",1);
+			TNT1 A 0 PB_jumpIfNoAmmo();
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"Fire2");
 			SH0F A 0;
 			SH1F A 0;
@@ -409,7 +402,7 @@ Class PB_Shotgun : PB_WeaponBase
 					case Shell_Slug: PB_SpawnCasing("ShotgunCasing2",21,3,24,0,3,3);	break;
 					case Shell_Drag: PB_SpawnCasing("ShotgunCasing3",21,3,24,0,3,3);	break;
 				}
-				if(!PB_GetMagEmpty()) {PB_SetChamberEmpty(false);}
+				if(CountInv("ShotgunAmmo") > 0 && !PB_GetMagUnloaded()) {PB_SetChamberEmpty(false);}
 			}
 			SHSP CBA 1;
 			TNT1 A 0 A_StartSound("weapons/sgpump",11,CHANF_OVERLAP);
