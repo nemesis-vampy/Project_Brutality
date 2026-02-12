@@ -2022,7 +2022,7 @@ ACTOR PB_DMR : PB_Weapon
 				A_ZoomFactor(1.985);
 			}
 			else {
-				A_ZoomFactor(1.485);
+				A_ZoomFactor(1.235);
 			}
 			A_GunFlash;
 			PB_WeaponRecoil(-0.2,-0.02);
@@ -2039,7 +2039,7 @@ ACTOR PB_DMR : PB_Weapon
 				A_ZoomFactor(1.99);
 			}
 			else {
-				A_ZoomFactor(1.49);
+				A_ZoomFactor(1.24);
 			}
 			A_GunFlash;
 			//A_WeaponReady(WRF_NOPRIMARY);
@@ -2056,7 +2056,7 @@ ACTOR PB_DMR : PB_Weapon
 				A_ZoomFactor(2.0);
 			}
 			else {
-				A_ZoomFactor(1.5);
+				A_ZoomFactor(1.25);
 			}
 			//A_WeaponReady(WRF_NOPRIMARY);
 			}
@@ -2103,7 +2103,7 @@ ACTOR PB_DMR : PB_Weapon
         TNT1 A 0 A_StartSound("RAIL_ZM", 0)
 		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Zoomout_Sniper")
 		TNT1 A 0 {
-			A_ZoomFactor(5.0);
+			A_ZoomFactor(4.0);
 			A_GunFlash("LightDone",GFF_NOEXTCHANGE);
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
@@ -2167,7 +2167,7 @@ ACTOR PB_DMR : PB_Weapon
 				A_ZoomFactor(2.0);
 			}
 			else {
-				A_ZoomFactor(1.5);
+				A_ZoomFactor(1.25);
 			}
 		}
 		H0F2 ABCDE 0

@@ -656,7 +656,7 @@ class PB_Deagle : PB_WeaponBase
 				 A_WeaponOffset(0,32);
 				 A_StartSound("IronSights", 13,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
-				 A_ZoomFactor(1.2);
+				 A_ZoomFactor(1.25);
 				 A_SetCrosshair(-1);
 			}
 			D3E1 ABCDE 1;
@@ -722,15 +722,15 @@ class PB_Deagle : PB_WeaponBase
 					A_FireProjectile("YellowFlareSpawn",0,0,0,0);
 					PB_SpawnCasing("EmptyBrassDeagle",26,0,38,-frandom(1, 2),Frandom(2,6),Frandom(3,6));
 					PB_TakeAmmo("DeagleAmmo",1);
-					A_ZoomFactor(1.15);
+					A_ZoomFactor(1.20);
 					PB_WeaponRecoil(-0.90,-0.25);
 					A_Overlay(-5, "MuzzleFlash2", true);
 					A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 					A_OverlayRenderStyle(-5,STYLE_Add);
 				}
 			D3E0 C 1 BRIGHT PB_WeaponRecoil(-0.90,-0.25);
-			D3E0 D 1 A_ZoomFactor(1.18);
-			D3E0 E 1 A_ZoomFactor(1.2);
+			D3E0 D 1 A_ZoomFactor(1.23);
+			D3E0 E 1 A_ZoomFactor(1.25);
 			D3E0 FGH 1;
 			D3E0 AAAAA 1 {
 				A_SetInventory("CantDoAction",0);

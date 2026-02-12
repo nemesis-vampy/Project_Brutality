@@ -423,7 +423,7 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_WeaponOffset(0,32);
 				 A_StartSound("IronSights", 10,CHANF_OVERLAP);
 				 A_SetInventory("Zoomed",1);
-				 A_ZoomFactor(1.2);
+				 A_ZoomFactor(1.25);
 				 A_SetCrosshair(-1);
 			}
 			SHT8 EEDK 1 PB_SetShellSprite("SHT8","SHT6","SHT4");
