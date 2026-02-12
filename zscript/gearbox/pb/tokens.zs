@@ -44,6 +44,7 @@ Class PB_CarbineWeaponWheel : wheelinfocontainer
 			return;
 			
 		bool dualling = requester.FindInventory("DualWieldingCarbines");
+		bool scope = requester.FindInventory("CarbineScope");
 		
 		vector2 iconScale = (0.65, 0.65);
 		
@@ -95,6 +96,30 @@ Class PB_CarbineWeaponWheel : wheelinfocontainer
 		spw.Push(carbine_fullauto);
 		spw.Push(carbine_burst);
 		spw.Push(carbine_semi);
+		
+		if(!scope)
+		{
+			PB_SpecialWheel_Mode carbine_sights = new ("PB_SpecialWheel_Mode");
+			carbine_sights.img = "graphics/pywheel/Carbine_Scope.png";
+			carbine_sights.Alias = "Secondary 3x Scope Mode";
+			carbine_sights.tokentogive = "SelectCarbine_Sights";
+			carbine_sights.scalex = iconscale.x;
+			carbine_sights.scaley = iconscale.y;
+			
+			spw.Push(carbine_sights);
+			
+		}
+		else
+		{
+			PB_SpecialWheel_Mode carbine_sights = new ("PB_SpecialWheel_Mode");
+			carbine_sights.img = "graphics/pywheel/Carbine_Reflex.png";
+			carbine_sights.Alias = "Secondary 1x Red Dot Mode";
+			carbine_sights.tokentogive = "SelectCarbine_Sights";
+			carbine_sights.scalex = iconscale.x;
+			carbine_sights.scaley = iconscale.y;
+			
+			spw.Push(carbine_sights);
+		}
 	}
 }
 

@@ -345,6 +345,10 @@ PB_HDMRSNP = "Firemode: \ceHeavy Sniper";
 PB_HDMRGRN = "Secondary Firemode: \cdGrenade";
 PB_HDMRAIM = "Secondary Firemode: \cgAiming";
 
+//Carbine
+PB_CARBINE_SCOPE = "Secondary Firemode: \cg3x Scope";
+PB_CARBINE_REFLEX = "Secondary Firemode: \cu1x Red Dot";
+
 //LMG
 PB_LMGMICRO = "Ammo Type: \cdMicro Missile";
 PB_LMGBULLET = "Ammo Type: \ckBullet";
