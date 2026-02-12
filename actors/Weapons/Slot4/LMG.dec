@@ -213,7 +213,6 @@ ACTOR PB_LMG : PB_Weapon
 	Tag "UAC-349 Light Machine Gun"
 	Obituary "%o became a leaking piece of meat by %k's light machine gun"
 	AttackSound "none"
-	+COUNTITEM
 	PB_WeaponBase.respectItem "RespectLMG"
 	//FloatBobStrength 0.5
 	PB_WeaponBase.OffsetRecoilX 3.8
