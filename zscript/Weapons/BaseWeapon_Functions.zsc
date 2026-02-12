@@ -668,22 +668,45 @@ extend class PB_WeaponBase
 		NashGoreStatics.QueueSmoke();
 	}
 
-    Action void PB_GunSmoke(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
-	{
-		if(!invoker.smoketype)
+	Action bool PB_GunSmoke_Prologue(in out double d1, in out double d2, in out double d3, string SActor)
+    {
+        d1 *= invoker.WeaponScaleX;
+
+        if(!invoker.smoketype)
 		{
 			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
+			else return false;
 		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
+
+        int tmpSmkTp = invoker.smoketype.GetInt();
 		if(tmpSmkTp != 0)
 		{
 			if(tmpSmkTp == 1)
 				PB_GunSmoke_Basic(d1, d2, d3, SActor);
 
-			return;
+			return false;
 		}
+
+        NashGoreStatics.ClearPlayerSmoke();
+
+        PB_GunSmokeSpawn(
+			(d1, d2, d3), // offsets
+			(0, 0, 0), 	  // velocites
+			"PB_GunFireSmoke",		// actor
+			8,		  // scale multiplier
+			0.3,		  // alpha multiplier
+			1.5,		  // blow speed
+            1.8,
+            true,
+            0.8
+		);
+
+        return true;
+    }
+
+    Action void PB_GunSmoke(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
+	{
+        if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
 		
 		// initial puff of muzzle gas
 		/*PB_GunSmokeSpawn(
@@ -701,8 +724,8 @@ extend class PB_WeaponBase
 			(0, 0, 0), 	  // velocites
 			"PB_GunFireSmoke_Var1",		// actor
 			1.2,		  // scale multiplier
-			1.0,		  // alpha multiplier
-			1.03,		  // blow speed
+			0.6,		  // alpha multiplier
+			1.2,		  // blow speed
             3
 		);
 
@@ -797,58 +820,36 @@ extend class PB_WeaponBase
 	// 5 actors
 	Action void PB_GunSmoke_Deagle(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
-		if(!invoker.smoketype)
-		{
-			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
-		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
-		if(tmpSmkTp != 0)
-		{
-			if(tmpSmkTp == 1)
-				PB_GunSmoke_Basic(d1, d2, d3, SActor);
+		if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
 
-			return;
-		}
-
-		PB_GunSmokeSpawn(
-			(d1, d2 - 2, d3), // offsets
-			(0, 0, 0), 	  // velocites
-			"PB_GunFireSmoke_FastCloud",		// actor
-			4.0,		  // scale multiplier
-			1.0,		  // alpha multiplier
-			1.03,	// blow speed
-			rollsprite: false		  
-		);
-		
-		PB_GunSmoke(d1, d2, d3, SActor);
-	}
-
-    Action void PB_GunSmoke_Sniper(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
-    {
-        if(!invoker.smoketype)
-		{
-			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
-		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
-		if(tmpSmkTp != 0)
-		{
-			if(tmpSmkTp == 1)
-				PB_GunSmoke_Basic(d1, d2, d3, SActor);
-
-			return;
-		}
+        PB_GunSmoke(d1, d2, d3, SActor);
 
 		PB_GunSmokeSpawn(
 			(d1, d2, d3), // offsets
 			(0, 0, 0), 	  // velocites
 			"PB_GunFireSmoke_Var3",		// actor
 			7,		  // scale multiplier
-			2,		  // alpha multiplier
-			1.03	// blow speed	  
+			1,		  // alpha multiplier
+			1.5,	// blow speed
+            3	  
+		);
+	}
+
+    Action void PB_GunSmoke_Sniper(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
+    {
+        if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
+
+        PB_GunSmoke(d1, d2, d3, SActor);
+
+		PB_GunSmokeSpawn(
+			(d1, d2, d3), // offsets
+			(0, 0, 0), 	  // velocites
+			"PB_GunFireSmoke_Var3",		// actor
+			9,		  // scale multiplier
+			1.5,		  // alpha multiplier
+			1.5,	// blow speed
+            3.5,
+            slowBlowSpeed: 0.9 
 		);
 
         PB_GunSmokeSpawn(
@@ -856,27 +857,17 @@ extend class PB_WeaponBase
 			(0, 0, 0), 	  // velocites
 			"PB_GunFireSmoke_Var4",		// actor
 			3,		  // scale multiplier
-			1.0,		  // alpha multiplier
+			0.6,		  // alpha multiplier
 			1.1,	// blow speed
             fadeSpeed: 1.25,
             rollSprite: false
 		);
-
-        PB_GunSmoke(d1, d2, d3, SActor);
     }
 
 	// 4 actors
 	Action void PB_GunSmoke_FlashHider(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
-		if(!invoker.smoketype)
-		{
-			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
-		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
-		if(tmpSmkTp != 0)
-			return;
+		if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
 		
 		double spd = frandom(2, 7);
         actor tmpsmk;
@@ -943,20 +934,7 @@ extend class PB_WeaponBase
 	// 7 actors
 	Action void PB_GunSmoke_Compensator(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
-		if(!invoker.smoketype)
-		{
-			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
-		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
-		if(tmpSmkTp != 0)
-		{
-			if(tmpSmkTp == 1)
-				PB_GunSmoke_Basic(d1, d2, d3, SActor);
-
-			return;
-		}
+		if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
 		
 		// initial puff of muzzle gas
 		/*PB_GunSmokeSpawn(
@@ -968,14 +946,14 @@ extend class PB_WeaponBase
 			1.03		  // blow speed
 		);*/
 		PB_GunSmokeSpawn(
-			(d1, d2 + 5, d3), 
-			(0, 0, 0), 
-			"PB_GunFireSmoke_Var1", 
-			1.5, 
-			0.5, 
-			1.1,
-            2
-		);	
+			(d1, d2 + 5, d3), // offsets
+			(0, 0, 0), 	  // velocites
+			"PB_GunFireSmoke_Var1",		// actor
+			1.2,		  // scale multiplier
+			0.6,		  // alpha multiplier
+			1.2,		  // blow speed
+            3
+		);
 
 		double spd = frandom(2, 7);
         actor tmpsmk;
@@ -1074,20 +1052,7 @@ extend class PB_WeaponBase
 
 	Action void PB_GunSmoke_CompensatorHDMR(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
-		if(!invoker.smoketype)
-		{
-			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
-		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
-		if(tmpSmkTp != 0)
-		{
-			if(tmpSmkTp == 1)
-				PB_GunSmoke_Basic(d1, d2, d3, SActor);
-
-			return;
-		}
+		if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
 		
 		// initial puff of muzzle gas 
 		PB_GunSmokeSpawn(
@@ -1182,20 +1147,7 @@ extend class PB_WeaponBase
 
 	Action void PB_GunSmoke_Launcher(double d1 = 0, double d2 = 0 , double d3 = 0, string SActor = "PB_GunFireSmoke")
 	{
-		if(!invoker.smoketype)
-		{
-			if(Player) invoker.smoketype = CVar.GetCVar("pb_gunsmoketype", Player);
-			else return;
-		}
-		
-		int tmpSmkTp = invoker.smoketype.GetInt();
-		if(tmpSmkTp != 0)
-		{
-			if(tmpSmkTp == 1)
-				PB_GunSmoke_Basic(d1, d2, d3, SActor);
-
-			return;
-		}
+		if(!PB_GunSmoke_Prologue(d1, d2, d3, SActor)) return;
 		
 		PB_GunSmokeSpawn(
 			(d1, d2 - 2, d3), // offsets
@@ -1206,10 +1158,20 @@ extend class PB_WeaponBase
 			1.03		  // blow speed
 		);
 
+        PB_GunSmokeSpawn(
+			(d1, d2, d3), // offsets
+			(0, 0, 0), 	  // velocites
+			"PB_GunFireSmoke_Var3",		// actor
+			6,		  // scale multiplier
+			1,		  // alpha multiplier
+			1.3,	// blow speed
+            2	  
+		);
+
 		PB_GunSmokeSpawn(
 			(d1, d2 + 5.1, d3),
 			(0, 0, 0),
-			"PB_GunFireSmoke_Var1",
+			"PB_GunFireSmoke",
 			1.7,
 			1.0,
 			1.02,
@@ -1743,6 +1705,7 @@ extend class PB_WeaponBase
 	action void PB_SpawnCasing(class<Actor> casing, double xOfs = 0, double horOfs = 0, double vertOfs = 0, double xSpeed = 0, double horSpeed = 0, double vertSpeed = 0, bool ejectionSmoke = true, bool sparks = false)
 	{
 		vertOfs -= (self.player.viewz - self.pos.z) / self.player.CrouchFactor;
+        horOfs *= invoker.WeaponScaleX;
 		double fovOfs = (120 - self.player.desiredfov) / 3.f; // good enough
 		
 		PlayerPawnBase plr = PlayerPawnBase(self);
@@ -1768,9 +1731,26 @@ extend class PB_WeaponBase
             if(!pPBCase)
                 return;
 
+            if(!pPBCase.bNEVERSMOKE && ejectionSmoke) 
+            {
+                let pSmoke = PB_GunFireSmoke(Spawn('PB_CasingEjectionSmoke', spos));
+
+                if(pSmoke) {
+                    //svel = PB_Math.RelativeToGlobalCoords((self.vel.xy, 0), (self.angle, self.pitch, self.roll), (xSpeed, horSpeed, vertSpeed));
+                    vector3 unitVel = (xSpeed, horSpeed, vertSpeed).Unit();
+                    pSmoke.master = self;
+                    // svel = PB_Math.RelativeToGlobalCoords((self.vel.xy, 0), (self.angle, self.pitch, self.roll), (xSpeed * 0.2, horSpeed * 0.2, vertSpeed * 0.2));
+                    pSmoke.vel = svel;
+                    pSmoke.pitch = -(90 - asin(unitVel.z)) * (unitVel.y);
+                    //pSmoke.alpha = 0.25;
+                    pSmoke.blowSpeed = 1.1;
+                    pSmoke.fadeSpeed = 1.1;
+                }
+            }
+
             if(sparks)
             {
-                vector3 spos, svel, randvel;
+                vector3 randvel;
                 int sparkcount = randompick(0, random(2, 4));
                 for(int i = 0; i < sparkcount; i++)
                 {
@@ -1782,22 +1762,6 @@ extend class PB_WeaponBase
                     act.vel = svel;
                     act.scale *= 0.35;
                     act.SetShade("FF9D2E");
-                }
-            }
-
-			if(!pPBCase.bNEVERSMOKE && ejectionSmoke) 
-            {
-                let pSmoke = PB_GunFireSmoke(Spawn('PB_CasingEjectionSmoke', spos));
-
-                if(pSmoke) {
-                    vector3 unitVel = (xSpeed, horSpeed, vertSpeed).Unit();
-                    pSmoke.master = self;
-                    // svel = PB_Math.RelativeToGlobalCoords((self.vel.xy, 0), (self.angle, self.pitch, self.roll), (xSpeed * 0.2, horSpeed * 0.2, vertSpeed * 0.2));
-                    pSmoke.vel = (self.vel.xy, 0);
-                    pSmoke.pitch = -(90 - asin(unitVel.z)) * (unitVel.y);
-                    pSmoke.alpha = 0.3;
-                    pSmoke.blowSpeed = 1.1;
-                    pSmoke.fadeSpeed = 0.5;
                 }
             }
 		}
