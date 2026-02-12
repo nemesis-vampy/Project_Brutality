@@ -209,12 +209,10 @@ ACTOR PB_LMG : PB_Weapon
 	//+POWERED_UP
 	+WEAPON.NOALERT
 	Inventory.PickupSound "LMGPKP"
-	Inventory.PickupMessage "Light Machine Gun (Slot 4, Upgrade)"
+	Inventory.PickupMessage "Light Machine Gun (Slot 4)"
 	Tag "UAC-349 Light Machine Gun"
 	Obituary "%o became a leaking piece of meat by %k's light machine gun"
 	AttackSound "none"
-	+WEAPON.CHEATNOTWEAPON
-	//Weapon.SisterWeapon PB_Carbine
 	+COUNTITEM
 	PB_WeaponBase.respectItem "RespectLMG"
 	//FloatBobStrength 0.5
@@ -1802,8 +1800,6 @@ ACTOR PB_LMG : PB_Weapon
 			Goto CompletelyDeselect
 
 		Select:
-			TNT1 A 0 PB_TakeIfUpgrade("PB_Carbine") //A_TakeInventory("PB_Carbine",2)
-			
 			Goto SelectFirstPersonLegs
 			SelectContinue:
 			TNT1 A 0 PB_WeapTokenSwitch("CarbineSelected")

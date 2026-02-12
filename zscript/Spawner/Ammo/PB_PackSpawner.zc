@@ -101,7 +101,6 @@ class PB_UpgradeSpawnerT4 : PB_WeaponSpawner
 		PBRandomSpawner.Fallback "PB_UpgradeSpawnerT3";
 		DropItem 'PB_Deagle', 255, 1;
 		DropItem 'PB_AutoshotgunUpgrade', 255, 1;
-		DropItem 'PB_LMG', 255, 1;
 		DropItem 'PB_MinigunUpgrade', 255, 1;
 		DropItem 'PB_M2Upgrade', 255, 1;
 	}
@@ -111,8 +110,6 @@ class PB_UpgradeSpawnerT4 : PB_WeaponSpawner
 		if(toSpawn == "PB_Deagle" && pb_pistol_filter & DisablePB_Deagle)
 			return false;
 		if(toSpawn == "PB_AutoshotgunUpgrade" && pb_shotgun_filter & DisablePB_AutoshotgunUpgrade)
-			return false;
-		if(toSpawn == "PB_LMG" && pb_chaingun_filter & DisablePB_LMG)
 			return false;
 		if(toSpawn == "PB_MinigunUpgrade" && pb_chaingun_filter & DisablePB_MinigunUpgrade)
 			return false;
@@ -137,7 +134,6 @@ Class UpgradeSpawner : PB_WeaponSpawner
 		DropItem 'PB_FlamethrowerUpgrade', 255, 1;
 		DropItem 'PB_Deagle', 255, 1;
 		DropItem 'PB_AutoshotgunUpgrade', 255, 1;
-		DropItem 'PB_LMG', 255, 1;
 		DropItem 'PB_MinigunUpgrade', 255, 1;
 		DropItem 'PB_M2Upgrade', 255, 1;
 	}
@@ -157,8 +153,6 @@ Class UpgradeSpawner : PB_WeaponSpawner
 		if(toSpawn == "PB_Deagle" && pb_pistol_filter & DisablePB_Deagle)
 			return false;
 		if(toSpawn == "PB_AutoshotgunUpgrade" && pb_shotgun_filter & DisablePB_AutoshotgunUpgrade)
-			return false;
-		if(toSpawn == "PB_LMG" && pb_chaingun_filter & DisablePB_LMG)
 			return false;
 		if(toSpawn == "PB_MinigunUpgrade" && pb_chaingun_filter & DisablePB_MinigunUpgrade)
 			return false;
