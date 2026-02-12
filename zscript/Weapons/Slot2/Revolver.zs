@@ -25,7 +25,6 @@ Class PB_Revolver : PB_WeaponBase
 		FloatBobStrength 0.5;
 		PB_WeaponBase.DualWieldToken "DualWieldingRevolver";
 		PB_WeaponBase.Upgrade "PB_Deagle";
-		PB_WeaponBase.UpgradeKeepCvar "PB_KeepRevolver";
 	}
 	
 	states

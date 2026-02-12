@@ -71,13 +71,6 @@ user float pb_exaggeratedrecoilmul = 0.2;
 
 server int pb_naillifetime = 5;
 
-//Weapon Keep CVars
-server bool pb_keepweapons = false;
-user bool PB_KeepPistol = true;
-user bool PB_KeepRevolver = true;
-user bool PB_KeepSSG = true;
-user bool PB_KeepCarbine = true;
-
 user bool PB_tracerlight = true;
 
 user bool pb_execution_box = true;

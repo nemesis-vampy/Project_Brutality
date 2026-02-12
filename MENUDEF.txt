@@ -316,26 +316,19 @@ OptionMenu "PB_GameplayOptions"
 	Option	"$PB_DUALSTYLE",							"SingleDualFire",					"DualWieldOption"
 	Option	"ADS Controls",								"pb_toggle_aim_hold",				"AimingStyle" //Looks like we are using this newer line.
 	Option	"Use BD Slide Controls",					"pb_bd_slide",						"YesNo"
+	StaticText	""
 	Slider	"$PB_RECOIL_VERTICAL",						"pb_weapon_recoil_mod_vertical",	0.0, 2.0, 0.1, 2
 	Slider	"$PB_RECOIL_HORIZONTAL",					"pb_weapon_recoil_mod_horizontal",	0.0, 2.0, 0.1, 2
 	Option	"Advanced Movement On Damaging Floors",		"pb_hazardmovement",				"OnOff"
 	Option	"Weapons Persist Through Death Exits",		"PlayerCatchup",					"YesNo"
-	StaticText	""
-	Option	"Keep Unupgraded Weapons",					"pb_keepweapons",					"YesNo"
-	Option	"Keep Pistol (SMG)",						"PB_KeepPistol",					"YesNo",	"pb_keepweapons"
-	Option	"Keep Revolver (Deagle)",					"PB_KeepRevolver",					"YesNo",	"pb_keepweapons"
-	Option	"Keep SSG (QSG)",							"PB_KeepSSG",						"YesNo",	"pb_keepweapons"
-	Option	"Keep Carbine (LMG)",						"PB_KeepCarbine",					"YesNo",	"pb_keepweapons"
-	StaticText	""
-	Option	"Disable Helmet Animation",					"pb_NoHelmetAnimation",				"YesNo"
-	Option	"Disable Auto-Doomguy Talk",				"nodoomguytalk",					"YesNo"
-	Slider	"Nail Despawn Time",						"pb_naillifetime",					0, 60, 1, 0
+	Option	"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
 	StaticText	""
 	Option	"Disable Decorations",						"pb_disable_decorations",			"YesNo"
 	Option	"Decorative Burning Barrels",				"pb_decorative_flame_barrels",		"OnOff",	"pb_disable_decorations", 0, 1
 	StaticText	""
-	StaticText	"--------- Experimental Mutators ---------",	gold
-	Option	"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
+	Option	"Disable Helmet Animation",					"pb_NoHelmetAnimation",				"YesNo"
+	Option	"Disable Auto-Doomguy Talk",				"nodoomguytalk",					"YesNo"
+	Slider	"Nail Despawn Time",						"pb_naillifetime",					0, 60, 1, 0
 }
 
 OptionValue "AimingStyle" 

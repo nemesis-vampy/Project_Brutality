@@ -115,40 +115,23 @@ class PB_WeaponBase : DoomWeapon
 	int ReserveToMagAmmoFactor;
 	property ReserveToMagAmmoFactor:ReserveToMagAmmoFactor;
 	
-	Name WeaponUpgradeKeepCvar;
-	Property UpgradeKeepCvar : WeaponUpgradeKeepCvar;
-	override bool CheckAmmo(int fireMode, bool autoSwitch, bool requireAmmo, int ammocount){
-		if(!Cvar.GetCVar("pb_keepweapons", owner.player).GetBool()){
-			if(FindInventory(UpgradedWeapon)){
-				if(WeaponUpgradeKeepCvar && Cvar.GetCVar(WeaponUpgradeKeepCvar, owner.player).GetBool() == false){return false;}
-			}
-		}
-		return Super.CheckAmmo(fireMode, autoSwitch, requireAmmo, ammocount);
-	}
 	override bool HandlePickup(Inventory item){
 		let PBWeaponItem = PB_WeaponBase(item);
 		if(PBWeaponItem){
 			//self.ReserveToMagAmmoFactor = PB_WeaponBase(GetDefaultByType(self.GetClass())).ReserveToMagAmmoFactor;
 			if(UpgradedWeapon && UpgradedWeapon == item.GetClass()){
-				if(!Cvar.GetCVar("pb_keepweapons", owner.player).GetBool() || WeaponUpgradeKeepCvar && !Cvar.GetCVar(WeaponUpgradeKeepCvar, owner.player).GetBool()){
-					while(owner.FindInventory(AmmoType2).amount > 0){
-						owner.FindInventory(AmmoType2).amount -= 1;
-						owner.FindInventory(AmmoType1).amount += self.ReserveToMagAmmoFactor;
-					}
-					while(owner.FindInventory(AmmoTypeLeft).amount > 0 && owner.CountInv(GetClassName()) > 1){
-						owner.FindInventory(AmmoTypeLeft).amount -= 1;
-						owner.FindInventory(AmmoType1).amount += self.ReserveToMagAmmoFactor;
-					}
-					if(!PBWeaponItem.bNO_AUTO_SWITCH){owner.A_SelectWeapon(PBWeaponItem.GetClass());}
-					While(owner && self.amount > 0){owner.DropInventory(self,1);}
+				while(owner.FindInventory(AmmoType2).amount > 0){
+					owner.FindInventory(AmmoType2).amount -= 1;
+					owner.FindInventory(AmmoType1).amount += self.ReserveToMagAmmoFactor;
 				}
-			}else if(
-				(!Cvar.GetCVar("pb_keepweapons", owner.player).GetBool()
-				||
-				PB_WeaponBase(item).WeaponUpgradeKeepCvar && Cvar.GetCVar(PB_WeaponBase(item).WeaponUpgradeKeepCvar, owner.player).GetBool() == false)
-				&&
-				PB_WeaponBase(item) && PB_WeaponBase(item).UpgradedWeapon && PB_WeaponBase(item).UpgradedWeapon == self.GetClass()
-			){
+				while(owner.FindInventory(AmmoTypeLeft).amount > 0 && owner.CountInv(GetClassName()) > 1){
+					owner.FindInventory(AmmoTypeLeft).amount -= 1;
+					owner.FindInventory(AmmoType1).amount += self.ReserveToMagAmmoFactor;
+				}
+				if(!PBWeaponItem.bNO_AUTO_SWITCH){owner.A_SelectWeapon(PBWeaponItem.GetClass());}
+				While(owner && self.amount > 0){owner.DropInventory(self,1);}
+			}
+			else if(PB_WeaponBase(item) && PB_WeaponBase(item).UpgradedWeapon && PB_WeaponBase(item).UpgradedWeapon == self.GetClass()){
 				let wp = weapon(item);
 				bool weapGone = false;
 				if(wp){

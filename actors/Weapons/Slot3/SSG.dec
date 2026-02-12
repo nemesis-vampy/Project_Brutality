@@ -87,7 +87,6 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 	FloatBobStrength 0.5
 	PB_WeaponBase.DualWieldToken "DualWieldingSSG"
 	PB_WeaponBase.Upgrade "PB_QuadSG"
-	PB_WeaponBase.UpgradeKeepCvar "PB_KeepSSG"
 	States
 	{
 		

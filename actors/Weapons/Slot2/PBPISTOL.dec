@@ -84,7 +84,6 @@ ACTOR PB_Pistol : PB_Weapon
 	PB_WeaponBase.TailPitch 0.8
 	PB_WeaponBase.DualWieldToken "DualWieldingPistols"
 	PB_WeaponBase.Upgrade "PB_SMG"
-	PB_WeaponBase.UpgradeKeepCvar "PB_KeepPistol"
 	States
 	{
 	
