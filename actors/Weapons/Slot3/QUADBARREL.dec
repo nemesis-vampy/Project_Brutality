@@ -282,25 +282,6 @@ Actor BlastToggle : Inventory { inventory.maxamount 1}
 Actor BreathToggle : Inventory { inventory.maxamount 1}
 Actor SelectDualWieldQuads : Inventory { inventory.maxamount 1}
 
-Actor PB_QuadSGUpgrade : PB_UpgradeItem
-{
-	//$Title Quad Shotgun Upgrade
-	//$Category Project Brutality - Weapon Upgrades
-	//$Sprite QSPGA0
-	Inventory.PickupSound "CLIPINSS"
-	Inventory.PickupMessage "Quad-Barrel Shotgun (Slot 3, Upgrade)"
-	Scale 0.52
-	FloatBobStrength 0.5
-	States
-	{
-	Spawn:
-		QSPG A 10 
-		LOOP
-		pickup:
-		TNT1 A 0 A_GiveInventory ("PB_QuadSG")
-		Stop
-	}
-}
 ACTOR PB_QuadSG : PB_Weapon
 {
 	//$Title Quadruple Barreled Shotgun
