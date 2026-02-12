@@ -152,12 +152,16 @@ class PB_PlayerPrawn : PlayerPawnBase
 	
 	override void CheatGive (String name, int amount)
 	{
-		if(name ~== "PB_ALL" || name ~== "PB_Upgrades")
+		if(name ~== "Everything" || name ~== "All")
 		{
-            console.printf("Gave all upgrades");
+			giveinventory("PB_BlueArmor",1);
+		}
+		if(name ~== "Everything" || name ~== "PB_Upgrades")
+		{
+            if(name ~== "PB_Upgrades") console.printf("Gave all upgrades");
 			for(int i = 0; i <= self.PB_ActUpgrades.size() -1; i++)
-				giveinventory(self.PB_ActUpgrades[i],2);
-			return;
+				giveinventory(self.PB_ActUpgrades[i],1);
+			if(name ~== "PB_Upgrades") return;
 		}
         else if(name ~== "currentammo")
 		{
@@ -187,11 +191,11 @@ class PB_PlayerPrawn : PlayerPawnBase
 	//array to save all the upgrades
 	static const string PB_ActUpgrades[] = {
 		"PB_Deagle", "PB_SMG", //slot 2
-		"PB_AutoshotgunUpgrade","PB_QuadSGUpgrade","PB_SGMagazine", //slot3
-		"PB_LMG","PB_HDMRUpgrade", //slot 4
-		"PB_Minigun","MinigunUpgraded"," PB_MinigunUpgrade", //slot 5 
+		"PB_AutoshotgunUpgrade","PB_QuadSG","PB_SGMagazine", //slot3
+		"PB_HDMRUpgrade", //slot 4
+		"PB_MinigunUpgrade", //slot 5 
 		"PB_M2Upgrade", //slot 7
-		"PB_Flamethrower", "PB_FlamethrowerUpgrade","FlamerUpgraded" //slot 9?
+		"PB_FlamethrowerUpgrade" //slot 9?
 	};
 
 	States
