@@ -320,12 +320,13 @@ Actor PB_CryoRifle: PB_Weapon
 				}
 				TNT1 A 0 {
 					if (CountInv("FireModeCryoRifleMissile") == 1 && CountInv("CryoRifleAmmo") < 5) {
+						A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
 						return state("EndMissile");
 					}
-					PB_ReFire("HoldMissile");
-					A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
 					return state("");
 				}
+				TNT1 A 0 A_ReFire("HoldMissile")
+				TNT1 A 0 A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP)
 			EndMissile:
 				Goto Ready3
 				
@@ -460,11 +461,6 @@ Actor PB_CryoRifle: PB_Weapon
 				FR10 EFGH 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR11");}
 				}
-				TNT1 A 0 {
-						if ((CountInv("FireModeCryoRifleFlak") == 1) && CountInv("CryoRifleAmmo") == 0) {
-							A_Jump(256,"EndAltMissile");
-						}
-				}
 				TNT1 A 0 A_JumpIfInventory("FireModeCryoRifleFlak",1,"AltRefire")
 				FR14 ABCCBA 1 BRIGHT {
 					PB_GunSmoke(frandom(-2,2),frandom(-2,2),frandom(-2,2));
@@ -480,18 +476,17 @@ Actor PB_CryoRifle: PB_Weapon
 			AltRefire:
 				TNT1 A 0 {
 					if (CountInv("FireModeCryoRifleSpear") == 1 && CountInv("CryoRifleAmmo") < 10) {
-						return state("EndAltMissile");
+						A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
+						return state("Ready3");
 					}
 					if (CountInv("FireModeCryoRifleFlak") == 1  && CountInv("CryoRifleAmmo") < 2) {
-						return state("EndAltMissile");
+						A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
+						return state("Ready3");
 					}
 					return state("");
 					}
-				TNT1 A 0 {
-					PB_ReFire("AltHoldMissile");
-					A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
-					return state("");
-				}
+				TNT1 A 0 A_ReFire("AltHoldMissile")
+				TNT1 A 0 A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP)
 				Goto Ready3
 			Reload:
 				TNT1 A 0 PB_CheckReload("ReloadUnloaded","","","Ready3","Ready3",60,1)
