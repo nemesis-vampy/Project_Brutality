@@ -1473,6 +1473,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		QRS0 A 0
 		"####" A 0
 		"####" JKLMN 1
+		"####" A 0 A_JumpIf(GetCvar("pb_qsgquadload") && CountInv("PB_Shell") > 2 && CountInv("QSSGAmmoCounter") < 2,"InsertAllRight")
 		"####" O 1 {
 			A_PlaySound("QSGIN", 9);
 			A_TakeInventory("PB_Shell", 2);
@@ -1480,8 +1481,6 @@ ACTOR PB_QuadSG : PB_Weapon
 			PB_SetChamberEmpty(false);
 			PB_SetMagEmpty(false);
 		}
-		"----" A 0 A_JumpIfInventory("QSSGAmmoCounter", 2, 2)
-		"----" A 0 A_JumpIf((!(GetCvar("PB_KeepSSG") && GetCvar("pb_keepweapons")) && GetCvar("pb_qsgquadload")) && CountInv("PB_Shell") + CountInv("QSSGAmmoCounter") > 3,"InsertAllRight")
 		
 		"####" PQRTUV 1
 		"####" A 0 {
@@ -1504,9 +1503,15 @@ ACTOR PB_QuadSG : PB_Weapon
 		}
 		Loop
 	InsertAllRight:
-		TNT1 A 0 A_Overlay(-4,"FullLoadSoundOverlay")
+		"####" A 0 {
+			A_PlaySound("QSGIN", 9);
+			A_Overlay(-4,"FullLoadSoundOverlay");
+			PB_AmmoIntoMag("QSSGAmmoCounter", "PB_Shell", 4, 1);
+			PB_SetChamberEmpty(false);
+			PB_SetMagEmpty(false);
+		}
+		"####" O 1
 		QRS2 PQRTUV 1 //PQRSTUV
-		"####" A 0 PB_AmmoIntoMag("QSSGAmmoCounter", "PB_Shell", 4, 1)
 		goto FinishReloadRight
 	InsertOneByOneRight:
 		Q1R4 A 0 A_JumpIfInventory("QSSGAmmoCounter", 3, 4)
@@ -1597,6 +1602,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		QRS0 A 0
 		"####" A 0
 		"####" JKLMN 1
+		"####" A 0 A_JumpIf(GetCvar("pb_qsgquadload") && CountInv("PB_Shell") > 2 && CountInv("LeftQSSGAmmoCounter") < 2,"InsertAllLeft")
 		"####" O 1 {
 			A_PlaySound("QSGIN", 9);
 			A_TakeInventory("PB_Shell", 2);
@@ -1604,8 +1610,6 @@ ACTOR PB_QuadSG : PB_Weapon
 			PB_SetChamberEmpty(false,true);
 			PB_SetMagEmpty(false,true);
 		}
-		"----" A 0 A_JumpIfInventory("LeftQSSGAmmoCounter", 2, 2)
-		"----" A 0 A_JumpIf((!(GetCvar("PB_KeepSSG") && GetCvar("pb_keepweapons")) && GetCvar("pb_qsgquadload")) && CountInv("PB_Shell") + CountInv("LeftQSSGAmmoCounter") > 3,"InsertAllLeft")
 		
 		"####" PQRTUV 1
 		"####" A 0 {
@@ -1628,9 +1632,15 @@ ACTOR PB_QuadSG : PB_Weapon
 		}
 		Loop
 	InsertAllLeft:
-		TNT1 A 0 A_Overlay(-4,"FullLoadSoundOverlay")
-		QRS2 PQRTUV 1 //PQRSTUV //
-		"####" A 0 PB_AmmoIntoMag("LeftQSSGAmmoCounter", "PB_Shell", 4, 1)
+		"####" A 0 {
+			A_PlaySound("QSGIN", 9);
+			A_Overlay(-4,"FullLoadSoundOverlay");
+			PB_AmmoIntoMag("LeftQSSGAmmoCounter", "PB_Shell", 4, 1);
+			PB_SetChamberEmpty(false,true);
+			PB_SetMagEmpty(false,true);
+		}
+		"####" O 1
+		QRS2 PQRTUV 1 //PQRSTUV
 		goto FinishReloadLeft
 	InsertOneByOneLeft:
 		Q1R4 A 0 A_JumpIfInventory("LeftQSSGAmmoCounter", 3, 4)
@@ -1715,7 +1725,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		QRS0 A 0
 		"####" A 0
 		"####" JKLMN 1
-		"####" A 0 A_JumpIf(GetCvar("pb_qsgquadload") && CountInv("PB_Shell") > 2 + CountInv("QSSGAmmoCounter") < 2,"InsertAll")
+		"####" A 0 A_JumpIf(GetCvar("pb_qsgquadload") && CountInv("PB_Shell") > 2 && CountInv("QSSGAmmoCounter") < 2,"InsertAll")
 		"####" O 1 {
 			A_PlaySound("QSGIN", 9);
 			A_TakeInventory("PB_Shell", 2);
