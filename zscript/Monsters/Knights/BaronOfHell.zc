@@ -622,6 +622,31 @@ class PB_Baron1 : PB_Monster
             TNT1 A 1 A_SpawnItemEx("LilBaron", 1);
             Stop;
 
+	Death.head:
+		TNT1 A 0 A_BossDeath;
+		TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
+		TNT1 A 0 A_SpawnItem("BaronOfHellHeadExplode", 0, 62);
+		TNT1 A 0 A_Jump(128, "HeadExplode2");
+        BADH A 9;
+        BADH B 9;
+        BADH C 9; //A_BossDeath
+		BADH D  9 A_NoBlocking;
+        TNT1 A 0 A_SpawnItem ("DeadBaronNoHead", 1);
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
+	    Stop;
+	
+	HeadExplode2:
+	    TNT1 A 0 A_BossDeath;
+	    TNT1 A 0 A_NoBlocking;
+        BSA2 AAAAA 2 A_SpawnProjectile("PB_SquirtingBloodTrail", 57, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60));
+        BSA2 BCD 7;
+		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION);
+		BSA2 E 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 9, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60));
+        BSA2 E 1 A_SpawnItem ("DeadBaronBSA2E", 1);
+	    Stop;
+		
+	
         Death:
             TNT1 A 0;
             TNT1 A 0 A_BossDeath;
