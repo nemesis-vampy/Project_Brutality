@@ -5,7 +5,7 @@ Actor DNImpVariant2 : PB_Imp //Replaces DoomImp
 	//$Title Imp (Variant 2)
 	//$Category Project Brutality - Monsters/Imps
 	//$Sprite TRO3A1
-    Health 55
+    Health 90
     Speed 11
 	SpawnID 1420
     PainChance 200
