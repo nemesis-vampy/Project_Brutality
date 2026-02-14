@@ -2920,7 +2920,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 		for(int i = bounce; i > 0; i--)
 		{
 			let laser = new("PB_Laser");
-			laser.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKING,false,invoker.owner);
+			laser.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKEVERYTHING|Line.ML_BLOCKHITSCAN,false,invoker.owner);
 			
 			if(laser)
 			{
@@ -2986,7 +2986,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 		for(int i = bounce; i > 0; i--)
 		{
 			let laser = new("PB_Laser");
-			laser.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKING,false,invoker.owner);
+			laser.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKEVERYTHING|Line.ML_BLOCKHITSCAN,false,invoker.owner);
 			
 			if(laser)
 			{
