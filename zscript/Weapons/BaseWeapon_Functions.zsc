@@ -3078,7 +3078,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 		
 		if(rail)
 		{
-			rail.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKING|Line.ML_BLOCKEVERYTHING|Line.ML_BLOCKHITSCAN|Line.ML_3DMIDTEX_IMPASS,false,invoker.owner);
+			rail.Trace(spos,cursector,dir,8192,TRACE_NoSky,Line.ML_BLOCKEVERYTHING|Line.ML_BLOCKHITSCAN,false,invoker.owner);
 			vector3 fpos = rail.results.HitPos;
 			fpos -= rail.results.HitVector; //step back 1 map unit, not necessary now, but for spawning something at hitlocation is useful
 			
