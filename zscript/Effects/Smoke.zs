@@ -5,7 +5,7 @@
 class PB_GunFireSmoke: PB_LightActor
 {
     Default {
-        Alpha 0.12;
+        Alpha 0.17;
         Scale 0.22;
         +SQUAREPIXELS;
         +NOBLOCKMAP;
