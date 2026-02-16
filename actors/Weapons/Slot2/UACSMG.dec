@@ -1149,7 +1149,18 @@ ACTOR PB_SMG : PB_Weapon
 		A1F1 EEEE 1 {
 			A_SetInventory("SMGBurstCounter",0);
 			PB_CoolDownBarrel;
-			if(CountInv("SilencedSMG") >= 1)
+			if(PB_GetMagUnloaded)
+			{
+				if(CountInv("SilencedSMG") >= 1)
+				{
+					A_SetWeaponSprite("A1SU");
+				}
+				else
+				{
+					A_SetWeaponSprite("A1U1");
+				}
+			}
+			else if(CountInv("SilencedSMG") >= 1)
 			{
 				A_SetWeaponSprite("A1S1");
 			}
