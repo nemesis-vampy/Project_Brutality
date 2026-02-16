@@ -495,7 +495,7 @@ class PB_WeaponBase : DoomWeapon
 			Loop;
 			Melee_Equipment_Handler_Overlay:
 				TNT1 A 1 {
-					if( (!((PressingFire() || JustPressed(BT_ATTACK)) || (ResolveState("AltFire") && (PressingAltFire() || JustPressed(BT_ALTATTACK))))) && !FindInventory("RevGunSelected"))
+					if( (!((PressingFire() || JustPressed(BT_ATTACK)) || (ResolveState("AltFire") && (!FindInventory("Zoomed") && (PressingAltFire() || JustPressed(BT_ALTATTACK)))))) && !FindInventory("RevGunSelected"))
 					{
 						if(JustPressed(BT_USER1) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment() && !CheckInventory("CantDoAction",1)) 
 						{
@@ -517,7 +517,7 @@ class PB_WeaponBase : DoomWeapon
 							}
 						}
 						
-						if(JustPressed(BT_USER2) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment() && !CheckInventory("Zoomed", 1) && !CheckInventory("CantDoAction",1)) 
+						if(JustPressed(BT_USER2) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment() && !CheckInventory("CantDoAction",1)) 
 						{
 							if(CheckInventory("DoingHelmetAnim",1))
 							{
@@ -587,7 +587,7 @@ class PB_WeaponBase : DoomWeapon
 					PB_SetUsingKick(false);
 					A_TakeInventory("Kicking", 1);
 				}
-				if(CountInv("Grabbing_A_Ledge")==0 && CountInv("Kicking")==0 && ((JustPressed(BT_USER4) || player.crouchdir == -1 && CountInv("CanSlideKick") == 1) && !PB_usingKick() && !PB_executingEnemy() && !CheckInventory("Zoomed", 1) && PB_MeleeAttackKickCheck()))
+				if(CountInv("Grabbing_A_Ledge")==0 && CountInv("Kicking")==0 && ((JustPressed(BT_USER4) || player.crouchdir == -1 && CountInv("CanSlideKick") == 1) && !PB_usingKick() && !PB_executingEnemy() && PB_MeleeAttackKickCheck()))
 				{
 					PB_SetUsingKick(true);
 					A_LegOverlay(-999, "DoKick");
