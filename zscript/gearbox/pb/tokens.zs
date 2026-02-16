@@ -141,7 +141,10 @@ class PB_pistolWheel : wheelinfocontainer
 		if(requester.FindInventory("DualWieldingPistols"))
 		{
 			PB_SpecialWheel_Mode pistol_single = new ("PB_SpecialWheel_Mode");
-			pistol_single.img = "graphics/pywheel/PISTOL_0.png";
+			if(requester.FindInventory("SilencerEquipped"))
+				pistol_single.img = "graphics/pywheel/PISTOL_1.png";
+			else
+				pistol_single.img = "graphics/pywheel/PISTOL_0.png";
 			pistol_single.Alias = "Single Pistol";
 			pistol_single.tokentogive = "SelectDualWieldPistols";
 			pistol_single.scalex = iconscale.x;
@@ -152,7 +155,10 @@ class PB_pistolWheel : wheelinfocontainer
 		else
 		{
 			PB_SpecialWheel_Mode pistol_dual = new ("PB_SpecialWheel_Mode");
-			pistol_dual.img = "graphics/pywheel/PISTOL_4.png";
+			if(requester.FindInventory("SilencerEquipped"))
+				pistol_dual.img = "graphics/pywheel/PISTOL_7.png";
+			else
+				pistol_dual.img = "graphics/pywheel/PISTOL_4.png";
 			pistol_dual.Alias = "Akimbo Pistols";
 			pistol_dual.tokentogive = "SelectDualWieldPistols";
 			pistol_dual.scalex = iconscale.x;
@@ -165,7 +171,10 @@ class PB_pistolWheel : wheelinfocontainer
 		if(requester.FindInventory("ToggledPistolBurstFire"))
 		{
 			PB_SpecialWheel_Mode pistol_semi = new ("PB_SpecialWheel_Mode");
-			pistol_semi.img = "graphics/pywheel/PISTOL_3.png";
+			if(requester.FindInventory("SilencerEquipped"))
+				pistol_semi.img = "graphics/pywheel/PISTOL_6.png";
+			else
+				pistol_semi.img = "graphics/pywheel/PISTOL_3.png";
 			pistol_semi.Alias = "Semi-Auto Mode";
 			pistol_semi.tokentogive = "SelectPistolBurstFire";
 			pistol_semi.scalex = iconscale.x;
@@ -176,7 +185,10 @@ class PB_pistolWheel : wheelinfocontainer
 		else
 		{
 			PB_SpecialWheel_Mode pistol_burst = new ("PB_SpecialWheel_Mode");
-			pistol_burst.img = "graphics/pywheel/PISTOL_2.png";
+			if(requester.FindInventory("SilencerEquipped"))
+				pistol_burst.img = "graphics/pywheel/PISTOL_5.png";
+			else
+				pistol_burst.img = "graphics/pywheel/PISTOL_2.png";
 			pistol_burst.Alias = "Burst Mode";
 			pistol_burst.tokentogive = "SelectPistolBurstFire";
 			pistol_burst.scalex = iconscale.x;
@@ -189,7 +201,7 @@ class PB_pistolWheel : wheelinfocontainer
 		if(requester.FindInventory("SilencerEquipped"))
 		{
 			PB_SpecialWheel_Mode pistol_unsilenced = new ("PB_SpecialWheel_Mode");
-			pistol_unsilenced.img = "graphics/pywheel/PISTOL_5.png";
+			pistol_unsilenced.img = "graphics/pywheel/PISTOL_0.png";
 			pistol_unsilenced.Alias = "Detach Suppressor";
 			pistol_unsilenced.tokentogive = "SelectPistolSuppressor";
 			pistol_unsilenced.scalex = iconscale.x;
@@ -281,12 +293,15 @@ Class PB_SMGWheel : wheelinfocontainer
 		if(!spw || !requester)
 			return;
 			
-		vector2 iconScale = (0.75, 0.75);
+		vector2 iconScale = (0.6, 0.6);
 			
 		if(!requester.FindInventory("DualWieldingSMGs")) 
 		{
 			PB_SpecialWheel_Mode smg_dualwield = new ("PB_SpecialWheel_Mode");
-			smg_dualwield.img = "graphics/pywheel/SMG/SMG_DUAL.png";
+			if(requester.FindInventory("SilencedSMG"))
+				smg_dualwield.img = "graphics/pywheel/SMG/SMG_DUAL_SUPPRESSED.png";
+			else
+				smg_dualwield.img = "graphics/pywheel/SMG/SMG_DUAL.png";
 			smg_dualwield.Alias = "Akimbo SMGs";
 			smg_dualwield.tokentogive = "SelectDualWieldSMG";
 			smg_dualwield.scalex = iconscale.x;
@@ -297,7 +312,10 @@ Class PB_SMGWheel : wheelinfocontainer
 		else 
 		{
 			PB_SpecialWheel_Mode smg_dualwield = new ("PB_SpecialWheel_Mode");
-			smg_dualwield.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLA0.png";
+			if(requester.FindInventory("SilencedSMG"))
+				smg_dualwield.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLA0.png";
+			else
+				smg_dualwield.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLB0.png";
 			smg_dualwield.Alias = "Single SMG";
 			smg_dualwield.tokentogive = "SelectDualWieldSMG";
 			smg_dualwield.scalex = iconscale.x;
@@ -308,7 +326,10 @@ Class PB_SMGWheel : wheelinfocontainer
 		if(!requester.FindInventory("PB_SMGBurstFire")) 
 		{
 			PB_SpecialWheel_Mode smg_burst = new ("PB_SpecialWheel_Mode");
-			smg_burst.img = "graphics/pywheel/SMG/SMG_BURST.png";
+			if(requester.FindInventory("SilencedSMG"))
+				smg_burst.img = "graphics/pywheel/SMG/SMG_BURST_SUPPRESSED.png";
+			else
+				smg_burst.img = "graphics/pywheel/SMG/SMG_BURST.png";
 			smg_burst.Alias = "Burst Mode";
 			smg_burst.tokentogive = "SelectBurstFireSMG";
 			smg_burst.scalex = iconscale.x;
@@ -319,7 +340,10 @@ Class PB_SMGWheel : wheelinfocontainer
 		else 
 		{
 			PB_SpecialWheel_Mode smg_auto = new ("PB_SpecialWheel_Mode");
-			smg_auto.img = "graphics/pywheel/SMG/SMG_FULLAUTO.png";
+			if(requester.FindInventory("SilencedSMG"))
+				smg_auto.img = "graphics/pywheel/SMG/SMG_FULLAUTO_SUPPRESSED.png";
+			else
+				smg_auto.img = "graphics/pywheel/SMG/SMG_FULLAUTO.png";
 			smg_auto.Alias = "Full-Auto Mode";
 			smg_auto.tokentogive = "SelectBurstFireSMG";
 			smg_auto.scalex = iconscale.x;
@@ -330,7 +354,7 @@ Class PB_SMGWheel : wheelinfocontainer
 		if(!requester.FindInventory("SilencedSMG")) 
 		{
 			PB_SpecialWheel_Mode smg_silencer = new ("PB_SpecialWheel_Mode");
-			smg_silencer.img = "sprites/weapons/Slot 2/UACSMG/silencer_icon.png";
+			smg_silencer.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLA0.png";
 			smg_silencer.Alias = "Attach Suppressor";
 			smg_silencer.tokentogive = "SelectSilencedSMG";
 			smg_silencer.scalex = iconscale.x;
@@ -341,7 +365,7 @@ Class PB_SMGWheel : wheelinfocontainer
 		else 
 		{
 			PB_SpecialWheel_Mode smg_silencer = new ("PB_SpecialWheel_Mode");
-			smg_silencer.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLA0.png";
+			smg_silencer.img = "sprites/weapons/Slot 2/UACSMG/Pickup/ATFLB0.png";
 			smg_silencer.Alias = "Detach Suppressor";
 			smg_silencer.tokentogive = "SelectSilencedSMG";
 			smg_silencer.scalex = iconscale.x;

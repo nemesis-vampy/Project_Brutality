@@ -246,15 +246,15 @@ Class PB_Shotgun : PB_WeaponBase
 				switch(getshellsmode())
 				{
 					case Shell_Buck:	
-						A_StartSound("weapons/sg", CHAN_Weapon, CHANF_DEFAULT, 1.0, ATTN_NORM, frandom(0.95, 1.05));
+						A_StartSound("weapons/sg", CHAN_WEAPON, pitch:frandom(0.95, 1.05));
 						PB_FireBullets("PB_12GAPellet",9,1.5,0,0,1.5);
 						break;
 					case Shell_Slug:
-						A_StartSound("SlugShot", CHAN_WEAPON);
+						A_StartSound("SlugShot", CHAN_WEAPON, pitch:frandom(0.95, 1.05));
 						A_FireProjectile("PB_12GASlug", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 						break;
 					case Shell_Drag:
-						A_StartSound("DRBTFIRE", CHAN_WEAPON);
+						A_StartSound("DRBTFIRE", CHAN_WEAPON, pitch:frandom(0.95, 1.05));
 						PB_FireBullets("PB_DragonsBreathTracer",8,4.5,0,-14,4.5);
 						break;
 				}
@@ -772,15 +772,15 @@ Class PB_Shotgun : PB_WeaponBase
 				switch(getshellsmode())
 				{
 					case Shell_Buck:	
-						A_StartSound("weapons/sg", CHAN_Weapon, CHANF_DEFAULT, 1.0, ATTN_NORM, frandom(0.95, 1.05));
+						A_StartSound("weapons/sg", CHAN_WEAPON, pitch:frandom(0.95, 1.05));
 						PB_FireBullets("PB_12GAPellet",9,1.5,0,0,1.5);
 						break;
 					case Shell_Slug:
-						A_StartSound("SlugShot", CHAN_WEAPON);
+						A_StartSound("SlugShot", CHAN_WEAPON, pitch:frandom(0.95, 1.05));
 						A_FireProjectile("PB_12GASlug", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 						break;
 					case Shell_Drag:
-						A_StartSound("DRBTFIRE", CHAN_WEAPON);
+						A_StartSound("DRBTFIRE", CHAN_WEAPON, pitch:frandom(0.95, 1.05));
 						PB_FireBullets("PB_DragonsBreathTracer",8,4.5,0,-14,4.5);
 						break;
 				}
