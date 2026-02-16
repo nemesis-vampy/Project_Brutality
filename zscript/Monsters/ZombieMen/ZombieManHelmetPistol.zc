@@ -175,7 +175,33 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 		//Standard, 1 round attack
 		Attack:
 			9OS2 E 9 A_FaceTarget();
-			9OS2 F 3 BRIGHT {
+			9OS2 F 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
+				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 E 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
+				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 E 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
 				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
@@ -192,7 +218,33 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 		//Standard, 2 round attack
 		Attack1:
 			9OS2 E 8 A_FaceTarget();
-			9OS2 F 3 BRIGHT {
+			9OS2 F 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
+				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 E 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
+				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 E 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
 				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
@@ -201,7 +253,37 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
 			9OS2 E 8 A_FaceTarget();
-			9OS2 F 3 BRIGHT {
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
+				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 E 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
+				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 E 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 F 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 42, 1, random(-10, 10), 1, random(-3, 3));
 				A_SpawnProjectile("MarineMuzzle1", 47, 1) ;
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 0, 0);
@@ -211,14 +293,40 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 			}
 			9OS2 E 6 {
 				A_FaceTarget();
-				A_GiveInventory("EnemyPistolAmmo", 2);
+				A_GiveInventory("EnemyPistolAmmo", 1);
 				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
 			}
 			Goto See;
 		//Aimed, 3 round attack
 		Attack2:
 			9OS2 L 6 A_FaceTarget();
-			9OS2 M 3 BRIGHT {
+			9OS2 M 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 L 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 L 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
@@ -227,7 +335,37 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
 			9OS2 L 6 A_FaceTarget();
-			9OS2 M 3 BRIGHT {
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 L 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 L 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
@@ -236,7 +374,37 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 			}
 			9OS2 L 6 A_FaceTarget();
-			9OS2 M 3 BRIGHT {
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 L 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+				A_SpawnProjectile("EmptyBrassMP40", 25, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+			}
+			9OS2 L 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 M 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 42, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 47, 5, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 48, 1) ;
@@ -246,24 +414,41 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 			}
 			9OS2 L 6 {
 				A_FaceTarget();
-				A_GiveInventory("EnemyPistolAmmo", 3);
-				return A_JumpIfInventory("EnemyPistolAmmo", 20, "Reload");
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
 			}
 			Goto See;
 		Attack3:
 			9OS2 EL 4 A_FaceTarget();
 			Crouching:
 			9OS2 K 6 A_FaceTarget();
-			9OS2 J 2 BRIGHT {
+			9OS2 J 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
-				A_SpawnProjectile("MarineMuzzle1", 34, 4) ;
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
 				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
 				A_StartSound("weapons/firepistol");
 				PB_DynamicTailMonster("pistol", "pistol");
 			}
-			9OS2 K 6 A_FaceTarget();
-			9OS2 J 3 BRIGHT {
+			9OS2 K 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
+				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+			}
+			9OS2 K 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
@@ -272,7 +457,76 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 				PB_DynamicTailMonster("pistol", "pistol");
 			}
 			9OS2 K 6 A_FaceTarget();
-			9OS2 J 3 BRIGHT {
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
+				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+			}
+			9OS2 K 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
+				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+			}
+			9OS2 K 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
+				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+			}
+			9OS2 K 6 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
+				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+			}
+			9OS2 K 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
+				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
+				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
+				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
+				A_SpawnProjectile("EmptyBrassMP40", 31, 0, random(-80,-100), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random(45,80));
+				A_StartSound("weapons/firepistol");
+				PB_DynamicTailMonster("pistol", "pistol");
+			}
+			9OS2 K 2 A_FaceTarget();
+			TNT1 A 0 {
+				A_GiveInventory("EnemyPistolAmmo", 1);
+				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
+			}
+			9OS2 J 1 BRIGHT {
 				A_SpawnProjectile("PB_PistolBullet", 32, 0, random(-4, 4), 1, random(-3, 3));
 				A_SpawnProjectile("OrangeLensFlareAlt", 34, 16, 15, 0);
 				A_SpawnProjectile("MarineMuzzle1", 34, 3) ;
@@ -282,7 +536,7 @@ Class PB_PistolZombieman2: PB_Zombieman //Replaces ZombieMan
 			}
 			9OS2 K 4  {
 				A_FaceTarget();
-				A_GiveInventory("EnemyPistolAmmo", 3);
+				A_GiveInventory("EnemyPistolAmmo", 1);
 				return A_JumpIfInventory("EnemyPistolAmmo", 15, "Reload");
 				return A_jump(24, "Attack3");
 			}
