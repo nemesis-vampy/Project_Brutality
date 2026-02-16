@@ -155,7 +155,7 @@ Actor PB_CryoRifle: PB_Weapon
 					A_SetInventory("GoWeaponSpecialAbility",0);
 					A_SetCrosshair(-1);
 					A_ZoomFactor(1.0);
-					A_ClearOverlays(10,11);
+					A_ClearOverlays(7,9);
 				}
 			SwitchMode:
 				TNT1 A 0 {
@@ -205,20 +205,18 @@ Actor PB_CryoRifle: PB_Weapon
 						A_SetInventory("FireModeCryoRifleSpear", 0);
 						A_SetInventory("FireModeCryoRifleFlak", 1);
 					}
-					return state("");
-				}
-				FR20 ABCDEDFGHIJKL 1
-				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect2", CHAN_AUTO, CHANF_OVERLAP)
-				FR20 MNOPQRSTUU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
-				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect3", CHAN_AUTO, CHANF_OVERLAP)
-				FR20 VWXYZ 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
-				FR21 ABCDEDFGHIJKLMNOPQRS 1
-				TNT1 A 0 { 
 					A_SetInventory("FireModeCryoRifleMissile_WW", 0);
 					A_SetInventory("FireModeCryoRifleBeam_WW", 0);
 					A_SetInventory("FireModeCryoRifleSpear_WW", 0);
 					A_SetInventory("FireModeCryoRifleFlak_WW", 0);
+					return state("");
 				}
+				FR20 ABCDEFGHIJKL 1
+				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect2", CHAN_AUTO, CHANF_OVERLAP)
+				FR20 MNOPQRSTUU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect3", CHAN_AUTO, CHANF_OVERLAP)
+				FR20 VWXYZ 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+				FR21 ABCDEFGHIJKLMNOPQRS 1
 				Goto Ready3
 			CancelModeSwap:
 				TNT1 A 0 { 
