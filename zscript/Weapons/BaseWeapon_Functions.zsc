@@ -20,6 +20,11 @@ extend class PB_WeaponBase
 		}
 	}
 
+	action void PB_SetMuzzleSmokeColor(string col)
+	{
+		invoker.smokeColor = col;
+	}
+
 	action void PB_CoolDownBarrel(double posOfsx = 0, double posOfsy = 0, double posOfsz = 0, double velOfsx = 0, double velOfsy = 0, double velOfsz = 0, double scaleadjust = 1, double alphaadjust = 1, bool nodual = false)
 	{
 		if((posOfsx <= 0 || nodual) && invoker.barrelHeat < 1 || posOfsx > 0 && invoker.leftBarrelHeat < 1 && !nodual)
