@@ -284,7 +284,8 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 A_PlaySoundEx("weapons/fists_up", "Auto")
 		P9NS EF 1
 		TNT1 A 0 A_PlaySoundEx("weapons/fists_smash", "Auto")
-		P9NS GHITUVW 1 
+		P9NS GH 1 
+		P9NS ITUVW 1 A_WeaponReady(WRF_NOFIRE)
 	ReadyFists:
 		TNT1 A 0 {
 			if(CountInv("GoFatality") >= 1) {
@@ -379,6 +380,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 		TNT1 A 0 A_SetInventory("FistsSelected",0)
 		
 		PUNS HIJ 1
+		TNT1 A 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		Wait
 	GrabObject:

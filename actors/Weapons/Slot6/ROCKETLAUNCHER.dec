@@ -362,8 +362,14 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 				A_SetRoll(0);
 				if (PB_GetCurrentRocketMode() == "Homing") {
 					PB_HandleCrosshair(79);
-					A_Overlay(-99,"LockOn_Overlay",true);}
-				else { PB_HandleCrosshair(78); }
+					A_Overlay(-99,"LockOn_Overlay",true);
+				}
+				else if(PB_GetCurrentRocketMode() == "Laser") {
+					PB_HandleCrosshair(17);
+				}
+				else {
+					PB_HandleCrosshair(78);
+				}
 				A_TakeInventory("PB_LockScreenTilt",1);
 				A_TakeInventory("RocketLauncher_LockSound");
 			}
@@ -446,7 +452,11 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			Goto SelectFirstPersonLegs
 			SelectContinue:
 			TNT1 A 0 
-			TNT1 A 0 PB_WeapTokenSwitch("RocketLauncherSelected")
+			TNT1 A 0 {
+				if (PB_GetCurrentRocketMode() == "Homing") {PB_HandleCrosshair(79);}
+				else if (PB_GetCurrentRocketMode() == "Laser") {PB_HandleCrosshair(17);}
+				else {PB_HandleCrosshair(78);}
+			}
 			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
 			TNT1 AAAAAAAA 1 A_Raise
 			Wait
@@ -490,6 +500,7 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 				A_Print("$PB_RLLOCK",1);}
 				if(CountInv("RocketLauncher_Laser") == 1) {
 				A_Print("$PB_RLGUID",1);}
+				A_StartSound("RLSPCL2",0);
 				return state("");
 			}
 			
@@ -501,27 +512,34 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			
 			
 			//First Half 
-			RL05 ABCDEFG 1 {
+			RL05 ABCD 1 {
+				if (PB_GetCurrentRocketMode() == "Standard") {A_SetWeaponSprite("RL05");}
+				if (PB_GetCurrentRocketMode() == "Homing") {A_SetWeaponSprite("RL07");}
+				if (PB_GetCurrentRocketMode() == "Laser") {A_SetWeaponSprite("RL08");}
+			}
+			RL05 EFGH 1 {
 				if (PB_GetCurrentRocketMode() == "Standard") {A_SetWeaponSprite("RL05");}
 				if (PB_GetCurrentRocketMode() == "Homing") {A_SetWeaponSprite("RL07");}
 				if (PB_GetCurrentRocketMode() == "Laser") {A_SetWeaponSprite("RL08");}
 			}
 			// Switch Mode based on wheel selection
 			TNT1 A 0 {
-			 
 				if(CountInv("RocketLauncher_Standard") == 1) {
-				PB_SetCurrentRocketMode("Standard");}
+				PB_SetCurrentRocketMode("Standard");
+				PB_HandleCrosshair(78);}
 				if(CountInv("RocketLauncher_Homing") == 1) {
-				PB_SetCurrentRocketMode("Homing");}
+				PB_SetCurrentRocketMode("Homing");
+				PB_HandleCrosshair(79);}
 				if(CountInv("RocketLauncher_Laser") == 1) {
-				PB_SetCurrentRocketMode("Laser");}
+				PB_SetCurrentRocketMode("Laser");
+				PB_HandleCrosshair(17);}
 				A_TakeInventory("CantWeaponSpecial" ,1 );
 				A_TakeInventory("RocketLauncher_Standard", 1);
 				A_TakeInventory("RocketLauncher_Homing", 1);
 				A_TakeInventory("RocketLauncher_Laser", 1);
 			}
 			// Second Half
-			RL05 HIJKLMN 1 {
+			RL05 IJKLMN 1 {
 				if (PB_GetCurrentRocketMode() == "Standard") {A_SetWeaponSprite("RL05");}
 				if (PB_GetCurrentRocketMode() == "Homing") {A_SetWeaponSprite("RL07");}
 				if (PB_GetCurrentRocketMode() == "Laser") {A_SetWeaponSprite("RL08");}
@@ -569,7 +587,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				if (PB_GetCurrentRocketMode() == "Homing") {PB_HandleCrosshair(79);}
-				else { PB_HandleCrosshair(78); }
+				else if (PB_GetCurrentRocketMode() == "Laser") {PB_HandleCrosshair(17);}
+				else {PB_HandleCrosshair(78);}
 				A_TakeInventory("PB_LockScreenTilt",1);
 			}
 			TNT1 A 0 PB_JumpIfNoAmmo
@@ -1074,7 +1093,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
 			if (PB_GetCurrentRocketMode() == "Homing") {PB_HandleCrosshair(79);}
-			else { PB_HandleCrosshair(78); }
+			else if (PB_GetCurrentRocketMode() == "Laser") {PB_HandleCrosshair(17);}
+			else {PB_HandleCrosshair(78);}
 			A_TakeInventory("PB_LockScreenTilt",1);
 		}
 		

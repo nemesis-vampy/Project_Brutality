@@ -110,9 +110,12 @@ Class PB_Shotgun : PB_WeaponBase
 			Goto Ready3;
 		
 		InsertMagBegin: // Straight Into Inserting The Mag After Chambering a shell. 
-			TNT1 A 0 A_SetInventory("PumpshotgunMagNotInserted",0);
-			TNT1 A 0 A_GiveInventory("ShotgunAmmo",11);
-			TNT1 A 0 A_SetInventory("PumpShotgunMagazine",1);
+			TNT1 A 0 {
+				A_SetInventory("PumpshotgunMagNotInserted",0);
+				A_GiveInventory("ShotgunAmmo",11);
+				A_SetInventory("PumpShotgunMagazine",1);
+				A_SetCrosshair(-1);
+			}
 			SHTM A 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SHTM BCDEFG 1 {
 				PB_SetShellSprite("SHTM","SHMS","SHMD");
@@ -145,20 +148,20 @@ Class PB_Shotgun : PB_WeaponBase
 		
 		Select:
 			TNT1 A 0 PB_WeaponRaise();
+			TNT1 A 0 PB_HandleSGCrosshair();
 			TNT1 A 0 PB_WeapTokenSwitch("ShotgunSelected");
 			TNT1 A 0 A_SetInventory( "RandomHeadExploder", 1);
 		Ready:
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectAnimation:
 			TNT1 A 0 A_StartSound("weapons/shotgun/equip", 10,CHANF_OVERLAP);
-			SH00 JKGHI 1;
+			SH0G GFEDC 1;
 			goto ready3;
 		
 		Deselect:
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(69);
 				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetInventory( "RandomHeadExploder", 0 );
 			}
@@ -169,7 +172,7 @@ Class PB_Shotgun : PB_WeaponBase
 				 A_SetInventory("ADSmode",0);
 				 A_ZoomFactor(1.0);
 			}
-			SH00 HGEDB 1;
+			SH00 HGED 1;
 			TNT1 A 0 A_lower(120);
 			wait;
 		
@@ -177,7 +180,7 @@ Class PB_Shotgun : PB_WeaponBase
 		Ready3:
 			TNT1 A 0 {
 				A_SetRoll(0);
-				PB_HandleCrosshair(69);
+				PB_HandleSGCrosshair();
 				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetInventory("CantWeaponSpecial",0);
 				A_SetInventory("CantDoAction",0);
@@ -210,7 +213,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(69);
+				PB_HandleSGCrosshair();
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo();
@@ -269,7 +272,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_WeaponOffset(0,32);
-				PB_HandleCrosshair(69);
+				PB_HandleSGCrosshair();
 				PB_SetReloading(true);
 			}
 			TNT1 A 0 A_JumpIfInventory("PumpshotgunMagazine", 1, "MagPump");
@@ -338,7 +341,7 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			Goto Ready3;
 		MagPumpFromReady:
-			TNT1 A 0 PB_HandleCrosshair(69);
+			TNT1 A 0 PB_HandleSGCrosshair();
 			Goto PumpFromHipFromReady;
 		MagPump:
 			Goto PumpFromHip;
@@ -415,7 +418,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(69);
+				PB_HandleSGCrosshair();
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"zoomout");
@@ -434,7 +437,7 @@ Class PB_Shotgun : PB_WeaponBase
 				A_ZoomFactor(1.0);
 			}
 			SHT8 KDEE 1 PB_SetShellSprite("SHT8","SHT6","SHT4");
-			TNT1 A 0 PB_HandleCrosshair(69);
+			TNT1 A 0 PB_HandleSGCrosshair();
 			Goto Ready3;
 		
 		ReloadWithNoAmmoLeft:
@@ -804,7 +807,7 @@ Class PB_Shotgun : PB_WeaponBase
 					{
 						A_SetInventory("Zoomed",0);
 						A_ZoomFactor(1.0);
-						PB_HandleCrosshair(69);
+						PB_HandleSGCrosshair();
 						return resolvestate("Pump1");
 					}
 				}
@@ -944,8 +947,11 @@ Class PB_Shotgun : PB_WeaponBase
 		//alternative ammo swap thing
 		//Start of transplant
 		AltTubeAmmoSwap:
-			TNT1 A 0 PB_SetReloading(true);
-			TNT1 A 0 A_Setinventory("CantWeaponSpecial", 1);
+			TNT1 A 0 {
+				PB_SetReloading(true);
+				A_Setinventory("CantWeaponSpecial", 1);
+				A_SetCrosshair(-1);
+			}
 			TNT1 A 0 A_JumpIfInventory("DragonBreathUpgrade",1,"AltMagAmmoSwap");
 			TNT1 A 0 {
 			 If((CountInv("PB_Shell") < 1) && (CountInv("ShotgunAmmo") <=2)) 
@@ -1292,7 +1298,16 @@ Class PB_Shotgun : PB_WeaponBase
 		super.beginplay();
 	}
 	
-	
+	action void PB_HandleSGCrosshair()
+	{
+		int mode = clamp(getShellsMode(),1,3);	//just in case
+		switch(mode)
+		{
+			case Shell_Buck:	PB_HandleCrosshair(69);		break;
+			case Shell_Slug:	PB_HandleCrosshair(68);		break;
+			case Shell_Drag:	PB_HandleCrosshair(73);		break;
+		}
+	}
 }
 
 

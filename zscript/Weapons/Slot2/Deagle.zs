@@ -63,7 +63,7 @@ class PB_Deagle : PB_WeaponBase
 			D4E2 B 1 { A_DoPBWeaponAction(); A_weaponoffset(0,32,WOF_interpolate);}
 			TNT1 A 0 A_Startsound("weapons/deagle/swapfol",18,CHANF_OVERLAP);
 			D4E2 CDEFG 1 A_DoPBWeaponAction();
-			TNT1 A 0 PB_HandleCrosshair(42);
+			TNT1 A 0 PB_HandleCrosshair(32);
 			goto Ready;
 			
 		Select:
@@ -92,7 +92,7 @@ class PB_Deagle : PB_WeaponBase
 		Ready3:
 		Ready:
 			TNT1 A 0 A_WeaponOffset(0,32);
-			TNT1 A 0 PB_HandleCrosshair(42);
+			TNT1 A 0 PB_HandleCrosshair(32);
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReadyDualWield");
 			TNT1 A 0 A_JumpIf(PB_GetChamberEmpty(),"ReadyUnloaded");
 			D4E0 E 1 {
@@ -122,7 +122,7 @@ class PB_Deagle : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(42);
+				PB_HandleCrosshair(32);
 				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo();
@@ -181,7 +181,7 @@ class PB_Deagle : PB_WeaponBase
 				A_SetInventory("ADSmode",0);
 				A_SetInventory("PB_LockScreenTilt",1);
 				A_WeaponOffset(0,32);
-				PB_HandleCrosshair(42);
+				PB_HandleCrosshair(32);
 				A_ZoomFactor(1.0);
 				A_ClearOverlays(10,11);
 				}
@@ -667,7 +667,7 @@ class PB_Deagle : PB_WeaponBase
 				A_ZoomFactor(1.0);
 			}
 			D3E1 EDCBA 1;
-			TNT1 A 0 PB_HandleCrosshair(42);
+			TNT1 A 0 PB_HandleCrosshair(32);
 			Goto Ready;
 		
 		Ready2:
@@ -776,15 +776,15 @@ class PB_Deagle : PB_WeaponBase
 				A_Overlay(10,"DeselectLeft_Overlay");
 				A_Overlay(11,"DeselectRight_Overlay");
 			}
-			TNT1 A 3;
-			TNT1 A 1 A_Lower(120);
+			TNT1 A 4;
+			TNT1 A 0 A_Lower(120);
 			wait;
 		
 		ReadyDualWield:
 			TNT1 A 0 {
 					//set the overlays for the sides and other things needed, like
 					A_SetRoll(0);
-					PB_HandleCrosshair(42);
+					PB_HandleCrosshair(32);
 					A_SetInventory("PB_LockScreenTilt",0);
 					A_SetFiringRightWeapon(False);
 					A_SetFiringLeftWeapon(False);

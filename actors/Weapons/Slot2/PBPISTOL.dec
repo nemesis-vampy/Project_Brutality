@@ -201,8 +201,8 @@ ACTOR PB_Pistol : PB_Weapon
 	
 	SelectAnimationDualWield:
 		TNT1 A 0 A_PlaySoundEx("weapons/pistolup", "Auto")
-		D2GT ABCDE 0
-		D2GS ABCDE 1 {
+		D2GT ABCD 0
+		D2GS ABCD 1 {
 			if (CountInv("SilencerEquipped") == 1 ) {
 				A_SetWeaponSprite("D2GT");
 			}
@@ -1094,7 +1094,6 @@ ACTOR PB_Pistol : PB_Weapon
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			PB_HandleCrosshair(43);
 			A_SetInventory("PB_LockScreenTilt",0);
 			A_ClearOverlays(10,11);
 			A_ZoomFactor(1.0); //Force out of ADS when deselecting weapon while on ADS
@@ -1111,7 +1110,7 @@ ACTOR PB_Pistol : PB_Weapon
 			}
 		Goto FinishDeselect
 	DualWieldDeselect:
-		D2GS EDCBA 1 {
+		D2GS DCBA 1 {
 			if(CountInv("SilencerEquipped") == 1) {A_SetWeaponSprite("D2GT");}
 			}
 	FinishDeselect:

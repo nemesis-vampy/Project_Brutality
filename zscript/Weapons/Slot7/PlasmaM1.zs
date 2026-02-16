@@ -115,7 +115,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			//A_SelectWeapon("PB_Pulsecannon")
 			TNT1 A 0 PB_WeaponRaise("PLSDRAW");
 			TNT1 A 0 PB_WeapTokenSwitch("PlasmaGunSelected");
-			TNT1 A 0 A_Setinventory("HasPlasmaWeapon",1);
+			TNT1 A 0 PB_HandleCrosshair(71);
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectContinue:
 			TNT1 A 0;
@@ -135,7 +135,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 A_StopSound(26);
 			TNT1 A 0 A_startsound("PLSOFF", 4);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma",1,"DeselectDualWield");
-			PLSD DCBA 1;
+			PLSD EFGH 1;
 			TNT1 A 0 A_lower(120);
 			wait;
 		
@@ -143,7 +143,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		Ready3:
 			TNT1 A 0 {
 				A_Setinventory("PB_LockScreenTilt",0);
-				PB_HandleCrosshair(76);
+				PB_HandleCrosshair(71);
 				}
 			TNT1 A 0 A_startsound("PLSIDLE",6,CHANF_LOOPING);
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "ReadyDualWield");
@@ -213,7 +213,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(76);
+				PB_HandleCrosshair(71);
 				A_Setinventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_JumpIfInventory("DualWieldingPlasma", 1, "FireDualWield");
@@ -287,7 +287,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				PB_HandleCrosshair(76);
+				PB_HandleCrosshair(71);
 				A_Setinventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 {
@@ -435,7 +435,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 {
 				A_Setinventory("GoWeaponSpecialAbility",0);
 				A_Setinventory("PB_LockScreenTilt",1);
-				PB_HandleCrosshair(76);
+				PB_HandleCrosshair(71);
 				A_StartSound("Ironsights", 12,CHANF_OVERLAP);
 				A_ClearOverlays(10,65);
 				}
@@ -865,7 +865,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 {
 					//set the overlays for the sides and other things needed, like
 					A_SetRoll(0);
-					PB_HandleCrosshair(76);
+					PB_HandleCrosshair(71);
 					A_SetInventory("PB_LockScreenTilt",0);
 					A_SetFiringRightWeapon(False);
 					A_SetFiringLeftWeapon(False);

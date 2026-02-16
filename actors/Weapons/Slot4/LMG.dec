@@ -348,8 +348,11 @@ ACTOR PB_LMG : PB_Weapon
 			TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 			TNT1 A 0 PB_RespectIfNeeded
 		WeaponRespect:
-			TNT1 A 0 A_StartSound("weapons/smg_up", 0)
-			TNT1 A 0 A_SetInventory("RespectLMG", 1)
+			TNT1 A 0 {
+				A_StartSound("weapons/smg_up", 0);
+				A_SetInventory("RespectLMG", 1);
+				A_SetCrosshair(-1);
+			}
 			LSM6 ABCD 1 A_DoPBWeaponAction
 			LMRP AAAAABCDE 1 A_DoPBWeaponAction
 			TNT1 A 0 A_StartSound("LINSP ", 2)
@@ -919,36 +922,38 @@ ACTOR PB_LMG : PB_Weapon
 			}
 			stop
 		Fire:
-			TNT1 A 0 A_ClearOverlays(-2,7)
-			TNT1 A 0 A_Setinventory("CantWeaponSpecial",0)
 			TNT1 A 0 PB_JumpIfNoAmmo("Reload",1,false)
-			TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
-			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles",1,"FireMissile")
-			TNT1 A 0 A_Overlay(-5,"FireRecoil")
-			TNT1 A 0 PB_IncrementHeat
-			TNT1 A 0 A_StartSound("LFIRE", CHAN_Weapon, CHANF_DEFAULT, 1.0)
-			TNT1 A 0 PB_DynamicTail("lmg", "lmg")
 			TNT1 A 0 {
+				if(CountInv("LMGMicroMissiles") >= 1) {
+					PB_HandleCrosshair(74);
+				}
+				else {
+					PB_HandleCrosshair(52);
+				}
+				A_ClearOverlays(-2,7);
+				A_Setinventory("CantWeaponSpecial",0);
+				A_JumpIfInventory("Zoomed", 1, "Fire2");
+				A_JumpIfInventory("LMGMicroMissiles",1,"FireMissile");
+				A_Overlay(-5,"FireRecoil");
+				PB_IncrementHeat;
+				A_StartSound("LFIRE", CHAN_Weapon, CHANF_DEFAULT, 1.0);
+				PB_DynamicTail("lmg", "lmg");
 				A_Overlay(-2, "MuzzleFlashBullet");
 				A_OverlayFlags(-2,PSPF_RENDERSTYLE,true);
 				A_OverlayRenderStyle(-2,STYLE_Add);
+				A_Overlay(4, "BeltFireBullet");
+				PB_SpawnCasing("LMGCasingStandard", 19,4,29,0,frandom(3,5),frandom(0,4), false);
+				PB_SpawnCasing("LMGBeltLink",19,4,29,0,frandom(1,3),frandom(0,4), false);
+				PB_FireBullets("PB_556x45mm", 1, 1, 0, 0, 1);
+				A_FireCustomMissile("YellowFlareSpawn",0,0,0,0);
+				PB_GunSmoke_Compensator(0, 0, 0);
+				PB_MuzzleFlashEffects(0, 0, 0, "FF9D2E", true);
+				PB_WeaponRecoil(-0.60,-0.55);
+				A_ZoomFactor(0.982);
+				A_AlertMonsters;
+				PB_LowAmmoSoundWarning("lmg");
+				PB_TakeAmmo("LMGAmmo",1,7);
 			}
-			TNT1 A 0 A_Overlay(4, "BeltFireBullet")
-			TNT1 A 0 PB_SpawnCasing("LMGCasingStandard", 19,4,29,0,frandom(3,5),frandom(0,4), false)
-			TNT1 A 0 PB_SpawnCasing("LMGBeltLink",19,4,29,0,frandom(1,3),frandom(0,4), false)
-			//TNT1 A 0 A_FireBullets (0.1, 0.1, -1, 27, "MachineGunBulletPuff", FBF_NORANDOM,8192,"Tracer", -2,0)
-			TNT1 A 0 PB_FireBullets("PB_556x45mm", 1, 1, 0, 0, 1)
-			TNT1 A 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, 0)
-			TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
-			TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-			RIFF A 0 PB_GunSmoke_Compensator(0, 0, 0)
-            TNT1 A 0 PB_MuzzleFlashEffects(0, 0, 0, "FF9D2E", true)
-			TNT1 A 0 PB_WeaponRecoil(-0.60,-0.55)
-			TNT1 A 0 A_ZoomFactor(0.982)
-			TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-			TNT1 A 0 A_AlertMonsters
-			TNT1 A 0 PB_LowAmmoSoundWarning("lmg")
-			TNT1 A 0 PB_TakeAmmo("LMGAmmo",1,7)
 			LMGF A 1 BRIGHT Offset(0,0)
 			TNT1 A 0 A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
 			TNT1 A 0 A_ZoomFactor(1.0)

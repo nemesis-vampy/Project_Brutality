@@ -123,10 +123,7 @@ Actor PB_Chainsaw  : PB_Weapon //replaces Chainsaw
 		S1WS A 0 A_JumpIfInventory("PowerBloodOnVisor",1,2)
 		SAWS A 0
 		"####" YXW 1
-		"####" W 1 Offset(-15,46)
-		"####" W 1 Offset(-25,58)
 		"####" W 1 Offset(-35,70)
-		TNT1 A 1 A_WeaponOffset(0,0)
 		TNT1 A 0 PB_ResetVisorBloodTokens
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		Wait
