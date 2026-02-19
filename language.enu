@@ -334,8 +334,8 @@ PB_SGSLUGLD = "Shell Type: \cdSlug";
 PB_SGDBLD =  "Shell Type: \ciDragon's Breath";
 
 //Quad Shotgun
-PB_QSG_DEMONBREATH = "Firemode: \ciDemonic Breath";
-PB_QSG_SHELLS = "Firemode: \cgShells";
+PB_QSG_DEMONBREATH = "Firemode: \ciDemon's Breath";
+PB_QSG_SHELLS = "Firemode: \cgBuckshot";
 PB_QSG_HALF = "Firemode: \cuHalf Blast";
 PB_QSG_FULL = "Firemode: \ckFull Blast";
 

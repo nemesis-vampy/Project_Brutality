@@ -243,7 +243,9 @@ extend class PB_WeaponBase
 		PB_GetMagUnloaded() && !chamber ||
 		!secondary && invoker.ammotype1 && countinv(invoker.ammotype1) < min ||
 		secondary && invoker.ammotype2 && countinv(invoker.ammotype2) < min) {
-			if(emptysound && (JustPressed(BT_ALTATTACK) || JustPressed(BT_ATTACK))) A_StartSound(emptysound,0);
+			if(emptysound) {
+				A_StartSound(emptysound,0);
+			}
 			return resolvestate(reloadstate);
 		}
 		return resolvestate(null);

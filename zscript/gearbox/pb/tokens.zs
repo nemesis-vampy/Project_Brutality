@@ -538,7 +538,7 @@ Class PB_QSGWheel : wheelinfocontainer
 		{
 			PB_SpecialWheel_Mode qsg_demon = new ("PB_SpecialWheel_Mode");
 			qsg_demon.img = "graphics/pywheel/Quad_Demonic.png";
-			qsg_demon.Alias = "Demonic Breath Mode";
+			qsg_demon.Alias = "Demon's Breath Mode";
 			qsg_demon.tokentogive = "BreathToggle";
 			qsg_demon.scalex = iconscale.x;
 			qsg_demon.scaley = iconscale.y;

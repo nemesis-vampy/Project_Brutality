@@ -98,6 +98,7 @@ ACTOR PB_Demontech : PB_Weapon
 	Tag "Demon-Tech Rifle"
 	Inventory.PickupMessage "Demon-Tech Rifle (Slot 0)"
 	+WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
 	Scale 0.48
 	Inventory.AltHUDIcon "HRPUA0"
 	PB_WeaponBase.respectItem "RespectDemonTech"

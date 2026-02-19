@@ -229,6 +229,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 	PB_WeaponBase.respectItem "RespectFlamerGoon"
 	Inventory.PickupSound "weapons/flamethrower/respect1"
 	+WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
 	+FLOORCLIP
 	+DONTGIB
 	Inventory.PickupMessage "Flamethrower (Slot 8)"
@@ -1107,6 +1108,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 		}
 		F1B1 DE 1 PB_WeaponRecoil(-0.2,+0.2)
 		F1B1 FGH 1
+		TNT1 A 0 A_ReFire
 		Goto Ready3
 	AltFireUpgraded:
 		TNT1 A 0 A_JumpIfInventory("FlamerNukageMode", 1, "AltFireNuke")
@@ -1127,6 +1129,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 		}
 		F1B1 DE 1 PB_WeaponRecoil(-0.2,+0.2)
 		F1B1 FGH 1
+		TNT1 A 0 A_ReFire
 		Goto Ready3
 
 	AltFireNuke:
