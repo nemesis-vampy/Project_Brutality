@@ -168,7 +168,7 @@ const MAXITERATIONS = 32676;
 #include "zscript/Monsters/Dead.zc"
 
 #include "zscript/Monsters/Special/BossBrain.zc"
-#include "zscript/Monsters/Special/CyberDemon.zc"
+#include "zscript/Monsters/CyberDemons/CyberDemon.zc"
 #include "zscript/Monsters/Knights/BaronOfHell.zc"
 #include "zscript/Monsters/Mancubi/Mancubus.zc"
 #include "zscript/Monsters/Arachnotrons/Arachnotron.zc"
@@ -201,6 +201,9 @@ const MAXITERATIONS = 32676;
 #include "zscript/Monsters/PB_SlowEventHandler.zc"
 #include "zscript/Monsters/PB_FlameEventHandler.zc"
 
+#include "zscript/Monsters/ArchViles/PB_Vile.zsc"
+#include "zscript/Monsters/Revenants/PB_Rev.zsc"
+
 //Effects
 #include "zscript/Effects/Casings.txt"
 #include "zscript/Effects/EmptyMag.txt"
@@ -229,12 +232,13 @@ const MAXITERATIONS = 32676;
 #include "zscript/Weapons/Projectiles/BulletDef.EnemyProjectiles.zsc"
 #include "zscript/Weapons/Projectiles/RailGunPj.zs"
 #include "zscript/Weapons/Projectiles/DragonsBreath.zs"
+#include "zscript/Weapons/Projectiles/Leech.zsc"
 #include "zscript/Weapons/Projectiles/Shrapnel.zsc"
 #include "zscript/Weapons/ProxMine.zsc"
 #include "zscript/Weapons/ThrownGrenades.zs"
 #include "zscript/Weapons/Keepweapmanager.zsc"
 
-#include "actors/Weapons/Slot0/UnmakerCharge.zsc"
+#include "actors/Weapons/Slot9/UnmakerCharge.zsc"
 #include "zscript/Weapons/Slot2/Revolver.zs"
 #include "zscript/Weapons/Slot2/Deagle.zs"
 #include "zscript/Weapons/Slot3/Shotgun.zs"
@@ -294,6 +298,12 @@ const MAXITERATIONS = 32676;
 #include "zscript/Spawner/Ammo/PB_ShellBoxSpawner.zc"
 #include "zscript/Spawner/Ammo/PB_RocketSpawner.zc"
 #include "zscript/Spawner/Ammo/PB_RocketBoxSpawner.zc"
+
+#include "zscript/Spawner/Decorations/PBDeadCacoDemonSpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadDemonSpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadImpSpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadShotgunGuySpawner.zc"
+#include "zscript/Spawner/Decorations/PBDeadZombiemanSpawner.zc"
 
 //PBVP
 #include "zscript/PBVP/PBVP.zc"
@@ -599,9 +609,11 @@ class CameraRunner : Inventory
 class LaserDeactivated : Inventory {}
 class XDeathGibBase : Actor
 {
+	mixin PB_SpawnGore;
+	
 	void A_PBGibMissile(class<Actor> missiletype, double spawnheight = 32, double spawnofs_xy = 0, double angle = 0, int flags = 0, double pitch = 0, int ptr = AAPTR_TARGET)
 	{
-		let a = A_SpawnProjectile(missiletype, spawnheight, spawnofs_xy, angle, flags | CMF_BADPITCH | CMF_SAVEPITCH, pitch, ptr);
+		let [bwaa, a] = A_SpawnGoreProjectile(missiletype, spawnheight, spawnofs_xy, angle, flags | CMF_BADPITCH | CMF_SAVEPITCH, pitch, ptr);
 		if (a)
 		{
 			a.VelFromAngle(vel.xy.Length() / 2, self.angle + frandom(-20, 20));

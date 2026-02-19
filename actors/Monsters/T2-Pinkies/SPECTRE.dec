@@ -6,7 +6,7 @@ ACTOR PB_Spectre: PB_Demon //Replaces Spectre
 	GibHealth 35
 	//Radius 30
 	Scale 1
-	Radius 22
+	Radius 30
 	Height 56
 	Mass 400
 	SpawnID 1510
@@ -22,11 +22,11 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	damagefactor "Shrapnel", 0.3
 	damagefactor "SSG", 5.0
 	+FLOORCLIP 
-	SeeSound "demon/sight"
-	AttackSound "demon/melee"
-	PainSound "demon/pain"
-	DeathSound "demon/death"
-	ActiveSound "demon/active"
+	SeeSound "pb/monsters/demon/sight"
+	AttackSound "pb/monsters/demon/melee"
+	PainSound "pb/monsters/demon/pain"
+	DeathSound "pb/monsters/demon/death"
+	ActiveSound "pb/monsters/demon/active"
 	DamageType Eat
 	MaxStepHeight 48
 	MaxDropOffHeight 48
@@ -68,21 +68,21 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		stop
 	
 	Spawn:
-		SARG A 10 BRIGHT A_Look
+		SAR1 A 10 BRIGHT A_Look
 		Loop
 	See:
 		
-		SARG AAABBBAAABBB 1 BRIGHT A_Chase
+		SAR1 AAABBBAAABBB 1 BRIGHT A_Chase
 		Loop
 	Pain:
-		SARG H 2
-		SARG H 2 A_Pain
+		SAR1 H 2
+		SAR1 H 2 A_Pain
 		Goto See
 	
 	Possession:
 		TNT1 A 0 A_SetInvulnerable
-		SARG H 3
-		SARG H 3 A_Pain
+		SAR1 H 3
+		SAR1 H 3 A_Pain
 		"####" "#" 35 ACS_NamedExecuteAlways("Pos - Flicker effect")
 		TNT1 A 0 A_UnSetInvulnerable
 		Goto See
@@ -90,35 +90,35 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Pain.Stun:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItemEx ("StunElectrocute", random (-4, 4), random (-4, 4),  random (16, 32), 0, 0)
-		SARG H 1 A_Pain
-		SARG HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-		SARG H 1 A_Pain
-		SARG HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-		SARG H 1 A_Pain
-		SARG HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-		SARG H 1 A_Pain
-		SARG HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-		SARG H 1 A_Pain
-		SARG HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
-		SARG H 1 A_Pain
+		SAR1 H 1 A_Pain
+		SAR1 HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
+		SAR1 H 1 A_Pain
+		SAR1 HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
+		SAR1 H 1 A_Pain
+		SAR1 HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
+		SAR1 H 1 A_Pain
+		SAR1 HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
+		SAR1 H 1 A_Pain
+		SAR1 HHHHHHHHHH 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0)
+		SAR1 H 1 A_Pain
 		Goto See
 	
 	Pain.Siphon:
 		TNT1 A 0 
 		
 		TNT1 AAA 0 A_SpawnItemEx ("RedLightning_Small", random (-12, 12), random (-12, 12), random (16, 52), 0, 0)
-		SARG H 1 
+		SAR1 H 1 
 		{
 			A_FaceTarget;
 			A_GiveToTarget("HealthBonus",4);
 		}
-		SARG H 5 A_FaceTarget 
+		SAR1 H 5 A_FaceTarget 
 		TNT1 A 0 A_Pain
 		Goto See
 	
 	Pain:
-		SARG H 2
-		SARG H 2 A_Pain
+		SAR1 H 2
+		SAR1 H 2 A_Pain
 		Goto See
 		
 	Pain.Shotgun:
@@ -127,9 +127,9 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		//TNT1 A 0 ThrustThingZ(0,30,0,1)
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil (2)
-		 SARG H 2
+		 SAR1 H 2
 		 //DEMP A 4
-		 SARG H 2
+		 SAR1 H 2
 		 Goto See	
 
 	Pain.Kick:
@@ -139,19 +139,19 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		//TNT1 A 0 ThrustThingZ(0,30,0,1)
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil (18)
-		 SARG H 6
+		 SAR1 H 6
 		 //DEMP B 6
-		 SARG H 6
+		 SAR1 H 6
 		 Goto See
 		 
 	Melee:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 100)
 		TNT1 A 0 A_JumpIfInTargetInventory("ComeEatMeDemon", 1, "MeleeDown")
-		SARG E 6 A_FaceTarget
-		SARG F 6 A_FaceTarget
+		SAR1 E 6 A_FaceTarget
+		SAR1 F 6 A_FaceTarget
 		//TNT1 A 0 A_CustomMissile("DemonAttack",40,0,0,0)
-		SARG G 12 A_CustomMeleeAttack(random(5, 6) * 3, "misc/death1", "", "Eat") //A_CustomMissile("DemonAttack",5,0,0,0)
+		SAR1 G 12 A_CustomMeleeAttack(random(5, 6) * 3, "misc/death1", "", "Eat") //A_CustomMissile("DemonAttack",5,0,0,0)
 
 	TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman")
 	TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant")

@@ -361,7 +361,6 @@ Actor DeadSpider: CurbstompedMarine
 {
     Radius 20
     Height 10
-    Scale 1.3
     +SHOOTABLE
     +NOTELEPORT
     +MOVEWITHSECTOR
@@ -449,7 +448,6 @@ ACTOR SpiderPart1
     Radius 1
     Height 8
     Speed 12
-    Scale 1.3
 	Mass 1
     +NOBLOCKMAP
 	+MISSILE
@@ -484,7 +482,6 @@ ACTOR SpiderPart2
     Radius 1
     Height 8
     Speed 12
-    Scale 2.0
 	Mass 1
     +NOBLOCKMAP
 	+MISSILE

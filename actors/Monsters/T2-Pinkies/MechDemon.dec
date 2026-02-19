@@ -14,7 +14,7 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 	//Radius 30
 	Health 350
 	Scale 1
-	Radius 22
+	Radius 30
 	Height 56
 	Mass 400
 	Speed 13
@@ -42,11 +42,11 @@ ACTOR PB_MechDemon: Demon //Replaces Demon
 	damagefactor "Shrapnel", 0.3
 	+FLOORCLIP 
 	BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
-	SeeSound "demon/sight"
-	AttackSound "demon/melee"
-	PainSound "demon/pain"
-	DeathSound "demon/death"
-	ActiveSound "demon/active"
+	SeeSound "pb/monsters/demon/sight"
+	AttackSound "pb/monsters/demon/melee"
+	PainSound "pb/monsters/demon/pain"
+	DeathSound "pb/monsters/demon/death"
+	ActiveSound "pb/monsters/demon/active"
 	DamageType Eat
 	MaxStepHeight 32
 	MaxDropOffHeight 32

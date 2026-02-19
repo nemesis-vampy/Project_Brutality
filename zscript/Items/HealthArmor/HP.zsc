@@ -3,7 +3,7 @@ class PB_HealthBonus : PB_Health
 	Default
 	{
 		//$Category Project Brutality - Health and Armor
-		//$Sprite BON1A0
+		//$Sprite B0N1A0
 		Tag "Health Bonus";
 		+COUNTITEM;
 		+INVENTORY.ALWAYSPICKUP;
@@ -17,7 +17,7 @@ class PB_HealthBonus : PB_Health
 	States
 	{
 		Spawn:
-			BON1 ABCDEFGHIJ 3;
+			B0N1 ABCDEFGHIJ 3;
 			loop;
 	}
 }
@@ -60,7 +60,7 @@ class PB_Medikit : PB_Health
 	Default
 	{
 		//$Category Project Brutality - Health and Armor
-		//$Sprite MEDIA0
+		//$Sprite MED1A0
 		Tag "Medikit";
 		Inventory.Amount 25;
 		Inventory.PickupSound "misc/L_HP_pickup";
@@ -72,7 +72,7 @@ class PB_Medikit : PB_Health
 	States
 	{
 		Spawn:
-			MEDI A -1;
+			MED1 A -1;
 			stop;
 	}
 }

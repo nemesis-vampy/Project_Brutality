@@ -276,6 +276,26 @@ $random step/lava {
 	step/lava4 
 }
 
+// Sand
+step/sand1			"SOUNDS/footstep/sand/sand_step1.ogg"
+step/sand2			"SOUNDS/footstep/sand/sand_step2.ogg"
+step/sand3			"SOUNDS/footstep/sand/sand_step3.ogg"
+step/sand4			"SOUNDS/footstep/sand/sand_step4.ogg"
+step/sand5			"SOUNDS/footstep/sand/sand_step5.ogg"
+step/sand6			"SOUNDS/footstep/sand/sand_step6.ogg"
+step/sand7			"SOUNDS/footstep/sand/sand_step7.ogg"
+step/sand8			"SOUNDS/footstep/sand/sand_step8.ogg"
+$random step/sand { 
+	step/sand1
+	step/sand2
+	step/sand3
+	step/sand4
+	step/sand5
+	step/sand6
+	step/sand7
+	step/sand8
+}
+
 walk/foley/pre_01 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_01.ogg"
 walk/foley/pre_02 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_02.ogg"
 walk/foley/pre_03 "SOUNDS/footstep/walk/mvmtstep_cloth_plr_walk_post_03.ogg"

@@ -83,6 +83,8 @@ class PB_ProjectileAlt : PB_Projectile abstract
 							}
 						}
 
+						if(BounceWall())
+							return;
 						ExplodeMissile (BlockingLine, BlockingMobj);
 						return;
 					}
@@ -102,6 +104,11 @@ class PB_ProjectileAlt : PB_Projectile abstract
 					}
 
 					SetZ(floorz);
+					If (bBounceOnFloors)
+					{
+						BouncePlane (FloorSector.FloorPlane);
+						Return;
+					}
 					HitFloor ();
                     Destructible.ProjectileHitPlane(self, SECPART_Floor);
 					ExplodeMissile (NULL, NULL);
@@ -117,6 +124,11 @@ class PB_ProjectileAlt : PB_Projectile abstract
 					}
 
 					SetZ(ceilingz - Height);
+					If (bBounceOnCeilings)
+					{
+						BouncePlane (CeilingSector.CeilingPlane);
+						Return;
+					}
                     Destructible.ProjectileHitPlane(self, SECPART_Ceiling);
 					ExplodeMissile (NULL, NULL);
 					return;

@@ -957,7 +957,6 @@ ACTOR DyingCyberKnight2
 	+SHOOTABLE
 	+FLOORCLIP
 	+NOPAIN
-	Scale 1.2
 	States
 	{
 	Spawn:
@@ -1013,7 +1012,6 @@ ACTOR DyingCyberKnight3
 	+SHOOTABLE
 	+FLOORCLIP
 	+NOPAIN
-	Scale 1.2
 	States
 	{
 	Spawn:

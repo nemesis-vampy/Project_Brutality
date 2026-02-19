@@ -43,6 +43,7 @@ class PB_762x51mmAP : PB_Projectile
 		PB_Projectile.BaseDamage 165;
 		PB_Projectile.RipperCount 8;
 		PB_Projectile.PenetrationCount 3;
+		RipperLevel 1;
 		+PB_Projectile.WHIZCRACK;
 		Obituary "%o was shredded by %k.";
 	}

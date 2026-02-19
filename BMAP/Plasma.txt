@@ -1,6 +1,9 @@
 /*
 brightmap sprite PLSUA0{map "Brightmaps/WEAPONS/Plasma/PLSUA.png"}
 */
+//Pickup
+brightmap sprite PL4SA0{map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Pickup/PL4SA0.png"}
+
 // Idle
 brightmap sprite 4LSGB0{map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Idle/4LSGB0.png"}
 brightmap sprite 4LSGC0{map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Idle/4LSGC0.png"}
@@ -12,15 +15,15 @@ brightmap sprite 4LSGH0{map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Idle/4LSGH0.png"
 brightmap sprite 4LSGI0{map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Idle/4LSGI0.png"}
 
 //Cooldown
-//brightmap sprite PLSGA0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Idle/PLSGA.png" }
-brightmap sprite PLSGB0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGB0.png" }
-brightmap sprite PLSGC0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGC0.png" }
-brightmap sprite PLSGD0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGD0.png" }
-brightmap sprite PLSGE0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGE0.png" }
-brightmap sprite PLSGW0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/CooldownAltFire/PLSGW0.png" }
-brightmap sprite PLSGX0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/CooldownAltFire/PLSGX0.png" }
-brightmap sprite PLSGY0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/CooldownAltFire/PLSGY0.png" }
-brightmap sprite PLSGZ0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGE0.png" }
+//brightmap sprite P1SGA0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Idle/PLSGA.png" }
+brightmap sprite P1SGB0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGB0.png" }
+brightmap sprite P1SGC0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGC0.png" }
+brightmap sprite P1SGD0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGD0.png" }
+brightmap sprite P1SGE0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGE0.png" }
+brightmap sprite P1SGW0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/CooldownAltFire/PLSGW0.png" }
+brightmap sprite P1SGX0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/CooldownAltFire/PLSGX0.png" }
+brightmap sprite P1SGY0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/CooldownAltFire/PLSGY0.png" }
+brightmap sprite P1SGZ0 { map "Brightmaps/WEAPONS/Slot 6/M1Plasma/Cooldown/PLSGE0.png" }
 
 //Kick
 /*

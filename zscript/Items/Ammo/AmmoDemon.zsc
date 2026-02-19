@@ -66,30 +66,39 @@ class PB_PermaDTechLarge : PB_DTechLarge
 	}
 }
 
-// Leech Grenade and Token
-Class HasLeech : Inventory
+// Leech Grenade
+Class PB_LeechPickup : PB_Ammo 
 {
 	Default
 	{
-		inventory.maxamount 1;
-	}
-}
-
-Class PB_LeechGrenadeAmmo : PB_Ammo 
-{
-	Default
-	{
-		//$Title Leech Grenade
+		//$Title Leech
 		//$Category Project Brutality - Weapons/Equipment
-		Scale 0.15;
+		Scale 0.35;
 		Tag "Leech Grenade";
 		Inventory.PickupSound "SiphonGrowl";
 		PB_Ammo.AmmoType "leechnade";
+		Inventory.Amount 1;
+		Ammo.BackpackAmount 0;
 	}
-
-	override bool TryPickup(in out actor toucher)
+	
+	override string PickupMessage()
 	{
-		toucher.GiveInventory("HasLeech",1) ;
-		return Super.TryPickup(toucher);
+		return "What the hell is this thing..?";
+	}
+	
+	override void AttachToOwner(actor other)
+	{
+		if(amount > 0)
+		{
+			other.GiveInventory("PB_LeechToken",1);
+			other.GiveInventory("PB_DTech",20);
+			Super.AttachToOwner(other);
+		}
+		else
+		{
+			Destroy();
+		}
 	}
 }
+
+class PB_LeechToken : PB_EquipToken {}

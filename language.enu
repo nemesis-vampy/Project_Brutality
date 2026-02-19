@@ -8,8 +8,13 @@ PB_HUD_OPTIONS = "\cy☰\c- HUD Settings";
 PB_VISUAL_OPTIONS = "\cx☼\c- Visual Settings";
 PB_GAMEPLAY_OPTIONS = "\cw⚛\c- Gameplay Settings";
 PB_SPAWN_OPTIONS = "\cg⛧\c- Spawn Settings";
+PB_ADDON_OPTIONS = "\ct♋\c- Addon Settings";
 PB_GO_TESTMAP = "↳ Go to Test Map";
 
+PB_TIER1 = "\ck-- Tier 1 --";
+PB_TIER2 = "\cd-- Tier 2 --";
+PB_TIER3 = "\cv-- Tier 3 --";
+PB_TIER4 = "\ct-- Tier 4 --";
 GOTCLIP = "Picked up a Magazine.";
 GOTHTHNEED = "Picked up a health bonus. It's not enough health to manage, but you needed it anyway." ;
 GOTMEDPAKNEED = "Picked up a medipack that you DESPERATELY needed!";
@@ -98,25 +103,6 @@ NASHGOREMNU_BLOOD_TYPE_CLASSIC = "Classic";
 NASHGOREMNU_GIB_TYPE_NOSTICKYGIBS = "No wall & ceiling gibs";
 NASHGOREMNU_BLOOD_SPRITE_DECALS = "Decals";
 NASHGOREMNU_BLOOD_SPRITE_SPRITES = "Sprites";
-
-// Help text
-NASHGOREMNU_HELPTEXT_BLOOD_TYPE = "Hitscan blood effect type.";
-NASHGOREMNU_HELPTEXT_BLOOD_AMOUNT = "Blood amount multiplier. May cause performance issues at higher values.";
-NASHGOREMNU_HELPTEXT_BLOOD_SPRITES = "Use decals or sprites for blood spots.";
-NASHGOREMNU_HELPTEXT_BLOOD_SPURTS = "Enable blood spurts on corpses.";
-NASHGOREMNU_HELPTEXT_GIB_TYPE = "Gib effect type.";
-NASHGOREMNU_HELPTEXT_GIB_AMOUNT = "Adjusts amount of gibs.";
-NASHGOREMNU_HELPTEXT_MISC_MAXGORE = "Maximum number of blood & gore objects to spawn.";
-NASHGOREMNU_HELPTEXT_MISC_MAXCASINGS = "Maximum number of spent casings to spawn.";
-NASHGOREMNU_HELPTEXT_MISC_CORPSEBLOOD = "Enable pool of blood under corpses.";
-NASHGOREMNU_HELPTEXT_MISC_FOOTPRINTS = "Enable bloody footprints.";
-NASHGOREMNU_HELPTEXT_MISC_DEATHFLIP = "Randomly flip sprite upon death.";
-NASHGOREMNU_HELPTEXT_MISC_SQUISH = "Enable squishy flesh when corpse is crushed.";
-NASHGOREMNU_HELPTEXT_MISC_ICEDEATH = "Enhanced effects upon breaking a frozen enemy.";
-NASHGOREMNU_HELPTEXT_MISC_SPLAT = "Enable splat effect when corpse falls from tall height.";
-NASHGOREMNU_HELPTEXT_MISC_CLEARGORENOW = "Removes all gore effects immediately.";
-
-NASHGOREMNU_HELPTEXT_CONTROLS_CLEARGORE = "Key bind to remove all gore objects.";
 
 // Footsteps V4
 // Language Definitions
@@ -359,14 +345,18 @@ PB_HDMRSNP = "Firemode: \ceHeavy Sniper";
 PB_HDMRGRN = "Secondary Firemode: \cdGrenade";
 PB_HDMRAIM = "Secondary Firemode: \cgAiming";
 
+//Carbine
+PB_CARBINE_SCOPE = "Secondary Firemode: \cg3x Scope";
+PB_CARBINE_REFLEX = "Secondary Firemode: \cu1x Red Dot";
+
 //LMG
 PB_LMGMICRO = "Ammo Type: \cdMicro Missile";
 PB_LMGBULLET = "Ammo Type: \ckBullet";
 
 //Minigun
-PB_MINIGUN_CHAINGUN = "Firemode: \cdChaingun";
-PB_MINIGUN_GATLING = "Firemode: \ciGatling";
-PB_MINIGUN_TRIPLE = "Firemode: \cgDeath Dealer";
+PB_MINIGUN_CHAINGUN = "Firemode: \cd525 RPM";
+PB_MINIGUN_GATLING = "Firemode: \ci1050-2100 RPM";
+PB_MINIGUN_TRIPLE = "Firemode: \cg6300 RPM";
 
 //Nailgun
 PB_NAILGUN_NAIL = "Nail Type: \czStandard";
@@ -407,40 +397,23 @@ PB_BFG_PLASMA = "Firemode: \cdPlasma";
 PB_BFG_BLACKHOLE = "Firemode: \ctBlack Hole";
 
 //Demon-Tech Rifle
-PB_DTECH_INFERNO= "Firemode: \cgInferno";
+PB_DTECH_INFERNO= "Firemode: \c[PB_DTech]Inferno";
 PB_DTECH_CAUSTIC = "Firemode: \cdCaustic";
 
 //Unmaker
 PB_UNMAKER_OVERCHARGE = "Firemode: \cxOvercharged";
 
 //Gameplay Settings
-PB_DISABLE_PRONE = "Disable Prone Attacks";
-PB_DISABLE_PRONE_DESC = "Prohibit sergeants from using their prone attacks";
-
-PB_RECOIL_HORIZONTAL = "Horizontal Recoil";
-PB_RECOIL_VERTICAL = "Vertical Recoil";
-PB_RECOIL_DESC = "Adjust recoil. 1.0 is normal recoil. Set to 0 to disable or higher for higher recoil";
-PB_RECOIL_EXTRA = "Add Recoil to more Weapons";
-PB_RECOIL_EXTRA_DESC = "Adds recoil to the Rocket Launcher, Railgun Laser mode, BFG slot weapons, Flamethrower and Unmaker";
-
-//No M1 Plasma Rifle cooldown
-PB_NO_M1PLASMACOOLDOWN = "No M1 Plasma Rifle cooldown";
-PB_NO_M1PLASMACOOLDOWN_DESC = "Disables the M1 Plasma Rifle cooldown after firing." ;
-PB_NO_M1PLASMACOOLDOWN_NOTICE = "This only applies to the primary fire.";
-//PB_NO_M1PLASMACOOLDOWN_EXTRA = "This option also applies to the Pulse Cannon upgrade.";
-
-//Cryo Rifle Faster Warmup
-PB_CRYOWARMUP = "Cryo Rifle Firing warm-up speed";
-PB_CRYOWARMUP_DESC = "Default - Normal Speed.";
-PB_CRYOWARMUP_DESC2 = "Faster - Faster warmup, good for fast gameplay.";
-PB_CRYOWARMUP_DESC3 = "Classic - Instant firing like the old versions.";
-PB_CRYOWARMUP_NO = "This will not affect the Spear mode.";
-
 //Weapon Respect animations
 PB_RESPECT = "Weapon Respect animations";
 
+//Weapon Recoil
+PB_RECOIL_HORIZONTAL = "Horizontal Recoil";
+PB_RECOIL_VERTICAL = "Vertical Recoil";
+PB_RECOIL_DESC = "Adjust recoil. 1.0 is normal recoil. Set to 0 to disable or higher for higher recoil";
+
 //Dual Wielding Style
-PB_DUALSTYLE = "Dual-Wield Fire Mode";
+PB_DUALSTYLE = "Dual Wield Controls";
 PB_DUALSTYLE_SIN = "Single Button - Primary fire button fires both weapons, similar to BDv21.";
 PB_DUALSTYLE_DEF = "Default - Primary fire: Fire left weapon, Alt-fire: Fire right weapon.";
 PB_DUALSTYLE_INV = "Inverted - Primary fire: Fire right weapon, Alt-fire: Fire left weapon.";
@@ -448,15 +421,8 @@ PB_DUALOPT_SN = "Single Button";
 PB_DUALOPT_DEF = "Default";
 PB_DUALOPT_INV = "Inverted";
 
-//Cryo Rifle Warmup speed option
-PB_CRYO_DEF = "Default";
-PB_CRYO_FST = "Fast";
-PB_CRYO_CLS = "Classic (Instant)";
-
 //SSG random spawn
-PB_SSG_RNDSPWN = "SSG-class weapons randomly replace Pump Shotgun";
-
-PB_CRYO_CLS = "Classic (Instant)";
+PB_SSG_RNDSPWN = "Super Shotguns in Shotgun Spawner";
 
 // Player Obituaries
 OB_BABY = "%o was electroboomed by an Arachnotron.";

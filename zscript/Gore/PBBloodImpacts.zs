@@ -67,7 +67,16 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
     action Actor PB_SpawnBloodActor(class<Actor> bloodActor, bool translate = false, double rotAngle = 0, vector3 squibVel = (0, 0, 0), bool scaleWithDmg = false, vector3 squibOfs = (0, 0, 0))
     {
 		vector3 ofr = squibOfs;
-        Actor mo = Spawn(bloodActor, Vec3Offset(ofr.x, ofr.y, ofr.z), ALLOW_REPLACE);
+		let mo = Spawn(bloodActor, Vec3Offset(ofr.x, ofr.y, ofr.z), ALLOW_REPLACE);
+		PB_BloodCloud bc = PB_BloodCloud(mo);
+        if(bc) {
+			color bcol = 0xFFFF0000;
+			let col = uint(self.translation);
+			if(col == 524294) bcol = 0xFF00FF00;
+			if(col == 524290) bcol = 0xFF0000FF;
+			if(col == 524289) bcol = 0xFF006400;
+			bc.bcbuffer = bcol;
+		}
 
         if(!mo) return null;
 
@@ -76,6 +85,7 @@ class PB_GunshotBlood : NashGoreBlood replaces BloodSplatter
 
         if(target && target == players[consoleplayer].camera) 
             mo.A_SetRenderStyle(mo.alpha, STYLE_None);
+		mo.CopyBloodColor(self);
 
         mo.master = self;
         mo.vel = (RotateVector(squibVel.xy, rotAngle), squibVel.z);
@@ -230,18 +240,11 @@ class PB_BloodCloud : PB_LightActor
         if(CVar.GetCVar("pb_hidebloodmist", players[consoleplayer]).GetBool())
             A_SetRenderStyle(alpha, STYLE_None);
 
-		if(!target)
-		{
-            if(master)
-                CopyBloodColor(master);
-			else
-                bcbuffer = 0xffff0000;
-		}
-		else
-		    CopyBloodColor(target);
-
-        if(bloodcolor == 0) bcbuffer = 0xffff0000;
-        else bcbuffer = bloodcolor;
+        if(master && !target)
+            CopyBloodColor(master);
+		else if(target)
+			CopyBloodColor(target);
+        if(bcbuffer == 0xffff0000 && bloodcolor != 0) bcbuffer = bloodcolor;
 		
         //SetShade(PB_Math.PB_DesaturateColor(bcbuffer, 0.2, 1)); 
         //SetShade(PB_Math.PB_DesaturateColor(bcbuffer, 0.2, 1.2)); 

@@ -33,6 +33,7 @@ BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"
 DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
 +NOGRAVITY 
 +FLOAT
++FORCEXYBILLBOARD
 States 
    { 
    Pain.Avoid: 
@@ -281,6 +282,36 @@ States
        WATC ONMLKJI 8 
        Goto See 
    } 
+}
+
+Actor PB_DeadWatcher
+{
+	States
+	{
+	Spawn:
+		WATC O -1
+		Stop
+	}
+}
+
+Actor PB_DeadWatcher2
+{
+	States
+	{
+	Spawn:
+		WAT5 G -1
+		Stop
+	}
+}
+
+Actor PB_DeadWatcher3
+{
+	States
+	{
+	Spawn:
+		WAT4 G -1
+		Stop
+	}
 }
 
 ACTOR WatcherShot

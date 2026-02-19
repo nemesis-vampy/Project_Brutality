@@ -1,4 +1,4 @@
-class PB_DeadMarine : DeadMarine Replaces DeadMarine
+class PB_DeadMarine : DeadMarine //Replaces DeadMarine
 {
 	Default
 	{
@@ -115,7 +115,7 @@ class PB_DeadMarine : DeadMarine Replaces DeadMarine
 	}
 }
 
-class PB_GibbedMarine: GibbedMarine Replaces GibbedMarine
+class PB_GibbedMarine: GibbedMarine //Replaces GibbedMarine
 {
 	Default
 	{
@@ -160,11 +160,12 @@ class PB_GibbedMarine: GibbedMarine Replaces GibbedMarine
 	}
 }
 
-class PB_GibbedMarineExtra : PB_GibbedMarine Replaces GibbedMarineExtra
+class PB_GibbedMarineExtra : PB_GibbedMarine //Replaces GibbedMarineExtra
 {}
 
 class PB_CurbstompedMarine : Actor 
 {
+	mixin PB_SpawnGore;
 	Default
 	{ 
 		+MOVEWITHSECTOR;
@@ -199,6 +200,7 @@ class PB_CurbstompedMarine : Actor
 		damagefactor "SuperKick", 3.0;
 		damagefactor "ExtremePunches", 2.0;
 		damagefactor "SuperPunch", 2.0;
+		BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood";
 	}
 	States 
 	{

@@ -310,7 +310,7 @@ Class PB_ZombieScientist : PB_Monster
 				//bMISSILEMORE = true;
 				//bMISSILEEVENMORE = true;
 				MissileChanceMult = 0.0625;
-				A_StartSound("grunt/sight");
+				A_StartSound("pb/monsters/grunt/sight");
 				A_FaceTarget();
 				A_GiveInventory("Enraged", 1);
 				}
@@ -364,17 +364,17 @@ Class PB_ZombieScientist : PB_Monster
 		DiveLeft:
 			SCZA A 1 A_FaceTarget();
 			SCZA A 1 A_SetAngle(angle*256/360+90, SPF_INTERPOLATE);
-			//POSS A 1 A_SetAngle(angle*256/360+192, SPF_INTERPOLATE);
+			//POS1 A 1 A_SetAngle(angle*256/360+192, SPF_INTERPOLATE);
 			Goto DivingBegin;
 		DiveRight:
 			SCZA A 1 A_FaceTarget();
 			SCZA A 1 A_SetAngle(angle*256/360-90, SPF_INTERPOLATE);
-		//	POSS A 1 A_SetAngle(angle*256/360+64, SPF_INTERPOLATE);
+		//	POS1 A 1 A_SetAngle(angle*256/360+64, SPF_INTERPOLATE);
 			Goto DivingBegin;
 		DiveBack:
 			SCZA A 1 A_FaceTarget();
 			SCZA A 1 A_SetAngle(angle*256/360-180, SPF_INTERPOLATE);
-			//POSS A 1 A_SetAngle(angle*256/360+128, SPF_INTERPOLATE);
+			//POS1 A 1 A_SetAngle(angle*256/360+128, SPF_INTERPOLATE);
 			Goto DivingBegin;
 		DiveFront:
 			SCZA A 1 A_FaceTarget();
@@ -1364,7 +1364,7 @@ Class PB_ZombieScientist : PB_Monster
 		Stop;
 		
 		Raise:
-			POSS KJIH 5;
+			POS1 KJIH 5;
 			Goto See;
 
 		Death.Ice:
@@ -1426,7 +1426,7 @@ Class PB_ZombieScientist : PB_Monster
 		 Death.Stomp:
 		//	TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
-			//POSS IJK 2;
+			//POS1 IJK 2;
 			TNT1 A 1 A_XScream();
 			TNT1 A 0 {
 				NashGoreGibs.SpawnGibs(self);

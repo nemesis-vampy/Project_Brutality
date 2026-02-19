@@ -270,6 +270,20 @@ class NashGoreStatics play
 		}
 	}
 
+    // [gng] if the player is full autoing you want to clear the old smoke right 
+    // as the new smoke is created, so it doesn't block your view
+    static void ClearPlayerSmoke(void)
+	{
+		// count current amount of smoke objects
+		ThinkerIterator it = ThinkerIterator.Create("PB_GunFireSmoke", STAT_PB_SMOKE);
+		Actor mo;
+		while (mo = Actor(it.Next()))
+		{
+            if(mo.GetAge() < 6 && mo.master && mo.master is 'PlayerPawn' && !(mo is 'PB_CasingEjectionSmoke'))
+			    mo.Destroy();
+		}
+	}
+
 	//===========================================================================
 	//
 	//

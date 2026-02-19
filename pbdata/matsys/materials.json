@@ -87,5 +87,10 @@
     "gravel":{
         "bulletimpact":"PB_BulletImpactDirt",
         "footstep":"step/gravel"
+    },
+	
+    "sand":{
+        "bulletimpact":"PB_BulletImpactDirt",
+        "footstep":"step/sand"
     }
 }

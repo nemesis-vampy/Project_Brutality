@@ -115,3 +115,51 @@ BrightMap Sprite DRKVK3K7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK3
 BrightMap Sprite DRKVK4K6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK4.png" DisableFullBright}
 BrightMap Sprite DRKVK5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK5.png" DisableFullBright}
 BrightMap Sprite DRKVL0{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVL0.png" DisableFullBright}
+
+// Nether Dark Imp
+BrightMap Sprite DRKFA1 {Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVA1.png" DisableFullBright}
+BrightMap Sprite DRKFA2A8 {Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVA2.png" DisableFullBright}
+BrightMap Sprite DRKFA3A7 {Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVA3.png" DisableFullBright}
+BrightMap Sprite DRKFB1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVB1.png" DisableFullBright}
+BrightMap Sprite DRKFB2B8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVB2.png" DisableFullBright}
+BrightMap Sprite DRKFB3B7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVB3.png" DisableFullBright}
+BrightMap Sprite DRKFC1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVC1.png" DisableFullBright}
+BrightMap Sprite DRKFC2C8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVC2.png" DisableFullBright}
+BrightMap Sprite DRKFC3C7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVC3.png" DisableFullBright}
+BrightMap Sprite DRKFD1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVD1.png" DisableFullBright}
+BrightMap Sprite DRKFD2D8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVD2.png" DisableFullBright}
+BrightMap Sprite DRKFD3D7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVD3.png" DisableFullBright}
+BrightMap Sprite DRKFE1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVE1.png" DisableFullBright}
+BrightMap Sprite DRKFE2E8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVE2.png" DisableFullBright}
+BrightMap Sprite DRKFE3E7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVE3.png" DisableFullBright}
+BrightMap Sprite DRKFE4E6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVE4.png" DisableFullBright}
+BrightMap Sprite DRKFE5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVE5.png" DisableFullBright}
+BrightMap Sprite DRKFF1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVF1.png" DisableFullBright}
+BrightMap Sprite DRKFF2F8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVF2.png" DisableFullBright}
+BrightMap Sprite DRKFF3F7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVF3.png" DisableFullBright}
+BrightMap Sprite DRKFF4F6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVF4.png" DisableFullBright}
+BrightMap Sprite DRKFF5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVF5.png" DisableFullBright}
+BrightMap Sprite DRKFG1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVG1.png" DisableFullBright}
+BrightMap Sprite DRKFG2G8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVG2.png" DisableFullBright}
+BrightMap Sprite DRKFG3G7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVG3.png" DisableFullBright}
+BrightMap Sprite DRKFG4G6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVG4.png" DisableFullBright}
+BrightMap Sprite DRKFG5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVG5.png" DisableFullBright}
+BrightMap Sprite DRKFH1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVH1.png" DisableFullBright}
+BrightMap Sprite DRKFH2H8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVH2.png" DisableFullBright}
+BrightMap Sprite DRKFH3H7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVH3.png" DisableFullBright}
+BrightMap Sprite DRKFI1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVI1.png" DisableFullBright}
+BrightMap Sprite DRKFI2I8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVI2.png" DisableFullBright}
+BrightMap Sprite DRKFI3I7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVI3.png" DisableFullBright}
+BrightMap Sprite DRKFI4I6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVI4.png" DisableFullBright}
+BrightMap Sprite DRKFI5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVI5.png" DisableFullBright}
+BrightMap Sprite DRKFJ1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVJ1.png" DisableFullBright}
+BrightMap Sprite DRKFJ2J8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVJ2.png" DisableFullBright}
+BrightMap Sprite DRKFJ3J7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVJ3.png" DisableFullBright}
+BrightMap Sprite DRKFJ4J6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVJ4.png" DisableFullBright}
+BrightMap Sprite DRKFJ5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVJ5.png" DisableFullBright}
+BrightMap Sprite DRKFK1{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK1.png" DisableFullBright}
+BrightMap Sprite DRKFK2K8{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK2.png" DisableFullBright}
+BrightMap Sprite DRKFK3K7{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK3.png" DisableFullBright}
+BrightMap Sprite DRKFK4K6{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK4.png" DisableFullBright}
+BrightMap Sprite DRKFK5{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVK5.png" DisableFullBright}
+BrightMap Sprite DRKFL0{Map "Brightmaps/monsters/Dark Imp/VoidDarkImp/BMDRKVL0.png" DisableFullBright}

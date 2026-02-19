@@ -11,16 +11,16 @@ Actor PB_QSGZombie: PB_HelmetSergeant //Replaces ShotgunGuy
   Scale 1
   SpawnID 12
   Monster
-  SeeSound "grunt/sight"
-  PainSound "grunt/pain"
-  DeathSound "grunt/death"
-  ActiveSound "grunt/active"
+  SeeSound "pb/monsters/grunt/sight"
+  PainSound "pb/monsters/grunt/pain"
+  DeathSound "pb/monsters/grunt/death"
+  ActiveSound "pb/monsters/grunt/active"
   Obituary "%o was splattered by a Quad-Shotgun Zombie"
   DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
   damagefactor "TeleportRemover", 0.0
-  DropItem "PB_Shell"
-  DropItem "PB_QSGZombieDrop", 64
+  DropItem "PB_QSGZombieDrop"
   DropItem "PB_GrenadeAmmo" 5
+  PB_Monster.MonPosHB 0.75, 0.65, 0.38, 0.40
   States
   {	
 	
@@ -576,7 +576,7 @@ Actor PB_QSGZombie: PB_HelmetSergeant //Replaces ShotgunGuy
 	 Death.Crush:
 		TNT1 A 0 A_SpawnProjectile("XDeathHFQSZLeg1", 35, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
         QPO3 A 9 A_SpawnProjectile("PB_XDeath1", 40, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
-		TNT1 A 0 A_Playsound ("grunt/death")
+		TNT1 A 0 A_Playsound ("pb/monsters/grunt/death")
 		QPO3 B 3 
 		QPO3 C 3 A_NoBlocking
         TNT1 A 0 A_SpawnItemEx ("DyingHFQSZLegBlewedOff", 0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -642,7 +642,7 @@ Actor PB_QSGZombie: PB_HelmetSergeant //Replaces ShotgunGuy
 		Stop
 
 	Death.HeadExplode:
-        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 A 0 A_PlaySound("gore/headshot")
 		TNT1 AAAA 0 A_SpawnProjectile("Brains1", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("Brains2", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile("PB_Brains3", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))

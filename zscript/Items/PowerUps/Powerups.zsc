@@ -3,7 +3,7 @@ class PB_Invul : PB_Inventory //replaces invulnerabilitysphere
 {
 	Default
 	{
-		Inventory.PickupMessage "Invulnerability Sphere!";
+		Inventory.PickupMessage "Invulnerability Sphere";
 		Inventory.PickupSound "INVUL";
 		+FLOATBOB
 		floatbobstrength .4;
@@ -25,7 +25,7 @@ class PB_Invul : PB_Inventory //replaces invulnerabilitysphere
 	States
 	{
 	Spawn:
-		PINV ABCDEFGHIJ 3;
+		P1NV ABCDEFGHIJ 3;
 		loop;
 	}
 }
@@ -41,12 +41,20 @@ class PB_PowerInvul : PowerInvulnerable
 		Super.InitEffect();
 		if(!Owner) return;
 		owner.bNOBLOOD = true;
-		owner.A_AttachLightDef("InvulnLight","InvulLight");
 	}
 	
 	override void DoEffect()
 	{
 		Super.DoEffect();
+		if(CVar.GetCVar("pb_powerup_shaders",Owner.Player).GetBool())
+		{
+			Shader.SetEnabled(Owner.Player,"Invulnerability",true);
+			PPShader.SetUniform1f("Invulnerability","intensity",1.0);
+		}
+		else
+		{
+			Shader.SetEnabled(Owner.Player,"Invulnerability",false);
+		}
 		PowerupTimer("DarkGreen");
 	}
 
@@ -54,9 +62,9 @@ class PB_PowerInvul : PowerInvulnerable
 	{
 		Super.EndEffect();
 		if(!Owner) return;
+		Shader.SetEnabled(Owner.Player,"Invulnerability",false);
 		EndBlend("DarkGreen");
 		owner.bNOBLOOD = false;
-		owner.A_RemoveLight("InvulnLight");
 	}
 }
 
@@ -68,7 +76,7 @@ class PB_RadSuit : PB_Inventory //replaces radsuit
 	Default
 	{
 		Height 46;
-		Inventory.PickupMessage "Radiation Suit!";
+		Inventory.PickupMessage "Radiation Suit";
 		Inventory.PickupSound "misc/radsuit_PickUp";
 		-BRIGHT
 		-COUNTITEM
@@ -85,7 +93,7 @@ class PB_RadSuit : PB_Inventory //replaces radsuit
 	States
 	{
 	Spawn:
-		SUIT A -1;
+		SU1T A -1;
 		stop;
 	}
 }
@@ -105,16 +113,17 @@ class PB_PowerIronFeet : PowerIronFeet
 	{
 		If (Passive)
 		{
-			If (DamageType == 'Ice' || DamageType == 'Fire' || DamageType == 'Flames' || DamageType == 'Flame' || DamageType == 'Burn' || DamageType == 'Electric')
+			If (DamageType == 'Electric')
 			{
 				NewDamage = Damage * 0.75;
 				//console.printf ("PB_Radsuit: Took %d %s damage from %s, reduced it to %d damage",damage,damageType,inflictor.getclassname(),newdamage);
 				Return;
 			}
-			If (DamageType == 'PoisonCloud' || DamageType == 'Poison' && Source ||
+			If (DamageType == 'Ice' || DamageType == 'Fire' || DamageType == 'Flames' || DamageType == 'Flame' || DamageType == 'Burn' || DamageType == 'PoisonCloud' || DamageType == 'Poison' ||
 			DamageType == 'Disintegrate') //The Daedabus uses fucking disintegrating damage for some stupid reason.
 			{
 				NewDamage = Damage * 0;
+				owner.player.poisoncount = 0;
 				//console.printf ("PB_Radsuit: Took %d %s damage, reduced it to %d damage",damage,damageType,newdamage);
 				Return;
 			}
@@ -141,7 +150,7 @@ class PB_BlurSphere : PB_Inventory //replaces blursphere
 	Default
 	{
 		RenderStyle "Translucent";
-		Inventory.PickupMessage "Partial Invisibility!";
+		Inventory.PickupMessage "Partial Invisibility";
 		Inventory.PickupSound "INVISIBL";
 		+FLOATBOB
 		floatbobstrength .4;
@@ -164,7 +173,7 @@ class PB_BlurSphere : PB_Inventory //replaces blursphere
 	States
 	{
 	Spawn:
-		PINS ABCBJBABCJBCDEFGHIBJ 3;
+		P1N5 ABCBJBABCJBCDEFGHIBJ 3;
 		loop;
 	}
 }
@@ -178,6 +187,7 @@ class PB_PowerInvis : PowerInvisibility
 	override void DoEffect()
 	{
 		Super.DoEffect();
+		Owner.A_SetRenderStyle(.5, STYLE_Subtract);
 		PowerupTimer("Red", "Blue");
 	}
 	
@@ -195,7 +205,7 @@ class PB_Infrared : PB_Inventory //replaces infrared
 	Default
 	{
 		-BRIGHT
-		Inventory.PickupMessage "Light Amp Goggles!";
+		Inventory.PickupMessage "Night Vision Goggles";
 		Inventory.PickupSound "RA1IF1";
 		//Scale .3;
 	}
@@ -210,7 +220,7 @@ class PB_Infrared : PB_Inventory //replaces infrared
 	States
 	{
 	Spawn:
-		PVIS A -1;
+		PV1S A -1;
 		stop;
 	}
 }
@@ -220,11 +230,38 @@ class PB_InfraredGiver : PB_PowerupGiver { Default { Powerup.Type "PB_PowerLight
 class PB_PowerLightAmp : PowerTorch
 {
 	mixin PB_PowerupTimer;
-	Default { +INVENTORY.NOSCREENBLINK }
+	float exposureadjust;
+	Default { +INVENTORY.NOSCREENBLINK Powerup.Colormap 0.0, 2.0, 0.0; }
+	
+	override void InitEffect()
+	{
+		Super.InitEffect();
+		exposureadjust = (255 - owner.player.mo.cursector.lightlevel) / 16;
+	}
 	
 	override void DoEffect()
 	{
-		Super.DoEffect();
+		if(CVar.GetCVar("pb_powerup_shaders",Owner.Player).GetBool())
+		{
+			Super.EndEffect();
+			float sectorlightlevel = (255 - owner.player.mo.cursector.lightlevel) / 16;
+			
+			if(exposureadjust > sectorlightlevel)
+				exposureadjust = clamp(exposureadjust * 0.95,sectorlightlevel,255);
+			if(exposureadjust < sectorlightlevel)
+				exposureadjust = clamp(exposureadjust * 1.05,0.05,sectorlightlevel);
+			
+			Shader.SetEnabled(Owner.Player,"NightVision",true);
+			Shader.SetUniform1f(Owner.Player, "NightVision", "timer", Level.time / 6.0);
+			Shader.SetUniform1f(Owner.Player, "NightVision", "exposure", 1 + (exposureadjust * exposureadjust / 8.0) * CVar.GetCVar("pb_nightvision_exposure",Owner.Player).GetFloat());
+			Shader.SetUniform1f(Owner.Player, "NightVision", "darken", 1);
+			Shader.SetUniform3f(Owner.Player, "NightVision", "hsl", (0.33, 1.0, 0.5));
+		}
+		else
+		{
+			Super.DoEffect();
+			Shader.SetEnabled(Owner.Player,"NightVision",false);
+		}
 		PowerupTimer("Black");
 	}
 	
@@ -232,6 +269,7 @@ class PB_PowerLightAmp : PowerTorch
 	{
 		Super.EndEffect();
 		if(!owner) return;
+		Shader.SetEnabled(Owner.Player,"NightVision",false);
 		EndBlend("Black");
 	}
 }
@@ -239,9 +277,11 @@ class PB_PowerLightAmp : PowerTorch
 //Soulsphere & Megasphere
 class PB_Soulsphere : PB_Inventory //replaces soulsphere
 {
+	int ownrhp;
+	
 	Default
 	{
-		Inventory.PickupMessage "Soulsphere!";
+		Inventory.PickupMessage "Soulsphere";
 		Inventory.PickupSound "SSPH";
 		+FLOATBOB
 		floatbobstrength .4;
@@ -256,6 +296,17 @@ class PB_Soulsphere : PB_Inventory //replaces soulsphere
 		return true;
 	}
 	
+	override void Touch(actor toucher)
+	{
+		ownrhp = toucher.health;
+		super.Touch(toucher);
+	}
+	
+	override string PickupMessage()
+	{
+		return string.format(String.Format(ownrhp < 25 ? "Soulsphere (+%u much needed HP)" : "Soulsphere (+%u HP)",min(100, 200 - ownrhp)));
+	}
+	
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();
@@ -265,7 +316,7 @@ class PB_Soulsphere : PB_Inventory //replaces soulsphere
 	States
 	{
 	Spawn:
-		SOUL ABCDEFGHIJ 3;
+		SOU1 ABCDEFGHIJ 3;
 		loop;
 	}
 }
@@ -274,7 +325,7 @@ class PB_Megasphere : PB_Inventory //replaces megasphere
 {
 	Default
 	{
-		Inventory.PickupMessage "Megasphere!";
+		Inventory.PickupMessage "Megasphere (200 HP/AP)";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
@@ -299,7 +350,7 @@ class PB_Megasphere : PB_Inventory //replaces megasphere
 	States
 	{
 	Spawn:
-		MEGA ABCDEFGHIJ 3;
+		MEG4 ABCDEFGHIJ 3;
 		loop;
 	}
 }
@@ -309,28 +360,44 @@ class PB_PowerStrength : PowerStrength { Default { Powerup.Color "000000",0; } }
 
 class PB_Berserk : PB_Inventory //replaces Berserk
 {
+	int ownrhp;
+	
 	Default
 	{
 		-BRIGHT
-		Inventory.PickupMessage "Berserk Pack!";
 		Inventory.PickupSound "BERSPKUP";
 		//Scale .3;
 	}
 
 	override bool Use(bool pickup)
 	{
+		if(owner.CountInv("PB_PowerStrength") == 0) {
+			array<int> speckeys;
+			Bindings.GetAllKeysForCommand(speckeys,"+pb_specialwheel");
+			owner.A_Print("Press "..Bindings.NameAllKeys(speckeys).." with fists to swap modes");
+		}
 		owner.A_GiveInventory("PB_PowerStrength");
 		owner.GiveBody(100,0);
 		owner.A_SetBlend("Red",0.75,16);
-		owner.A_Print("Press Weapon Special key to swap modes");
 		if(pb_newmugshot) owner.A_SetMugshotState("BerserkGrin");
 		return true;
 	}
 
+	override void Touch(actor toucher)
+	{
+		ownrhp = toucher.health;
+		super.Touch(toucher);
+	}
+	
+	override string PickupMessage()
+	{
+		return string.format(ownrhp < 25 ? "Berserk Pack (+%u much needed HP)" : "Berserk Pack (+%u HP)",max(0,100 - ownrhp));
+	}
+	
 	States
 	{
 	Spawn:
-		PSTR A -1;
+		PST1 A -1;
 		stop;
 	}
 }
@@ -346,7 +413,7 @@ class PB_AllMap : AllMap //replaces AllMap
 	States
 	{
 	Spawn:
-		PMAP AFFAAAFFAFAFAFBCDEF 2 BRIGHT;
+		PMA1 AFFAAAFFAFAFAFBCDEF 2 BRIGHT;
 		loop;
 	}
 }
@@ -358,7 +425,7 @@ class PB_Doomsphere : PB_Inventory
 	{
 		//$Title Doomsphere
 		//$Category Powerups
-		Inventory.PickupMessage "Quad Damage!";
+		Inventory.PickupMessage "Quad Damage";
 		Inventory.PickupSound "DDMGPU";
 		-COUNTITEM
 		+FLOATBOB
@@ -432,8 +499,9 @@ class PB_Haste : PB_Inventory
 	{
 		//$Title Hastesphere
 		//$Category Powerups
-		Inventory.PickupMessage "Haste!";
+		Inventory.PickupMessage "Haste";
 		Inventory.PickupSound "DEM";
+		renderstyle "add";
 		-COUNTITEM
 		+FLOATBOB
 		floatbobstrength .4;

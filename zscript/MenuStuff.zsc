@@ -94,3 +94,25 @@ Class PB_OptionMenu : OptionMenu
 		}
 	}
 }
+
+class OptionMenuItemPB_TierMarker : OptionMenuItem
+{
+	OptionMenuItemPB_TierMarker Init(String label, name tier)
+	{
+		Super.Init(label, 'None', true);
+		mAction = tier;
+		return self;
+	}
+
+	override int Draw(OptionMenuDescriptor desc, int y, int indent, bool selected)
+	{
+		drawLabel(indent, y, 0);
+		return -1;
+	}
+
+	override bool Selectable()
+	{
+		return false;
+	}
+
+}

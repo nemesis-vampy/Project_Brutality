@@ -108,9 +108,10 @@ class PB_Math abstract
 	
 	//[inkoalawetrust] Written by Agent_Ash, makes the Val ranging from O_Min to O_Man be crushed down to the range of N_Min and N_Max.
 	//Useful for example for compressing distances to a range of 0 to 1.0.
-	ClearScope Static Double LinearMap (Double Val, Double O_Min, Double O_Max, Double N_Min, Double N_Max) 
+	ClearScope Static Double LinearMap (Double Val, Double O_Min, Double O_Max, Double N_Min, Double N_Max, bool clamp = false) 
 	{
-		Return (Val - O_Min) * (N_Max - N_Min) / (O_Max - O_Min) + N_Min;
+        double val = (Val - O_Min) * (N_Max - N_Min) / (O_Max - O_Min) + N_Min;
+		Return clamp ? clamp(val, N_Min, N_Max) : val;
 	}
 	
 	//CREDIT: RicardoLuis0
@@ -364,4 +365,38 @@ mixin class PB_RandomZombieNameHandler
     
         SetTag(mRank.." "..mFirstName.." "..string.Format("%c", random[PBRandomName]("A", "Z"))..". "..mLastName);
     }
+}
+
+//[nV] i'm losing my fucking mind what the fuck is wrong with this game
+mixin class PB_SpawnGore
+{
+	action bool, Actor A_SpawnGoreProjectile(class<Actor> missile, double spawnheight = 32, double spawnofs_xy = 0, double angle = 0, int flags = 0, double pitch = 0, int ptr = AAPTR_TARGET, bool trans = false) 
+	{
+		bool spn;
+		actor bld;
+		[spn, bld] = A_SpawnItemEx(missile,0,spawnofs_xy,spawnHeight);
+		if(bld)
+		{
+			bld.CopyBloodColor(self);
+			bld.Vel3DFromAngle(bld.speed,angle,flags & CMF_BADPITCH ? -pitch : pitch);
+			bld.angle = angle;
+			if(trans) bld.translation = bld.bloodtranslation;
+			return true, bld;
+		}
+		return false, null;
+	}
+
+	action bool, Actor A_SpawnGoreItemEx(class<Actor> missile, double xofs = 0, double yofs = 0, double zofs = 0, double xvel = 0, double yvel = 0, double zvel = 0, double angle = 0, int flags = 0, int failchance = 0, int tid = 0, bool trans = false) 
+	{
+		bool spn;
+		actor bld;
+		[spn, bld] = A_SpawnItemEx(missile,xofs,yofs,zofs,xvel,yvel,zvel,angle,flags,failchance,tid);
+		if(bld)
+		{
+			bld.CopyBloodColor(self);
+			if(trans) bld.translation = bld.bloodtranslation;
+			return true, bld;
+		}
+		return false, null;
+	}
 }

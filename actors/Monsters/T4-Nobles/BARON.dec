@@ -1,5 +1,5 @@
 
-ACTOR PB_Baron : BaronofHell //Replaces BaronofHell
+ACTOR PB_Baron : PB_Monster //Replaces BaronofHell
 {
 	//$Title Baron of Hell
 	//$Category Project Brutality - Monsters/Hell Nobles
@@ -30,6 +30,9 @@ ACTOR PB_Baron : BaronofHell //Replaces BaronofHell
 	damagefactor "DontCallTheBaron", 0.0
 	DamageFactor "CauseObjectsToSplash", 0.0
 	PainSound "PSXDPN"
+	SeeSound "baron/sight"
+	DeathSound "baron/death"
+	ActiveSound "baron/active"
     Health 1100
 damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
     BloodType "PB_GunshotBlood", "PB_SawBlood", "PB_SawBlood"

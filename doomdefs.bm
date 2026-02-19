@@ -53,7 +53,6 @@
 #include BMAP/AssaultZombie.txt
 #include BMAP/AutoShotgunGuy.txt
 #include BMAP/PistolZombie.txt
-#include BMAP/RiotShieldGuy.txt
 #include BMAP/ShotgunGuy.txt
 #include BMAP/Zombieman.txt
 #include BMAP/ZombieScientist.txt
@@ -65,6 +64,7 @@
 
 //Pinky
 #include BMAP/BruiserDemon.txt
+#include BMAP/VoidSpectre.txt
 
 //Caco
 #include BMAP/InfernalCacodemon.txt
@@ -95,19 +95,21 @@
 
 
 // Decorations
-brightmap sprite BAR1A0 { map "brightmaps/Decoration/BAR1A0.png" }
-brightmap sprite BAR1B0 { map "brightmaps/Decoration/BAR1B0.png" }
-brightmap sprite BAR1C0 { map "brightmaps/Decoration/BAR1C0.png" }
-brightmap sprite BAR1D0 { map "brightmaps/Decoration/BAR1D0.png" }
-brightmap sprite BAR1E0 { map "brightmaps/Decoration/BAR1E0.png" }
-brightmap sprite BAR1F0 { map "brightmaps/Decoration/BAR1F0.png" }
-brightmap sprite BAR1G0 { map "brightmaps/Decoration/BAR1G0.png" }
-brightmap sprite BAR1H0 { map "brightmaps/Decoration/BAR1H0.png" }
-brightmap sprite BAR1I0 { map "brightmaps/Decoration/BAR1I0.png" }
-brightmap sprite BAR1J0 { map "brightmaps/Decoration/BAR1J0.png" }
-brightmap sprite BAR1K0 { map "brightmaps/Decoration/BAR1K0.png" }
-brightmap sprite BAR1L0 { map "brightmaps/Decoration/BAR1L0.png" }
-brightmap sprite BAR1M0 { map "brightmaps/Decoration/BAR1M0.png" }
+brightmap sprite BA11A0 { map "brightmaps/Decoration/BAR1A0.png" }
+brightmap sprite BA11B0 { map "brightmaps/Decoration/BAR1B0.png" }
+brightmap sprite BA11C0 { map "brightmaps/Decoration/BAR1C0.png" }
+brightmap sprite BA11D0 { map "brightmaps/Decoration/BAR1D0.png" }
+brightmap sprite BA11E0 { map "brightmaps/Decoration/BAR1E0.png" }
+brightmap sprite BA11F0 { map "brightmaps/Decoration/BAR1F0.png" }
+brightmap sprite BA11G0 { map "brightmaps/Decoration/BAR1G0.png" }
+brightmap sprite BA11H0 { map "brightmaps/Decoration/BAR1H0.png" }
+brightmap sprite BA11I0 { map "brightmaps/Decoration/BAR1I0.png" }
+brightmap sprite BA11J0 { map "brightmaps/Decoration/BAR1J0.png" }
+brightmap sprite BA11K0 { map "brightmaps/Decoration/BAR1K0.png" }
+brightmap sprite BA11L0 { map "brightmaps/Decoration/BAR1L0.png" }
+brightmap sprite BA11M0 { map "brightmaps/Decoration/BAR1M0.png" }
+brightmap sprite BBLAA0 { map "brightmaps/Decoration/BBLAA0.png" }
+brightmap sprite BBLAC0 { map "brightmaps/Decoration/BBLAC0.png" }
 //Bloody Barrel
 brightmap sprite BARBA0 { map "brightmaps/Decoration/BAR1A0.png" }
 brightmap sprite BARBB0 { map "brightmaps/Decoration/BAR1B0.png" }

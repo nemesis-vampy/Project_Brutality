@@ -50,7 +50,7 @@ class PB_Projectile : FastProjectile abstract
 			//Console.Printf("Critical");
 			scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgTorsoMult : 1.5);
 			dmgtype = damagetype;
-			if (Pos.Z > victim.Pos.Z + victim.Height * ((ptrPBMon) ? ptrPBMon.posHeadHB : 0.80) / headSizeMul)
+			if (Pos.Z > victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posHeadHB : 0.80) / headSizeMul)
 			{
 				// Check if the monster doesn't ignore headshots else default to 0 (its funky)
 				if(!((ptrPBMon) ? ptrPBMon.ignoreHeadDamage : 0))
@@ -111,6 +111,7 @@ class PB_Projectile : FastProjectile abstract
                     pbBlood.smallCal = bSMALLIMPACT;
                     pbBlood.isBloodExplosionGenerator = isBloodExplosionGenerator;
                     pbBlood.projectileDamage = truedamage;
+					pbBlood.CopyBloodColor(victim);
                     // console.printf("ste: %p %s %i %i", pbBlood, pbBlood.GetClassName(), pbBlood.sourceIsProjectile, pbBlood.projectileDamage);
                 }
 
@@ -125,7 +126,7 @@ class PB_Projectile : FastProjectile abstract
 		OnHitActor(target, dmgType);
 		
 		// [gng] prevent missile from ripping through or getting stuck on bosses
-		if (bRIPPER && victim.bBOSS && bNOBOSSRIP)		
+		if (bRIPPER && (victim.bBOSS && bNOBOSSRIP || victim.bDONTRIP || victim.riplevelmin > ripperlevel || victim.riplevelmax > 0 && victim.riplevelmax < ripperlevel))		
 		{
 			// OnExplode (FindExplosionType(BlockingMobj));
 			// ExplodeMissile(BlockingLine, BlockingMobj);
@@ -186,7 +187,7 @@ class PB_Projectile : FastProjectile abstract
 	
 	virtual bool PenetrateWall(Vector3 frac)
 	{
-		if(!GetCVar("pb_wallpenetration") || Speed <= 0 || Mass <= 0 || penetrationCount == 0) 
+		if(Speed <= 0 || Mass <= 0 || penetrationCount == 0) 
 			return false;
 		
 		Vector3 lastP = pos;
@@ -278,6 +279,8 @@ class PB_Projectile : FastProjectile abstract
         INTERNAL_SpecLineTracer trac = INTERNAL_SpecLineTracer.Predict(self, vel.Unit(), dist, 0, 0x01000000, ignore: BlockingMobj);
         TraceResults specHit = trac.results;
         SetOrigin(specHit.HitPos, true);
+		
+		distanceTraveled = Level.Vec3Diff( pos, startPos ).Length();
 
         if(bRANGED)
         {

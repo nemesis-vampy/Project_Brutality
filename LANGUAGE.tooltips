@@ -2,33 +2,23 @@
 
 //ALL THEM TOOLTIPS
 //[AD]
-
+TIP_PB_FORCESPMOVEMENT = "Multiplayer movement is 33% slower than singleplayer.";
 TIP_PB_MPCALLSIGN = "Callsigns are three letter, uppercase names that appear instead of your full nickname.";
 TIP_PB_USELOWRESHUDFONT = "Better on low resolution displays.";
-TIP_HUD_OLDSCALE = "Disable if your HUD is too big or too small. Also allows finer scaling.\nSet to 0.98 for smoother swaying.";
+TIP_HUD_OLDSCALE = "Disable if your HUD is too big or too small. Also allows finer scaling.";
+TIP_HUD_SCALEFACTOR = "Set to 0.99 for smoother swaying.";
 TIP_LEVELSTOPLAY = "How long the mapset you're playing is, so that PB can scale spawning across it.";
 TIP_PB_WEAPON_CROSSHAIRS = "Unique crosshair for each weapon (overrides custom crosshair setting)";
-TIP_PB_DTECHFIRE = "Allow DTech projectiles to spawn hurting fire.";
 TIP_SINGLEDUALFIRE = "Single Button - Primary fire button fires both weapons, similar to BDv21.\nDefault - Primary fire: Fire left weapon, Alt-fire: Fire right weapon.\nInverted - Primary fire: Fire right weapon, Alt-fire: Fire left weapon.";
-TIP_PB_SGALTAMMOSWAP = "Ammo Swap is slower and more realistic.";
-TIP_PB_SGPUMPFROMHIP = "Pump shotgun from hip when you have berserk or a box magazine upgrade is in inventory.";
-TIP_PB_RLOVERLOADCELL = "A 50% Chance when firing a 60 cell laser blast you will overload the cell.";
-TIP_PB_HAZARDMOVEMENT = "Toggles hazard floors to inhibit or allow advanced movement, such as jumping and dashing. Turn this off for maps where advanced movement is not intended.";
+TIP_PB_SGALTBEHAVIOR = "Ammo Swap is slower and more realistic, pump shotgun from hip when you have berserk or the box magazine upgrade.";
+TIP_PB_HAZARDMOVEMENT = "Disables jumping, sliding and dashing when standing on damaging floors. Turn this off for maps where advanced movement is not intended.";
 TIP_PB_NOHELMETANIMATION = "Disable the animation of putting on your helmet at the start of the game.";
 TIP_NODOOMGUYTALK = "Disables the chance for automatic taunts to play.";
-TIP_PB_DISABLE_SERGEANT_PRONE = "Prohibit sergeants from using their prone attacks.";
-TIP_PB_CYBERDEMONDEATH = "Plays standard cyberdemon death animation instead of the slower, Hideous Destructor inspired death animation.";
+TIP_PB_CYBERDEMONDEATH = "Skip the Cyberdemon's death animation.";
 TIP_PB_WEAPON_RECOIL_MOD_VERTICAL = "Adjust recoil. 1.0 is normal recoil. Set to 0 to disable or higher for higher recoil.";
 TIP_PB_WEAPON_RECOIL_MOD_HORIZONTAL = "Adjust recoil. 1.0 is normal recoil. Set to 0 to disable or higher for higher recoil.";
-TIP_PB_WEAPON_RECOIL_EXTRA_WEAPONS = "Adds recoil to the Rocket Launcher, Railgun Laser mode, BFG slot weapons, Flamethrower and Unmaker";
-TIP_PB_UPGRADEREVOLVER = "No longer use the Pistol once you collect a revolver.";
-TIP_PB_UPGRADELMG = "No longer use the Carbine once you collect an LMG.";
-TIP_PB_UPGRADECARBINE = "No longer use the DMR once you collect a Carbine.";
-TIP_PB_UPGRADESHOTGUN = "No longer use the Pump Shotgun once you collect a Autoshotgun.";
-TIP_PB_UPGRADENAILGUN = "No longer use the Minigun when you collect a Nailgun.";
-TIP_PB_NOCOOLDOWN = "Disables the M1 Plasma Rifle cooldown after firing. This only applies to the primary fire.";
-TIP_PB_FASTCRYOWARMUP = "Default - Normal Speed.\nFaster - Faster warmup, good for fast gameplay.\nClassic - Instant firing like the old versions.\nThis will not affect the Spear mode.";
-TIP_PB_QSGQUADLOAD = "Allows Quad-Shotgun to reload all four shells at once. Only happens if the option to keep the SSG is off, or if keeping weapons is disabled.";
+TIP_PB_KEEPWEAPONS = "Keep weapons that can be replaced with another weapon.";
+TIP_PB_QSGQUADLOAD = "Quad-Barreled Shotgun reloads all four shells at once.";
 TIP_PB_PERFORMANCE_FIRE = "Use less effects for Flamethrower fire.";
 TIP_PB_GUNSMOKETYPE = "Decide which muzzle smoke particle effect to use.";
 TIP_PB_EXAGGERATEDRECOIL = "Exaggerated recoil for fully automatic weapons, they will sway around and tilt while firing.";
@@ -38,6 +28,45 @@ TIP_BLOODSPLASH = "Switch between the Regular PB Blood Splash and the Alternativ
 TIP_NOSCREENSPLASH = "Disables the splashing of liquids on the screen.";
 TIP_NOPAINEFFECT = "Disables the screen scratches, bullet holes, and cracks.";
 TIP_PB_TRACERLIGHT = "Enables GL light emitted from tracers.";
-TIP_PB_ALTTRACER = "Enables longer/more realistic tracer. (Rifle/Minigun only currently)";
 TIP_PB_VANILLAMONSTER_OVERRIDE = "Disable PB's Monsters, for those that are running custom enemy packs specifically.";
-TIP_PB_NAZIEXCLUSIVESPAWNING = "Disable the random chance for Nazis to be replaced by Grunts.";
+TIP_PB_VANILLAWOLFSS_OVERRIDE = "Replace nazis with vanilla Wolfenstein SS, for maps that use them to make custom enemies in DeHackEd.";
+TIP_PB_VANILLABOSSBRAIN_OVERRIDE = "Disable PB's custom Final Boss, for maps that use it in DeHackEd.";
+
+TIP_PB_POWERUP_SHADERS = "Use shaders for prettier powerup effects.";
+TIP_PB_NIGHTVISION_EXPOSURE = "Brightness of the night vision effect. Values above 0 will be automatically dimmed in bright sectors.";
+
+TIP_V5_MODELS = "Replaces Pickups/Casings/Decor with Voxel-Style PolyMesh Models.\nModels may cause performance issues.\nYou can switch this feature On or Off at any time.";
+TIP_V5_CULL = "Models will only render in when inside the set culling distance";
+TIP_V5_QUAKE3 = "Makes Weapons, Keys, and small pickups float and spin a la Quake 3";
+
+TIP_MOVEBOB = "Adjust view bobbing's intensity when moving";
+TIP_STILLBOB = "Adjust view bobbing's intensity when not moving";
+TIP_WBOBSPEED = "Adjust weapon bobbing's intensity when moving";
+TIP_PB_STILLBOB = "Turn on/off the weapon bobbing when standing still";
+TIP_PB_FULLBOBSPEED = "How fast weapon sprites transition to their maximum bobbing range";
+
+TIP_PB_YAWSWAY = "Allow weapons to sway according to your mouse yaw";
+TIP_PB_YAWSWAYSPEED = "How fast weapons sway";
+TIP_PB_YAWSWAYRANGE = "Maximum Distance weapons can sway";
+TIP_PB_YAWSWAYFRICTION = "How fast sprites will tend to realign to the center";
+TIP_PB_YAWSWAYDIRECTION = "Set wherever weapons sway in the direction you turn or the opposite";
+TIP_PB_PITCHSWAYTYPE = "Set wherever weapons sway in the direction you turn or the opposite";
+
+TIP_PB_OFFSETSPEED = "How fast weapons raise and fall depending on your vertical velocity";
+TIP_PB_OFFSETMAXRANGE = "Maximum Height weapons can fall";
+TIP_PB_OFFSETDIRECTION = "Set Wherever the sprites are offset according to your vertical direction";
+
+TIP_PB_USEMODERNBLOOD = "Use modern blood impact effects.";
+TIP_NASHGORE_BLOODMULT = "Blood amount multiplier. May cause performance issues at higher values.";
+TIP_NASHGORE_SPRITEBLOOD = "Use decals or sprites for blood spots.";
+TIP_NASHGORE_BLOODSPURT = "Enable blood spurts on corpses.";
+TIP_PB_HIDEBLOODMIST = "Hide blood cloud effects.";
+
+TIP_NASHGORE_GIBTYPE = "Gib effect type.";
+TIP_NASHGORE_GIBAMOUNT = "Adjusts amount of gibs.";
+
+TIP_NASHGORE_MAXGORE = "Maximum number of blood & gore objects to spawn.";
+TIP_NASHGORE_MAXCASINGS = "Maximum number of spent casings to spawn.";
+TIP_PB_CHEAPCASINGS = "To improve performance, casings will not react to the player and their surroundings";
+
+TIP_PBPIXELRENDERINGFIX = "Project Brutality's weapons were not designed for the 20% vertical stretch of vanilla doom's rendering.\nYou can re-enable it if you prefer the vanilla look.";

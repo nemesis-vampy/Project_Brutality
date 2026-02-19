@@ -522,7 +522,7 @@ Class ShotgunCasingRedLive : ShotgunCasing
 	{
 		Death:
 			"####" A 0 A_SetRoll(0);
-			"####" A 0 A_SpawnItemEx("LiveShellRed");
+			"####" A 0 A_SpawnItemEx("PB_SingleShell");
 			Stop;
 	}
 }
@@ -538,7 +538,7 @@ Class ShotgunCasingGreenLive : ShotgunCasingRedLive
 	{
 		Death:
 			"####" A 0 A_SetRoll(0);
-			"####" A 0 A_SpawnItemEx("LiveShellGreen");
+			"####" A 0 A_SpawnItemEx("PB_SingleShellSlug");
 			Stop;
 	}
 }
@@ -554,7 +554,7 @@ Class ShotgunCasingOrangeLive : ShotgunCasingRedLive
 	{
 		Death:
 			"####" A 0 A_SetRoll(0);
-			"####" A 0 A_SpawnItemEx("LiveShellOrange");
+			"####" A 0 A_SpawnItemEx("PB_SingleShellDragonsBreath");
 			Stop;
 	}
 }
