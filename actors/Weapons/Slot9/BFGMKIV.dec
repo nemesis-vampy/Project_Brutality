@@ -379,7 +379,7 @@ ACTOR PB_BFG9000: PB_Weapon //Replaces BFG9000
 				A_GunFlash;
 			}
 		BeamLoop:
-			016G FGHIJKL 1 {
+			016G GHIJKL 1 {
 				PB_FireOffset;
 				//A_FireCustomMissile ("BFG_BeamProjectile", 0, 0, 0, -8, 0,0);
 				PB_FireAltBFGRail();  //function defined in BaseWeapon_Function.zsc to replace the rail and the projectilew
