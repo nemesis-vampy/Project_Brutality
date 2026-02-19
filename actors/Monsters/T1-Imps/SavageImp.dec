@@ -1620,9 +1620,9 @@ ACTOR SavageImpTorso
     BLUD C 0 A_Recoil (3)
     BLUD C 0 ThrustThing (random(0,255),random(1,5))
     BLUD C 0 ThrustThingZ (0,random(0,50),random(0,1),0)
-TNT1 A 0 A_SetInvulnerable
-GORX B 10
-TNT1 A 0 A_UnSetInvulnerable
+	TNT1 A 0 A_SetInvulnerable
+	2ROG K 10
+	TNT1 A 0 A_UnSetInvulnerable
     Goto Dead
     
    Dead:
