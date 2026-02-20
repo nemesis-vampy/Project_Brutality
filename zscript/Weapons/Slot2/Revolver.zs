@@ -638,95 +638,15 @@ Class PB_Revolver : PB_WeaponBase
 				}
 		ReadyToFireDualWield:
 			TNT1 A 0 PB_SelectIfUpgrade("PB_Deagle");
-			TNT1 A 1 {
-				if(CountInv("PB_LowCalMag")>0)
-				{
-					if(CountInv("LeftRevolverAmmo")<=0 || CountInv("RevolverAmmo")<=0 || PB_GetMagUnloaded() || PB_GetMagUnloaded(true))
-					{
-						if((CountInv("LeftRevolverAmmo")<=0 || PB_GetMagUnloaded(true)) && (CountInv("RevolverAmmo")<=0 || PB_GetMagUnloaded()))
-							A_SetInventory("DualFireReload",2);
-						else
-							A_SetInventory("DualFireReload",1);
-					}
-				}
-				
-				if(!PB_CanDualWield())
-					return resolvestate("StopDualWield");
-				
-				return A_DoPBWeaponAction(WRF_ALLOWRELOAD|WRF_NOFIRE);
-			}
+			TNT1 A 1 A_DoPBDualAction(2);
 			Loop;
 		
 		IdleLeft_Overlay:
-			40V1 J 1 {
-				if(CountInv("LeftRevolverAmmo")<=0 && CountInv("RevolverAmmo")>0)
-					A_GiveInventory("DualFiring",1);
-				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
-				if((PressingAltFire() || JustPressed(BT_ALTATTACK)) && !A_IsFiringLeftWeapon() && firemodecvar == 2)
-				{
-						if(CountInv("LeftRevolverAmmo") > 0 && !PB_GetMagUnloaded(true))
-							return resolvestate("FireLeft_Overlay");
-						else if(JustPressed(BT_ALTATTACK))
-						{
-							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-							return resolvestate(null);
-						}
-				}
-				if(CountInv("DualFiring")==0 || (CountInv("DualFiring")==0 && CountInv("RevolverAmmo")<=0) || firemodecvar == 1)
-				{
-					if((PressingFire() || JustPressed(BT_ATTACK)) && !A_IsFiringLeftWeapon() && firemodecvar < 2)
-					{
-						if(CountInv("LeftRevolverAmmo") > 0 && !PB_GetMagUnloaded(true))
-							return resolvestate("FireLeft_Overlay");
-						else if(JustPressed(BT_ATTACK))
-						{
-							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-							return resolvestate(null);
-						}
-					}
-				}
-				return resolvestate(null);
-			}
+			40V1 J 1 A_DoPBLeftAction();
 			Loop;
 			
 		IdleRight_Overlay:
-			40V1 K 1 {
-				if(CountInv("LeftRevolverAmmo")>0 && CountInv("RevolverAmmo")<=0)
-					A_TakeInventory("DualFiring",1);
-				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
-				if(CountInv("DualFiring")==1 || (CountInv("DualFiring")==1 && CountInv("LeftRevolverAmmo")<=0))
-				{
-					if((PressingFire() || JustPressed(BT_ATTACK)) && !A_IsFiringLeftWeapon() && firemodecvar==0)
-					{
-						if(CountInv("RevolverAmmo") > 0 && !PB_GetMagUnloaded())
-							return resolvestate("FireRight_Overlay");
-						else if(JustPressed(BT_ATTACK))
-						{
-							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-							return resolvestate(null);
-						}
-					}
-				}
-				if((PressingAltfire() || JustPressed(BT_ALTATTACK)) && !A_IsFiringRightWeapon() && firemodecvar==1){
-					if(CountInv("RevolverAmmo") > 0 && !PB_GetMagUnloaded())
-						return resolvestate("FireRight_Overlay");
-					else if(JustPressed(BT_ALTATTACK))
-					{
-						A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-						return resolvestate(null);
-					}
-				}
-				if((Pressingfire() || JustPressed(BT_ATTACK)) && !A_IsFiringRightWeapon() && firemodecvar==2){
-					if(CountInv("RevolverAmmo") > 0 && !PB_GetMagUnloaded())
-						return resolvestate("FireRight_Overlay");
-					else if(JustPressed(BT_ATTACK))
-					{
-						A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-						return resolvestate(null);
-					}
-				}
-				return resolvestate(null);
-			}
+			40V1 K 1 A_DoPBRightAction();
 			Loop;
 		
 		MuzzleFlashLeft:

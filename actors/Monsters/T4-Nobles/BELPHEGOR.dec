@@ -9,6 +9,7 @@ ACTOR PB_Belphegor : PB_Baron //Replaces BaronofHell
 	Game Doom
     GibHealth 25
 	SpawnID 2260
+	Mass 1000
 	PainChance "Kick", 255
 	PainChance "Stun", 255
 	PainChance "Siphon", 255

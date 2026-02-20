@@ -212,7 +212,7 @@ ACTOR PB_Carbine : PB_Weapon
 	IdleLeft_Overlay:
 		CB01 F 1 {
 			// Full-Auto
-			if(CountInv("LeftXRifleAmmo")<=0 && CountInv("XRifleAmmo")>0){
+			if(PB_GetChamberEmpty(true) && !PB_GetChamberEmpty){
 				A_GiveInventory("DualFiring",1);
 			}
 
@@ -293,7 +293,7 @@ ACTOR PB_Carbine : PB_Weapon
 		CB01 G 1 {
 			PB_CoolDownBarrel(-14);
 			// Full-Auto
-			if(CountInv("LeftXRifleAmmo")>0 && CountInv("XRifleAmmo")<=0){
+			if(!PB_GetChamberEmpty(true) && PB_GetChamberEmpty){
 				A_TakeInventory("DualFiring",1);
 			}
 			
