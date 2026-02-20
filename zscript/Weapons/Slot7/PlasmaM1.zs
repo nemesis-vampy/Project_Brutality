@@ -21,6 +21,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		PB_WeaponBase.OffsetRecoilX 2.5;
 		PB_WeaponBase.OffsetRecoilY 2.0;
 		+WEAPON.NOAUTOAIM
+		+WEAPON.NOAUTOFIRE
 	}
 	
 	states
@@ -253,6 +254,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			P1SG BCDEEEEEEEEEEE 1 A_FireProjectile("SmokeSpawner",0,0,0,5);
 			P1SG DCB 1 A_SetRoll(roll-0.5);
 			TNT1 A 0 A_Setinventory("PB_LockScreenTilt",0);
+			TNT1 A 0 PB_ReFire();
 			Goto Ready3;
 		
 		AltFireRecoil:
@@ -395,7 +397,7 @@ Class PB_M1Plasma : PB_WeaponBase
 			TNT1 A 0 A_StartSound("PLSCOOL",CHAN_VOICE);
 			PLSU FFFFFFFFF 2 A_FireProjectile("SmokeSpawner",0,0,0,5);
 			P1SG DCB 1;
-			TNT1 A 0 PB_jumpIfNoAmmo();
+			TNT1 A 0 A_JumpIf(PB_GetMagEmpty(),"Ready3");
 			TNT1 A 0 A_StartSound("BEPBEP");
 			Goto Ready3;
 		

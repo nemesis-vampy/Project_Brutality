@@ -43,26 +43,26 @@ Class PB_Revolver : PB_WeaponBase
 				A_SetCrosshair(-1);
 				}
 			R2V1 ABCDEFGHIJ 1{
-				A_DoPBWeaponAction();
 				A_SetRoll(roll+0.1, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			R2V1 KLMNOPQRST 1 {
-				A_DoPBWeaponAction();
 				A_SetRoll(roll-0.1, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			R2V1 U 1 A_DoPBWeaponAction();
 			R2V1 VWXYZ 1 {
-				A_DoPBWeaponAction();
 				A_SetRoll(roll+0.2, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			TNT1 A 0 A_StartSound("Weapons/Revolver/Open", 10,CHANF_OVERLAP);
 			R2V2 AB 1 {
-				A_DoPBWeaponAction();
 				A_SetRoll(roll+0.2, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			R2V2 CDEFGHI 1{
-				A_DoPBWeaponAction();
 				A_SetRoll(roll-0.2, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			R2V2 JKLMNOPQRSTUVWXYZ 1 A_DoPBWeaponAction();
 			R2V3 ABCDEFGH 1 A_DoPBWeaponAction();
@@ -75,13 +75,13 @@ Class PB_Revolver : PB_WeaponBase
 			R2V4 MNOPQRSTUVWXYZ 1 A_DoPBWeaponAction();
 			R2V5 ABCDEFGHIJKL 1 A_DoPBWeaponAction ();
 			R2V5 MNOP 1 {
-				A_DoPBWeaponAction();
 				A_SetRoll(roll-0.4, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			TNT1 A 0 A_StartSound("Weapons/Revolver/Close");
 			R2V5 QRSTUVWX 1 {
-				A_DoPBWeaponAction();
 				A_SetRoll(roll+0.2, SPF_INTERPOLATE);
+				return A_DoPBWeaponAction();
 				}
 			R2V5 YZ 1 A_DoPBWeaponAction();
 			R2V6 ABCDEFGHIJKLM 1 A_DoPBWeaponAction();

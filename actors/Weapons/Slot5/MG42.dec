@@ -449,9 +449,6 @@ ACTOR PB_MG42 : PB_Weapon
 					else if (PressingFire() && PressingAltfire() && CountInv("PB_HighCalMag") > 1 && PB_GetOverheat == 500) {
 							Return State ("UnzoomOverheat");
 						}
-					else if (PressingFire() && PressingAltfire() && CountInv("PB_HighCalMag") <= 1) {
-							Return State ("Unzoom");
-						}
 				return A_DoPBWeaponAction(WRF_ALLOWRELOAD|WRF_NOSECONDARY);
 			}
 		else {

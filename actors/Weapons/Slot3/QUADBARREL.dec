@@ -1222,7 +1222,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("QSSGAmmoCounter", 4, "FireRightBarrels")
 		TNT1 A 0 A_JumpIfInventory("QSSGAmmoCounter", 2, "FireLeftBarrels")
 		TNT1 A 0 A_JumpIfInventory("QSSGAmmoCounter", 1, "FireLeftSingleBarrel")
-		Goto Reload
+		TNT1 A 0 PB_jumpIfNoAmmo
 		HalfFlash1:
 			QSFM CD 1 Bright A_GunFlash
 			Stop
@@ -1334,7 +1334,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("FullBlastMode", 1,"HalfBlast")
 		TNT1 A 0 A_JumpIfInventory("QSSGAmmoCounter", 3, "FireRightSingleBarrel")
 		TNT1 A 0 A_JumpIfInventory("QSSGAmmoCounter", 1, "FireLeftSingleBarrel")
-		Goto Reload
+		TNT1 A 0 PB_jumpIfNoAmmo
 		QuarterFlash1:
 			QSFM J 0
 			QSFM I 1 Bright {

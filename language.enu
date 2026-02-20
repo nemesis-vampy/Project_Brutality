@@ -15,9 +15,14 @@ PB_TIER1 = "\ck-- Tier 1 --";
 PB_TIER2 = "\cd-- Tier 2 --";
 PB_TIER3 = "\cv-- Tier 3 --";
 PB_TIER4 = "\ct-- Tier 4 --";
+
+PB_MENURESET = "Reset options to default";
+PB_MENURESETWARN = "Reset all options in this menu\nto their default values.\nAre you sure?";
+
 GOTCLIP = "Picked up a Magazine.";
 GOTHTHNEED = "Picked up a health bonus. It's not enough health to manage, but you needed it anyway." ;
 GOTMEDPAKNEED = "Picked up a medipack that you DESPERATELY needed!";
+
 // Tilt Screen
 OPTMNU_TILTPLUSPLUS = "Customize Tilt++";
 
@@ -35,30 +40,6 @@ TILTPLUSPLUSMNU_SPEED = "Speed";
 TILTPLUSPLUSMNU_ANGLE = "Angle";
 TILTPLUSPLUSMNU_SCALAR = "Intensity";
 TILTPLUSPLUSMNU_INVERT = "Invert";
-
-
-// Help text
-TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT = "Enable strafe tilting.";
-TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_INVERT = "Invert the strafe tilting direction.";
-TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_SPEED = "How fast strafe tilting occurs.";
-TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_ANGLE = "Maximum angle to tilt the view while strafing.";
-
-TILTPLUSPLUSMNU_HELPTEXT_MOVETILT = "Enable movement tilting.";
-TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SPEED = "How fast to tilt the view while moving.";
-TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_ANGLE = "Maximum movement tilting angle.";
-TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SCALAR = "Overall movement tilting intensity.";
-
-TILTPLUSPLUSMNU_HELPTEXT_TURNTILT = "Enable horizontal-look tilting.";
-TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_INVERT = "Invert the turn tilting direction.";
-TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_SCALAR = "Overall turn tilting intensity.";
-
-TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT = "Enable slow tilting while submerged underwater.";
-TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SPEED = "How fast to tilt the view while underwater.";
-TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_ANGLE = "Maximum underwater tilting angle.";
-TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SCALAR = "Overall underwater tilting intensity.";
-
-TILTPLUSPLUSMNU_HELPTEXT_DEATHTILT = "Tilt the view when player is dead.";
-
 
 //NashGore
 [enu default]
@@ -334,8 +315,8 @@ PB_SGSLUGLD = "Shell Type: \cdSlug";
 PB_SGDBLD =  "Shell Type: \ciDragon's Breath";
 
 //Quad Shotgun
-PB_QSG_DEMONBREATH = "Firemode: \ciDemonic Breath";
-PB_QSG_SHELLS = "Firemode: \cgShells";
+PB_QSG_DEMONBREATH = "Firemode: \ciDemon's Breath";
+PB_QSG_SHELLS = "Firemode: \cgBuckshot";
 PB_QSG_HALF = "Firemode: \cuHalf Blast";
 PB_QSG_FULL = "Firemode: \ckFull Blast";
 

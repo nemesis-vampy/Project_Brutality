@@ -20,23 +20,23 @@
 #include "BMAP/Weapons/Slot 4/LMG.txt"
 #include "BMAP/Weapons/Slot 4/DMR.txt"
 //Slot 5
-#include BMAP/Nailgun.txt
+#include "BMAP/Weapons/Slot 5/Nailgun.txt"
 #include BMAP/Minigun.txt
-#INCLUDE "BMAP/Weapons/Slot 4/MG42.TXT"
+#INCLUDE "BMAP/Weapons/Slot 5/MG42.TXT"
 //Slot 6
 #include "BMAP/Weapons/Slot 6/SuperGrenadeLauncher.txt"
 #include "BMAP/Weapons/Slot 6/RocketLauncher.txt"
 //Slot 7
+#include "BMAP/Weapons/Slot 7/M1Plasma.txt"
 #include BMAP/M2Plasma.txt
-#include BMAP/Plasma.txt
+#include "BMAP/Weapons/Slot 7/DemonTech.txt"
 //Slot 8
-#include BMAP/Railgun.txt
-#include BMAP/Freezer.txt
+#include "BMAP/Weapons/Slot 8/Freezer.txt"
+#include "BMAP/Weapons/Slot 8/Flamethrower.bm"
 //Slot 9
 #include BMAP/BHG.txt
-//Slot 0
-#include "BMAP/Weapons/Slot 0/Flamethrower.bm"
-#include "BMAP/Weapons/Slot 0/DemonTech.txt"
+#include BMAP/Railgun.txt
+#include "BMAP/Weapons/Slot 9/BFG9000.bm"
 
 //Others
 #include BMAP/Throwables.txt

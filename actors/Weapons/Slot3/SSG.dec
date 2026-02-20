@@ -553,7 +553,7 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 			PB_HandleCrosshair(40);
 			A_SetInventory("PB_LockScreenTilt",0);
 		}
-		TNT1 A 0 PB_JumpIfNoAmmo("AltFire2",2)
+		TNT1 A 0 PB_JumpIfNoAmmo("AltFire2",2,true,true,"")
 		SHO9 A 1 BRIGHT {
 			PB_IncrementHeat(10);
 			PB_IncrementHeat(10, true);
@@ -600,7 +600,7 @@ ACTOR PB_SSG : PB_weapon //Replaces SuperShotgun
 			A_SetRoll(0);
 			PB_HandleCrosshair(40);
 		}
-		TNT1 A 0 PB_JumpIfNoAmmo("AltFire2",2,true,"")
+		TNT1 A 0 PB_JumpIfNoAmmo("AltFire2",2,true,true,"")
 		SHTA A 1 BRIGHT {
 			A_Overlay(-5, "HalfFlash1", true);
 			A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);

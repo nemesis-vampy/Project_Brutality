@@ -227,7 +227,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 		
 		Damagetype "Blast";
 		DeathSound "Weapons/NailHit";
-		Scale 1.2;
+		Scale 0.5;
 		Speed 75;
 		Radius 6;
 		Height 6;
@@ -243,7 +243,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 	{
 		Spawn:
 			TNT1 A 0;
-			NAIL B 1 BRIGHT A_StartSound("Weapons/NailFlight", CHAN_BODY,CHANF_LOOP, 1.0);
+			NAIL A 1 BRIGHT A_StartSound("Weapons/NailFlight", CHAN_BODY,CHANF_LOOP, 1.0);
 			Goto Fly;
 		Bounce:
 			TNT1 A 0
@@ -259,7 +259,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 			}
 		Fly:
 			TNT1 A 0;
-			NAIL B 1;
+			NAIL A 1;
 			Loop;
 		Crash:
 		Death:
@@ -282,7 +282,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 // 			NAIL BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_FadeOut(0.02);
 // 			Stop;
 		Hanging:
-			NAIL B 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			NAIL A 35 A_JumpIf(LIFETIME <= 0, "Fade");
 			TNT1 A 0 {
 				LIFETIME--;
 				return A_CheckBlock("Hanging", 0, 0, (RADIUS / 2) + 1);
@@ -294,7 +294,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 				bTHRUACTORS = true;
 			}
 		Fade:
-			NAIL B 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
+			NAIL A 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
 			Loop;
 		XDeath:
 			TNT1 A 0 { 
@@ -303,7 +303,7 @@ class PB_JavelinProjectile : PB_ProjectileAlt
 				A_StartSound("Weapons/NailHitBleed");
 			}
 		XDeathloop:
-			NAIL B 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			NAIL A 35 A_JumpIf(LIFETIME <= 0, "Fade");
 			TNT1 A 0 { LIFETIME--; }
 			Loop;
 			//NAIL B 70 ;
@@ -328,7 +328,7 @@ class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 		BounceCount 2;
 		Damagetype "Blast";
 		DeathSound "Weapons/NailHit";
-		Scale 1.2;
+		Scale 0.5;
 		Speed 100;
 		Radius 6;
 		Height 6;
@@ -388,18 +388,46 @@ class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 // 			Stop;
 		Hanging:
 			NAIL B 35 A_JumpIf(LIFETIME <= 0, "Fade");
-			TNT1 A 0 {
+			NAIL B 0 {
 				LIFETIME--;
-				return A_CheckBlock("Hanging", 0, 0, (RADIUS / 2) + 1);
+				return A_CheckBlock("Hanging2", 0, 0, (RADIUS / 2) + 1);
+			}
+			Goto Drop;
+		Hanging2:
+			NAIL C 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			NAIL C 0 {
+				LIFETIME--;
+				return A_CheckBlock("Hanging3", 0, 0, (RADIUS / 2) + 1);
+			}
+			Goto Drop;
+		Hanging3:
+			NAIL D 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			NAIL D 0 {
+				LIFETIME--;
+				return A_CheckBlock("Hanging4", 0, 0, (RADIUS / 2) + 1);
+			}
+			Goto Drop;
+		Hanging4:
+			NAIL E 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			NAIL E 0 {
+				LIFETIME--;
+				return A_CheckBlock("Hanging5", 0, 0, (RADIUS / 2) + 1);
+			}
+			Goto Drop;
+		Hanging5:
+			NAIL A 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			NAIL A 0 {
+				LIFETIME--;
+				return A_CheckBlock("Hanging5", 0, 0, (RADIUS / 2) + 1);
 			}
 		Drop:
-			TNT1 A 0 {
+			NAIL # 0 {
 				bNOINTERACTION = false;
 				bNOGRAVITY = false;
 				bTHRUACTORS = true;
 			}
 		Fade:
-			NAIL B 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
+			NAIL # 1 A_FadeOut(0.2,FTF_REMOVE | FTF_CLAMP);
 			Loop;
 		XDeath:
 			TNT1 A 0 {
@@ -407,8 +435,16 @@ class PB_JavelinProjectile_Hot : PB_ProjectileAlt
 				A_StopSound(CHAN_BODY);
 				A_StartSound("Weapons/NailHitBleed");
 			}
-		XDeathloop:
 			NAIL B 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			TNT1 A 0 { LIFETIME--; }
+			NAIL C 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			TNT1 A 0 { LIFETIME--; }
+			NAIL D 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			TNT1 A 0 { LIFETIME--; }
+			NAIL E 35 A_JumpIf(LIFETIME <= 0, "Fade");
+			TNT1 A 0 { LIFETIME--; }
+		XDeathLoop:
+			NAIL A 35 A_JumpIf(LIFETIME <= 0, "Fade");
 			TNT1 A 0 { LIFETIME--; }
 			Loop;
 			//NAIL B 70 ;

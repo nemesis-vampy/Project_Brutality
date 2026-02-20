@@ -216,10 +216,12 @@ class PB_BlackHole : Actor
 		//its better than jumping into the blackhole to clean the screen
 		if(SuckedPlayer)
 		{
-			SuckedPlayer.Player.BlendA = 0.0;
-			SuckedPlayer.Player.BlendR = 0.0;
-			SuckedPlayer.Player.BlendG = 0.0;
-			SuckedPlayer.Player.BlendB = 0.0;
+			//console.printf("%f %f %f %f",SuckedPlayer.Player.BlendA,SuckedPlayer.Player.BlendR,SuckedPlayer.Player.BlendG,SuckedPlayer.Player.BlendB);
+			SuckedPlayer.Player.BlendA = 0;
+			SuckedPlayer.Player.BlendR = 0;
+			SuckedPlayer.Player.BlendG = 0;
+			SuckedPlayer.Player.BlendB = 0;
+			//console.printf("%f %f %f %f",SuckedPlayer.Player.BlendA,SuckedPlayer.Player.BlendR,SuckedPlayer.Player.BlendG,SuckedPlayer.Player.BlendB);
 		}
 		
 		for (int i = 0; i < affectedActors.Size(); i++)
