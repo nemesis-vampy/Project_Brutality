@@ -588,7 +588,7 @@ ACTOR PB_DMR : PB_Weapon
 					PB_CoolDownBarrel(10, 0, 0);
 				}
 						
-				if(CountInv("LeftDMRAmmo")<=0 && CountInv("DMRAmmo")>0){
+				if(PB_GetChamberEmpty(true) && !PB_GetChamberEmpty){
 					A_GiveInventory("DualFiring",1);
 				}
 				if((PressingAltFire() || JustPressed(BT_ALTATTACK)) && GetCvar("SingleDualFire") == 2){
@@ -649,7 +649,7 @@ ACTOR PB_DMR : PB_Weapon
 					PB_CoolDownBarrel(-10, 0, 0);
 				}
 					
-				if(CountInv("LeftDMRAmmo")>0 && CountInv("DMRAmmo")<=0){
+				if(!PB_GetChamberEmpty(true) && PB_GetChamberEmpty){
 					A_TakeInventory("DualFiring",1);
 				}
 				if(CountInv("DualFiring")==1 || (CountInv("DualFiring")==1 && CountInv("LeftDMRAmmo")<=0 || GetCvar("SingleDualFire")==1)){

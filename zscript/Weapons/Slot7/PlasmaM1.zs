@@ -882,23 +882,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_startsound("PLSIDLE",6,CHANF_LOOPING);
 				}
 		ReadyToFireDualWield:
-			TNT1 A 1 {
-				if(CountInv("PB_Cell")>0)
-				{
-					if(CountInv("LeftPlasmaAmmo")<=0 || CountInv("PlasmaAmmo")<=0)
-					{
-						if(CountInv("LeftPlasmaAmmo")<=0 && CountInv("PlasmaAmmo")<=0)
-							A_SetInventory("DualFireReload",2);
-						else
-							A_SetInventory("DualFireReload",1);
-					}
-				}
-				
-				if(!PB_CanDualWield())
-					return resolvestate("StopDualWield");
-				
-				return A_DoPBWeaponAction(WRF_ALLOWRELOAD|WRF_NOFIRE);
-			}
+			TNT1 A 1 A_DoPBDualAction();
 			Loop;
 		
 		IdleLeft_Overlay:
@@ -908,34 +892,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_ClearOverlays(60,61);
 					A_SetWeaponFrame(8);
 				}
-				if(CountInv("LeftPlasmaAmmo")<=0 && CountInv("PlasmaAmmo")>0)
-					A_GiveInventory("DualFiring",1);
-					
-				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
-				if((PressingAltFire() || JustPressed(BT_ALTATTACK)) && firemodecvar == 2)
-				{
-						if(CountInv("LeftPlasmaAmmo") > 0 && !PB_GetChamberEmpty(true))
-							return resolvestate("FireLeft_Overlay");
-						else  if(JustPressed(BT_ALTATTACK))
-						{
-							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-							return resolvestate(null);
-						}
-				}
-				if(CountInv("DualFiring")==0 ||(CountInv("DualFiring")==0 && CountInv("PlasmaAmmo")<=0) || firemodecvar == 1)
-				{
-					if((PressingFire() || JustPressed(BT_ATTACK)) && firemodecvar < 2)
-					{
-						if(CountInv("LeftPlasmaAmmo") > 0 && !PB_GetChamberEmpty(true))
-							return resolvestate("FireLeft_Overlay");
-						else if(JustPressed(BT_ATTACK))
-						{
-							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-							return resolvestate(null);
-						}
-					}
-				}
-				return resolvestate(null);
+				return A_DoPBLeftAction();
 			}
 			Loop;
 			
@@ -946,43 +903,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_ClearOverlays(63,64);
 					A_SetWeaponFrame(8);
 				}
-				if(CountInv("LeftPlasmaAmmo")<=0 && CountInv("PlasmaAmmo")>0)
-					A_GiveInventory("DualFiring",1);
-				
-				int firemodecvar = Cvar.GetCvar("SingleDualFire",player).GetInt();
-				
-				if(CountInv("DualFiring")==1 ||(CountInv("DualFiring")==1 && CountInv("LeftPlasmaAmmo")<=0))
-				{
-					if((PressingFire() || JustPressed(BT_ATTACK)) && firemodecvar==0)
-					{
-						if(CountInv("PlasmaAmmo") > 0 && !PB_GetChamberEmpty())
-							return resolvestate("FireRight_Overlay");
-						else  if(JustPressed(BT_ATTACK))
-						{
-							A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-							return resolvestate(null);
-						}
-					}
-				}
-				if((PressingAltfire() || JustPressed(BT_ALTATTACK)) && firemodecvar==1){
-					if(CountInv("PlasmaAmmo") > 0 && !PB_GetChamberEmpty())
-						return resolvestate("FireRight_Overlay");
-					else  if(JustPressed(BT_ALTATTACK))
-					{
-						A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-						return resolvestate(null);
-					}
-				}
-				if((Pressingfire() || JustPressed(BT_ATTACK)) && firemodecvar==2){
-					if(CountInv("PlasmaAmmo") > 0 && !PB_GetChamberEmpty())
-						return resolvestate("FireRight_Overlay");
-					else  if(JustPressed(BT_ATTACK))
-					{
-						A_StartSound("weapons/empty", 10,CHANF_OVERLAP);
-						return resolvestate(null);
-					}
-				}
-				return resolvestate(null);
+				return A_DoPBRightAction();
 			}
 			Loop;
 		

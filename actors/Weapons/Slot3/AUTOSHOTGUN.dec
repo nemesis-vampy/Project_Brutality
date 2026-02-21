@@ -319,7 +319,7 @@ ACTOR PB_Autoshotgun : PB_Weapon{
 		IdleLeft_Overlay:
 			AG61 J 1 {
 				PB_CoolDownBarrel(12);
-				if(CountInv("LeftASGAmmo")<=0 && CountInv("AutoShotgunAmmo")>0){
+				if(PB_GetChamberEmpty(true) && !PB_GetChamberEmpty){
 					A_GiveInventory("DualFiring",1);
 				}
 				if((PressingAltfire() || JustPressed(BT_ALTATTACK)) && !A_IsFiringLeftWeapon() && GetCvar("SingleDualFire") >=2){
