@@ -1313,10 +1313,7 @@ class PlayerPawnBase : PlayerPawn
 	//////////////////////////////////////
 	
 	void BobWeaponAuxiliary()
-	{	
-		if(multiplayer)
-			return;
-
+	{
 		///////////////////////////
 		//Bobbing Speed
 		if(MoveRangeMulti) { BobTime += Vel.XY.Length() / pb_maxgroundspeed; }
@@ -1355,8 +1352,6 @@ class PlayerPawnBase : PlayerPawn
 	Override Vector2 BobWeapon(double ticfrac)
 	{
 		if(FindInventory("PlayerWheelOpen") && CVar.GetCVar("gb_time_freeze",player).GetInt() == 1) return FinalBob;
-		if(multiplayer)
-			return Super.BobWeapon(ticfrac);
 
 		let player = self.player;
 		UserCmd cmd = player.cmd;

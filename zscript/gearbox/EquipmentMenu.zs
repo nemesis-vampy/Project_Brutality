@@ -83,13 +83,12 @@ Class gb_equipmentmenu
 		}
 	}
 	
-	ui void fill(out gb_ViewModel viewModel)
+	ui void fill(out gb_ViewModel viewModel, actor player)
 	{
-		let pl = players[consoleplayer];
 		helditems.clear();
 		for(int i = 0; i < tags.size(); i++)
 		{
-			if(pl.mo.FindInventory(ownedtoken[i]))
+			if(player.FindInventory(ownedtoken[i]))
 			{
 				viewModel.tags        .push(tags[i]);
 				viewModel.slots       .push(i + 1);
@@ -97,8 +96,8 @@ Class gb_equipmentmenu
 				viewModel.icons       .push(texman.checkfortexture(img[i]));
 				viewModel.iconScaleXs .push(scalex[i]);
 				viewModel.iconScaleYs .push(scaley[i]);
-				viewModel.quantity1   .push(pl.mo.CountInv(ammotype[i]));		//no ammount for you >:(
-				viewModel.maxQuantity1.push(pl.mo.FindInventory(ammotype[i]).MaxAmount);		//
+				viewModel.quantity1   .push(player.CountInv(ammotype[i]));		//no ammount for you >:(
+				viewModel.maxQuantity1.push(player.FindInventory(ammotype[i]).MaxAmount);		//
 				viewModel.quantity2   .push(-1);		//
 				viewModel.maxQuantity2.push(-1);		//
 				helditems.push(i);

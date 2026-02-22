@@ -261,7 +261,7 @@ class gb_EventHandler : EventHandler
     if      (mActivity.isWeapons())   mWeaponMenu.fill(viewModel);
     else if (mActivity.isInventory()) mInventoryMenu.fill(viewModel);
 	else if (mActivity.isSpecials())  mspecialsmenu.fill(viewModel);
-	else if (mActivity.isEquipment()) mEquipmenu.fill(viewModel);
+	else if (mActivity.isEquipment()) mEquipmenu.fill(viewModel,event.camera);
 
     verifyViewModel(viewModel);
 
