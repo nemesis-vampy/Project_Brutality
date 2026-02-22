@@ -3,7 +3,7 @@
 //ALL THEM TOOLTIPS
 //[AD]
 //Multiplayer options
-TIP_PB_FORCESPMOVEMENT = "Multiplayer movement is 33% slower than singleplayer.";
+TIP_PB_FORCESPMOVEMENT = "Multiplayer movement is 33% slower than singleplayer and disables dashing.";
 TIP_PB_MPCALLSIGN = "Callsigns are three letter, uppercase names that appear instead of your full nickname.";
 
 //HUD options
