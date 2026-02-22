@@ -83,8 +83,9 @@ Class gb_equipmentmenu
 		}
 	}
 	
-	ui void fill(out gb_ViewModel viewModel, actor player)
+	ui void fill(out gb_ViewModel viewModel)
 	{
+		let player = players[consoleplayer].mo;
 		helditems.clear();
 		for(int i = 0; i < tags.size(); i++)
 		{
