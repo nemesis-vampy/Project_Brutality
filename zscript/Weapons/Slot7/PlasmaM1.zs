@@ -920,7 +920,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_StartSound("PLSM9", CHAN_WEAPON);
 					A_AlertMonsters();
 					A_ZoomFactor(0.99);
-					PB_LowAmmoSoundWarning("hdmr");
+					PB_LowAmmoSoundWarning("hdmr","LeftPlasmaAmmo");
 					PB_TakeAmmo("LeftPlasmaAmmo",1,0,0,true);
 					PB_WeaponRecoil(-1.4,+0.8);
 					A_Overlay(60,"AmmoCounterLeftDW.Firing");
