@@ -616,7 +616,7 @@ ACTOR PB_LMG : PB_Weapon
 				}
 				else {
 					if (PressingFire() && CountInv("LMGAmmo") > 0){
-						return state("Fire");
+						return state("Fire2");
 					}
 					return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 				}
@@ -645,8 +645,8 @@ ACTOR PB_LMG : PB_Weapon
 					
 				}
 				else {
-					if (PressingFire() && CountInv("LMGAmmo") > 2){
-						return state("Fire");
+					if (PressingFire() && CountInv("LMGAmmo") > 0){
+						return state("Fire2");
 					}
 					return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 				}
