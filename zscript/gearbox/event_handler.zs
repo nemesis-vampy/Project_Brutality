@@ -384,7 +384,7 @@ class gb_EventHandler : EventHandler
 
     mWeaponMenu.setSelectedWeapon(gb_WeaponWatcher.current());
     mSounds.playOpen();
-	gb_Sender.sendGiveItemEvent("PlayerWheelOpen");
+	if(mOptions.getViewType() == VIEW_TYPE_WHEEL) gb_Sender.sendGiveItemEvent("PlayerWheelOpen");
     mActivity.openWeapons();
   }
 
@@ -398,7 +398,7 @@ class gb_EventHandler : EventHandler
     }
 
     mSounds.playOpen();
-	gb_Sender.sendGiveItemEvent("PlayerWheelOpen");
+	if(mOptions.getViewType() == VIEW_TYPE_WHEEL) gb_Sender.sendGiveItemEvent("PlayerWheelOpen");
     mActivity.openInventory();
   }
   
