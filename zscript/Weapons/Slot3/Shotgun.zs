@@ -155,7 +155,7 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectAnimation:
 			TNT1 A 0 A_StartSound("weapons/shotgun/equip", 10,CHANF_OVERLAP);
-			SH0G GFEDC 1;
+			SH0D ABCD 1;
 			goto ready3;
 		
 		Deselect:
