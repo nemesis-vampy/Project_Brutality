@@ -11,7 +11,7 @@ Class PB_Cacodemon : PB_Monster
 	override void BeginPlay()
 	{
 		Super.BeginPlay();
-		canSuppress = true;
+		if(pb_simplemonsterbehavior) canSuppress = false;
 		suppressiveOffZ = self.height * 0.5;
 		suppressiveOffXY = 0;
 		suppressiveMissile = "PB_Cacodemonball2";
@@ -72,7 +72,7 @@ Class PB_Cacodemon : PB_Monster
 		PB_Monster.CanIFallback false;
 		PB_Monster.CanIRoll true;
 		PB_Monster.CanIReload false;
-		PB_Monster.CanISuppress false;
+		PB_Monster.CanISuppress true;
 		
 		+FLOAT;
 		FloatSpeed 4;
@@ -178,7 +178,7 @@ Class PB_Cacodemon : PB_Monster
 				else if (jawDetached)
 					return ResolveState("Missile_NoJaw");
 				// Using the canSuppress variable to temporarily turn off Special attack Cacocola Classic.
-				else if (random(0,100) > 50)
+				else if (!pb_simplemonsterbehavior && random(0,100) > 50)
 					return ResolveState("Missile_Special");
 				return ResolveState(null);
 			}

@@ -1,3 +1,5 @@
+server bool pb_simplemonsterbehavior = false;
+
 //Monster Spawner Overrides
 server bool pb_vanillamonster_override = false;
 server bool pb_vanillawolfss_override = false;

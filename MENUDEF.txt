@@ -334,6 +334,7 @@ OptionMenu "PB_GameplayOptions"
 	Option	"Advanced Movement On Damaging Floors",		"pb_hazardmovement",				"OnOff"
 	Option	"Weapons Persist Through Death Exits",		"PlayerCatchup",					"YesNo"
 	Option	"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
+	Option	"Simplify Monster Behaviors",				"pb_simplemonsterbehavior",			"YesNo"
 	StaticText	""
 	Option	"Disable Decorations",						"pb_disable_decorations",			"YesNo"
 	Option	"Decorative Burning Barrels",				"pb_decorative_flame_barrels",		"OnOff",	"pb_disable_decorations", 0, 1
