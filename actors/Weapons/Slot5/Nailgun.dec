@@ -52,10 +52,10 @@ ACTOR PB_Nailgun : PB_Weapon
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	Inventory.PickupSound "CBOXPKUP"
-	Inventory.PickupMessage "Perforator Nailgun (Slot 5)"
+	Inventory.PickupMessage "$PB_NAILGUN_PICKUP"
 	Obituary "%o became a leaking piece of meat by %k's perforator nailgun"
 	AttackSound "none"
-	Tag "MIXOM Perforator-240 Nailgun"
+	Tag "$PB_NAILGUN_TAG"
 	Scale .46
 	Inventory.AltHUDIcon "NLMGF0"
 	PB_WeaponBase.respectItem "RespectNailgun"

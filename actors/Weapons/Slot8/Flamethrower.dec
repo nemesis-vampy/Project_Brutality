@@ -181,7 +181,7 @@ Actor PB_FlamethrowerUpgrade : CustomInventory
 	-INVENTORY.ALWAYSPICKUP
 	Inventory.PickupSound "FLMDRAW"
 	Scale 0.5
-	Inventory.PickupMessage "Flamethrower Fuel Hose (Slot 8, Upgrade)"
+	Inventory.PickupMessage "$PB_FLAMER_UPGRADE_PICKUP"
 	Tag "UAC-M3 Flamethrower"
 	States
 	{
@@ -232,8 +232,8 @@ ACTOR PB_Flamethrower : PB_Weapon
 	+WEAPON.NOAUTOFIRE
 	+FLOORCLIP
 	+DONTGIB
-	Inventory.PickupMessage "Flamethrower (Slot 8)"
-	Tag "UAC-M3 Flamethrower"
+	Inventory.PickupMessage "$PB_FLAMER_PICKUP"
+	Tag "$PB_FLAMER_TAG"
 	PB_WeaponBase.OffsetRecoilX 1.75
 	PB_WeaponBase.OffsetRecoilY 1.5
 	States

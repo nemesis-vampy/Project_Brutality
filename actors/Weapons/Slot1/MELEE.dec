@@ -168,7 +168,7 @@ ACTOR PB_Fists : PB_Weapon Replaces Fist
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
 	+INVENTORY.UNTOSSABLE
-	Tag "Bare Hands"
+	Tag "$PB_FIST_TAG"
 	inventory.AltHUDIcon "KUKRA0"
 	PB_WeaponBase.respectItem "RespectFists"
 	States

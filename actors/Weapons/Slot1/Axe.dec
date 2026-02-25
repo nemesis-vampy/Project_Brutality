@@ -22,8 +22,8 @@ ACTOR PB_Axe : PB_Weapon
 	Obituary "%o was chopped down by %k's axe."
     AttackSound "None"
     Inventory.PickupSound "AXEDRAW"
-	Inventory.Pickupmessage "Fire Axe (Slot 1)"
-	Tag "Fire Axe"
+	Inventory.Pickupmessage "$PB_AXE_PICKUP"
+	Tag "$PB_AXE_TAG"
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE
     +WEAPON.MELEEWEAPON

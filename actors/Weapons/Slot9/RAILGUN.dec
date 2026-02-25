@@ -66,13 +66,13 @@ ACTOR PB_Railgun : PB_Weapon
 	Weapon.AmmoType2 "RailgunAmmo"
 	Obituary "%o was pierced by %k's Railgun."
 	Inventory.PickupSound "PLSDRAW"
-	Inventory.Pickupmessage "Railgun (Slot 9)"
+	Inventory.Pickupmessage "$PB_RAILGUN_PICKUP"
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	+FLOORCLIP
 	+DONTGIB
-	Tag "UAC-MkIII Railgun"
+	Tag "$PB_RAILGUN_TAG"
 	Scale 0.46
 	Inventory.AltHUDIcon "SRCGA0"
 	PB_WeaponBase.respectItem "RespectRailgun"

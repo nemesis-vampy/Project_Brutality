@@ -14,8 +14,8 @@ Class PB_Shotgun : PB_WeaponBase
 		weapon.slotpriority 0.5;
 		PB_WeaponBase.respectItem "RespectShotgun";
 		inventory.pickupsound "SHOTPICK";
-		inventory.pickupmessage "Pump Shotgun (Slot 3)";
-		Tag "UAC-GS10 Pump Shotgun";
+		inventory.pickupmessage "$PB_SG_PICKUP";
+		Tag "$PB_SG_TAG";
 		Scale 0.45;
 		FloatBobStrength 0.5;
 		Inventory.AltHUDIcon "SHTCA0";					
@@ -1250,11 +1250,11 @@ Class PB_Shotgun : PB_WeaponBase
 		else
 		{
 			if(CountInv("SelectShotgun_Slugshot")>=1)
-				A_Print("$PB_SGSLUGLD");
+				A_Print("$PB_SG_SLUG");
 			if(CountInv("SelectShotgun_Dragonsbreath")>=1)
-				A_Print("$PB_SGDBLD");
+				A_Print("$PB_SG_DBREATH");
 			if(CountInv("SelectShotgun_Buckshot")>=1)
-				A_Print("$PB_SGBUCKLD");
+				A_Print("$PB_SG_BUCKSHOT");
 		}
 		return resolvestate(null);
 		
@@ -1475,7 +1475,7 @@ Class PB_SGMagazine: PB_UpgradeItem
 		-INVENTORY.ALWAYSPICKUP
 		-COUNTITEM
 		Inventory.Pickupsound "SHOTPICK";
-		Inventory.PickupMessage "Pump Shotgun Magazine (Slot 3, Upgrade)";
+		Inventory.PickupMessage "PB_SG_UPGRADE_PICKUP";
 		Tag "Pump Shotgun Magazine";
 		Scale 0.45;
 		FloatBobStrength 0.5;

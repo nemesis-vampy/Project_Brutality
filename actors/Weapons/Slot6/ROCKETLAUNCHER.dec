@@ -269,8 +269,8 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 	+WEAPON.EXPLOSIVE
     +WEAPON.NOALERT
 	+WEAPON.NOAUTOFIRE
-	Inventory.PickupMessage "Rocket Launcher (Slot 6)"
-	Tag "UAC-M10 Rocket Launcher"
+	Inventory.PickupMessage "$PB_RL_PICKUP"
+	Tag "$PB_RL_TAG"
 	Inventory.AltHUDIcon "RKTLZ0"
 	PB_WeaponBase.respectItem "RespectRocketLauncher"
 	PB_WeaponBase.UsesWheel 1
@@ -496,11 +496,11 @@ ACTOR PB_RocketLauncher : PB_Weapon// replaces RocketLauncher
 				A_ClearOverlays(-99,-99);
 				A_ClearOverlays(99,99);
 				if(CountInv("RocketLauncher_Standard") == 1) {
-				A_Print("$PB_RLNORM",1);}
+				A_Print("$PB_RL_NORMAL",1);}
 				if(CountInv("RocketLauncher_Homing") == 1) {
-				A_Print("$PB_RLLOCK",1);}
+				A_Print("$PB_RL_LOCKON",1);}
 				if(CountInv("RocketLauncher_Laser") == 1) {
-				A_Print("$PB_RLGUID",1);}
+				A_Print("$PB_RL_GUIDED",1);}
 				A_StartSound("RLSPCL2",0);
 				return state("");
 			}
