@@ -853,12 +853,12 @@ pointlight PB_BLURSPHERE5
 
 object PB_BlurSphere
 {
-	frame PIN5 { light PB_BLURSPHERE1 }
+	frame P1N5 { light PB_BLURSPHERE1 }
 	
-	frame PIN5A { light PB_BLURSPHERE2 }
-	frame PIN5B { light PB_BLURSPHERE3 }
-	frame PIN5C { light PB_BLURSPHERE4 }
-	frame PIN5D { light PB_BLURSPHERE5 }
+	frame P1N5A { light PB_BLURSPHERE2 }
+	frame P1N5B { light PB_BLURSPHERE3 }
+	frame P1N5C { light PB_BLURSPHERE4 }
+	frame P1N5D { light PB_BLURSPHERE5 }
 }
 
 pulselight HASTE
