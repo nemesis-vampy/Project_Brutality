@@ -567,8 +567,13 @@ ACTOR PB_Nailgun : PB_Weapon
 			N9N2 ABCDEFGHIJKL 0 // Initialize frames into virtual memory
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
-				PB_HandleCrosshair(76);
+				if(CountInv("JavelinMode") == 1) {
+					PB_HandleCrosshair(45);
 				}
+				else {
+					PB_HandleCrosshair(76);
+				}
+			}
 			TNT1 A 0 A_JumpIfInventory("JavelinMode", 1, "FireJavelin")
 			TNT1 A 0 A_JumpIfInventory("PB_NailgunAmmo",1,1)
 			Goto Reload
