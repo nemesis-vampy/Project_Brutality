@@ -691,7 +691,7 @@ ACTOR PB_Nailgun : PB_Weapon
 				PB_GunSmoke_Basic(2,0,0);
 				PB_GunSmoke_Basic(-2,0,0);
 				A_FireCustomMissile("Alerter", 0, 0, 0, 0);
-				PB_TakeAmmo("PB_NailgunAmmo",20,0,-1);
+				PB_TakeAmmo("PB_NailgunAmmo",20,0);
 				A_ZoomFactor(0.98);
 				A_StartSound("weapons/nailgun/altfire", CHAN_AUTO);
 				A_GunFlash;
