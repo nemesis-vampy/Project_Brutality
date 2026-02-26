@@ -63,10 +63,10 @@ ACTOR PB_Carbine : PB_Weapon
 	Obituary "%o was shot down by %k's Combat Rifle."
 	AttackSound "None"
 	Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "Carbine (Slot 4)"
+	Inventory.Pickupmessage "$PB_CARBINE_PICKUP"
 	Inventory.MaxAmount 2
 	Inventory.Amount 1
-	Tag "UAC-41 Carbine"
+	Tag "$PB_CARBINE_TAG"
 	+WEAPON.WIMPY_WEAPON
 	//+WEAPON.NO_AUTO_SWITCH
 	+WEAPON.NOAUTOAIM

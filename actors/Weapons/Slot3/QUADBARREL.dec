@@ -304,12 +304,12 @@ ACTOR PB_QuadSG : PB_Weapon
 	+DONTGIB
 	+WEAPON.NOAUTOAIM
 	Inventory.MaxAmount 2
-	Tag "Sawn-Off Quad-Barrel Shotgun"
+	Tag "$PB_QSG_TAG"
 	+WEAPON.NOAUTOFIRE
 	//+POWERED_UP
 	+WEAPON.CHEATNOTWEAPON
 	//Weapon.SisterWeapon pb_ssg
-	Inventory.PickupMessage "Quad-Barrel Shotgun (Slot 3, Upgrade)"
+	Inventory.PickupMessage "$PB_QSG_PICKUP"
 	Obituary "%o was eviscerated by %k's QSG"
 	Inventory.PickupSound "CLIPINSS"
 	PB_WeaponBase.respectItem "QSGRespected"
@@ -1059,7 +1059,7 @@ ACTOR PB_QuadSG : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("BreathMode", 1,"ToggleStandardMode")
 		TNT1 A 0 A_SetInventory("BreathMode",1)
 		QSMS ABCDEFGH 1
-		TNT1 A 0 A_Print("$PB_QSG_DEMONBREATH")
+		TNT1 A 0 A_Print("$PB_QSG_DBREATH")
 		TNT1 A 0 A_Playsound("CLIPINQS")
 		QSMS KLMNNMLKJGFEDCBA 1
 		TNT1 A 0 A_SetInventory("GoWeaponSpecialAbility",0)

@@ -102,7 +102,7 @@ ACTOR PB_Rocket
 	Height 6
 	Projectile
 	Speed 45
-	Damage (90)
+	Damage (160)
 	DamageType Explosive
 	MeleeDamage 0
 	Gravity 0.00

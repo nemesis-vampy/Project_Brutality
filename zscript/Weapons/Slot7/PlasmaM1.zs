@@ -12,10 +12,10 @@ Class PB_M1Plasma : PB_WeaponBase
 		Inventory.MaxAmount 2;
 		PB_WeaponBase.respectItem "RespectPlasmaGun";	
 		PB_WeaponBase.DualWieldToken "DualWieldingPlasma";	
-		inventory.pickupmessage "Plasma Rifle (Slot 7)";
+		inventory.pickupmessage "$PB_M1_PICKUP";
 		Inventory.PickupSound "7LSPICK";
 		Inventory.AltHUDIcon "PL4SA0";
-		Tag "UAC-M1 Plasma Rifle";
+		Tag "$PB_M1_Tag";
 		Scale 0.51;
 		FloatBobStrength 0.5;
 		PB_WeaponBase.OffsetRecoilX 2.5;
@@ -920,7 +920,7 @@ Class PB_M1Plasma : PB_WeaponBase
 					A_StartSound("PLSM9", CHAN_WEAPON);
 					A_AlertMonsters();
 					A_ZoomFactor(0.99);
-					PB_LowAmmoSoundWarning("hdmr");
+					PB_LowAmmoSoundWarning("hdmr","LeftPlasmaAmmo");
 					PB_TakeAmmo("LeftPlasmaAmmo",1,0,0,true);
 					PB_WeaponRecoil(-1.4,+0.8);
 					A_Overlay(60,"AmmoCounterLeftDW.Firing");

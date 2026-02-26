@@ -258,63 +258,63 @@ OptionMenu "WeaponSpawns"
 	Title		"Configure Weapon Spawns"
 	Class		"PB_OptionMenu"
 	Position	-48
-	Option		"Backpacks Spawn Upgrades",					"PB_NoUpgrades",		"OffOn"
-	Option		"MG-42 Only in Wolfenstein Maps",			"PB_MG42WolfSpawner",	"OnOff"
-	Option		"$PB_SSG_RNDSPWN",							"pb_SSGRandomSpawn",	"OnOff"
+	Option		"Backpacks Spawn Upgrades",				"PB_NoUpgrades",			"OffOn"
+	Option		"MG-42 Only in Wolfenstein Maps",		"PB_MG42WolfSpawner",		"OnOff"
+	Option		"$PB_SSG_RNDSPWN",						"pb_SSGRandomSpawn",		"OnOff"
 	StaticText	""
 	StaticText	"--------- Chainsaw ---------",			gold
 	StaticText	"$PB_TIER1"
-	FlagOption	"Fire Axe",								"pb_chainsaw_filter",	"OffOn", 0
+	FlagOption	"$PB_AXE_NAME",							"pb_chainsaw_filter",		"OffOn", 0
 	StaticText	"$PB_TIER2"
-	FlagOption	"Flamethrower",							"pb_chainsaw_filter",	"OffOn", 1
+	FlagOption	"$PB_FLAMER_NAME",						"pb_chainsaw_filter",		"OffOn", 1
 	StaticText	"$PB_TIER3"
-	FlagOption	"Flamethrower Fuel Hose",				"pb_chainsaw_filter",	"OffOn", 2
+	FlagOption	"$PB_FLAMER_UPGRADE_NAME",				"pb_chainsaw_filter",		"OffOn", 2
 	StaticText	""
 	StaticText	"--------- Shotgun ---------",			gold
 	StaticText	"$PB_TIER2"
-	FlagOption	"Assault Shotgun",				"pb_shotgun_filter",	"OffOn", 0
-	FlagOption	"Magnum Revolver",						"pb_pistol_filter",	"OffOn", 0
+	FlagOption	"$PB_ASG_NAME",							"pb_shotgun_filter",		"OffOn", 0
+	FlagOption	"$PB_REVOLVER_NAME",					"pb_pistol_filter",			"OffOn", 0
 	StaticText	"$PB_TIER3"
-	FlagOption	"Pump Shotgun Magazine",				"pb_shotgun_filter",	"OffOn", 1
-	FlagOption	"Submachine Gun", 						"pb_pistol_filter",	"OffOn", 1
+	FlagOption	"$PB_SG_UPGRADE_NAME",					"pb_shotgun_filter",		"OffOn", 1
+	FlagOption	"$PB_SMG_NAME", 						"pb_pistol_filter",			"OffOn", 1
 	StaticText	"$PB_TIER4"
-	FlagOption	"Assault Shotgun Magazine",				"pb_shotgun_filter",	"OffOn", 2
-	FlagOption	"Martian Raptor Automag",						"pb_pistol_filter",	"OffOn", 2
+	FlagOption	"$PB_ASG_UPGRADE_NAME",					"pb_shotgun_filter",		"OffOn", 2
+	FlagOption	"$PB_DEAGLE_NAME",						"pb_pistol_filter",			"OffOn", 2
 	StaticText	""
 	StaticText	"--------- Super Shotgun ---------",	gold
 	StaticText	"$PB_TIER3"
-	FlagOption	"Quad-Barrel Shotgun",					"pb_ssg_filter",	"OffOn", 0
+	FlagOption	"$PB_QSG_NAME",							"pb_ssg_filter",			"OffOn", 0
 	StaticText	""
 	StaticText	"--------- Chaingun ---------",			gold
 	StaticText	"$PB_TIER2"
-	FlagOption	"Carbine",								"pb_chaingun_filter",	"OffOn", 0
+	FlagOption	"$PB_CARBINE_NAME",						"pb_chaingun_filter",		"OffOn", 0
 	StaticText	"$PB_TIER3"
-	FlagOption	"Perforator Nailgun",					"pb_chaingun_filter",	"OffOn", 1
-	FlagOption	"Heavy DMR",							"pb_chaingun_filter",	"OffOn", 2
+	FlagOption	"$PB_NAILGUN_NAME",						"pb_chaingun_filter",		"OffOn", 1
+	FlagOption	"$PB_HDMR_NAME",						"pb_chaingun_filter",		"OffOn", 2
 	StaticText	"$PB_TIER4"
-	FlagOption	"Light Machine Gun",					"pb_chaingun_filter",	"OffOn", 3
-	FlagOption	"Death Dealer Minigun",					"pb_chaingun_filter",	"OffOn", 4
+	FlagOption	"$PB_LMG_NAME",							"pb_chaingun_filter",		"OffOn", 3
+	FlagOption	"$PB_MINIGUN_UPGRADE_NAME",				"pb_chaingun_filter",		"OffOn", 4
 	StaticText	""
 	StaticText	"--------- Rocket Launcher ---------",	gold
-	StaticText	"$PB_TIER2"
-	FlagOption	"Automatic Grenade Launcher",			"pb_rocketlauncher_filter",	"OffOn", 0
+	StaticText	"$PB_TIER3"
+	FlagOption	"$PB_SGL_NAME",			"pb_rocketlauncher_filter",	"OffOn", 0
 	StaticText	""
 	StaticText	"--------- Plasma Rifle ---------",		gold
 	StaticText	"$PB_TIER2"
-	FlagOption	"Heavy Plasma Rifle",					"pb_plasmarifle_filter",	"OffOn", 0
+	FlagOption	"$PB_M2_NAME",							"pb_plasmarifle_filter",	"OffOn", 0
 	StaticText	"$PB_TIER3"
-	FlagOption	"Cryo Rifle",							"pb_plasmarifle_filter",	"OffOn", 1
-	//FlagOption	"Pulse Cannon",							"pb_plasmarifle_filter",	"OffOn", 2 //UNCOMMENT WHEN PULSE CANNON IS ADDED
+	FlagOption	"$PB_CRYO_NAME",						"pb_plasmarifle_filter",	"OffOn", 1
+	//FlagOption	"Pulse Cannon",						"pb_plasmarifle_filter",	"OffOn", 2 //UNCOMMENT WHEN PULSE CANNON IS ADDED
 	StaticText	"$PB_TIER4"
-	FlagOption	"Heavy Plasma Zeus Module",		"pb_plasmarifle_filter",	"OffOn", 3
-	FlagOption	"Demon-Tech Rifle",						"pb_plasmarifle_filter",	"OffOn", 4
+	FlagOption	"$PB_M2_UPGRADE_NAME",					"pb_plasmarifle_filter",	"OffOn", 3
+	FlagOption	"$PB_DTECH_NAME",						"pb_plasmarifle_filter",	"OffOn", 4
 	StaticText	""
 	StaticText	"--------- BFG 9000 ---------",			gold
 	StaticText	"$PB_TIER3"
-	FlagOption	"Railgun",					"pb_bfg_filter",	"OffOn", 0
-	FlagOption	"MG 42",								"pb_bfg_filter",	"OffOn", 1
+	FlagOption	"$PB_RAILGUN_NAME",						"pb_bfg_filter",			"OffOn", 0
+	FlagOption	"$PB_MG42_NAME",						"pb_bfg_filter",			"OffOn", 1
 	StaticText	"$PB_TIER4"
-	FlagOption	"Unmaker",								"pb_bfg_filter",	"OffOn", 2
+	FlagOption	"$PB_UNMAKER_NAME",						"pb_bfg_filter",			"OffOn", 2
 	StaticText	""
 	SafeCommand "$PB_MENURESET", "ResetWeaponSpawns", "$PB_MENURESETWARN"
 }
@@ -334,6 +334,7 @@ OptionMenu "PB_GameplayOptions"
 	Option	"Advanced Movement On Damaging Floors",		"pb_hazardmovement",				"OnOff"
 	Option	"Weapons Persist Through Death Exits",		"PlayerCatchup",					"YesNo"
 	Option	"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
+	Option	"Simplify Monster Behaviors",				"pb_simplemonsterbehavior",			"YesNo"
 	StaticText	""
 	Option	"Disable Decorations",						"pb_disable_decorations",			"YesNo"
 	Option	"Decorative Burning Barrels",				"pb_decorative_flame_barrels",		"OnOff",	"pb_disable_decorations", 0, 1

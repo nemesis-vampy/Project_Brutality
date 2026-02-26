@@ -13,10 +13,10 @@ Class PB_Revolver : PB_WeaponBase
 		PB_WeaponBase.ReserveToMagAmmoFactor 2;
 		PB_WeaponBase.AmmoTypeLeft "LeftRevolverAmmo";
 		inventory.pickupsound "REVOUP";
-		Inventory.Pickupmessage "Magnum Revolver (Slot 2)";
+		Inventory.Pickupmessage "$PB_REVOLVER_PICKUP";
 		Inventory.MaxAmount 2;					
 		Obituary "%o was shot down by %k's revolver.";
-		Tag "UAC-B750 Death Adder .500 Magnum Revolver";
+		Tag "$PB_REVOLVER_TAG";
 		scale 0.4;
 		+WEAPON.NOAUTOFIRE;
 		+WEAPON.NOALERT;

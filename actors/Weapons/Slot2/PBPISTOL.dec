@@ -65,9 +65,9 @@ ACTOR PB_Pistol : PB_Weapon
 	+DONTGIB
 	Obituary "%o was shot down by %k's Pistol"
 	AttackSound "None"
-	Tag "UAC-B950 .45 ACP Pistol"
+	Tag "$PB_PISTOL_TAG"
 	Inventory.PickupSound "weapons/pistolup"
-	Inventory.Pickupmessage "Pistol (Slot 2)"
+	Inventory.Pickupmessage "$PB_PISTOL_PICKUP"
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE

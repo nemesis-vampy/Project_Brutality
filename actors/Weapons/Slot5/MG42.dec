@@ -23,7 +23,7 @@ ACTOR PB_MG42 : PB_Weapon
 	Weapon.AmmoType "PB_HighCalMag"
 	Weapon.AmmoGive 30
 	Weapon.AmmoUse 0
-	Inventory.PickupMessage "MG 42 (Slot 5)"
+	Inventory.PickupMessage "$PB_MG42_PICKUP"
 	Inventory.PickupSound "weapons/MG42/Pickup"
 	Obituary "%o tasted the power of %k's MG42"
 	+WEAPON.NOAUTOAIM
@@ -32,7 +32,7 @@ ACTOR PB_MG42 : PB_Weapon
 	+WEAPON.NOALERT
 	+dontgib
 	Scale 0.28
-	Tag "Maschinengewehr 42"
+	Tag "$PB_MG42_TAG"
 	Inventory.AltHUDIcon "HBUSD0"
 	PB_WeaponBase.respectItem "MG42Respected"
 	//FloatBobStrength 0.5

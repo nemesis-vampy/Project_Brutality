@@ -11,7 +11,7 @@ Class PB_Arachnotron1 : PB_Monster
 		artyCounter = 0;
 		plasmaBallCounter = 0;
 		
-		canSuppress = true;
+		if(pb_simplemonsterbehavior) canSuppress = false;
 		suppressiveOffZ = 25;
         suppressiveOffXY = 0;
         suppressiveMissile = "ArachnoRailGun";
@@ -70,7 +70,7 @@ Class PB_Arachnotron1 : PB_Monster
 		PB_Monster.CanIFallback false;
 		PB_Monster.CanIReload false;
 		PB_Monster.CanIRoll false;
-		PB_Monster.CanISuppress false;
+		PB_Monster.CanISuppress true;
 	}
 
 	States
@@ -123,6 +123,8 @@ Class PB_Arachnotron1 : PB_Monster
 	Missile:
 		BSP1 A 2 BRIGHT A_FaceTarget();
 		TNT1 A 0 {
+			if(pb_simplemonsterbehavior)
+				return ResolveState("ClassicPlasma");
 			int toJump = random(0,3);
 			if (toJump > 1 && FirstTime)
 			{

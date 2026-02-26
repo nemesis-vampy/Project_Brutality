@@ -209,8 +209,8 @@ ACTOR PB_LMG : PB_Weapon
 	//+POWERED_UP
 	+WEAPON.NOALERT
 	Inventory.PickupSound "LMGPKP"
-	Inventory.PickupMessage "Light Machine Gun (Slot 4)"
-	Tag "UAC-349 Light Machine Gun"
+	Inventory.PickupMessage "$PB_LMG_PICKUP"
+	Tag "$PB_LMG_TAG"
 	Obituary "%o became a leaking piece of meat by %k's light machine gun"
 	AttackSound "none"
 	PB_WeaponBase.respectItem "RespectLMG"
@@ -616,7 +616,7 @@ ACTOR PB_LMG : PB_Weapon
 				}
 				else {
 					if (PressingFire() && CountInv("LMGAmmo") > 0){
-						return state("Fire");
+						return state("Fire2");
 					}
 					return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 				}
@@ -645,8 +645,8 @@ ACTOR PB_LMG : PB_Weapon
 					
 				}
 				else {
-					if (PressingFire() && CountInv("LMGAmmo") > 2){
-						return state("Fire");
+					if (PressingFire() && CountInv("LMGAmmo") > 0){
+						return state("Fire2");
 					}
 					return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 				}
@@ -1506,7 +1506,7 @@ ACTOR PB_LMG : PB_Weapon
 			TNT1 A 0 A_Setinventory("GoWeaponSpecialAbility",0)
 			TNT1 A 0 A_SetInventory("CantWeaponSpecial",1)
 			TNT1 A 0 A_JumpIfInventory("LMGMicroMissiles", 1, "MissileToBullet")
-			TNT1 A 0 A_PRINT("$PB_LMGMICRO", 2)
+			TNT1 A 0 A_PRINT("$PB_LMG_MISSILE", 2)
 			LBS1 A 0 A_JumpIfInventory("LMGAmmo", 7, 6)
 			LB97 A 0 A_JumpIfInventory("LMGAmmo", 6, 5)
 			LB98 A 0 A_JumpIfInventory("LMGAmmo", 5, 4)
@@ -1536,7 +1536,7 @@ ACTOR PB_LMG : PB_Weapon
 			"####" CBA 1 A_DoPBWeaponAction
 			Goto BarrelSwitchBulletMissile
 		MissileToBullet:
-			TNT1 A 0 A_PRINT("$PB_LMGBULLET", 2)
+			TNT1 A 0 A_PRINT("$PB_LMG_BULLET", 2)
 			LMS1 A 0 A_JumpIfInventory("LMGAmmo", 6, 5)
 			LM86 A 0 A_JumpIfInventory("LMGAmmo", 5, 4)
 			LM85 A 0 A_JumpIfInventory("LMGAmmo", 4, 3)

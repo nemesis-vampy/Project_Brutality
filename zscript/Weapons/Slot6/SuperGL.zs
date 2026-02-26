@@ -25,8 +25,8 @@ Class PB_SuperGL : PB_Weapon
 		+WEAPON.NOALERT;
 		+WEAPON.NOAUTOFIRE;
 		+FLOORCLIP;
-		Inventory.PickupMessage "Grenade Launcher (Slot 6)";
-		Tag "UAC-M7 Automatic Grenade Launcher";
+		Inventory.PickupMessage "$PB_SGL_PICKUP";
+		Tag "$PB_SGL_TAG";
 		Inventory.AltHUDIcon "SGL0Z0";
 		PB_WeaponBase.respectItem "RespectSGL";
 		PB_WeaponBase.UsesWheel true;
@@ -702,11 +702,11 @@ Class PB_SuperGL : PB_Weapon
 	
 	action void PrintSGLMode()
 	{
-		if(findinventory("GrenadeTypeImpact")) A_Print("$PB_SGLIMPACT", 2);
-		if(findinventory("GrenadeTypeSticky")) A_Print("$PB_SGLSTICKY", 2);
-		if(findinventory("GrenadeTypeIncendiary")) A_Print("$PB_SGLINCEN", 2);
-		if(findinventory("GrenadeTypeCryo")) A_Print("$PB_SGLCRYO", 2);
-		if(findinventory("GrenadeTypeAcid")) A_Print("$PB_SGLACID", 2);	
+		if(findinventory("GrenadeTypeImpact")) A_Print("$PB_SGL_IMPACT", 2);
+		if(findinventory("GrenadeTypeSticky")) A_Print("$PB_SGL_STICKY", 2);
+		if(findinventory("GrenadeTypeIncendiary")) A_Print("$PB_SGL_INCENDIARY", 2);
+		if(findinventory("GrenadeTypeCryo")) A_Print("$PB_SGL_CRYO", 2);
+		if(findinventory("GrenadeTypeAcid")) A_Print("$PB_SGL_ACID", 2);	
 	}
 	
 	action void PB_LookAndDetonateGrenades()

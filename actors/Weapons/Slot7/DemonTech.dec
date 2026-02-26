@@ -95,8 +95,8 @@ ACTOR PB_Demontech : PB_Weapon
 	Obituary "%o was set ablaze by %k's hellish rifle."
 	Weapon.AmmoType1 "PB_DTech"
 	Weapon.AmmoType2 "HellAmmo"
-	Tag "Demon-Tech Rifle"
-	Inventory.PickupMessage "Demon-Tech Rifle (Slot 0)"
+	Tag "$PB_DTECH_NAME"
+	Inventory.PickupMessage "$PB_DTECH_PICKUP"
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	Scale 0.48

@@ -136,7 +136,7 @@ Actor PB_HDMRUpgrade: PB_UpgradeItem
 	-INVENTORY.ALWAYSPICKUP
 	-COUNTITEM
 	Inventory.Pickupsound "weapons/rifle/up"
-	Inventory.PickupMessage "Heavy DMR (Slot 4, Upgrade)"
+	Inventory.PickupMessage "$PB_HDMR_PICKUP"
 	Tag "Heavy DMR"
 	States
 	{
@@ -152,7 +152,7 @@ Actor PB_HDMRUpgrade: PB_UpgradeItem
 				A_SetInventory("UnderBarrelGrenadeLoaded", 1);
 				A_GiveInventory("PB_DMR", 1);
 				A_SetInventory("DMRUpgraded", 1);
-				A_SetWeaponTag("PB_DMR","UAC-30 Heavy Designated Marksman Rifle");
+				A_SetWeaponTag("PB_DMR","$PB_HDMR_TAG");
 			}
 			Stop
 	}
@@ -210,13 +210,13 @@ ACTOR PB_DMR : PB_Weapon
 	Obituary "%o was shot down by %k's DMR."
 	AttackSound "None"
 	Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "DMR (Slot 4)"
+	Inventory.Pickupmessage "$PB_DMR_PICKUP"
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.NOAUTOAIM
 	+WEAPON.NOALERT
 	+WEAPON.NOAUTOFIRE
 	Scale 0.43
-	Tag "UAC-30 Designated Marksman Rifle"
+	Tag "$PB_DMR_TAG"
 	Inventory.AltHUDIcon "RIFLA0"
 	PB_WeaponBase.respectItem "RespectDMR"
 	PB_WeaponBase.OffsetRecoilX 2.5

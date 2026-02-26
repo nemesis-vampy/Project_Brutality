@@ -293,96 +293,209 @@ PB_FIREMODE_SEMI = "Firemode: \cfSemi-Auto";
 PB_FIREMODE_BURST = "Firemode: \ciBurst";
 PB_FIREMODE_FULL = "Firemode: \crFull-Auto";
 
-//Berserk
+//Fists
+PB_FIST_NAME = "Fists";
+PB_FIST_TAG = "Bare Hands";
 PB_FIST_EXECUTEON = "Auto-Execute: \cgEnabled";
 PB_FIST_EXECUTEOFF = "Auto-Execute: \cuDisabled";
 
 //Chainsaw
+PB_SAW_PICKUP = "Painsaw (Slot 1)";
+PB_SAW_NAME = "Chainsaw";
+PB_SAW_TAG = "MIXOM Beavertooth Chainsaw";
 PB_SAW_GATHERON = "Resource Gather: \ciEnabled";
 PB_SAW_GATHEROFF = "Resource Gather: \cuDisabled";
 
+//Fire Axe
+PB_AXE_PICKUP = "Fire Axe (Slot 1)";
+PB_AXE_NAME = "Fire Axe";
+PB_AXE_TAG = "Fire Axe";
+
 //Pistol
+PB_PISTOL_PICKUP = "Pistol (Slot 2)";
+PB_PISTOL_NAME = "Pistol";
+PB_PISTOL_TAG = "UAC-B950 .45 ACP Pistol";
 PB_PISTOL_SUPPRESSON = "Suppressor: \cdEnabled";
 PB_PISTOL_SUPPRESSOFF = "Suppressor: \cuDisabled";
 
 //SMG
-PB_SMG_LASERON = "Laser Sight: \cgEnabled";
-PB_SMG_LASEROFF = "Laser Sight: \cuDisabled";
+PB_SMG_PICKUP = "Submachine Gun (Slot 2, Upgrade)";
+PB_SMG_NAME = "Submachine Gun";
+PB_SMG_TAG = "UAC-17 Compact Submachine Gun";
+
+//Revolver
+PB_REVOLVER_PICKUP = "Magnum Revolver (Slot 2)";
+PB_REVOLVER_NAME = "Magnum Revolver";
+PB_REVOLVER_TAG = "UAC-B750 Death Adder .500 Magnum Revolver";
+
+//Deagle
+PB_DEAGLE_PICKUP = "Martian Raptor Automag (Slot 2, Upgrade)";
+PB_DEAGLE_NAME = "Martian Raptor Automag";
+PB_DEAGLE_TAG = "UAC-H54 Martian Raptor .50 AE Automag";
+
+//MP40
+PB_MP40_PICKUP = "MP 40 (Slot 2)";
+PB_MP40_NAME = "MP 40";
+PB_MP40_TAG = "Maschinenpistole 40";
 
 //Shotgun
-PB_SGBUCKLD = "Shell Type: \cgBuckshot";
-PB_SGSLUGLD = "Shell Type: \cdSlug";
-PB_SGDBLD =  "Shell Type: \ciDragon's Breath";
+PB_SG_PICKUP = "Pump Shotgun (Slot 3)";
+PB_SG_NAME = "Pump Shotgun";
+PB_SG_TAG = "UAC-GS10 Pump Shotgun";
+PB_SG_UPGRADE_PICKUP = "Pump Shotgun Magazine (Slot 3, Upgrade)";
+PB_SG_UPGRADE_NAME = "Pump Shotgun Magazine";
+PB_SG_BUCKSHOT = "Shell Type: \cgBuckshot";
+PB_SG_SLUG = "Shell Type: \cdSlug";
+PB_SG_DRAGONSBREATH =  "Shell Type: \ciDragon's Breath";
+
+//Assault Shotgun
+PB_ASG_PICKUP = "Assault Shotgun (Slot 3)";
+PB_ASG_NAME = "Assault Shotgun";
+PB_ASG_TAG = "UAC-AS16 Party Crasher Assault Shotgun";
+PB_ASG_UPGRADE_PICKUP = "Assault Shotgun Magazine (Slot 3, Upgrade)";
+PB_ASG_UPGRADE_NAME = "Assault Shotgun Magazine";
+
+//Super Shotgun
+PB_SSG_PICKUP = "Double-Barrel Shotgun (Slot 3)";
+PB_SSG_NAME = "Double-Barrel Shotgun";
+PB_SSG_TAG = "Sawn-Off Double-Barrel Shotgun";
 
 //Quad Shotgun
-PB_QSG_DEMONBREATH = "Firemode: \ciDemon's Breath";
+PB_QSG_PICKUP = "Quad-Barrel Shotgun (Slot 3, Upgrade)";
+PB_QSG_NAME = "Quad-Barrel Shotgun";
+PB_QSG_TAG = "Sawn-Off Quad-Barrel Shotgun";
+PB_QSG_DBREATH = "Firemode: \ciDemon's Breath";
 PB_QSG_SHELLS = "Firemode: \cgBuckshot";
 PB_QSG_HALF = "Firemode: \cuHalf Blast";
 PB_QSG_FULL = "Firemode: \ckFull Blast";
 
 //Heavy DMR
-PB_HDMRDMR = "Firemode: \cuDMR";
-PB_HDMRSNP = "Firemode: \ceHeavy Sniper";
-PB_HDMRGRN = "Secondary Firemode: \cdGrenade";
-PB_HDMRAIM = "Secondary Firemode: \cgAiming";
+PB_DMR_PICKUP = "DMR (Slot 4)";
+PB_DMR_TAG = "UAC-30 Designated Marksman Rifle";
+PB_HDMR_PICKUP = "Heavy DMR (Slot 4, Upgrade)";
+PB_HDMR_NAME = "Heavy DMR";
+PB_HDMR_TAG = "UAC-30 Heavy Designated Marksman Rifle";
+PB_HDMR_DMR = "Firemode: \cuHeavy DMR";
+PB_HDMR_SNIPER = "Firemode: \ceSniper";
+PB_HDMR_GRENADE = "Secondary Firemode: \cdGrenade";
+PB_HDMR_AIM = "Secondary Firemode: \cgAiming";
 
 //Carbine
+PB_CARBINE_PICKUP = "Carbine (Slot 4)";
+PB_CARBINE_NAME = "Carbine";
+PB_CARBINE_TAG = "UAC-41 Carbine";
 PB_CARBINE_SCOPE = "Secondary Firemode: \cg3x Scope";
 PB_CARBINE_REFLEX = "Secondary Firemode: \cu1x Red Dot";
 
 //LMG
-PB_LMGMICRO = "Ammo Type: \cdMicro Missile";
-PB_LMGBULLET = "Ammo Type: \ckBullet";
+PB_LMG_PICKUP = "Light Machine Gun (Slot 4)";
+PB_LMG_NAME = "Light Machine Gun";
+PB_LMG_TAG = "UAC-349 Light Machine Gun";
+PB_LMG_MISSILE = "Ammo Type: \cdMicro Missile";
+PB_LMG_BULLET = "Ammo Type: \ckBullet";
+
+//MG 42
+PB_MG42_PICKUP = "MG 42 (Slot 5)";
+PB_MG42_NAME = "MG 42";
+PB_MG42_TAG = "Maschinengewehr 42";
 
 //Minigun
+PB_MINIGUN_PICKUP = "Minigun (Slot 5)";
+PB_MINIGUN_NAME = "Minigun";
+PB_MINIGUN_TAG = "UAC-R51 Mach-3 Minigun";
+PB_MINIGUN_UPGRADE_PICKUP = "Death Dealer Minigun (Slot 5, Upgrade)";
+PB_MINIGUN_UPGRADE_NAME = "Death Dealer Minigun";
+PB_MINIGUN_UPGRADE_TAG = "UAC-R64 Death Dealer Minigun";
 PB_MINIGUN_CHAINGUN = "Firemode: \cd525 RPM";
 PB_MINIGUN_GATLING = "Firemode: \ci1050-2100 RPM";
 PB_MINIGUN_TRIPLE = "Firemode: \cg6300 RPM";
 
 //Nailgun
+PB_NAILGUN_PICKUP = "Nailgun (Slot 5)";
+PB_NAILGUN_NAME = "Nailgun";
+PB_NAILGUN_TAG = "MIXOM Perforator-240 Nailgun";
 PB_NAILGUN_NAIL = "Nail Type: \czStandard";
 PB_NAILGUN_JAVELIN = "Nail Type: \crJavelin";
 
 //Grenade Launcher
-PB_SGLIMPACT = "Grenade Type: \ckImpact";
-PB_SGLSTICKY = "Grenade Type: \caSticky Bomb";
-PB_SGLINCEN = "Grenade Type: \ciIncendiary";
-PB_SGLCRYO = "Grenade Type: \chCryogenic";
-PB_SGLACID = "Grenade Type: \cdAcid";
+PB_SGL_PICKUP = "Grenade Launcher (Slot 6)";
+PB_SGL_NAME = "Grenade Launcher";
+PB_SGL_TAG = "UAC-M7 Automatic Grenade Launcher";
+PB_SGL_IMPACT = "Grenade Type: \ckImpact";
+PB_SGL_STICKY = "Grenade Type: \caSticky Bomb";
+PB_SGL_INCENDIARY = "Grenade Type: \ciIncendiary";
+PB_SGL_CRYO = "Grenade Type: \chCryogenic";
+PB_SGL_ACID = "Grenade Type: \cdAcid";
 
 //Rocket Launcher
-PB_RLGUID = "Firemode: \ckLaser Guided";
-PB_RLLOCK = "Firemode: \cyLock-on";
-PB_RLNORM = "Firemode: \cdStandard";
+PB_RL_PICKUP = "Rocket Launcher (Slot 6)";
+PB_RL_NAME = "Rocket Launcher";
+PB_RL_TAG = "UAC-M10 Rocket Launcher";
+PB_RL_GUIDED = "Firemode: \ckLaser Guided";
+PB_RL_LOCKON = "Firemode: \cyLock-on";
+PB_RL_NORMAL = "Firemode: \cdStandard";
+
+//M1 Plasma
+PB_M1_PICKUP = "Plasma Rifle (Slot 7)";
+PB_M1_NAME = "Plasma Rifle";
+PB_M1_TAG = "UAC-M1 Plasma Rifle";
+
+//M2 Plasma
+PB_M2_PICKUP = "Heavy Plasma Rifle (Slot 7)";
+PB_M2_NAME = "Heavy Plasma Rifle";
+PB_M2_TAG = "UAC-M2 Heavy Plasma Rifle";
+PB_M2_UPGRADE_PICKUP = "Heavy Plasma Zeus Module (Slot 7, Upgrade)";
+PB_M2_UPGRADE_NAME = "Heavy Plasma Zeus Module";
+PB_M2_UPGRADE_TAG = "UAC-M2 Zeus Heavy Plasma Rifle";
+PB_M2_PLASMA = "Firemode: \cvPlasma";
+PB_M2_LIGHTNING = "Firemode: \chLightning";
+
+//Demon-Tech Rifle
+PB_DTECH_PICKUP = "Demon-Tech Rifle (Slot 7)";
+PB_DTECH_NAME = "Demon-Tech Rifle";
+PB_DTECH_TAG = "Demon-Tech Rifle";
+PB_DTECH_INFERNO = "Firemode: \c[PB_DTech]Inferno";
+PB_DTECH_CAUSTIC = "Firemode: \cdCaustic";
 
 //Cryo Rifle
+PB_CRYO_PICKUP = "Cryo Rifle (Slot 8)";
+PB_CRYO_NAME = "Cryo Rifle";
+PB_CRYO_TAG = "UAC-M20 Cryogenic Dispersion Rifle";
 PB_CRYO_MISSILE = "Firemode: \chIce Missile";
 PB_CRYO_BEAM = "Firemode: \cvIce Beam";
 PB_CRYO_SPEAR = "Secondary Firemode: \chIce Spear";
 PB_CRYO_FLAK = "Secondary Firemode: \cvIce Flak";
 
 //Flamethrower
+PB_FLAMER_PICKUP = "Flamethrower (Slot 8)";
+PB_FLAMER_NAME = "Flamethrower";
+PB_FLAMER_TAG = "UAC-M3 Flamethrower";
+PB_FLAMER_UPGRADE_PICKUP = "Flamethrower Fuel Hose (Slot 8, Upgrade)";
+PB_FLAMER_UPGRADE_NAME = "Flamethrower Fuel Hose";
 PB_FLAMER_FLAME = "Firemode: \ciFlame";
 PB_FLAMER_ACID = "Firemode: \cdNukage";
 
-//M2 Plasma
-PB_M2_PLASMA = "Firemode: \cvPlasma";
-PB_M2_LIGHTNING = "Firemode: \chLightning";
-
 //Railgun
+PB_RAILGUN_PICKUP = "Railgun (Slot 9)";
+PB_RAILGUN_NAME = "Railgun";
+PB_RAILGUN_TAG = "UAC-MkIII Railgun";
 PB_RAILGUN_RAIL = "Firemode: \chRail";
 PB_RAILGUN_LASER = "Firemode: \cgLaser";
 
 //BFG
+PB_BFG_PICKUP = "BFG-9000 (Slot 9)";
+PB_BFG_NAME = "BFG-9000";
+PB_BFG_TAG = "UAC-MkV BFG-9000";
 PB_BFG_PLASMA = "Firemode: \cdPlasma";
 PB_BFG_BLACKHOLE = "Firemode: \ctBlack Hole";
 
-//Demon-Tech Rifle
-PB_DTECH_INFERNO= "Firemode: \c[PB_DTech]Inferno";
-PB_DTECH_CAUSTIC = "Firemode: \cdCaustic";
-
 //Unmaker
+PB_UNMAKER_PICKUP = "What the fuck is this? (Slot 9)";
+PB_UNMAKER_NAME = "Unmaker";
+PB_UNMAKER_TAG = "Unmaker";
 PB_UNMAKER_OVERCHARGE = "Firemode: \cxOvercharged";
+PB_UNMAKER_TOOLOW = "\c[PB_DTech]CHARGESYS FAILURE: INSUFFICIENT POWER";
+PB_UNMAKER_WARN = "\c[PB_DTech]CHARGESYS FAILURE: NO GOING BACK NOW";
 
 //Gameplay Settings
 //Weapon Respect animations
