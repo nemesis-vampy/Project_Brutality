@@ -346,7 +346,7 @@ PB_SG_UPGRADE_PICKUP = "Pump Shotgun Magazine (Slot 3, Upgrade)";
 PB_SG_UPGRADE_NAME = "Pump Shotgun Magazine";
 PB_SG_BUCKSHOT = "Shell Type: \cgBuckshot";
 PB_SG_SLUG = "Shell Type: \cdSlug";
-PB_SG_DRAGONSBREATH =  "Shell Type: \ciDragon's Breath";
+PB_SG_DBREATH =  "Shell Type: \ciDragon's Breath";
 
 //Assault Shotgun
 PB_ASG_PICKUP = "Assault Shotgun (Slot 3)";
