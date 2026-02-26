@@ -32,14 +32,7 @@ class PB_RLSpawnerT2 : PB_WeaponSpawner
 	Default
 	{
 		PBRandomSpawner.Fallback 'PB_RLSpawnerT1';
-		DropItem 'PB_SuperGL', 255, 1;
-	}
-	
-	override bool HandleSpawnExceptions(name toSpawn)
-	{
-		if(toSpawn == "PB_SuperGL" && pb_rocketlauncher_filter & DisablePB_SuperGL)
-			return false;
-		return true;
+		DropItem 'PB_RocketLauncher', 255, 1;
 	}
 }
 
