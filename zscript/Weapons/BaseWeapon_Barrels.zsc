@@ -117,7 +117,13 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 				else if(CountInv("Grab7")) invoker.b = "PB_NukageBarrelCut_RedBlood";
 				else if(CountInv("Grab8")) invoker.b = "PB_NukageBarrelDented_RedBlood";
 				A_SpawnItemEx(invoker.b,17,0,0,12,0,0,0,SXF_NOCHECKPOSITION,0);
-				A_StartSound("barrel/pain");
+				A_StartSound("barrel/pain"); {
+				for(int i=8;i>0;i--)
+				{
+					A_TakeInventory("Grab"..i,1);
+				}
+				A_TakeInventory("GrabbedBarrel",1);
+			}
 			}
 			goto CompletePlacement;
 		PlaceFlameBarrel:
@@ -133,7 +139,13 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 				else if(CountInv("FGrab7")) invoker.b = "PB_FlameBarrelCut_RedBlood";
 				else if(CountInv("FGrab8")) invoker.b = "PB_FlameBarrelDented_RedBlood";
 				A_SpawnItemEx(invoker.b,17,0,0,12,0,0,0,SXF_NOCHECKPOSITION,0);
-				A_StartSound("barrel/pain");
+				A_StartSound("barrel/pain"); {
+				for(int i=8;i>0;i--)
+				{
+					A_TakeInventory("FGrab"..i,1);
+				}
+				A_TakeInventory("GrabbedFlameBarrel",1);
+			}
 			}
 			goto CompletePlacement;
 		PlaceIceBarrel:
@@ -149,22 +161,18 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 				else if(CountInv("IGrab7")) invoker.b = "PB_IceBarrelCut_RedBlood";
 				else if(CountInv("IGrab8")) invoker.b = "PB_IceBarrelDented_RedBlood";
 				A_SpawnItemEx(invoker.b,17,0,0,12,0,0,0,SXF_NOCHECKPOSITION,0);
-				A_StartSound("barrel/pain");
+				A_StartSound("barrel/pain"); {
+				for(int i=8;i>0;i--)
+				{
+					A_TakeInventory("IGrab"..i,1);
+				}
+				A_TakeInventory("GrabbedIceBarrel",1);
+			}
 			}
 			goto CompletePlacement;
 		CompletePlacement:
 			PKPB HGFEDCBA 1;
-			TNT1 A 2 {
-				for(int i=8;i>0;i--)
-				{
-					A_TakeInventory("Grab"..i,1);
-					A_TakeInventory("IGrab"..i,1);
-					A_TakeInventory("FGrab"..i,1);
-				}
-				A_TakeInventory("GrabbedBarrel",1);
-				A_TakeInventory("GrabbedIceBarrel",1);
-				A_TakeInventory("GrabbedFlameBarrel",1);
-			}
+			TNT1 A 2;
 			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
 			TNT1 A 0 A_JumpIf(player.PendingWeapon != WP_NOCHANGE,1);
 			Goto GoingToReady2;
