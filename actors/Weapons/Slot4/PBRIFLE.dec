@@ -1342,7 +1342,7 @@ ACTOR PB_DMR : PB_Weapon
 		TNT1 A 0 A_JumpIf(CountInv("HDMRSniperMode") == 1, "HandleHDMRMode_StoN")
 	HandleHDMRMode_NtoS:
 		TNT1 A 0 {
-			A_Print("$PB_HDMRSNP");
+			A_Print("$PB_HDMR_SNIPER");
 			A_PlaySoundEx("Ironsights", "Auto");
 		}
 		H9F0 ABCDEF 0
@@ -1414,7 +1414,7 @@ ACTOR PB_DMR : PB_Weapon
 		Goto ReadyDualWield
 	HandleHDMRMode_StoN:
 		TNT1 A 0 {
-			A_Print("$PB_HDMRDMR");
+			A_Print("$PB_HDMR_DMR");
 			A_PlaySoundEx("Ironsights", "Auto");
 		}
 		H9F2 ABCDEF 0
@@ -1493,11 +1493,11 @@ ACTOR PB_DMR : PB_Weapon
 		TNT1 A 0 {
 			A_PlaySoundEx("LIGHTON", "Auto");
 			if(CountInv("HDMRGrenadeMode") == 1) {
-				A_Print("$PB_HDMRAIM");
+				A_Print("$PB_HDMR_AIM");
 				A_TakeInventory("HDMRGrenadeMode",1);
 			}
 			else {
-				A_Print("$PB_HDMRGRN");
+				A_Print("$PB_HDMR_GRENADE");
 				A_GiveInventory("HDMRGrenadeMode",1);
 				A_Overlay(-80,"StopScopeOverlay");
 			}

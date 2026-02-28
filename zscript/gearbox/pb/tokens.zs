@@ -442,7 +442,7 @@ Class PB_RifleWheel : wheelinfocontainer
 		{
 			PB_SpecialWheel_Mode rifle_normal = new ("PB_SpecialWheel_Mode");
 			rifle_normal.img = "graphics/pywheel/hdmr_normal.png";
-			rifle_normal.Alias = "DMR Mode";
+			rifle_normal.Alias = "Heavy DMR Mode";
 			rifle_normal.tokentogive = "SelectHDMRMode";
 			rifle_normal.scalex = iconscale.x;
 			rifle_normal.scaley = iconscale.y;
@@ -453,7 +453,7 @@ Class PB_RifleWheel : wheelinfocontainer
 		{
 			PB_SpecialWheel_Mode rifle_sniper = new ("PB_SpecialWheel_Mode");
 			rifle_sniper.img = "graphics/pywheel/hdmr_sniper.png";
-			rifle_sniper.Alias = "Heavy Sniper Mode";
+			rifle_sniper.Alias = "Sniper Mode";
 			rifle_sniper.tokentogive = "SelectHDMRMode";
 			rifle_sniper.scalex = iconscale.x;
 			rifle_sniper.scaley = iconscale.y;
