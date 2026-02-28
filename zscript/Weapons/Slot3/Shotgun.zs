@@ -1475,7 +1475,7 @@ Class PB_SGMagazine: PB_UpgradeItem
 		-INVENTORY.ALWAYSPICKUP
 		-COUNTITEM
 		Inventory.Pickupsound "SHOTPICK";
-		Inventory.PickupMessage "PB_SG_UPGRADE_PICKUP";
+		Inventory.PickupMessage "$PB_SG_UPGRADE_PICKUP";
 		Tag "Pump Shotgun Magazine";
 		Scale 0.45;
 		FloatBobStrength 0.5;
