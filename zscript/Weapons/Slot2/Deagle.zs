@@ -103,7 +103,7 @@ class PB_Deagle : PB_WeaponBase
 		ReadyUnloaded:
 		Ready4:	//man i hate this
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReadyDualWield");
-			TNT1 A 0 A_JumpIf(!PB_GetChamberEmpty(),"ReadyUnloaded");
+			TNT1 A 0 A_JumpIf(!PB_GetChamberEmpty(),"Ready");
 			D1E0 A 1 {
 				PB_CoolDownBarrel(0, 0, 3);
 				return A_DoPBWeaponAction();
