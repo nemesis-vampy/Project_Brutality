@@ -28,6 +28,8 @@
 #include "BMAP/Weapons/Slot 6/RocketLauncher.txt"
 //Slot 7
 #include "BMAP/Weapons/Slot 7/M1Plasma.txt"
+#include "BMAP/Weapons/Slot 7/M2Plasma.txt"
+
 #include BMAP/M2Plasma.txt
 #include "BMAP/Weapons/Slot 7/DemonTech.txt"
 //Slot 8
