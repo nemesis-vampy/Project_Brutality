@@ -10,11 +10,11 @@ brightmap sprite M210H0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Idle/M210A.png"}
 brightmap sprite M210I0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Idle/M210A.png"}
 
 //Fire
-brightmap sprite M211A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211A.png"}
-brightmap sprite M211B0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211B.png"}
-brightmap sprite M211C0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211C.png"}
-brightmap sprite M211D0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211D.png"}
-brightmap sprite M211E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211E.png"}
+brightmap sprite M211A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211A.png" disablefullbright}
+brightmap sprite M211B0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211B.png" disablefullbright}
+brightmap sprite M211C0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211C.png" disablefullbright}
+brightmap sprite M211D0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211D.png" disablefullbright}
+brightmap sprite M211E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Fire/M211E.png" disablefullbright}
 
 //Respect
 brightmap sprite M200R0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Respect/M200R.png"}
@@ -105,21 +105,21 @@ brightmap sprite M204E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Reload/FromUnloa
 brightmap sprite M204F0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Reload/FromUnloaded/M204F.png"}
 
 //Altfire
-brightmap sprite PR3LA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LA.png"}
-brightmap sprite PR3LB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LB.png"}
-brightmap sprite PR3LC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LC.png"}
-brightmap sprite PR3LD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LD.png"}
-brightmap sprite PR3LE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LE.png"}
-brightmap sprite PR3LF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LF.png"}
-brightmap sprite PR3LG0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LG.png"}
-brightmap sprite PR3LH0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LH.png"}
-brightmap sprite PR3LI0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LI.png"}
-brightmap sprite PR3LJ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LJ.png"}
-brightmap sprite PR3LK0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LK.png"}
-brightmap sprite PR3LL0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LL.png"}
-brightmap sprite PR3LM0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LM.png"}
-brightmap sprite PR3LN0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LN.png"}
-brightmap sprite PR3LO0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LO.png"}
+brightmap sprite PR3LA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LA.png" disablefullbright}
+brightmap sprite PR3LB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LB.png" disablefullbright}
+brightmap sprite PR3LC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LC.png" disablefullbright}
+brightmap sprite PR3LD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LD.png" disablefullbright}
+brightmap sprite PR3LE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LE.png" disablefullbright}
+brightmap sprite PR3LF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LF.png" disablefullbright}
+brightmap sprite PR3LG0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LG.png" disablefullbright}
+brightmap sprite PR3LH0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LH.png" disablefullbright}
+brightmap sprite PR3LI0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LI.png" disablefullbright}
+brightmap sprite PR3LJ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LJ.png" disablefullbright}
+brightmap sprite PR3LK0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LK.png" disablefullbright}
+brightmap sprite PR3LL0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LL.png" disablefullbright}
+brightmap sprite PR3LM0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LM.png" disablefullbright}
+brightmap sprite PR3LN0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LN.png" disablefullbright}
+brightmap sprite PR3LO0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/PR3LO.png" disablefullbright}
 
 //Select
 brightmap sprite M230A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Select/M230A.png"}
@@ -181,17 +181,17 @@ brightmap sprite P7SSD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldKicking
 brightmap sprite P7SSE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldKicking/P7SSE.png"}
 
 //Dual Wield Fire
-brightmap sprite M233A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233A.png"}
-brightmap sprite M233B0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233B.png"}
-brightmap sprite M233C0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233C.png"}
-brightmap sprite M233D0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233D.png"}
-brightmap sprite M233E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233E.png"}
+brightmap sprite M233A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233A.png" disablefullbright}
+brightmap sprite M233B0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233B.png" disablefullbright}
+brightmap sprite M233C0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233C.png" disablefullbright}
+brightmap sprite M233D0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233D.png" disablefullbright}
+brightmap sprite M233E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M233E.png" disablefullbright}
 
-brightmap sprite M243A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M243A.png"}
-brightmap sprite M243B0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M243B.png"}
-brightmap sprite M243C0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M243C.png"}
-brightmap sprite M243D0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M243D.png"}
-brightmap sprite M243E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M243E.png"}
+brightmap sprite M234A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M234A.png" disablefullbright}
+brightmap sprite M234B0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M234B.png" disablefullbright}
+brightmap sprite M234C0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M234C.png" disablefullbright}
+brightmap sprite M234D0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M234D.png" disablefullbright}
+brightmap sprite M234E0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/DualWieldFire/M234E.png" disablefullbright}
 
 // Upgraded Idle
 brightmap sprite PR2GA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedIdle/PR2GA.png"}
@@ -205,11 +205,11 @@ brightmap sprite PR2GH0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedIdle/PR2
 brightmap sprite PR2GI0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedIdle/PR2GA.png"}
 
 // Upgraded Fire
-brightmap sprite PR2FA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FA.png"}
-brightmap sprite PR2FB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FB.png"}
-brightmap sprite PR2FC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FC.png"}
-brightmap sprite PR2FD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FD.png"}
-brightmap sprite PR2FE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FE.png"}
+brightmap sprite PR2FA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FA.png" disablefullbright}
+brightmap sprite PR2FB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FB.png" disablefullbright}
+brightmap sprite PR2FC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FC.png" disablefullbright}
+brightmap sprite PR2FD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FD.png" disablefullbright}
+brightmap sprite PR2FE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/UpgradedFire/PR2FE.png" disablefullbright}
 
 // Upgraded Reload
 brightmap sprite M223A0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/ReloadUpgraded/M223A.png"}
@@ -262,15 +262,15 @@ brightmap sprite PR1GI0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/SwitchToLightnin
 brightmap sprite PR1GJ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/SwitchToLightning/PR1GJ.png"}
 
 // Lightning Fire
-brightmap sprite PR1FA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FA.png"}
-brightmap sprite PR1FB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FB.png"}
-brightmap sprite PR1FC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FC.png"}
-brightmap sprite PR1FD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FD.png"}
-brightmap sprite PR1FE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FE.png"}
-brightmap sprite PR1FF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FF.png"}
-brightmap sprite PR1FX0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FX.png"}
-brightmap sprite PR1FY0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FY.png"}
-brightmap sprite PR1FZ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FZ.png"}
+brightmap sprite PR1FA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FA.png" disablefullbright}
+brightmap sprite PR1FB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FB.png" disablefullbright}
+brightmap sprite PR1FC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FC.png" disablefullbright}
+brightmap sprite PR1FD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FD.png" disablefullbright}
+brightmap sprite PR1FE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FE.png" disablefullbright}
+brightmap sprite PR1FF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FF.png" disablefullbright}
+brightmap sprite PR1FX0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FX.png" disablefullbright}
+brightmap sprite PR1FY0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FY.png" disablefullbright}
+brightmap sprite PR1FZ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/FireLightning/PR1FZ.png" disablefullbright}
 
 // Upgraded Kick
 brightmap sprite PR2KA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Kicking/UpgradedKicking/PR2KA.png"}
@@ -282,21 +282,21 @@ brightmap sprite PR2KF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Kicking/Upgraded
 brightmap sprite PR2KG0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Kicking/UpgradedKicking/PR2KE.png"}
 
 // Upgraded Altfire
-brightmap sprite PR4LA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LA.png"}
-brightmap sprite PR4LB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LB.png"}
-brightmap sprite PR4LC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LC.png"}
-brightmap sprite PR4LD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LD.png"}
-brightmap sprite PR4LE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LE.png"}
-brightmap sprite PR4LF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LF.png"}
-brightmap sprite PR4LG0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LG.png"}
-brightmap sprite PR4LH0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LH.png"}
-brightmap sprite PR4LI0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LI.png"}
-brightmap sprite PR4LJ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LJ.png"}
-brightmap sprite PR4LK0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LK.png"}
-brightmap sprite PR4LL0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LL.png"}
-brightmap sprite PR4LM0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LM.png"}
-brightmap sprite PR4LN0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LN.png"}
-brightmap sprite PR4LO0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LO.png"}
+brightmap sprite PR4LA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LA.png" disablefullbright}
+brightmap sprite PR4LB0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LB.png" disablefullbright}
+brightmap sprite PR4LC0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LC.png" disablefullbright}
+brightmap sprite PR4LD0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LD.png" disablefullbright}
+brightmap sprite PR4LE0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LE.png" disablefullbright}
+brightmap sprite PR4LF0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LF.png" disablefullbright}
+brightmap sprite PR4LG0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LG.png" disablefullbright}
+brightmap sprite PR4LH0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LH.png" disablefullbright}
+brightmap sprite PR4LI0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LI.png" disablefullbright}
+brightmap sprite PR4LJ0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LJ.png" disablefullbright}
+brightmap sprite PR4LK0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LK.png" disablefullbright}
+brightmap sprite PR4LL0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LL.png" disablefullbright}
+brightmap sprite PR4LM0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LM.png" disablefullbright}
+brightmap sprite PR4LN0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LN.png" disablefullbright}
+brightmap sprite PR4LO0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/M2ALTFIRE/UpgradedAltFire/PR4LO.png" disablefullbright}
 
 //Pickup
 brightmap sprite M2PRA0{map "Brightmaps/WEAPONS/Slot 6/M2Plasma/Pickup/M2PRA.png"}
