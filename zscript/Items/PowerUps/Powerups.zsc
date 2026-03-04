@@ -231,7 +231,7 @@ class PB_PowerLightAmp : PowerTorch
 {
 	mixin PB_PowerupTimer;
 	float exposureadjust;
-	Default { +INVENTORY.NOSCREENBLINK Powerup.Colormap 0.0, 2.0, 0.0; }
+	Default { +INVENTORY.NOSCREENBLINK }
 	
 	override void InitEffect()
 	{
