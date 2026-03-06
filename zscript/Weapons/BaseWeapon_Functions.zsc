@@ -83,7 +83,7 @@ extend class PB_WeaponBase
 	action void PB_GunShot(sound shotSound, sound mechSound, string tailInside, string tailOutside, string ammoType = "default", string ammoItem = "SuperMario64ForTheXboxOne", int ammoUse = 1)
 	{
 		PB_LowAmmoSoundWarning(ammoType, ammoItem, ammoUse);
-		console.printf("%f", 0.1 + (invoker.lowAmmoVol * 0.3));
+		//console.printf("%f", 0.1 + (invoker.lowAmmoVol * 0.3));
 		A_StartSound(shotSound, CHAN_WEAPON, volume: Clamp(PB_Math.LinearMap(invoker.sustainedFire, 3.0, 1.0, 0.5, 1.0), 0.5, 1.0));
 		A_StartSound(mechSound, CHAN_AUTO, volume: 0.1 + (invoker.lowAmmoVol * 0.9), pitch: 0.3 + invoker.lowAmmoVol);
 		PB_DynamicTail(tailInside, tailOutside);
@@ -2420,7 +2420,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 		weapFlags &= ~(WRF_ALLOWRELOAD);
 		if(invoker is "PB_Fists" && !grabbedbarrel){weapFlags |= WRF_ALLOWRELOAD;}
 		if(invoker is "PB_MG42" && (CountInv("MG42HasOverheated") || CountInv("MG42BarrelOverheat") >= 1) && !grabbedbarrel){weapFlags |= WRF_ALLOWRELOAD;}
-		bool dualWieldCheck = invoker.DualWieldToken && FindInventory(invoker.DualWieldToken);
+		bool dualWieldCheck = A_CheckAkimbo();
 		bool canLoadAmmoLeft = invoker.AmmoTypeLeft && countinv(invoker.ammotype1) > 0 && (countInv(invoker.AmmoTypeLeft) < GetAmmoCapacity(invoker.AmmoTypeLeft) || PB_GetMagUnloaded(true));
 		bool canLoadAmmo = invoker.ammotype2 && countinv(invoker.ammotype1) > 0 && (countinv(invoker.ammotype2) < GetAmmoCapacity(invoker.ammotype2) || PB_GetMagUnloaded());
 		bool dualReloadCheck = dualWieldCheck && (canLoadAmmoLeft||canLoadAmmo||PB_GetChamberEmpty(true)||PB_GetChamberEmpty(true));
@@ -2689,6 +2689,12 @@ action int getReadyFlags(int weapflags, bool noReload)
 		invoker.WeaponScaleX = PB_PixelRenderingFix ? 1.2 : 1.0;
 	}
 	
+	action void A_FlashOverlay(int layer = -3, statelabel state = "MuzzleFlash")
+	{
+		A_Overlay(layer, state);
+		A_OverlayFlags(layer, PSPF_RENDERSTYLE,true);
+		A_OverlayRenderStyle(layer, STYLE_Add);
+	}
 	
 	action void A_SetOverlaySprite(int layer, String str)
 		{
