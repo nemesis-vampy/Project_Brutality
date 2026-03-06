@@ -45,7 +45,7 @@ class PB_Projectile : FastProjectile abstract
 		
 		let ptrPBMon = PB_Monster(victim);
 		float victimHeight = (victim.ProjectilePassHeight > victim.Height)?(victim.ProjectilePassHeight):victim.Height;
-		if (!bNOCRITICALS && Pos.Z > victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posTorsoHB : 0.65))
+		if (!bNOCRITICALS && Pos.Z > victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posTorsoHB : 0.65) && victim.bISMONSTER)
 		{
 			//Console.Printf("Critical");
 			scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgTorsoMult : 1.5);
@@ -65,7 +65,7 @@ class PB_Projectile : FastProjectile abstract
 // 				//A_StartSound("torsshotmarker", CHAN_AUTO, CHAN_UI);
 // 			}
 		}
-		else if (Pos.Z < victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posLegHB : 0.40) && !((ptrPBMon) ? ptrPBMon.ignoreLegDamage : 0))
+		else if (Pos.Z < victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posLegHB : 0.40) && !((ptrPBMon) ? ptrPBMon.ignoreLegDamage : 0) && victim.bISMONSTER)
 		{
 			if (Pos.Z > victim.Pos.Z + victimHeight * ((ptrPBMon) ? ptrPBMon.posDickHB : 0.38) && !((ptrPBMon) ? ptrPBMon.ignoreDickDamage : 0))
 			{
@@ -82,7 +82,7 @@ class PB_Projectile : FastProjectile abstract
 				scaled_damage = scaled_damage * ((ptrPBMon) ? ptrPBMon.dmgLegMult : 0.7);
 			}
 		}
-		else if (!bOMNIDIRECTIONAL && ang > 32 && ang < 148 && !((ptrPBMon) ? ptrPBMon.ignoreArmDamage : 0))
+		else if (!bOMNIDIRECTIONAL && ang > 32 && ang < 148 && !((ptrPBMon) ? ptrPBMon.ignoreArmDamage : 0) && victim.bISMONSTER)
 		{
 			//Console.Printf("Armshot");
 			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
