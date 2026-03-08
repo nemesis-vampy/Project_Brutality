@@ -2362,7 +2362,8 @@ extend class PB_WeaponBase
 		 ||
 		(InStateSequence(invoker.owner.player.GetPSprite(10).Curstate,invoker.ResolveState("IdleLeft_Overlay")) && 
 		 InStateSequence(invoker.owner.player.GetPSprite(11).Curstate,invoker.ResolveState("IdleRight_Overlay")) && 
-		 InStateSequence(PSPState,invoker.ResolveState("ReadyToFireDualWield"))))
+		 (InStateSequence(PSPState,invoker.ResolveState("ReadyToFireDualWield")) ||
+		 InStateSequence(PSPState,invoker.ResolveState("ReadyDualWield")))))
 			return true;
 		return false;
 	}
