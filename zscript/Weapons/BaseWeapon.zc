@@ -233,6 +233,9 @@ class PB_WeaponBase : DoomWeapon
 		PB_WeaponBase.ReserveToMagAmmoFactor 1;
 		//Weapon.WeaponScaleX 1.2;
 		+DONTGIB
+		+WEAPON.NOALERT
+		+WEAPON.AMMO_OPTIONAL
+		+WEAPON.NOAUTOFIRE
 	}
 	
 	States
