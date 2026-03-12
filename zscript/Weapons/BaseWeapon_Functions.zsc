@@ -1832,7 +1832,7 @@ extend class PB_WeaponBase
 	
 	action void PB_TakeAmmo(class<Inventory> ammoType, int takeNum, int emptyMag = 1, int emptyChamber = 0, bool dual = false)
 	{
-		A_TakeInventory(ammoType,takeNum);
+		A_TakeInventory(ammoType, takeNum, TIF_NOTAKEINFINITE);
 		if(CountInv(ammoType) <= emptyMag)
 			PB_SetMagEmpty(true,dual);
 		if(CountInv(ammoType) <= emptyChamber || PB_GetMagUnloaded(dual) && emptyChamber > -1)
