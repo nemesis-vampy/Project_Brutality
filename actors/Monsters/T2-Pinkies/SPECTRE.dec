@@ -68,11 +68,11 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		stop
 	
 	Spawn:
-		SAR1 A 10 BRIGHT A_Look
+		SAR1 A 10 A_Look
 		Loop
 	See:
 		
-		SAR1 AAABBBAAABBB 1 BRIGHT A_Chase
+		SAR1 AAABBBCCCDDD 1 A_Chase
 		Loop
 	Pain:
 		SAR1 H 2
