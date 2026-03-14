@@ -328,7 +328,7 @@ ACTOR PB_MG42 : PB_Weapon
 		else{
 			PB_ModifyOverheat(5);
 			}
-		A_TakeInventory("PB_HighCalMag", 1);
+		A_TakeInventory("PB_HighCalMag", 1, TIF_NOTAKEINFINITE);
 		A_StartSound("MG42FIR", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		PB_DynamicTail("lmg", "lmg");
 		//A_FireBullets(5, 6, 1, 28, "MachineGunBulletPuff", 1);
@@ -508,7 +508,7 @@ ACTOR PB_MG42 : PB_Weapon
 		else{
 			PB_ModifyOverheat(5);
 			}
-		A_TakeInventory("PB_HighCalMag", 1);
+		A_TakeInventory("PB_HighCalMag", 1, TIF_NOTAKEINFINITE);
 		A_StartSound("MG42FIR", CHAN_Weapon, CHANF_DEFAULT, 1.0);
 		PB_DynamicTail("lmg", "lmg");
 		//A_FireBullets(5, 5, 1, 28, "MachineGunBulletPuff", 1);

@@ -982,7 +982,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 			A_StartSound("weapons/flamethrower/start", CHAN_6 );
 		}
 	FireUpgradedContinue:
-		TNT1 A 0 A_TakeInventory("PB_Fuel", 1)
+		TNT1 A 0 A_TakeInventory("PB_Fuel", 1, TIF_NOTAKEINFINITE)
 		FLF2 AB 1 BRIGHT {
 			if(CountInv("PB_Fuel") < 1) {return state("FireStop");}
 			A_GunFlash;
@@ -995,7 +995,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 			A_FireCustomMissile("ShotgunParticles", random(-11,11), 0, -1, random(-15,-2));
 			return state("");
 		}
-		TNT1 A 0 A_TakeInventory("PB_Fuel", 1)
+		TNT1 A 0 A_TakeInventory("PB_Fuel", 1, TIF_NOTAKEINFINITE)
 		FLF2 EF 1 BRIGHT {
 			if(CountInv("PB_Fuel") < 1) {return state("FireStop");}
 			A_GunFlash;
@@ -1008,7 +1008,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 			A_FireCustomMissile("ShotgunParticles", random(-11,11), 0, -1, random(-15,-2));
 			return state("");
 		}
-		TNT1 A 0 A_TakeInventory("PB_Fuel", 1)
+		TNT1 A 0 A_TakeInventory("PB_Fuel", 1, TIF_NOTAKEINFINITE)
 		FLF2 CD 1 BRIGHT {
 			if(CountInv("PB_Fuel") < 1) {return state("FireStop");}
 			A_GunFlash;
@@ -1040,7 +1040,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("PB_Fuel",2,1)
 		Goto Reload
 		TNT1 A 0 {
-			A_TakeInventory("PB_Fuel", 2);
+			A_TakeInventory("PB_Fuel", 2, TIF_NOTAKEINFINITE);
 			A_AlertMonsters;
 			A_StopSound(CHAN_BODY);
 			A_StopSound(CHAN_6);
@@ -1062,7 +1062,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 			A_FireCustomMissile("NukageStreamMissile", 0, 1, 0, -5);
 		}
 		"####" A 0 {
-			A_TakeInventory("PB_Fuel", 2);
+			A_TakeInventory("PB_Fuel", 2, TIF_NOTAKEINFINITE);
 			A_StartSound("weapons/flamethrower/acidloop", CHAN_WEAPON, CHANF_LOOPING, 0.5 );
 			A_StartSound("weapons/flamethrower/acidsprayloop", CHAN_5, CHANF_LOOPING , 1.0 );
 		}
@@ -1119,7 +1119,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 			A_FireCustomMissile("BigFireBallWithGravity", 0, 1, 0, -2);
 			A_GunFlash;
 			A_SetBlend("Orange",0.2,6);
-			A_TakeInventory("PB_Fuel", 9);
+			A_TakeInventory("PB_Fuel", 9, TIF_NOTAKEINFINITE);
 			PB_WeaponRecoil(-0.6,+0.3);
 // 			A_PlaySound("FLCHRG");
 			}
@@ -1140,7 +1140,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 				if (CountInv("FlamerUpgraded") == 1)
 				{
 					If (CountInv("PB_Fuel") >= 9) {
-						A_TakeInventory("PB_Fuel", 9);
+						A_TakeInventory("PB_Fuel", 9, TIF_NOTAKEINFINITE);
 						return state ("AltFireNukeDeploy");
 					}
 				return state ("");

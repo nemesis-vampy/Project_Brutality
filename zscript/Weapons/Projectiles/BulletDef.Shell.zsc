@@ -61,6 +61,7 @@ class PB_10GAPellet_LP : PB_10GAPellet
 		RipperLevel 1;
 		Damagetype "SSG";
 		+PB_Projectile.RANGED;
+		+PB_Projectile.NOCRITICALS;
 		PB_Projectile.ProjectileRange 220;
 	}
 }
@@ -89,6 +90,7 @@ class PB_8GAPellet_LP : PB_8GAPellet
 		RipperLevel 1;
 		Damagetype "SSG";
 		+PB_Projectile.RANGED;
+		+PB_Projectile.NOCRITICALS;
 		PB_Projectile.ProjectileRange 220;
 	}
 }

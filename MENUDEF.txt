@@ -87,14 +87,14 @@ Optionmenu "PB_AddonOptions"
 	Title		"$PB_ADDON_OPTIONS"
 	Class		"PB_OptionMenu"
 	Position	-48
-	StaticText	"--------- Configure Spawns ---------", gold
+	StaticText	"--------- Configure Spawns ---------", 1
 	Submenu		"Weapons",	"AddonWeaponSpawns"
 	Submenu		"Monsters",	"AddonMonsterSpawns"
 	Submenu		"Health/Armor",	"AddonHealthArmorSpawns"
 	Submenu		"Ammunition",	"AddonAmmoSpawns"
 	Submenu		"Powerups",	"AddonPowerupSpawns"
 	StaticText	""
-	StaticText	"--------- Addons ---------", gold
+	StaticText	"--------- Addons ---------", 1
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 OptionMenu "PB_MultiplayerOptions"
@@ -113,11 +113,11 @@ OptionMenu "PB_HUDOptions"
 	Title		"$PB_HUD_OPTIONS"
 	Class		"PB_OptionMenu"
 	Position	-48
-	StaticText	"--------- Presets ---------", gold
+	StaticText	"--------- Presets ---------", 1
 	Command 	"Full Style (Recommended)",		"pb_full_hud_style"
 	Command 	"Minimal Style",				"pb_minimal_hud_style"
 	StaticText	""
-	StaticText	"--------- Widgets ---------", gold
+	StaticText	"--------- Widgets ---------", 1
 	Option		"Show Level Stats",				"pb_showlevelstats",			"OnOff"
 	Option		"Show Ammo List",				"pb_showammolist",				"YesNo"
 	Option		"Show Current/Max Amount",		"pb_curmaxammolist",			"YesNo",			"pb_showammolist"
@@ -126,7 +126,7 @@ OptionMenu "PB_HUDOptions"
 	Option		"Show Execution Indicator",		"pb_execution_box",				"YesNo"
 	Option		"Indicator Type",				"pb_execution_indicatorType",	"IndicatorTypes",	"pb_execution_box"
 	StaticText	""
-	StaticText	"--------- Visual ---------", gold
+	StaticText	"--------- Visual ---------", 1
 	Slider		"Horizontal Deadzone",			"pb_hudxmargin",				-9, 50, 1, 0
 	Slider		"Vertical Deadzone",			"pb_hudymargin",				-9, 50, 1, 0
 	Slider		"Bar Background Transparency",	"pb_hudboxalpha",				0, 1, 0.02, 2
@@ -148,7 +148,7 @@ OptionMenu "PB_HUDOptions"
 	Option		"Disable PB Mugshot",			"pb_newmugshot",				"NoYes"
 	Option		"Unique Weapon Crosshairs",		"pb_weapon_crosshairs",			"OnOff"
 	StaticText	""
-	StaticText	"--------- ZDoom HUD Scaling ---------", gold
+	StaticText	"--------- ZDoom HUD Scaling ---------", 1
 	Option		"$SCALEMNU_HUD_OLDSCALE",		"hud_oldscale",					"YesNo"
 	Slider		"$SCALEMNU_HUD_SCALEFACTOR",	"hud_scalefactor",				0.0, 1.0, 0.01, 3,	"hud_oldscale",	1
 	StaticText	""
@@ -157,7 +157,7 @@ OptionMenu "PB_HUDOptions"
 
 OptionValue "Speedometer"
 {
-	0, "Off"
+	0, "\cgOff"
 	1, "Doom Units"
 	2, "Quake Units"
 }
@@ -229,24 +229,24 @@ OptionMenu "PB_SpawnOptions"
 	Submenu	"Configure Weapon Spawns",	"WeaponSpawns"
 	Submenu	"Configure Monster Spawns",	"MonsterSpawns"
 	StaticText	""
-	StaticText	"--------- Dynamic Progression ---------", gold
+	StaticText	"--------- Dynamic Progression ---------", 1
 	StaticText	"Overlap between tiers. When a tier begins, 50% of spawns", orange
 	StaticText	"will be from the new tier, increasing to 100% as you complete maps.", orange
 	StaticText	"This is the intended Project Brutality experience", green
 	StaticText	"and recommended for IWAD and MegaWAD playthroughs.", green
 	StaticText	"Must be started from a new game.", green
 	StaticText	""
-	StaticText	"--------- Tiered Progression ---------", gold
+	StaticText	"--------- Tiered Progression ---------", 1
 	StaticText	"No overlap between tiers. When a tier begins, 100% of spawns will be from the new tier.", orange
 	StaticText	""
-	StaticText	"--------- Tier 1/2/3/4 ---------", gold
+	StaticText	"--------- Tier 1/2/3/4 ---------", 1
 	StaticText	"Only spawns from the selected tier.", orange
 	StaticText	""
-	StaticText	"--------- Chaotic Random ---------", gold
+	StaticText	"--------- Chaotic Random ---------", 1
 	StaticText	"All spawns have equal weight. You may encounter anything at any time.", orange
 	StaticText	"This is the recommended setting for single-map mods.", green
 	StaticText	""
-	StaticText	"--------- Death Wish ---------", gold
+	StaticText	"--------- Death Wish ---------", 1
 	StaticText	"The Development Team's personal choice of what we consider", orange
 	StaticText	"the toughest monsters and weakest weapons. You've been warned.", orange
 	StaticText	""
@@ -262,7 +262,7 @@ OptionMenu "WeaponSpawns"
 	Option		"MG-42 Only in Wolfenstein Maps",		"PB_MG42WolfSpawner",		"OnOff"
 	Option		"$PB_SSG_RNDSPWN",						"pb_SSGRandomSpawn",		"OnOff"
 	StaticText	""
-	StaticText	"--------- Chainsaw ---------",			gold
+	StaticText	"--------- Chainsaw ---------",			1
 	StaticText	"$PB_TIER1"
 	FlagOption	"$PB_AXE_NAME",							"pb_chainsaw_filter",		"OffOn", 0
 	StaticText	"$PB_TIER2"
@@ -270,7 +270,7 @@ OptionMenu "WeaponSpawns"
 	StaticText	"$PB_TIER3"
 	FlagOption	"$PB_FLAMER_UPGRADE_NAME",				"pb_chainsaw_filter",		"OffOn", 2
 	StaticText	""
-	StaticText	"--------- Shotgun ---------",			gold
+	StaticText	"--------- Shotgun ---------",			1
 	StaticText	"$PB_TIER2"
 	FlagOption	"$PB_ASG_NAME",							"pb_shotgun_filter",		"OffOn", 0
 	FlagOption	"$PB_REVOLVER_NAME",					"pb_pistol_filter",			"OffOn", 0
@@ -281,11 +281,11 @@ OptionMenu "WeaponSpawns"
 	FlagOption	"$PB_ASG_UPGRADE_NAME",					"pb_shotgun_filter",		"OffOn", 2
 	FlagOption	"$PB_DEAGLE_NAME",						"pb_pistol_filter",			"OffOn", 2
 	StaticText	""
-	StaticText	"--------- Super Shotgun ---------",	gold
+	StaticText	"--------- Super Shotgun ---------",	1
 	StaticText	"$PB_TIER3"
 	FlagOption	"$PB_QSG_NAME",							"pb_ssg_filter",			"OffOn", 0
 	StaticText	""
-	StaticText	"--------- Chaingun ---------",			gold
+	StaticText	"--------- Chaingun ---------",			1
 	StaticText	"$PB_TIER2"
 	FlagOption	"$PB_CARBINE_NAME",						"pb_chaingun_filter",		"OffOn", 0
 	StaticText	"$PB_TIER3"
@@ -295,11 +295,11 @@ OptionMenu "WeaponSpawns"
 	FlagOption	"$PB_LMG_NAME",							"pb_chaingun_filter",		"OffOn", 3
 	FlagOption	"$PB_MINIGUN_UPGRADE_NAME",				"pb_chaingun_filter",		"OffOn", 4
 	StaticText	""
-	StaticText	"--------- Rocket Launcher ---------",	gold
+	StaticText	"--------- Rocket Launcher ---------",	1
 	StaticText	"$PB_TIER3"
 	FlagOption	"$PB_SGL_NAME",			"pb_rocketlauncher_filter",	"OffOn", 0
 	StaticText	""
-	StaticText	"--------- Plasma Rifle ---------",		gold
+	StaticText	"--------- Plasma Rifle ---------",		1
 	StaticText	"$PB_TIER2"
 	FlagOption	"$PB_M2_NAME",							"pb_plasmarifle_filter",	"OffOn", 0
 	StaticText	"$PB_TIER3"
@@ -309,7 +309,7 @@ OptionMenu "WeaponSpawns"
 	FlagOption	"$PB_M2_UPGRADE_NAME",					"pb_plasmarifle_filter",	"OffOn", 3
 	FlagOption	"$PB_DTECH_NAME",						"pb_plasmarifle_filter",	"OffOn", 4
 	StaticText	""
-	StaticText	"--------- BFG 9000 ---------",			gold
+	StaticText	"--------- BFG 9000 ---------",			1
 	StaticText	"$PB_TIER3"
 	FlagOption	"$PB_RAILGUN_NAME",						"pb_bfg_filter",			"OffOn", 0
 	FlagOption	"$PB_MG42_NAME",						"pb_bfg_filter",			"OffOn", 1
@@ -437,7 +437,7 @@ OptionMenu "MonsterSpawns"
 	Option		"Vanilla WolfSS Override",				"pb_vanillawolfss_override",	"OnOff",	"pb_vanillamonster_override", 0, 1
 	Option		"Vanilla Final Boss Override",			"pb_vanillabossbrain_override",	"OnOff",	"pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Zombieman ---------", gold
+	StaticText	"--------- Zombieman ---------", 1
 	TextField	"Spawn Override",						"pb_zombieman_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER1"
 	FlagOption	"Former Human [Helmet]",				"pb_zombieman_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
@@ -452,7 +452,7 @@ OptionMenu "MonsterSpawns"
 	StaticText	"$PB_TIER4"
 	FlagOption	"Former Human [Plasma Rifle]",			"pb_zombieman_filter",	"NoYes", 7, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Shotgun Guy ---------", gold
+	StaticText	"--------- Shotgun Guy ---------", 1
 	TextField	"Spawn Override",						"pb_sergeant_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER1"
 	FlagOption	"Former Sergeant [Helmet]",				"pb_sergeant_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
@@ -465,7 +465,7 @@ OptionMenu "MonsterSpawns"
 	StaticText	"$PB_TIER4"
 	FlagOption	"Former Sergeant [Rocket Launcher]",	"pb_sergeant_filter",	"NoYes", 5, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Heavy Weapon Dude ---------", gold
+	StaticText	"--------- Heavy Weapon Dude ---------", 1
 	TextField	"Spawn Override",						"pb_chaingunner_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER1"
 	FlagOption	"Former Commando [Helmet]",				"pb_chaingunner_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
@@ -474,7 +474,7 @@ OptionMenu "MonsterSpawns"
 	StaticText	"$PB_TIER4"
 	FlagOption	"Demon-Tech Cultist",					"pb_chaingunner_filter",	"NoYes", 2, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Imp ---------", gold
+	StaticText	"--------- Imp ---------", 1
 	TextField	"Spawn Override",						"pb_imp_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER1"
 	FlagOption	"Imp Variants",							"pb_imp_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
@@ -483,38 +483,38 @@ OptionMenu "MonsterSpawns"
 	StaticText	"$PB_TIER3"
 	FlagOption	"Dark Imps",							"pb_imp_filter",	"NoYes", 2, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Demon ---------", gold
+	StaticText	"--------- Demon ---------", 1
 	TextField	"Spawn Override",						"pb_pinky_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Blood Demon",							"pb_pinky_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	"$PB_TIER3"
 	FlagOption	"Mech Demon",							"pb_pinky_filter",	"NoYes", 1, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Spectre ---------", gold
+	StaticText	"--------- Spectre ---------", 1
 	TextField	"Spawn Override",						"pb_spectre_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Void Spectre",							"pb_spectre_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Lost Soul ---------", gold
+	StaticText	"--------- Lost Soul ---------", 1
 	TextField	"Spawn Override",						"pb_lostsoul_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Phantasm",								"pb_lostsoul_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Cacodemon ---------", gold
+	StaticText	"--------- Cacodemon ---------", 1
 	TextField	"Spawn Override",						"pb_cacodemon_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Inferno Cacodemon",					"pb_cacodemon_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	"$PB_TIER3"
 	FlagOption	"Afrit",								"pb_cacodemon_filter",	"NoYes", 1, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Hell Knight ---------", gold
+	StaticText	"--------- Hell Knight ---------", 1
 	TextField	"Spawn Override",						"pb_hellknight_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Cyber-Hell Knight",					"pb_hellknight_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	"$PB_TIER3"
 	FlagOption	"Cyber-Hell Paladin",					"pb_hellknight_filter",	"NoYes", 1, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Baron of Hell ---------", gold
+	StaticText	"--------- Baron of Hell ---------", 1
 	TextField	"Spawn Override",						"pb_baronofhell_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Cyber-Baron of Hell",					"pb_baronofhell_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
@@ -523,7 +523,7 @@ OptionMenu "MonsterSpawns"
 	StaticText	"$PB_TIER4"
 	FlagOption	"Belphegor",							"pb_baronofhell_filter",	"NoYes", 2, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Arachnotron ---------", gold
+	StaticText	"--------- Arachnotron ---------", 1
 	TextField	"Spawn Override",						"pb_arachnotron_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Infernal Arachnotron",					"pb_arachnotron_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
@@ -532,43 +532,43 @@ OptionMenu "MonsterSpawns"
 	StaticText	"$PB_TIER4"
 	FlagOption	"Elite Arachnotron",					"pb_arachnotron_filter",	"NoYes", 2, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Pain Elemental ---------", gold
+	StaticText	"--------- Pain Elemental ---------", 1
 	TextField	"Spawn Override",						"pb_painelemental_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Suffering Elemental",					"pb_painelemental_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Revenant ---------", gold
+	StaticText	"--------- Revenant ---------", 1
 	TextField	"Spawn Override",						"pb_revenant_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Beam Revenant",						"pb_revenant_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	"$PB_TIER3"
 	FlagOption	"Draugr",								"pb_revenant_filter",	"NoYes", 1, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Mancubus ---------", gold
+	StaticText	"--------- Mancubus ---------", 1
 	TextField	"Spawn Override",						"pb_mancubus_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Daedabus",								"pb_mancubus_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	"$PB_TIER3"
 	FlagOption	"Volcabus",								"pb_mancubus_filter",	"NoYes", 1, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Arch-Vile ---------", gold
+	StaticText	"--------- Arch-Vile ---------", 1
 	TextField	"Spawn Override",						"pb_archvile_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Hellion",								"pb_archvile_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Spider Mastermind ---------", gold
+	StaticText	"--------- Spider Mastermind ---------", 1
 	TextField	"Spawn Override",						"pb_mastermind_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Demolisher Mastermind",				"pb_mastermind_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	"$PB_TIER3"
 	FlagOption	"Juggernaut Mancubus",					"pb_mastermind_filter",	"NoYes", 1, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Cyberdemon ---------", gold
+	StaticText	"--------- Cyberdemon ---------", 1
 	TextField	"Spawn Override",						"pb_cyberdemon_override",	"pb_vanillamonster_override", 1
 	StaticText	"$PB_TIER2"
 	FlagOption	"Annihilator",							"pb_cyberdemon_filter",	"NoYes", 0, "pb_vanillamonster_override", 0, 1
 	StaticText	""
-	StaticText	"--------- Wolfenstein SS ---------", gold 
+	StaticText	"--------- Wolfenstein SS ---------", 1 
 	TextField	"Spawn Override",						"pb_nazi_override",	"pb_vanillamonster_override", 1
 	StaticText	""
 	SafeCommand "$PB_MENURESET", "ResetMonsterSpawns", "$PB_MENURESETWARN"
@@ -591,7 +591,7 @@ OptionMenu "AddonWeaponSpawns"
 {
 	Title	"Configure Addon Weapon Spawns"
 	Position	-48
-	StaticText	"--------- Chainsaw ---------", gold
+	StaticText	"--------- Chainsaw ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SAWT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SAWT2"
@@ -600,7 +600,7 @@ OptionMenu "AddonWeaponSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SAWT4"
 	StaticText	""
-	StaticText	"--------- Shotgun ---------", gold
+	StaticText	"--------- Shotgun ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SHOT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SHOT2"
@@ -609,7 +609,7 @@ OptionMenu "AddonWeaponSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SHOT4"
 	StaticText	""
-	StaticText	"--------- Super Shotgun ---------",	gold
+	StaticText	"--------- Super Shotgun ---------",	1
 	PB_TierMarker "$PB_TIER1",	"SSGT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SSGT2"
@@ -618,7 +618,7 @@ OptionMenu "AddonWeaponSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SSGT4"
 	StaticText	""
-	StaticText	"--------- Chaingun ---------", gold
+	StaticText	"--------- Chaingun ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CHNT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CHNT2"
@@ -627,7 +627,7 @@ OptionMenu "AddonWeaponSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"CHNT4"
 	StaticText	""
-	StaticText	"--------- Rocket Launcher ---------", gold
+	StaticText	"--------- Rocket Launcher ---------", 1
 	PB_TierMarker "$PB_TIER1",	"LAUT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"LAUT2"
@@ -636,7 +636,7 @@ OptionMenu "AddonWeaponSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"LAUT4"
 	StaticText	""
-	StaticText	"--------- Plasma Rifle ---------", gold
+	StaticText	"--------- Plasma Rifle ---------", 1
 	PB_TierMarker "$PB_TIER1",	"PLST1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"PLST2"
@@ -645,7 +645,7 @@ OptionMenu "AddonWeaponSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"PLST4"
 	StaticText	""
-	StaticText	"--------- BFG 9000 ---------", gold
+	StaticText	"--------- BFG 9000 ---------", 1
 	PB_TierMarker "$PB_TIER1",	"BFGT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"BFGT2"
@@ -659,7 +659,7 @@ OptionMenu "AddonMonsterSpawns"
 {
 	Title	"Configure Addon Monster Spawns"
 	Position	-48
-	StaticText	"--------- Zombieman ---------", gold
+	StaticText	"--------- Zombieman ---------", 1
 	PB_TierMarker "$PB_TIER1",	"ZOMBT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"ZOMBT2"
@@ -668,7 +668,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"ZOMBT4"
 	StaticText	""
-	StaticText	"--------- Shotgun Guy ---------", gold
+	StaticText	"--------- Shotgun Guy ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SARGT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SARGT2"
@@ -677,7 +677,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SARGT4"
 	StaticText	""
-	StaticText	"--------- Heavy Weapon Dude ---------", gold
+	StaticText	"--------- Heavy Weapon Dude ---------", 1
 	PB_TierMarker "$PB_TIER1",	"COMMT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"COMMT2"
@@ -686,7 +686,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"COMMT4"
 	StaticText	""
-	StaticText	"--------- Imp ---------", gold
+	StaticText	"--------- Imp ---------", 1
 	PB_TierMarker "$PB_TIER1",	"IMPT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"IMPT2"
@@ -695,7 +695,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"IMPT4"
 	StaticText	""
-	StaticText	"--------- Demon ---------", gold
+	StaticText	"--------- Demon ---------", 1
 	PB_TierMarker "$PB_TIER1",	"DEMOT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"DEMOT2"
@@ -704,7 +704,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"DEMOT4"
 	StaticText	""
-	StaticText	"--------- Spectre ---------", gold
+	StaticText	"--------- Spectre ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SPECT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SPECT2"
@@ -713,7 +713,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SPECT4"
 	StaticText	""
-	StaticText	"--------- Lost Soul ---------", gold
+	StaticText	"--------- Lost Soul ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SOULT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SOULT2"
@@ -722,7 +722,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SOULT4"
 	StaticText	""
-	StaticText	"--------- Cacodemon ---------", gold
+	StaticText	"--------- Cacodemon ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CACOT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CACOT2"
@@ -731,7 +731,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"CACOT4"
 	StaticText	""
-	StaticText	"--------- Hell Knight ---------", gold
+	StaticText	"--------- Hell Knight ---------", 1
 	PB_TierMarker "$PB_TIER1",	"KNGHT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"KNGHT2"
@@ -740,7 +740,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"KNGHT4"
 	StaticText	""
-	StaticText	"--------- Baron of Hell ---------", gold
+	StaticText	"--------- Baron of Hell ---------", 1
 	PB_TierMarker "$PB_TIER1",	"BAROT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"BAROT2"
@@ -749,7 +749,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"BAROT4"
 	StaticText	""
-	StaticText	"--------- Arachnotron ---------", gold
+	StaticText	"--------- Arachnotron ---------", 1
 	PB_TierMarker "$PB_TIER1",	"ARACT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"ARACT2"
@@ -758,7 +758,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"ARACT4"
 	StaticText	""
-	StaticText	"--------- Pain Elemental ---------", gold
+	StaticText	"--------- Pain Elemental ---------", 1
 	PB_TierMarker "$PB_TIER1",	"PAINT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"PAINT2"
@@ -767,7 +767,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"PAINT4"
 	StaticText	""
-	StaticText	"--------- Revenant ---------", gold
+	StaticText	"--------- Revenant ---------", 1
 	PB_TierMarker "$PB_TIER1",	"REVET1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"REVET2"
@@ -776,7 +776,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"REVET4"
 	StaticText	""
-	StaticText	"--------- Mancubus ---------", gold
+	StaticText	"--------- Mancubus ---------", 1
 	PB_TierMarker "$PB_TIER1",	"MANCT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"MANCT2"
@@ -785,7 +785,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"MANCT4"
 	StaticText	""
-	StaticText	"--------- Arch-Vile ---------", gold
+	StaticText	"--------- Arch-Vile ---------", 1
 	PB_TierMarker "$PB_TIER1",	"VILET1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"VILET2"
@@ -794,7 +794,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"VILET4"
 	StaticText	""
-	StaticText	"--------- Spider Mastermind ---------", gold
+	StaticText	"--------- Spider Mastermind ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SPIDT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SPIDT2"
@@ -803,7 +803,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SPIDT4"
 	StaticText	""
-	StaticText	"--------- Cyberdemon ---------", gold
+	StaticText	"--------- Cyberdemon ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CYBRT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CYBRT2"
@@ -812,7 +812,7 @@ OptionMenu "AddonMonsterSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"CYBRT4"
 	StaticText	""
-	StaticText	"--------- Wolfenstein SS ---------", gold
+	StaticText	"--------- Wolfenstein SS ---------", 1
 	PB_TierMarker "$PB_TIER1",	"WLSST1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"WLSST2"
@@ -826,7 +826,7 @@ OptionMenu "AddonHealthArmorSpawns"
 {
 	Title	"Configure Addon Health/Armor Spawns"
 	Position	-48
-	StaticText	"--------- Health Bonus ---------", gold
+	StaticText	"--------- Health Bonus ---------", 1
 	PB_TierMarker "$PB_TIER1",	"HBONT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"HBONT2"
@@ -835,7 +835,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"HBONT4"
 	StaticText	""
-	StaticText	"--------- Armor Bonus ---------", gold
+	StaticText	"--------- Armor Bonus ---------", 1
 	PB_TierMarker "$PB_TIER1",	"ABONT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"ABONT2"
@@ -844,7 +844,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"ABONT4"
 	StaticText	""
-	StaticText	"--------- Stimpack ---------", gold
+	StaticText	"--------- Stimpack ---------", 1
 	PB_TierMarker "$PB_TIER1",	"STIMT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"STIMT2"
@@ -853,7 +853,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"STIMT4"
 	StaticText	""
-	StaticText	"--------- Medikit ---------", gold
+	StaticText	"--------- Medikit ---------", 1
 	PB_TierMarker "$PB_TIER1",	"MEDIT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"MEDIT2"
@@ -862,7 +862,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"MEDIT4"
 	StaticText	""
-	StaticText	"--------- Green Armor ---------", gold
+	StaticText	"--------- Green Armor ---------", 1
 	PB_TierMarker "$PB_TIER1",	"GRENT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"GRENT2"
@@ -871,7 +871,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"GRENT4"
 	StaticText	""
-	StaticText	"--------- Blue Armor ---------", gold
+	StaticText	"--------- Blue Armor ---------", 1
 	PB_TierMarker "$PB_TIER1",	"BLUET1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"BLUET2"
@@ -880,7 +880,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"BLUET4"
 	StaticText	""
-	StaticText	"--------- Soulsphere ---------", gold
+	StaticText	"--------- Soulsphere ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SOULT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SOULT2"
@@ -889,7 +889,7 @@ OptionMenu "AddonHealthArmorSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SOULT4"
 	StaticText	""
-	StaticText	"--------- Megasphere ---------", gold
+	StaticText	"--------- Megasphere ---------", 1
 	PB_TierMarker "$PB_TIER1",	"MEGAT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"MEGAT2"
@@ -904,7 +904,7 @@ OptionMenu "AddonAmmoSpawns"
 {
 	Title	"Configure Addon Ammunition Spawns"
 	Position	-48
-	StaticText	"--------- Backpack ---------", gold
+	StaticText	"--------- Backpack ---------", 1
 	PB_TierMarker "$PB_TIER1",	"PACKT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"PACKT2"
@@ -913,7 +913,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"PACKT4"
 	StaticText	""
-	StaticText	"--------- Clip ---------", gold
+	StaticText	"--------- Clip ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CLIPT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CLIPT2"
@@ -922,7 +922,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"CLIPT4"
 	StaticText	""
-	StaticText	"--------- Box of Bullets ---------", gold
+	StaticText	"--------- Box of Bullets ---------", 1
 	PB_TierMarker "$PB_TIER1",	"BBOXT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"BBOXT2"
@@ -931,7 +931,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"BBOXT4"
 	StaticText	""
-	StaticText	"--------- Shells ---------", gold
+	StaticText	"--------- Shells ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SHELT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SHELT2"
@@ -940,7 +940,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SHELT4"
 	StaticText	""
-	StaticText	"--------- Box of Shells ---------", gold
+	StaticText	"--------- Box of Shells ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SBOXT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SBOXT2"
@@ -949,7 +949,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"SBOXT4"
 	StaticText	""
-	StaticText	"--------- Rocket ---------", gold
+	StaticText	"--------- Rocket ---------", 1
 	PB_TierMarker "$PB_TIER1",	"ROCKT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"ROCKT2"
@@ -958,7 +958,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"ROCKT4"
 	StaticText	""
-	StaticText	"--------- Box of Rockets ---------", gold
+	StaticText	"--------- Box of Rockets ---------", 1
 	PB_TierMarker "$PB_TIER1",	"BROKT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"BROKT2"
@@ -967,7 +967,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"BROKT4"
 	StaticText	""
-	StaticText	"--------- Energy Cell ---------", gold
+	StaticText	"--------- Energy Cell ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CELLT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CELLT2"
@@ -976,7 +976,7 @@ OptionMenu "AddonAmmoSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"CELLT4"
 	StaticText	""
-	StaticText	"--------- Energy Cell Pack ---------", gold
+	StaticText	"--------- Energy Cell Pack ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CPAKT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CPAKT2"
@@ -990,7 +990,7 @@ OptionMenu "AddonPowerupSpawns"
 {
 	Title	"Configure Addon Powerup Spawns"
 	Position	-48
-	StaticText	"--------- Berserk ---------", gold
+	StaticText	"--------- Berserk ---------", 1
 	PB_TierMarker "$PB_TIER1",	"ZERKT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"ZERKT2"
@@ -999,7 +999,7 @@ OptionMenu "AddonPowerupSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"ZERKT4"
 	StaticText	""
-	StaticText	"--------- Computer Area Map ---------", gold
+	StaticText	"--------- Computer Area Map ---------", 1
 	PB_TierMarker "$PB_TIER1",	"CMAPT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"CMAPT2"
@@ -1008,7 +1008,7 @@ OptionMenu "AddonPowerupSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"CMAPT4"
 	StaticText	""
-	StaticText	"--------- Invulnerability  ---------", gold
+	StaticText	"--------- Invulnerability  ---------", 1
 	PB_TierMarker "$PB_TIER1",	"INVLT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"INVLT2"
@@ -1017,7 +1017,7 @@ OptionMenu "AddonPowerupSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"INVLT4"
 	StaticText	""
-	StaticText	"--------- Light Amplification Visor ---------", gold
+	StaticText	"--------- Light Amplification Visor ---------", 1
 	PB_TierMarker "$PB_TIER1",	"LITET1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"LITET2"
@@ -1026,7 +1026,7 @@ OptionMenu "AddonPowerupSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"LITET4"
 	StaticText	""
-	StaticText	"--------- Partial Invisibility ---------", gold
+	StaticText	"--------- Partial Invisibility ---------", 1
 	PB_TierMarker "$PB_TIER1",	"INVST1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"INVST2"
@@ -1035,7 +1035,7 @@ OptionMenu "AddonPowerupSpawns"
 	StaticText	""
 	PB_TierMarker "$PB_TIER4",	"INVST4"
 	StaticText	""
-	StaticText	"--------- Radiation Shielding Suit ---------", gold
+	StaticText	"--------- Radiation Shielding Suit ---------", 1
 	PB_TierMarker "$PB_TIER1",	"SUITT1"
 	StaticText	""
 	PB_TierMarker "$PB_TIER2",	"SUITT2"
@@ -1059,14 +1059,14 @@ OptionMenu "WeaponVisuals"
 	Position	-48
 	Option		"Correct Weapon Rendering",	"PB_PixelRenderingFix",	"PixelFixOptions"
 	StaticText	""
-	StaticText	"--------- Bobbing ---------",		gold
+	StaticText	"--------- Bobbing ---------",		1
 	Slider		"Walk/Run View Bobbing",			"movebob",					0.0,	1.0,	0.1
 	Slider		"Still View Bobbing",				"stillbob",					0.0,	1.0,	0.1
 	Slider		"Walk/Run Weapon Bobbing",			"wbobspeed",				0.0,	2.0,	0.1
 	Option		"Still Weapon Bobbing",				"pb_stillbob",				"OnOff"
 	Slider		"Sprite speed to full bob",			"pb_fullbobspeed",			1,		15,		1,		0
 	StaticText	""
-	StaticText	"--------- Sway ---------",			gold
+	StaticText	"--------- Sway ---------",			1
 	Option		"Sway Enabled", 					"pb_yawsway",				"YesNo"
 	Slider		"Sway Speed",						"pb_yawswayspeed",			0,		4,		0.5,	1,	"pb_yawsway"
 	Slider		"Sway Range", 						"pb_yawswayrange",			0,		8,		0.1,	1,	"pb_yawsway"
@@ -1074,7 +1074,7 @@ OptionMenu "WeaponVisuals"
 	Option		"Sway Direction", 					"pb_yawswaydirection",		"SwayDirection",			"pb_yawsway"
 	Option		"Vertical Sway Type",				"pb_pitchswaytype",			"VSwayType",				"pb_yawsway"
 	StaticText	""
-	StaticText	"--------- Offset ---------",		gold
+	StaticText	"--------- Offset ---------",		1
 	Slider		"Offset Speed",						"pb_offsetspeed",			50,		100,	1,		0
 	Slider		"Offset Range",						"pb_offsetmaxrange",		10,		50,		1,		0
 	Option		"Offset Direction",					"pb_offsetdirection",		"OffsetDirection"

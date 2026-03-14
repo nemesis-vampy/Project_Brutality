@@ -23,6 +23,11 @@ GOTCLIP = "Picked up a Magazine.";
 GOTHTHNEED = "Picked up a health bonus. It's not enough health to manage, but you needed it anyway." ;
 GOTMEDPAKNEED = "Picked up a medipack that you DESPERATELY needed!";
 
+TXT_YES = "\cdYes";
+TXT_NO = "\cgNo";
+OPTVAL_ON = "\cdOn";
+OPTVAL_OFF = "\cgOff";
+
 // Tilt Screen
 OPTMNU_TILTPLUSPLUS = "Customize Tilt++";
 
