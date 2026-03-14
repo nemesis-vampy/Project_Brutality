@@ -126,13 +126,13 @@ Class gb_MD5
 		}
 		
 		// Swap endianess of each byte
-		for(uint i=0; i < input.size(); i++)
+		for(int i=0; i < input.size(); i++)
 		{
 			input[i] = swapByte(input[i]);
 		}
 		
 		// Break into 64 byte chunks
-		for(uint front=0; front < input.size(); front += 64)
+		for(int front=0; front < input.size(); front += 64)
 		{
 			//break chunk into 16 four-byte words
 			Array<uint> M;

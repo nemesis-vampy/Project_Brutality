@@ -36,13 +36,6 @@ marine/superfist6 plspnch6
 ////////////////////////////////////////////////////////////////////////////////
 //Doomguy's Sounds
 IGOTSAW IGOTSAW
-$playersound player	male *struggle_1 STRUGGL1
-$playersound player	male *struggle_2 STRUGGL2
-$random player/struggle { *struggle_1 *struggle_2 }
-
-$playersound player	male *cough_1 COUGHING
-$playersound player	male *cough_2 COUGHIN2
-$random player/cough { *cough_1 *cough_2 }
 
 // Offend Sound
 
@@ -203,3 +196,16 @@ visor/bulletimpact_7 "SOUNDS/HUD Sounds/impact_helmet_shatter_07.ogg"
 visor/bulletimpact_8 "SOUNDS/HUD Sounds/impact_helmet_shatter_08.ogg"
 
 $random visor/glasscrack { visor/bulletimpact_1 visor/bulletimpact_2 visor/bulletimpact_3 visor/bulletimpact_4 visor/bulletimpact_5 visor/bulletimpact_6 visor/bulletimpact_7 visor/bulletimpact_8 }
+
+visor/interference_1 "SOUNDS/HUD Sounds/interference-01.ogg"
+visor/interference_2 "SOUNDS/HUD Sounds/interference-02.ogg"
+visor/interference_3 "SOUNDS/HUD Sounds/interference-03.ogg"
+
+$random visor/interference { 
+    visor/interference_1 
+    visor/interference_2 
+    visor/interference_3
+}
+
+visor/helpnotification "SOUNDS/HUD Sounds/HelpNotification.ogg"
+visor/screenwipe "SOUNDS/HUD Sounds/ScreenWiper.ogg"

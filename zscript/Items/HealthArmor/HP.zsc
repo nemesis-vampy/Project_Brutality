@@ -3,21 +3,21 @@ class PB_HealthBonus : PB_Health
 	Default
 	{
 		//$Category Project Brutality - Health and Armor
-		//$Sprite BON1A0
+		//$Sprite B0N1A0
 		Tag "Health Bonus";
 		+COUNTITEM;
 		+INVENTORY.ALWAYSPICKUP;
 		Inventory.Amount 2;
 		Inventory.MaxAmount 500;
 		Inventory.PickupSound "misc/hbonus_PickUp";
-		Inventory.PickupMessage "Health Bonus (+2 HP)";
+		Inventory.PickupMessage "Health Bonus (+%a HP)";
 		//Scale .19;
 	}
 
 	States
 	{
 		Spawn:
-			BON1 ABCDEFGHIJ 3;
+			B0N1 ABCDEFGHIJ 3;
 			loop;
 	}
 }
@@ -43,7 +43,7 @@ class PB_Stimpack : PB_Health
 		Tag "Stimpack";
 		Inventory.Amount 10;
 		Inventory.PickupSound "misc/N_HP_pickup";
-		Inventory.PickupMessage "Stimpack (+10 HP)";
+		Inventory.PickupMessage "Stimpack (+%a HP)";
 		//Scale .28;
 	}
 
@@ -60,19 +60,19 @@ class PB_Medikit : PB_Health
 	Default
 	{
 		//$Category Project Brutality - Health and Armor
-		//$Sprite MEDIA0
+		//$Sprite MED1A0
 		Tag "Medikit";
 		Inventory.Amount 25;
 		Inventory.PickupSound "misc/L_HP_pickup";
-		Inventory.PickupMessage "Medikit (+25 HP)";
-		Health.LowMessage 25, "Medikit (+25 much needed HP)";
+		Inventory.PickupMessage "Medikit (+%a HP)";
+		Health.LowMessage 25, "Medikit (+%a much needed HP)";
 		//Scale .30;
 	}
 
 	States
 	{
 		Spawn:
-			MEDI A -1;
+			MED1 A -1;
 			stop;
 	}
 }

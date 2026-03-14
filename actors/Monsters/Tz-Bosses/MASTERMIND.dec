@@ -43,10 +43,10 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 	Radius 90
 	damagefactor "Crush", 30.0
 	Scale 1
-	Radius 110
+	Radius 128
 	Height 100
 	Mass 500000
-	Speed 18
+	Speed 12
 	FastSpeed 22
 	PainChance 30
 	Monster
@@ -62,7 +62,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 	+SOLID
 // 	+MISSILEEVENMORE
 	+SHOOTABLE
-	SeeSound "spider/sight"
+	SeeSound "pb/monsters/spider/sight"
 	AttackSound "spider/attack"
 	PainSound "spider/pain"
 	DeathSound "spider/death"
@@ -81,7 +81,8 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
  +DONTHURTSPECIES
  +DONTHARMSPECIES
 	Species "MasterMind"
-	
+	var int user_timesFired;
+	var int user_wasFiring;
 	States
 	{
 	Death.KillMe:
@@ -98,33 +99,46 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 	Spawn:
 	
 		TNT1 AAA 0
-		SPID A 10 A_Look
+		SPI1 A 10 A_Look
 		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
 		Goto Spawn+2
 	See:
-		SPID A 2 A_StartSound("master/walk", CHAN_AUTO)
-		SPID ABBCCD 2 A_Chase
-		SPID D 2 A_StartSound("master/walk", CHAN_AUTO)
-		SPID EEF 2 A_Chase
+		SPI1 A 0 {
+			if(user_wasFiring) { A_StartSound("CHAINSTO",CHAN_6); A_StartSound("DTHDLRSP",CHAN_7); }
+			user_wasFiring = 0;
+			user_timesFired = 0;
+		}
+		TNT1 A 0 A_StartSound("master/walk", CHAN_AUTO)
+		SPI1 AABB 3 A_Chase
+		TNT1 A 0 A_StartSound("master/walk", CHAN_AUTO)
+		SPI1 CCDD 3 A_Chase
+		TNT1 A 0 A_StartSound("master/walk", CHAN_AUTO)
+		SPI1 EEFF 3 A_Chase
 		Loop
 	ConsiderReposition:
 		TNT1 A 0 A_Jump(64, "Reposition")
 		Goto Missile
 	Reposition:
-		SPID A 1 A_StartSound("master/walk", CHAN_AUTO)
-		SPID ABBBCCCDD 1 A_Wander
-		SPID D 1 A_StartSound("master/walk", CHAN_AUTO)
-		SPID EE 1 A_Wander
+		SPI1 A 1 A_StartSound("master/walk", CHAN_AUTO)
+		SPI1 ABBBCCCDD 1 A_Wander
+		SPI1 D 1 A_StartSound("master/walk", CHAN_AUTO)
+		SPI1 EE 1 A_Wander
+		TNT1 A 0 A_CheckSight("See")
 	Missile:
 		TNT1 A 0 {
-			A_StartSound("DTHDLRST",CHAN_6);
+			A_StartSound("CHAINSTA",CHAN_6);
+			A_StartSound("DTHDLRST",CHAN_7);
 			A_TakeInventory("BrutalCounter", 500);
 		}
-		SPID GTGTGTGT 2 LIGHT("DemonTechImpact") A_FaceTarget 
+		SPI1 GTGTGTGT 2 LIGHT("DemonTechImpact") A_FaceTarget 
 	Firing:
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 500, "StopFiring")
-		SPID G 1 A_FaceTarget
-		SPID H 1 BRIGHT Light("PB_IMPBALL"){
+		TNT1 A 0 {
+			user_timesFired++;
+			user_wasFiring = 1;
+		}
+		SPI1 G 1 A_FaceTarget
+		SPI1 H 1 BRIGHT Light("PB_IMPBALL"){
 			A_SpawnProjectile("PB_MasterMindTracer", 42, 0, random(-2, 2), 1, random(-2, 2));
 			A_StartSound("Mastermind/Chaingun", CHAN_5, CHANF_OVERLAP);
 			A_SpawnItem ("MasterMindCaseSpawn", 0, 60,0);
@@ -132,66 +146,81 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 			A_GiveInventory("BrutalCounter", 5);
 			A_FaceTarget;
 		}
-		SPID T 1 A_MonsterRefire(11, "StopFiring")
+		SPI1 T 1 A_JumpIf(user_timesFired < random(6, 18), 2)
+		SPI1 T 0 A_MonsterRefire(11, "StopFiring")
+		SPI1 T 0
 		Loop
 	StopFiring:
-		SPID G 0 {
-			A_StartSound("DTHDLRSP",CHAN_6);
+		TNT1 A 0 { 
+			user_wasFiring = 0; 
+			user_timesFired = 0; 
 		}
-		SPID GTGTGTGTGTGTGTGT 2 LIGHT("DemonTechImpact") {
+		SPI1 G 0 {
+			A_StartSound("CHAINSTO",CHAN_6); A_StartSound("DTHDLRSP",CHAN_7);
+		}
+		SPI1 GTGTGTGTGTGTGTGT 2 LIGHT("DemonTechImpact") {
 			A_FaceTarget;
 			A_SpawnProjectile("GunFireSmoke", 42, 1, 0, 0, -30);
 		}
+		TNT1 A 0 A_Jump(66, "See")
 		TNT1 A 0 A_CheckSight("ConsiderReposition")
 		Goto See
 
 	BossPossession:
     TNT1 A 0 A_SetInvulnerable
-    SPID I 3
-    SPID I 3 A_Pain
+    SPI1 I 3
+    SPI1 I 3 A_Pain
     "####" "#" 35 ACS_NamedExecuteAlways("Pos - Flicker effect")
     TNT1 A 0 A_UnSetInvulnerable
     Goto See
 		Avoid:
 		 NULL A 0 A_FaceTarget
-		 SPID A 6 A_FastChase
+		 SPI1 A 6 A_FastChase
 		TNT1 A 0 
 		 NULL A 0 A_FaceTarget
-		 SPID B 6 A_FastChase
+		 SPI1 B 6 A_FastChase
 		TNT1 A 0 
 		 NULL A 0 A_FaceTarget
-		 SPID C 6 A_FastChase
+		 SPI1 C 6 A_FastChase
 		TNT1 A 0 
 		 NULL A 0 A_FaceTarget
-		 SPID D 6 A_FastChase 
+		 SPI1 D 6 A_FastChase 
 		TNT1 A 0 
 		 Goto Missile
 		
 	Pain:
-		TNT1 A 0 A_StopSound(CHAN_5)
-		TNT1 A 0 
-		SPID I 4 A_Pain
+		TNT1 A 0 {
+			if(user_wasFiring) { A_StartSound("CHAINSTO",CHAN_6); A_StartSound("DTHDLRSP",CHAN_7); }
+			user_timesFired = 0;
+			user_wasFiring = 0;
+		}
+		SPI1 I 4 A_Pain
 		Goto See
 	
 	Pain.Siphon:
+		TNT1 A 0 {
+			if(user_wasFiring) { A_StartSound("CHAINSTO",CHAN_6); A_StartSound("DTHDLRSP",CHAN_7); }
+			user_timesFired = 0;
+			user_wasFiring = 0;
+		}
 		TNT1 AAA 0 A_SpawnItemEx ("RedLightning_Small", random (-12, 12), random (-12, 12), random (16, 52), 0, 0)
-		SPID I 1 
+		SPI1 I 1 
 		{
 			A_FaceTarget;
 			A_GiveToTarget("HealthBonus",4);
 		}
-		SPID I 5 A_FaceTarget 
+		SPI1 I 5 A_FaceTarget 
 		TNT1 A 0 A_Pain
 		Goto See
 	
 	Death.Execution:
 		TNT1 A 0 {
-			A_StopSound;
+			A_StopAllSounds;
 			A_FaceTarget;
 			A_NoBlocking(false);
 		}
-		SPID GI 4
-		SPID I 21 A_Pain
+		SPI1 GI 4
+		SPI1 I 21 A_Pain
 		TNT1 A 0 A_Recoil(4)
 		goto NormalDeath
 	Death:
@@ -204,9 +233,9 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 				return A_Jump(255, "DeathRare", "NormalDeath");
 			}
 	NormalDeath:
-		TNT1 A 0 A_StopSound(CHAN_5)
-		SPID J 20 A_Scream
-		TNT1 AAAA 0 A_CustomMissile ("ExplosionSpawner", 50, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_StopAllSounds
+		SPI1 J 20 A_Scream
+		TNT1 AAAA 0 A_SpawnProjectile("ExplosionSpawner", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		TNT1 A 0
 		{
 			if (GetCvar("pb_enemyexplosiondamage") == true)
@@ -214,39 +243,39 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 				A_Explode(250,400,XF_HURTSOURCE);
 			}
 		}
-		TNT1 AAAA 0 A_CustomMissile ("SuperGoreSPawner", 110, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAAAA 0 A_CustomMissile ("BloodMistXXBig", 90, 0, random (0, 360), 2, random (70, 90))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_SuperWallRedBlood", 110, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAAAA 0 A_SpawnProjectile("PB_Bloodmistxxbig", 90, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 90))
 		EXPL A 0 Radius_Quake (8, 100, 0, 22, 0)		
-		SPID K 10 A_NoBlocking 
-		TNT1 AAAAA 0 A_CustomMissile ("ExplosionSpawner", 10, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AA 0 A_CustomMissile ("UltraGoreSPawner", 80, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAAA 0 A_CustomMissile ("BloodMistXXBig", 90, 0, random (0, 360), 2, random (70, 90))
-		SPID L 5
-		TNT1 AA 0 A_CustomMissile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160))		
-		TNT1 AAA 0 A_CustomMissile ("ExplosionSpawner", 30, 0, random (0, 360), 2, 90)
-		TNT1 AAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))	
-		TNT1 AA 0 A_CustomMissile ("UltraGoreSPawner", 30, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 30, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 30, 0, random (0, 360), 2, random (70, 90))
-		 TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90))
+		SPI1 K 10 A_NoBlocking 
+		TNT1 AAAAA 0 A_SpawnProjectile("ExplosionSpawner", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
+		TNT1 AA 0 A_SpawnProjectile("UltraGoreSPawner", 80, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAAA 0 A_SpawnProjectile("PB_Bloodmistxxbig", 90, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 90))
+		SPI1 L 5
+		TNT1 AA 0 A_SpawnProjectile("MuchMeatDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))		
+		TNT1 AAA 0 A_SpawnProjectile("ExplosionSpawner", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, 90)
+		TNT1 AAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))	
+		TNT1 AA 0 A_SpawnProjectile("UltraGoreSPawner", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAA 0 A_SpawnProjectile("UltraGoreSpawner", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAAAAAAAA 0 A_SpawnProjectile("PB_Bloodmistxxbig", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 90))
+		 TNT1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("PB_Bloodmistxxbig", 100, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (20, 90))
 		//SPID MNOPQR 5
-		TNT1 A 0 A_CustomMissile ("SpiderPart1", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("SpiderPart2", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathSpiderPart2", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathSpiderPart3", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("XDeathSpiderPart5", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathSpiderPart6", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathSpiderPart4", 32, 0, random (0, 360), 2, random (0, 160))
-		SPID MNOPQR 5
+		TNT1 A 0 A_SpawnProjectile("SpiderPart1", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("SpiderPart2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("XDeathSpiderPart2", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("XDeathSpiderPart3", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile("XDeathSpiderPart5", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("XDeathSpiderPart6", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile("XDeathSpiderPart4", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		SPI1 MNOPQR 5
 		Goto Burns
 	Burns:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 30, "BossDead") //changed from 30 to 15 so that the bossdeath trigger is faster -JM
 		TNT1 A 0 A_GiveInventory("BrutalCounter")
-		SPID SS 2 A_SpawnItem("YellowFlare",0,50)
-		ID22 F 0 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
-		SPID SS 2 A_SpawnItem("YellowFlare",0,50)
-		ID22 F 0 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
+		SPI1 SS 2 A_SpawnItem("YellowFlare",0,50)
+		ID22 F 0 A_SpawnProjectile("FlameTrails", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 110))
+		SPI1 SS 2 A_SpawnItem("YellowFlare",0,50)
+		ID22 F 0 A_SpawnProjectile("FlameTrails", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 110))
 		
 		Loop
 	Bossdead:
@@ -260,7 +289,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		
 		Loop
 	Rest:	
-		SPID S -1
+		SPI1 S -1
 		Stop
 
 	Death.Freeze:
@@ -274,21 +303,22 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 	Stop
 	
 	DeathRare:
-		TNT1 A 0
+		TNT1 A 0 A_StopAllSounds
 		
 		
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)		
 		TNT1 A 0 A_PlaySound("Explosion", 2)
 		TNT1 A 0 A_NoBlocking		
-		SPID J 10 A_PlaySound("FAREXPL", 3)
-		SPID K 10 A_Pain
-		SPID L 10 A_PlaySound("master/walk", 5)
+		SPI1 J 10 A_PlaySound("FAREXPL", 3)
+		SPI1 K 10 A_Pain
+		SPI1 L 10 A_PlaySound("master/walk", 5)
 		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_SpawnItemEx ("DyingSpiderMastermind",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		Stop
 	
 	Death.Telefrag:
-		SPID J 20 A_Scream
+		TNT1 A 0 A_StopAllSounds
+		SPI1 J 20 A_Scream
 		tnt1 a 0 A_FaceTarget
 		EXPL A 0 Radius_Quake (8, 100, 0, 22, 0)
 		
@@ -300,7 +330,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 				A_Explode(200,300);
 			}
 		}
-		SPID K 10 A_NoBlocking
+		SPI1 K 10 A_NoBlocking
 		TNT1 A 0
 		{
 			if (GetCvar("pb_enemyexplosiondamage") == true)
@@ -308,9 +338,9 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 				A_Explode(200,300);
 			}
 		}		
-		SPID L 5
-		TNT1 AA 0 A_CustomMissile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))		
+		SPI1 L 5
+		TNT1 AA 0 A_SpawnProjectile("MuchMeatDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))		
 			TNT1 A 0
 		{
 			if (GetCvar("pb_enemyexplosiondamage") == true)
@@ -321,7 +351,7 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		//SPID MNOPQR 5
 		
 		
-		//TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))
+		//TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("GiantBloodSpot")
 		TNT1 A 300
 		TNT1 A 1 A_BossDeath
@@ -357,13 +387,13 @@ ACTOR XSpiderMastermindCuttedBrain
 damagetype Blood
 	SeeSound "misc/xdeath4"
 	DeathSound "misc/xdeath1"
-	Decal BrutalBloodSplat
+	Decal BloodSplat
 	Mass 1
 	States
 	{
 	Spawn:
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
-		SPIP ABCDEFGH 3 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+		SPIP ABCDEFGH 3 A_SpawnProjectile("PB_FlyingBloodTrail", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 360))
 		Loop
 	Death:
 		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
@@ -411,7 +441,7 @@ ACTOR DyingSpiderMastermind
 		Stop
 		
 		Death:
-			TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))			
+			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))			
 			TNT1 A 0 A_SpawnItem ("BrutalizedSpidermastermind")
 			Stop
 	
@@ -459,7 +489,7 @@ ACTOR DyingSpiderMastermind
 	DieNow:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Scream
-		SPID L 5
+		SPI1 L 5
 	ExplosionDeath:
 		TNT1 A 0
 		{
@@ -468,21 +498,21 @@ ACTOR DyingSpiderMastermind
 				A_Explode(250,400,XF_HURTSOURCE);
 			}
 		}		
-		TNT1 AAAA 0 A_CustomMissile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160)) 
-		TNT1 AAAA 0 A_CustomMissile ("UltraGoreSPawner", 30, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAA 0 A_CustomMissile ("UltraGoreSpawner", 30, 0, random (0, 360), 2, random (0, 180))
-		TNT1 AAAAAAAAA 0 A_CustomMissile ("BloodMistXXBig", 30, 0, random (0, 360), 2, random (70, 90))
-		SPID MNOPQR 4
+		TNT1 AAAA 0 A_SpawnProjectile("MuchMeatDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160)) 
+		TNT1 AAAA 0 A_SpawnProjectile("UltraGoreSPawner", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAA 0 A_SpawnProjectile("UltraGoreSpawner", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))
+		TNT1 AAAAAAAAA 0 A_SpawnProjectile("PB_Bloodmistxxbig", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 90))
+		SPI1 MNOPQR 4
 		Goto Burns
 	Burns:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 30, "BossDead")
 		TNT1 A 0 A_GiveInventory("BrutalCounter")
-		SPID SS 2 A_SpawnItem("YellowFlare",0,50)
-		ID22 F 0 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
-		SPID SS 2 A_SpawnItem("YellowFlare",0,50)
-		ID22 F 0 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
+		SPI1 SS 2 A_SpawnItem("YellowFlare",0,50)
+		ID22 F 0 A_SpawnProjectile("FlameTrails", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 110))
+		SPI1 SS 2 A_SpawnItem("YellowFlare",0,50)
+		ID22 F 0 A_SpawnProjectile("FlameTrails", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 110))
 		
 		Loop
 	Bossdead:
@@ -496,7 +526,7 @@ ACTOR DyingSpiderMastermind
 		
 		Loop
 	Rest:	
-		SPID S -1
+		SPI1 S -1
 		Stop
 			
 	}
@@ -519,30 +549,30 @@ ACTOR BrutalizedSpidermastermind
 			
 	Spawn:
 		TNT1 A 0
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 30, -20, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 35, -25, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, -15, random (0, 360), 2, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, -20, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 35, -25, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, -15, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 30, -20, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 35, -25, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, -15, random (0, 360), 2, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, -20, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 35, -25, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, -15, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 30, -20, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 35, -25, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, -15, random (0, 360), 2, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, -20, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 35, -25, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, -15, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_PlaySound("misc/xdeath2c")
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 30, -20, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 35, -25, random (0, 360), 2, random (10, 90))
-		SPFD NOPO 4 A_CustomMissile ("Brutal_LiquidBlood2", 40, -15, random (0, 360), 2, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 30, -20, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 35, -25, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
+		SPFD NOPO 4 A_SpawnProjectile("PB_SquirtingBloodTrail", 40, -15, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (10, 90))
 		TNT1 A 0 A_PlaySound("misc/xdeath2c")
 		DieNow:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Scream
 	ExplosionDeath:
-		TNT1 AAAA 0 A_CustomMissile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile("MuchMeatDeath", 0, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		
 		
 	
@@ -555,16 +585,16 @@ ACTOR BrutalizedSpidermastermind
 				A_Explode(250,400,XF_HURTSOURCE);
 			}
 		}		
-		SPID NOPQR 4
+		SPI1 NOPQR 4
 		Goto Burns
 	Burns:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("BrutalCounter", 30, "BossDead")
 		TNT1 A 0 A_GiveInventory("BrutalCounter")
-		SPID SS 2 A_SpawnItem("YellowFlare",0,50)
-		ID22 F 0 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
-		SPID SS 2 A_SpawnItem("YellowFlare",0,50)
-		ID22 F 0 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
+		SPI1 SS 2 A_SpawnItem("YellowFlare",0,50)
+		ID22 F 0 A_SpawnProjectile("FlameTrails", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 110))
+		SPI1 SS 2 A_SpawnItem("YellowFlare",0,50)
+		ID22 F 0 A_SpawnProjectile("FlameTrails", 30, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (70, 110))
 		
 		Loop
 	Bossdead:
@@ -578,7 +608,7 @@ ACTOR BrutalizedSpidermastermind
 		
 		Loop
 	Rest:	
-		SPID S -1
+		SPI1 S -1
 		Stop
 
 }}
@@ -590,7 +620,7 @@ Actor Vanilla_SpiderMastermind : PB_Mastermind
 	States
 	{
 		Spawn:
-		SPID A 10 A_Look
+		SPI1 A 10 A_Look
 		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
 		Loop
 	}

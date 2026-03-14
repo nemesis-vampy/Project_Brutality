@@ -18,13 +18,14 @@ class PB_SuperBFGBall : Actor
 		+MTHRUSPECIES;
 		+DONTHARMSPECIES;
 		+FORCEXYBILLBOARD;
+		+SQUAREPIXELS;
 		+BRIGHT;
 	}
 	States
 	 {
 		Spawn:
-			098G ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 Light("BFGBALL") SpawnBFGBallTrail();
-			099G ABCD 1 Light("BFGBALL") SpawnBFGBallTrail();
+			098G ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 Light("PB_BFGBALL") SpawnBFGBallTrail();
+			099G ABCD 1 Light("PB_BFGBALL") SpawnBFGBallTrail();
 			Loop;	 
 		Death:
 			#### # 0
@@ -43,14 +44,14 @@ class PB_SuperBFGBall : Actor
 					A_SpawnProjectile("BFGDeathParticleSuperFast",0,0,random(0,360),2,random(0,360));
 				}
 			}
-			BFGB ABCDE 1 Light("BFGBALL") A_SpawnItemEx("GreenFlare");
-			BFE1 F 1 Light("BFGBALL")
+			BFGB ABCDE 1 Light("PB_BFGBALL") A_SpawnItemEx("GreenFlare");
+			BFE1 F 1 Light("PB_BFGBALL")
 			{
 				A_BFGSpray("SuperBFGExtra",200,30,360,1024,32,0,BFGF_MISSILEORIGIN);
 				A_SpawnItemEx("SuperBFGExtraGiant");
 				A_SpawnItemEx("GreenFlare");
 			}
-			BFE1 GGHHIIJJKK 1 Light("BFGBALL") A_SpawnItemEx("GreenFlare");
+			BFE1 GGHHIIJJKK 1 Light("PB_BFGBALL") A_SpawnItemEx("GreenFlare");
 			Stop;
 	 }
 	

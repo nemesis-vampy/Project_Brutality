@@ -1,0 +1,4 @@
+CellSize 9, 16
+TranslationType Standard
+minluminosity 127 // undocumented parameters that magically fix everything.......
+maxluminosity 127

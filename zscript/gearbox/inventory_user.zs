@@ -30,7 +30,7 @@ class gb_InventoryUser play
 
   void use()
   {
-    for (uint i = 0; i < mItemQueue.size();)
+    for (uint i = 0; i < uint(mItemQueue.size());)
     {
       PlayerPawn player = mPlayerQueue[i].mo;
       if (player == NULL)

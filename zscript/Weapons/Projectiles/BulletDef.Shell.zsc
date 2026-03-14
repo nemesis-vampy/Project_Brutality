@@ -6,6 +6,7 @@ class PB_12GAPellet : PB_Projectile
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.OMNIDIRECTIONAL;
+		+PB_Projectile.SMALLIMPACT;
 		Damagetype "Shotgun";
 		Obituary "%o had %p intestines removed and thrown on the ground by %k.";
 	}
@@ -26,6 +27,7 @@ class PB_12GASlug : PB_Projectile
 		PB_Projectile.BaseDamage 125;
 		PB_Projectile.RipperCount 3;
 		PB_Projectile.PenetrationCount 3;
+		RipperLevel 1;
 		+PB_Projectile.WHIZCRACK;
 		Damagetype "Shotgun";
 		Obituary "%o had %p guts blown out by %k.";
@@ -43,6 +45,7 @@ class PB_10GAPellet : PB_Projectile
 		PB_Projectile.RipperCount 3;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.OMNIDIRECTIONAL;
+		+PB_Projectile.SMALLIMPACT;
 		Damagetype "Shotgun";
 		Obituary "%o was turned inside out by %k.";
 	}
@@ -55,8 +58,10 @@ class PB_10GAPellet_LP : PB_10GAPellet
 		PB_Projectile.BaseDamage 35;
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
+		RipperLevel 1;
 		Damagetype "SSG";
 		+PB_Projectile.RANGED;
+		+PB_Projectile.NOCRITICALS;
 		PB_Projectile.ProjectileRange 220;
 	}
 }
@@ -69,6 +74,7 @@ class PB_8GAPellet : PB_Projectile
 		PB_Projectile.RipperCount 4;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.OMNIDIRECTIONAL;
+		+PB_Projectile.SMALLIMPACT;
 		Damagetype "Shotgun";
 		Obituary "%o was turned into a fine red mist by %k.";
 	}
@@ -81,8 +87,10 @@ class PB_8GAPellet_LP : PB_8GAPellet
 		PB_Projectile.BaseDamage 50;
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
+		RipperLevel 1;
 		Damagetype "SSG";
 		+PB_Projectile.RANGED;
+		+PB_Projectile.NOCRITICALS;
 		PB_Projectile.ProjectileRange 220;
 	}
 }

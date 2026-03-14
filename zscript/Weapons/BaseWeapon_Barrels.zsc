@@ -5,16 +5,14 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 	action void PB_BarrelReady1()
 	{
 		A_ClearOverlays(-10,65);
-		A_ClearOverlays(10,11);
 		A_Stopsound(1);
 		A_StopSound(CHAN_VOICE);
 		A_Stopsound(5);
 		A_StopSound(6);
-		A_Takeinventory("HasUnloaded",1);
-		A_Takeinventory("Unloading",1);
 		A_Takeinventory("Zoomed",1);
 		A_ZoomFactor(1.0);
-		A_Overlay(-10, "FirstPersonLegsStand");
+		A_SetCrosshair(-1);
+		PB_SetReloading(false);
 	}
 
 	action void PB_BarrelReady2(string b1)
@@ -25,6 +23,7 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 
 	action void PB_BarrelIdle()
 	{
+		A_SetInventory("CantWeaponSpecial",1);
 		A_Takeinventory("GoWeaponSpecialAbility",1);
 		A_TakeInventory("Unloading",1);
 		A_Takeinventory("Zoomed",1);
@@ -43,78 +42,71 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 	States
     {
 		ReadyBarrel:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel",1,"IdleBarrel");
-			TNT1 A 0 PB_BarrelReady1;
+			TNT1 A 0 PB_BarrelReady1();
 			BANE ABCDEFG 1;
 			TNT1 A 0 PB_BarrelReady2("Barrel");
 			goto IdleBarrel;
 		ReadyFlameBarrel:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel",1,"IdleFlameBarrel");
-			TNT1 A 0 PB_BarrelReady1;
+			TNT1 A 0 PB_BarrelReady1();
 			BAFE ABCDEFG 1;
 			TNT1 A 0 PB_BarrelReady2("FlameBarrel");
 			goto IdleFlameBarrel;
 		ReadyIceBarrel:
-			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel",1,"IdleIceBarrel");
-			TNT1 A 0 PB_BarrelReady1;
+			TNT1 A 0 PB_BarrelReady1();
 			BAIE ABCDEFG 1;
 			TNT1 A 0 PB_BarrelReady2("IceBarrel");
 			goto IdleIceBarrel;
 		
 		//Idle
 		IdleBarrel:
-			TNT1 A 0 PB_BarrelIdle;
-			THRG LKJIHIJKL 2 {	
-				A_WeaponReady (WRF_ALLOWRELOAD|WRF_NOSWITCH);
-				return A_DoPBWeaponAction (WRF_ALLOWRELOAD|WRF_NOSWITCH); }
+			TNT1 A 0 PB_BarrelIdle();
+			THRG LKJIHHIJKL 2 A_DoPBWeaponAction(0);
 			loop;
 		IdleFlameBarrel:
-			TNT1 A 0 PB_BarrelIdle;
-			THRG DEFGFED 2 {	
-				A_WeaponReady (WRF_ALLOWRELOAD|WRF_NOSWITCH);
-				return A_DoPBWeaponAction (WRF_ALLOWRELOAD|WRF_NOSWITCH); }
+			TNT1 A 0 PB_BarrelIdle();
+			THRG DEFGFED 2 A_DoPBWeaponAction(0);
 			loop;
 		IdleIceBarrel:
-			TNT1 A 0 PB_BarrelIdle;
-			THRG M 1 {	
-				A_WeaponReady (WRF_ALLOWRELOAD|WRF_NOSWITCH);
-				return A_DoPBWeaponAction (WRF_ALLOWRELOAD|WRF_NOSWITCH); }
+			TNT1 A 0 PB_BarrelIdle();
+			THRG M 1 A_DoPBWeaponAction(0);
 			loop;
 		
 		//Throw
 		ThrowBarrel:
 			TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,1);
-			Goto IdleBarrel;
+			Goto PlaceBarrel;
 			BANE HIJKLMN 1;
 			TNT1 A 0 A_StartSound("weapons/fistwhoosh");
 			BANE ONLJH 1;
 			TNT1 A 0 PB_BarrelThrow("Barrel","Grab");
 			THRF ABCDEF 2;
-			goto GoingToReady;
+			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
+			goto GoingToReady2;
 		ThrowFlameBarrel:
 			TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,1);
-			Goto IdleFlameBarrel;
+			Goto PlaceFlameBarrel;
 			BAFE HIJKLMN 1;
 			TNT1 A 0 A_StartSound("weapons/fistwhoosh");
 			BAFE ONLJH 1;
 			TNT1 A 0 PB_BarrelThrow("FlameBarrel","FGrab");
 			THRF ABCDEF 2;
-			goto GoingToReady;
+			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
+			goto GoingToReady2;
 		ThrowIceBarrel:
 			TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,1);
-			Goto IdleIceBarrel;
+			Goto PlaceIceBarrel;
 			BAIE HIJKLMN 1;
 			TNT1 A 0 A_StartSound("weapons/fistwhoosh");
 			BAIE ONLJH 1;
 			TNT1 A 0 PB_BarrelThrow("IceBarrel","IGrab");
 			THRF ABCDEF 2;
-			goto GoingToReady;
+			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
+			goto GoingToReady2;
 		
 		//Place
 		PlaceBarrel:
 			
 			BANE GFEDCBA 1;
-			PKPB HGFEDCBA 1;
 			TNT1 A 0 {
 				if(CountInv("Grab1")) invoker.b = "PB_NukageBarrel";
 				else if(CountInv("Grab2")) invoker.b = "PB_NukageBarrelHoles";
@@ -125,12 +117,18 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 				else if(CountInv("Grab7")) invoker.b = "PB_NukageBarrelCut_RedBlood";
 				else if(CountInv("Grab8")) invoker.b = "PB_NukageBarrelDented_RedBlood";
 				A_SpawnItemEx(invoker.b,17,0,0,12,0,0,0,SXF_NOCHECKPOSITION,0);
+				A_StartSound("barrel/pain"); {
+				for(int i=8;i>0;i--)
+				{
+					A_TakeInventory("Grab"..i,1);
+				}
+				A_TakeInventory("GrabbedBarrel",1);
+			}
 			}
 			goto CompletePlacement;
 		PlaceFlameBarrel:
 			
 			BAFE GFEDCBA 1;
-			PKPB HGFEDCBA 1;
 			TNT1 A 0 {
 				if(CountInv("FGrab1")) invoker.b = "PB_FlameBarrel";
 				else if(CountInv("FGrab2")) invoker.b = "PB_FlameBarrelHoles";
@@ -141,12 +139,18 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 				else if(CountInv("FGrab7")) invoker.b = "PB_FlameBarrelCut_RedBlood";
 				else if(CountInv("FGrab8")) invoker.b = "PB_FlameBarrelDented_RedBlood";
 				A_SpawnItemEx(invoker.b,17,0,0,12,0,0,0,SXF_NOCHECKPOSITION,0);
+				A_StartSound("barrel/pain"); {
+				for(int i=8;i>0;i--)
+				{
+					A_TakeInventory("FGrab"..i,1);
+				}
+				A_TakeInventory("GrabbedFlameBarrel",1);
+			}
 			}
 			goto CompletePlacement;
 		PlaceIceBarrel:
 			
 			BAIE GFEDCBA 1;
-			PKPB HGFEDCBA 1;
 			TNT1 A 0 {
 				if(CountInv("IGrab1")) invoker.b = "PB_IceBarrel";
 				else if(CountInv("IGrab2")) invoker.b = "PB_IceBarrelHoles";
@@ -157,22 +161,23 @@ extend class PB_WeaponBase //Barrels. Pope, why's your code so jank? It looks fu
 				else if(CountInv("IGrab7")) invoker.b = "PB_IceBarrelCut_RedBlood";
 				else if(CountInv("IGrab8")) invoker.b = "PB_IceBarrelDented_RedBlood";
 				A_SpawnItemEx(invoker.b,17,0,0,12,0,0,0,SXF_NOCHECKPOSITION,0);
+				A_StartSound("barrel/pain"); {
+				for(int i=8;i>0;i--)
+				{
+					A_TakeInventory("IGrab"..i,1);
+				}
+				A_TakeInventory("GrabbedIceBarrel",1);
+			}
 			}
 			goto CompletePlacement;
 		CompletePlacement:
-			TNT1 A 2 {
-				A_StartSound("barrel/pain");
-				for(int i=8;i>0;i--)
-				{
-					A_TakeInventory("Grab"..i,1);
-					A_TakeInventory("IGrab"..i,1);
-					A_TakeInventory("FGrab"..i,1);
-				}
-				A_TakeInventory("GrabbedBarrel",1);
-				A_TakeInventory("GrabbedIceBarrel",1);
-				A_TakeInventory("GrabbedFlameBarrel",1);
-			}
-			goto GoingToReady;
+			PKPB HGFEDCBA 1;
+			TNT1 A 2;
+			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
+			TNT1 A 0 A_JumpIf(player.PendingWeapon != WP_NOCHANGE,1);
+			Goto GoingToReady2;
+			TNT1 A 0 A_Lower();
+			Wait;
 		//Flashes
 		FlashBarrelKicking:
 			BAIE A 0 A_JumpIfInventory("GrabbedIceBarrel",1,3);

@@ -17,26 +17,26 @@
 #include BMAP/Shotgun.txt
 //Slot 4
 //#include BMAP/Carbine.txt
-#include BMAP/LMG.txt
+#include "BMAP/Weapons/Slot 4/LMG.txt"
 #include "BMAP/Weapons/Slot 4/DMR.txt"
 //Slot 5
-#include BMAP/Nailgun.txt
+#include "BMAP/Weapons/Slot 5/Nailgun.txt"
 #include BMAP/Minigun.txt
-#INCLUDE "BMAP/Weapons/Slot 4/MG42.TXT"
+#INCLUDE "BMAP/Weapons/Slot 5/MG42.TXT"
 //Slot 6
 #include "BMAP/Weapons/Slot 6/SuperGrenadeLauncher.txt"
 #include "BMAP/Weapons/Slot 6/RocketLauncher.txt"
 //Slot 7
+#include "BMAP/Weapons/Slot 7/M1Plasma.txt"
 #include BMAP/M2Plasma.txt
-#include BMAP/Plasma.txt
+#include "BMAP/Weapons/Slot 7/DemonTech.txt"
 //Slot 8
-#include BMAP/Railgun.txt
-#include BMAP/Freezer.txt
+#include "BMAP/Weapons/Slot 8/Freezer.txt"
+#include "BMAP/Weapons/Slot 8/Flamethrower.bm"
 //Slot 9
 #include BMAP/BHG.txt
-//Slot 0
-#include "BMAP/Weapons/Slot 0/Flamethrower.bm"
-#include "BMAP/Weapons/Slot 0/DemonTech.txt"
+#include BMAP/Railgun.txt
+#include "BMAP/Weapons/Slot 9/BFG9000.bm"
 
 //Others
 #include BMAP/Throwables.txt
@@ -46,37 +46,70 @@
 
 // Monsters
 #include doommonsters.bm
-#include BMAP/BruiserDemon.txt
-#include BMAP/CyberPaladin.txt
+
+//Lost Soul
+
+//Zombie
 #include BMAP/AssaultZombie.txt
 #include BMAP/AutoShotgunGuy.txt
-#include BMAP/Daedabus.txt
-#include BMAP/InfernalCacodemon.txt
-#include BMAP/DarkImps.txt
 #include BMAP/PistolZombie.txt
-#include BMAP/RiotShieldGuy.txt
 #include BMAP/ShotgunGuy.txt
-#include BMAP/Watcher.txt
 #include BMAP/Zombieman.txt
 #include BMAP/ZombieScientist.txt
 #include BMAP/PB_ZombieScientistChainsaw.txt
 #include BMAP/PlasmaZombie.txt
-#include BMAP/Draugr.txt
+
+//Imp
+#include BMAP/DarkImps.txt
+
+//Pinky
+#include BMAP/BruiserDemon.txt
+#include BMAP/VoidSpectre.txt
+
+//Caco
+#include BMAP/InfernalCacodemon.txt
+#include BMAP/Watcher.txt
+
+//HellKnight
+#include BMAP/CyberPaladin.txt
+
+//Pain Elemental
+
+//Baron
+
+//Mancubus
+#include BMAP/Daedabus.txt
+
+//Arachnotron
 #include BMAP/Arachnophyte.txt
+
+//Revenant
+#include BMAP/Draugr.txt
+
+//Archvile
+#include BMAP/Monsters/Archvile/Archvile.txt
+
+//Mastermind
+
+//Cyberdemon
+
+
 // Decorations
-brightmap sprite BAR1A0 { map "brightmaps/Decoration/BAR1A0.png" }
-brightmap sprite BAR1B0 { map "brightmaps/Decoration/BAR1B0.png" }
-brightmap sprite BAR1C0 { map "brightmaps/Decoration/BAR1C0.png" }
-brightmap sprite BAR1D0 { map "brightmaps/Decoration/BAR1D0.png" }
-brightmap sprite BAR1E0 { map "brightmaps/Decoration/BAR1E0.png" }
-brightmap sprite BAR1F0 { map "brightmaps/Decoration/BAR1F0.png" }
-brightmap sprite BAR1G0 { map "brightmaps/Decoration/BAR1G0.png" }
-brightmap sprite BAR1H0 { map "brightmaps/Decoration/BAR1H0.png" }
-brightmap sprite BAR1I0 { map "brightmaps/Decoration/BAR1I0.png" }
-brightmap sprite BAR1J0 { map "brightmaps/Decoration/BAR1J0.png" }
-brightmap sprite BAR1K0 { map "brightmaps/Decoration/BAR1K0.png" }
-brightmap sprite BAR1L0 { map "brightmaps/Decoration/BAR1L0.png" }
-brightmap sprite BAR1M0 { map "brightmaps/Decoration/BAR1M0.png" }
+brightmap sprite BA11A0 { map "brightmaps/Decoration/BAR1A0.png" }
+brightmap sprite BA11B0 { map "brightmaps/Decoration/BAR1B0.png" }
+brightmap sprite BA11C0 { map "brightmaps/Decoration/BAR1C0.png" }
+brightmap sprite BA11D0 { map "brightmaps/Decoration/BAR1D0.png" }
+brightmap sprite BA11E0 { map "brightmaps/Decoration/BAR1E0.png" }
+brightmap sprite BA11F0 { map "brightmaps/Decoration/BAR1F0.png" }
+brightmap sprite BA11G0 { map "brightmaps/Decoration/BAR1G0.png" }
+brightmap sprite BA11H0 { map "brightmaps/Decoration/BAR1H0.png" }
+brightmap sprite BA11I0 { map "brightmaps/Decoration/BAR1I0.png" }
+brightmap sprite BA11J0 { map "brightmaps/Decoration/BAR1J0.png" }
+brightmap sprite BA11K0 { map "brightmaps/Decoration/BAR1K0.png" }
+brightmap sprite BA11L0 { map "brightmaps/Decoration/BAR1L0.png" }
+brightmap sprite BA11M0 { map "brightmaps/Decoration/BAR1M0.png" }
+brightmap sprite BBLAA0 { map "brightmaps/Decoration/BBLAA0.png" }
+brightmap sprite BBLAC0 { map "brightmaps/Decoration/BBLAC0.png" }
 //Bloody Barrel
 brightmap sprite BARBA0 { map "brightmaps/Decoration/BAR1A0.png" }
 brightmap sprite BARBB0 { map "brightmaps/Decoration/BAR1B0.png" }

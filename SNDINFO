@@ -222,6 +222,8 @@ bltf1 BLT_FLS1
 bltf2 BLT_FLS2
 bltf3 BLT_FLS3
 
+$volume bulletfleshimpact 0.5
+
 //SSG
 $random weapons/shh2 { SSGAlt1 SSGAlt2 SSGAlt3 }
 SSGAlt1 shfire1
@@ -311,12 +313,12 @@ weapons/pistolsuppressor_off PSLREQ2
 
 weapons/suppressedpistol DSPISTL1
 
-$random weapons/pistol {2PFIRE1 2PFIRE2 2PFIRE3}
+$random weapons/firepistol {2PFIRE1 2PFIRE2 2PFIRE3}
 2PFIRE1 2XPFIRE1
 2PFIRE2 2XPFIRE2
 2PFIRE3 2XPFIRE3
-$volume weapons/pistol 0.8
-$rolloff weapons/pistol 100 2200
+$volume weapons/firepistol 0.8
+$rolloff weapons/firepistol 100 2200
 
 $random weapons/smcasebounce { brc1 brc2 brc3 brc4 }
 brc1 brass_c1
@@ -659,3 +661,5 @@ breakfrozenguy/medium1 "sounds/Sounds Effects/breakfrozenguy_medium1.ogg"
 breakfrozenguy/medium2 "sounds/Sounds Effects/breakfrozenguy_medium2.ogg"
 
 breakfrozenguy/large "sounds/Sounds Effects/breakfrozenguy_large.ogg"
+visor/dyingvisor "SOUNDS/HUD Sounds/DyingVisor.wav"
+visor/visorgarbled "SOUNDS/HUD Sounds/VisorGarbled.wav"

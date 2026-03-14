@@ -17,11 +17,9 @@
 
 class gb_Blur
 {
-
-  static
-  void setEnabled(bool isEnabled)
+  static void setEnabled(bool isEnabled)
   {
-    Shader.setEnabled(players[consolePlayer], "gb_blur", isEnabled);
+    PPShader.SetEnabled("gb_blur", isEnabled);
   }
 
 } // class gb_Blur

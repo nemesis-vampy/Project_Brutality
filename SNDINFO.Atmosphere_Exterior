@@ -50,7 +50,7 @@ $random weapons/atmo/med/ext/ar {
 }
 
 $rolloff weapons/atmo/dist/ext/ar 7500 25000
-$rolloff weapons/atmo/far/ext/ar 3500 7500
+$rolloff weapons/atmo/far/ext/ar 4500 7500
 $rolloff weapons/atmo/med/ext/ar 1250 4500
 
 weapons/atmo/ext/ar_1 "SOUNDS/COMBAT/Atmosphere/ext/ar/weap_ar_fire_plr_atmo_ext1_01.ogg"
@@ -69,6 +69,8 @@ $random weapons/atmo/ext/ar {
 	weapons/atmo/ext/ar_5
 	weapons/atmo/ext/ar_6
 }
+
+$rolloff weapons/atmo/ext/ar 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  LMG/BR                                                                      //
@@ -122,7 +124,7 @@ $random weapons/atmo/med/ext/br {
 }
 
 $rolloff weapons/atmo/dist/ext/br 7500 25000
-$rolloff weapons/atmo/far/ext/br 3500 7500
+$rolloff weapons/atmo/far/ext/br 4500 7500
 $rolloff weapons/atmo/med/ext/br 1250 4500
 
 $alias weapons/atmo/dist/ext/lmg weapons/atmo/dist/ext/br
@@ -145,7 +147,7 @@ $random weapons/atmo/ext/lmg {
 	weapons/atmo/ext/lmg_6
 }
 
-$rolloff weapons/atmo/ext/lmg 2200 9000
+$rolloff weapons/atmo/ext/lmg 200 1250
 
 weapons/atmo/ext/br_1 "SOUNDS/COMBAT/Atmosphere/ext/br/weap_br3_fire_plr_atmo_ext1_01.ogg"
 weapons/atmo/ext/br_2 "SOUNDS/COMBAT/Atmosphere/ext/br/weap_br3_fire_plr_atmo_ext1_02.ogg"
@@ -166,6 +168,8 @@ $random weapons/atmo/ext/br {
 	weapons/atmo/ext/br_7
 	weapons/atmo/ext/br_8
 }
+
+$rolloff weapons/atmo/ext/br 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Pistol                                                                      //
@@ -219,7 +223,7 @@ $random weapons/atmo/med/ext/pistol {
 }
 
 $rolloff weapons/atmo/dist/ext/pistol 7500 25000
-$rolloff weapons/atmo/far/ext/pistol 3500 7500
+$rolloff weapons/atmo/far/ext/pistol 4500 7500
 $rolloff weapons/atmo/med/ext/pistol 1250 4500
 
 weapons/atmo/ext/pistol_1 "SOUNDS/COMBAT/Atmosphere/ext/pistol/weap_pistol_fire_plr_atmo_ext1_01.ogg"
@@ -237,6 +241,8 @@ $random weapons/atmo/ext/pistol {
 	weapons/atmo/ext/pistol_5
 	weapons/atmo/ext/pistol_6
 }
+
+$rolloff weapons/atmo/ext/pistol 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Magnum                                                                      //
@@ -290,7 +296,7 @@ $random weapons/atmo/med/ext/pistol_mag {
 }
 
 $rolloff weapons/atmo/dist/ext/pistol_mag 7500 25000
-$rolloff weapons/atmo/far/ext/pistol_mag 3500 7500
+$rolloff weapons/atmo/far/ext/pistol_mag 4500 7500
 $rolloff weapons/atmo/med/ext/pistol_mag 1250 4500
 
   //////////////////////////////////////////////////////////////////////////////////
@@ -328,7 +334,7 @@ $random weapons/atmo/med/ext/pistol_sup {
 	weapons/atmo/ext/med/pistol_sup_6
 }
 
-$rolloff weapons/atmo/far/ext/pistol_sup 3500 7500
+$rolloff weapons/atmo/far/ext/pistol_sup 4500 7500
 $rolloff weapons/atmo/med/ext/pistol_sup 1250 4500
 
   //////////////////////////////////////////////////////////////////////////////////
@@ -379,7 +385,7 @@ $random weapons/atmo/med/ext/shotgun {
 }
 
 $rolloff weapons/atmo/dist/ext/shotgun 7500 25000
-$rolloff weapons/atmo/far/ext/shotgun 3500 7500
+$rolloff weapons/atmo/far/ext/shotgun 4500 7500
 $rolloff weapons/atmo/med/ext/shotgun 1250 4500
 
 weapons/atmo/ext/shotgun_1 "SOUNDS/COMBAT/Atmosphere/ext/shotgun/weap_shotgun_fire_plr_atmo_ext1_01.ogg"
@@ -397,6 +403,8 @@ $random weapons/atmo/ext/shotgun {
 	weapons/atmo/ext/shotgun_5
 	weapons/atmo/ext/shotgun_6
 }
+
+$rolloff weapons/atmo/ext/shotgun 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Double Barrel Shotgun                                                       //
@@ -450,7 +458,7 @@ $random weapons/atmo/med/ext/dbshotgun {
 }
 
 $rolloff weapons/atmo/dist/ext/dbshotgun 7500 25000
-$rolloff weapons/atmo/far/ext/dbshotgun 3500 7500
+$rolloff weapons/atmo/far/ext/dbshotgun 4500 7500
 $rolloff weapons/atmo/med/ext/dbshotgun 1250 4500
 
 weapons/atmo/ext/dbshotgun_1 "SOUNDS/COMBAT/Atmosphere/ext/dbshotgun/weap_shotgun_fire_plr_atmo_ext2_01.ogg"
@@ -468,6 +476,8 @@ $random weapons/atmo/ext/dbshotgun {
 	weapons/atmo/ext/dbshotgun_5
 	weapons/atmo/ext/dbshotgun_6
 }
+
+$rolloff weapons/atmo/ext/dbshotgun 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Pistol (Suppressed)                                                         //
@@ -487,6 +497,8 @@ $random weapons/atmo/ext/pistol_sup {
 	weapons/atmo/ext/pistol_sup_5
 	weapons/atmo/ext/pistol_sup_6
 }
+
+$rolloff weapons/atmo/ext/pistol_sup 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  SMG                                                                         //
@@ -540,7 +552,7 @@ $random weapons/atmo/med/ext/smg {
 }
 
 $rolloff weapons/atmo/dist/ext/smg 7500 25000
-$rolloff weapons/atmo/far/ext/smg 3500 7500
+$rolloff weapons/atmo/far/ext/smg 4500 7500
 $rolloff weapons/atmo/med/ext/smg 1250 4500
 
 weapons/atmo/ext/smg_1 "SOUNDS/COMBAT/Atmosphere/ext/smg/weap_smg_fire_plr_atmo_ext1_01.ogg"
@@ -558,6 +570,8 @@ $random weapons/atmo/ext/smg {
 	weapons/atmo/ext/smg_5
 	weapons/atmo/ext/smg_6
 }
+
+$rolloff weapons/atmo/ext/smg 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Sniper                                                                      //
@@ -609,7 +623,7 @@ $random weapons/atmo/med/ext/sniper {
 }
 
 $rolloff weapons/atmo/dist/ext/sniper 7500 25000
-$rolloff weapons/atmo/far/ext/sniper 3500 7500
+$rolloff weapons/atmo/far/ext/sniper 4500 7500
 $rolloff weapons/atmo/med/ext/sniper 1250 4500
 
 weapons/atmo/ext/sniper_1 "SOUNDS/COMBAT/Atmosphere/ext/sniper/weap_sniper_fire_plr_atmo_ext1_01.ogg"
@@ -628,16 +642,7 @@ $random weapons/atmo/ext/sniper {
 	weapons/atmo/ext/sniper_6
 }
 
-  //////////////////////////////////////////////////////////////////////////////////
- //  Plasma                                                                      //
-//////////////////////////////////////////////////////////////////////////////////
-weapons/atmo/dist/ext/plasma "SOUNDS/COMBAT/Atmosphere/distant/ext/plasma/plasma_atmo_ext_dist.ogg"
-weapons/atmo/far/ext/plasma "SOUNDS/COMBAT/Atmosphere/distant/ext/plasma/plasma_atmo_ext_far.ogg"
-weapons/atmo/med/ext/plasma "SOUNDS/COMBAT/Atmosphere/distant/ext/plasma/plasma_atmo_ext_med.ogg"
-
-$rolloff weapons/atmo/dist/ext/plasma 7500 2500
-$rolloff weapons/atmo/far/ext/plasma 3500 7500
-$rolloff weapons/atmo/med/ext/plasma 1250 4500
+$rolloff weapons/atmo/ext/sniper 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  RPG                                                                         //
@@ -673,5 +678,5 @@ $random weapons/atmo/med/ext/rpg {
 }
 
 $rolloff weapons/atmo/dist/ext/rpg 7500 25000
-$rolloff weapons/atmo/far/ext/rpg 3500 7500
+$rolloff weapons/atmo/far/ext/rpg 4500 7500
 $rolloff weapons/atmo/med/ext/rpg 1250 4500

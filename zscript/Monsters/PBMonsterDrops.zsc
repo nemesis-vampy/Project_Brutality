@@ -1,0 +1,222 @@
+//
+//	base class for monsters weapon drops
+//
+const upgChance = 32; //12.5% chance
+class PB_MonsterDropBase : inventory
+{
+	string		weaponDrop,		//the weapon to drop
+				ammoDrop;		//the ammo to drop if weapon drops are disabled
+	
+	string 		weaponCvar;		//the cvar to check for the weapon (to avoid spawn it if its disabled)
+	
+	int			weaponFilter;
+	
+	property	drops:weaponDrop, ammoDrop;
+	property	filter:weaponCvar, weaponFilter;
+	
+	default
+	{
+		PB_MonsterDropBase.drops "", "";
+		PB_MonsterDropBase.filter "", -1;
+	}
+	
+	override void postbeginplay()
+	{
+		super.postbeginplay();
+		if(isWeaponEnabled())
+			spawndrop(weapondrop);
+		else
+			spawndrop(ammodrop);
+	}
+	
+	bool isWeaponEnabled()
+	{
+		if(CVar.FindCVar(weaponCvar) && CVar.FindCVar(weaponCvar).GetInt() & weaponFilter)
+			return false;
+		return true;
+	}
+	
+	void spawndrop(string drop)
+	{
+		if(!drop)
+			return;
+		
+		let dp = spawn(drop,pos);
+		if(dp)
+		{
+			dp.vel = vel;
+			double dropfactor = (G_SkillPropertyFloat(SKILLP_DropAmmoFactor) == -1 ? 0.5:G_SkillPropertyFloat(SKILLP_DropAmmoFactor));
+			if(dp is "weapon")
+			{
+				let wpdp = weapon(dp);
+				if(wpdp)
+					wpdp.ammogive1 = max(1,int(dropfactor * wpdp.ammogive1));
+				return;
+			}
+			if(dp is "ammo")
+			{
+				let amdp = ammo(dp);
+				if(amdp)
+				{
+					amdp.amount = max(1,int(dropfactor * amdp.amount)); //wouldnt make sense to receive 0 of something
+				}
+				return;
+			}
+			
+		}
+		
+	}
+	
+	states
+	{
+		spawn:
+			TNT1 A 1;
+			stop;
+	}
+}
+
+
+class PB_CarbineZombieDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Carbine", "PB_HighCalMag";
+		PB_MonsterDropBase.filter "pb_chaingun_filter", DisablePB_Carbine;
+	}
+}
+
+Class PB_PlasmaZombieDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_M1Plasma", "PB_Cell";
+	}
+}
+
+Class PB_ZombieManDrop1 : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_DMR", "PB_HighCalMag";
+	}
+}
+
+Class PB_ShotgunGuyDrop1 : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Shotgun", "PB_Shell";
+	}
+}
+
+Class PB_ShotgunGuyDrop2 : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Revolver", "PB_LowCalMag";
+		PB_MonsterDropBase.filter "pb_pistol_filter", DisablePB_Revolver;
+	}
+}
+
+Class PB_ChaingunGuyDrop1 : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Minigun", "PB_HighCalMag";
+	}
+}
+
+Class PB_ASGGuyDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Autoshotgun", "PB_Shell";
+		PB_MonsterDropBase.filter "pb_shotgun_filter", DisablePB_Autoshotgun;
+	}
+}
+
+Class PB_CultistDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Demontech", "PB_DTech";
+		PB_MonsterDropBase.filter "pb_plasmarifle_filter", DisablePB_Demontech;
+	}
+}
+
+
+Class PB_WolfSSdrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_MP40", "PB_LowCalMag";
+	}
+}
+
+Class PB_NailgunGuydrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Nailgun", "PB_HighCalMag";
+		PB_MonsterDropBase.filter "pb_chaingun_filter", DisablePB_Nailgun;
+	}
+}
+
+Class PB_QSGZombieDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_SSG", "PB_Shell";
+	}
+}
+
+Class PB_RocketZombieDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_RocketAmmo", "PB_RocketAmmo";
+	}
+}
+
+Class PB_PyroGuyDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Flamethrower", "PB_Fuel";
+		PB_MonsterDropBase.filter "pb_chainsaw_filter", DisablePB_Flamethrower;
+	}
+}
+
+Class PB_ZSpecSMGDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_SMG", "PB_LowCalMag";
+		PB_MonsterDropBase.filter "pb_pistol_filter", DisablePB_SMG;
+	}
+}
+
+Class PB_ScientistAxeDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Axe", "";
+		PB_MonsterDropBase.filter "pb_chainsaw_filter", DisablePB_Axe;
+	}
+}
+
+Class PB_ScientistSAWDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Chainsaw", "PB_Fuel";
+	}
+}
+
+Class PB_PistolGuyDrop : PB_MonsterDropBase
+{
+	default
+	{
+		PB_MonsterDropBase.drops "PB_Pistol", "PB_LowCalMag";
+	}
+}

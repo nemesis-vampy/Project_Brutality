@@ -78,7 +78,7 @@ class gb_WheelView
     int radius       = screenHeight * 5 / 32;
     int allowedWidth = int(screenHeight * 3 / 16 - MARGIN * 2 * mScaleFactor);
 
-    int nPlaces = 0;
+    uint nPlaces = 0;
 
     bool isSlotExpanded = false;
     bool isMultiWheelMode = mMultiWheelMode.isEngaged(viewModel);
@@ -133,7 +133,7 @@ class gb_WheelView
 
     if (showPointer)
     {
-      drawPointer(controllerModel.angle, controllerModel.radius);
+      drawPointer(controllerModel.angle, controllerModel.radius,isSlotExpanded);
     }
 
     if (mOptions.isShowingTags())
@@ -423,7 +423,7 @@ class gb_WheelView
   {
     if (gb_Ammo.isValid(viewModel.quantity1[weaponIndex], viewModel.maxQuantity1[weaponIndex]))
     {
-      int margin = int(10 * mScaleFactor);
+      int margin = int(5 * mScaleFactor);
       int radius = mScreen.getScaledScreenHeight() / 4 - margin;
       int nColoredPips, nTotalPips;
       [nColoredPips, nTotalPips] = makePipsNumbers( viewModel.quantity1   [weaponIndex]
@@ -595,11 +595,12 @@ class gb_WheelView
   }
 
   private
-  void drawPointer(double angle, double radius)
+  void drawPointer(double angle, double radius,bool multi = false)
   {
-    vector2 pos = (sin(angle), -cos(angle)) * radius + mCenter;
     vector2 size = TexMan.getScaledSize(mTextureCache.pointer);
-    size *= mScaleFactor;
+    size *= mScaleFactor * 2;
+	radius = clamp(radius,0,size.y * (multi ? 6 : 4));	// 12:8
+	vector2 pos = (sin(angle), -cos(angle)) * radius + mCenter;
 
     Screen.drawTexture( mTextureCache.pointer
                       , NO_ANIMATION
@@ -609,7 +610,7 @@ class gb_WheelView
                       , DTA_Alpha        , mAlpha
                       , DTA_DestWidth    , int(size.x)
                       , DTA_DestHeight   , int(size.y)
-					  , DTA_TranslationIndex, Translation.GetID('reddenwep')
+					  //,DTA_LegacyRenderStyle, STYLE_ADD
                       );
   }
   
@@ -638,7 +639,7 @@ class gb_WheelView
 
   const UNDEFINED_INDEX = -1;
 
-  const MAX_N_PIPS = 10;
+  const MAX_N_PIPS = 12;
 
   const PIPS_GAP  = 1.2;
   const PIPS_STEP = 1.5;

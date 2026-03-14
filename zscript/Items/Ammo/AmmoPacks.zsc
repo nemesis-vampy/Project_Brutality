@@ -5,9 +5,15 @@ class PB_Backpack : Backpack
 	Default 
 	{ 
 		//$Category Project Brutality - Ammunition
-		//$Sprite BPAKA0
+		//$Sprite BP4KA0
 		Tag "Backpack";
 		Inventory.PickupSound "BACKPCK";
 		//Scale .10;
+	}
+	States
+	{
+	Spawn:
+		BP4K A -1;
+		Stop;
 	}
 }

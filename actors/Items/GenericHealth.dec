@@ -277,6 +277,40 @@ Actor GiveArmor : BasicArmorBonus
 // 	Inventory.PickupMessage "*** Brutality Bonus awarded! +1 Health ***"
 // }
 
+ACTOR PB_CrueltyHPBonus : PB_DemonHPBonus
+{
+	RenderStyle "Add"
+	Inventory.Amount 1
+	Height 16
+	Radius 32
+	Scale 0.4
+	+FLOATBOB
+	+FORCEXYBILLBOARD
+	States
+	{
+	Spawn:
+		BON3 ABCB 3 BRIGHT
+		Loop
+	}
+}
+
+ACTOR PB_CrueltyAPBonus : PB_DemonAPBonus
+{
+	RenderStyle "Add"
+	Armor.SaveAmount 1
+	Height 16
+	Radius 32
+	Scale 0.4
+	+FLOATBOB
+	+FORCEXYBILLBOARD
+	States
+	{
+	Spawn:
+		BON4 ABCB 3 BRIGHT
+		Loop
+	}
+}
+
 ACTOR CrueltyBonus5health : SwitchableDecoration //23167
 {
 	Game Doom
@@ -291,7 +325,7 @@ ACTOR CrueltyBonus5health : SwitchableDecoration //23167
 	{
 	Spawn:
 		TNT1 A 0 NoDelay
-		TNT1 AAAAA 2 A_SpawnItemEx("PB_DemonHPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 AAAAA 2 A_SpawnItemEx("PB_CrueltyHPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
@@ -302,7 +336,7 @@ ACTOR CrueltyBonus5armor: CrueltyBonus5health
 	{
 	Spawn:
 		TNT1 A 0 NoDelay
-		TNT1 AAAAA 2 A_SpawnItemEx("PB_DemonAPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 AAAAA 2 A_SpawnItemEx("PB_CrueltyAPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
@@ -314,7 +348,7 @@ ACTOR CrueltyBonus15armor: CrueltyBonus5health
 	{
 	Spawn:
 		TNT1 A 0 NoDelay
-		TNT1 AAAAAAAAAAAAAAA 2 A_SpawnItemEx("PB_DemonAPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 AAAAAAAAAAAAAAA 2 A_SpawnItemEx("PB_CrueltyAPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
@@ -325,7 +359,7 @@ ACTOR CrueltyBonus10armor: CrueltyBonus5health
 	{
 	Spawn:
 		TNT1 A 0 NoDelay
-		TNT1 AAAAAAAAAA 2 A_SpawnItemEx("PB_DemonAPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 AAAAAAAAAA 2 A_SpawnItemEx("PB_CrueltyAPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
@@ -336,7 +370,7 @@ ACTOR CrueltyBonus1health: CrueltyBonus5health
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 2 A_SpawnItemEx("PB_DemonHPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 2 A_SpawnItemEx("PB_CrueltyHPBonus",0,0,0,frandom(-3,3),frandom(-3,3),frandom(5,15),random(0,360),SXF_NOCHECKPOSITION)
 		Stop
 	}
 }

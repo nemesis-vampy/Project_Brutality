@@ -29,7 +29,7 @@ class gb_MultiWheelMode
   bool isEngaged(gb_ViewModel viewModel)
   {
     uint nWeapons = viewModel.tags.size();
-    bool result   = (nWeapons > mOptions.getMultiWheelLimit());
+    bool result   = (nWeapons > uint(mOptions.getMultiWheelLimit()));
     return result;
   }
 

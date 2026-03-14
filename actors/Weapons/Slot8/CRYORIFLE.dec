@@ -7,7 +7,6 @@ ACTOR FireModeCryoRifleBeam_WW : Inventory { Inventory.MaxAmount 1 }
 ACTOR FireModeCryoRifleSpear_WW : Inventory { Inventory.MaxAmount 1 }
 ACTOR FireModeCryoRifleFlak_WW : Inventory { Inventory.MaxAmount 1 }
 ACTOR RespectCryoRifle : Inventory { Inventory.MaxAmount 1 }
-ACTOR HasUnloadedCryoRifle : Inventory { Inventory.MaxAmount 1 }
 Actor CryoRifleOverCooling: Inventory { Inventory.maxamount 420 }
 Actor CryoRifleAmmo : PB_WeaponAmmo {
 inventory.maxamount 60
@@ -40,13 +39,13 @@ Actor PB_CryoRifle: PB_Weapon
 	Inventory.PickupSound "weapons/CryoRifle/respect1"
 	Weapon.AmmoType1 "PB_Cell"
 	Weapon.AmmoType2 "CryoRifleAmmo"
-		+WEAPON.NOAUTOAIM
-// 	+WEAPON.NOAUTOFIRE
+	+WEAPON.NOAUTOAIM
+ 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	DamageType "Ice"
-	Inventory.PickupMessage "UAC-31 Cryo Rifle (Slot 8)"
+	Inventory.PickupMessage "$PB_CRYO_PICKUP"
 	Obituary "%o was iced by %k"
-	Tag "TeiTenga Arms Cryo Rifle"
+	Tag "$PB_CRYO_TAG"
 	Scale 0.48
 	PB_WeaponBase.respectItem "RespectCryoRifle"
 	PB_WeaponBase.OffsetRecoilX 1.5
@@ -68,7 +67,7 @@ Actor PB_CryoRifle: PB_Weapon
 				TNT1 A 0 PB_RespectIfNeeded
 			WeaponRespect:
 				TNT1 A 0 {
-					A_SetCrosshair(5);
+					A_SetCrosshair(-1);
 					A_SetInventory("RespectCryoRifle",1);
 					A_SetInventory("FireModeCryoRifleBeam",1);
 					A_SetInventory("FireModeCryoRifleFlak",1);
@@ -110,7 +109,7 @@ Actor PB_CryoRifle: PB_Weapon
 					A_StartSound("weapons/CryoRifle/idle", CHAN_6, CHANF_LOOPING|CHANF_OVERLAP);
 					A_StartSound("PLSIDLE", CHAN_7, CHANF_LOOPING|CHANF_OVERLAP);
 					}
-				TNT1 A 0 A_JumpIfInventory("HasUnloadedCryoRifle", 1, "GunEmpty")
+				TNT1 A 0 A_JumpIf(PB_GetMagUnloaded, "GunEmpty")
 			ReadyToFire1:
 				FR03 EFGHIJKLMMLKJIHGFE 1 {
 					if(CountInv("CryoRifleAmmo") == 0) {
@@ -150,16 +149,13 @@ Actor PB_CryoRifle: PB_Weapon
 				Goto GunEmpty+3
 			
 			WeaponSpecial:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
 				TNT1 A 0 {
 					A_StopSound(2);
 					A_SetInventory("ADSmode",0);
 					A_SetInventory("GoWeaponSpecialAbility",0);
-					PB_HandleCrosshair(5);
+					A_SetCrosshair(-1);
 					A_ZoomFactor(1.0);
-					A_ClearOverlays(10,11);
+					A_ClearOverlays(7,9);
 				}
 			SwitchMode:
 				TNT1 A 0 {
@@ -184,49 +180,47 @@ Actor PB_CryoRifle: PB_Weapon
 					// Missile
 					if(CountInv("FireModeCryoRifleMissile_WW")==1) {
 						
-						A_Print("Primary Mode: Ice Missile");
+						A_Print("$PB_CRYO_MISSILE");
 						A_SetInventory("FireModeCryoRifleMissile", 1);
 						A_SetInventory("FireModeCryoRifleBeam", 0);
 					}
 					
 					// Beam
 					if(CountInv("FireModeCryoRifleBeam_WW")==1) {
-						A_Print("Primary Mode: Ice Beam");
+						A_Print("$PB_CRYO_BEAM");
 						A_SetInventory("FireModeCryoRifleMissile", 0);
 						A_SetInventory("FireModeCryoRifleBeam", 1);
 					}
 					
 					// Spike
 					if(CountInv("FireModeCryoRifleSpear_WW")==1) {
-						A_Print("Secondary Mode: Ice Spear");
+						A_Print("$PB_CRYO_SPEAR");
 						A_SetInventory("FireModeCryoRifleSpear", 1);
 						A_SetInventory("FireModeCryoRifleFlak", 0);
 					}
 					
 					// Flak
 					if(CountInv("FireModeCryoRifleFlak_WW")==1) {
-						A_Print("Secondary Mode: Ice Flak");
+						A_Print("$PB_CRYO_FLAK");
 						A_SetInventory("FireModeCryoRifleSpear", 0);
 						A_SetInventory("FireModeCryoRifleFlak", 1);
 					}
-					return state("");
-				}
-				FR20 ABCDEDFGHIJKL 1
-				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect2", CHAN_AUTO, CHANF_OVERLAP)
-				FR20 MNOPQRSTUU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
-				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect3", CHAN_AUTO, CHANF_OVERLAP)
-				FR20 VWXYZ 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
-				FR21 ABCDEDFGHIJKLMNOPQRS 1
-				TNT1 A 0 { 
 					A_SetInventory("FireModeCryoRifleMissile_WW", 0);
 					A_SetInventory("FireModeCryoRifleBeam_WW", 0);
 					A_SetInventory("FireModeCryoRifleSpear_WW", 0);
 					A_SetInventory("FireModeCryoRifleFlak_WW", 0);
+					return state("");
 				}
+				FR20 ABCDEFGHIJKL 1
+				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect2", CHAN_AUTO, CHANF_OVERLAP)
+				FR20 MNOPQRSTUU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+				TNT1 A 0 A_StartSound("weapons/CryoRifle/respect3", CHAN_AUTO, CHANF_OVERLAP)
+				FR20 VWXYZ 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+				FR21 ABCDEFGHIJKLMNOPQRS 1
 				Goto Ready3
 			CancelModeSwap:
 				TNT1 A 0 { 
-					A_Print("Fire Mode Already Selected");
+					A_Print("$PB_ALREADYSELECTED");
 					A_SetInventory("FireModeCryoRifleMissile_WW", 0);
 					A_SetInventory("FireModeCryoRifleBeam_WW", 0);
 					A_SetInventory("FireModeCryoRifleSpear_WW", 0);
@@ -240,7 +234,6 @@ Actor PB_CryoRifle: PB_Weapon
 					A_SetRoll(0);
 					PB_HandleCrosshair(79);
 					A_SetInventory("PB_LockScreenTilt",0);
-					PB_ResetBarrelTokens;
 				}
 				
 				
@@ -252,15 +245,11 @@ Actor PB_CryoRifle: PB_Weapon
 				Wait
 
 			Deselect:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 				TNT1 A 0 {
 					A_WeaponOffset(0,32);
+					A_ClearOverlays(7,9);
 					A_SetRoll(0);
-					PB_HandleCrosshair(79);
 					A_Setinventory("PB_LockScreenTilt",0);
-					A_Setinventory("HasUnloadedCryoRifle",0);
 					A_Setinventory("Unloading",0);
 					A_StopSound(1);
 					A_StopSound(2);
@@ -278,23 +267,18 @@ Actor PB_CryoRifle: PB_Weapon
 			Fire:
 				TNT1 A 0 {
 					A_WeaponOffset(0,32);
+					A_ClearOverlays(7,9);
 					A_SetRoll(0);
 					PB_HandleCrosshair(79);
 					A_TakeInventory("PB_LockScreenTilt",1);
 				}
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "ThrowIceBarrel")
 				TNT1 A 0 A_JumpIfInventory("FireModeCryoRifleBeam",1,"FireBeam")
 			FireMissile:
+				TNT1 A 0 PB_jumpIfNoAmmo("Reload",5)
 				TNT1 A 0  {
-					if (CountInv("FireModeCryoRifleMissile") == 1  && CountInv("CryoRifleAmmo") < 5) {
-						return state("Reload");
-					}
 					A_StopSound(CHAN_6);
 					A_StopSound(CHAN_7);
 					A_StartSound("weapons/CryoRifle/powerup", CHAN_AUTO, CHANF_OVERLAP);
-					return state("");
 				}
 				FR10 HGFEDCB 1 { 
 					PB_FireOffset;
@@ -310,7 +294,7 @@ Actor PB_CryoRifle: PB_Weapon
 					if(CountInv("FireModeCryoRifleMissile") == 1) {
 						PB_WeaponRecoil(-0.32,-0.16);
 						A_FireCustomMissile("IceMissile", 0, 0, 0, 0);
-						A_Takeinventory("CryoRifleAmmo",5);
+						PB_TakeAmmo("CryoRifleAmmo",5,0);
 						A_StartSound("weapons/CryoRifle/missile", CHAN_WEAPON, CHANF_OVERLAP);
 					}
 					
@@ -333,20 +317,18 @@ Actor PB_CryoRifle: PB_Weapon
 				}
 				TNT1 A 0 {
 					if (CountInv("FireModeCryoRifleMissile") == 1 && CountInv("CryoRifleAmmo") < 5) {
+						A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
 						return state("EndMissile");
 					}
-					PB_ReFire("HoldMissile");
-					A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
 					return state("");
 				}
+				TNT1 A 0 A_ReFire("HoldMissile")
+				TNT1 A 0 A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP)
 			EndMissile:
-// 				TNT1 A 0 A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP)
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",1,"Ready3")
-				Goto Reload
+				Goto Ready3
 				
 			FireBeam:
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",1,1)
-				Goto Reload
+			TNT1 A 0 PB_jumpIfNoAmmo
 				TNT1 A 0 {
 					A_StopSound(CHAN_6);
 					A_StopSound(CHAN_7);
@@ -374,7 +356,7 @@ Actor PB_CryoRifle: PB_Weapon
 					A_Giveinventory("CryoRifleOverCooling",8);
 				}
 				TNT1 A 0 {
-					A_Takeinventory("CryoRifleAmmo",1);
+					PB_TakeAmmo("CryoRifleAmmo",1,0);
 					PB_ReFire ("HoldBeam");
 				}
 			EndBeam:
@@ -386,8 +368,7 @@ Actor PB_CryoRifle: PB_Weapon
 				FR10 CDEFGHI 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR11");}
 				}
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",1,"Ready3")
-				Goto Reload
+				Goto Ready3
 				
 			BeamMuzzleFlash:
 				TNT1 A 0 A_Jump(256, "Muzzle1", "Muzzle2", "Muzzle3", "Muzzle4", "Muzzle5", "Muzzle6", "Muzzle7")
@@ -416,20 +397,18 @@ Actor PB_CryoRifle: PB_Weapon
 			AltFire: //No moar pistol
 				TNT1 A 0 {
 					A_WeaponOffset(0,32);
+					A_ClearOverlays(7,9);
 					A_SetRoll(0);
 					PB_HandleCrosshair(79);
 					A_Setinventory("PB_LockScreenTilt",0);
 				}
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
 			AltFireMissile:
 				TNT1 A 0  {
-					if (CountInv("FireModeCryoRifleSpear") == 1  && CountInv("CryoRifleAmmo") < 10) {
-						return state("Reload");
+					if (CountInv("FireModeCryoRifleSpear") == 1) {
+						return PB_jumpIfNoAmmo("Reload",10);
 					}
-					if (CountInv("FireModeCryoRifleFlak") == 1  && CountInv("CryoRifleAmmo") < 2) {
-						return state("Reload");
+					if (CountInv("FireModeCryoRifleFlak") == 1) {
+						return PB_jumpIfNoAmmo("Reload",2);
 					}
 					A_StopSound(CHAN_6);
 					A_StopSound(CHAN_7);
@@ -447,7 +426,7 @@ Actor PB_CryoRifle: PB_Weapon
 					if(CountInv("FireModeCryoRifleSpear") == 1) {
 						PB_WeaponRecoil(-0.32,-0.16);
 						A_FireCustomMissile("IceSpear", 0, 0, 0, 0);
-						A_Takeinventory("CryoRifleAmmo",10);
+						PB_TakeAmmo("CryoRifleAmmo",10,0);
 						A_StartSound("weapons/CryoRifle/spearfire", CHAN_WEAPON, CHANF_OVERLAP);
 					}
 					
@@ -459,7 +438,7 @@ Actor PB_CryoRifle: PB_Weapon
 						A_FireCustomMissile("IceFlak3",random(-3,3),0,0,random(0,-1));
 						A_FireCustomMissile("IceFlak2",random(-2,2),0,0,random(0,-1));
 						A_FireCustomMissile("IceFlak3",random(-3,3),0,0,random(0,-1));
-						A_Takeinventory("CryoRifleAmmo",2);
+						PB_TakeAmmo("CryoRifleAmmo",2,0);
 						A_StartSound("weapons/CryoRifle/flak", CHAN_WEAPON, CHANF_OVERLAP);
 					}
 					PB_FireOffset;
@@ -479,60 +458,47 @@ Actor PB_CryoRifle: PB_Weapon
 				FR10 EFGH 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR11");}
 				}
-				TNT1 A 0 {
-						if ((CountInv("FireModeCryoRifleFlak") == 1) && CountInv("CryoRifleAmmo") == 0) {
-							A_Jump(256,"EndAltMissile");
-						}
-				}
 				TNT1 A 0 A_JumpIfInventory("FireModeCryoRifleFlak",1,"AltRefire")
-				FR14 ABCCBA 1 BRIGHT {
+				FR10 IIIIII 1 {
 					PB_GunSmoke(frandom(-2,2),frandom(-2,2),frandom(-2,2));
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR11");}
+					A_WeaponOffset(random(1,-1),random(32,33));
 				}
-				FR14 BCA 1 { 
+				FR10 III 1 { 
 					PB_GunSmoke(frandom(-2,2),frandom(-2,2),frandom(-2,2));
-					PB_FireOffset;
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR11");}
+					A_WeaponOffset(random(1,-1),random(32,33));
 				}
-				FR13 CBA 1 { 
+				FR10 III 1 { 
 					PB_GunSmoke(frandom(-2,2),frandom(-2,2),frandom(-2,2));
-					PB_FireOffset;
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR11");}
+					A_WeaponOffset(random(1,-1),random(32,33));
 				}
+				TNT1 A 0 A_WeaponOffset(0,32)
 			AltRefire:
 				TNT1 A 0 {
 					if (CountInv("FireModeCryoRifleSpear") == 1 && CountInv("CryoRifleAmmo") < 10) {
-						return state("EndAltMissile");
+						A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
+						return state("Ready3");
 					}
 					if (CountInv("FireModeCryoRifleFlak") == 1  && CountInv("CryoRifleAmmo") < 2) {
-						return state("EndAltMissile");
+						A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
+						return state("Ready3");
 					}
 					return state("");
 					}
-				TNT1 A 0 {
-					PB_ReFire("AltHoldMissile");
-					A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP);
-					return state("");
-				}
-			
-			EndAltMissile:
-// 				TNT1 A 0 A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP)
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",1,"Ready3")
-				Goto Reload
-//		 A1F3 CBA 1
-//		 Goto Ready3
-			Reload:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",60,"Ready3")
-				TNT1 A 0 A_JumpIfInventory("HasUnloadedCryoRifle",1,"ReloadUnloaded")
-				TNT1 A 0 A_JumpIfInventory("PB_Cell",1,1)
+				TNT1 A 0 A_ReFire("AltHoldMissile")
+				TNT1 A 0 A_Startsound("weapons/CryoRifle/powerdown", CHAN_AUTO, CHANF_OVERLAP)
 				Goto Ready3
+			Reload:
+				TNT1 A 0 PB_CheckReload("ReloadUnloaded","","","Ready3","Ready3",60,1)
 				FR94 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
 				FR95 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
 				FR96 ABCDEFGHIJKLMN 0
-				//TNT1 A 0 A_TakeInventory("CryoRifleOverCooling", 420)
 				TNT1 A 0 {
 					A_StopSound(1);
 					A_StopSound(6);
+					A_ClearOverlays(7,9);
 					A_StartSound("weapons/CryoRifle/reload1", CHAN_AUTO, CHANF_OVERLAP);
 				}
 				FR04 ABCDEFGHIJ 1 {
@@ -548,17 +514,24 @@ Actor PB_CryoRifle: PB_Weapon
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR94");}
 					A_FireCustomMissile("GunFireSmoke", 0, 0, 5, -5, 0, 0);
 				}
-				TNT1 A 0 A_StartSound("weapons/CellEject", CHAN_AUTO, CHANF_OVERLAP)
 				TNT1 A 0 {
-					if (CountInv("CryoRifleAmmo") <= 0) {
+					A_StartSound("weapons/CellEject", CHAN_AUTO, CHANF_OVERLAP);
+					if (PB_GetMagEmpty) {
 						PB_SpawnCasing("EmptyCell",10,-10,12,Frandom(-2,2),Frandom(-9,-6),Frandom(3,6));
 					}
+					PB_SetMagUnloaded(true);
+					PB_SetChamberEmpty(true);
 				}
 				FR04 XYZ 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR94");}
 					A_FireCustomMissile("GunFireSmoke", 0, 0, 5, -6, 0, 0);
 				}
-				FR05 ABCDEFGHIJKLM 1 {
+				FR05 ABCDEF 1 {
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
+					A_FireCustomMissile("GunFireSmoke", 0, 0, 5, -5, 0, 0);
+				}
+			ContinueReload:
+				FR05 GHIJKLM 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
 					A_FireCustomMissile("GunFireSmoke", 0, 0, 5, -5, 0, 0);
 				}
@@ -566,7 +539,13 @@ Actor PB_CryoRifle: PB_Weapon
 				FR05 NOOOPQRS 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
 				}
-				TNT1 A 0 A_StartSound("weapons/plasma/cellin", CHAN_AUTO, CHANF_OVERLAP)
+				TNT1 A 0 {
+					A_StartSound("weapons/plasma/cellin", CHAN_AUTO, CHANF_OVERLAP);
+					PB_AmmoIntoMag("CryoRifleAmmo","PB_Cell",60,1);
+					PB_SetMagEmpty(false);
+					PB_SetMagUnloaded(false);
+					PB_SetChamberEmpty(false);
+				}
 				FR05 TUVWXYZ 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
 				}
@@ -578,92 +557,60 @@ Actor PB_CryoRifle: PB_Weapon
 				FR06 JKLMN 1 {
 					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR96");}
 				}
-				TNT1 A 0 A_Setinventory("HasUnloadedCryoRifle", 0)
-				Goto InsertBullets
+				Goto Ready3
 			ReloadUnloaded:
-				FR94 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
-				FR95 ABCDEFGHIJKLMNOPQRSTUVWXYZ 0
-				FR96 ABCDEFGHIJKLMN 0
-				//TNT1 A 0 A_TakeInventory("CryoRifleOverCooling", 420)
 				TNT1 A 0 {
 					A_StopSound(1);
 					A_StopSound(6);
+					A_ClearOverlays(7,9);
 					A_StartSound("weapons/CryoRifle/reload1", CHAN_AUTO, CHANF_OVERLAP);
 				}
-				FR04 ABCDEFGHI 1 {
-					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR94");}
+				FR06 NMLKJIHGFEDCBA 1 {
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR96");}
 				}
 				TNT1 A 0 A_StartSound("weapons/CryoRifle/reload3", CHAN_AUTO, CHANF_OVERLAP)
-				FR05 GHIJKLM 1 {
-					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
-				}
-				TNT1 A 0 A_StartSound("weapons/CryoRifle/reload2", CHAN_AUTO, CHANF_OVERLAP)
-				FR05 NOOOPQRS 1 {
-					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
-				}
-				TNT1 A 0 A_StartSound("weapons/plasma/cellin", CHAN_AUTO, CHANF_OVERLAP)
-				FR05 TUVWXYZ 1 {
-					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
-				}
-				TNT1 A 0 A_StartSound("weapons/nailgun/inspect4", CHAN_AUTO, CHANF_OVERLAP)
-				FR06 ABCDEFGHI 1 {
-					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR96");}
-				}
-				TNT1 A 0 A_StartSound("weapons/CryoRifle/up", CHAN_AUTO, CHANF_OVERLAP)
-				FR06 JKLMN 1 {
-					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR96");}
-				}
-				TNT1 A 0 A_Setinventory("HasUnloadedCryoRifle", 0)
-			InsertBullets:
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",60,"Ready3")
-				TNT1 A 0 A_JumpIfInventory("PB_Cell",1,1)
-				Goto Ready3
-				TNT1 A 0 {
-					A_Giveinventory("CryoRifleAmmo",1);
-					A_Takeinventory("PB_Cell",1);
-					}
-				Goto InsertBullets	
+				Goto ContinueReload
 			Unload:
-				TNT1 A 0 A_Setinventory("ADSmode",0)
-				TNT1 A 0 A_Setinventory("Unloading",0)
-				FR03 E 1 A_JumpIfInventory("HasUnloadedCryoRifle", 1, "Ready3")
-				TNT1 A 0 A_StopSound(6)
-				TNT1 A 0 A_StopSound(1)
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",1,1)
-				Goto Ready3
+				TNT1 A 0 {
+					A_StopSound(1);
+					A_StopSound(6);
+					A_ClearOverlays(7,9);
+					A_StartSound("weapons/CryoRifle/reload1", CHAN_AUTO, CHANF_OVERLAP);
+				}
 				TNT1 A 0 A_PlaySoundEx("weapons/CryoRifle/reload1", "Auto")
-				FR06 NMLKJIHGFEDCBA 1
+				FR06 NMLKJIHGFEDCBA 1 {
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR96");}
+				}
 				TNT1 A 0 A_PlaySoundEx("weapons/CryoRifle/reload3", "Auto")
-				FR05 ZYXWVUTSTRQPONMLKJIHG 1
-				FR04 IHGFEDCBA 1
-			RemoveBullets:
-				TNT1 A 0 A_JumpIfInventory("CryoRifleAmmo",1,1)
-				Goto FinishUnload
-				TNT1 A 0 A_Takeinventory("CryoRifleAmmo",1)
-				TNT1 A 0 A_Giveinventory("PB_Cell",1)
-				Goto RemoveBullets
-			FInishUnload:
-				TNT1 A 0 A_Setinventory("HasUnloadedCryoRifle", 1)
-				TNT1 A 0 A_Setinventory("Unloading",0)
+				TNT1 A 0 {
+					A_StartSound("weapons/CellEject", CHAN_AUTO, CHANF_OVERLAP);
+					if (PB_GetMagEmpty) {
+						PB_SpawnCasing("EmptyCell",10,-10,12,Frandom(-2,2),Frandom(-9,-6),Frandom(3,6));
+					}
+					PB_UnloadMag("CryoRifleAmmo","PB_Cell",1);
+					PB_SetMagEmpty(true);
+					PB_SetMagUnloaded(true);
+					PB_SetChamberEmpty(true);
+				}
+				FR05 ZYXWVUTSTRQPONMLKJIHG 1 {
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR95");}
+				}
+				FR04 IHGFEDCBA 1 {
+					if (CountInv("CryoRifleOverCooling") >= 100 ) { A_SetWeaponSprite("FR94");}
+				}
 				Goto Ready3
 
 			Flash:
 				TNT1 A 1
 				Goto LightDone
 			FlashPunching:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelPunching")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelPunching")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelPunching")
 				TNT1 A 0 A_JumpIfInventory("CryoRifleOverCooling", 100, "FlashPunchingFrost")
 				FR42 ABCDEFGGHIJKLM 1
-				Stop
+				Goto Ready3
 			FlashPunchingFrost:
 				FR72 ABCDEFGGHIJKLM 1
-				Stop
+				Goto Ready3
 			FlashKicking:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelKicking")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelKicking")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelKicking")
 				TNT1 A 0 A_JumpIfInventory("CryoRifleOverCooling", 100, "FlashKickingFrost")
 				FR40 ABCDEFGGHIJKLM 1
 				Goto Ready3
@@ -671,9 +618,6 @@ Actor PB_CryoRifle: PB_Weapon
 				FR70 ABCDEFGGHIJKLM 1
 				Goto Ready3
 			FlashAirKicking:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelAirKicking")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelAirKicking")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelAirKicking")	
 				TNT1 A 0 A_JumpIfInventory("CryoRifleOverCooling", 100, "FlashAirKickingFrost")
 				FR40 ABCDEFGGGHIJKLM 1
 				Goto Ready3
@@ -681,9 +625,6 @@ Actor PB_CryoRifle: PB_Weapon
 				FR70 ABCDEFGGGHIJKLM 1
 				Goto Ready3
 			FlashSlideKicking:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKicking")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKicking")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKicking")
 				TNT1 A 0 A_JumpIfInventory("CryoRifleOverCooling", 100, "FlashSlideKickingFrost")
 				FR41 ABCDEFGHIJKLMNOPQRSSSTUVWX 1
 				Goto Ready3
@@ -691,9 +632,6 @@ Actor PB_CryoRifle: PB_Weapon
 				FR71 ABCDEFGHIJKLMNOPQRRRRRSTUV 1
 				Goto Ready3
 			FlashSlideKickingStop:
-				TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKickingStop")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKickingStop")
-				TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKickingStop")
 				TNT1 A 0 A_JumpIfInventory("CryoRifleOverCooling", 100, "FlashSlideKickingStopFrost")
 				FR41 TTTUVWX 1 
 				Goto Ready3
@@ -987,7 +925,6 @@ Actor IceSpear {
 			Death:
 				TNT1 A 0 { 
 					A_ChangeFlag("NOGRAVITY",1);
-					A_SpawnItem("HitPuff");
 					A_Stop;
 					A_SetRoll(0);
 					}
@@ -1122,7 +1059,8 @@ Actor IceTracer {
 					A_FadeOut(0.04);
 					A_SetRoll(roll-frandom(-15,15));
 				}
-				Stop	}
+				Stop
+			}
 	}
 				
 Actor SmallIceTracer : IceTracer {
@@ -1133,7 +1071,8 @@ Actor SmallIceTracer : IceTracer {
 					A_FadeOut(0.04);
 					A_SetRoll(roll-frandom(-15,15));
 				}
-				Stop	}
+				Stop
+				}
 	}
 
 ACTOR CryoTrail {

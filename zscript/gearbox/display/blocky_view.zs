@@ -279,7 +279,7 @@ class gb_BlockyView
     int allowedStringWidth = SELECTED_SLOT_WIDTH - 2;
     for (int i = nWords - 2; i >= 0; --i)
     {
-      uint newWidth = (aFont.stringWidth(lines[0]) + spaceWidth + aFont.stringWidth(words[i]));
+      int newWidth = (aFont.stringWidth(lines[0]) + spaceWidth + aFont.stringWidth(words[i]));
       if (newWidth < allowedStringWidth)
       {
         lines[0] = words[i] .. " " .. lines[0];
@@ -293,10 +293,10 @@ class gb_BlockyView
     // If there are too many lines, put them on the third line and mark the it
     // with ellipsis.
     string ellipsis = aFont.getGlyphHeight(ELLIPSIS_CODE) ? "…" : "...";
-    uint nLines = lines.size();
+    int nLines = lines.size();
     if (nLines > 3)
     {
-      for (uint i = 3; i < nLines; ++i)
+      for (int i = 3; i < nLines; ++i)
       {
         lines[2].appendFormat(" %s", lines[i]);
       }
@@ -305,9 +305,9 @@ class gb_BlockyView
 
     // If a line is too long to fit in the box, replace the part that doesn't
     // fit with ellipsis.
-    uint linesEnd = min(nLines, 3);
+    int linesEnd = min(nLines, 3);
     int ellipsisWidth = aFont.stringWidth(ellipsis);
-    for (uint i = 0; i < linesEnd; ++i)
+    for (int i = 0; i < linesEnd; ++i)
     {
       if (aFont.stringWidth(lines[i]) <= allowedStringWidth) continue;
 
@@ -320,7 +320,7 @@ class gb_BlockyView
 
     // Finally, print lines.
     int lineHeight = aFont.getHeight();
-    for (uint i = 0; i < linesEnd; ++i)
+    for (int i = 0; i < linesEnd; ++i)
     {
       double y = startY + SELECTED_WEAPON_HEIGHT + (i - linesEnd) * lineHeight;
       drawText(aFont, Font.CR_WHITE, startX + 1, y, lines[i], 0.3);

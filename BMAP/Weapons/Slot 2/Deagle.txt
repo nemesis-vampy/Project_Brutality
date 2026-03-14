@@ -15,7 +15,7 @@ Brightmap Sprite D6E0G0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0G0.png" di
 Brightmap Sprite D6E0H0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0H0.png" disablefullbright } 
 Brightmap Sprite D6E0I0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0I0.png" disablefullbright } 
 Brightmap Sprite D6E0J0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0J0.png" disablefullbright } 
-Brightmap Sprite D6E0K0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0K0.png" disablefullbright } 
+//Brightmap Sprite D6E0K0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0K0.png" disablefullbright } 
 Brightmap Sprite D6E1A0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1A0.png" disablefullbright } 
 Brightmap Sprite D6E1B0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1B0.png" disablefullbright } 
 Brightmap Sprite D6E1C0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1C0.png" disablefullbright } 
@@ -26,7 +26,7 @@ Brightmap Sprite D6E1G0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1G0.png" di
 Brightmap Sprite D6E1H0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1H0.png" disablefullbright } 
 Brightmap Sprite D6E1I0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1I0.png" disablefullbright } 
 Brightmap Sprite D6E1J0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1J0.png" disablefullbright } 
-Brightmap Sprite D6E1K0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1K0.png" disablefullbright } 
+//Brightmap Sprite D6E1K0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E1K0.png" disablefullbright } 
 Brightmap Sprite D7E0A0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD7E0A0.png" disablefullbright } 
 Brightmap Sprite D7E0B0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD7E0B0.png" disablefullbright } 
 Brightmap Sprite D7E0C0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD7E0C0.png" disablefullbright } 
@@ -44,7 +44,7 @@ Brightmap Sprite D7E1G0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD7E1G0.png" di
 
 
 
-Brightmap Sprite D6E0Z0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0Z0.png" disablefullbright } 
+//Brightmap Sprite D6E0Z0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E0Z0.png" disablefullbright } 
 
 Brightmap Sprite D6E2A0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E2A0.png" disablefullbright } 
 Brightmap Sprite D6E2B0 { map "brightmaps/WEAPONS/Slot 2/Deagle/BMD6E2B0.png" disablefullbright } 

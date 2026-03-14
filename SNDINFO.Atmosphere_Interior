@@ -49,7 +49,7 @@ $random weapons/atmo/med/int/ar {
 	weapons/atmo/int/med/ar_6
 }
 
-$rolloff weapons/atmo/dist/int/ar 3500 7000
+$rolloff weapons/atmo/dist/int/ar 3500 25000
 $rolloff weapons/atmo/far/int/ar 2500 3500 
 $rolloff weapons/atmo/med/int/ar 1250 2500
 
@@ -64,6 +64,8 @@ $random weapons/atmo/int/ar {
 	weapons/atmo/int/ar_3
 	weapons/atmo/int/ar_4
 }
+
+$rolloff weapons/atmo/int/ar 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  LMG                                                                         //
@@ -112,7 +114,7 @@ $random weapons/atmo/med/int/lmg {
 	weapons/atmo/int/med/lmg_6
 }
 
-$rolloff weapons/atmo/dist/int/lmg 3500 7000
+$rolloff weapons/atmo/dist/int/lmg 3500 25000
 $rolloff weapons/atmo/far/int/lmg 2500 3500 
 $rolloff weapons/atmo/med/int/lmg 1250 2500
 
@@ -131,6 +133,8 @@ $random weapons/atmo/int/lmg {
 	weapons/atmo/int/lmg_5
 	weapons/atmo/int/lmg_6
 }
+
+$rolloff weapons/atmo/int/lmg 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Pistol                                                                      //
@@ -183,7 +187,7 @@ $random weapons/atmo/med/int/pistol {
 	weapons/atmo/int/med/pistol_6
 }
 
-$rolloff weapons/atmo/dist/int/pistol 3500 7000
+$rolloff weapons/atmo/dist/int/pistol 3500 25000
 $rolloff weapons/atmo/far/int/pistol 2500 3500 
 $rolloff weapons/atmo/med/int/pistol 1250 2500
 
@@ -202,6 +206,8 @@ $random weapons/atmo/int/pistol {
 	weapons/atmo/int/pistol_5
 	weapons/atmo/int/pistol_6
 }
+
+$rolloff weapons/atmo/int/pistol 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Shotgun                                                                     //
@@ -244,7 +250,7 @@ $random weapons/atmo/med/int/shotgun {
 	weapons/atmo/int/med/shotgun_5
 }
 
-$rolloff weapons/atmo/dist/int/shotgun 3500 7000
+$rolloff weapons/atmo/dist/int/shotgun 3500 25000
 $rolloff weapons/atmo/far/int/shotgun 2500 3500 
 $rolloff weapons/atmo/med/int/shotgun 1250 2500
 
@@ -264,6 +270,8 @@ $random weapons/atmo/int/shotgun {
 	weapons/atmo/int/shotgun_6
 }
 
+$rolloff weapons/atmo/int/shotgun 200 1250
+
   //////////////////////////////////////////////////////////////////////////////////
  //  Pistol (Suppressed)                                                         //
 //////////////////////////////////////////////////////////////////////////////////
@@ -282,6 +290,8 @@ $random weapons/atmo/int/pistol_sup {
 	weapons/atmo/int/pistol_sup_5
 	weapons/atmo/int/pistol_sup_6
 }
+
+$rolloff weapons/atmo/int/pistol_sup 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  SMG                                                                         //
@@ -334,7 +344,7 @@ $random weapons/atmo/med/int/smg {
 	weapons/atmo/int/med/smg_6
 }
 
-$rolloff weapons/atmo/dist/int/smg 3500 7000
+$rolloff weapons/atmo/dist/int/smg 3500 25000
 $rolloff weapons/atmo/far/int/smg 2500 3500 
 $rolloff weapons/atmo/med/int/smg 1250 2500
 
@@ -353,6 +363,8 @@ $random weapons/atmo/int/smg {
 	weapons/atmo/int/smg_5
 	weapons/atmo/int/smg_6
 }
+
+$rolloff weapons/atmo/int/smg 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  Sniper                                                                      //
@@ -397,7 +409,7 @@ $random weapons/atmo/med/int/sniper {
 	weapons/atmo/int/med/sniper_6
 }
 
-$rolloff weapons/atmo/dist/int/sniper 3500 7000
+$rolloff weapons/atmo/dist/int/sniper 3500 25000
 $rolloff weapons/atmo/far/int/sniper 2500 3500 
 $rolloff weapons/atmo/med/int/sniper 1250 2500
 
@@ -416,6 +428,8 @@ $random weapons/atmo/int/sniper {
 	weapons/atmo/int/sniper_5
 	weapons/atmo/int/sniper_6
 }
+
+$rolloff weapons/atmo/int/sniper 200 1250
 
   //////////////////////////////////////////////////////////////////////////////////
  //  RPG                                                                         //
@@ -450,6 +464,6 @@ $random weapons/atmo/med/int/rpg {
 	weapons/atmo/int/med/rpg_3
 }
 
-$rolloff weapons/atmo/dist/int/rpg 3500 7000
+$rolloff weapons/atmo/dist/int/rpg 3500 25000
 $rolloff weapons/atmo/far/int/rpg 2500 3500 
 $rolloff weapons/atmo/med/int/rpg 1250 2500

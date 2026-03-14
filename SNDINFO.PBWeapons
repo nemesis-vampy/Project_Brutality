@@ -91,19 +91,18 @@ weapons/flamethrower/respect2 			"sounds/combat/weapons/flamethrower/FT_Select2.
 weapons/flamethrower/respect3 			"sounds/combat/weapons/flamethrower/FT_Select3.ogg"
 weapons/flamethrower/respect4 			"sounds/combat/weapons/flamethrower/FT_Select4.ogg"
 weapons/flamethrower/respect5 			"sounds/combat/weapons/flamethrower/FT_Click1.wav"
-weapons/flamethrower/respect6 			"sounds/combat/weapons/flamethrower/FT_Select5.wav"
+weapons/flamethrower/respect6 			"sounds/combat/weapons/flamethrower/FT_Select5.ogg"
 weapons/flamethrower/hiss1 				"sounds/combat/weapons/flamethrower/FlamerHiss1.ogg"
 weapons/flamethrower/hiss2 				"sounds/combat/weapons/flamethrower/FlamerHiss2.wav"
-weapons/flamethrower/click 				"sounds/combat/weapons/flamethrower/FT_lighthiss.ogg"
+weapons/flamethrower/click 				"sounds/combat/weapons/flamethrower/FT_Click2.wav"
 weapons/flamethrower/idle 				FLMRIDL
-weapons/flamethrower/lighthiss 			"sounds/combat/weapons/flamethrower/FT_Click2.wav"
-weapons/flamethrower/lighthiss 			"sounds/combat/weapons/flamethrower/FT_Click2.wav"
+weapons/flamethrower/lighthiss 			"sounds/combat/weapons/flamethrower/FT_lighthiss.ogg"
 weapons/flamethrower/misc1 				"sounds/combat/weapons/flamethrower/FT_Reload4.wav"
 
 $random weapons/flamethrower/torchobject		{ weapons/flamethrower/torchobject1 weapons/flamethrower/torchobject2 weapons/flamethrower/torchobject3 }	
-weapons/flamethrower/torchobject1 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT1.wav"
-weapons/flamethrower/torchobject2 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT2.wav"
-weapons/flamethrower/torchobject3 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT3.wav"
+weapons/flamethrower/torchobject1 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT1.ogg"
+weapons/flamethrower/torchobject2 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT2.ogg"
+weapons/flamethrower/torchobject3 			"sounds/combat/weapons/flamethrower/TORCH_OBJECT3.ogg"
 
 		
 $random weapons/flamethrower/dryhiss		{ dryhiss1 dryhiss2 dryhiss3 dryhiss4 dryhiss5 }	
@@ -145,7 +144,7 @@ weapons/emptymag/dropM4
 weapons/emptymag/dropM1	"Sounds/COmbat/Casing/EmptyMags/MidBounce1.ogg"
 weapons/emptymag/dropM2	"Sounds/COmbat/Casing/EmptyMags/MidBounce2.ogg"
 weapons/emptymag/dropM3	"Sounds/COmbat/Casing/EmptyMags/MidBounce3.ogg"
-weapons/emptymag/dropM3	"Sounds/COmbat/Casing/EmptyMags/MidBounce4.ogg"
+weapons/emptymag/dropM4	"Sounds/COmbat/Casing/EmptyMags/MidBounce4.ogg"
 
 $random weapons/emptymag/dropS
 {
@@ -164,6 +163,7 @@ weapons/emptymag/dropS4	"Sounds/COmbat/Casing/EmptyMags/SmallBounce4.ogg"
 AXEDRAW AXEDRAW
 $volume AXEDRAW 0.7
 AXECLN AXECLN
+$limit AXECLN 4
 AXEHIT AXEHIT
 AXEWALL AXEWALL
 AXSWING AXSWING
@@ -230,12 +230,12 @@ DSSAWZIP DSSAWZIP
 
 //Slot 2 PISTOLS
 //PISTOL
-weapons/pistol	3XPFIRE1
+weapons/firepistol	3XPFIRE1
 //$random weapons/pistol {2PFIRE1 2PFIRE2 2PFIRE3}
 //2PFIRE1 2XPFIRE1
 //2PFIRE2 2XPFIRE2
 //2PFIRE3 2XPFIRE3
-$volume weapons/pistol 0.8
+$volume weapons/firepistol 0.8
 $random weapons/smcasebounce { brc1 brc2 brc3 brc4 brc5 brc6 brc7 brc8 brc9 }
 $rolloff  weapons/smcasebounce 50 250
 brc1 brass_c1
@@ -406,6 +406,7 @@ SSGAlt2 shfire2
 SSGAlt3 shfire3
 weapons/ssg/close	SSGCLOSE
 weapons/ssg/open	SSGOPEN
+weapons/ssg/open2	SSGOPEN2
 weapons/ssg/in		SSGIN
 $random SSHFIRE { SSHFIRE0 SSHFIRE2 SSHFIRE3 }
 SSHFIRE0 SSHFIRE0
@@ -652,6 +653,7 @@ XEXPL_6 XEXPL6
 XEXPL_7 XEXPL7
 XEXPL_8 XEXPL8
 $rolloff excavator/explode 1300 1800
+$volume excavator/explode 0.5
 
 //ROCKET LAUNCHER
 misc/rockboxa rockboxa
@@ -772,15 +774,16 @@ weapons/plasma/startup PLSMAST
 weapons/plasma/fancybutton PSMABTN
 RELOAD2 RELOAD2 //Sound taken from Insanity's Brutality
 SiphonActive SIPHON1
+SiphonHold SIPHON4
 $random SiphonGrowl { SIPHON2 SIPHON3 }
 SIPHON2 SIPHON2
 SIPHON3 SIPHON3
-$random weapons/plasmax { PEXPLO1 PEXPLO2 PEXPLO3 PEXPLO4}
+$random weapons/plasma/explode { PEXPLO1 PEXPLO2 PEXPLO3 PEXPLO4}
 PEXPLO1 PEXPLO1
 PEXPLO2 PEXPLO2
 PEXPLO3 PEXPLO3
 PEXPLO4 PEXPLO4
-$rolloff weapons/plasmax  300 1600
+$rolloff weapons/plasma/explode  300 1600
 PLSM9 PLSM9
 PLSTHRW PLSTHRW
 BEP BEP
@@ -943,7 +946,7 @@ weapons/CryoRifle/flak2		"sounds/Combat/Weapons/CryoRifle/FZR_FLAK2.ogg"
 $random weapons/CryoRifle/freezeobject { weapons/CryoRifle/freezeobject1  weapons/CryoRifle/freezeobject2 }
 weapons/CryoRifle/freezeobject1		"sounds/Combat/Weapons/CryoRifle/FZR_FREEZEOBJECT1.ogg"
 weapons/CryoRifle/freezeobject2		"sounds/Combat/Weapons/CryoRifle/FZR_FREEZEOBJECT2.ogg"
-
+$attenuation weapons/CryoRifle/freezeobject 0.5
 
 
 //Slot 9 - BFGs
@@ -1047,6 +1050,7 @@ lscloop2 lscloop2
 lscloop3 lscloop3
 
 //UNMAKER
+UNMWARN UNMWARN
 UNMSWTC UNMSWTC
 UNMFLY1 UNMFLY1
 UNMUP UNMUP
@@ -1308,7 +1312,7 @@ $random bulletimpact/water {
 }
 
 $limit bulletimpact 1
-$volume bulletimpact 1.0
+$volume bulletimpact 0.8
 $rolloff bulletimpact 200 700
 
 $limit bulletimpact/wood 1
@@ -1324,11 +1328,11 @@ $volume bulletimpact/gravel 0.8
 $rolloff bulletimpact/gravel 200 700
 
 $limit bulletimpact/metal/a 1
-$volume bulletimpact/metal/a 0.8
+$volume bulletimpact/metal/a 0.35
 $rolloff bulletimpact/metal/a 200 700
 
 $limit bulletimpact/metal/b 1
-$volume bulletimpact/metal/b 0.8
+$volume bulletimpact/metal/b 0.35
 $rolloff bulletimpact/metal/b 200 700
 
 //weird ass sound
@@ -1338,12 +1342,12 @@ $rolloff bulletimpact/water 200 700
 
 $pitchset weapons/deagle/fire 0.95 1.05
 $pitchset weapons/mp40_fire 0.95 1.05
-$pitchset weapons/pistol 0.95 1.05
+$pitchset weapons/firepistol 0.95 1.05
 $pitchset weapons/suppressedpistol 0.95 1.05
 $pitchset revolver/fire 0.95 1.05
 $pitchset ZSpecOps/MGun 0.95 1.05
 $pitchset weapons/silencedsmg 0.95 1.05
-$pitchset weapons/smg/overlay 0.95 1.05
+//$pitchset weapons/smg/overlay 0.95 1.05
 $pitchset Weapons/AutoShotgun 0.95 1.05
 $pitchset QSGFIRE1 0.95 1.05
 $pitchset SSHFIRE 0.95 1.05
@@ -1363,34 +1367,36 @@ $pitchset weapons/firegrenade 0.95 1.05
 $pitchset m2plasma 0.95 1.05
 $pitchset PLSM9 0.95 1.05
 
-$rolloff weapons/deagle/fire 100 3500
-$rolloff weapons/mp40_fire 100 3500
-$rolloff weapons/pistol 100 3500
-$rolloff weapons/suppressedpistol 100 3500
-$rolloff revolver/fire 100 3500
-$rolloff ZSpecOps/MGun 100 3500
-$rolloff weapons/silencedsmg 100 3500
-$rolloff weapons/smg/overlay 100 3500
-$rolloff Weapons/AutoShotgun 100 3500
-$rolloff QSGFIRE1 100 3500
-$rolloff SSHFIRE 100 3500
-$rolloff weapons/shh2 100 3500
-$rolloff weapons/sg 100 3500
-$rolloff DRBTFIRE 100 3500
-$rolloff SlugShot 100 3500
-$rolloff Weapons/Carbine/Fire 100 3500
-$rolloff Weapons/Carbine/Fire2 100 3500
-$rolloff LFIRE 100 3500
-$rolloff MG42FIR 100 3500
-$rolloff weapons/hdmr/fire 100 3500
-$rolloff weapons/rifle 100 3500
-$rolloff weapons/rifle/sniperfire 100 3500
-$rolloff 0SRFIRE 100 3500
-$rolloff weapons/firegrenade 100 3500
-$rolloff m2plasma 100 3500
-$rolloff PLSM9 100 3500
-$rolloff weapons/minigun/chaingunmode/fire 100 3500
-$rolloff weapons/minigunfire 100 3500
-$rolloff HRFire 100 3500
+$rolloff weapons/deagle/fire 400 2500
+$rolloff weapons/mp40_fire 400 2500
+$rolloff weapons/firepistol 400 2500
+$rolloff weapons/suppressedpistol 400 2500
+$rolloff revolver/fire 400 2500
+$rolloff ZSpecOps/MGun 400 2500
+$rolloff weapons/silencedsmg 400 2500
+//$rolloff weapons/smg/overlay 400 2500
+$rolloff Weapons/AutoShotgun 400 2500
+$rolloff QSGFIRE1 400 2500
+$rolloff SSHFIRE 400 2500
+$rolloff weapons/shh2 400 2500
+$rolloff weapons/sg 400 2500
+$rolloff DRBTFIRE 400 2500
+$rolloff SlugShot 400 2500
+$rolloff Weapons/Carbine/Fire 400 2500
+$rolloff Weapons/Carbine/Fire2 400 2500
+$rolloff LFIRE 400 2500
+$rolloff MG42FIR 400 2500
+$rolloff weapons/hdmr/fire 400 2500
+$rolloff weapons/rifle 400 2500
+$rolloff weapons/rifle/sniperfire 400 2500
+$rolloff 0SRFIRE 400 2500
+$rolloff weapons/firegrenade 400 2500
+$rolloff m2plasma 400 2500
+$rolloff PLSM9 400 2500
+$rolloff weapons/minigun/chaingunmode/fire 400 2500
+$rolloff weapons/minigunfire 400 2500
+$rolloff HRFire 400 2500
 
 weapons/enemycarbine/fire "SOUNDS/COMBAT/WEAPONS/enemycarbine.ogg"
+
+misc/givecurrentammo "SOUNDS/gunpickup2.wav"

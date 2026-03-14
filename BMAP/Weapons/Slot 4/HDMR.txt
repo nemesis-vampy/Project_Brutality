@@ -896,6 +896,9 @@ brightmap sprite H8F3M0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3M0.png
 brightmap sprite H8F3N0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3N0.png"}
 brightmap sprite H8F3O0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3O0.png"}
 brightmap sprite H8F3P0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3P0.png"}
+brightmap sprite H8F3Q0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3Q0.png"}
+brightmap sprite H8F3R0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3R0.png"}
+brightmap sprite H8F3S0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F3S0.png"}
 
 //Dual Wield Reload Sniper Mode
 brightmap sprite H90FA0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H90FA0.png"}
@@ -989,6 +992,9 @@ brightmap sprite H93FM0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93
 brightmap sprite H93FN0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93FN0.png"}
 brightmap sprite H93FO0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93FO0.png"}
 brightmap sprite H93FP0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93FP0.png"}
+brightmap sprite H93FQ0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93FQ0.png"}
+brightmap sprite H93FR0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93FR0.png"}
+brightmap sprite H93FS0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/Sniper/H93FS0.png"}
 
 //Dual Wield Reload From Unloaded
 brightmap sprite H8F4A0{map "Brightmaps/WEAPONS/Slot 4/HDMR/DW_Reload/H8F0A0.png"}

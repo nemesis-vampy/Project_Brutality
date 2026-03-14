@@ -5,6 +5,7 @@ class PB_9x19mm : PB_Projectile
 		PB_Projectile.BaseDamage 17;
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
+		+PB_Projectile.SMALLIMPACT;
 		Obituary "%o met %k's Schmeisser.";
 	}
 }
@@ -16,6 +17,7 @@ class PB_9x19mmSubsonic : PB_Projectile
 		PB_Projectile.BaseDamage 19;
 		PB_Projectile.RipperCount 1;
 		PB_Projectile.PenetrationCount 1;
+        +PB_Projectile.SMALLIMPACT;
 		Speed 290;
 		Obituary "%o was out-tacticaled by %k's SMG.";
 	}
@@ -29,6 +31,7 @@ class PB_45ACPHP : PB_Projectile
 		PB_Projectile.RipperCount 2;
 		PB_Projectile.PenetrationCount 2;
 		+PB_Projectile.WHIZCRACK;
+		+PB_Projectile.SMALLIMPACT;
 		Obituary "%o was filled with bullets by %k.";
 	}
 }
@@ -64,6 +67,7 @@ class PB_45ACP : PB_Projectile
 		PB_Projectile.BaseDamage 20;
 		PB_Projectile.RipperCount 3;
 		PB_Projectile.PenetrationCount 2;
+		+PB_Projectile.SMALLIMPACT;
 		Obituary "%o met muh gods caliber at %k's hands.";
 	}
 }

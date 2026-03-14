@@ -99,6 +99,8 @@ class gb_Freezer play
 
     gb_Sender.sendFreezePlayerEvent(player.cheats | FROZEN_CHEATS_FLAGS, (0, 0, 0), 0);
 
+    if(multiplayer) return;
+
     PlayerPawnBase pbPlayer = PlayerPawnBase(players[consolePlayer].mo);
     if(pbPlayer && pbPlayer.oldPTics.Size() == 0)
     {
@@ -124,6 +126,10 @@ class gb_Freezer play
   {
     if (mWasPlayerFrozen) gb_Sender.sendFreezePlayerEvent(mCheats, mVelocity, mGravity);
     mWasPlayerFrozen = false;
+	players[consoleplayer].minpitch = -90;
+	players[consoleplayer].maxpitch = 90;
+
+    if(multiplayer) return;
 
     PlayerPawnBase pbPlayer = PlayerPawnBase(players[consolePlayer].mo);
     if(pbPlayer && pbPlayer.oldPTics.Size() > 0)
