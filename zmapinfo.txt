@@ -139,6 +139,11 @@ GameInfo
 	DefaultBloodColor = "640000"
     DefaultBloodParticleColor = "640000"
 	
+	MenuFontColor_Title = "cyan"
+	MenuFontColor_Header = "dark gray"
+	MenuFontColor_Label = "teal"
+	MenuFontColor_Selection = "cyan"
+	
 	/*Intro
 	{
 		Video = "Graphics/videos/pbopening.ivf"

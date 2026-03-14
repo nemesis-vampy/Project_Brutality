@@ -233,6 +233,9 @@ class PB_WeaponBase : DoomWeapon
 		PB_WeaponBase.ReserveToMagAmmoFactor 1;
 		//Weapon.WeaponScaleX 1.2;
 		+DONTGIB
+		+WEAPON.NOALERT
+		+WEAPON.AMMO_OPTIONAL
+		+WEAPON.NOAUTOFIRE
 	}
 	
 	States
@@ -621,6 +624,7 @@ class PB_WeaponBase : DoomWeapon
 			}
 			TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Ready2");
 			TNT1 A 0 A_Jump(256,"Ready3");
+			TNT1 A 0 A_Jump(256,"Ready");
 			Wait;
 		SelectFirstPersonLegs:
 			TNT1 A 0 {
