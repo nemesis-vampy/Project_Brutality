@@ -1,6 +1,6 @@
 [enu default]
 
-PB_VERSION_INFO = "PB Version: 0.3.2-alpha";
+PB_VERSION_INFO = "PB Version: 0.4.1";
 SECRETMESSAGE = "Secret Found!";
 
 PB_MP_OPTIONS = "\cd☍\c- Multiplayer Settings";
