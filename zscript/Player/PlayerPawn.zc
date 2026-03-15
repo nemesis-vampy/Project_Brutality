@@ -1241,6 +1241,12 @@ class PlayerPawnBase : PlayerPawn
 		velz = 8;
 		LedgeCheck = True;
 		
+		if(!player.ReadyWeapon)
+		{
+			GiveInventory("LedgeGrabWeapon", 1);
+			let w = Weapon(FindInventory("LedgeGrabWeapon"));
+			if(w) player.ReadyWeapon = w;
+		}
 		if(vel.length() < 5)
 		{
 			GiveInventory("Grabbing_A_Ledge", 1);
@@ -1862,26 +1868,16 @@ Class SpeedoMeterHandler : EventHandler
 	}
 }
 
-Class LedgeGrabWeapon : Weapon
+Class LedgeGrabWeapon : PB_WeaponBase
 {
 	States
 	{
+		SelectAnimation:
 		Select:
-			TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
-			TNT1 A 0 A_Raise;
-			Loop;
-			
 		Deselect:
-			TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
-			TNT1 A 0 A_Lower;
-			Loop;
-			
 		Ready:
-			TNT1 A 1 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
-			Loop;
-			
 		Fire:
-			TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+			TNT1 A 0 SetInventory("LedgeGrabWeapon", 0);
 			Stop;
 	}
 }

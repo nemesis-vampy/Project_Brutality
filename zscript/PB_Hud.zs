@@ -1357,7 +1357,7 @@ class PB_Hud_ZS : BaseStatusBar
 			//		 AMMOBAR HUD			//
 			////////////////////////////////////
 			
-			if(weap)
+			if(weap && !(weap is "LedgeGrabWeapon"))
 			{
 				//Ammo bars
 				if(showList)
