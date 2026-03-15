@@ -21,7 +21,7 @@ Class gb_equipmentmenu
 	
 	ui bool selectNext()
 	{
-		int nItems = getEquipmentNumber();
+		int nItems = heldItems.size();
 		if (nItems == 0) return false;
 
 		mSelectedIndex = (mSelectedIndex + 1) % nItems;
@@ -31,7 +31,7 @@ Class gb_equipmentmenu
 	
 	ui bool selectPrev()
 	{
-		int nItems = getEquipmentNumber();
+		int nItems = heldItems.size();
 		if (nItems == 0) return false;
 
 		mSelectedIndex = (mSelectedIndex - 1 + nItems) % nItems;
