@@ -63,7 +63,7 @@ class PB_ShotPellet12 : PB_EnemyProjectileDef
 	}
 }
 
-class PB_ShotSlug12 : PB_Projectile
+class PB_ShotSlug12 : PB_EnemyProjectileDef
 {
 	Default
 	{
