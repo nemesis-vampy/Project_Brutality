@@ -5,6 +5,11 @@ class PB_EnemyProjectileDef : PB_Projectile
 		Speed 60;
 		Gravity 0.05;
 	}
+	
+	override bool PenetrateWall(Vector3 frac)
+	{
+		return false;
+	}
 }
 
 class PB_RifleBullet : PB_EnemyProjectileDef
