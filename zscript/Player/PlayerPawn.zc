@@ -1870,6 +1870,10 @@ Class SpeedoMeterHandler : EventHandler
 
 Class LedgeGrabWeapon : PB_WeaponBase
 {
+	Default
+	{
+		Tag " ";
+	}
 	States
 	{
 		SelectAnimation:
