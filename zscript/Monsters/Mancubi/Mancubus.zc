@@ -1057,10 +1057,6 @@ class BigFireBallGravity: PB_Monster_Projectile
 		ExplosionDamage 8;
 		Alpha 1;
 		Decal "Scorch";
-/* 		SeeSound "BREATHOF";
-		DeathSound "fatso/shotx"; */
-		SeeSound "FlameCannonFire";
-//		DeathSound "FireballExp";
 		
 	}
 
@@ -1073,9 +1069,7 @@ class BigFireBallGravity: PB_Monster_Projectile
     States 
     {
         Spawn:
-            TNT1 A 0;
-            TNT1 A 0; // (Optional jump for low graphics mode commented out)
-            TNT1 A 0 { A_StartSound("FlameCannonFire", 6); }
+            TNT1 A 0 NoDelay A_StartSound("FlameCannonFire", 6);
         Spawn1:
             TNT1 A 0;
             BLHD CD 1 BRIGHT {ThrustThingZ(0,drop_rate,0,1); }
@@ -1141,19 +1135,13 @@ class BigFireBall : Actor
 		ExplosionDamage 8;
 		Alpha 1;
 		Decal "Scorch";
-/* 		SeeSound "BREATHOF";
-		DeathSound "fatso/shotx"; */
-		SeeSound "FlameCannonFire";
-		DeathSound "FireballExp";
 	}
 
 	
     States 
     {
         Spawn:
-            TNT1 A 0;
-            TNT1 A 0; // (Optional jump for low graphics mode commented out)
-            TNT1 A 0 { A_StartSound("BGFLMBL", 6, 1, 1); }
+            TNT1 A 0 NoDelay A_StartSound("FlameCannonFire", 6);
         Spawn1:
             TNT1 A 0;
             BLHD CD 1 BRIGHT;
@@ -1165,7 +1153,7 @@ class BigFireBall : Actor
             BLHD CD 1 BRIGHT { A_SpawnItem("RedFlare22"); }
             Loop;
         Death:
-            TNT1 A 0 { bNOGRAVITY = false ; } //A_StartSound("FireballExp",1);
+            TNT1 A 0 { bNOGRAVITY = false ; A_StartSound("FireballExp",1); }
             TNT1 A 0 { A_Explode(10,50,0); }
        //     Goto ExplosionEffect;
 			Goto NewExplosion;
