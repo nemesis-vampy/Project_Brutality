@@ -220,14 +220,14 @@ OptionMenu "TiltPlusPlusMenu"
 ///////////////////////////////////////////////////////////////////////////////////////
 OptionMenu "PB_SpawnOptions"
 {
-	Title	"$PB_SPAWN_OPTIONS"
-	Class	"PB_OptionMenu"
+	Title		"$PB_SPAWN_OPTIONS"
+	Class		"PB_OptionMenu"
 	Position	-48
-	Option	"Spawn Rules",				"SpawnBalance",			"PBSpawnChoices"
-	Slider	"Levels In Mapset",			"levelsToPlay",			4, 512, 4
+	Option		"Spawn Rules",				"SpawnBalance",			"PBSpawnChoices"
+	Slider		"Levels In Mapset",			"levelsToPlay",			4, 512, 4
 	StaticText	""
-	Submenu	"Configure Weapon Spawns",	"WeaponSpawns"
-	Submenu	"Configure Monster Spawns",	"MonsterSpawns"
+	Submenu		"Configure Weapon Spawns",	"WeaponSpawns"
+	Submenu		"Configure Monster Spawns",	"MonsterSpawns"
 	StaticText	""
 	StaticText	"--------- Dynamic Progression ---------", 1
 	StaticText	"Overlap between tiers. When a tier begins, 50% of spawns", orange
@@ -322,26 +322,27 @@ OptionMenu "WeaponSpawns"
 ///////////////////////////////////////////////////////////////////////////////////////
 OptionMenu "PB_GameplayOptions"
 {
-	Title	"$PB_GAMEPLAY_OPTIONS"
-	Class	"PB_OptionMenu"
+	Title		"$PB_GAMEPLAY_OPTIONS"
+	Class		"PB_OptionMenu"
 	Position	-48
-	Option	"$PB_DUALSTYLE",							"SingleDualFire",					"DualWieldOption"
-	Option	"ADS Controls",								"pb_toggle_aim_hold",				"AimingStyle" //Looks like we are using this newer line.
-	Option	"Use BD Slide Controls",					"pb_bd_slide",						"YesNo"
+	Option		"$PB_DUALSTYLE",							"SingleDualFire",					"DualWieldOption"
+	Option		"ADS Controls",								"pb_toggle_aim_hold",				"AimingStyle" //Looks like we are using this newer line.
+	Option		"Use BD Slide Controls",					"pb_bd_slide",						"YesNo"
 	StaticText	""
-	Slider	"$PB_RECOIL_VERTICAL",						"pb_weapon_recoil_mod_vertical",	0.0, 2.0, 0.1, 2
-	Slider	"$PB_RECOIL_HORIZONTAL",					"pb_weapon_recoil_mod_horizontal",	0.0, 2.0, 0.1, 2
-	Option	"Advanced Movement On Damaging Floors",		"pb_hazardmovement",				"OnOff"
-	Option	"Weapons Persist Through Death Exits",		"PlayerCatchup",					"YesNo"
-	Option	"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
-	Option	"Simplify Monster Behaviors",				"pb_simplemonsterbehavior",			"YesNo"
+	Slider		"$PB_RECOIL_VERTICAL",						"pb_weapon_recoil_mod_vertical",	0.0, 2.0, 0.1, 2
+	Slider		"$PB_RECOIL_HORIZONTAL",					"pb_weapon_recoil_mod_horizontal",	0.0, 2.0, 0.1, 2
+	Option		"Advanced Movement On Damaging Floors",		"pb_hazardmovement",				"OnOff"
+	Option		"Weapons Persist Through Death Exits",		"PlayerCatchup",					"YesNo"
+	Option		"Quad Shotgun Quad-Load",					"pb_qsgquadload",					"OnOff"
+	Option		"Simplify Monster Behaviors",				"pb_simplemonsterbehavior",			"YesNo"
+	Option		"Disable Wall Penetration",					"pb_disable_wall_penetration",		"YesNo"
 	StaticText	""
-	Option	"Disable Decorations",						"pb_disable_decorations",			"YesNo"
-	Option	"Decorative Burning Barrels",				"pb_decorative_flame_barrels",		"OnOff",	"pb_disable_decorations", 0, 1
+	Option		"Disable Decorations",						"pb_disable_decorations",			"YesNo"
+	Option		"Decorative Burning Barrels",				"pb_decorative_flame_barrels",		"OnOff",	"pb_disable_decorations", 0, 1
 	StaticText	""
-	Option	"Disable Helmet Animation",					"pb_NoHelmetAnimation",				"YesNo"
-	Option	"Disable Auto-Doomguy Talk",				"nodoomguytalk",					"YesNo"
-	Slider	"Nail Despawn Time",						"pb_naillifetime",					0, 60, 1, 0
+	Option		"Disable Helmet Animation",					"pb_NoHelmetAnimation",				"YesNo"
+	Option		"Disable Auto-Doomguy Talk",				"nodoomguytalk",					"YesNo"
+	Slider		"Nail Despawn Time",						"pb_naillifetime",					0, 60, 1, 0
 	StaticText	""
 	SafeCommand "$PB_MENURESET", "ResetPB_GameplayOptions", "$PB_MENURESETWARN"
 }

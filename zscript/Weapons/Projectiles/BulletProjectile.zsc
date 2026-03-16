@@ -187,7 +187,7 @@ class PB_Projectile : FastProjectile abstract
 	
 	virtual bool PenetrateWall(Vector3 frac)
 	{
-		if(Speed <= 0 || Mass <= 0 || penetrationCount == 0) 
+		if(pb_disable_wall_penetration || Speed <= 0 || Mass <= 0 || penetrationCount == 0) 
 			return false;
 		
 		Vector3 lastP = pos;
