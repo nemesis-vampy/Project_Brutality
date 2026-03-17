@@ -224,8 +224,8 @@ class PB_Cyberdemon1 : PB_Monster
 			CYB1 E 6 {if (CheckSight(target)) SetStateLabel("See");}
 			TNT1 A 0;
 			
-			CYB1 F 6 BRIGHT { self.suppressiveOffZ = 60; self.suppressiveOffXY = -25; self.suppressiveMissile = "CyberBalls";  A_SuppressiveFire(shootDownward:true);}
-			TNT1 A 0 { self.inSuppressiveFire = false;  suppressCount += 1; }*/
+			CYB1 F 6 BRIGHT { self.suppressiveOffZ = 60; self.suppressiveOffXY = -25; self.suppressiveMissile = "CyberBalls";  A_SuppressiveFire(shootDownward:true);}*/
+			TNT1 A 0 { self.inSuppressiveFire = false;  suppressCount += 1; }
 			
 			Goto See;
 
