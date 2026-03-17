@@ -93,6 +93,8 @@ user int SingleDualFire = 0;
 
 server bool nodoomguytalk = false;
 
+server bool pb_disable_wall_penetration = false;
+
 //Weapon Recoil
 server float pb_weapon_recoil_mod_vertical = 1.0;
 server float pb_weapon_recoil_mod_horizontal = 1.0;
