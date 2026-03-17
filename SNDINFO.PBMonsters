@@ -511,7 +511,7 @@ mancubus/charge1 "sounds/monsters/Mancubi/Mancubus/RevolverClick.wav"
 $attenuation Flamethrower 0.5
 //$attenuation FireballExp
 $attenuation FlameCannonFire 0.8
-$volume FlameCannonFire 0.8
+$volume FlameCannonFire 0.6
 $limit FlameCannonFire 0
 $limit FireballExp 10
 $limit Flamethrower 4

@@ -63,11 +63,11 @@ class PB_ShotPellet12 : PB_EnemyProjectileDef
 	}
 }
 
-class PB_ShotSlug12 : PB_Projectile
+class PB_ShotSlug12 : PB_EnemyProjectileDef
 {
 	Default
 	{
-		PB_Projectile.BaseDamage 16;
+		PB_Projectile.BaseDamage 8;
 		PB_Projectile.RipperCount 3;
 		RipperLevel 1;
 		+PB_Projectile.WHIZCRACK;
