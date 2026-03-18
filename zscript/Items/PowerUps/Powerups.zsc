@@ -304,7 +304,7 @@ class PB_Soulsphere : PB_Inventory //replaces soulsphere
 	
 	override string PickupMessage()
 	{
-		return string.format(String.Format(ownrhp < 25 ? "Soulsphere (+%u much needed HP)" : "Soulsphere (+%u HP)",min(100, 200 - ownrhp)));
+		return string.format(String.Format(ownrhp < 25 ? "Soulsphere (+%u much needed HP)" : "Soulsphere (+%u HP)",clamp(min(100, 200 - ownrhp), 0, 100)));
 	}
 	
 	override void PostBeginPlay()
