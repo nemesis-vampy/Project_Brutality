@@ -149,7 +149,7 @@ Class PB_Arachnotron1 : PB_Monster
 		BSP1 G 6;
 		BSP1 H 2 BRIGHT {
 			A_FaceTarget();
-			A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false);
+			A_DropAdjust2("ArachnoPlasma_Ball","ArachnoPlasma_Ball", 0, 0, 25, speedmult: 1.0, minRange: 0, maxRange: 1200, shootDownward: false, noPrediction:true);
 			plasmaBallCounter++;
 		}
 		TNT1 A 0
