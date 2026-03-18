@@ -80,7 +80,7 @@ TIP_PB_DECORATIVE_FLAME_BARRELS = "Replace explosive flaming barrels with decora
 TIP_PB_NOHELMETANIMATION = "Disable the animation of putting on your helmet at the start of the game.";
 TIP_NODOOMGUYTALK = "Disables the chance for automatic taunts to play.";
 TIP_PB_NAILLIFETIME = "Time in seconds before nails despawn.";
-TIP_PB_SIMPLEMONSTERBEHAVIOR = "Simplified monster behavior more in line with vanilla.";
+TIP_PB_SIMPLEMONSTERBEHAVIOR = "Disable certain Tier 1 monsters' powerful attacks and suppressive fire.";
 
 //Visual options
 CL_MAXDECALS = "Maximum number of wall decals that can exist at once.";
