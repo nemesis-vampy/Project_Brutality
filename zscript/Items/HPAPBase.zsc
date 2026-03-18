@@ -10,9 +10,7 @@ class PB_Health : Health abstract
 			cap = Max(MaxAmount,toucher.GetMaxHealth(true));
 			ca = toucher.health;
 		}
-		res = cap-ca;
-		if(res>=aa){ res = aa;}
-		if(res<0){ res = 0;}
+		res = clamp(cap-ca, 0, aa);
 		return Super.TryPickup(toucher);
 	}
 	override string PickupMessage(){
