@@ -1129,7 +1129,7 @@ ACTOR PB_Flamethrower : PB_Weapon
 			PB_WeaponRecoil(-0.4,+0.3);
 		}
 		F1B1 DE 1 PB_WeaponRecoil(-0.2,+0.2)
-		F1B1 FGH 1
+		F1B2 FGH 1
 		TNT1 A 0 A_ReFire
 		Goto Ready3
 
