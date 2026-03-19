@@ -14,11 +14,14 @@ class PB_WeaponBase : DoomWeapon
 	bool leftMagUnloaded;
 	int integer;
 	
-	int maxOverheat;
-	property maxOverheat: maxOverheat;
-	
 	bool leftHandMelee;
 	property leftHandMelee : leftHandMelee;
+	
+	int maxOverheat;
+	property maxOverheat : maxOverheat;
+	
+	int overheatCoolingRate;
+	property overheatCoolingRate : overheatCoolingRate;
 	
 	int overheat;
 	int leftOverheat;
