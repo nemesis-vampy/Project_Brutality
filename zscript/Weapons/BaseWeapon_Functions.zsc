@@ -2849,7 +2849,7 @@ action int getReadyFlags(int weapflags, bool noReload)
 	
 	//Nailgun altfire, move when it gets zscripted
 	action void PB_NailgunAltFire() {
-		bool overheated = PB_GetOverheat() >= 450;
+		bool overheated = PB_GetOverheat() >= 225;
 		for(int i = -10; i <= 10; i++) {
 			A_FireProjectile(overheated ? "PB_MGNailHot" : "PB_MGNail",i);
 		}
