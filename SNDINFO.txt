@@ -1,3 +1,16 @@
+$include "sndinfo/Atmosphere_Exterior.txt"
+$include "sndinfo/Atmosphere_Interior.txt"
+$include "sndinfo/ChexCompatibility.txt"
+$include "sndinfo/Doomguy.txt"
+$include "sndinfo/Footsteps.txt"
+$include "sndinfo/Gearbox.txt"
+$include "sndinfo/Gore.txt"
+$include "sndinfo/Monsters.txt"
+$include "sndinfo/PDA.txt"
+$include "sndinfo/Weapons.txt"
+$include "sndinfo/WeaponVolumeBalancing.txt"
+$include "sndinfo/Whizby.txt"
+
 NOTHING "SOUNDS/Misc/Nothing.wav"
 
 ////////////////////////////////////////////////////////PROJECT BRUTALITY SOUNDS
