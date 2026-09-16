@@ -47,7 +47,15 @@
 #include BMAP/Health.txt
 
 // Monsters
-#include doommonsters.bm
+#include "bmap/monsters/old/arachnotron.bm"
+#include "bmap/monsters/old/baron.bm"
+#include "bmap/monsters/old/cacodemon.bm"
+#include "bmap/monsters/old/chaingunguy.bm"
+#include "bmap/monsters/old/demon.bm"
+#include "bmap/monsters/old/hellion.bm"
+#include "bmap/monsters/old/imp.bm"
+#include "bmap/monsters/old/knight.bm"
+#include "bmap/monsters/old/mancubus.bm"
 
 //Lost Soul
 
