@@ -77,13 +77,6 @@ Actor PB_MeanDemon : Demon //Replaces Demon
 		TNT1 A 1 A_SpawnItemEx ("MeanPinkyShrinkFX7", 0, 0, 5, 0, 0)
 		TNT1 A 1 A_SpawnItemEx ("LilMeanPinky", 1)
 		stop
-		
-		ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Vanilla_DemonX",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |SXF_TRANSFERSPECIAL| SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-	
 		Spawn:
 		SAR2 A 10 A_Look
 		Loop
@@ -906,18 +899,6 @@ Actor DeadMeanDemonHalf23: DeadDemon1
 		 TNT1 AAA 0 A_SpawnProjectile("PB_XDeath3", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		 TNT1 AAA 0 A_SpawnProjectile("PB_XDeath4", 5, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
 		Stop}}	
-		
-Actor Vanilla_Demonx : PB_MeanDemon
-{
-	States
-	{
-		Spawn:
-		TNT1 A 0 ACS_NamedExecuteAlways("PinkyHealthFood", 0)
-		TNT1 A 0
-		SAR2 A 10 A_Look
-		Goto Spawn+2
-	}
-}
 
 //For Compatability
 Actor Bloodfiend : PB_MeanDemon

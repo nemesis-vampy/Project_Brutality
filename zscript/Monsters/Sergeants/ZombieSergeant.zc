@@ -127,9 +127,6 @@ Class PB_ShotgunGuy : PB_Monster
 		Spawn:
 			SHID A 10 NoDelay {
 				A_GiveInventory("SergeantAmmo", random(1,5));
-				A_GiveInventory("SKShotgunGuy", 1);
-				A_GiveInventory("TypeSergeant", 1);
-				A_GiveInventory("ShotgunSelected", 1);
 				bNoPain = false;
 				A_SetRoll(0);
 			}
@@ -142,7 +139,6 @@ Class PB_ShotgunGuy : PB_Monster
 			Goto Stand;
 		See:
 			TNT1 A 0 {
-				A_TakeInventory("SKShotgunGuy", 1);
 				EnemyLastSighted = Level.MapTime;
 				
 				bNoPain = false;
@@ -492,7 +488,6 @@ Class PB_ShotgunGuy : PB_Monster
 			SPO4 U 1 {
 					{bNODROPOFF = False;}
 					{bFORCEXYBILLBOARD = True;}
-					A_TakeInventory("SKShotgunGuy", 1);
 					A_GiveInventory("IsDown", 1);
 					A_Pain();
 					A_facetarget();
@@ -510,7 +505,6 @@ Class PB_ShotgunGuy : PB_Monster
 			SPO4 U 1 {
 					{bNODROPOFF = False;}
 					{bFORCEXYBILLBOARD = True;}
-					A_TakeInventory("SKShotgunGuy", 1);
 					A_GiveInventory("IsDown", 1);
 					A_Pain();
 					ThrustThingZ(0,30,0,1);
@@ -1807,43 +1801,6 @@ Class PB_ShotgunGuy : PB_Monster
 				A_SpawnItem("FrozenShotgunGuy");
 			}
 			Stop;
-		
-		Death.Fatality:
-				TNT1 A 0 A_Pain();
-				TNT1 A 0 A_NoBlocking();
-				TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-				Goto Death.ExplosiveImpact;
-				TNT1 A 0 A_GiveToTarget("GoFatality", 1);
-				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5", "Death.Fatality6");
-				Goto Death.Fatality1;
-
-		Death.Fatality1:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality", 1);
-			Stop;
-		Death.Fatality2:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality2", 1);
-			Stop;
-		Death.Fatality3:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality3", 1);
-			Stop;
-		Death.Fatality4:
-			TNT1 A 0 A_GiveToTarget("ZombieManFatality4", 1);
-			Stop;
-		Death.Fatality5://Didn't like this one, but it gives me an idea...
-			TNT1 A 0 A_GiveToTarget("SergeantFatality5", 1);
-			Stop;
-		Death.Fatality6:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality6", 1);
-			Stop;
-			
-		Death.HelperMarineFatallity:
-			TNT1 A 1 {
-				A_Pain();
-				A_NoBlocking();
-				A_GiveToTarget("SergeantFatality", 1);
-			}
-			Stop;
-		
 		
 		Death.Eat:
 			TNT1 A 0;

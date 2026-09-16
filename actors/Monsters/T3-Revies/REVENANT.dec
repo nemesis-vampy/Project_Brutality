@@ -95,13 +95,6 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 1 A_SpawnItemEx ("RevenantShrinkFX7", 0, 0, 5, 0, 0)
 		TNT1 A 1 A_SpawnItemEx ("LilRevenant", 1)
 		stop
-		
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Vanilla_Revenant",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |SXF_TRANSFERSPECIAL| SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-	
 	Spawn:
 		SKE1 A 10 NoDelay PB_SetHeight(76)
 	Stand:
@@ -125,16 +118,11 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		SKE1 EEE 2 PB_Chase(56,76)
 		TNT1 A 0 
 		SKE1 FFF 2 PB_Chase(56,76)
-		
-		
-		
-		TNT1 A 0 A_JumpIfInventory("NoJetpack", 1, 2)
 		TNT1 A 0 A_Jump(random(13,36), "ActivateJetpack")
 		TNT1 A 0
 		Loop
 		
 	ActivateJetpack:
-		TNT1 A 0 A_JumpIfInventory("NoJetpack", 1, "See")
 		TNT1 A 0 A_CheckSightOrRange(100, "See")
 		TNT1 A 0 A_JumpIf(CallACS("GetActorZDist") >= 30, 5)
 		TNT1 A 0 A_JumpIfCloser(1100, 5)
@@ -259,8 +247,6 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		SKE1 K 8 A_FaceTarget
 		
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 0)
-		TNT1 A 0 
-		TNT1 A 0 A_JumpIfInventory("NoJetpack", 1, 2)
 		TNT1 A 0 A_Jump(random(8,24), "ActivateJetpack")
 		TNT1 A 0
 		Goto See
@@ -461,7 +447,6 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 
 		SKE1 K 8 A_FaceTarget
 		TNT1 A 0 A_Jump(32, "BarrageAttack")
-		TNT1 A 0 A_JumpIfInventory("NoJetpack", 1, 2)
 		TNT1 A 0 A_Jump(random(18,44), "ActivateJetpack")
 		TNT1 A 0
 		Goto See
@@ -476,7 +461,6 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 
 		SKE1 K 7 A_FaceTarget
 		TNT1 A 0 A_Jump(36, "BarrageAttack1")
-		TNT1 A 0 A_JumpIfInventory("NoJetpack", 1, 2)
 		TNT1 A 0 A_Jump(random(18,44), "ActivateJetpack")
 		TNT1 A 0
 		Goto See
@@ -710,29 +694,6 @@ Death:
 		SKL9 ABC 6
 		R3V9 C 0 A_SpawnItem("DyingRevenantNoArm", 1)
 		Stop
-
-	Death.Fatality:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0
-		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-		Goto Death
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(128,5)
-		TNT1 A 0 A_GiveToTarget("RevenantFatality", 1)
-		Stop
-		TNT1 AAAAAAA 0
-		TNT1 A 0 A_GiveToTarget("RevenantFatality2", 1)
-		TNT1 A 1
-		TNT1 A 0
-		Stop
-
-	Death.HelperMarineFatallity:
-	TNT1 A 0
-	TNT1 A 1 A_Pain
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("RevenantFatality", 1)
-		Stop	
-
 	DeathJetpack:
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
@@ -2081,22 +2042,3 @@ ACTOR BigBlastedRevenant
 		TNT1 A 0 A_SpawnItem ("GibHalfSkeletonJustLegs", 1)
 		Stop
 }}
-
-///////////////////////////======VANILLA======//////////////////////////////////
-
-Actor Vanilla_Revenant: PB_Revenant
-{
-	
-	States
-	{
-		Spawn:
-		TNT1 A 0
-		SKE1 A 1 ACS_NamedExecuteAlways("JetpackRevenant", 0)
-		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
-		SKE1 A 6 A_Look
-		Goto Stand
-		
-		ReplaceVanilla:
-		Goto Stand
-	}
-}

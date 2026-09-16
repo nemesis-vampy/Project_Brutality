@@ -385,7 +385,6 @@ class PB_SMG : PB_WeaponBase
 
         WeaponRespect:
             TNT1 A 0 {
-                A_SetInventory("PB_LockScreenTilt",1);
                 A_PlaySoundEx("weapons/smg_raise", "Auto");
                 A_SetCrosshair(-1);
             }
@@ -419,7 +418,6 @@ class PB_SMG : PB_WeaponBase
                 A_DestroyLaserPuff();
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
                 PB_ClearDualWield();
                 PB_SetZoom(false);
                 A_ClearOverlays(EMPTYBOLT_OVERLAY,EMPTYBOLT_OVERLAY);
@@ -618,7 +616,6 @@ class PB_SMG : PB_WeaponBase
                 PB_ClearDualWield();
 			    PB_HandleCrosshair(67);
                 PB_TakeIfUpgrade("PB_Pistol");
-				A_SetInventory("PB_LockScreenTilt",0);
                 PB_WeapTokenSwitch("UACSMGSelected");
                 PB_WeaponRaise("weapons/smg_up");
                 invoker.smgBurstCount = 0;
@@ -639,7 +636,6 @@ class PB_SMG : PB_WeaponBase
             // TNT1 A 0 A_SetInventory("KeepLaserDeactivated",0);
             TNT1 A 0 {
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
                 PB_HandleCrosshair(67);
             }
             TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReadyDualWield");
@@ -668,7 +664,6 @@ class PB_SMG : PB_WeaponBase
             TNT1 A 0 {
                 PB_SetRoll(0);
                 A_SetCrosshair(-1);
-                A_SetInventory("PB_LockScreenTilt",0);
             }
         ReadyToFire2:
             A1F3 F 1 {
@@ -689,7 +684,6 @@ class PB_SMG : PB_WeaponBase
         ReadyDualWield:
             TNT1 A 0 {
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
                 PB_SetupDualWield(crosshair:67);
             }
         ReadyToFireDualWield:
@@ -794,7 +788,6 @@ class PB_SMG : PB_WeaponBase
                 setBurstCount(0);
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
                 PB_HandleCrosshair(67);
             }
         Burst:
@@ -885,7 +878,6 @@ class PB_SMG : PB_WeaponBase
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
                 PB_HandleCrosshair(67);
-                A_SetInventory("PB_LockScreenTilt",0);
             }
             TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(), "Ready3");
             TNT1 A 0 A_PlaySound("IronSights", 0);
@@ -1568,7 +1560,6 @@ class PB_SMG : PB_WeaponBase
             TNT1 A 0 {
                 A_ZoomFactor(1.0);
                 A_SetCrosshair(-1);
-                A_SetInventory("PB_LockScreenTilt",1);
                 A_StartSound("weapons/smg/raise");
                 PB_SetZoom(false);
                 PB_ClearDualWield();

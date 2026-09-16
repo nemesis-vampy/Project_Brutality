@@ -43,7 +43,6 @@ Class PB_Revolver : PB_WeaponBase
 		
 		WeaponRespect:
 			TNT1 A 0 {
-				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("REVOUP", 34); //if it's not on this channel it'll combine with the select sound and be too loud
 				A_SetCrosshair(-1);
 				}
@@ -121,7 +120,6 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetRoll(0, SPF_INTERPOLATE);
 				PB_HandleCrosshair(42);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 		ReadyLoop:
 			R1V1 E 0 PB_SelectIfUpgrade("PB_Deagle");
@@ -135,7 +133,6 @@ Class PB_Revolver : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(42);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo();
 			TNT1 A 0 A_jumpifinventory("zoomed",1,"Fire2");
@@ -182,7 +179,6 @@ Class PB_Revolver : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(42);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			goto AltFire_Zoom;
 		FanMuzzleFlash:
@@ -468,7 +464,6 @@ Class PB_Revolver : PB_WeaponBase
 		
 		Weaponspecial:
 			TNT1 A 0 {
-				A_SetInventory("PB_LockScreenTilt",1);
 				A_Setinventory("GoWeaponSpecialAbility",0);
 				PB_HandleCrosshair(42);
 				A_ZoomFactor(1.0);
@@ -519,7 +514,6 @@ Class PB_Revolver : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				A_SetCrosshair(-1);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"zoomout");
 			TNT1 A 0 {
@@ -544,7 +538,6 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetRoll(0);
 				A_SetCrosshair(-1);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 		ReadyToFire2:
 			R4V2 F 1

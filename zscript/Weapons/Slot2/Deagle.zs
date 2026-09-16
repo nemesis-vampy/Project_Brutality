@@ -35,10 +35,7 @@ class PB_Deagle : PB_WeaponBase
 			loop;
 		
 		WeaponRespect:
-			TNT1 A 0 {
-				A_SetInventory("PB_LockScreenTilt",1);
-				A_SetCrosshair(-1);
-				}
+			TNT1 A 0 A_SetCrosshair(-1);
 			D4E1 ABCDEEE 1 A_DoPBWeaponAction();
 			D4E1 FGHIJK 1 A_DoPBWeaponAction();
 			TNT1 A 0 A_Startsound("weapons/smg_magfly1",18,CHANF_OVERLAP );
@@ -123,7 +120,6 @@ class PB_Deagle : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(32);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo();
 			D2E0 A 1 BRIGHT {
@@ -186,8 +182,6 @@ class PB_Deagle : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetInventory("GoWeaponSpecialAbility",0);
 				A_SetInventory("Zoomed",0);
-				A_SetInventory("ADSmode",0);
-				A_SetInventory("PB_LockScreenTilt",1);
 				A_WeaponOffset(0,32);
 				PB_HandleCrosshair(32);
 				A_ZoomFactor(1.0);
@@ -653,7 +647,6 @@ class PB_Deagle : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"zoomout");
 			TNT1 A 0 A_jumpif(PB_GetChamberEmpty(),"Ready");
@@ -677,10 +670,7 @@ class PB_Deagle : PB_WeaponBase
 			Goto Ready;
 		
 		Ready2:
-			TNT1 A 0 {
-				A_SetRoll(0);
-				A_SetInventory("PB_LockScreenTilt",0);
-			}
+			TNT1 A 0 A_SetRoll(0);
 		ReadyToFire2:	//ads ready loop
 			D3E0 A 1
 			{		

@@ -1695,16 +1695,6 @@ class PlayerPawnBase : PlayerPawn
 		}
 	}*/
 	
-	void CheckTargetHitRegistration()
-	{
-		// Check the parent class the monster is derived from
-		//let target_ptr = AAPTR_PLAYER_GETTARGET;
-		if (GetPointer(AAPTR_PLAYER_GETTARGET) is "PB_Monster"){
-			//A_Print("This is a PB Monster!!!"); // Debug code
-			A_GiveInventory("HeadshotToken", 1, AAPTR_PLAYER_GETTARGET);
-		}
-	}
-	
 	void CatchUpOnTiers()
 	 {
 	  if(player!=null)
@@ -1771,12 +1761,6 @@ class PlayerPawnBase : PlayerPawn
 	}
 */
 	
-	override void Die(Actor source, Actor inflictor, int dmgflags)
-	{
-		A_TakeInventory("CameraRunner",1);
-		Super.Die(source, inflictor, dmgflags);
-	}
-	
 	override void PostTeleport(Vector3 destpos, double destangle, int flags) {
 		vel.xy *= 0;
 		dashtics = -reactiontime;
@@ -1788,7 +1772,6 @@ class PlayerPawnBase : PlayerPawn
 	{
 		Super.PostBeginPlay();
 		CatchUpOnTiers();
-		if (!level.IsJumpingAllowed() || (player && player.mo && player.mo.JumpZ == 0)) A_GiveInventory("DoNotDoubleJump",1);
 		Shader.SetEnabled(player,"Invulnerability",false);
 		Shader.SetEnabled(player,"NightVision",false);
 	}

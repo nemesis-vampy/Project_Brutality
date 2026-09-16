@@ -782,13 +782,6 @@ ACTOR PB_CyberPaladin //Replaces HellKnight
 		TNT1 A 0 A_NoBlocking
 		CP6L E -1 
 		Stop
-		
-	Death.Fatality:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberPaladinFatality1", 1)
-        TNT1 A 1 A_BossDeath
-		Stop
-
 	Death.Ice:
 	Death.IceExplosion:
 	Death.Freeze:

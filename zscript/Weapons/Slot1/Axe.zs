@@ -106,7 +106,6 @@ class PB_Axe : PB_WeaponBase
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
                 PB_HandleCrosshair(90);
-                A_SetInventory("PB_LockScreenTilt",1);
                 A_PlaySound("AXTHROW");
                 break;
 
@@ -136,7 +135,6 @@ class PB_Axe : PB_WeaponBase
 
                 case 6:
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
                 break;
             }
             break;
@@ -218,7 +216,6 @@ class PB_Axe : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleCrosshair(90);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_SetInventory("GoWeaponSpecialAbility",0);
 			TNT1 A 0 A_SetInventory("HasCutingWeapon",0);
@@ -253,7 +250,6 @@ class PB_Axe : PB_WeaponBase
 			TNT1 A 0 {
 				PB_SetRoll(0);
 				PB_HandleCrosshair(90);
-				A_SetInventory("PB_LockScreenTilt",0);
 				Axe_SetSequence(0);
 			}
 		ReadyToFire:
@@ -270,7 +266,6 @@ class PB_Axe : PB_WeaponBase
 				PB_SetRoll(0);
 				PB_HandleCrosshair(90);
 			}
-			TNT1 A 0 A_SetInventory("PB_LockScreenTilt",1);
 			TNT1 A 0 A_JumpIf(Axe_GetSequence() == 1,"Swing2");
 		Swing1:
             // Cache Sprites

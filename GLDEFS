@@ -495,33 +495,6 @@ object FireShot
 }
 */
 
-//New Powerups
-pointlight HasteSphereGlow
-{
-	color 1.0 1.0 0.0
-	size 64
-}
-
-object HasteSphere
-{
-	frame HASTA { light HasteSphereGlow }
-	frame HASTB { light HasteSphereGlow }
-	frame HASTC { light HasteSphereGlow }
-}
-
-pointlight DoubleSphereGlow
-{
-	color 1.0 0.0 1.0
-	size 64
-}
-
-object DoubleSphere
-{
-	frame DDMGA { light DoubleSphereGlow }
-	frame DDMGB { light DoubleSphereGlow }
-	frame DDMGC { light DoubleSphereGlow }
-}
-
 //Explosion
 pulselight EXPLOSIONFLASH
 {
@@ -1051,15 +1024,6 @@ flickerlight CACOBALL_X3
 	chance 0.25
 }
 
-object CacodemonBall_
-{
-	frame PBALD { light CACOBALL }
-	frame PBALE { light CACOBALL }
-
-	frame BAL2C { light CACOBALL_X1 }
-	frame BAL2D { light CACOBALL_X2 }
-	frame BAL2E { light CACOBALL_X2 }
-}
 /*
 object PurplePlasmaBall
 {
@@ -1366,16 +1330,6 @@ pointlight SPIDERSHADOW
 
 }
 
-object HealthPlus
-{
-	frame BON1 { light BLUEITEM  }
-}
-
-object ArmorShard
-{
-	frame BON2 { light GREENITEM  }
-}
-
 object BurningImp
 {
  frame IZD4 { light BIGREDTORCH }
@@ -1448,11 +1402,6 @@ object RevenantMissile
 {
 	frame FATBA { light ROCKETLIGHT }
 	frame FATBB { light ROCKETLIGHT }
-}
-
-object RevenantBalls66
-{
-	frame FATB { light ROCKETLIGHT }
 }
 
 object VolcabusBall

@@ -15,7 +15,7 @@ class MancubusSwitchModeEffect : Actor
 }
 
 
-class PB_Mancubus1 : PB_Monster 
+class PB_Mancubus : PB_Monster 
 {
    int flameCounter;
    bool playedFlamethrowerSound;
@@ -342,26 +342,6 @@ class PB_Mancubus1 : PB_Monster
             FAT4 BA 4;
             TNT1 A 0 {bNOPAIN = false ;}
             Goto See;
-
-        // Death Fatality states
-        Death.Fatality:
-            TNT1 A 0 { A_Jump(256, "Fatality1", "Fatality2"); }
-            TNT1 A 0;
-            Stop;
-
-        Fatality1:
-            TNT1 A 0 { A_GiveToTarget("GoFatality", 1); }
-            TNT1 A 0 { A_GiveToTarget("FatsoFatality", 1); }
-            TNT1 A 1 { A_BossDeath(); }
-            TNT1 A 0;
-            Stop;
-
-        Fatality2:
-            TNT1 A 0 { A_GiveToTarget("GoFatality", 1); }
-            TNT1 A 0 { A_GiveToTarget("FatsoFatality2", 1); }
-            TNT1 A 1 { A_BossDeath(); }
-            TNT1 A 0;
-            Stop;
 
         //////////////////////////////////
 

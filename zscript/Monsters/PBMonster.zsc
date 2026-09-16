@@ -432,29 +432,6 @@ class PB_Monster : Actor abstract
 		}
 	}
 	
-	void HitboxerHandler() {
-		
-		if (HitBoxSpawned == True){
-			HitBoxTimerNew = Level.MapTime;
-			if(abs(HitBoxTimerNew - HitBoxTimerOld) > 350) {
-				A_TakeInventory("HeadshotToken",1);
-				HitBoxSpawned = False;
-				Wandering = False;
-			}
-		}
-		
-		if (CheckInventory("HeadshotToken",1) && HitBoxSpawned == False) {
-			//A_SpawnItem("PB_HeadshotHitbox");
-			if (!CheckInventory("IsProning", 1)){
-				//A_SpawnItem("PB_LegHitbox");
-			}
-			HitBoxSpawned = True;
-			HitBoxTimerOld = Level.MapTime;
-		}
-		
-	}
-
-
 	// Returns the shortest difference between two angles.
 	double deltaAngle(double a, double b)
 	{

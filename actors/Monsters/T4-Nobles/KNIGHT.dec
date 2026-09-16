@@ -112,14 +112,6 @@ ACTOR PB_Knight : PB_Monster //Replaces HellKnight
 		BO12 G 6 A_CustomComboAttack("GreenPlasmaBall", 36, 45, "pb/monsters/baron/melee", "HKFT")
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		Goto seecontinue
-		
-		
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Vanilla_HellKnight2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |SXF_TRANSFERSPECIAL| SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-		
 	 Spawn:
 		BO12 B 10 A_Look
 		Loop
@@ -168,8 +160,6 @@ ACTOR PB_Knight : PB_Monster //Replaces HellKnight
 		
 	Idle:
 	LookingForPlayer:
-	    TNT1 A 0 A_GiveInventory("SKImp", 1)
-	    TNT1 A 0 
 		BO12 B 10 A_Look
         TNT1 A 0 
 		BO12 B 10 A_Look
@@ -243,7 +233,6 @@ ACTOR PB_Knight : PB_Monster //Replaces HellKnight
 	ForgetTarget:
 	TNT1 A 0 A_ClearTarget
 	TNT1 A 0 A_TakeInventory("EnemyMemory", 25)
-	TNT1 A 0 A_GiveInventory("LookingForPlayer", 1)
 	Goto LookingForPlayer
 	
 	
@@ -291,7 +280,6 @@ ACTOR PB_Knight : PB_Monster //Replaces HellKnight
 		
     Missile:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("NoHellknightCharge", 1, 2)
 		TNT1 A 0 A_JumpIfCloser(950, "MaybeCharge")
 	JustMissile:
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
@@ -996,32 +984,6 @@ Death.ExtremePunches:
         TNT1 A 0 A_UnSetInvulnerable
 TNT1 A 0 A_SpawnItem ("CurbstompedMarine", 1)
 Goto seecontinue
-
-       Death.Fatality:
-	   
-	   
-	    TNT1 A 0 A_Pain
-		
-		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-		Goto Death.ExplosiveImpact
-		
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(128, "Death.Fatality3", "Death.Fatality4")
-        TNT1 A 0 A_GiveToTarget("HKFatality", 1)
-        TNT1 A 1 A_NoBlocking
-        TNT1 A 0 A_BossDeath
-		Stop
-	Death.Fatality3:
-        TNT1 A 0 A_GiveToTarget("HKFatality3", 1)
-        TNT1 A 1 A_NoBlocking
-        TNT1 A 0 A_BossDeath
-		Stop
-	Death.Fatality4:
-        TNT1 A 0 A_GiveToTarget("HKFatality4", 1)
-        TNT1 A 1 A_NoBlocking
-        TNT1 A 0 A_BossDeath
-		Stop
-
     Pain.KillMe:
     Pain.Taunt:
         TNT1 A 0
@@ -1468,14 +1430,6 @@ ACTOR DyingHellKnight : PB_GoreSpawnActor
 	BTCK ABA 3
 	BTC1 B 20
 	Goto See
-	
-		Death.Kick:
-		Death.Fatality:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_GiveToTarget("HKFatality2", 1)
-        Stop
-	
     Spawn:
 	TNT1 A 0 A_ChangeFlag("SOLID", 1)
 	TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
@@ -1824,20 +1778,3 @@ ACTOR BrutalizedHellKnight3 : BrutalizedHellKnight1
 	    Stop
 	}
 }
-
-///////////////////////////======VANILLA======//////////////////////////////////
-
-Actor Vanilla_HellKnight2 : PB_Knight
-{
-	
-	States
-	{
-		Spawn:
-		TNT1 A 0 ACS_NamedExecuteAlways("ChargingHellknight", 0)
-		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
-		BO12 B 1 A_Look
-		Loop
-	}
-}
-
-Actor PB_HellKnight : PB_Knight{}

@@ -487,15 +487,6 @@ Pain.ExtremePunches:
 	CBOS OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 8 A_SpawnProjectile("PlasmaSmoke", 24, 0, random (0, 180), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 180))//A_BossDeath
     CBOS O -1
     stop
-	
-	
-	Death.Fatality:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberBaronFatality1", 1)
-        TNT1 A 1 A_NoBlocking
-        TNT1 A 0 A_BossDeath
-		Stop
- 	
   Death.SSG:
   Death.Cut:
   Death.QuadBlast:
@@ -886,15 +877,6 @@ ACTOR DyingCyberBaron3 : PB_GoreSpawnActor
 	CY8D IIIIIIIIIIIIIIIIIIIII 2 A_SpawnGoreProjectile("PB_SquirtingBloodTrail", 10, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 60))
 	CY8D I -1
 	Stop
-	
-	Death.Fatality:
-		TNT1 A 0 A_SetInventory("DeathTimer1",0)
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberBaronFatality2", 1)
-        TNT1 A 1 A_NoBlocking
-		Stop
-
-	
 	Death:
 	Death.Blast:
 	Death.Shotgun:

@@ -644,20 +644,6 @@ Actor PB_CyberKnight: Hellknight //Replaces HellKnight
 		TNT1 A 0 A_NoBlocking
 		C96D D -1
 		Stop
-	
-	Death.Fatality:
-		TNT1 A 0 A_Jump(256, "Fatality1", "Fatality2")
-	Fatality1:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberKnightFatality1", 1)
-        TNT1 A 1 A_BossDeath
-		stop
-	Fatality2:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberKnightFatality2", 1)
-        TNT1 A 1 A_BossDeath
-		stop
-
 	Death.Ice:
 	Death.IceExplosion:
 	Death.Freeze:
@@ -1084,13 +1070,6 @@ ACTOR DyingCyberKnight3
 	TNT1 A 0 A_NoBlocking
 	TNT1 A 0 A_SpawnItem("DyingCyberKnight2")
 	Stop
-	
-	Death.Fatality:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberKnightFatality1Part2", 1)
-        TNT1 A 1 A_BossDeath
-		stop
-
 	Death.SSG:
 	Death.Blast:
 	Death.Cut:
@@ -1133,12 +1112,6 @@ States
     CYUS J 2 A_Look 
 	TNT1 A 0 A_ChangeFlag("SOLID", 1)
     Goto See 
-	
-	Death.Fatality:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("CyberKnightFatality1", 1)
-        TNT1 A 1 A_BossDeath
-		stop
 }
 }
 

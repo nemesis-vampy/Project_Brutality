@@ -233,7 +233,6 @@ class PB_CryoRifle : PB_WeaponBase {
 				A_ClearOverlays(BIG_TUBEGLOW,MUZZLE_GLOW);
 				PB_SetRoll(0);
 				PB_HandleCrosshair(79);
-				A_SetInventory("PB_LockScreenTilt", 0);
 				break;
 				
 			case 1:
@@ -287,7 +286,6 @@ class PB_CryoRifle : PB_WeaponBase {
 				A_ClearOverlays(BIG_TUBEGLOW,MUZZLE_GLOW);
 				PB_SetRoll(0);
 				PB_HandleCrosshair(79);
-				A_SetInventory("PB_LockScreenTilt", 0);
 				break;
 
 			case 1:
@@ -470,7 +468,6 @@ class PB_CryoRifle : PB_WeaponBase {
 				A_WeaponOffset(0,32);
 				A_ClearOverlays(BIG_TUBEGLOW,MUZZLE_GLOW);
 				PB_SetRoll(0);
-				A_Setinventory("PB_LockScreenTilt",0);
 				A_StopSound(1);
 				A_StopSound(2);
 				A_StopSound(CHAN_6);
@@ -483,7 +480,6 @@ class PB_CryoRifle : PB_WeaponBase {
 
 		Select:
 			TNT1 A 0 {
-				A_SetInventory("PB_LockScreenTilt",0);
 				PB_WeapTokenSwitch("CryoRifleSelected");
 				PB_HandleCrosshair(79);
 				PB_WeaponRaise("weapons/CryoRifle/respect1");
@@ -495,7 +491,6 @@ class PB_CryoRifle : PB_WeaponBase {
 //////////////////////////// READY ////////////////////////////////////////////////////////////////////////////////////
 		Ready3:
 			TNT1 A 0 {
-				A_TakeInventory("PB_LockScreenTilt",1);
 				PB_HandleCrosshair(79);
 				A_StartSound("weapons/CryoRifle/idle", CHAN_6, CHANF_LOOPING|CHANF_OVERLAP);
 				A_StartSound("PLSIDLE", CHAN_7, CHANF_LOOPING|CHANF_OVERLAP);

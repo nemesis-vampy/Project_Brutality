@@ -742,7 +742,7 @@ Stop
 
 
 
-ACTOR ImpDyingOfBloodLoss: PB_Imp
+ACTOR ImpDyingOfBloodLoss: PB_LegacyImp
 {
 	Radius 16
 	Height 45

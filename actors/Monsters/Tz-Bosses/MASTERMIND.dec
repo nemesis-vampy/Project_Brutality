@@ -89,12 +89,6 @@ ACTOR PB_Mastermind : SpiderMastermind //Replaces SpiderMastermind
 		TNT1 A 0 A_ChangeFlag("SOLID", 0)
 		TNT1 A 0 A_SpawnItem("PB_Mastermind")
 		Stop
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Vanilla_SpiderMastermind",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |SXF_TRANSFERSPECIAL| SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-	
 	Spawn:
 		SPI1 A 10 A_GiveInventory("TargetIsAMastermind")
 	Stand:
@@ -423,13 +417,6 @@ ACTOR DyingSpiderMastermind
 	-COUNTKILL
 	States
 	{
-	
-		Death.Fatality:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_GiveToTarget("SpiderMastermindFatality", 1)
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		Stop
-		
 		Death:
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile("PEPart2SuperFast", 32, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))			
 			TNT1 A 0 A_SpawnItem ("BrutalizedSpidermastermind")
@@ -602,16 +589,3 @@ ACTOR BrutalizedSpidermastermind
 		Stop
 
 }}
-
-///////////////////////////======VANILLA======//////////////////////////////////
-
-Actor Vanilla_SpiderMastermind : PB_Mastermind
-{
-	States
-	{
-		Spawn:
-		SPI1 A 10 A_Look
-		TNT1 A 0 A_GiveInventory("TargetIsAMastermind")
-		Loop
-	}
-}

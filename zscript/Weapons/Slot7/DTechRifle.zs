@@ -271,7 +271,6 @@ class PB_DTechRifle : PB_WeaponBase
             TNT1 A 0 {
                 A_WeaponOffset(0, 32);
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt", 0);
             }
             TNT1 A 0 A_StopSound(1);
             TNT1 A 0 setHasWeapon(RESET);
@@ -300,7 +299,6 @@ class PB_DTechRifle : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleDTechCrosshair();
-				A_SetInventory("PB_LockScreenTilt",0);
                 PB_WeapTokenSwitch("HellRifleSelected");
                 PB_WeaponRaise("HRReady");
 			    return PB_RespectIfNeeded();
@@ -310,10 +308,7 @@ class PB_DTechRifle : PB_WeaponBase
             "####" BCDE 1;
 //////////////////////////// READY ////////////////////////////////////////////////////////////////////////////////////
         Ready3:
-            TNT1 A 0 {
-                A_SetInventory("PB_LockScreenTilt", 0);
-                PB_HandleDTechCrosshair();
-            }
+            TNT1 A 0 PB_HandleDTechCrosshair();
         ReadyToFire1:
         ReadyToFireInferno:
             // Main loop route check
@@ -352,7 +347,6 @@ class PB_DTechRifle : PB_WeaponBase
                 A_WeaponOffset(0, 32);
                 PB_SetRoll(0);
                 PB_HandleDTechCrosshair();
-                A_SetInventory("PB_LockScreenTilt", 0);
             }
             TNT1 A 0 A_JumpIf(getCausticMode(), "FireCaustic");
             D3T0 A 1 BRIGHT DTech_FireTic(1);
@@ -384,7 +378,6 @@ class PB_DTechRifle : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleDTechCrosshair();
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
             TNT1 A 0 A_JumpIf(getCausticMode(), "AltFireCaustic");
 			TNT1 A 0 A_PlaySound("HRCharge");
