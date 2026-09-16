@@ -97,7 +97,6 @@ Class PB_Revolver : PB_WeaponBase
 			TNT1 A 0 PB_WeaponRaise("REVOUP");
 			//goto SelectFirstPersonLegs;	//pb_Weaponraise already handles this
 		SelectContinue:
-			TNT1 A 0 PB_WeapTokenSwitch("RevolverSelected");
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectAnimation:
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "SelectAnimationDualWield");

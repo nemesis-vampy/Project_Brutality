@@ -65,8 +65,6 @@ class PB_Deagle : PB_WeaponBase
 			
 		Select:
 			TNT1 A 0 PB_WeaponRaise("weapons/deagle/equip");
-			TNT1 A 0 PB_WeapTokenSwitch("DeagleSelected");
-			TNT1 A 0 A_SetInventory("RandomHeadExploder",1);	//little test
 			TNT1 A 0 PB_TakeIfUpgrade("PB_Revolver");
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectContinue:

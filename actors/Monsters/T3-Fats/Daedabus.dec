@@ -473,8 +473,6 @@ Actor PB_Daedabus //replaces Fatso
 	  
    Death.Head:
 		TNT1 A 0 A_BossDeath
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		
 		TNT1 A 0 A_SpawnItem("DaedabusHeadExplode", 0, 50)
 		TNT1 A 0 A_Jump(200, "DeathHead2")
 	    DA3D LLLLL 1 A_SpawnProjectile("PB_SquirtingBloodTrail", 50, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (30, 50))
@@ -499,12 +497,6 @@ Actor PB_Daedabus //replaces Fatso
 		TNT1 A 0 A_SpawnItem ("DeadDaedabusDAT5J", 1)
 		TNT1 A 0 A_SpawnItemEX("GrowingBloodPool", 0, 0, 0, 0, 0, 0, 0, SXF_USEBLOODCOLOR | SXF_SETTARGET | SXF_NOCHECKPOSITION)
         Stop
-		
-	Death.Shotgun:
-		TNT1 A 0 A_JumpIfCloser(250, 1)
-		Goto Death
-		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.Blast")
-		Goto Death	
 	Death.Railgun:
 		TNT1 A 0 A_Jump(100, "Death.SSG")
 	Death.Blast:

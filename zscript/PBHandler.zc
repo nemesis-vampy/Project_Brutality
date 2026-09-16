@@ -76,7 +76,6 @@ class PB_EventHandler : EventHandler
 		
 		if (e.Name == "pb_unload_weapon") {
 			pm.giveinventory("Unloading",1);
-			pm.giveinventory("GoSpecial",1);
 		}
 		
 		if( e.name == "pb_flashlight_toggle" )
@@ -191,7 +190,6 @@ class PB_EventHandler : EventHandler
 			plr.SetInventory("ResetZoom",1);
 			plr.SetInventory("KnifeHasHit",0);
 			plr.SetInventory("PB_NoEffectInvul",0);
-			plr.SetInventory("HasCutingWeapon", 0);
 			plr.SetInventory("PB_BarrelToken",0);
 			plr.A_SetRoll(0);
 			plr.A_SetPitch(0);

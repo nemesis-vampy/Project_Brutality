@@ -81,18 +81,6 @@ Actor BootsSmearedWithBlueBlood : Inventory
 inventory.maxamount 20
 }
 
-
-
-Actor GoFatality : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor GoSpecial : Inventory
-{
-inventory.maxamount 1
-}
-
 Actor ZombieManFatality : Inventory
 {
 inventory.maxamount 1

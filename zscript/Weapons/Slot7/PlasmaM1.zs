@@ -120,7 +120,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		Select:
 			//A_SelectWeapon("PB_Pulsecannon")
 			TNT1 A 0 PB_WeaponRaise("PLSDRAW");
-			TNT1 A 0 PB_WeapTokenSwitch("PlasmaGunSelected");
 			TNT1 A 0 PB_HandleCrosshair(71);
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectContinue:
@@ -134,7 +133,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		Deselect:
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_Setinventory("Unloading",0);
-			TNT1 A 0 A_Setinventory("HasPlasmaWeapon",0);
 			TNT1 A 0 A_Zoomfactor(1.0);
 			TNT1 A 0 A_StopSound(6);
 			TNT1 A 0 A_StopSound(26);
@@ -1141,14 +1139,6 @@ Class PB_M1PlasmaLeftMag : PB_WeaponAmmo
 		Ammo.BackpackMaxAmount 60;
 		+INVENTORY.IGNORESKILL;
 		Inventory.Icon "PL4SA0";
-	}
-}
-
-Class HasPlasmaWeapon: Inventory
-{
-	default
-	{
-		inventory.maxamount 1;
 	}
 }
 

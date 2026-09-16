@@ -587,7 +587,6 @@ Class PB_Cacodemon : PB_Monster
 		Death.Flames:
 		Death.Burn:
 		Death.FireExplosion:
-			TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
 			COLI G 1 BRIGHT Light("IncinerationGlow") {
 				A_Scream();
 				A_SetFloorClip();

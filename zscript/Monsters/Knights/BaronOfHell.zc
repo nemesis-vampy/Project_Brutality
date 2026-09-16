@@ -616,8 +616,6 @@ class PB_Baron : PB_Monster
 
 	Death.head:
 		TNT1 A 0 A_BossDeath;
-		TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 		TNT1 A 0 A_SpawnItem("BaronOfHellHeadExplode", 0, 62);
 		TNT1 A 0 A_Jump(128, "HeadExplode2");
         BADH A 9;
@@ -755,7 +753,6 @@ class PB_Baron : PB_Monster
             Stop;
 
         Death.Shotgun:
-            TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG");
             TNT1 A 0 A_JumpIfCloser(160, "Death.Blast");
             TNT1 A 0 A_Jump(16, "DeathGutless2");
             Goto Death;
@@ -875,7 +872,6 @@ class PB_Baron : PB_Monster
 		Death.Flames:
 		Death.Burn:
 			TNT1 A 0;
-			TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon", 1, "Death.Incinerate");
 			TNT1 A 0 A_Jump(189, "Fire2");
 			TNT1 A 0 A_BossDeath;
 			TNT1 A 0 A_Scream;

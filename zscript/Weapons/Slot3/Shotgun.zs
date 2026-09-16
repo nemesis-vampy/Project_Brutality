@@ -142,8 +142,6 @@ Class PB_Shotgun : PB_WeaponBase
 		Select:
 			TNT1 A 0 PB_WeaponRaise();
 			TNT1 A 0 PB_HandleSGCrosshair();
-			TNT1 A 0 PB_WeapTokenSwitch("ShotgunSelected");
-			TNT1 A 0 A_SetInventory( "RandomHeadExploder", 1);
 		Ready:
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectAnimation:
@@ -155,7 +153,6 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				A_SetInventory( "RandomHeadExploder", 0 );
 			}
 			TNT1 A 0
 			{

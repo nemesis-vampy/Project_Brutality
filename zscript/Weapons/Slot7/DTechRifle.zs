@@ -53,12 +53,10 @@ class PB_DTechRifle : PB_WeaponBase
         bool caustic = getCausticMode(); 
         bool unloaded = PB_GetMagUnloaded(); 
         if (caustic) { 
-            setHasWeapon(CAUSTIC); 
             if (unloaded) A_SetWeaponSprite("D2T3"); 
             else A_SetWeaponSprite("D2T1"); 
         } 
         else {   
-            setHasWeapon(INFERNO); 
             if (unloaded) A_SetWeaponSprite("D2T2"); 
             else A_SetWeaponSprite("D2T0"); 
         } 
@@ -78,9 +76,6 @@ class PB_DTechRifle : PB_WeaponBase
         {
             case 1:
                 PB_FireOffset();
-
-                if(!caustic) setHasWeapon(INFERNO);
-                else         setHasWeapon(CAUSTIC);
 
                 A_FireCustomMissile(projectile, 0, 0, 0, 0, 0, random(-1,1));
                 // PB_FireBullets(projectile,1,0,0,0,random(-1,1));
@@ -176,31 +171,6 @@ class PB_DTechRifle : PB_WeaponBase
         invoker.causticCharge = set;
     }
 
-    // Turns out this is used for the monsters death states
-    action void setHasWeapon(int mode)
-    {
-        switch(mode)
-        {
-            // Reset
-            case RESET:
-                A_SetInventory("HasAcidWeapon", 0);
-                A_SetInventory("HasIncendiaryWeapon", 0);
-                break;
-
-            // Inferno Mode
-            case INFERNO:
-                A_SetInventory("HasAcidWeapon", 0);
-                A_SetInventory("HasIncendiaryWeapon", 1);
-                break;
-
-            // Caustic mode
-            case CAUSTIC:
-                A_SetInventory("HasAcidWeapon", 1);
-                A_SetInventory("HasIncendiaryWeapon", 0);
-                break;
-        }
-    }
-
     action state DTech_WeaponSpecial()
     {
         A_SetInventory("GoWeaponSpecialAbility", 0);
@@ -213,7 +183,6 @@ class PB_DTechRifle : PB_WeaponBase
         // Go to Caustic mode
         if(getCausticMode())
         {
-            setHasWeapon(CAUSTIC);
             A_Print("$PB_DTECH_CAUSTIC");
             A_PlaySoundEx("weapons/demontech/weaponspecial1", "Auto");
             return ResolveState("WeaponSpecialCausticAnim");
@@ -221,7 +190,6 @@ class PB_DTechRifle : PB_WeaponBase
         // Go to Inferno mode
         else
         {
-            setHasWeapon(INFERNO);
             A_Print("$PB_DTECH_INFERNO");
             A_PlaySoundEx("weapons/demontech/weaponspecial1", "Auto");
             return ResolveState("WeaponSpecialInfernoAnim");
@@ -273,7 +241,6 @@ class PB_DTechRifle : PB_WeaponBase
                 PB_SetRoll(0);
             }
             TNT1 A 0 A_StopSound(1);
-            TNT1 A 0 setHasWeapon(RESET);
             TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(), "DeselectUnloaded");
             TNT1 A 0 A_JumpIf(getCausticMode(), "DeselectAcid");
             D2T0 DCBA 1;
@@ -299,7 +266,6 @@ class PB_DTechRifle : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleDTechCrosshair();
-                PB_WeapTokenSwitch("HellRifleSelected");
                 PB_WeaponRaise("HRReady");
 			    return PB_RespectIfNeeded();
 			}
@@ -356,7 +322,6 @@ class PB_DTechRifle : PB_WeaponBase
             D2T0 E 0 PB_ReFire();
             TNT1 A 0 A_PlaySoundEx("HRSteam", "Auto");
             D3T0 EFGHIJKLMNOPQRS 1;
-            TNT1 A 0 setHasWeapon(RESET);
             Goto ReadyToFireInferno;
 
         Fire2:

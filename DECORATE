@@ -40,7 +40,7 @@ Actor IsTacticalClass : Inventory {} //Fake item to fix the lag.
 #include "actors/Weapons/Slot9/RAILGUN.dec"
 
 //Weapon select tokens
-#include "actors/Weapons/WeaponTokens.dec"
+//#include "actors/Weapons/WeaponTokens.dec"
 
 //Ammo Ammo Ammo //Smart Scavenger
 //#include "actors/Items/Ammo/GenericAmmo.dec"

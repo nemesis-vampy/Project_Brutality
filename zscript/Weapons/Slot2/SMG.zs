@@ -616,7 +616,6 @@ class PB_SMG : PB_WeaponBase
                 PB_ClearDualWield();
 			    PB_HandleCrosshair(67);
                 PB_TakeIfUpgrade("PB_Pistol");
-                PB_WeapTokenSwitch("UACSMGSelected");
                 PB_WeaponRaise("weapons/smg_up");
                 invoker.smgBurstCount = 0;
 			    return PB_RespectIfNeeded();

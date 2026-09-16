@@ -480,7 +480,6 @@ class PB_CryoRifle : PB_WeaponBase {
 
 		Select:
 			TNT1 A 0 {
-				PB_WeapTokenSwitch("CryoRifleSelected");
 				PB_HandleCrosshair(79);
 				PB_WeaponRaise("weapons/CryoRifle/respect1");
 				return PB_RespectIfNeeded();

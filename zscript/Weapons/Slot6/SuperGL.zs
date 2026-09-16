@@ -96,7 +96,6 @@ Class PB_SuperGL : PB_WeaponBase
 		
 		Select:
 			TNT1 A 0 PB_WeaponRaise("weapons/sgl/inspect2");	//this replaces the jump to SelectFirstPersonLegs state and a lot of other things
-			TNT1 A 0 PB_WeapTokenSwitch("SGLSelected");
 			TNT1 A 0 A_SetInventory("CycleAnimation",0);
 			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
 			TNT1 A 0 A_overlay(Det_layer,"DetonatorLayer");

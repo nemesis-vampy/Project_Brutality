@@ -348,7 +348,6 @@ class PB_SSG : PB_WeaponBase
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
             }
-            TNT1 A 0 A_SetInventory("SSGSelected",0) ;
             TNT1 A 0; //A_JumpIfInventory("PB_QuadSG",1,"DeselectUpgrade")
             TNT1 A 0 A_JumpIf(A_CheckAkimbo(),"DeselectAnimationDualWield");
             SHO9 FEDC 1;
@@ -369,7 +368,6 @@ class PB_SSG : PB_WeaponBase
         Select:
             TNT1 A 0 {
                 PB_ClearDualWield();
-                PB_WeapTokenSwitch("SSGSelected");
                 A_SetInventory("HasNotPickedUpSSG",0);
                 PB_HandleCrosshair(40);
                 PB_SelectIfUpgrade("PB_QuadSG");

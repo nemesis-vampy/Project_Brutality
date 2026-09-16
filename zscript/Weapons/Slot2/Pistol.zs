@@ -545,7 +545,6 @@ class PB_Pistol : PB_WeaponBase
                 PB_ClearDualWield();
 			    PB_HandleCrosshair(43);
                 PB_SelectIfUpgrade("PB_SMG");
-                PB_WeapTokenSwitch("HandgunSelected");
                 PB_WeaponRaise("weapons/pistolup");
                 invoker.pistolBurstCount = 0;
 			    return PB_RespectIfNeeded();

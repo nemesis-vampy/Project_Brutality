@@ -465,7 +465,6 @@ class PB_BFG9000 : PB_WeaponBase
         Select:
             TNT1 A 0 {
 				PB_HandleCrosshair(72);
-                PB_WeapTokenSwitch("BFGSelected");
                 PB_WeaponRaise("weapons/bfg_raise");
 			    return PB_RespectIfNeeded();
             }

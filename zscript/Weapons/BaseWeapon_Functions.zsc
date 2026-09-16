@@ -198,7 +198,6 @@ extend class PB_WeaponBase
 		
 		A_SetInventory("CantWeaponSpecial",0);		//Fixes bug with Weapon Special Key no longer working when changing SGL grenade type or RL missile mode
 		A_SetInventory("Grabbing_A_Ledge", 0);		//Fixed bug where movement is locked when vaulting after entering a level
-		A_SetInventory("RandomHeadExploder",0);
 		A_SetInventory("DualFireReload",0);
 		A_SetInventory("Kicking",0);
 		A_SetInventory("Zoomed",0);
@@ -1637,7 +1636,6 @@ extend class PB_WeaponBase
 		//A_ClearTarget();
 		A_TakeInventory("KnifeHasHit",1);
 		A_TakeInventory("PB_NoEffectInvul",1);
-		A_TakeInventory("HasCutingWeapon", 1);
 		A_TakeInventory("ExecutionToken", 1);
 		A_SetRoll(0, SPF_INTERPOLATE);
 		A_SetPitch(0, SPF_INTERPOLATE);
@@ -2167,31 +2165,6 @@ extend class PB_WeaponBase
                 PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "pb_helpflags", 1 << 4);
             }
 		}
-	}
-	
-	//Weapon token take away in one function
-	action void PB_WeapTokenSwitch(name wepToken) 
-	{
-			PB_SetUsingMelee(false); //force to false so that quick melee doesn't break on some weapons
-			PB_SetUsingKick(false); //force to false so that kicking doesn't break on some weapons
-			PB_SetUsingEquipment(false);
-			PB_SetExecutingEnemy(false);
-			SetPlayerProperty(0,0,0); //Force the player to get unstuck
-			A_SetInventory("Zoomed",0);
-			A_SetInventory("Unloading",0);
-			A_SetInventory("SSGSelected",0);
-			A_SetInventory("CantWeaponSpecial",0);
-			A_SetInventory("HasIncendiaryWeapon", 0);
-			A_SetInventory("HasPlasmaWeapon",0);
-			A_SetInventory("HasCutingWeapon",0);
-			A_SetInventory("HasFireWeapon",0);
-			A_SetInventory("HasAcidWeapon",0);
-			A_SetInventory("Grabbing_A_Ledge",0);
-			A_SetInventory("CantDoAction",0);
-			A_SetInventory("PB_NoEffectInvul",0);
-			A_SetInventory("sae_extcam", 0);
-			A_SetInventory("sae_deathcam", 0);
-			A_SetInventory(wepToken,1);
 	}
 	
 	action void PB_ResetVisorBloodTokens()

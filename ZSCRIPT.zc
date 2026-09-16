@@ -219,8 +219,6 @@ const MAXITERATIONS = 32676;
 #include "zscript/Effects/MuzzleSparks.zs"
 
 //Weapons
-#include "zscript/Weapons/UnusedTokens.zs"
-
 #include "zscript/Weapons/BaseWeapon.zc"
 #include "zscript/Weapons/BaseWeapon_Functions.zsc"
 #include "zscript/Weapons/BaseWeapon_Equipment.zsc"

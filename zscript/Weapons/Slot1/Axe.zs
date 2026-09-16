@@ -126,7 +126,6 @@ class PB_Axe : PB_WeaponBase
                 // Throw Axe
                 case 4:
                 Axe_Throw();
-                A_SetInventory("HasCutingWeapon",0);
                 break;
 
                 case 5:
@@ -218,7 +217,6 @@ class PB_Axe : PB_WeaponBase
 				PB_HandleCrosshair(90);
 			}
 			TNT1 A 0 A_SetInventory("GoWeaponSpecialAbility",0);
-			TNT1 A 0 A_SetInventory("HasCutingWeapon",0);
 			
 			AX00 FGHI 1 Axe_ChangeModeSprite("AX03","AX02","AX01","AX00");
 			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower();
@@ -227,7 +225,6 @@ class PB_Axe : PB_WeaponBase
             
 		Select:
 			TNT1 A 0 {
-                PB_WeapTokenSwitch("HasCutingWeapon");
 				PB_HandleCrosshair(90);
 			    PB_ResetVisorBloodTokens();
                 PB_WeaponRaise("AXEDRAW");
