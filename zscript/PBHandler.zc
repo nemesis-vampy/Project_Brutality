@@ -291,7 +291,7 @@ class PB_EventHandler : EventHandler
 		// function correctly in multiplayer because the players had already been revived by that point.
 		foreach (p : players)
 		{
-			if (p.mo && p.mo.Health <= 0)
+			if (p.mo && p.mo.Health <= 0 && pb_disable_death_exits)
 			{
 				p.Resurrect();
 			}
