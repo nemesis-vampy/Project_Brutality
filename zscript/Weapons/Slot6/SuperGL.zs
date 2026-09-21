@@ -43,7 +43,6 @@ Class PB_SuperGL : PB_WeaponBase
 		
 		WeaponRespect:
 			TNT1 A 0 {
-				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/sgl/inspect1", CHAN_AUTO);
 				A_SetCurrentGrenadeType("Impact");
                 A_SetCrosshair(-1);
@@ -97,7 +96,6 @@ Class PB_SuperGL : PB_WeaponBase
 		
 		Select:
 			TNT1 A 0 PB_WeaponRaise("weapons/sgl/inspect2");	//this replaces the jump to SelectFirstPersonLegs state and a lot of other things
-			TNT1 A 0 PB_WeapTokenSwitch("SGLSelected");
 			TNT1 A 0 A_SetInventory("CycleAnimation",0);
 			TNT1 A 0 A_SetInventory("CantWeaponSpecial",0);
 			TNT1 A 0 A_overlay(Det_layer,"DetonatorLayer");
@@ -124,7 +122,6 @@ Class PB_SuperGL : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetRoll(0);
 				PB_HandleCrosshair(89);
-				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetInventory("CycleAnimation", 0);
 				A_SetInventory("CantWeaponSpecial",0);
 			}
@@ -139,7 +136,6 @@ Class PB_SuperGL : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(89);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo("Reload");
 			S002 A 0;

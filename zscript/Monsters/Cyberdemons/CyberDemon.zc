@@ -1,4 +1,4 @@
-class PB_Cyberdemon1 : PB_Monster
+class PB_Cyberdemon : PB_Monster
 {
     Default {
        // SpawnID 2400;
@@ -102,13 +102,6 @@ class PB_Cyberdemon1 : PB_Monster
         Pain_Killme: 
             TNT1 A 0;
             Goto See;
-        
-        ReplaceVanilla: 
-            TNT1 A 0 {bTHRUACTORS = true ;}
-            TNT1 A 0 {bCOUNTKILL = false ;}
-            TNT1 A 0 A_SpawnItemEx("Vanilla_Cyberdemon", 0,0,0,0,0,0,0, SXF_NOCHECKPOSITION|SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG, 0);
-            Stop;
-        
         Spawn:
             CYB1 Z 10 NoDelay A_GiveInventory("TargetIsACyberdemon");
         Stand:
@@ -672,21 +665,3 @@ class CyberDemonLaserPointer : Actor
 			Loop;
 	}
 }
-
-/*
-// Vanilla_Cyberdemon.zs
-// This actor simply “wraps” PB_Cyberdemon.
-class Vanilla_Cyberdemon : PB_Cyberdemon
-{
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_GiveInventory("TargetIsACyberdemon");
-			CYB1 D 10 A_Look;
-			TNT1 A 0;
-			CYB1 Z 10 A_Look;
-			Loop;
-	}
-}
-*/

@@ -106,7 +106,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 	
 	Spawn:
 		MPOS B 0
-		TNT1 A 0 A_GiveInventory("SKChaingunGuy", 1)
 		TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
 		MPOS B 10
 	Stand:
@@ -116,9 +115,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 	SearchForPlayer:
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
-		TNT1 A 0 A_GiveInventory("SKChaingunguy", 1)
-		
-		MPOS A 0 
 		MPOS A 10 A_Look
 		MPOS A 0 
 		MPOS A 10 A_Look
@@ -177,7 +173,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		
 	See:
 	TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-	TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 	TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
 	TNT1 A 0 A_CheckSight("SeeNeverSeen")
 	Goto SeeContinue
@@ -230,9 +225,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		Loop
 		
 	SeeNeverSeen:
-		
-		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		MPOS A 0 
 		MPOS AA 2 A_Chase
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
 		MPOS A 0 
@@ -260,7 +252,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		TNT1 A 0 A_Jump(32, "MissileCrouched")
 		TNT1 A 0 
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
-		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 		TNT1 A 0 A_PlaySound("CHAINSTA")
 		TNT1 A 0 A_TakeInventory("CantFire", 1)
 		TNT1 A 0 A_JumpIfCloser(900, 3)
@@ -329,8 +320,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		Goto MissileContinue
 		
 	MissileCrouched:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
 		TNT1 A 0
 		TNT1 A 0
@@ -421,8 +410,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 	Pain:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsFiring", 1, "Pain.IsFiring")
-		TNT1 A 0 
-		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 		MPOS G 3
  		TNT1 A 0 
 		MPOS G 3 A_Pain
@@ -477,8 +464,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		TNT1 A 0 
 		TNT1 A 0 A_Pain
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
-		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		TNT1 A 0
 		TNT1 A 0 //ThrustThingZ(0,15,0,1)
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil (3)
@@ -702,9 +687,7 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		Stop
 		
 	XDeath:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon",1,"Death.Saw")
 		TNT1 A 1 A_SpawnItem("PB_ChaingunGuyDrop1", 0, 5,0)
-		TNT1 A 1 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG")
 		TNT1 A 1 A_XScream
 		TNT1 A 1 A_NoBlocking
 		TNT1 A 1 A_SpawnItemEx("ChainXDeath",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0,0)
@@ -717,11 +700,7 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		
 	Death.Head:
 		TNT1 A 0
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-50, "Death.HeadExplode")
-		TNT1 A 0 A_JumpIfInTargetInventory("RandomHeadExploder", 1, "HeadExploder")
 	Death.HeadMinor:
 		TNT1 A 0
 		TNT1 A 0 A_Playsound("MinorHeadshot", 0)
@@ -1052,7 +1031,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 	Death.FireExplosion:
 	Death.burn:
 	Death.flames:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate")
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("PB_ChaingunGuyDrop1", 0, 5,0)
@@ -1069,23 +1047,6 @@ ACTOR PB_Commando: PB_DecoZombie //Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem("PB_ChaingunGuyDrop1", 0, 5,0)
 		TNT1 A 1 A_SpawnItemEx("DisintegratedHuman",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
-		
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-		Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_SpawnItem("PB_ChaingunGuyDrop1", 0, 5,0)
-		TNT1 A 0 A_Jump(130,5)
-		TNT1 A 0 A_GiveToTarget("ComandoFatality", 1)
-		Stop
-		TNT1 AAAAAAA 0
-		TNT1 A 0 A_GiveToTarget("ComandoFatality2", 1)
-		TNT1 A 1
-		TNT1 A 0
-		Stop
-		
 		Death.Eat:
 		TNT1 A 0
 		TNT1 A 0 A_NoBlocking

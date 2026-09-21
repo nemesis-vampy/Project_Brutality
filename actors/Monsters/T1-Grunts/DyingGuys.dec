@@ -2249,8 +2249,6 @@ ACTOR DyingZombiemanLostTeeth: PB_RifleZombieman
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto HeadExplode
@@ -2302,8 +2300,6 @@ ACTOR DyingShotgunguyHitInEye: PB_ShotgunGuy
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto HeadExplode
@@ -2352,8 +2348,6 @@ ACTOR DyingShotgunguyHitInEye2: PB_ShotgunGuy
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto HeadExplode
@@ -2402,8 +2396,6 @@ ACTOR DyingHelmetShotgunguyHitInEye: PB_ShotgunGuyHelmet
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto HeadExplode
@@ -2452,8 +2444,6 @@ ACTOR DyingHelmetShotgunguyHitInEye2: PB_ShotgunGuy
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto HeadExplode
@@ -6777,8 +6767,6 @@ ACTOR DyingHelmetZombiemanLostTeeth: PB_HelmetZombieMan
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead")
 		Goto HeadExplode
@@ -6829,7 +6817,6 @@ ACTOR DyingARZombieHeadshot: PB_CarbineZombieman
 	Death.Head:
 		TNT1 A 0
 		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 		
 		TNT1 A 0 A_SpawnItem("ShotgunGuyHeadExplode", 0, 40)
@@ -7420,8 +7407,6 @@ ACTOR DyingZombieScientistLostTeeth: PB_ZombieScientist
 		Death.Head:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 			TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 			Goto HeadExplode
 		
@@ -7786,8 +7771,6 @@ ACTOR DyingChainsawZombieLostTeeth: PB_ZombieScientistChainsaw
 		Death.Head:
 			TNT1 A 0
 			TNT1 A 0 A_SpawnItem("CrueltyBonus1Health")
-			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
-			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
 			TNT1 A 0 A_SpawnItem("ChainsawZombieHeadExplode", 0, 32)
 			TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath")
 			Goto HeadExplodeDown

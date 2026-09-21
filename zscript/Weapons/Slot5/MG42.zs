@@ -273,7 +273,6 @@ class PB_MG42 : PB_WeaponBase
 		Select:
 			TNT1 A 0 {
 				PB_HandleCrosshair(50);
-				PB_WeapTokenSwitch("MG42Selected");
 				PB_WeaponRaise("weapons/MG42/Select");
 				return PB_RespectIfNeeded();
 			}

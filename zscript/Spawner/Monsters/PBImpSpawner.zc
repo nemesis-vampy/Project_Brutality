@@ -28,7 +28,7 @@ Class PB_ImpSpawner_T1 : PB_MonsterSpawner
 		dropitem "DNImpVariant1",255,1;
 		dropitem "DNImpVariant2",255,1;
 		dropitem "DNImpVariant3",255,1;
-		dropitem "PB_Imp1",255,1;
+		dropitem "PB_Imp",255,1;
 	}
 	
 	override bool HandleSpawnExceptions(name toSpawn)
@@ -104,7 +104,7 @@ Class PB_ImpSpawner_DW : PB_MonsterSpawner
 		dropitem "DNImpVariant1",255,5;
 		dropitem "DNImpVariant2",255,4;
 		dropitem "DNImpVariant3",255,3;
-		dropitem "PB_Imp1",255,6;
+		dropitem "PB_Imp",255,6;
 		dropitem "PB_InfectedImp",255,10;
 		dropitem "PB_DarkImpNether",255,24;
 		dropitem "PB_DarkImpVoid",255,21;

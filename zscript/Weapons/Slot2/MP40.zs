@@ -75,7 +75,6 @@ class PB_MP40 : PB_WeaponBase
                 PB_SetRoll(0);
                 if(ads) A_SetCrosshair(-1);
                 else    PB_HandleCrosshair(44);
-                A_SetInventory("PB_LockScreenTilt", 0);
                 break;
 
             case 1:
@@ -187,7 +186,6 @@ class PB_MP40 : PB_WeaponBase
         A_SetInventory("GoWeaponSpecialAbility",0);
         PB_SetZoom(false);
         PB_ClearDualWield();
-        A_SetInventory("PB_LockScreenTilt",1);
         PB_HandleCrosshair(44);
         A_ZoomFactor(1.0);
 
@@ -241,7 +239,6 @@ class PB_MP40 : PB_WeaponBase
             TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
-				A_SetInventory("PB_LockScreenTilt",0);
 				PB_ClearDualWield();
 			}
 			TNT1 A 0 PB_SetZoom(false);
@@ -266,7 +263,6 @@ class PB_MP40 : PB_WeaponBase
 				PB_SetRoll(0);
                 PB_ClearDualWield();
 				PB_HandleCrosshair(44);
-				A_SetInventory("PB_LockScreenTilt",0);
                 PB_WeaponRaise("weapons/MP40_up");
 			    return PB_RespectIfNeeded();
 			}
@@ -281,7 +277,6 @@ class PB_MP40 : PB_WeaponBase
             TNT1 A 0 {
 				PB_SetRoll(0);
 				PB_HandleCrosshair(44);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReadyDualWield");
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(), "UnloadedReady");
@@ -299,7 +294,6 @@ class PB_MP40 : PB_WeaponBase
 			TNT1 A 0 {
 				PB_SetRoll(0);
 				A_SetCrosshair(-1);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 		ReadyToFire2:
 			MPZO E 1 {
@@ -374,7 +368,6 @@ class PB_MP40 : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleCrosshair(44);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_JumpIf(PB_GetMagUnloaded(), "UnloadedReady");
 			TNT1 A 0 A_PlaySound("IronSights", 0);

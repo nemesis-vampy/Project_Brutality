@@ -127,9 +127,6 @@ Class PB_ShotgunGuy : PB_Monster
 		Spawn:
 			SHID A 10 NoDelay {
 				A_GiveInventory("SergeantAmmo", random(1,5));
-				A_GiveInventory("SKShotgunGuy", 1);
-				A_GiveInventory("TypeSergeant", 1);
-				A_GiveInventory("ShotgunSelected", 1);
 				bNoPain = false;
 				A_SetRoll(0);
 			}
@@ -142,7 +139,6 @@ Class PB_ShotgunGuy : PB_Monster
 			Goto Stand;
 		See:
 			TNT1 A 0 {
-				A_TakeInventory("SKShotgunGuy", 1);
 				EnemyLastSighted = Level.MapTime;
 				
 				bNoPain = false;
@@ -492,7 +488,6 @@ Class PB_ShotgunGuy : PB_Monster
 			SPO4 U 1 {
 					{bNODROPOFF = False;}
 					{bFORCEXYBILLBOARD = True;}
-					A_TakeInventory("SKShotgunGuy", 1);
 					A_GiveInventory("IsDown", 1);
 					A_Pain();
 					A_facetarget();
@@ -510,7 +505,6 @@ Class PB_ShotgunGuy : PB_Monster
 			SPO4 U 1 {
 					{bNODROPOFF = False;}
 					{bFORCEXYBILLBOARD = True;}
-					A_TakeInventory("SKShotgunGuy", 1);
 					A_GiveInventory("IsDown", 1);
 					A_Pain();
 					ThrustThingZ(0,30,0,1);
@@ -950,11 +944,7 @@ Class PB_ShotgunGuy : PB_Monster
 			TNT1 A 0;
 			TNT1 A 0 A_SetRoll(0);
 			TNT1 A 0 A_FaceTarget();
-			TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
-			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 			TNT1 A 0 A_JumpIfInventory("IsProning",1, "DeathProneHead");
-			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decapitate");
-			TNT1 A 0 A_JumpIfInTargetInventory("RandomHeadExploder", 1, "HeadExplode");
 			TNT1 A 0 A_JumpIfHealthLower(-100, "HeavyHead");
 			TNT1 A 0 A_JumpIfHealthLower(-60, "HeadExplode");
 		HeadMinor:
@@ -1292,7 +1282,6 @@ Class PB_ShotgunGuy : PB_Monster
 		Death.FireExplosion:
 		Death.Flames:
 		Death.Burn:
-			TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
 			TNT1 A 1 {
 				A_ScreamAndUnblock();
 				A_SpawnItemEx("BurningShotgunguy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
@@ -1773,8 +1762,6 @@ Class PB_ShotgunGuy : PB_Monster
 		Stop;
 		
 	XDeath:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
-		TNT1 A 0 A_JumpIfInTargetInventory("SSGSelected", 1, "Death.SSG");
 		TNT1 A 0 { 
 			NashGoreGibs.SpawnGibs(self);
 			A_SpawnProjectile ("PB_XDeath1", 42, 0, random (0, 290), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH  , random (10, 60));
@@ -1807,43 +1794,6 @@ Class PB_ShotgunGuy : PB_Monster
 				A_SpawnItem("FrozenShotgunGuy");
 			}
 			Stop;
-		
-		Death.Fatality:
-				TNT1 A 0 A_Pain();
-				TNT1 A 0 A_NoBlocking();
-				TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-				Goto Death.ExplosiveImpact;
-				TNT1 A 0 A_GiveToTarget("GoFatality", 1);
-				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5", "Death.Fatality6");
-				Goto Death.Fatality1;
-
-		Death.Fatality1:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality", 1);
-			Stop;
-		Death.Fatality2:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality2", 1);
-			Stop;
-		Death.Fatality3:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality3", 1);
-			Stop;
-		Death.Fatality4:
-			TNT1 A 0 A_GiveToTarget("ZombieManFatality4", 1);
-			Stop;
-		Death.Fatality5://Didn't like this one, but it gives me an idea...
-			TNT1 A 0 A_GiveToTarget("SergeantFatality5", 1);
-			Stop;
-		Death.Fatality6:
-			TNT1 A 0 A_GiveToTarget("SergeantFatality6", 1);
-			Stop;
-			
-		Death.HelperMarineFatallity:
-			TNT1 A 1 {
-				A_Pain();
-				A_NoBlocking();
-				A_GiveToTarget("SergeantFatality", 1);
-			}
-			Stop;
-		
 		
 		Death.Eat:
 			TNT1 A 0;

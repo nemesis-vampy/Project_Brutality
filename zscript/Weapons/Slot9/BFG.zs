@@ -208,7 +208,6 @@ class PB_BFG9000 : PB_WeaponBase
         A_WeaponOffset(0,32);
         PB_SetRoll(0);
         PB_HandleCrosshair(72);
-        A_SetInventory("PB_LockScreenTilt",0);
         A_SetInventory("GoWeaponSpecialAbility",0);
 
         if(invoker.ammo1.amount < 1)    return ResolveState("FailedToFireEmpty");
@@ -236,7 +235,6 @@ class PB_BFG9000 : PB_WeaponBase
         A_WeaponOffset(0,32);
         PB_SetRoll(0);
         PB_HandleCrosshair(72);
-        A_SetInventory("PB_LockScreenTilt",0);
 
         if(getBlackholeMode())              return ResolveState("AltFire_Blackhole");
         else if(invoker.ammo1.amount < 5)   return ResolveState("FailedToFire");
@@ -405,7 +403,6 @@ class PB_BFG9000 : PB_WeaponBase
         WeaponRespect:
             TNT1 A 0 {
                     A_SetCrosshair(-1);
-                    A_SetInventory("PB_LockScreenTilt",1);
                     A_StartSound("Ironsights", CHAN_AUTO);
                     A_StartSound("IronSights", CHAN_AUTO);
                     A_StartSound("weapons/railgun/inspect1", CHAN_AUTO);
@@ -468,7 +465,6 @@ class PB_BFG9000 : PB_WeaponBase
         Select:
             TNT1 A 0 {
 				PB_HandleCrosshair(72);
-                PB_WeapTokenSwitch("BFGSelected");
                 PB_WeaponRaise("weapons/bfg_raise");
 			    return PB_RespectIfNeeded();
             }
@@ -560,7 +556,6 @@ class PB_BFG9000 : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleCrosshair(72);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
             TNT1 A 0 A_JumpIf(getBlackholeMode(), "Fire_Blackhole");
             TNT1 A 0 PB_jumpIfNoAmmo("FailedToFire",AMMO_TAKE_GREEN,false,false);

@@ -74,25 +74,6 @@ BloodType "CyberDemon_Blood", "PB_SawBlood", "PB_SawBlood"
 	ActiveSound "monster/annidle" 
 	States
 	{
-	Death.KillMe:
-	Death.Taunt:
-		TNT1 A 0 A_ChangeFlag("SOLID", 0)
-		TNT1 A 0 A_SpawnItem("PB_Cyberdemon")
-		Stop
-
-	ReplaceVanilla:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx ("Vanilla_Annihilator",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |SXF_TRANSFERSPECIAL| SXF_TRANSFERAMBUSHFLAG ,0)
-		Stop
-		
-	ReplaceToggle:
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx("PB_Cyberdemon",0,0,0,0,0,0,0,288)
-		Stop
-	
-	
 	Spawn:
 		4NNI D 10 A_Look
 		Loop
@@ -421,19 +402,5 @@ BloodType "CyberDemon_Blood", "PB_SawBlood", "PB_SawBlood"
 		TNT1 A 0 
 		CYBR F 4 BRIGHT A_CustomMissile("CyberBalls",60,-25,0,0)
 		Goto See
-	}
-}
-
-///////////////////////////======VANILLA======//////////////////////////////////
-
-Actor Vanilla_Annihilator : PB_Annihilator
-{
-	States
-	{
-		Spawn:
-		TNT1 A 0 
-		4NNI D 10 A_Look
-		TNT1 A 0 
-		Loop
 	}
 }

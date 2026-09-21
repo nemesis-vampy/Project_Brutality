@@ -272,7 +272,7 @@ DoomEdNums {
 	23603 = PB_NailgunMajor
 	23604 = PB_ZSpecOps
 	
-	23700 = PB_Imp1
+	23700 = PB_Imp
 	23701 = DNImpVariant1
 	23702 = DNImpVariant2
 	
@@ -298,12 +298,12 @@ DoomEdNums {
 //	23718 = PB_
 //	23719 = PB_
 	
-	23720 = PB_Arachnotron1
+	23720 = PB_Arachnotron
 	23721 = PB_InfernalArachnotron
 	23722 = PB_EliteArachnotron
 	23723 = PB_Arachnophyte
 	
-	23724 = PB_Mancubus1
+	23724 = PB_Mancubus
 	23725 = PB_Daedabus
 	23726 = PB_Volcabus
 //	23727 = PB_
@@ -343,7 +343,7 @@ DoomEdNums {
 //	23754 = PB_
 //	23755 = PB_
 	
-	23756 = PB_Cyberdemon1
+	23756 = PB_Cyberdemon
 	23757 = PB_Annihilator
 //	23758 = PB_
 //	23759 = PB_

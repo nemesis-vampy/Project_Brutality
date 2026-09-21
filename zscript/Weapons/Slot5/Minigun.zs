@@ -200,6 +200,7 @@ class PB_Minigun : PB_Weapon
         if(mode == tokens)
         {
             A_Print("$PB_ALREADYSELECTED");
+			Minigun_ClearTokens();
             return resolvestate("Ready3");
         }
 
@@ -279,7 +280,6 @@ class PB_Minigun : PB_Weapon
         A_WeaponOffset(0,32);
         A_SetRoll(0);
         PB_HandleCrosshair(75);
-        A_SetInventory("PB_LockScreenTilt",0);
         if(Minigun_GetMode() == CHAINGUN_MODE)
 		{
 			if(altFire)
@@ -548,7 +548,6 @@ class PB_Minigun : PB_Weapon
         WeaponRespect:
             TNT1 A 0 {
 				A_SetCrosshair(-1);
-				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("Ironsights", CHAN_AUTO);
 			}
 			TNT1 A 0 A_JumpIf(Minigun_IsUpgraded(),"SelectAnimation");
@@ -580,8 +579,6 @@ class PB_Minigun : PB_Weapon
 
                 A_WeaponOffset(0,32);
                 A_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
-                //A_ZoomFactor(1.0);
                 A_StopSound(5);
                 A_StopSound(1);
                 invoker.internalheat = 0;
@@ -595,7 +592,6 @@ class PB_Minigun : PB_Weapon
         Select:
             TNT1 A 0 {
 			    PB_HandleCrosshair(75);
-				A_SetInventory("PB_LockScreenTilt",0);
                 PB_WeaponRaise("weapons/minigun/respect1");
                 invoker.internalheat = 0;
 		        A_Overlay(GLOW_LAYER,"Glow");
@@ -619,7 +615,6 @@ class PB_Minigun : PB_Weapon
                 TNT1 A 0 {
                     A_SetRoll(0);
                     PB_HandleCrosshair(75);
-                    A_SetInventory("PB_LockScreenTilt",0);
                 }
                 TNT1 A 0 A_JumpIf(Minigun_GetMode() == TRIPLE_MODE, "Ready_DeathDealer");
 			    TNT1 A 0 A_JumpIf(Minigun_IsUpgraded(),"RealReady_Upgraded");
@@ -653,7 +648,6 @@ class PB_Minigun : PB_Weapon
                 TNT1 A 0 {
                     A_SetRoll(0);
                     PB_HandleCrosshair(75);
-                    A_SetInventory("PB_LockScreenTilt",0);
                     A_Overlay(DEATHDEALER_CORE_LAYER,"DeathDealerCore");
                 }
             ReadyToFire_DeathDealer:
@@ -863,7 +857,6 @@ class PB_Minigun : PB_Weapon
                     A_WeaponOffset(0,32);
                     A_SetRoll(0);
                     PB_HandleCrosshair(75);
-                    A_SetInventory("PB_LockScreenTilt",0);
                     A_StartSound("DTHDRSN", CHAN_5, CHANF_LOOPING);
                 }
             AltHold_Chaingun:

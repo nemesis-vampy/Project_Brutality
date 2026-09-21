@@ -50,7 +50,6 @@ Class PB_Shotgun : PB_WeaponBase
 		WeaponRespect:
 			TNT1 A 0 {
 				A_SetCrosshair(-1);
-				A_SetInventory("PB_LockScreenTilt",1);
 				A_StartSound("weapons/shotgun/equip", 10,CHANF_OVERLAP);
 			}
 			SH00 ABCDEFGHI 1 A_DoPBWeaponAction(WRF_NOBOB);
@@ -131,7 +130,6 @@ Class PB_Shotgun : PB_WeaponBase
 				A_SetInventory("PumpShotgunMagazine",1);
 				A_ZoomFactor(1.0);
 				A_SetInventory("Zoomed",0);
-				A_SetInventory("ADSmode",0);
 			}
 			SH0G BCDEFGH 1 A_DoPBWeaponAction(WRF_NOBOB);
 			SHTM A 1 A_DoPBWeaponAction(WRF_NOBOB);
@@ -144,8 +142,6 @@ Class PB_Shotgun : PB_WeaponBase
 		Select:
 			TNT1 A 0 PB_WeaponRaise();
 			TNT1 A 0 PB_HandleSGCrosshair();
-			TNT1 A 0 PB_WeapTokenSwitch("ShotgunSelected");
-			TNT1 A 0 A_SetInventory( "RandomHeadExploder", 1);
 		Ready:
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectAnimation:
@@ -157,14 +153,11 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
-				A_SetInventory("PB_LockScreenTilt",0);
-				A_SetInventory( "RandomHeadExploder", 0 );
 			}
 			TNT1 A 0
 			{
 				 A_SetInventory("Unloading",0);
 				 A_SetInventory("Zoomed",0);
-				 A_SetInventory("ADSmode",0);
 				 A_ZoomFactor(1.0);
 			}
 			SH00 HGED 1;
@@ -176,7 +169,6 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetRoll(0);
 				PB_HandleSGCrosshair();
-				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetInventory("CantWeaponSpecial",0);
 				A_SetInventory("CantDoAction",0);
 				}
@@ -209,7 +201,6 @@ Class PB_Shotgun : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleSGCrosshair();
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 PB_jumpIfNoAmmo();
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"Fire2");
@@ -264,7 +255,6 @@ Class PB_Shotgun : PB_WeaponBase
 		Pump:
 		Pump1:
 			TNT1 A 0 {
-				A_SetInventory("PB_LockScreenTilt",1);
 				A_WeaponOffset(0,32);
 				PB_HandleSGCrosshair();
 				PB_SetReloading(true);
@@ -319,11 +309,7 @@ Class PB_Shotgun : PB_WeaponBase
 			}
 			SH0G JIHGFEDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 		PumpEnd: // Pump End for mag & regular.
-			TNT1 A 0
-			{
-				A_SetRoll(0,SPF_INTERPOLATE);
-				A_SetInventory("PB_LockScreenTilt",0);
-			}
+			TNT1 A 0 A_SetRoll(0,SPF_INTERPOLATE);
 			SH0G A 1
 			{
 				PB_SetShellSprite("SH0G","SHTS","SHTD");
@@ -413,7 +399,6 @@ Class PB_Shotgun : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleSGCrosshair();
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_jumpif(countinv("zoomed") > 0,"zoomout");
 			TNT1 A 0 {
@@ -485,8 +470,6 @@ Class PB_Shotgun : PB_WeaponBase
 			}	
 			TNT1 A 0
 			{
-				A_SetInventory("Reloading",0);
-				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetRoll(0,SPF_INTERPOLATE);
 				PB_SetReloading(false);
 			}
@@ -563,8 +546,6 @@ Class PB_Shotgun : PB_WeaponBase
 			SH0G EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0
 			{
-				A_SetInventory("Reloading",0);
-				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetRoll(0,SPF_INTERPOLATE);
 				PB_SetReloading(false);
 			}
@@ -705,7 +686,6 @@ Class PB_Shotgun : PB_WeaponBase
 			TNT1 A 0 {
 				A_SetRoll(0);
 				A_SetCrosshair(-1);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 		ReadyToFire2:
 			SHT8 A 1
@@ -1199,8 +1179,6 @@ Class PB_Shotgun : PB_WeaponBase
 			SH0G EDCB 1 A_SetRoll(roll+0.1,SPF_INTERPOLATE);
 			TNT1 A 0
 			{
-				A_SetInventory("Reloading",0);
-				A_SetInventory("PB_LockScreenTilt",0);
 				A_SetRoll(0,SPF_INTERPOLATE);
 			}
 			TNT1 A 0 pb_postwheel();

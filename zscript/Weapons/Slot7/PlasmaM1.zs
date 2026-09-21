@@ -42,7 +42,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		WeaponRespect:
 			TNT1 A 0 {
 				A_SetCrosshair(-1);
-				A_Setinventory("PB_LockScreenTilt",1);
 				A_StartSound("Ironsights", 22,CHANF_OVERLAP);
 			}
 			P0R0 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_DoPBWeaponAction();
@@ -121,7 +120,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		Select:
 			//A_SelectWeapon("PB_Pulsecannon")
 			TNT1 A 0 PB_WeaponRaise("PLSDRAW");
-			TNT1 A 0 PB_WeapTokenSwitch("PlasmaGunSelected");
 			TNT1 A 0 PB_HandleCrosshair(71);
 			TNT1 A 0 PB_RespectIfNeeded();
 		SelectContinue:
@@ -135,8 +133,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		Deselect:
 			TNT1 A 0 A_ClearOverlays(10,65);
 			TNT1 A 0 A_Setinventory("Unloading",0);
-			TNT1 A 0 A_Setinventory("HasPlasmaWeapon",0);
-			TNT1 A 0 A_SetInventory("PlasmaGunSelected",0);
 			TNT1 A 0 A_Zoomfactor(1.0);
 			TNT1 A 0 A_StopSound(6);
 			TNT1 A 0 A_StopSound(26);
@@ -148,10 +144,7 @@ Class PB_M1Plasma : PB_WeaponBase
 		
 		Ready:
 		Ready3:
-			TNT1 A 0 {
-				A_Setinventory("PB_LockScreenTilt",0);
-				PB_HandleCrosshair(71);
-				}
+			TNT1 A 0 PB_HandleCrosshair(71);
 			TNT1 A 0 A_startsound("PLSIDLE",6,CHANF_LOOPING);
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReadyDualWield");
 		ReadyToFire:
@@ -221,7 +214,6 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(71);
-				A_Setinventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "FireDualWield");
 			TNT1 A 0 PB_jumpIfNoAmmo();
@@ -255,11 +247,9 @@ Class PB_M1Plasma : PB_WeaponBase
 				}
 			TNT1 A 0 A_ReFire();
 			TNT1 A 0 A_StartSound("weapons/plasma/startup", 15,CHANF_OVERLAP);
-			TNT1 A 0 A_Setinventory("PB_LockScreenTilt",1);
 			TNT1 A 0 A_StartSound("PLSCOOL",CHAN_VOICE);
 			P1SG BCDEEEEEEEEEEE 1 A_FireProjectile("SmokeSpawner",0,0,0,5);
 			P1SG DCB 1 A_SetRoll(roll-0.5);
-			TNT1 A 0 A_Setinventory("PB_LockScreenTilt",0);
 			TNT1 A 0 PB_ReFire();
 			Goto Ready3;
 		
@@ -296,7 +286,6 @@ Class PB_M1Plasma : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				A_SetRoll(0);
 				PB_HandleCrosshair(71);
-				A_Setinventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 {
 				A_StopSound(6);
@@ -442,7 +431,6 @@ Class PB_M1Plasma : PB_WeaponBase
 		WeaponSpecial:
 			TNT1 A 0 {
 				A_Setinventory("GoWeaponSpecialAbility",0);
-				A_Setinventory("PB_LockScreenTilt",1);
 				PB_HandleCrosshair(71);
 				A_StartSound("Ironsights", 12,CHANF_OVERLAP);
 				A_ClearOverlays(10,65);
@@ -864,7 +852,6 @@ Class PB_M1Plasma : PB_WeaponBase
 					//set the overlays for the sides and other things needed, like
 					A_SetRoll(0);
 					PB_HandleCrosshair(71);
-					A_SetInventory("PB_LockScreenTilt",0);
 					A_SetFiringRightWeapon(False);
 					A_SetFiringLeftWeapon(False);
 					if(CountInv("PB_M1PlasmaLeftMag") < CountInv("PB_M1PlasmaMag"))
@@ -1152,14 +1139,6 @@ Class PB_M1PlasmaLeftMag : PB_WeaponAmmo
 		Ammo.BackpackMaxAmount 60;
 		+INVENTORY.IGNORESKILL;
 		Inventory.Icon "PL4SA0";
-	}
-}
-
-Class HasPlasmaWeapon: Inventory
-{
-	default
-	{
-		inventory.maxamount 1;
 	}
 }
 

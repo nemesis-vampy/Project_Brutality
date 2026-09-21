@@ -106,7 +106,6 @@ class PB_Axe : PB_WeaponBase
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
                 PB_HandleCrosshair(90);
-                A_SetInventory("PB_LockScreenTilt",1);
                 A_PlaySound("AXTHROW");
                 break;
 
@@ -127,7 +126,6 @@ class PB_Axe : PB_WeaponBase
                 // Throw Axe
                 case 4:
                 Axe_Throw();
-                A_SetInventory("HasCutingWeapon",0);
                 break;
 
                 case 5:
@@ -136,7 +134,6 @@ class PB_Axe : PB_WeaponBase
 
                 case 6:
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
                 break;
             }
             break;
@@ -218,10 +215,8 @@ class PB_Axe : PB_WeaponBase
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
 				PB_HandleCrosshair(90);
-				A_SetInventory("PB_LockScreenTilt",0);
 			}
 			TNT1 A 0 A_SetInventory("GoWeaponSpecialAbility",0);
-			TNT1 A 0 A_SetInventory("HasCutingWeapon",0);
 			
 			AX00 FGHI 1 Axe_ChangeModeSprite("AX03","AX02","AX01","AX00");
 			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower();
@@ -230,7 +225,6 @@ class PB_Axe : PB_WeaponBase
             
 		Select:
 			TNT1 A 0 {
-                PB_WeapTokenSwitch("HasCutingWeapon");
 				PB_HandleCrosshair(90);
 			    PB_ResetVisorBloodTokens();
                 PB_WeaponRaise("AXEDRAW");
@@ -253,7 +247,6 @@ class PB_Axe : PB_WeaponBase
 			TNT1 A 0 {
 				PB_SetRoll(0);
 				PB_HandleCrosshair(90);
-				A_SetInventory("PB_LockScreenTilt",0);
 				Axe_SetSequence(0);
 			}
 		ReadyToFire:
@@ -270,7 +263,6 @@ class PB_Axe : PB_WeaponBase
 				PB_SetRoll(0);
 				PB_HandleCrosshair(90);
 			}
-			TNT1 A 0 A_SetInventory("PB_LockScreenTilt",1);
 			TNT1 A 0 A_JumpIf(Axe_GetSequence() == 1,"Swing2");
 		Swing1:
             // Cache Sprites

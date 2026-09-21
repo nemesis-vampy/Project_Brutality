@@ -113,43 +113,6 @@ enum MonsterSpawnFilters
 //	DisablePB_							= 1 << 2,
 }
 
-// Spawning Related Tokens
-//Chainsaw Spawner
-Class PlayerHasChainsawPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasFLMTPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasFLMTUPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-// Shotgun Spawner
-Class PlayerHasShotgunPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasRevolverPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasASGPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasSGMagPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasDeaglePermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-// SSG Spawner
-Class PlayerHasSSGPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasQuadSGPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasASGDrumPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-//Chaingun Spawner
-Class PlayerHasMGPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasCarbinePermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasNailGunPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasHDMRPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasSMGPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasMGUPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasLMGPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-//RL Spawner
-Class PlayerHasRLPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasSGLPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-//Plasma Spawner
-Class PlayerHasM1PlasmaPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasM2PlasmaPermanent : Inventory {default{inventory.maxamount 2;+inventory.UNDROPPABLE;}}
-Class PlayerHasRGPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasCryoPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasM2UPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-//BFG Spawner
-Class PlayerHasBFGPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasMG42Permanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-Class PlayerHasUnmakerPermanent : Inventory {default{inventory.maxamount 1;+inventory.UNDROPPABLE;}}
-
 Class PB_SpawnerBase : Actor
 {
 	

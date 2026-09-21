@@ -1,4 +1,4 @@
-Class PB_Arachnotron1 : PB_Monster
+Class PB_Arachnotron : PB_Monster
 {
 	int artyCounter;
 	int plasmaBallCounter;
@@ -419,26 +419,6 @@ Class PB_Arachnotron1 : PB_Monster
 	Rest:
 		CARB K -1;
 		Stop; */
-
-	Death.Fatality:
-		TNT1 A 1 { A_BossDeath(); }
-		TNT1 A 0 { A_Pain(); }
-		TNT1 A 0 { A_JumpIfInTargetInventory("FistsSelected", 1, "Death"); }
-		TNT1 A 0 { A_Jump(128, "Death.Fatality2"); }
-		TNT1 A 0 { A_GiveToTarget("GoFatality", 1); }
-		TNT1 A 0 { A_GiveToTarget("ArachnotronFatality", 1); }
-		TNT1 A 1 { A_BossDeath(); }
-		TNT1 A 0;
-		Stop;
-
-	Death.Fatality2:
-		TNT1 A 1 { A_BossDeath(); }
-		TNT1 A 0 { A_GiveToTarget("GoFatality", 1); }
-		TNT1 A 0 { A_GiveToTarget("ArachnotronFatality2", 1); }
-		TNT1 A 1;
-		TNT1 A 0;
-		Stop;
-
 	// --- Death.Cut and Death.Saw ---
 	Death.Cut:
 	Death.Saw:
@@ -907,10 +887,10 @@ Class ArachnoArtyPlasmaBall : ArachnoPlasma_Ball
         if (target)
         {
             // Attempt to cast the missile's target (which should be the shooter)
-            PB_Arachnotron1 myOwner = PB_Arachnotron1(target);
+            PB_Arachnotron myOwner = PB_Arachnotron(target);
 /*             if (myOwner == null)
             {
-                Console.Printf("ArachnoArtyPlasmaBall: FAILED to cast target to PB_Arachnotron1.\n");
+                Console.Printf("ArachnoArtyPlasmaBall: FAILED to cast target to PB_Arachnotron.\n");
             } */
             if (myOwner != null)
             {
@@ -1252,7 +1232,7 @@ class Shield : Actor
 		{
 			ownerActor = master;
 			SetOrigin(ownerActor.Pos, false);
-			PB_Arachnotron1 owner = PB_Arachnotron1(master);
+			PB_Arachnotron owner = PB_Arachnotron(master);
 			if (owner != null)
 			{
 				owner.shieldActive = true;
@@ -1271,7 +1251,7 @@ class Shield : Actor
     {
         if (master)
         {
-            PB_Arachnotron1 owner = PB_Arachnotron1(master);
+            PB_Arachnotron owner = PB_Arachnotron(master);
             if (owner != null)
             {
                 owner.shieldActive = false;

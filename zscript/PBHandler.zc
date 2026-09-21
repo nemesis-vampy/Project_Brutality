@@ -76,7 +76,6 @@ class PB_EventHandler : EventHandler
 		
 		if (e.Name == "pb_unload_weapon") {
 			pm.giveinventory("Unloading",1);
-			pm.giveinventory("GoSpecial",1);
 		}
 		
 		if( e.name == "pb_flashlight_toggle" )
@@ -191,11 +190,7 @@ class PB_EventHandler : EventHandler
 			plr.SetInventory("ResetZoom",1);
 			plr.SetInventory("KnifeHasHit",0);
 			plr.SetInventory("PB_NoEffectInvul",0);
-			plr.SetInventory("HasCutingWeapon", 0);
-			plr.SetInventory("PB_LockScreenTilt",0);
-			
 			plr.SetInventory("PB_BarrelToken",0);
-			
 			plr.A_SetRoll(0);
 			plr.A_SetPitch(0);
 			plr.A_OverlayFlags(-9,PSPF_PLAYERTRANSLATED, false);
@@ -228,24 +223,9 @@ class PB_EventHandler : EventHandler
 		let plinf = plr.player;
 		if (plr)
 		{
-			Plr.SetInventory ("PlayerIsDead",0); //this was causing resurrection without kicks
 			Plr.SetInventory ("DeathFader",0);
 			
-			plr.SetInventory("HasBarrel",0);
-			plr.SetInventory("HasIceBarrel",0);
-			plr.SetInventory("HasFlameBarrel",0);
-			plr.SetInventory("GrabbedBarrel",0);
-			plr.SetInventory("GrabbedIceBarrel",0);
-			plr.SetInventory("GrabbedFlameBarrel",0);
-			plr.SetInventory("BarrelIsFrozen",0);
-			plr.SetInventory("BarrelIsFlaming",0);
 			plr.Setinventory("KeepWeapManager",1);
-			for(int i=8;i>0;i--)
-			{
-				plr.SetInventory("Grab"..i,0);
-				plr.SetInventory("IGrab"..i,0);
-				plr.SetInventory("FGrab"..i,0);
-			}
 			
 			//clean the first person deaths from here when resurrected, if -for some reason- resurrecting skips the spawn state from the player, the overlay is already cleaned here
 			if(plinf)
@@ -311,7 +291,7 @@ class PB_EventHandler : EventHandler
 		// function correctly in multiplayer because the players had already been revived by that point.
 		foreach (p : players)
 		{
-			if (p.mo && p.mo.Health <= 0)
+			if (p.mo && p.mo.Health <= 0 && pb_disable_death_exits)
 			{
 				p.Resurrect();
 			}
@@ -475,7 +455,7 @@ class PB_EventHandler : EventHandler
 			case 'Chaingun':				e.replacement = 'PBChaingunSpawner';									break;
 			case 'RocketLauncher':			e.replacement = 'PBRocketLauncherSpawner';								break;
 			case 'PlasmaRifle':				e.replacement = 'PBPlasmaRifleSpawner';									break;
-			case 'BFG9000':					e.replacement = !pb_mg_42_chaingun_spawn && GetPlayingWolfMaps() == 2 ? 'PB_MG42' : 'PBBFGSpawner';		break;
+			case 'BFG9000':					e.replacement = !(pb_chaingun_filter & DisablePB_MG42 || pb_mg_42_chaingun_spawn) && GetPlayingWolfMaps() == 2 ? 'PB_MG42' : 'PBBFGSpawner';	break;
 			case 'Chainsaw':				e.replacement = 'PBChainSawSpawner';									break;
 			
 			//

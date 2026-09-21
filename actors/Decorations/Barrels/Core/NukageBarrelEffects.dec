@@ -21,21 +21,7 @@ actor BarrelKaboom: DeadMarine {
 		Spawn:
 			TNT1 A 1
 			Stop	}}
-Actor BarrelExplosionDamage {
-	Radius 2
-	Height 42
-	PROJECTILE
-	Speed 0
-	Damagetype "ExplosiveImpact"
-	+MISSILE
-		States {
-			Spawn:
-				TNT1 A 0
-				Goto Death
-			Death:
-				TNT1 A 0
-				TNT1 A 0 A_Explode(200,200)
-				Stop	}}
+
 ACTOR BarrelFireSpawner {
 	Damagetype "Fire"
 	Alpha 0.9
@@ -109,7 +95,7 @@ actor GrowingNukagePool {
 			TNT1 A 0 
 			TNT1 A 0 A_SpawnItemEx ("WaterBloodSpotGreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 			Stop	}}
-		
+
 ACTOR IceBarrelBlast {
 	DamageType "IceExplosion"
 	DeathSound "EXPLIC"

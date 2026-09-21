@@ -133,7 +133,6 @@ class PB_SSG : PB_WeaponBase
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
                 PB_HandleCrosshair(40);
-                A_SetInventory("PB_LockScreenTilt",0);
                 break;
 
             case 1:
@@ -277,7 +276,6 @@ class PB_SSG : PB_WeaponBase
         if(!switchtoDual)
         {
             A_SetInventory("GoWeaponSpecialAbility",0);
-            A_SetInventory("PB_LockScreenTilt",1);
             PB_ClearDualWield();
             PB_HandleCrosshair(40);
 
@@ -306,7 +304,6 @@ class PB_SSG : PB_WeaponBase
             return ResolveState("ReadyDualWield");
 
         PB_ClearDualWield();
-        A_SetInventory("PB_LockScreenTilt",0);
         PB_HandleCrosshair(40);
         PB_SetRoll(0);
 
@@ -327,7 +324,6 @@ class PB_SSG : PB_WeaponBase
 
         WeaponRespect:
             TNT1 A 0 {
-                A_SetInventory("PB_LockScreenTilt",1);
                 A_PlaySoundEx("Ironsights", "Auto");
                 A_SetCrosshair(-1);
             }
@@ -351,9 +347,7 @@ class PB_SSG : PB_WeaponBase
                 PB_ClearDualWield();
                 A_WeaponOffset(0,32);
                 PB_SetRoll(0);
-                A_SetInventory("PB_LockScreenTilt",0);
             }
-            TNT1 A 0 A_SetInventory("SSGSelected",0) ;
             TNT1 A 0; //A_JumpIfInventory("PB_QuadSG",1,"DeselectUpgrade")
             TNT1 A 0 A_JumpIf(A_CheckAkimbo(),"DeselectAnimationDualWield");
             SHO9 FEDC 1;
@@ -374,8 +368,6 @@ class PB_SSG : PB_WeaponBase
         Select:
             TNT1 A 0 {
                 PB_ClearDualWield();
-                A_SetInventory("PB_LockScreenTilt",0);
-                PB_WeapTokenSwitch("SSGSelected");
                 A_SetInventory("HasNotPickedUpSSG",0);
                 PB_HandleCrosshair(40);
                 PB_SelectIfUpgrade("PB_QuadSG");
@@ -513,7 +505,6 @@ class PB_SSG : PB_WeaponBase
             TNT1 A 0 A_JumpIf(A_CheckAkimbo(), "ReloadDualWield");
             TNT1 A 0 PB_CheckReload(null,null,null,"Ready3","Ready3",MAGAZINE_SIZE);
             TNT1 A 0 {
-                A_SetInventory("PB_LockScreenTilt",1);
                 setFireAnimation(0);
                 A_SetCrosshair(-1);
             }

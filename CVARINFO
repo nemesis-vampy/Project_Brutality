@@ -113,8 +113,7 @@ user int PB_HatExtravaganza = 0;
 //Global Spawn balance. Do NOT touch.
 server int SpawnBalance = 666;
 
-// Should Collected Weapons Stay?
-User bool PlayerCatchup = false;
+server bool pb_disable_death_exits = true;
 
 server bool pb_mg_42_chaingun_spawn = false;
 server bool pb_NoUpgrades = false;
