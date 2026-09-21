@@ -242,8 +242,8 @@ ACTOR PB_CyberBaron : PB_Monster
 		TNT1 A 0 
 		TNT1 A 0 A_CustomMissile("EnemyFlamethrowerMissile",35,16,0)
 		CBOS F 1 BRIGHT A_CustomMissile("CometDeathGlow",35,16,0)
-		TNT1 A 0 A_JumpIfCloser(315, "Missile")
 		TNT1 A 0 A_CPosRefire
+		TNT1 A 0 A_JumpIfCloser(315, "Missile")
 		CBOS EE 5
 		TNT1 A 0 A_ChangeFlag("NOTARGET", 0)
 		Goto See
