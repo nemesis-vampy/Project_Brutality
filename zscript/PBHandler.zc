@@ -455,7 +455,7 @@ class PB_EventHandler : EventHandler
 			case 'Chaingun':				e.replacement = 'PBChaingunSpawner';									break;
 			case 'RocketLauncher':			e.replacement = 'PBRocketLauncherSpawner';								break;
 			case 'PlasmaRifle':				e.replacement = 'PBPlasmaRifleSpawner';									break;
-			case 'BFG9000':					e.replacement = !pb_mg_42_chaingun_spawn && GetPlayingWolfMaps() == 2 ? 'PB_MG42' : 'PBBFGSpawner';		break;
+			case 'BFG9000':					e.replacement = !(pb_chaingun_filter & DisablePB_MG42 || pb_mg_42_chaingun_spawn) && GetPlayingWolfMaps() == 2 ? 'PB_MG42' : 'PBBFGSpawner';	break;
 			case 'Chainsaw':				e.replacement = 'PBChainSawSpawner';									break;
 			
 			//
