@@ -335,8 +335,9 @@ ACTOR WatcherShot
    Death:
     TNT1 A 0 A_SpawnItem ("IonPuff", 0)
 	TNT1 A 0 A_SpawnItemEx("PurpleTrailSparksSmall", 0, 0, 0, 0, 0, 0, 0, 128)
-    TNT1 AA 15 A_SpawnProjectile("PlasmaSmoke", 1, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
+    TNT1 A 0 A_SpawnProjectile("PlasmaSmoke", 1, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
     FWAT CDE 3 Bright
+    TNT1 AA 15 A_SpawnProjectile("PlasmaSmoke", 1, 0, random (0, 360), CMF_BADPITCH | CMF_ABSOLUTEPITCH | CMF_AIMDIRECTION, random (0, 160))
     stop
    }
 }
