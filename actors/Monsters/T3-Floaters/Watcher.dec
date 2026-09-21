@@ -274,7 +274,7 @@ States
        WATC A 6 A_FastChase
        WATC B 5 A_FaceTarget
 	   WATC C 5 A_FaceTarget
-	   WATC D 5 BRIGHT A_HeadAttack
+	   WATC D 5 BRIGHT A_CustomMissile("WatcherShot",12,0,0) 
 	   Goto See
    Raise: 
        WATC ONMLKJI 8 
