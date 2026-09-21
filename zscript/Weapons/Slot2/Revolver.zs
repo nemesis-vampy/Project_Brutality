@@ -162,8 +162,9 @@ Class PB_Revolver : PB_WeaponBase
 					return resolvestate("FanFire");
 				return resolvestate(null);
 				}
-			R4V1 DEFGH 1 A_jumpif(JustPressed(BT_ATTACK),"FanFire");
-			R1V1 EE 1 {
+			R4V1 DE 1;
+			R4V1 FGH 1 A_jumpif(JustPressed(BT_ATTACK),"FanFire");
+			R1V1 E 1 {
 				if(JustPressed(BT_ATTACK))
 					return resolvestate("FanFire");
 				if(JustPressed(BT_ALTATTACK))
@@ -213,12 +214,9 @@ Class PB_Revolver : PB_WeaponBase
 					A_StartSound("Weapons/Revolver/Click1",10);
 					PB_WeaponRecoil(-1.9, -1.8);
 				}
-			R5V1 DEFGUVWX 1
-			{
-				if(JustPressed(BT_ATTACK))
-					return resolvestate("AltFan_Hold");
-				return resolvestate(null);
-			}
+			R5V1 DE 1;
+			R5V1 FGUV 1 A_jumpif(JustPressed(BT_ATTACK),"AltFan_Hold");
+			R5V1 WX 1;
 			Goto Ready3;
 		AltFan_Hold:
 			TNT1 A 0 A_WeaponOffset(0,32);
@@ -248,12 +246,9 @@ Class PB_Revolver : PB_WeaponBase
 					A_StartSound("Weapons/Revolver/Click1",10);
 					PB_WeaponRecoil(-1.9, -1.8);
 				}
-			R5V1 LMNOUVWX 1
-			{
-				if(JustPressed(BT_ATTACK))
-					return resolvestate("AltFan_Hold");
-				return resolvestate(null);
-			}
+			R5V1 LM 1;
+			R5V1 NOUV 1 A_jumpif(JustPressed(BT_ATTACK),"AltFan_Hold");
+			R5V1 WX 1;
 			Goto Ready3;
 		
 		NoAmmo:

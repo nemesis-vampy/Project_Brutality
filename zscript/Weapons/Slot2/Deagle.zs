@@ -137,17 +137,17 @@ class PB_Deagle : PB_WeaponBase
 					PB_SpawnCasing("EmptyBrassDeagle",30,0,31,-frandom(1, 2),Frandom(2,6),Frandom(3,6));
 					PB_TakeAmmo("PB_DeagleMag",1);
 					A_ZoomFactor(0.96);
-					PB_WeaponRecoil(-1.15,-0.36);	//-1.15, -0.26
+					PB_WeaponRecoil(-1.725,-0.39);	//-1.15, -0.26
 				}
 			D2E0 B 1 BRIGHT {
-				PB_WeaponRecoil(-1.15,-0.56);
+				PB_WeaponRecoil(-1.725,-0.39);
 				A_ZoomFactor(0.98);
 			}
 			D2E0 C 1 A_ZoomFactor(0.99);
 			D2E0 D 1 A_ZoomFactor(1.0);
 			TNT1 A 0 A_jumpif(PB_GetChamberEmpty(),"EndFireNoAmmo");
-			D2E0 EF 1;
-			D2E0 G 1 {
+			D2E0 E 1;
+			D2E0 FG 1 {
 				if (JustPressed(BT_ATTACK))
 					return resolvestate("Fire");
 				return resolvestate(null);
@@ -717,16 +717,16 @@ class PB_Deagle : PB_WeaponBase
 					PB_SpawnCasing("EmptyBrassDeagle",26,0,38,-frandom(1, 2),Frandom(2,6),Frandom(3,6));
 					PB_TakeAmmo("PB_DeagleMag",1);
 					A_ZoomFactor(1.20);
-					PB_WeaponRecoil(-0.90,-0.25);
+					PB_WeaponRecoil(-1.725,-0.39);
 					A_Overlay(-5, "MuzzleFlash2", true);
 					A_OverlayFlags(-5,PSPF_RENDERSTYLE,true);
 					A_OverlayRenderStyle(-5,STYLE_Add);
 				}
-			D3E0 C 1 BRIGHT PB_WeaponRecoil(-0.90,-0.25);
+			D3E0 C 1 BRIGHT PB_WeaponRecoil(-1.725,-0.39);
 			D3E0 D 1 A_ZoomFactor(1.23);
 			D3E0 E 1 A_ZoomFactor(1.25);
-			D3E0 FG 1;
-			D3E0 H 1 {
+			D3E0 F 1;
+			D3E0 GH 1 {
 				if (JustPressed(BT_ATTACK) && (PressingAltfire() || !Cvar.GetCvar("pb_toggle_aim_hold",player).getbool()))
 					return resolvestate("Fire2");
 				return resolvestate(null);
@@ -821,19 +821,18 @@ class PB_Deagle : PB_WeaponBase
 				PB_TakeAmmo("PB_DeagleLeftMag",1,1,0,true);
 				A_AlertMonsters();
 				A_ZoomFactor(0.985);
-				PB_WeaponRecoil(-1.92,+1.8);
+				PB_WeaponRecoil(-2.85, 2.7);
 				A_FlashOverlay(LEFT_FLASH_LAYER, "MuzzleFlashLeft");
 			}
 			D6E1 B 1 bright {
-				PB_WeaponRecoil(-1.92,+2.0);
+				PB_WeaponRecoil(-2.85, 2.7);
 				A_SetFiringLeftWeapon(2);
 			}
 			D6E1 C 1 A_ZoomFactor(1.0);
 			TNT1 A 0 A_JumpIf(PB_GetChamberEmpty(true),"EndFireNoAmmoLeft");
 			D6E1 D 1;
 			D6E1 E 1 A_SetFiringLeftWeapon(False);
-			D6E1 F 1;
-			D6E1 GHIII 1 A_RefireLeft();
+			D6E1 FGHIII 1 A_RefireLeft();
 			Goto IdleLeft_Overlay;
 		
 		EndFireNoAmmoLeft:
@@ -860,19 +859,18 @@ class PB_Deagle : PB_WeaponBase
 					A_ZoomFactor(0.985);
 					PB_TakeAmmo("PB_DeagleMag",1);
 					A_AlertMonsters();
-					PB_WeaponRecoil(-1.92,-1.8);
+					PB_WeaponRecoil(-2.85, -2.7);
 					A_FlashOverlay(RIGHT_FLASH_LAYER, "MuzzleFlashRight");
 				}
 			D6E0 B 1 BRIGHT {
-				PB_WeaponRecoil(-1.92,-2.0);
+				PB_WeaponRecoil(-2.85, -2.7);
 				A_SetFiringRightWeapon(2);
 			}
 			D6E0 C 1 A_ZoomFactor(1.0);
 			TNT1 A 0 A_JumpIf(PB_GetChamberEmpty(),"EndFireNoAmmoRight");
 			D6E0 D 1;
 			D6E0 E 1 A_SetFiringRightWeapon(false);
-			D6E0 F 1;
-			D6E0 GHIII 1 A_RefireRight();
+			D6E0 FGHIII 1 A_RefireRight();
 			Goto IdleRight_Overlay;
 		
 		EndFireNoAmmoRight:
