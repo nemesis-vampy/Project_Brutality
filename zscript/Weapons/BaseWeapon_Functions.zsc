@@ -1584,7 +1584,7 @@ extend class PB_WeaponBase
 				return PB_ExecuteZombieMan();
 			
 			// Imp
-			case 'PB_Imp1':
+			case 'PB_Imp':
 				return PB_ExecuteImp();
 				
 			//Shotgun Guy
