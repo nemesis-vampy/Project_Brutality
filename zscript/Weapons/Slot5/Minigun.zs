@@ -200,6 +200,7 @@ class PB_Minigun : PB_Weapon
         if(mode == tokens)
         {
             A_Print("$PB_ALREADYSELECTED");
+			Minigun_ClearTokens();
             return resolvestate("Ready3");
         }
 
